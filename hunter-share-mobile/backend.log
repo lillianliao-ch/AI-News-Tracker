@@ -1,0 +1,8 @@
+
+> hunter-share-mobile-backend@1.0.0 dev
+> ts-node-dev --respawn --transpile-only src/index.ts
+
+[INFO] 12:39:59 ts-node-dev ver. 2.0.0 (using ts-node ver. 10.9.2, typescript ver. 5.9.3)
+{"level":30,"time":1762490400807,"pid":58578,"hostname":"MacBook-Air-2.local","msg":"Server listening at http://0.0.0.0:4000"}
+🚀 Server running on http://0.0.0.0:4000
+📊 Health check: http://0.0.0.0:4000/health

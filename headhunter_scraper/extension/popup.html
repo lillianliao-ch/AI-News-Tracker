@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Headhunter Scraper</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+      font-family: sans-serif;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    #status {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+
+    input {
+      width: 100%;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+
+    .status-indicator {
+      margin-bottom: 10px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    .connected {
+      background-color: #4CAF50;
+    }
+
+    .disconnected {
+      background-color: #f44336;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>Headhunter Scraper</h3>
+  <div class="status-indicator">
+    <span id="serverDot" class="dot"></span>
+    <span id="serverStatus">Checking server...</span>
+  </div>
+  <div class="input-group">
+    <label for="maxPages">Max Pages to Scrape:</label>
+    <input type="number" id="maxPages" value="5" min="1">
+  </div>
+  <button id="startBtn">Start Scraping</button>
+  <button id="stopBtn">Stop</button>
+  <div id="status">Ready</div>
+  <script src="popup.js"></script>
+</body>
+
+</html>

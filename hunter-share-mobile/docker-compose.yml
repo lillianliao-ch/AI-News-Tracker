@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # PostgreSQL数据库
+  postgres:
+    image: postgres:14-alpine
+    container_name: hunter-share-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: hunter_share_mobile
+      POSTGRES_USER: hunter_admin
+      POSTGRES_PASSWORD: hunter_password_2024
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hunter_admin -d hunter_share_mobile"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 后端API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hunter-share-backend
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: postgresql://hunter_admin:hunter_password_2024@postgres:5432/hunter_share_mobile?schema=public
+      JWT_SECRET: hunter-share-jwt-secret-change-in-production
+      PORT: 4000
+      HOST: 0.0.0.0
+      NODE_ENV: production
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: sh -c "npx prisma migrate deploy && npm start"
+
+  # 前端Web应用
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: hunter-share-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:4000
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  default:
+    name: hunter-share-network
+

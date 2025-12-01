@@ -1,0 +1,497 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum UserRole {
+  platform_admin
+  company_admin
+  consultant
+  soho
+}
+
+enum UserStatus {
+  pending
+  active
+  suspended
+  inactive
+}
+
+enum CompanyStatus {
+  pending
+  approved
+  rejected
+  suspended
+}
+
+enum JobStatus {
+  pending_approval
+  approved
+  open
+  paused
+  closed
+  rejected
+}
+
+enum SubmissionStatus {
+  submitted
+  resume_approved
+  resume_rejected
+  interview_scheduled
+  interview_passed
+  interview_failed
+  offer_extended
+  offer_accepted
+  offer_rejected
+  hired
+}
+
+enum NotificationType {
+  job_shared
+  job_closed
+  submission_status_changed
+  maintainer_change_request
+  system_announcement
+}
+
+enum SettlementStatus {
+  pending
+  calculated
+  confirmed
+  paid
+  disputed
+}
+
+enum MaintainerChangeStatus {
+  pending
+  approved
+  rejected
+}
+
+enum CommunicationType {
+  phone
+  email
+  wechat
+  meeting
+}
+
+enum ConsultantApplicationStatus {
+  pending
+  approved
+  rejected
+}
+
+enum CompanyClientStatus {
+  active
+  suspended
+  terminated
+}
+
+enum AssignmentStatus {
+  pending_assignment
+  assigned
+  completed
+}
+
+enum PermissionType {
+  management
+  progression
+}
+
+// Models
+model Company {
+  id              String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name            String        @db.VarChar(255)
+  businessLicense String?       @map("business_license") @db.VarChar(100)
+  industry        String?       @db.VarChar(100)
+  scale           String?       @db.VarChar(50)
+  contactName     String?       @map("contact_name") @db.VarChar(100)
+  contactPhone    String?       @map("contact_phone") @db.VarChar(20)
+  contactEmail    String?       @map("contact_email") @db.VarChar(255)
+  address         String?       @db.Text
+  status          CompanyStatus @default(pending)
+  createdAt       DateTime      @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt       DateTime      @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  users           User[]
+  jobPermissions  JobPermission[]
+  clientPartners  CompanyClient[] @relation("CompanyClientPartnership")
+  consultantApplications ConsultantApplication[] @relation("ConsultantApplicationCompany")
+
+  @@index([name])
+  @@index([status])
+  @@map("companies")
+}
+
+model User {
+  id        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  username  String     @db.VarChar(100)
+  email     String     @unique @db.VarChar(255)
+  phone     String     @unique @db.VarChar(20)
+  password  String     @db.VarChar(255)
+  role      UserRole
+  status    UserStatus @default(pending)
+  companyId String?    @map("company_id") @db.Uuid
+  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt DateTime   @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  company                    Company?                     @relation(fields: [companyId], references: [id])
+  jobs                       Job[]                        @relation("JobPublisher")
+  assignedJobs               Job[]                        @relation("JobAssigner")
+  maintainedCandidates       Candidate[]                  @relation("CandidateMaintainer")
+  candidateSubmissions       CandidateSubmission[]        @relation("SubmissionSubmitter")
+  statusChanges              CandidateStatusHistory[]     @relation("StatusChanger")
+  candidateStatusLogs        CandidateStatusLog[]         @relation("StatusLogUpdater")
+  grantedJobPermissions      JobPermission[]              @relation("PermissionGranter")
+  receivedJobPermissions     JobPermission[]              @relation("PermissionReceiver")
+  managedJobs                JobProjectManager[]          @relation("ProjectManager")
+  assignedPMs                JobProjectManager[]          @relation("PMAssigner")
+  requestedMaintainerChanges MaintainerChangeRequest[]    @relation("MaintainerRequestRequester")
+  reviewedMaintainerRequests MaintainerChangeRequest[]    @relation("MaintainerRequestReviewer")
+  currentMaintainerRequests  MaintainerChangeRequest[]    @relation("MaintainerRequestCurrentMaintainer")
+  requestedMaintainerFor     MaintainerChangeRequest[]    @relation("MaintainerRequestNewMaintainer")
+  notifications              Notification[]               @relation("NotificationRecipient")
+  companyClients             CompanyClient[]              @relation("CompanyClientMaintainer")
+  consultantApplications     ConsultantApplication[]      @relation("ConsultantApplicationConsultant")
+  reviewedConsultantApplications ConsultantApplication[]  @relation("ConsultantApplicationReviewer")
+  communicationRecords       CommunicationRecord[]        @relation("CommunicationRecordUser")
+
+  @@index([email])
+  @@index([phone])
+  @@index([companyId])
+  @@index([role, status])
+  @@map("users")
+}
+
+model CompanyClient {
+  id            String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name          String              @db.VarChar(255)
+  industry      String?             @db.VarChar(100)
+  size          String?             @db.VarChar(50)
+  contactName   String              @map("contact_name") @db.VarChar(100)
+  contactPhone  String              @map("contact_phone") @db.VarChar(20)
+  contactEmail  String?             @map("contact_email") @db.VarChar(255)
+  location      String?             @db.VarChar(255)
+  tags          Json?               @db.Json
+  status        CompanyClientStatus @default(active)
+  partnerCompanyId String           @map("partner_company_id") @db.Uuid
+  maintainerId  String              @map("maintainer_id") @db.Uuid
+  createdAt     DateTime            @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt     DateTime            @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  partnerCompany Company @relation("CompanyClientPartnership", fields: [partnerCompanyId], references: [id])
+  maintainer     User    @relation("CompanyClientMaintainer", fields: [maintainerId], references: [id])
+  jobs           Job[]
+
+  @@index([name])
+  @@index([industry])
+  @@index([partnerCompanyId])
+  @@index([maintainerId])
+  @@map("company_clients")
+}
+
+model Job {
+  id                 String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title              String           @db.VarChar(255)
+  industry           String?          @db.VarChar(100)
+  location           String?          @db.VarChar(255)
+  salaryMin          Int?             @map("salary_min")
+  salaryMax          Int?             @map("salary_max")
+  description        String           @db.Text
+  requirements       String           @db.Text
+  benefits           String?          @db.Text
+  urgency            String?          @db.VarChar(50)
+  reportTo           String?          @map("report_to") @db.VarChar(100)
+  status             JobStatus        @default(pending_approval)
+  assignmentStatus   AssignmentStatus @default(pending_assignment) @map("assignment_status")
+  publisherSharePct  Decimal          @map("publisher_share_pct") @db.Decimal(5, 2)
+  referrerSharePct   Decimal          @map("referrer_share_pct") @db.Decimal(5, 2)
+  platformSharePct   Decimal          @map("platform_share_pct") @db.Decimal(5, 2)
+  publisherId        String           @map("publisher_id") @db.Uuid
+  companyClientId    String           @map("company_client_id") @db.Uuid
+  assignedAt         DateTime?        @map("assigned_at") @db.Timestamp(6)
+  assignedById       String?          @map("assigned_by_id") @db.Uuid
+  createdAt          DateTime         @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt          DateTime         @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  publisher            User                   @relation("JobPublisher", fields: [publisherId], references: [id])
+  companyClient        CompanyClient          @relation(fields: [companyClientId], references: [id])
+  assignedBy           User?                  @relation("JobAssigner", fields: [assignedById], references: [id])
+  projectManager       JobProjectManager?
+  jobPermissions       JobPermission[]
+  candidateSubmissions CandidateSubmission[]
+  settlements          Settlement[]
+
+  @@index([publisherId])
+  @@index([status])
+  @@index([assignmentStatus])
+  @@index([industry])
+  @@index([location])
+  @@index([salaryMin, salaryMax])
+  @@index([assignedById])
+  @@map("jobs")
+}
+
+model JobPermission {
+  id                String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  jobId             String         @map("job_id") @db.Uuid
+  grantedToUserId   String?        @map("granted_to_user_id") @db.Uuid
+  grantedToCompanyId String?       @map("granted_to_company_id") @db.Uuid
+  grantedById       String         @map("granted_by_id") @db.Uuid
+  permissionType    PermissionType @default(progression) @map("permission_type")
+  grantedAt         DateTime       @default(now()) @map("granted_at") @db.Timestamp(6)
+  expiresAt         DateTime?      @map("expires_at") @db.Timestamp(6)
+
+  // Relations
+  job             Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  grantedToUser   User?    @relation("PermissionReceiver", fields: [grantedToUserId], references: [id])
+  grantedToCompany Company? @relation(fields: [grantedToCompanyId], references: [id])
+  grantedBy       User     @relation("PermissionGranter", fields: [grantedById], references: [id])
+
+  @@index([jobId])
+  @@index([grantedToUserId])
+  @@index([grantedToCompanyId])
+  @@index([permissionType])
+  @@map("job_permissions")
+}
+
+model Candidate {
+  id                       String                    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name                     String                    @db.VarChar(100)
+  phone                    String                    @db.VarChar(20)
+  email                    String?                   @db.VarChar(255)
+  tags                     Json?                     @db.Json
+  maintainerId             String                    @map("maintainer_id") @db.Uuid
+  createdAt                DateTime                  @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt                DateTime                  @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  maintainer               User                      @relation("CandidateMaintainer", fields: [maintainerId], references: [id])
+  candidateSubmissions     CandidateSubmission[]
+  maintainerChangeRequests MaintainerChangeRequest[]
+  communicationRecords     CommunicationRecord[]
+
+  @@unique([name, phone])
+  @@index([name])
+  @@index([phone])
+  @@index([maintainerId])
+  @@map("candidates")
+}
+
+model CandidateSubmission {
+  id               String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  candidateId      String           @map("candidate_id") @db.Uuid
+  jobId            String           @map("job_id") @db.Uuid
+  submitterId      String           @map("submitter_id") @db.Uuid
+  resumeUrl        String?          @map("resume_url") @db.Text
+  customResume     String?          @map("custom_resume") @db.Text
+  submitReason     String?          @map("submit_reason") @db.Text
+  matchExplanation String?          @map("match_explanation") @db.Text
+  notes            String?          @db.Text
+  status           SubmissionStatus @default(submitted)
+  createdAt        DateTime         @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt        DateTime         @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  candidate      Candidate                @relation(fields: [candidateId], references: [id])
+  job            Job                      @relation(fields: [jobId], references: [id])
+  submitter      User                     @relation("SubmissionSubmitter", fields: [submitterId], references: [id])
+  statusHistory  CandidateStatusHistory[]
+  statusLogs     CandidateStatusLog[]
+  settlements    Settlement[]
+
+  @@unique([candidateId, jobId])
+  @@index([candidateId])
+  @@index([jobId])
+  @@index([submitterId])
+  @@index([status])
+  @@map("candidate_submissions")
+}
+
+model CandidateStatusHistory {
+  id           String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  submissionId String              @map("submission_id") @db.Uuid
+  fromStatus   SubmissionStatus?   @map("from_status")
+  toStatus     SubmissionStatus    @map("to_status")
+  comment      String?             @db.Text
+  changedById  String              @map("changed_by_id") @db.Uuid
+  changedAt    DateTime            @default(now()) @map("changed_at") @db.Timestamp(6)
+
+  // Relations
+  submission CandidateSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  changedBy  User                @relation("StatusChanger", fields: [changedById], references: [id])
+
+  @@index([submissionId])
+  @@index([changedAt])
+  @@map("candidate_status_history")
+}
+
+model MaintainerChangeRequest {
+  id                     String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  candidateId            String                  @map("candidate_id") @db.Uuid
+  currentMaintainerId    String                  @map("current_maintainer_id") @db.Uuid
+  requestedMaintainerId  String                  @map("requested_maintainer_id") @db.Uuid
+  requesterId            String                  @map("requester_id") @db.Uuid
+  reason                 String                  @db.Text
+  status                 MaintainerChangeStatus  @default(pending)
+  reviewedById           String?                 @map("reviewed_by_id") @db.Uuid
+  reviewedAt             DateTime?               @map("reviewed_at") @db.Timestamp(6)
+  createdAt              DateTime                @default(now()) @map("created_at") @db.Timestamp(6)
+
+  // Relations
+  candidate          Candidate @relation(fields: [candidateId], references: [id])
+  currentMaintainer  User      @relation("MaintainerRequestCurrentMaintainer", fields: [currentMaintainerId], references: [id])
+  requestedMaintainer User     @relation("MaintainerRequestNewMaintainer", fields: [requestedMaintainerId], references: [id])
+  requester          User      @relation("MaintainerRequestRequester", fields: [requesterId], references: [id])
+  reviewedBy         User?     @relation("MaintainerRequestReviewer", fields: [reviewedById], references: [id])
+
+  @@index([candidateId])
+  @@index([status])
+  @@map("maintainer_change_requests")
+}
+
+model Notification {
+  id          String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  recipientId String           @map("recipient_id") @db.Uuid
+  type        NotificationType
+  title       String           @db.VarChar(200)
+  content     String           @db.Text
+  relatedId   String?          @map("related_id") @db.Uuid
+  isRead      Boolean          @default(false) @map("is_read")
+  createdAt   DateTime         @default(now()) @map("created_at") @db.Timestamp(6)
+
+  // Relations
+  recipient User @relation("NotificationRecipient", fields: [recipientId], references: [id])
+
+  @@index([recipientId, isRead])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+model Settlement {
+  id                    String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  jobId                 String                @map("job_id") @db.Uuid
+  candidateSubmissionId String                @map("candidate_submission_id") @db.Uuid
+  totalAmount           Decimal               @map("total_amount") @db.Decimal(12, 2)
+  publisherAmount       Decimal               @map("publisher_amount") @db.Decimal(12, 2)
+  referrerAmount        Decimal               @map("referrer_amount") @db.Decimal(12, 2)
+  platformAmount        Decimal               @map("platform_amount") @db.Decimal(12, 2)
+  status                SettlementStatus      @default(pending)
+  confirmedAt           DateTime?             @map("confirmed_at") @db.Timestamp(6)
+  paidAt                DateTime?             @map("paid_at") @db.Timestamp(6)
+  createdAt             DateTime              @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt             DateTime              @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  job                Job                 @relation(fields: [jobId], references: [id])
+  candidateSubmission CandidateSubmission @relation(fields: [candidateSubmissionId], references: [id])
+
+  @@index([jobId])
+  @@index([candidateSubmissionId])
+  @@index([status])
+  @@map("settlements")
+}
+
+model ConsultantApplication {
+  id              String                     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  consultantId    String                     @map("consultant_id") @db.Uuid
+  companyId       String                     @map("company_id") @db.Uuid
+  status          ConsultantApplicationStatus @default(pending)
+  reason          String?                    @db.Text
+  rejectReason    String?                    @map("reject_reason") @db.Text
+  appliedAt       DateTime                   @default(now()) @map("applied_at") @db.Timestamp(6)
+  reviewedAt      DateTime?                  @map("reviewed_at") @db.Timestamp(6)
+  reviewedById    String?                    @map("reviewed_by_id") @db.Uuid
+
+  // Relations
+  consultant      User     @relation("ConsultantApplicationConsultant", fields: [consultantId], references: [id])
+  company         Company  @relation("ConsultantApplicationCompany", fields: [companyId], references: [id])
+  reviewedBy      User?    @relation("ConsultantApplicationReviewer", fields: [reviewedById], references: [id])
+
+  @@index([consultantId])
+  @@index([companyId])
+  @@index([status])
+  @@map("consultant_applications")
+}
+
+model JobProjectManager {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  jobId        String   @unique @map("job_id") @db.Uuid
+  pmUserId     String   @map("pm_user_id") @db.Uuid
+  assignedById String   @map("assigned_by_id") @db.Uuid
+  assignedAt   DateTime @default(now()) @map("assigned_at") @db.Timestamp(6)
+  notes        String?  @db.Text
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt    DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  job        Job  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  pmUser     User @relation("ProjectManager", fields: [pmUserId], references: [id], onDelete: Cascade)
+  assignedBy User @relation("PMAssigner", fields: [assignedById], references: [id])
+
+  @@index([jobId])
+  @@index([pmUserId])
+  @@index([assignedById])
+  @@index([isActive])
+  @@map("job_project_managers")
+}
+
+model CandidateStatusLog {
+  id            String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  submissionId  String  @map("submission_id") @db.Uuid
+  previousStatus String? @map("previous_status") @db.VarChar(50)
+  newStatus     String  @map("new_status") @db.VarChar(50)
+  updatedById   String  @map("updated_by_id") @db.Uuid
+  notes         String? @db.Text
+  updatedAt     DateTime @default(now()) @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  submission CandidateSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  updatedBy  User                @relation("StatusLogUpdater", fields: [updatedById], references: [id])
+
+  @@index([submissionId])
+  @@index([updatedById])
+  @@index([updatedAt])
+  @@map("candidate_status_logs")
+}
+
+model CommunicationRecord {
+  id                   String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  candidateId          String                  @map("candidate_id") @db.Uuid
+  userId               String                  @map("user_id") @db.Uuid
+  communicationType    CommunicationType       @map("communication_type")
+  subject              String?                 @db.VarChar(200)
+  content              String                  @db.Text
+  duration             String?                 @db.VarChar(50)
+  outcome              String?                 @db.VarChar(100)
+  purpose              String?                 @db.VarChar(100)
+  nextFollowUpDate     DateTime?               @map("next_follow_up_date") @db.Timestamp(6)
+  notes                String?                 @db.Text
+  metadata             Json?                   @db.Json
+  createdAt            DateTime                @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt            DateTime                @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  candidate            Candidate               @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  user                 User                    @relation("CommunicationRecordUser", fields: [userId], references: [id])
+
+  @@index([candidateId])
+  @@index([userId])
+  @@index([communicationType])
+  @@index([createdAt])
+  @@index([nextFollowUpDate])
+  @@map("communication_records")
+}

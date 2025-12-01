@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}企业注册 - 猎头联盟{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <i class="fas fa-building fa-3x text-primary mb-3"></i>
+                    <h2>企业注册</h2>
+                    <p class="text-muted">加入猎头联盟，发布您的职位</p>
+                </div>
+                
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="username" class="form-label">用户名 *</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">邮箱 *</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">密码 *</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="company_name" class="form-label">企业名称 *</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-building"></i>
+                            </span>
+                            <input type="text" class="form-control" id="company_name" name="company_name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="company_description" class="form-label">企业简介</label>
+                        <textarea class="form-control" id="company_description" name="company_description" rows="3" placeholder="请简要介绍您的企业..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 mb-3">
+                        <i class="fas fa-user-plus"></i> 注册企业账户
+                    </button>
+                </form>
+                
+                <div class="text-center">
+                    <p class="mb-0">已有账户？ 
+                        <a href="{{ url_for('login') }}" class="text-decoration-none">立即登录</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

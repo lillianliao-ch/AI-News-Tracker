@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: candidate-data-cleaning
+Version: 0.1.0
+Summary: Reusable pipeline to clean candidate datasets for the headhunter collaboration platform
+Author: Lillian Liao
+Requires-Python: >=3.10
+Requires-Dist: pandas>=2.2
+Requires-Dist: openpyxl>=3.1
+Requires-Dist: xlrd>=2.0
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: typer>=0.12
+Requires-Dist: rich>=13.7
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3; extra == "dev"
+Requires-Dist: ruff>=0.6; extra == "dev"
+Requires-Dist: mypy>=1.11; extra == "dev"

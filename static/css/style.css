@@ -1,0 +1,236 @@
+/* 自定义样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* 导航栏样式 */
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* 英雄区域样式 */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+}
+
+/* 卡片样式 */
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* 职位卡片样式 */
+.job-card {
+    border-left: 4px solid #007bff;
+}
+
+.job-card:hover {
+    border-left-color: #0056b3;
+}
+
+/* 企业卡片样式 */
+.company-card {
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.company-card:hover {
+    transform: translateY(-5px);
+}
+
+.company-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* 搜索区域样式 */
+.search-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* 按钮样式 */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+/* 表单样式 */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* 徽章样式 */
+.badge {
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* 分页样式 */
+.pagination .page-link {
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+/* 表格样式 */
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: #495057;
+}
+
+/* 职位详情页样式 */
+.job-description, .job-requirements, .job-benefits {
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+    
+    .hero-section .display-4 {
+        font-size: 2rem;
+    }
+    
+    .search-section form {
+        flex-direction: column;
+    }
+    
+    .search-section .col-md-2 {
+        margin-top: 1rem;
+    }
+}
+
+/* 列表视图样式 */
+.list-view .col-lg-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.list-view .job-card {
+    margin-bottom: 1rem;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.job-card, .company-card {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* 工具提示样式 */
+.tooltip {
+    font-size: 0.875rem;
+}
+
+/* 模态框样式 */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-footer {
+    border-top: 1px solid #e9ecef;
+    border-radius: 0 0 12px 12px;
+}
+
+/* 成功消息样式 */
+.alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+/* 警告消息样式 */
+.alert-warning {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border: 1px solid #ffeaa7;
+    color: #856404;
+}
+
+/* 信息消息样式 */
+.alert-info {
+    background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+} 

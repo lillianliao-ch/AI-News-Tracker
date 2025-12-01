@@ -1,0 +1,71 @@
+status_mappings:
+  - source: "1 日常交流/信息更新"
+    target: active_follow_up
+  - source: "2 积极看机会"
+    target: active
+  - source: "3 谨慎看机会"
+    target: passive
+  - source: "4 不看机会（现状稳定）"
+    target: inactive
+  - source: "5 待推荐/已推荐"
+    target: submitted
+  - source: "6 面试中"
+    target: interview
+  - source: "7 待Offer/已Offer"
+    target: offer
+  - source: "8 黑名单"
+    target: blacklist
+  - source: "9 有招聘需求"
+    target: null
+  - source: "2 不合适"
+    target: rejected
+  - source: "1 联系中"
+    target: active_follow_up
+  - source: "3 不考虑"
+    target: inactive
+  - source: "6 顾问淘汰"
+    target: rejected
+
+field_rules:
+  - column: name
+    alias: 姓名
+    required: true
+  - column: phone
+    alias: 手机
+    required: true
+    normalize: phone
+  - column: email
+    alias: 邮箱
+  - column: city
+    alias: 所在城市
+  - column: owner
+    alias: 拥有者
+  - column: status
+    alias: 状态
+  - column: last_updated
+    alias: 最近更新
+    normalize: datetime
+  - column: last_operation
+    alias: 最近操作
+    normalize: datetime
+  - column: last_comment_user
+    alias: 最近备注者
+  - column: source_file
+  - column: import_batch_id
+
+primary_key:
+  - name
+  - phone
+
+phone_column: phone
+name_column: name
+timestamp_columns:
+  - last_updated
+
+source_file_column: source_file
+batch_id: "20250926"
+
+output:
+  cleaned_filename: candidate_cleaned_20250926.xlsx
+  issues_filename: candidate_issues_20250926.xlsx
+  report_filename: candidate_cleaning_report_20250926.json

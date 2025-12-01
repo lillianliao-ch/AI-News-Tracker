@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+.env.local
+config.env
+
+# Data (Database files should NOT be committed)
+personal-ai-headhunter/data/*.db
+personal-ai-headhunter/data/chroma_db/
+personal-ai-headhunter/data/uploads/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+

@@ -1,0 +1,41 @@
+# 猎头系统自动化同步工具依赖包
+
+# Web自动化
+selenium==4.15.2
+webdriver-manager==4.0.1
+playwright==1.40.0
+
+# HTTP请求
+requests==2.31.0
+httpx==0.25.2
+
+# 数据处理
+pandas==2.1.4
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# 配置管理
+pyyaml==6.0.1
+python-dotenv==1.0.0
+cryptography>=41.0.0
+
+# 定时任务
+schedule==1.2.0
+APScheduler==3.10.4
+
+# 日志和监控
+loguru==0.7.2
+rich==13.7.0
+
+# 数据库（可选）
+sqlalchemy==2.0.23
+sqlite3
+
+# 图像处理（用于验证码）
+Pillow==10.1.0
+opencv-python==4.8.1.78
+
+# 其他工具
+click==8.1.7
+pydantic==2.5.0
+typing-extensions==4.8.0

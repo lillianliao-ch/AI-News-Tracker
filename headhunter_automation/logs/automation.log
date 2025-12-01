@@ -1,0 +1,103 @@
+2025-09-24 16:46:42 | INFO     | main:setup_logging:45 - 日志系统初始化完成
+2025-09-24 16:46:42 | INFO     | main:run_test_mode:124 - 运行测试模式...
+2025-09-24 16:46:42 | INFO     | main:initialize_components:50 - 初始化自动化组件...
+2025-09-24 16:46:42 | INFO     | main:initialize_components:53 - 组件初始化完成
+2025-09-24 16:46:42 | INFO     | main:run_test_mode:130 - 测试登录功能...
+2025-09-24 16:47:05 | ERROR    | automation.alibaba_headhunter:_setup_driver:74 - 设置浏览器驱动失败: WebDriver.__init__() got multiple values for argument 'options'
+2025-09-24 16:47:05 | ERROR    | main:run_test_mode:163 - 测试模式执行失败: WebDriver.__init__() got multiple values for argument 'options'
+2025-09-24 16:47:29 | INFO     | main:setup_logging:45 - 日志系统初始化完成
+2025-09-24 16:47:29 | INFO     | main:run_test_mode:124 - 运行测试模式...
+2025-09-24 16:47:29 | INFO     | main:initialize_components:50 - 初始化自动化组件...
+2025-09-24 16:47:29 | INFO     | main:initialize_components:53 - 组件初始化完成
+2025-09-24 16:47:29 | INFO     | main:run_test_mode:130 - 测试登录功能...
+2025-09-24 16:47:37 | INFO     | automation.alibaba_headhunter:_setup_driver:69 - Chrome浏览器驱动设置成功
+2025-09-24 16:47:37 | INFO     | automation.alibaba_headhunter:login:83 - 开始登录阿里巴巴猎头系统...
+2025-09-24 16:47:44 | INFO     | automation.alibaba_headhunter:login:88 - 访问登录页面: https://headhunter.alibaba.com/login
+2025-09-24 16:49:11 | ERROR    | automation.alibaba_headhunter:login:163 - 登录过程中发生错误: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=140.0.7339.186)
+Stacktrace:
+0   chromedriver                        0x0000000100eff274 cxxbridge1$str$ptr + 2882596
+1   chromedriver                        0x0000000100ef71a0 cxxbridge1$str$ptr + 2849616
+2   chromedriver                        0x0000000100a21180 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 73420
+3   chromedriver                        0x00000001009fb158 chromedriver + 143704
+4   chromedriver                        0x0000000100a90560 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 529068
+5   chromedriver                        0x0000000100aa9228 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 630644
+6   chromedriver                        0x0000000100a5c188 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 315092
+7   chromedriver                        0x0000000100ec2c54 cxxbridge1$str$ptr + 2635268
+8   chromedriver                        0x0000000100ec5e6c cxxbridge1$str$ptr + 2648092
+9   chromedriver                        0x0000000100ea45d4 cxxbridge1$str$ptr + 2510724
+10  chromedriver                        0x0000000100ec6718 cxxbridge1$str$ptr + 2650312
+11  chromedriver                        0x0000000100e95d7c cxxbridge1$str$ptr + 2451244
+12  chromedriver                        0x0000000100ee5dd4 cxxbridge1$str$ptr + 2779012
+13  chromedriver                        0x0000000100ee5f54 cxxbridge1$str$ptr + 2779396
+14  chromedriver                        0x0000000100ef6dec cxxbridge1$str$ptr + 2848668
+15  libsystem_pthread.dylib             0x0000000183196034 _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000183190e3c thread_start + 8
+
+2025-09-24 16:49:11 | ERROR    | main:run_test_mode:157 - ❌ 登录测试失败
+2025-09-24 16:49:11 | INFO     | automation.alibaba_headhunter:close:328 - 浏览器已关闭
+2025-09-24 16:49:46 | INFO     | main:setup_logging:45 - 日志系统初始化完成
+2025-09-24 16:49:46 | INFO     | main:run_test_mode:124 - 运行测试模式...
+2025-09-24 16:49:46 | INFO     | main:initialize_components:50 - 初始化自动化组件...
+2025-09-24 16:49:46 | INFO     | main:initialize_components:53 - 组件初始化完成
+2025-09-24 16:49:46 | INFO     | main:run_test_mode:130 - 测试登录功能...
+2025-09-24 16:49:53 | INFO     | automation.alibaba_headhunter:_setup_driver:69 - Chrome浏览器驱动设置成功
+2025-09-24 16:49:53 | INFO     | automation.alibaba_headhunter:login:83 - 开始登录阿里巴巴猎头系统...
+2025-09-24 16:49:59 | INFO     | automation.alibaba_headhunter:login:88 - 访问登录页面: https://headhunter.alibaba.com/login
+2025-09-24 16:51:15 | ERROR    | automation.alibaba_headhunter:login:182 - 登录过程中发生错误: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=140.0.7339.186)
+Stacktrace:
+0   chromedriver                        0x0000000100ba7274 cxxbridge1$str$ptr + 2882596
+1   chromedriver                        0x0000000100b9f1a0 cxxbridge1$str$ptr + 2849616
+2   chromedriver                        0x00000001006c9180 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 73420
+3   chromedriver                        0x00000001006a3158 chromedriver + 143704
+4   chromedriver                        0x0000000100738560 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 529068
+5   chromedriver                        0x0000000100751228 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 630644
+6   chromedriver                        0x0000000100704188 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 315092
+7   chromedriver                        0x0000000100b6ac54 cxxbridge1$str$ptr + 2635268
+8   chromedriver                        0x0000000100b6de6c cxxbridge1$str$ptr + 2648092
+9   chromedriver                        0x0000000100b4c5d4 cxxbridge1$str$ptr + 2510724
+10  chromedriver                        0x0000000100b6e718 cxxbridge1$str$ptr + 2650312
+11  chromedriver                        0x0000000100b3dd7c cxxbridge1$str$ptr + 2451244
+12  chromedriver                        0x0000000100b8ddd4 cxxbridge1$str$ptr + 2779012
+13  chromedriver                        0x0000000100b8df54 cxxbridge1$str$ptr + 2779396
+14  chromedriver                        0x0000000100b9edec cxxbridge1$str$ptr + 2848668
+15  libsystem_pthread.dylib             0x0000000183196034 _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000183190e3c thread_start + 8
+
+2025-09-24 16:51:15 | ERROR    | main:run_test_mode:157 - ❌ 登录测试失败
+2025-09-24 16:51:16 | INFO     | automation.alibaba_headhunter:close:347 - 浏览器已关闭
+2025-09-24 16:52:26 | INFO     | main:setup_logging:45 - 日志系统初始化完成
+2025-09-24 16:52:26 | INFO     | main:run_test_mode:124 - 运行测试模式...
+2025-09-24 16:52:26 | INFO     | main:initialize_components:50 - 初始化自动化组件...
+2025-09-24 16:52:26 | INFO     | main:initialize_components:53 - 组件初始化完成
+2025-09-24 16:52:26 | INFO     | main:run_test_mode:130 - 测试登录功能...
+2025-09-24 16:52:33 | INFO     | automation.alibaba_headhunter:_setup_driver:87 - Chrome浏览器驱动设置成功
+2025-09-24 16:52:33 | INFO     | automation.alibaba_headhunter:login:101 - 开始登录阿里巴巴猎头系统...
+2025-09-24 16:52:40 | INFO     | automation.alibaba_headhunter:login:106 - 访问登录页面: https://headhunter.alibaba.com/login
+2025-09-24 16:54:54 | ERROR    | automation.alibaba_headhunter:login:200 - 登录过程中发生错误: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=140.0.7339.186)
+Stacktrace:
+0   chromedriver                        0x0000000104a67274 cxxbridge1$str$ptr + 2882596
+1   chromedriver                        0x0000000104a5f1a0 cxxbridge1$str$ptr + 2849616
+2   chromedriver                        0x0000000104589180 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 73420
+3   chromedriver                        0x0000000104563158 chromedriver + 143704
+4   chromedriver                        0x00000001045f8560 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 529068
+5   chromedriver                        0x0000000104611228 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 630644
+6   chromedriver                        0x00000001045c4188 _RNvCslE4myv9Sbr3_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 315092
+7   chromedriver                        0x0000000104a2ac54 cxxbridge1$str$ptr + 2635268
+8   chromedriver                        0x0000000104a2de6c cxxbridge1$str$ptr + 2648092
+9   chromedriver                        0x0000000104a0c5d4 cxxbridge1$str$ptr + 2510724
+10  chromedriver                        0x0000000104a2e718 cxxbridge1$str$ptr + 2650312
+11  chromedriver                        0x00000001049fdd7c cxxbridge1$str$ptr + 2451244
+12  chromedriver                        0x0000000104a4ddd4 cxxbridge1$str$ptr + 2779012
+13  chromedriver                        0x0000000104a4df54 cxxbridge1$str$ptr + 2779396
+14  chromedriver                        0x0000000104a5edec cxxbridge1$str$ptr + 2848668
+15  libsystem_pthread.dylib             0x0000000183196034 _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000183190e3c thread_start + 8
+
+2025-09-24 16:54:54 | ERROR    | main:run_test_mode:157 - ❌ 登录测试失败
+2025-09-24 16:54:55 | INFO     | automation.alibaba_headhunter:close:365 - 浏览器已关闭

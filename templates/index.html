@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}猎头联盟 - 首页{% endblock %}
+
+{% block content %}
+<!-- 英雄区域 -->
+<div class="hero-section bg-primary text-white py-5 rounded-3 mb-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-3">猎头联盟平台</h1>
+            <p class="lead mb-4">连接优秀企业与顶尖人才的专业平台，让招聘更高效，让求职更精准。</p>
+            <div class="d-flex gap-3">
+                <a href="{{ url_for('jobs') }}" class="btn btn-light btn-lg">
+                    <i class="fas fa-search"></i> 浏览职位
+                </a>
+                {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('register') }}" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-user-plus"></i> 企业注册
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-6 text-center">
+            <i class="fas fa-users fa-8x opacity-75"></i>
+        </div>
+    </div>
+</div>
+
+<!-- 搜索区域 -->
+<div class="search-section bg-light p-4 rounded-3 mb-5">
+    <h3 class="text-center mb-4">快速搜索职位</h3>
+    <form action="{{ url_for('jobs') }}" method="GET" class="row g-3">
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="title" placeholder="职位名称" value="{{ request.args.get('title', '') }}">
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="company" placeholder="企业名称" value="{{ request.args.get('company', '') }}">
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="location" placeholder="工作地点" value="{{ request.args.get('location', '') }}">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="fas fa-search"></i> 搜索
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- 最新职位 -->
+<div class="latest-jobs mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>最新职位</h2>
+        <a href="{{ url_for('jobs') }}" class="btn btn-outline-primary">查看全部</a>
+    </div>
+    
+    {% if jobs %}
+    <div class="row">
+        {% for job in jobs %}
+        <div class="col-lg-6 col-xl-4 mb-4">
+            <div class="card h-100 job-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title mb-1">{{ job.title }}</h5>
+                        <span class="badge bg-primary">{{ job.job_type }}</span>
+                    </div>
+                    <p class="text-muted mb-2">
+                        <i class="fas fa-building"></i> {{ job.company_name }}
+                    </p>
+                    <p class="text-muted mb-2">
+                        <i class="fas fa-map-marker-alt"></i> {{ job.location }}
+                    </p>
+                    {% if job.salary_range %}
+                    <p class="text-success mb-2">
+                        <i class="fas fa-money-bill-wave"></i> {{ job.salary_range }}
+                    </p>
+                    {% endif %}
+                    <p class="card-text text-muted small">
+                        {{ job.description[:100] }}{% if job.description|length > 100 %}...{% endif %}
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                            <i class="fas fa-clock"></i> {{ job.posted_at.strftime('%Y-%m-%d') }}
+                        </small>
+                        <a href="{{ url_for('job_detail', job_id=job.id) }}" class="btn btn-sm btn-outline-primary">
+                            查看详情
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <i class="fas fa-briefcase fa-3x text-muted mb-3"></i>
+        <h4 class="text-muted">暂无职位信息</h4>
+        <p class="text-muted">成为第一个发布职位的企业吧！</p>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('post_job') }}" class="btn btn-primary">发布职位</a>
+        {% else %}
+        <a href="{{ url_for('register') }}" class="btn btn-primary">立即注册</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+<!-- 联盟企业 -->
+<div class="alliance-companies">
+    <h2 class="mb-4">联盟企业</h2>
+    {% if companies %}
+    <div class="row">
+        {% for company in companies[:6] %}
+        <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card company-card">
+                <div class="card-body text-center">
+                    <div class="company-avatar mb-3">
+                        <i class="fas fa-building fa-3x text-primary"></i>
+                    </div>
+                    <h5 class="card-title">{{ company.company_name }}</h5>
+                    {% if company.company_description %}
+                    <p class="card-text text-muted small">
+                        {{ company.company_description[:80] }}{% if company.company_description|length > 80 %}...{% endif %}
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-4">
+        <p class="text-muted">暂无联盟企业信息</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %} 

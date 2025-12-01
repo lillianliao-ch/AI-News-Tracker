@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "脉脉职位自动发布助手",
+  "version": "1.0.0",
+  "description": "根据Excel表格自动在脉脉企业版批量发布职位",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://maimai.cn/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://maimai.cn/ent/v41/positions/add*"],
+      "js": ["libs/xlsx.full.min.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
+

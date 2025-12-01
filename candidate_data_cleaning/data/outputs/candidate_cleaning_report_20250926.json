@@ -1,0 +1,8 @@
+{
+  "total_rows": 10000,
+  "post_dedup_rows": 9998,
+  "cleaned_rows": 9998,
+  "issue_missing_phone": 450,
+  "issue_duplicate_primary_key": 2,
+  "issue_status": 2479
+}

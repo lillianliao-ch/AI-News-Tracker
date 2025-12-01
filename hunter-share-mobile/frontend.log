@@ -1,0 +1,22 @@
+
+> hunter-share-mobile@1.0.0 dev
+> next dev --turbopack
+
+ ⨯ Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+/Users/lillianliao/notion_rag/hunter-share-mobile/frontend/next.config.js:17
+module default nextConfig;
+       ^^^^^^^
+
+SyntaxError: Unexpected token 'default'
+    at wrapSafe (node:internal/modules/cjs/loader:1669:18)
+    at Module._compile (node:internal/modules/cjs/loader:1712:20)
+    at Object..js (node:internal/modules/cjs/loader:1871:10)
+    at Module.load (node:internal/modules/cjs/loader:1470:32)
+    at Module._load (node:internal/modules/cjs/loader:1290:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:238:24)
+    at cjsLoader (node:internal/modules/esm/translators:317:5)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:209:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:371:25)
+
+Node.js v24.7.0

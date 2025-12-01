@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Headhunter Scraper",
+  "version": "1.0",
+  "description": "Scrapes candidate information from rpt.gllue.com",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://rpt.gllue.com/*",
+    "http://localhost:5001/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://rpt.gllue.com/crm*"
+      ],
+      "js": [
+        "content_list.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://rpt.gllue.com/crm*"
+      ],
+      "js": [
+        "content_detail.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

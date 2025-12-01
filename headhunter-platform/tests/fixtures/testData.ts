@@ -1,0 +1,262 @@
+export const testUsers = {
+  platformAdmin: {
+    username: 'admin',
+    email: 'admin@headhunter.com',
+    phone: '+86-13800000001',
+    password: 'admin123456',
+    role: 'platform_admin',
+  },
+  companyAdmin: {
+    username: 'company_admin',
+    email: 'companyadmin@techcorp.com',
+    phone: '+86-13800000002',
+    password: 'admin123456',
+    role: 'company_admin',
+  },
+  consultant: {
+    username: 'consultant_zhang',
+    email: 'zhang@techcorp.com',
+    phone: '+86-13800000003',
+    password: 'consultant123',
+    role: 'consultant',
+  },
+  soho: {
+    username: 'soho_li',
+    email: 'li@freelance.com',
+    phone: '+86-13800000004',
+    password: 'soho123456',
+    role: 'soho',
+  },
+  pendingUser: {
+    username: 'pending_user',
+    email: 'pending@example.com',
+    phone: '+86-13800000005',
+    password: 'pending123',
+    role: 'consultant',
+    status: 'pending',
+  },
+};
+
+export const testCompanies = [
+  {
+    name: 'TechCorp Solutions',
+    industry: 'Technology',
+    location: 'Beijing',
+    description: 'Leading technology consulting company',
+    businessLicense: 'TC001234567890',
+    status: 'approved',
+  },
+  {
+    name: 'Innovation Labs',
+    industry: 'Software',
+    location: 'Shanghai',
+    description: 'Innovative software development company',
+    businessLicense: 'IL001234567890',
+    status: 'approved',
+  },
+  {
+    name: 'Pending Company',
+    industry: 'Finance',
+    location: 'Shenzhen',
+    description: 'Financial services company',
+    businessLicense: 'PC001234567890',
+    status: 'pending',
+  },
+];
+
+export const testCompanyClients = [
+  {
+    name: '阿里巴巴',
+    industry: 'E-commerce',
+    location: 'Hangzhou',
+    description: 'Global e-commerce and cloud computing company',
+  },
+  {
+    name: '腾讯',
+    industry: 'Internet',
+    location: 'Shenzhen',
+    description: 'Chinese multinational technology conglomerate',
+  },
+  {
+    name: '字节跳动',
+    industry: 'Social Media',
+    location: 'Beijing',
+    description: 'Chinese multinational internet technology company',
+  },
+];
+
+export const testJobs = [
+  {
+    title: '高级算法工程师',
+    industry: 'Technology',
+    location: 'Beijing',
+    salaryMin: 400000,
+    salaryMax: 800000,
+    description: '负责推荐算法和机器学习模型的设计与优化，要求有丰富的算法经验和大数据处理能力。',
+    requirements: '硕士及以上学历，计算机相关专业；5年以上算法开发经验；熟练掌握Python、TensorFlow等工具；有大规模推荐系统经验优先。',
+    benefits: '五险一金、股权激励、年终奖、带薪年假',
+    urgency: 'high',
+    reportTo: 'CTO',
+    publisherSharePct: 60,
+    referrerSharePct: 30,
+    platformSharePct: 10,
+    status: 'open',
+  },
+  {
+    title: '前端技术专家',
+    industry: 'Technology',
+    location: 'Shanghai',
+    salaryMin: 300000,
+    salaryMax: 600000,
+    description: '负责前端技术架构设计，带领前端团队完成各类项目开发。',
+    requirements: '本科及以上学历；5年以上前端开发经验；精通React、Vue等框架；有团队管理经验。',
+    benefits: '六险一金、弹性工作、技术培训',
+    urgency: 'medium',
+    reportTo: '技术总监',
+    publisherSharePct: 65,
+    referrerSharePct: 25,
+    platformSharePct: 10,
+    status: 'open',
+  },
+  {
+    title: '产品经理',
+    industry: 'Internet',
+    location: 'Guangzhou',
+    salaryMin: 250000,
+    salaryMax: 450000,
+    description: '负责产品规划、需求分析和项目管理，推动产品迭代和优化。',
+    requirements: '本科及以上学历；3年以上产品经验；有互联网产品经验；良好的沟通协调能力。',
+    benefits: '五险一金、期权激励、年度旅游',
+    urgency: 'low',
+    reportTo: '产品总监',
+    publisherSharePct: 55,
+    referrerSharePct: 35,
+    platformSharePct: 10,
+    status: 'paused',
+  },
+];
+
+export const testCandidates = [
+  {
+    name: '张伟',
+    phone: '+86-13900000001',
+    email: 'zhangwei@email.com',
+    tags: ['算法', 'Python', '机器学习', '推荐系统'],
+    location: 'Beijing',
+    experience: '7年算法开发经验，曾在BAT工作，主导过大规模推荐系统架构设计',
+    education: '清华大学计算机硕士',
+    currentCompany: '百度',
+    currentPosition: '高级算法工程师',
+    expectedSalary: 600000,
+    notes: '技术能力强，有团队管理经验，目前在寻找技术专家岗位',
+  },
+  {
+    name: '李娜',
+    phone: '+86-13900000002', 
+    email: 'lina@email.com',
+    tags: ['React', 'Vue', 'JavaScript', '前端架构'],
+    location: 'Shanghai',
+    experience: '6年前端开发经验，熟悉各种前端技术栈，有大型项目经验',
+    education: '上海交大软件工程本科',
+    currentCompany: '阿里巴巴',
+    currentPosition: '前端技术专家',
+    expectedSalary: 500000,
+    notes: '前端技术扎实，有团队协作能力，关注新技术趋势',
+  },
+  {
+    name: '王强',
+    phone: '+86-13900000003',
+    email: 'wangqiang@email.com', 
+    tags: ['产品设计', '用户体验', '数据分析', '项目管理'],
+    location: 'Shenzhen',
+    experience: '5年产品管理经验，负责过多个成功产品的设计和运营',
+    education: '北京理工大学工业设计硕士',
+    currentCompany: '腾讯',
+    currentPosition: '高级产品经理',
+    expectedSalary: 400000,
+    notes: '产品sense强，有数据驱动思维，擅长跨团队协作',
+  },
+  {
+    name: '陈晓',
+    phone: '+86-13900000004',
+    email: 'chenxiao@email.com',
+    tags: ['Java', 'Spring', '分布式', '微服务'],
+    location: 'Hangzhou',
+    experience: '8年后端开发经验，精通分布式系统设计',
+    education: '浙江大学计算机本科',
+    currentCompany: '蚂蚁金服',
+    currentPosition: '高级开发工程师',
+    expectedSalary: 550000,
+    notes: '技术功底深厚，有高并发系统设计经验',
+  },
+  {
+    name: '刘芳',
+    phone: '+86-13900000005',
+    email: 'liufang@email.com',
+    tags: ['UI设计', '交互设计', 'Figma', '用户研究'],
+    location: 'Beijing',
+    experience: '4年设计经验，专注于移动端和Web端产品设计',
+    education: '中央美术学院视觉传达设计本科',
+    currentCompany: '字节跳动',
+    currentPosition: 'UI/UX设计师',
+    expectedSalary: 300000,
+    notes: '设计能力出色，有良好的用户体验思维',
+  },
+];
+
+export const testMatchingCriteria = {
+  highMatch: {
+    tags: ['算法', 'Python', '机器学习'],
+    industry: 'Technology',
+    location: 'Beijing',
+    requirements: '算法工程师，Python开发，机器学习经验',
+  },
+  mediumMatch: {
+    tags: ['React', 'JavaScript'],
+    industry: 'Technology', 
+    location: 'Shanghai',
+    requirements: '前端开发，React框架，JavaScript',
+  },
+  lowMatch: {
+    tags: ['产品设计'],
+    industry: 'Finance',
+    location: 'Guangzhou',
+    requirements: '产品经理，金融行业经验',
+  },
+};
+
+export const testNotifications = [
+  {
+    type: 'job_shared',
+    title: '职位分享通知',
+    content: '张三分享了"高级算法工程师"职位给您',
+    data: { jobId: 'job1', sharedBy: 'user1' },
+  },
+  {
+    type: 'job_closed',
+    title: '职位关闭通知', 
+    content: '"前端技术专家"职位已关闭',
+    data: { jobId: 'job2', reason: 'position_filled' },
+  },
+  {
+    type: 'submission_status_changed',
+    title: '候选人状态更新',
+    content: '候选人"李娜"的状态已更新为"面试中"',
+    data: { candidateId: 'candidate1', status: 'interviewing' },
+  },
+];
+
+export const testMessages = [
+  {
+    content: '您好，关于高级算法工程师这个职位，我有一个很合适的候选人推荐。',
+    metadata: { jobId: 'job1', candidateId: 'candidate1' },
+  },
+  {
+    content: '候选人的技术背景很匹配，是否可以安排面试？',
+    metadata: { candidateId: 'candidate1' },
+  },
+  {
+    content: '这个职位的薪资范围是多少？客户有什么特殊要求吗？',
+    metadata: { jobId: 'job1' },
+  },
+];

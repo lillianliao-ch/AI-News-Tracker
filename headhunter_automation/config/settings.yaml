@@ -1,0 +1,87 @@
+# 猎头系统自动化同步工具配置文件
+
+# 猎头系统配置
+headhunter_system:
+  base_url: "https://headhunter.alibaba.com"      # 阿里巴巴猎头系统网址
+  login_url: "/login"                             # 登录页面路径
+  assigned_orders_url: "/index.html/?__navId=task_management"  # 已分配订单页面路径
+  unassigned_orders_url: "/index.html/?__navId=task_management" # 待分配订单页面路径 (与已分配订单页面相同)
+  job_detail_base_url: "https://headhunter.alibaba.com/jobDetail.htm" # 职位详情页基础URL (需要根据实际链接调整)
+  
+  # 页面元素选择器
+  selectors:
+    username_input: "input[name='username'], input[type='text']"  # 用户名输入框
+    password_input: "input[name='password'], input[type='password']"  # 密码输入框
+    login_button: "button[type='submit'], .login-btn, input[type='submit']"  # 登录按钮
+    assigned_orders_tab: "a[href*='task_management']"  # 已分配订单标签
+    orders_table: ".table, table, .orders-table"      # 订单表格
+    search_button: ".search-btn, button:contains('搜索')"  # 搜索按钮
+    
+  # 已分配订单页面元素
+  assigned_orders_selectors:
+    job_title_filter: "input[placeholder*='职位名称']"  # 职位名称筛选
+    consultant_filter: "input[placeholder*='跟进顾问']"  # 跟进顾问筛选
+    status_dropdown: "select, .dropdown"              # 订单状态下拉框
+    search_button: "button:contains('搜索')"           # 搜索按钮
+    clear_button: "button:contains('清除')"            # 清除按钮
+    orders_table: "table, .orders-table"              # 订单表格
+    
+  # 待分配订单页面元素
+  unassigned_orders_selectors:
+    job_title_filter: "input[placeholder*='职位名称']"  # 职位名称筛选
+    department_filter: "select[placeholder*='部门']"    # 部门筛选
+    job_category_filter: "select[placeholder*='职位类别']"  # 职位类别筛选
+    search_button: "button:contains('搜索')"           # 搜索按钮
+    clear_button: "button:contains('清除')"            # 清除按钮
+    batch_assign_button: "button:contains('批量分配订单')"  # 批量分配按钮
+    orders_table: "table, .orders-table, .ant-table"  # 订单表格
+    order_row: "tr, .ant-table-row"                   # 订单行
+    job_title_link: "td:nth-child(2) a, .ant-table-cell:nth-child(2) a"  # 职位名称链接
+    update_date_cell: "td:nth-child(4), .ant-table-cell:nth-child(4)"  # 更新日期列
+    job_detail_description: "div.job-detail-content, .job-description, .position-description"  # 岗位描述
+    
+  # 数据字段映射
+  data_fields:
+    job_position: "招聘职位"                         # 招聘职位列
+    job_status: "职位状态"                          # 职位状态列
+    assignment_time: "订单分配时间"                   # 订单分配时间列
+    delivery_status: "投递状态"                     # 投递状态列
+    consultant: "猎头顾问"                         # 猎头顾问列
+    operations: "操作"                             # 操作列
+
+# 猎头协作平台配置
+collaboration_platform:
+  base_url: "http://localhost:3000"               # 您的协作平台网址
+  api_endpoint: "/api/candidates"                 # 候选人API端点
+  api_key: "your-api-key"                         # API密钥
+
+# 自动化配置
+automation:
+  browser: "chrome"                               # 浏览器类型：chrome, firefox, edge
+  headless: false                                 # 是否无头模式
+  wait_timeout: 30                                # 等待超时时间（秒）
+  retry_attempts: 3                               # 重试次数
+  retry_delay: 5                                  # 重试延迟（秒）
+
+# 数据同步配置
+data_sync:
+  sync_interval: 3600                             # 同步间隔（秒）
+  batch_size: 100                                 # 批处理大小
+  last_sync_field: "订单分配时间"                  # 最后同步时间字段
+  incremental_sync: true                          # 是否增量同步
+  daily_update_only: true                         # 只同步当日更新
+  target_fields: ["职位状态", "投递状态"]          # 目标同步字段
+
+# 日志配置
+logging:
+  level: "INFO"                                   # 日志级别：DEBUG, INFO, WARNING, ERROR
+  file_path: "logs/automation.log"                # 日志文件路径
+  max_file_size: "10MB"                           # 最大日志文件大小
+  backup_count: 5                                 # 备份文件数量
+
+# 数据存储配置
+storage:
+  data_dir: "data"                                # 数据存储目录
+  candidates_file: "candidates.json"              # 候选人数据文件
+  sync_history_file: "sync_history.json"          # 同步历史文件
+  backup_enabled: true                            # 是否启用备份

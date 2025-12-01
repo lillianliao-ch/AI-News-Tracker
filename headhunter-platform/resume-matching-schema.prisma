@@ -1,0 +1,271 @@
+// 简历匹配系统数据模型扩展
+
+// 简历主表
+model Resume {
+  id            String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  candidateId   String           @unique @map("candidate_id") @db.Uuid
+  originalUrl   String?          @map("original_url") @db.Text
+  parsedAt      DateTime?        @map("parsed_at") @db.Timestamp(6)
+  parseStatus   ResumeParseStatus @default(pending) @map("parse_status")
+  
+  // 基础信息
+  fullName      String?          @map("full_name") @db.VarChar(100)
+  email         String?          @db.VarChar(255)
+  phone         String?          @db.VarChar(20)
+  location      String?          @db.VarChar(255)
+  
+  // 职业概况
+  currentTitle  String?          @map("current_title") @db.VarChar(255)
+  yearsExp      Int?             @map("years_experience")
+  careerLevel   CareerLevel?     @map("career_level")
+  currentSalary Int?             @map("current_salary")
+  expectedSalary Int?            @map("expected_salary")
+  
+  // 求职意向
+  preferredIndustries Json?      @map("preferred_industries") @db.Json
+  preferredLocations  Json?      @map("preferred_locations") @db.Json
+  jobTypes           Json?       @map("job_types") @db.Json // full-time, part-time, contract
+  
+  // 自我评价
+  summary       String?          @db.Text
+  
+  createdAt     DateTime         @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt     DateTime         @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  // Relations
+  candidate     Candidate        @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  workExperience WorkExperience[]
+  education     Education[]
+  skills        ResumeSkill[]
+  projects      Project[]
+  certifications Certification[]
+  languages     Language[]
+  matchingScores JobMatchingScore[]
+
+  @@index([candidateId])
+  @@index([parseStatus])
+  @@index([currentTitle])
+  @@index([yearsExp])
+  @@map("resumes")
+}
+
+// 工作经历
+model WorkExperience {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  resumeId     String    @map("resume_id") @db.Uuid
+  
+  company      String    @db.VarChar(255)
+  position     String    @db.VarChar(255)
+  industry     String?   @db.VarChar(100)
+  location     String?   @db.VarChar(255)
+  startDate    DateTime? @map("start_date") @db.Date
+  endDate      DateTime? @map("end_date") @db.Date
+  isCurrent    Boolean   @default(false) @map("is_current")
+  
+  description  String?   @db.Text
+  achievements Json?     @db.Json // 量化成就
+  technologies Json?     @db.Json // 使用的技术栈
+  teamSize     Int?      @map("team_size")
+  
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamp(6)
+
+  // Relations
+  resume       Resume    @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@index([resumeId])
+  @@index([position])
+  @@index([company])
+  @@map("work_experiences")
+}
+
+// 教育背景
+model Education {
+  id           String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  resumeId     String       @map("resume_id") @db.Uuid
+  
+  institution  String       @db.VarChar(255)
+  degree       DegreeLevel? 
+  major        String?      @db.VarChar(255)
+  gpa          Decimal?     @db.Decimal(3, 2)
+  startDate    DateTime?    @map("start_date") @db.Date
+  endDate      DateTime?    @map("end_date") @db.Date
+  isGraduated  Boolean      @default(true) @map("is_graduated")
+  
+  description  String?      @db.Text
+  
+  createdAt    DateTime     @default(now()) @map("created_at") @db.Timestamp(6)
+
+  // Relations
+  resume       Resume       @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@index([resumeId])
+  @@index([degree])
+  @@index([major])
+  @@map("education")
+}
+
+// 技能标签
+model ResumeSkill {
+  id           String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  resumeId     String     @map("resume_id") @db.Uuid
+  
+  name         String     @db.VarChar(100)
+  category     SkillCategory
+  level        SkillLevel @default(intermediate)
+  yearsUsed    Int?       @map("years_used")
+  lastUsed     DateTime?  @map("last_used") @db.Date
+  
+  isKeySkill   Boolean    @default(false) @map("is_key_skill")
+  
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamp(6)
+
+  // Relations
+  resume       Resume     @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@index([resumeId])
+  @@index([name])
+  @@index([category])
+  @@map("resume_skills")
+}
+
+// 项目经历
+model Project {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  resumeId     String    @map("resume_id") @db.Uuid
+  
+  name         String    @db.VarChar(255)
+  role         String?   @db.VarChar(100)
+  startDate    DateTime? @map("start_date") @db.Date
+  endDate      DateTime? @map("end_date") @db.Date
+  
+  description  String?   @db.Text
+  technologies Json?     @db.Json
+  teamSize     Int?      @map("team_size")
+  url          String?   @db.Text
+  
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamp(6)
+
+  // Relations
+  resume       Resume    @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@index([resumeId])
+  @@map("projects")
+}
+
+// 证书资质
+model Certification {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  resumeId     String    @map("resume_id") @db.Uuid
+  
+  name         String    @db.VarChar(255)
+  issuer       String?   @db.VarChar(255)
+  issueDate    DateTime? @map("issue_date") @db.Date
+  expiryDate   DateTime? @map("expiry_date") @db.Date
+  credentialId String?   @map("credential_id") @db.VarChar(100)
+  
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamp(6)
+
+  // Relations
+  resume       Resume    @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@index([resumeId])
+  @@index([name])
+  @@map("certifications")
+}
+
+// 语言能力
+model Language {
+  id           String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  resumeId     String         @map("resume_id") @db.Uuid
+  
+  name         String         @db.VarChar(50)
+  level        LanguageLevel
+  
+  createdAt    DateTime       @default(now()) @map("created_at") @db.Timestamp(6)
+
+  // Relations
+  resume       Resume         @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@index([resumeId])
+  @@map("languages")
+}
+
+// 岗位匹配评分
+model JobMatchingScore {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  resumeId     String    @map("resume_id") @db.Uuid
+  jobId        String    @map("job_id") @db.Uuid
+  
+  // 各维度评分 (0-100)
+  overallScore     Float     @map("overall_score")
+  skillsScore      Float     @map("skills_score")
+  experienceScore  Float     @map("experience_score")
+  industryScore    Float     @map("industry_score")
+  locationScore    Float     @map("location_score")
+  salaryScore      Float     @map("salary_score")
+  educationScore   Float     @map("education_score")
+  
+  // 匹配详情
+  matchedSkills    Json?     @map("matched_skills") @db.Json
+  missingSkills    Json?     @map("missing_skills") @db.Json
+  matchReasons     Json?     @map("match_reasons") @db.Json
+  
+  calculatedAt     DateTime  @default(now()) @map("calculated_at") @db.Timestamp(6)
+  
+  // Relations
+  resume       Resume    @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+  job          Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([resumeId, jobId])
+  @@index([overallScore])
+  @@index([calculatedAt])
+  @@map("job_matching_scores")
+}
+
+// Enums
+enum ResumeParseStatus {
+  pending
+  processing
+  completed
+  failed
+}
+
+enum CareerLevel {
+  entry_level      // 应届生/初级
+  junior           // 1-3年
+  mid_level        // 3-7年
+  senior           // 7-12年
+  lead             // 12年以上/技术专家
+  executive        // 管理层
+}
+
+enum DegreeLevel {
+  high_school
+  associate        // 大专
+  bachelor         // 本科
+  master           // 硕士
+  doctorate        // 博士
+}
+
+enum SkillCategory {
+  programming_language    // 编程语言
+  framework              // 框架
+  database               // 数据库
+  tool                   // 工具
+  soft_skill             // 软技能
+  domain_knowledge       // 领域知识
+}
+
+enum SkillLevel {
+  beginner
+  intermediate
+  advanced
+  expert
+}
+
+enum LanguageLevel {
+  basic
+  conversational
+  fluent
+  native
+}
