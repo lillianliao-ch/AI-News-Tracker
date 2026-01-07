@@ -3,6 +3,10 @@ from datetime import datetime
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, JSON, ForeignKey, Float, Boolean
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 import os
+from dotenv import load_dotenv
+
+# 加载 .env 文件
+load_dotenv()
 
 Base = declarative_base()
 
@@ -47,6 +51,14 @@ class Candidate(Base):
     github_url = Column(String(500))
     twitter_url = Column(String(500))
     notes = Column(Text)
+    
+    # 好友标记
+    is_friend = Column(Integer, default=0)  # 0=未加好友, 1=已加好友
+    friend_added_at = Column(String(50))  # 加好友时间
+    friend_channel = Column(String(100))  # 加好友渠道（脉脉/微信/LinkedIn等）
+    
+    # 沟通记录
+    communication_logs = Column(JSON)  # [{time, content, stage}, ...] 按时间倒序
 
     # 向量数据库关联
     vector_id = Column(String(100)) # ChromaDB 中的 ID
@@ -91,6 +103,7 @@ class Job(Base):
     detail_fields = Column(JSON)
     
     # 新增字段
+    job_code = Column(String(100)) # 职位ID/编码
     project_tags = Column(JSON) # 项目标签
     notes = Column(Text) # 职位备注
 
