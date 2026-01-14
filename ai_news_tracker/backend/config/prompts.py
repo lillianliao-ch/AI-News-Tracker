@@ -149,13 +149,14 @@ AI_KEYWORDS = [
     '预训练', '微调', '推理', '训练', '算力'
 ]
 
-def is_ai_related(title: str, summary: str = "") -> bool:
+def is_ai_related(title: str, summary: str = "", language: str = "zh") -> bool:
     """
-    改进的AI相关性判断（三层过滤）
+    改进的AI相关性判断（支持中英文）
 
     Args:
         title: 新闻标题
         summary: 新闻摘要（可选）
+        language: 语言代码 (zh/en)
 
     Returns:
         bool: 如果与AI相关返回True
@@ -165,29 +166,52 @@ def is_ai_related(title: str, summary: str = "") -> bool:
 
     text = (title + " " + summary).lower()
 
-    # 第一层：精确关键词匹配（最高优先级）
-    high_priority_keywords = [
-        'gpt', 'chatgpt', 'claude', 'llama', 'deepseek', 'qwen', 'mistral',
-        'openai', 'anthropic', 'hugging face', 'aigc', 'llm', 'rag',
-        '文心一言', '通义千问', 'kimi', '智谱', '百川智能', '月之暗面',
-        '大语言模型', '生成式ai', '智能体', 'ai agent'
-    ]
+    # 根据语言选择不同的关键词
+    if language == "en":
+        # 英文高优先级关键词
+        high_priority_keywords = [
+            'gpt', 'chatgpt', 'claude', 'llama', 'mistral', 'gemini', 'deepseek',
+            'openai', 'anthropic', 'hugging face', 'aigc', 'llm', 'rag',
+            'generative ai', 'large language model', 'ai agent', 'copilot',
+            'stable diffusion', 'midjourney', 'dall-e', 'sora'
+        ]
 
+        # 英文模式匹配
+        ai_patterns = [
+            r'\bai\b.*\b(model|system|tool|app|startup|company|platform|framework)\b',
+            r'\b(machine|deep) learning\b',
+            r'\b(neural|transformer|diffusion)\s*(network|model)?\b',
+            r'\b(generative|foundation)\s+(ai|model)\b',
+            r'\bartificial intelligence\b',
+            r'\bcomputer vision\b',
+            r'\bnatural language processing\b'
+        ]
+    else:
+        # 中文高优先级关键词
+        high_priority_keywords = [
+            'gpt', 'chatgpt', 'claude', 'llama', 'deepseek', 'qwen', 'mistral',
+            'openai', 'anthropic', 'hugging face', 'aigc', 'llm', 'rag',
+            '文心一言', '通义千问', 'kimi', '智谱', '百川智能', '月之暗面',
+            '大语言模型', '生成式ai', '智能体', 'ai agent'
+        ]
+
+        # 中文模式匹配
+        ai_patterns = [
+            r'\bai\b.*\b(model|system|tool|app|startup|company|platform|framework)\b',
+            r'\b(machine|deep) learning\b',
+            r'\b(neural|transformer|diffusion)\s*(network|model)?\b',
+            r'大.*?模型',
+            r'智能.*?(体|助手|客服|系统|平台)',
+            r'\bai\b.*\b(融资|投资|创业|公司)\b',
+            r'\b(generative|foundation)\s+(ai|model)\b'
+        ]
+
+    # 第一层：精确关键词匹配（最高优先级）
     for keyword in high_priority_keywords:
         if keyword.lower() in text:
             return True
 
     # 第二层：模式匹配（应对AI相关表达）
-    ai_patterns = [
-        r'\bai\b.*\b(model|system|tool|app|startup|company|platform|framework)\b',
-        r'\b(machine|deep) learning\b',
-        r'\b(neural|transformer|diffusion)\s*(network|model)?\b',
-        r'大.*?模型',
-        r'智能.*?(体|助手|客服|系统|平台)',
-        r'\bai\b.*\b(融资|投资|创业|公司)\b',
-        r'\b(generative|foundation)\s+(ai|model)\b'
-    ]
-
     for pattern in ai_patterns:
         if re.search(pattern, text, re.IGNORECASE):
             return True

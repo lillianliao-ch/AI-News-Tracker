@@ -150,19 +150,95 @@ SOURCES_CONFIG = {
         "ai_related_rate": 0.30
     },
 
-    # === 国际媒体（暂时禁用） ===
+    # === 国际AI媒体（新增） ===
+    "ai-news": {
+        "id": "ai-news",
+        "name": "AI News",
+        "home_url": "https://artificialintelligence-news.com",
+        "rss_url": "https://artificialintelligence-news.com/feed/",
+        "enabled": True,
+        "icon": "/icons/ai-news.png",
+        "category": "国际AI新闻",
+        "priority": 10,
+        "limit": 12,
+        "ai_related_rate": 1.00,
+        "language": "en",
+        "note": "专业AI新闻媒体，AI相关率100%"
+    },
+
+    "techcrunch-ai": {
+        "id": "techcrunch-ai",
+        "name": "TechCrunch AI",
+        "home_url": "https://techcrunch.com",
+        "rss_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "enabled": True,
+        "icon": "/icons/techcrunch.png",
+        "category": "AI创投",
+        "priority": 8,
+        "limit": 20,
+        "ai_related_rate": 0.67,
+        "language": "en",
+        "note": "专注AI初创公司和投资"
+    },
+
+    "arstechnica": {
+        "id": "arstechnica",
+        "name": "Ars Technica",
+        "home_url": "https://arstechnica.com",
+        "rss_url": "https://feeds.arstechnica.com/arstechnica/technology-lab",
+        "enabled": True,
+        "icon": "/icons/arstechnica.png",
+        "category": "AI技术",
+        "priority": 8,
+        "limit": 20,
+        "ai_related_rate": 0.67,
+        "language": "en",
+        "note": "深度技术报道"
+    },
+
+    "mit-tech-review": {
+        "id": "mit-tech-review",
+        "name": "MIT Tech Review",
+        "home_url": "https://www.technologyreview.com",
+        "rss_url": "https://www.technologyreview.com/feed/",
+        "enabled": True,
+        "icon": "/icons/mit.png",
+        "category": "AI研究",
+        "priority": 7,
+        "limit": 10,
+        "ai_related_rate": 0.33,
+        "language": "en",
+        "note": "MIT出品，涵盖技术趋势"
+    },
+
+    "the-verge-ai": {
+        "id": "the-verge-ai",
+        "name": "The Verge AI",
+        "home_url": "https://www.theverge.com",
+        "rss_url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+        "enabled": True,
+        "icon": "/icons/verge.png",
+        "category": "AI产品",
+        "priority": 7,
+        "limit": 10,
+        "ai_related_rate": 0.33,
+        "language": "en",
+        "note": "消费科技和AI产品"
+    },
+
+    # === 旧版国际媒体（暂时禁用，使用新的techcrunch-ai） ===
     "techcrunch": {
         "id": "techcrunch",
-        "name": "TechCrunch",
+        "name": "TechCrunch (旧)",
         "home_url": "https://techcrunch.com",
         "rss_url": "https://techcrunch.com/feed/",
-        "enabled": False,  # 暂时禁用，AI相关率低且不适合中文用户
+        "enabled": False,  # 使用techcrunch-ai替代
         "icon": "/icons/techcrunch.png",
         "category": "国际科技",
         "priority": 2,
         "limit": 5,
         "ai_related_rate": 0.50,
-        "disabled_reason": "AI相关率低，待优化"
+        "disabled_reason": "使用techcrunch-ai替代，AI相关率更高"
     },
 
     "venturebeat-ai": {

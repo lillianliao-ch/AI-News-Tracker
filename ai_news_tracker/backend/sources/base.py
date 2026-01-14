@@ -36,9 +36,14 @@ class BaseSource(ABC):
         Returns:
             标准化后的数据
         """
+        title = raw_data.get('title', '')
+
+        # 添加语言检测
+        lang_info = self._detect_language(title)
+
         return {
             'id': f"{self.id}_{raw_data.get('id', raw_data.get('link', ''))}",
-            'title': raw_data.get('title', ''),
+            'title': title,
             'url': raw_data.get('link', raw_data.get('url', '')),
             'summary': raw_data.get('summary', raw_data.get('description', '')),
             'content': raw_data.get('content', ''),
@@ -48,8 +53,34 @@ class BaseSource(ABC):
             'icon': self.icon,
             'publish_time': self.parse_time(raw_data.get('published', raw_data.get('time'))),
             'crawl_time': datetime.now(),
+            'language': lang_info['lang'],
+            'lang_confidence': lang_info['confidence'],
             'extra': raw_data
         }
+
+    def _detect_language(self, text: str) -> Dict[str, Any]:
+        """
+        检测文本语言
+
+        Args:
+            text: 待检测文本
+
+        Returns:
+            {'lang': 'zh'/'en', 'confidence': 0.0-1.0}
+        """
+        if not text:
+            return {'lang': 'unknown', 'confidence': 0.0}
+
+        # 快速检测中文字符
+        import re
+        chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', text))
+
+        # 如果中文字符占比超过20%，判定为中文
+        if chinese_chars / max(len(text), 1) > 0.2:
+            return {'lang': 'zh', 'confidence': 0.9}
+
+        # 默认英文
+        return {'lang': 'en', 'confidence': 0.7}
 
     def parse_time(self, time_str: Any) -> datetime:
         """解析时间"""

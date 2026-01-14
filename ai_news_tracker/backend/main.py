@@ -134,6 +134,7 @@ async def root():
 async def get_news(
     category: Optional[str] = None,
     source: Optional[str] = None,
+    language: Optional[str] = None,  # 新增：语言筛选
     limit: int = 50,
     offset: int = 0
 ):
@@ -143,6 +144,7 @@ async def get_news(
     参数:
     - category: 筛选分类
     - source: 筛选来源
+    - language: 筛选语言 (zh/en) - 新增
     - limit: 限制数量（默认50）
     - offset: 偏移量（分页用）
     """
@@ -155,6 +157,8 @@ async def get_news(
             query = query.filter(News.category == category)
         if source:
             query = query.filter(News.source == source)
+        if language:  # 新增：语言筛选
+            query = query.filter(News.language == language)
 
         # 排序和分页
         query = query.order_by(News.publish_time.desc())
