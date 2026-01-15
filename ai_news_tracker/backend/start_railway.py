@@ -10,35 +10,45 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 if __name__ == "__main__":
-    # 调试：打印环境变量
+    # 调试：打印所有环境变量
     print("=" * 60)
     print("🔍 环境变量检查:")
+    print("=" * 60)
+
+    # 打印所有环境变量（帮助调试）
+    print("所有环境变量:")
+    for key, value in sorted(os.environ.items()):
+        # 隐藏敏感信息
+        if 'KEY' in key or 'SECRET' in key or 'TOKEN' in key:
+            if value:
+                value = value[:10] + "..." if len(value) > 10 else "***"
+        print(f"  {key} = {value}")
+
     print("=" * 60)
 
     required_vars = ['OPENAI_API_KEY', 'OPENAI_BASE_URL', 'CLASSIFY_MODEL']
     missing_vars = []
 
     for var in required_vars:
-        value = os.environ.get(var, "❌ 未设置")
-        # 隐藏API Key的实际值，只显示前10个字符
-        if var == 'OPENAI_API_KEY' and value != "❌ 未设置":
-            masked_value = value[:10] + "..." if len(value) > 10 else value
-            print(f"✅ {var}: {masked_value}")
-        else:
-            print(f"  {var}: {value}")
-
-        if os.environ.get(var) is None:
+        value = os.environ.get(var)
+        if not value:
             missing_vars.append(var)
+            print(f"❌ {var}: 未设置")
+        else:
+            masked = value[:10] + "..." if len(value) > 10 else value
+            print(f"✅ {var}: {masked}")
 
     print("=" * 60)
 
+    # 警告但不退出（允许应用启动，但AI功能会受限）
     if missing_vars:
-        print(f"❌ 缺少必要的环境变量: {', '.join(missing_vars)}")
-        print("请在Railway项目的Variables中设置这些变量")
-        sys.exit(1)
-
-    print("✅ 所有必要的环境变量已设置")
-    print("=" * 60)
+        print(f"⚠️  警告: 缺少环境变量: {', '.join(missing_vars)}")
+        print("应用将启动，但部分功能可能无法使用")
+        print("请在Railway Service的Settings > Variables中设置")
+        print("=" * 60)
+    else:
+        print("✅ 所有必要的环境变量已设置")
+        print("=" * 60)
 
     import uvicorn
     from main import app
