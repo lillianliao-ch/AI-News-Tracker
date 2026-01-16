@@ -12,10 +12,6 @@ from bs4 import BeautifulSoup
 from typing import Dict, List
 from urllib.parse import urljoin
 
-# 忽略 SSL 警告
-import urllib3
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
 
 class PersonalWebsiteScraper:
     """个人网站联系信息提取器"""
@@ -53,7 +49,8 @@ class PersonalWebsiteScraper:
             website_url = 'https://' + website_url
 
         try:
-            resp = self.session.get(website_url, timeout=30, verify=False)
+            # SSL verification enabled for security
+            resp = self.session.get(website_url, timeout=30, verify=True)
             self.scraped_count += 1
 
             if resp.status_code != 200:
@@ -119,8 +116,20 @@ class PersonalWebsiteScraper:
                             result['website_email'] = email
                             break
 
+        except requests.exceptions.SSLError as e:
+            # SSL certificate error - log and skip
+            print(f"  ⚠️ SSL Error: {e}")
+            return result
+
+        except requests.exceptions.RequestException as e:
+            # Other request errors (timeout, connection, etc.)
+            print(f"  ⚠️ Request Error: {e}")
+            return result
+
         except Exception as e:
-            pass
+            # Unexpected errors
+            print(f"  ⚠️ Unexpected Error: {e}")
+            return result
 
         return result
 
