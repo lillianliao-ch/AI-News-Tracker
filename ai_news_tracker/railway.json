@@ -3,10 +3,12 @@
   "build": {
     "builder": "NIXPACKS",
     "buildCommand": "pip install -r requirements.txt",
-    "watchPaths": ["backend/**"]
+    "watchPaths": [
+      "backend/**"
+    ]
   },
   "deploy": {
-    "startCommand": "uvicorn main:app --host 0.0.0.0 --port ${PORT}",
+    "startCommand": "python start_railway.py",
     "healthcheckPath": "/health",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
