@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "06421e79151bcc60ad5c6c92684da95e",
-    "previewModeSigningKey": "cd900bfcf33542ece042489acda29eaf85e771b5ddf29329304bd66e16998a32",
-    "previewModeEncryptionKey": "e1b982f7c2f99328329e42539da4bb39b082c78ba881bfcead741056b159b753"
-  }
-}
+{"version":4,"routes":{"/admin":{"experimentalBypassFor":[{"type":"header","key":"Next-Action"},{"type":"header","key":"content-type","value":"multipart/form-data;.*"}],"initialRevalidateSeconds":false,"srcRoute":"/admin","dataRoute":"/admin.rsc"},"/":{"experimentalBypassFor":[{"type":"header","key":"Next-Action"},{"type":"header","key":"content-type","value":"multipart/form-data;.*"}],"initialRevalidateSeconds":false,"srcRoute":"/","dataRoute":"/index.rsc"},"/my-posts":{"experimentalBypassFor":[{"type":"header","key":"Next-Action"},{"type":"header","key":"content-type","value":"multipart/form-data;.*"}],"initialRevalidateSeconds":false,"srcRoute":"/my-posts","dataRoute":"/my-posts.rsc"},"/profile":{"experimentalBypassFor":[{"type":"header","key":"Next-Action"},{"type":"header","key":"content-type","value":"multipart/form-data;.*"}],"initialRevalidateSeconds":false,"srcRoute":"/profile","dataRoute":"/profile.rsc"},"/publish":{"experimentalBypassFor":[{"type":"header","key":"Next-Action"},{"type":"header","key":"content-type","value":"multipart/form-data;.*"}],"initialRevalidateSeconds":false,"srcRoute":"/publish","dataRoute":"/publish.rsc"}},"dynamicRoutes":{},"notFoundRoutes":[],"preview":{"previewModeId":"14a11b9ccbbeaea21c80707c26018df6","previewModeSigningKey":"f3ebad319b4b190b1031fad6e0da9e23c57a48d1df10db7c6d8a288a16d011d3","previewModeEncryptionKey":"0131b6c29775d3fa3671f96df6d7df02f59524b6749cd3c0ae38b68bff187ed1"}}

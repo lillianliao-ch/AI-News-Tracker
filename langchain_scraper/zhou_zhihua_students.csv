@@ -1,0 +1,42 @@
+name_cn,name_en,student_type,graduation_year,undergraduate_university,research_direction,current_position,current_company,location,email,personal_website,github,google_scholar_citations,core_achievement,academic_score,data_source
+周志华,Zhi-Hua Zhou,导师,,南京大学,机器学习/集成学习/数据挖掘,教授/院长,南京大学人工智能学院,南京,zhouzh@nju.edu.cn,https://cs.nju.edu.cn/zhouzh/,,,Deep Forest/集成学习,98,lamda_homepage
+俞扬,Yang Yu,PhD,2019,,强化学习/机器学习,教授/博导,南京大学人工智能学院,南京,yuy@nju.edu.cn,http://www.lamda.nju.edu.cn/yuy/,,,强化学习开放环境,95,lamda_alumni+google
+李宇峰,Yu-Feng Li,PhD,,,半监督学习/弱监督学习,教授/博导,南京大学人工智能学院,南京,,http://www.lamda.nju.edu.cn/liyf/,,,CCF优博/TPAMI论文,92,lamda_alumni+google
+詹德川,De-Chuan Zhan,PhD,,,移动智能/度量学习/多模态学习,教授/学院副院长,南京大学人工智能学院,南京,,http://www.lamda.nju.edu.cn/zhandc/,,,LAMDA副所长,90,lamda_alumni+google
+魏秀参,Xiu-Shen Wei,PhD,2018,,机器学习/计算机视觉,教授,东南大学,南京,,https://weixiushen.com/,,,Fine-grained Recognition,88,lamda_alumni+google
+冯霁,Ji Feng,PhD,2020,,深度森林/高性能计算/量化交易,执行院长,创新工场南京国际人工智能研究院,南京,,http://www.lamda.nju.edu.cn/fengj/,,,Deep Forest,85,lamda_alumni+google
+黄圣君,Sheng-Jun Huang,PhD,2014,,机器学习/数据挖掘,教授/院长,南京航空航天大学计算机学院,南京,,http://www.lamda.nju.edu.cn/huangsj/,,,Active Learning,88,lamda_alumni+google
+耿新,Xin Geng,PhD,,,标记分布学习/模式识别,首席教授/研究生院常务副院长,东南大学,南京,,http://palm.seu.edu.cn/xgeng/,,,Label Distribution Learning,92,lamda_alumni+google
+张道强,Daoqiang Zhang,PhD,,,医学图像分析/脑影像,教授/人工智能学院院长,南京航空航天大学,南京,,http://parnec.nuaa.edu.cn/zhangdq/,,,脑机智能技术实验室,90,lamda_alumni+google
+张敏灵,Min-Ling Zhang,PhD,,,多标签学习/弱监督学习,教授,东南大学,南京,,http://cse.seu.edu.cn/people/zhangml/,,,Multi-Label Learning,90,lamda_alumni
+刘胥影,Xu-Ying Liu,PhD,,,模式识别,教授,东南大学,南京,,http://cse.seu.edu.cn/people/xyliu/,,,,85,lamda_alumni
+胡昊,Hao Hu,PhD,,,机器学习,Research Professor,HKUST,香港,,http://www.cse.ust.hk/~derekhh/,,,Knowledge Graph,85,lamda_alumni
+朱寅,Yin Zhu,PhD,,,机器学习,Research Staff,HKUST,香港,,http://www.cse.ust.hk/~yinz/,,,,82,lamda_alumni
+秦熔均,Rong-Jun Qin,PhD,2023,,强化学习,Researcher,Polixir,南京,,,,,RL Applications,80,lamda_alumni
+解铮,Zheng Xie,PhD,2023,,,Research Engineer,华为南研所,南京,,,,,Huawei Research,78,lamda_alumni
+王国华,Guo-Hua Wang,PhD,2023,,,Research Engineer,华为,杭州,,,,,,78,lamda_alumni
+王天佐,Tian-Zuo Wang,PhD,2023,,,TBC,TBC,TBC,,,,,,75,lamda_alumni
+周志健,Zhi-Jian Zhou,MSc,2024,,机器学习,PhD Student,University of Melbourne,澳大利亚,,,,,海外深造,72,lamda_alumni
+刘驭壬,Yu-Ren Liu,PhD,在读,,自动机器学习/强化学习,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/liuyr/,,,,70,lamda_phd
+范文殊,Wen-Shu Fan,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/fanws/,,,,68,lamda_phd
+李敏辉,Min-Hui Li,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/limh/,,,,68,lamda_phd
+王健树,Jian-Shu Wang,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/wangjianshu/,,,,68,lamda_phd
+张仲楠,Zhong-Nan Zhang,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/zhangzn/,,,,68,lamda_phd
+韩路,Lu Han,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/hanlu/,,,,68,lamda_phd
+贾乘兴,Cheng-Xing Jia,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/jiacx/,,,,68,lamda_phd
+廖沩健,Wei-Jian Liao,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/liaowj/,,,,68,lamda_phd
+李岚,Lan Li,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/lil/,,,,68,lamda_phd
+刘丹璇,Dan-Xuan Liu,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/liudx/,,,,68,lamda_phd
+刘旭辉,Xu-Hui Liu,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/liuxh/,,,,68,lamda_phd
+钱梦璋,Meng-Zhang Qian,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/qianmz/,,,,68,lamda_phd
+单家威,Jia-Wei Shan,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/shanjw/,,,,68,lamda_phd
+邵杰晶,Jie-Jing Shao,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/shaojj/,,,,68,lamda_phd
+施意,Yi Shi,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/shiy/,,,,68,lamda_phd
+陶略,Lue Tao,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/taol/,,,,68,lamda_phd
+薛轲,Ke Xue,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/xuek/,,,,68,lamda_phd
+许逸初,Yi-Chu Xu,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/xuyc/,,,,68,lamda_phd
+闫雨呼,Yu-Hu Yan,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/yanyh/,,,,68,lamda_phd
+尹小龙,Xiao-Long Yin,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/yinxl/,,,,68,lamda_phd
+郑钦城,Qin-Cheng Zheng,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/zhengqc/,,,,68,lamda_phd
+周植,Zhi Zhou,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/zhouz/,,,,68,lamda_phd
+朱可,Ke Zhu,PhD,在读,,,PhD Student,南京大学LAMDA,南京,,http://www.lamda.nju.edu.cn/zhuk/,,,,68,lamda_phd

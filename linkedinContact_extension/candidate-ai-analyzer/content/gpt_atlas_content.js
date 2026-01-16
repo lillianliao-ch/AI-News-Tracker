@@ -1,0 +1,1 @@
+console.log('GPT Atlas content loaded');

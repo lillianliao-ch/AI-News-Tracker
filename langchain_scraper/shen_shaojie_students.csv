@@ -1,0 +1,56 @@
+name_cn,name_en,student_type,enrollment_year,undergraduate_university,research_direction,current_position,current_company,location,email,personal_website,github,google_scholar_citations,core_achievement,academic_score,data_source
+高浦森,Pusen Gao,PhD,2025,,,PhD Student,HKUST,Hong Kong,,,,,,60,lab_homepage
+徐洋,Yang Xu,PhD,2024,,,PhD Student,HKUST,Hong Kong,,,,,,60,lab_homepage
+闫笑阳,Xiaoyang Yan,PhD,2024,,,PhD Student,HKUST,Hong Kong,,,,,,60,lab_homepage
+朱亦隆,Yilong Zhu,PhD,2024,,,AI算法工程师,招商局先进技术研究院,Hong Kong,,,,,,60,lab_homepage
+胡牧,Mu Hu,PhD,2022,,深度估计/LiDAR-视觉融合,PhD Student,HKUST,Hong Kong,,,,,Metric3D v2 (TPAMI),78,lab_homepage
+余泽寰,Zehuan Yu,PhD,2020,华南理工大学,多传感器融合/实时建图,PhD Student,HKUST,Hong Kong,,,,,H2-Mapping核心成员,75,lab_homepage+user
+乔志健,Zhijian Qiao,PhD,2022,东北大学→上海交大(硕),自主驾驶/全局定位/长期建图,PhD Student,HKUST,Hong Kong,zqiaoac@connect.ust.hk,,https://github.com/qiaozhijian,,ROBOCON冠军2017-2018,78,lab_homepage+browser
+蒋辰星,Chenxing Jiang,PhD,2020,浙江大学(竺可桢学院),视觉惯性导航/隐式建图,PhD Student,HKUST,Hong Kong,cjiangan@connect.ust.hk,,https://github.com/JIANG-CX,,IEEE RA-L Best Paper 2023,85,lab_homepage+browser
+冯宸,Chen Feng,PhD,2021,哈尔滨工业大学,空中机器人/运动规划/三维重建,PhD Student,HKUST,Hong Kong,cfengag@connect.ust.hk,,https://github.com/chen-albert-feng,,ICRA 2024 Best UAV Finalist,82,lab_homepage+browser
+裴穆雷澜,Muleilan Pei,PhD,2022,,运动预测/逆强化学习/自动驾驶,PhD Student,HKUST,Hong Kong,mpei@ust.hk,,,,ICCV2025/ICML2025/ICRA2026论文,80,lab_homepage
+李桐,Tong Li,PhD,2021,北京理工大学,自主导航,PhD Student,HKUST,Hong Kong,,,,,,65,lab_homepage
+吴易霖,William Wu,PhD,2021,,,PhD Student,HKUST,Hong Kong,,,,,,65,lab_homepage
+刘思琪,Siqi Liu,MPhil,2018,,柔性双目标定/运动预测,PhD Student,HKUST,Hong Kong,,,,,SIMPL(RA-L)/TNNLS论文,65,lab_homepage
+王天馨,Tensy Wong,RA,在职,,,Research Assistant,HKUST,Hong Kong,,,,,,60,lab_homepage
+路修远,Xiuyuan Lu,PhD,2021,上海交通大学,事件相机/状态估计/VIO,PhD Candidate (defense July 2025),HKUST,TBC,,,,,ESVO2/RSS2024/T-RO论文,70,alumni_page+user
+王昊坤,Haokun Wang,Postdoc,2025,,轨迹规划/触觉操控,Researcher,Noah's Ark Lab (华为),TBC,,,,,,68,alumni_page
+张志伟,Zhiwei Zhang,PhD,2025,,博弈论/自主驾驶决策,TBC,TBC,TBC,,,,,,68,alumni_page
+刘楚豪,Chuhao Liu,PhD,2025,,语义SLAM/多智能体视觉SLAM,Vision SLAM engineer,Mammotion Technology,China,cliuci@connect.ust.hk,,https://github.com/glennliu,,,68,alumni_page+github
+焦建豪,Jianhao Jiao,MPhil,2024,,SLAM/多传感器融合,Senior Research Fellow,UCL (伦敦大学学院),TBC,,,,,FusionPortable/FusionPortableV2,68,alumni_page
+张鲁,Lu Zhang,PhD,2024,,自主驾驶决策规划,Algorithm engineer,ZYT,China,lzhangbz@connect.ust.hk,,https://github.com/MasterIzumi,,,72,alumni_page+github
+史桀绮,Jieqi Shi,PhD,2024,,机器人感知/SLAM,Assistant professor,Nanjing University (Suzhou),Suzhou,jayceesjq@gmail.com,https://jayceeshi.github.io/,,,,72,web_search
+阴焕银,Huanyin,Postdoc,2024,,SLAM/语义建图/BIM融合,Research Assistant Professor,HKUST,Hong Kong,,,,,SLABIM Dataset,78,alumni_page
+曹绍祖,Shaozu Cao,PhD,2022,,多传感器融合/状态估计,Algorithm engineer,Skyland Innovation,China,shaozu.cao@gmail.com,,https://github.com/shaozu,,,70,alumni_page+github
+徐浩,Hao Xu,PhD,2022,,空中集群/协同SLAM,Associate professor,Beihang University,Beijing,xuhao3e8@buaa.edu.cn,https://xuhao1.me/,,,D2-SLAM/RACER(TRO),85,alumni_page+web
+王凯旋,Kaixuan Wang,PhD,2022,,深度估计/稠密建图,感知算法工程师,卓驭(ZYT),Shenzhen,wkx1993@gmail.com,,https://github.com/WANG-KX,,,72,alumni_page+github
+余俊峰,Junfeng Yu,MPhil,2022,,语义SLAM/数据关联,感知算法副总工程师,比亚迪,China,,,,,,75,alumni_page
+周博宇,Boyu Zhou,PhD,2022,,快速自主导航,Assistant professor,SUSTech,Shenzhen,uv.boyuzhou@gmail.com,https://boyuzhou.net/,https://github.com/ZbyLGsc,3474,EGO-Planner,88,alumni_page+web
+周易,Yi Zhou,Postdoc,2021,,多视几何/VO/SLAM,Professor,Hunan University,Changsha,eeyzhou@hnu.edu.cn,https://sites.google.com/view/zhouyi-joey/home,,,,75,alumni_page+web
+丁文超,Wenchao Ding,PhD,2020,,运动规划/自主导航,Tenure-Track Associate Professor,Fudan University,Shanghai,denny.wcding@gmail.com,,https://github.com/WenchaoDing,1645,,80,alumni_page+github
+栗培梁,Peiliang Li,PhD,2020,,3D目标检测/跟踪,端到端算法负责人,卓驭(ZYT),Shenzhen,peiliang.li@dji.com,,https://github.com/PeiliangLi,736,Stereo R-CNN (CVPR 2019),82,alumni_page+github
+Manohar,Manohar Kuse,PhD,2019,,视觉惯性SLAM,Senior software engineer,Magic Leap,USA,mpkuse@connect.ust.hk,https://kusemanohar.info/,https://github.com/mpkuse,,,75,alumni_page+github
+秦通,Tong Qin,PhD,2019,,视觉惯性状态估计,Associate Professor,SJTU,Shanghai,qintonguav@gmail.com,https://qintong.xyz/,https://github.com/qintonguav,5192,VINS-Mono(TRO2018),95,alumni_page+github
+高飞,Fei Gao,PhD,2019,,运动规划/自主飞行,Associate professor,ZJU,Hangzhou,fgaoaa@connect.ust.hk,http://ustfei.com,https://github.com/USTfgaoaa,8306,Science Robotics多篇,98,alumni_page+github
+裘科杰,Kejie Qiu,PhD,2019,,3D运动分析/状态估计,Algorithm engineer,Alibaba,China,,https://sites.google.com/site/kejieqiujack/,,,,70,alumni_page
+潘杰,Jie Pan,MPhil,2019,,空中机器人/巡检系统,CEO,Skyland Innovation,Shenzhen,jpanai@connect.ust.hk,,https://github.com/pjrambo,,,72,alumni_page+github
+韩路新,Luxin Han,MPhil,2019,,FIESTA/欧氏距离场,Algorithm Engineer,XPeng Motors,Guangzhou,,,,,FIESTA算法,70,alumni_page
+吴易霖,William Wu,MPhil,2019,,多机规划调度,Algorithm engineer,DJI,Shenzhen,,,,,,68,alumni_page
+高文良,Wenliang Gao,MPhil,2018,,鱼眼相机SLAM,Algorithm engineer,DJI,Shenzhen,gaowenliang100@gmail.com,,https://github.com/gaowenliang,,,70,alumni_page+github
+刘天博,Tianbo Liu,MPhil,2017,,单目视觉惯性感知,Algorithm engineer,DJI,Shenzhen,liutianbocn@gmail.com,,https://github.com/groundmelon,,,70,alumni_page+github
+陈新怡,Xinyi Chen,PhD,2026,,运动预测与规划,PhD Student,HKUST,Hong Kong,xchencq@connect.ust.hk,,https://github.com/xchencq,,,68,lab_homepage+github
+李昊佳,Haojia Li,PhD,2021,东北大学,机器人规划与控制,PhD Student,HKUST,Hong Kong,hlied@connect.ust.hk,https://li-hj.com/,https://github.com/li-haojia,,T-RO/RA-L论文,85,github+browser
+洪晟,Hong Sheng,PhD,2025,,LiDAR-视觉融合/高斯泼溅,PhD Candidate,HKUST,TBC,,,https://github.com/sheng00125,,LI-GS/GS-LIVO/Gaussian-LIC,72,github_org+dblp
+苏坤岳,Kunyue Su,PhD,校友,,实时轨迹生成,高级工程师,DJI 飞行系统,Shenzhen,,,,,,70,github_org+alumni_page
+周鑫,Xin Zhou,Postdoc,2024,,轨迹规划/空中集群,Postdoc,HKUST,Hong Kong,,,,,Teach-Repeat-Replan,72,github_org+dblp
+王珂,Ke Wang,PhD,校友,,自主驾驶,算法工程师,DJI 车载,Xian,,,,,,72,alumni_page
+王露琦,Luqi Wang,PhD,2024,,控制与规划,Research Associate,HKUST,Hong Kong,,,,,,68,dblp+web
+黄稹敏,Zhenmin Huang,PhD,校友,,自动驾驶协同规划/LMM,Researcher,HKUST,TBC,,,,,LMMCoDrive/ICRA/T-ITS论文,65,dblp+publications
+凌永根,Yonggen Ling,PhD,校友,,视觉惯性SLAM,Robotics Scientist,Tencent Robotics X,Shenzhen,ylingaa@connect.ust.hk,,https://github.com/ygling2008,,,75,github_profile
+杨振飞,YANG Zhenfei,校友,,,机器人/SLAM,ex-Algorithm Engineer,ex-DJI,Shenzhen,yangzhenfei0@gmail.com,https://yangzhenfei.com,https://github.com/dvorak0,,VI-MEAN(214stars),78,github_profile
+刘佩泽,Peize Liu,PhD,2020,哈尔滨工业大学,多传感器融合/建图,PhD Student,HKUST,Hong Kong,,,,,H2-Mapping核心成员,78,user_provided
+陈俊豪,Junhao Chen,PhD,2022,北京航空航天大学,视觉惯性里程计,PhD Student,HKUST,Hong Kong,,,,,RAPTOR项目,72,user_provided
+林宇轩,Yuxuan Lin,PhD,2022,华南理工大学,无人机导航/轨迹优化,PhD Student,HKUST,Hong Kong,,,,,多无人机协同控制,70,user_provided
+张思远,Siyuan Zhang,PhD,2023,中国科学技术大学,事件相机/机器人感知,PhD Student,HKUST,Hong Kong,,,,,H2-Mapping相关,68,user_provided
+王晨阳,Chenyang Wang,PhD,2023,西安交通大学,移动机器人状态估计,PhD Student,HKUST,Hong Kong,,,,,,65,user_provided
+林毅,Yi Lin,MPhil,2017,,单目稠密建图/运动模糊定位,Advanced Algorithm Engineer,DJI,Shenzhen,,,https://github.com/WayneTimer,,单目视觉-惯性融合/FMM轨迹规划,70,github_org+google

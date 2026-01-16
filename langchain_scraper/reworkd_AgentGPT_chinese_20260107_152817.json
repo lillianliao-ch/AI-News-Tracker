@@ -1,0 +1,62 @@
+[
+  {
+    "login": "Dogtiti",
+    "name": "Dogtiti",
+    "contributions": 3,
+    "email": "dogtiti921@gmail.com",
+    "location": "ChangSha,China",
+    "company": "",
+    "blog": "",
+    "twitter": "",
+    "linkedin": "",
+    "bio": "",
+    "github_url": "https://github.com/Dogtiti",
+    "followers": 141,
+    "reason": "Location: ChangSha,China"
+  },
+  {
+    "login": "PeterDaveHello",
+    "name": "Peter Dave Hello",
+    "contributions": 1,
+    "email": "",
+    "location": "Taiwan, R.O.C",
+    "company": "@DNSCrypt @nodejs @maintainers  @campus-experts  @transmission-remote-gui",
+    "blog": "https://www.peterdavehello.org/",
+    "twitter": "PeterDaveHello",
+    "linkedin": "",
+    "bio": "I'm a passionate Free & Open Source enthusiast. Working on CyberSecurity & zh-TW localization. A 👨🏼 ",
+    "github_url": "https://github.com/PeterDaveHello",
+    "followers": 1692,
+    "reason": "Location: Taiwan, R.O.C"
+  },
+  {
+    "login": "HashCookie",
+    "name": "Coki",
+    "contributions": 1,
+    "email": "",
+    "location": "China",
+    "company": "",
+    "blog": "hashcookie.cc",
+    "twitter": "",
+    "linkedin": "",
+    "bio": "",
+    "github_url": "https://github.com/HashCookie",
+    "followers": 45,
+    "reason": "Location: China"
+  },
+  {
+    "login": "soulhat",
+    "name": "Bin",
+    "contributions": 1,
+    "email": "appcloudfactory@gmail.com",
+    "location": "Beijing,China",
+    "company": "JD.com",
+    "blog": "",
+    "twitter": "SignetCode",
+    "linkedin": "",
+    "bio": "Focus on web development. Interested at: NodeJS, React,  Swift, React Native, Java.",
+    "github_url": "https://github.com/soulhat",
+    "followers": 54,
+    "reason": "Location: Beijing,China; Company: JD.com"
+  }
+]

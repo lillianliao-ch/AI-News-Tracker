@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Atlas SideChat Min Demo",
+  "version": "0.1",
+  "permissions": ["tabs"],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*"
+      ],
+      "js": ["gpt_atlas_content.js"]
+    }
+  ]
+}

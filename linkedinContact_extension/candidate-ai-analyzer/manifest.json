@@ -1,0 +1,26 @@
+
+{
+  "manifest_version": 3,
+  "name": "Candidate AI Analyzer (Atlas)",
+  "version": "1.0.0",
+  "permissions": ["activeTab", "scripting", "storage", "downloads"],
+  "host_permissions": [
+    "https://*.zhipin.com/*",
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.zhipin.com/*"],
+      "js": ["content/boss_content.js"],
+      "css": ["ui/panel.css"]
+    },
+    {
+      "matches": ["https://chat.openai.com/*", "https://chatgpt.com/*"],
+      "js": ["content/gpt_atlas_content.js"]
+    }
+  ]
+}

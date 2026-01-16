@@ -10,12 +10,15 @@ const fastify = Fastify({
 });
 
 // CORS配置
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3002',
+  process.env.CORS_ORIGIN || '',
+].filter(Boolean);
+
 fastify.register(cors, {
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'http://localhost:3002',
-  ],
+  origin: allowedOrigins,
   credentials: true
 });
 

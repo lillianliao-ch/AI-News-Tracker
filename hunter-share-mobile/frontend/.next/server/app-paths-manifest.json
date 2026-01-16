@@ -1,7 +1,9 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/group/[id]/page": "app/group/[id]/page.js",
+  "/my-posts/page": "app/my-posts/page.js",
   "/page": "app/page.js",
   "/profile/page": "app/profile/page.js",
-  "/my-posts/page": "app/my-posts/page.js",
-  "/group/[id]/page": "app/group/[id]/page.js",
   "/publish/page": "app/publish/page.js"
 }

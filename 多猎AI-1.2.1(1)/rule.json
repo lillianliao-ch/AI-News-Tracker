@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "condition": {
+      "resourceTypes": ["xmlhttprequest"],
+      "regexFilter": "https://api-plugin.duolie.com/api/*",
+      "excludedInitiatorDomains": ["duolie.com"]
+    },
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Origin",
+          "operation": "set",
+          "value": "https://www.duolie.com"
+        },
+        {
+          "header": "Sec-Fetch-Site",
+          "operation": "set",
+          "value": "same-site"
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "condition": {
+      "resourceTypes": ["xmlhttprequest"],
+      "regexFilter": "https://api-im.liepin.com/api/com.liepin.rcn.im.get-im-info-v2",
+      "excludedInitiatorDomains": ["duolie.com"]
+    },
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Origin",
+          "operation": "set",
+          "value": "https://www.duolie.com"
+        },
+        {
+          "header": "Sec-Fetch-Site",
+          "operation": "set",
+          "value": "same-site"
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "condition": {
+      "resourceTypes": ["xmlhttprequest"],
+      "regexFilter": "https://tdoss.duolie.com/*",
+      "excludedInitiatorDomains": ["duolie.com"]
+    },
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Origin",
+          "operation": "set",
+          "value": "https://www.duolie.com"
+        },
+        {
+          "header": "Sec-Fetch-Site",
+          "operation": "set",
+          "value": "same-site"
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "condition": {
+      "resourceTypes": ["xmlhttprequest"],
+      "regexFilter": "https://api-rcn.duolie.com/api/*",
+      "excludedInitiatorDomains": ["duolie.com"]
+    },
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Origin",
+          "operation": "set",
+          "value": "https://www.duolie.com"
+        },
+        {
+          "header": "Sec-Fetch-Site",
+          "operation": "set",
+          "value": "same-site"
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "condition": {
+      "resourceTypes": ["xmlhttprequest"],
+      "urlFilter": "https://file.duolie.com/upload/public-file.json",
+      "excludedInitiatorDomains": ["duolie.com"]
+    },
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Origin",
+          "operation": "set",
+          "value": "https://www.duolie.com"
+        },
+        {
+          "header": "Sec-Fetch-Site",
+          "operation": "set",
+          "value": "same-site"
+        }
+      ]
+    }
+  }
+]

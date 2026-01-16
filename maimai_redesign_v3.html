@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脉脉 - 成就职业梦想 | 1.2亿职场人的选择</title>
+    <style>
+        :root {
+            /* 更有力量感的配色方案 - 针对25-35岁男性用户 */
+            --primary: #1a1a2e;           /* 深蓝黑 - 专业权威 */
+            --primary-light: #16213e;     /* 深蓝 - 信任稳重 */
+            --accent: #e94560;            /* 强调红 - 活力激情 */
+            --accent-hover: #ff6b6b;      /* 亮红 - 行动号召 */
+            --gold: #f4d03f;             /* 金色 - 成功品质 */
+            --silver: #bdc3c7;           /* 银色 - 专业科技 */
+            --dark: #0f0f1a;             /* 极深黑 - 现代感 */
+            --gray: #636e72;             /* 灰色 - 中性平衡 */
+            --light-gray: #f8f9fa;       /* 浅灰 - 背景 */
+            
+            /* 渐变方案 - 更强的视觉冲击 */
+            --gradient-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --gradient-accent: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            --gradient-gold: linear-gradient(135deg, #f4d03f 0%, #f39c12 100%);
+            --gradient-dark: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+            
+            /* 阴影系统 */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.15);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.2);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.25);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.3);
+            --shadow-glow: 0 0 20px rgba(233, 69, 96, 0.3);
+            
+            /* 间距和布局 */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        /* 强力导航栏 - 更有权威感 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-glow);
+            border: 2px solid var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow), var(--shadow-lg);
+            background: var(--accent-hover);
+        }
+
+        /* 英雄区域 - 强烈视觉冲击 */
+        .hero {
+            padding: 10rem var(--spacing-md) var(--spacing-xl);
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* 动态背景效果 */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(233, 69, 96, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(244, 208, 63, 0.3) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 40%, rgba(26, 26, 46, 0.5) 40%, rgba(26, 26, 46, 0.5) 60%, transparent 60%);
+            background-size: 200% 200%;
+            animation: heroBgMove 15s ease infinite;
+        }
+
+        @keyframes heroBgMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 超强数字展示 */
+        .mega-number-section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .mega-badge {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: var(--spacing-md);
+            box-shadow: var(--shadow-glow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .mega-number {
+            font-size: clamp(5rem, 20vw, 15rem);
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+            animation: countUp 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: drop-shadow(0 0 30px rgba(244, 208, 63, 0.5));
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+                filter: blur(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .mega-number::after {
+            content: '+';
+            position: absolute;
+            right: -0.2em;
+            top: 0;
+            font-size: 0.4em;
+            -webkit-text-fill-color: var(--accent);
+            filter: drop-shadow(0 0 10px rgba(233, 69, 96, 0.8));
+        }
+
+        .mega-unit {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: white;
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            letter-spacing: 3px;
+        }
+
+        .mega-description {
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .highlight-text {
+            color: var(--gold);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 强力数据网格 */
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .impact-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .impact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(233, 69, 96, 0.1);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .impact-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 强力CTA按钮 */
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .cta-primary {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 1.5rem 4rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-glow), var(--shadow-lg);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            border: 3px solid var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-primary:hover::before {
+            left: 100%;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-glow), var(--shadow-xl);
+            border-color: var(--accent-hover);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            padding: 1.5rem 4rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.4rem;
+            border: 3px solid var(--gold);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cta-secondary:hover {
+            background: var(--gold);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* 强化二维码区域 */
+        .qrcode-section {
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .qrcode-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+        }
+
+        .qrcode-container {
+            display: flex;
+            gap: var(--spacing-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .qrcode-item {
+            text-align: center;
+        }
+
+        .qrcode {
+            width: 180px;
+            height: 180px;
+            background: white;
+            border: 4px solid var(--accent);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+            transition: all 0.3s ease;
+        }
+
+        .qrcode:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow), var(--shadow-xl);
+        }
+
+        .qrcode::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(233, 69, 96, 0.2) 50%,
+                transparent 70%
+            );
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .qrcode-placeholder {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .qrcode-platform {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: var(--spacing-xs);
+        }
+
+        .qrcode-hint {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: var(--spacing-xs);
+            font-weight: 600;
+        }
+
+        /* 功能特性 - 更硬朗的设计 */
+        .features {
+            padding: var(--spacing-xl) var(--spacing-md);
+            background: white;
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .feature-card {
+            background: var(--light-gray);
+            padding: var(--spacing-md);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--accent);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-description {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* 应用预览 - 更科技感 */
+        .app-preview {
+            padding: var(--spacing-xl) var(--spacing-md);
+            background: var(--gradient-primary);
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .app-preview::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-gold);
+        }
+
+        .phone-mockup {
+            max-width: 350px;
+            margin: var(--spacing-lg) auto;
+            background: #000;
+            border-radius: 40px;
+            padding: 15px;
+            box-shadow: var(--shadow-xl), 0 0 50px rgba(233, 69, 96, 0.3);
+            border: 3px solid var(--accent);
+            position: relative;
+        }
+
+        .phone-screen {
+            background: white;
+            border-radius: 30px;
+            padding: 25px;
+            min-height: 550px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 社交证明 - 更权威 */
+        .social-proof {
+            padding: var(--spacing-xl) var(--spacing-md);
+            background: white;
+            text-align: center;
+        }
+
+        .company-logos {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--spacing-lg);
+        }
+
+        .company-logo {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--light-gray);
+            border-radius: 8px;
+            font-weight: 800;
+            color: var(--primary);
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .company-logo:hover {
+            background: var(--primary);
+            color: var(--gold);
+            transform: scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* 底部CTA - 强力号召 */
+        .bottom-cta {
+            padding: var(--spacing-xl) var(--spacing-md);
+            background: var(--gradient-accent);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bottom-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .bottom-cta h2 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .bottom-cta p {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 600;
+            opacity: 0.95;
+        }
+
+        /* 页脚 - 专业权威 */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+            border-top: 5px solid var(--accent);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-section h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-md);
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 8rem var(--spacing-sm) var(--spacing-lg);
+            }
+
+            .mega-number {
+                font-size: 5rem;
+            }
+
+            .mega-unit {
+                font-size: 2rem;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .qrcode-container {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 动画效果 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 计数器样式 */
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* 强调文字效果 */
+        .power-text {
+            background: linear-gradient(120deg, transparent 0%, transparent 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 90%;
+        }
+
+        /* 脉冲动画 */
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(244, 208, 63, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(244, 208, 63, 0.8), 0 0 60px rgba(244, 208, 63, 0.4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">脉</div>
+                <span>脉脉</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">核心功能</a>
+                <a href="#preview">产品预览</a>
+                <a href="#testimonials">用户评价</a>
+                <a href="#download">立即下载</a>
+            </div>
+            <a href="#download" class="nav-cta">立即下载</a>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <!-- 超强数字展示 -->
+            <div class="mega-number-section">
+                <div class="mega-badge">中国最大职业社交平台</div>
+                <div class="mega-number pulse-glow">
+                    <span class="counter" data-target="120000000">0</span>
+                </div>
+                <div class="mega-unit">职场用户</div>
+                <div class="mega-description">
+                    <span class="highlight-text">成就职业梦想</span>，连接<span class="highlight-text">无限机遇</span>
+                </div>
+            </div>
+
+            <!-- 强力数据统计 -->
+            <div class="impact-stats">
+                <div class="impact-item">
+                    <div class="impact-number">
+                        <span class="counter" data-target="100">0</span>万+
+                    </div>
+                    <div class="impact-label">企业入驻</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">
+                        <span class="counter" data-target="500">0</span>万+
+                    </div>
+                    <div class="impact-label">日均职位</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">
+                        <span class="counter" data-target="98">0</span>%
+                    </div>
+                    <div class="impact-label">500强企业</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">
+                        <span class="counter" data-target="4.8">0</span>
+                    </div>
+                    <div class="impact-label">用户评分</div>
+                </div>
+            </div>
+
+            <!-- CTA 按钮 -->
+            <div class="cta-buttons">
+                <a href="#download" class="cta-primary">
+                    <span>📱</span>
+                    立即下载脉脉APP
+                </a>
+                <a href="#features" class="cta-secondary">
+                    了解核心功能
+                </a>
+            </div>
+
+            <!-- 二维码下载区域 -->
+            <div class="qrcode-section" id="download">
+                <div class="qrcode-title">📲 扫码下载，开启职业新篇章</div>
+                <div class="qrcode-container">
+                    <div class="qrcode-item">
+                        <div class="qrcode">
+                            <div class="qrcode-placeholder">
+                                <svg width="130" height="130" viewBox="0 0 130 130">
+                                    <!-- 强化的二维码图案 -->
+                                    <rect x="15" y="15" width="25" height="25" fill="#1a1a2e"/>
+                                    <rect x="90" y="15" width="25" height="25" fill="#1a1a2e"/>
+                                    <rect x="15" y="90" width="25" height="25" fill="#1a1a2e"/>
+                                    <rect x="50" y="50" width="30" height="30" fill="#e94560"/>
+                                    <rect x="55" y="55" width="20" height="20" fill="#fff"/>
+                                    <text x="65" y="70" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">脉</text>
+                                    
+                                    <!-- 科技感点阵 -->
+                                    <rect x="8" y="8" width="4" height="4" fill="#2c3e50"/>
+                                    <rect x="32" y="8" width="4" height="4" fill="#2c3e50"/>
+                                    <rect x="55" y="8" width="4" height="4" fill="#2c3e50"/>
+                                    <rect x="78" y="8" width="4" height="4" fill="#2c3e50"/>
+                                    <rect x="102" y="8" width="4" height="4" fill="#2c3e50"/>
+                                    
+                                    <rect x="42" y="18" width="12" height="4" fill="#2c3e50"/>
+                                    <rect x="58" y="23" width="18" height="4" fill="#2c3e50"/>
+                                    <rect x="42" y="28" width="10" height="4" fill="#2c3e50"/>
+                                    
+                                    <rect x="18" y="42" width="4" height="12" fill="#2c3e50"/>
+                                    <rect x="23" y="48" width="4" height="18" fill="#2c3e50"/>
+                                    <rect x="28" y="42" width="4" height="10" fill="#2c3e50"/>
+                                    
+                                    <rect x="92" y="42" width="4" height="12" fill="#2c3e50"/>
+                                    <rect x="102" y="48" width="4" height="18" fill="#2c3e50"/>
+                                    <rect x="107" y="42" width="4" height="10" fill="#2c3e50"/>
+                                    
+                                    <rect x="42" y="88" width="35" height="4" fill="#2c3e50"/>
+                                    <rect x="82" y="93" width="18" height="4" fill="#2c3e50"/>
+                                    <rect x="108" y="88" width="4" height="4" fill="#2c3e50"/>
+                                    
+                                    <rect x="8" y="58" width="4" height="18" fill="#2c3e50"/>
+                                    <rect x="28" y="88" width="4" height="12" fill="#2c3e50"/>
+                                    <rect x="118" y="58" width="4" height="18" fill="#2c3e50"/>
+                                    
+                                    <rect x="58" y="93" width="4" height="12" fill="#2c3e50"/>
+                                    <rect x="73" y="98" width="4" height="10" fill="#2c3e50"/>
+                                    <rect x="88" y="103" width="4" height="12" fill="#2c3e50"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="qrcode-platform">iOS 下载</div>
+                        <div class="qrcode-hint">iPhone & iPad 用户</div>
+                    </div>
+                    <div class="qrcode-item">
+                        <div class="qrcode">
+                            <div class="qrcode-placeholder">
+                                <svg width="130" height="130" viewBox="0 0 130 130">
+                                    <!-- 强化的二维码图案 -->
+                                    <rect x="15" y="15" width="25" height="25" fill="#1a1a2e"/>
+                                    <rect x="90" y="15" width="25" height="25" fill="#1a1a2e"/>
+                                    <rect x="15" y="90" width="25" height="25" fill="#1a1a2e"/>
+                                    <rect x="50" y="50" width="30" height="30" fill="#f4d03f"/>
+                                    <rect x="55" y="55" width="20" height="20" fill="#fff"/>
+                                    <text x="65" y="70" text-anchor="middle" fill="#f4d03f" font-size="12" font-weight="bold">脉</text>
+                                    
+                                    <!-- 科技感点阵 -->
+                                    <rect x="10" y="10" width="4" height="4" fill="#2c3e50"/>
+                                    <rect x="30" y="10" width="4" height="4" fill="#2c3e50"/>
+                                    <rect x="53" y="10" width="4" height="4" fill="#2c3e50"/>
+                                    <rect x="75" y="10" width="4" height="4" fill="#2c3e50"/>
+                                    <rect x="98" y="10" width="4" height="4" fill="#2c3e50"/>
+                                    <rect x="118" y="10" width="4" height="4" fill="#2c3e50"/>
+                                    
+                                    <rect x="40" y="15" width="14" height="4" fill="#2c3e50"/>
+                                    <rect x="58" y="20" width="20" height="4" fill="#2c3e50"/>
+                                    <rect x="40" y="25" width="12" height="4" fill="#2c3e50"/>
+                                    
+                                    <rect x="15" y="40" width="4" height="14" fill="#2c3e50"/>
+                                    <rect x="20" y="46" width="4" height="20" fill="#2c3e50"/>
+                                    <rect x="25" y="40" width="4" height="12" fill="#2c3e50"/>
+                                    
+                                    <rect x="90" y="40" width="4" height="14" fill="#2c3e50"/>
+                                    <rect x="100" y="46" width="4" height="20" fill="#2c3e50"/>
+                                    <rect x="105" y="40" width="4" height="12" fill="#2c3e50"/>
+                                    
+                                    <rect x="40" y="90" width="40" height="4" fill="#2c3e50"/>
+                                    <rect x="85" y="95" width="20" height="4" fill="#2c3e50"/>
+                                    <rect x="110" y="90" width="4" height="4" fill="#2c3e50"/>
+                                    
+                                    <rect x="10" y="53" width="4" height="20" fill="#2c3e50"/>
+                                    <rect x="30" y="90" width="4" height="14" fill="#2c3e50"/>
+                                    <rect x="115" y="53" width="4" height="20" fill="#2c3e50"/>
+                                    
+                                    <rect x="53" y="95" width="4" height="14" fill="#2c3e50"/>
+                                    <rect x="70" y="100" width="4" height="12" fill="#2c3e50"/>
+                                    <rect x="85" y="105" width="4" height="14" fill="#2c3e50"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="qrcode-platform">Android 下载</div>
+                        <div class="qrcode-hint">安卓手机用户</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特性 -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <h2 class="section-title">强大的职业社交功能</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title">五同关系连接</h3>
+                    <p class="feature-description">基于同公司、同学校、同行业、同乡、同好等五同关系，帮你快速找到志同道合的职场伙伴，构建强大的人脉网络。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">三度人脉突破</h3>
+                    <p class="feature-description">突破传统社交圈层，通过朋友的朋友，无限扩展你的人脉网络，触达更多高层机会和决策者。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💼</div>
+                    <h3 class="feature-title">内推求职机会</h3>
+                    <p class="feature-description">好友内推更靠谱，直接获得企业内部推荐机会，求职成功率提升3倍，进入理想企业。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⭐</div>
+                    <h3 class="feature-title">个人品牌打造</h3>
+                    <p class="feature-description">发布专业观点，参与行业讨论，建立你的职业影响力，成为行业KOL，获得更多机会。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💬</div>
+                    <h3 class="feature-title">职言匿名社区</h3>
+                    <p class="feature-description">匿名讨论职场话题，了解真实行业动态，获取公司内部信息，做出正确的职业决策。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">职业成长路径</h3>
+                    <p class="feature-description">脉课堂、行业报告、职场技能，全方位助力你的职业发展和晋升，实现薪资和职位的双提升。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用预览 -->
+    <section class="app-preview" id="preview">
+        <h2 class="section-title" style="color: white;">简洁高效的用户体验</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">专为25-35岁职场精英设计的专业工具</p>
+        <div class="phone-mockup">
+            <div class="phone-screen">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 2px solid #eee; padding-bottom: 1rem;">
+                    <div style="font-weight: 900; color: var(--primary); font-size: 1.2rem;">脉脉</div>
+                    <div style="color: var(--gray);">🔔<span style="background: var(--accent); color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.7rem;">5</span></div>
+                </div>
+                
+                <div style="background: var(--light-gray); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--accent);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <div style="width: 40px; height: 40px; background: var(--gradient-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">李</div>
+                        <div>
+                            <div style="font-weight: 800; color: var(--primary);">李明</div>
+                            <div style="font-size: 0.8rem; color: var(--gray);">产品经理 @ 字节跳动</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.9rem; color: var(--gray); line-height: 1.4;">
+                        分享了关于产品经理职业发展的见解，获得了128个赞同...
+                    </div>
+                </div>
+
+                <div style="background: var(--light-gray); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <div style="width: 40px; height: 40px; background: var(--gradient-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold;">王</div>
+                        <div>
+                            <div style="font-weight: 800; color: var(--primary);">王芳</div>
+                            <div style="font-size: 0.8rem; color: var(--gray);">HRD @ 腾讯</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.9rem; color: var(--gray); line-height: 1.4;">
+                        发布了高级产品经理职位，薪资40-60K...
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <div style="flex: 1; padding: 0.8rem; text-align: center; background: var(--accent); color: white; border-radius: 8px; font-weight: 800; font-size: 0.9rem;">动态</div>
+                    <div style="flex: 1; padding: 0.8rem; text-align: center; background: var(--light-gray); border-radius: 8px; font-weight: 800; font-size: 0.9rem;">人脉</div>
+                    <div style="flex: 1; padding: 0.8rem; text-align: center; background: var(--light-gray); border-radius: 8px; font-weight: 800; font-size: 0.9rem;">职位</div>
+                    <div style="flex: 1; padding: 0.8rem; text-align: center; background: var(--light-gray); border-radius: 8px; font-weight: 800; font-size: 0.9rem;">消息</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社交证明 -->
+    <section class="social-proof" id="testimonials">
+        <h2 class="section-title">精英企业都在用脉脉</h2>
+        <div class="company-logos">
+            <div class="company-logo">腾讯</div>
+            <div class="company-logo">阿里巴巴</div>
+            <div class="company-logo">字节跳动</div>
+            <div class="company-logo">百度</div>
+            <div class="company-logo">京东</div>
+            <div class="company-logo">美团</div>
+            <div class="company-logo">滴滴</div>
+            <div class="company-logo">网易</div>
+            <div class="company-logo">华为</div>
+            <div class="company-logo">小米</div>
+        </div>
+    </section>
+
+    <!-- 底部 CTA -->
+    <section class="bottom-cta">
+        <h2>立即加入1.2亿职场精英</h2>
+        <p>下载脉脉APP，成就你的职业梦想</p>
+        <div class="cta-buttons">
+            <a href="#download" class="cta-primary" style="background: white; color: var(--accent); border-color: white;">
+                📱 扫码下载APP
+            </a>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>产品服务</h3>
+                    <a href="#">功能介绍</a>
+                    <a href="#">企业服务</a>
+                    <a href="#">API接口</a>
+                    <a href="#">帮助中心</a>
+                </div>
+                <div class="footer-section">
+                    <h3>关于公司</h3>
+                    <a href="#">关于我们</a>
+                    <a href="#">加入我们</a>
+                    <a href="#">联系方式</a>
+                    <a href="#">媒体报道</a>
+                </div>
+                <div class="footer-section">
+                    <h3>法律信息</h3>
+                    <a href="#">用户协议</a>
+                    <a href="#">隐私政策</a>
+                    <a href="#">投诉指引</a>
+                    <a href="#">版权声明</a>
+                </div>
+                <div class="footer-section">
+                    <h3>关注我们</h3>
+                    <a href="#">官方微信</a>
+                    <a href="#">新浪微博</a>
+                    <a href="#">知乎专栏</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 脉脉 | 北京淘友天下科技发展有限公司 | 京ICP备12005786号-1</p>
+                <p>京公网安备11010802020015号 | 违法不良信息举报：400 065 0808</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 数字计数动画 - 更有力量感
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+
+                // 更强的数字格式化
+                if (target >= 100000000) {
+                    element.textContent = (current / 100000000).toFixed(1) + '亿';
+                } else if (target >= 10000) {
+                    element.textContent = Math.floor(current / 10000) + '万';
+                } else if (target >= 1000) {
+                    element.textContent = Math.floor(current).toLocaleString();
+                } else if (target < 10) {
+                    element.textContent = current.toFixed(1);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // 页面加载后启动动画
+        window.addEventListener('load', function() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach((counter, index) => {
+                setTimeout(() => {
+                    const target = parseInt(counter.dataset.target);
+                    animateCounter(counter, target);
+                }, index * 200); // 错开动画时间
+            });
+        });
+
+        // 滚动显示动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 导航栏滚动效果
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(26, 26, 46, 0.98)';
+                navbar.style.boxShadow = 'var(--shadow-lg)';
+            } else {
+                navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+                navbar.style.boxShadow = 'var(--shadow-md)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // 响应式移动菜单
+        if (window.innerWidth <= 768) {
+            const navbar = document.querySelector('.navbar');
+            const navLinks = document.querySelector('.nav-links');
+            const navContainer = document.querySelector('.nav-container');
+            
+            // 创建菜单按钮
+            const menuButton = document.createElement('button');
+            menuButton.innerHTML = '☰';
+            menuButton.style.cssText = `
+                background: var(--accent);
+                border: none;
+                font-size: 1.8rem;
+                cursor: pointer;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+                font-weight: bold;
+            `;
+            
+            menuButton.addEventListener('click', function() {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.right = '0';
+                    navLinks.style.background = 'var(--primary)';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.padding = '1rem';
+                    navLinks.style.boxShadow = 'var(--shadow-xl)';
+                    navLinks.style.borderTop = '2px solid var(--accent)';
+                }
+            });
+
+            navContainer.insertBefore(menuButton, navLinks);
+        }
+
+        // 二维码悬停效果
+        document.querySelectorAll('.qrcode').forEach(qrcode => {
+            qrcode.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.08) rotate(2deg)';
+            });
+            
+            qrcode.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // 功能卡片悬停效果
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-12px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

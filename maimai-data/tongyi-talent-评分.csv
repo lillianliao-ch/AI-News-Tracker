@@ -1,0 +1,41 @@
+﻿姓名,职位,公司,状态,总工作经验,学历,技术领域,技术专长,技术匹配分,技术关键词,公司背景分,匹配公司,年限评分,年限标签,学历评分,学历标签,总分,优先级,标记
+达海·彭,腾讯,https://www.linkedin.com/in/dahai-peng-aa10a12a9/,3,3.5年,硕士,大模型/LLM研发,人工智能,40,LLM,25,阿里,20,3.5年(黄金期),14,名校硕士,99,P1-优先联系,⭐
+Tianbao Xie,Research Intern,Qwen,偏研究型高潜力候选人，适合AI Agent/多模态研究岗,1.1年,博士,人工智能,NLP/多模态/Agent,40,大模型,25,Qwen,10,1.1年(潜力股),15,名校博士,90,P1-优先联系,⭐
+Yuntao Du,PhD student | Privacy and Machine Learning,Purdue University,中高,在读,博士,AI/机器学习,LLM安全与隐私/对抗与防御/会员推断,40,LLM,25,Qwen,10,未知,15,名校博士,90,P1-优先联系,⭐
+Yang Su,Senior Algorithm Engineer,Qwen,强烈建议重点跟进,1.3年,硕士,人工智能,大语言模型/Agent Systems/代码执行,40,LLM,25,Qwen,10,1.3年(潜力股),14,名校硕士,89,P1-优先联系,⭐
+Junyang (Justin) Lin,Research Scientist（Tech Lead of Qwen）,Qwen,强烈建议重点跟进（若有合适级别/权限/影响力岗位）,2.0年,硕士,AI/LLM,大语言模型+多模态预训练（含MoE/视觉语言）,40,LLM,25,Qwen,10,2.0年(潜力股),14,名校硕士,89,P1-优先联系,⭐
+Chujie Zheng,Researcher,Qwen,一线大模型研究型人才，适合前沿LLM研究岗位,1.25年,博士,AI,Large Language Models / LLM Research,40,LLM,25,Qwen,10,1.25年(潜力股),13,博士,88,P1-优先联系,⭐
+Ting-En Lin,Research Scientist,Alibaba Group,8,未知,清华大学,人工智能,NLP/对话系统/大语言模型/多智能体,40,LLM,25,通义,10,未知,12,名校本科,87,P1-优先联系,⭐
+Zihan Qiu,Research Engineer,Qwen,典型培养型大模型研究工程师,1.5年,本科,人工智能,大语言模型（LLM）,40,LLM,25,Qwen,10,1.5年(潜力股),12,名校本科,87,P1-优先联系,⭐
+Yucheng Zhao,Algorithm Expert,Alibaba Group,当前在阿里任职时间较短,未知,上海交通大学,AI/机器学习,多模态模型/大语言模型,40,LLM,25,阿里,10,未知,12,名校本科,87,P1-优先联系,⭐
+Shaohang Wei,Research Intern,Tongyi Lab,顶级院校博士背景+前沿研究成果,未知,北京大学,人工智能/大模型,LLM后训练/多模态/时序推理,40,LLM,25,阿里,10,未知,12,名校本科,87,P1-优先联系,⭐
+Weiyao Luo,大模型算法工程师,Tongyi Lab,,未知,北京大学,大模型/多模态,Posttrain/Agent RL/Memory,40,大模型,25,通义,10,未知,12,名校本科,87,P1-优先联系,⭐
+Shihang Wang,Senior NLP Algorithm Engineer,Qwen,强烈推荐重点跟进,1.0年,硕士,NLP,大模型后训练/SFT/RL/RAG/多模态,40,LLM,25,Qwen,10,1.0年(潜力股),10,硕士,85,P1-优先联系,⭐
+Fei Huang,Vice President of Alibaba Cloud,Alibaba Group,AI Platform,29.0,Ph.D.,AI/NLP/LLM技术与平台负责人,人工智能,40,LLM,25,Qwen,5,29.0年(偏管理),12,名校本科,82,P1-优先联系,⭐
+Zhiyuan Lu,LLM Research Intern,Moonshot AI,在大模型与Agent方向有连续研究实习背景并来自名校,未知,Information Engineering,人工智能/大模型,LLM/Agentic Reinforcement Learning/Agent Memory,40,LLM,25,Qwen,10,未知,6,本科,81,P1-优先联系,⭐
+Chen Li,Architect and Tech Lead,字节跳动,Semantic Search,未知,华为,人工智能,AI Agents,40,Agent,25,百度,10,未知,6,本科,81,P1-优先联系,⭐
+Zuan Zhou,Senior Staff Engineer,Alibaba Group,大模型平台与云端AI系统经验极深具备规模化落地能力,未知,China University of Geosciences,AI Infra / 大模型,Model-as-a-Service / 分布式系统 / 推理平台,40,大模型,25,阿里,10,未知,6,本科,81,P1-优先联系,⭐
+Yunzhe Li,Student Researcher,Google DeepMind,Multilingual Benchmark,未知,否,学术型研究+产业研究,机器学习/AI,40,LLM,25,Google,10,未知,6,本科,81,P1-优先联系,⭐
+陈彦熹,Engineer and Researcher,阿里巴巴（Tongyi Lab）,高质量研究型候选人，适合大厂或研究导向团队,未知,普林斯顿大学,人工智能,机器学习/优化/大模型算法,40,LLM,25,阿里,10,未知,6,本科,81,P1-优先联系,⭐
+Xinmiao Yu,Research Internship,Qwen,Agentic RL,未知,,Artificial Intelligence,Large Language Models,40,LLM,25,Qwen,10,未知,6,本科,81,P1-优先联系,⭐
+Binyuan Hui,Scientific Researcher,Qwen,可作为头部大模型团队定向挖掘人选，建议先确认是否兼任/转岗关系与动机,2.0年,未提供,人工智能,大语言模型;多模态;推理;Agent;Text-to-SQL,40,LLM,25,Qwen,10,2.0年(潜力股),6,本科,81,P1-优先联系,⭐
+Tianqi Z.,AGI Legal Counsel,阿里巴巴集团,3,未知,Jilin University,法律与合规,数据隐私 合规 AGI,40,LLM,25,阿里,10,未知,6,本科,81,P1-优先联系,⭐
+,DAMO Academy,https://www.linkedin.com/in/hangjie-yuan-%E8%A2%81%E6%9D%AD%E6%9D%B0-21a094158/,7,6.25年,PhD,生成式AI/多模态研究,多模态/计算机视觉,40,大模型,5,-,20,6.25年(黄金期),12,名校本科,77,P2-常规跟进,📋
+Robin Luo Bin,Algorithm Principal of AI-Cartoon & Poster Shenzhen Guangdong,Tongyi Lab & Damo Academy Alibaba Group,多模态算法负责人 生成式AI算法负责人 视觉算法专家,未知,香港大学,人工智能,计算机视觉 多模态理解 多模态生成 LLM驱动生成,40,LLM,12,IBM,10,未知,12,名校本科,74,P2-常规跟进,📋
+Zhengyang Tang,Research Intern,Qwen,适合长期跟进的研究型人才,1.25年,本科,人工智能,机器学习/自然语言处理,30,NLP,25,Qwen,10,1.25年(潜力股),6,本科,71,P2-常规跟进,📋
+Qiushi Yang,Research Scientist,Alibaba Cloud,Senior IC,1.25年,,AI/机器学习,Video Generation,40,大模型,5,-,10,1.25年(潜力股),12,名校本科,67,P2-常规跟进,📋
+Jianxiao Yang,MLE (LLM pretraining),Meituan,,1年,同济大学,人工智能,LLM预训练 数据工程 推理加速,40,LLM,5,-,10,1.0年(潜力股),12,名校本科,67,P2-常规跟进,📋
+Yuntao Du,PhD student,Purdue University,长期跟踪型,未知,,AI/机器学习,隐私与安全/LLM安全,40,LLM,5,-,10,未知,12,名校本科,67,P2-常规跟进,📋
+Hanzhang Zhou,Researcher,Tongyi Lab,适合大厂或研究导向团队,未知,Nanyang Technological University Singapore,人工智能,Multimodal Agent/LLMs,40,LLM,5,-,10,未知,6,本科,61,P2-常规跟进,📋
+Litu Ou,PhD student，NLP,The University of Edinburgh,博士/高级研究员,1年,The University of Edinburgh,人工智能,自然语言处理/大语言模型/Agent,40,LLM,5,-,10,1.0年(潜力股),6,本科,61,P2-常规跟进,📋
+Rongwu Xu,Research Assistant,University of Washington,,未知,Tsinghua University,人工智能,LLM对齐·强化学习·NLP·AI Safety,40,LLM,5,-,10,未知,6,本科,61,P2-常规跟进,📋
+Glory Rongyu Chen,Research Intern,Microsoft,适合长期跟踪的潜力型研究候选人,未知,新加坡国立大学,人工智能,计算机视觉/机器学习/生成模型/3D感知,20,机器学习,25,通义,10,未知,6,本科,61,P2-常规跟进,📋
+杨翔,Senior Algorithm Engineer,Alibaba Group,,未知,丹麦奥尔堡大学,人工智能,语音增强｜语音生成｜扩散模型｜语义建模,20,算法,25,通义,10,未知,6,本科,61,P2-常规跟进,📋
+Qilong Wu,AI Algorithm Engineer,Tongyi Lab,学术与工程经验并行但工作年限较短,未知,National University of Singapore,人工智能/机器学习,多模态生成模型/扩散模型/LLM/RL,40,LLM,5,-,10,未知,6,本科,61,P2-常规跟进,📋
+Rongwu Xu,Research Assistant,University of Washington,主要经历集中在学术与研究机构，产业落地经验相对有限,未知,,人工智能,LLM对齐/RL/AI Safety/多模态,40,LLM,5,-,10,未知,6,本科,61,P2-常规跟进,📋
+Kyle Lin,Head of Internationl AI Product,INF AI,可重点跟进的AI产品负责人,未知,元智大学,人工智能,大模型/生成式AI/AI产品体验/UX,40,大模型,5,-,10,未知,6,本科,61,P2-常规跟进,📋
+Heng Lu,Principal Researcher,Alibaba Group,Long-term AI research experience across Alibaba and Tencent with strong speech synthesis background,6年,,Artificial Intelligence,Speech Synthesis,20,AI,5,-,20,6.0年(黄金期),6,本科,51,P3-入库观察,📦
+Chen Shuangle,AI Product Manager,Tongyi Lab,AI解决方案,未知,Co-Founder / Product Director；AI产品从0到1,AI产品与教育科技,AI / 人工智能,20,AI,5,-,10,未知,12,名校本科,47,P3-入库观察,📦
+Fan Yang,Tongyi Lab Research Intern,Alibaba Cloud,在读博士尚未毕业,未知,南京大学,AI/机器学习,Computer Vision,20,机器学习,5,-,10,未知,12,名校本科,47,P3-入库观察,📦
+Merolay M.,Staffing Generalist,阿里巴巴,,未知,,,,0,-,25,字节,10,未知,6,本科,41,P3-入库观察,📦
+Tongyi LIU,PhD Student and Graduate Research Assistant,Georgia State University,非产业型工程经验偏少,未知,Financial Economics,United States,学术研究/信息系统,0,-,5,-,10,未知,6,本科,21,P3-入库观察,📦

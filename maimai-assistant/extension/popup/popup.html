@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maimai Assistant</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="popup-container">
+        <header class="popup-header">
+            <h1>🎯 Maimai Assistant</h1>
+            <p class="subtitle">脉脉招聘助手</p>
+        </header>
+
+        <main class="popup-content">
+            <section class="status-section">
+                <div class="status-item">
+                    <span class="label">状态</span>
+                    <span class="value" id="statusText">就绪</span>
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number" id="todayCount">0</div>
+                    <div class="stat-label">今日提取</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCount">0</div>
+                    <div class="stat-label">总计</div>
+                </div>
+            </section>
+
+            <section class="actions-section">
+                <button class="action-btn primary" id="openMaimaiBtn">
+                    打开脉脉招聘
+                </button>
+                <button class="action-btn" id="exportBtn">
+                    导出数据
+                </button>
+                <button class="action-btn danger" id="clearBtn">
+                    清除数据
+                </button>
+            </section>
+
+            <section class="help-section">
+                <h3>使用说明</h3>
+                <ol>
+                    <li>打开脉脉招聘页面</li>
+                    <li>页面左下角会出现助手面板</li>
+                    <li>勾选候选人后点击操作按钮</li>
+                </ol>
+            </section>
+        </main>
+
+        <footer class="popup-footer">
+            <span>v1.0.0</span>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

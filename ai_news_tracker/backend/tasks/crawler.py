@@ -99,13 +99,20 @@ async def save_news_items(items: list, source_name: str) -> int:
                     logger.info(f"跳过非AI资讯: {item['title'][:50]}...")
                     continue
 
-                # AI 分类（如果还没分类）
-                if not item.get('category'):
+                # ✨ AI智能分类（新增）
+                try:
                     classify_result = await ai_service.classify_news(item)
-                    item['category'] = classify_result.get('category', 'view')
-                    item['tags'] = ','.join(classify_result.get('tags', []))
-                    item['sentiment'] = classify_result.get('sentiment', 'neutral')
-                    item['importance'] = classify_result.get('confidence', 3)
+                    item['ai_category'] = classify_result.get('category', 'view')
+                    # 将confidence转换为1-5分的重要性评分
+                    confidence = classify_result.get('confidence', 0.5)
+                    item['ai_importance'] = int(confidence * 5) if confidence > 0 else 3
+                    item['ai_classified_at'] = datetime.now()
+                    logger.info(f"🤖 AI分类: {item['title'][:30]}... → {item['ai_category']} ({item['ai_importance']}分)")
+                except Exception as e:
+                    logger.warning(f"⚠️  AI分类失败: {e}，使用默认值")
+                    item['ai_category'] = 'view'
+                    item['ai_importance'] = 3
+                    item['ai_classified_at'] = datetime.now()
 
                 # 创建新记录
                 news = News(
@@ -117,10 +124,10 @@ async def save_news_items(items: list, source_name: str) -> int:
                     source=source_name,
                     source_url=item.get('source_url', ''),
                     icon=item.get('icon', ''),
-                    category=item.get('category', 'view'),
-                    tags=item.get('tags', ''),
-                    sentiment=item.get('sentiment', 'neutral'),
-                    importance=item.get('importance', 3),
+                    category=item.get('category', 'view'),  # 媒体分类（保留）
+                    ai_category=item.get('ai_category', 'view'),  # ✨ AI内容分类（新增）
+                    ai_importance=item.get('ai_importance', 3),  # ✨ 重要性（新增）
+                    ai_classified_at=item.get('ai_classified_at'),  # ✨ 分类时间（新增）
                     publish_time=item.get('publish_time', datetime.now()),
                     crawl_time=item.get('crawl_time', datetime.now()),
                     language=item.get('language', 'zh'),
@@ -130,7 +137,7 @@ async def save_news_items(items: list, source_name: str) -> int:
                 db.add(news)
                 saved_count += 1
 
-                logger.info(f"✅ 保存成功: {item['title'][:30]}... ({item['category']})")
+                logger.info(f"✅ 保存成功: {item['title'][:30]}... [媒体:{item.get('category')}] [AI:{item.get('ai_category')}]")
 
             except Exception as e:
                 logger.error(f"保存资讯失败: {e}")

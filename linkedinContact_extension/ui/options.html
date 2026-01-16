@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn-Atlas Analyzer - Settings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .form-description {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .template-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .template-option {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .template-option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .template-option.active {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .template-option-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .template-option-desc {
+            font-size: 12px;
+            color: #666;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .variables-info {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .variables-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .variable-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .variable-tag {
+            background: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: 'Monaco', monospace;
+            color: #667eea;
+            border: 1px solid #667eea;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚙️ Settings</h1>
+            <p>Configure your LinkedIn-Atlas Candidate Analyzer</p>
+        </div>
+
+        <div class="content">
+            <div id="alertContainer"></div>
+
+            <!-- Prompt Template Section -->
+            <div class="section">
+                <h2 class="section-title">Prompt Template</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Select Template Type</label>
+                    <div class="form-description">Choose a pre-built template or create your own custom prompt</div>
+
+                    <div class="template-selector">
+                        <div class="template-option active" data-template="default">
+                            <div class="template-option-title">Default</div>
+                            <div class="template-option-desc">General candidate analysis</div>
+                        </div>
+                        <div class="template-option" data-template="technical">
+                            <div class="template-option-title">Technical Role</div>
+                            <div class="template-option-desc">For engineering positions</div>
+                        </div>
+                        <div class="template-option" data-template="custom">
+                            <div class="template-option-title">Custom</div>
+                            <div class="template-option-desc">Your own template</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="promptTemplate">Prompt Template</label>
+                    <div class="form-description">Use variables like {name}, {title}, {company} to insert candidate data
+                    </div>
+                    <textarea id="promptTemplate" placeholder="Enter your prompt template..."></textarea>
+
+                    <div class="variables-info">
+                        <div class="variables-title">Available Variables:</div>
+                        <div class="variable-list">
+                            <span class="variable-tag">{name}</span>
+                            <span class="variable-tag">{title}</span>
+                            <span class="variable-tag">{company}</span>
+                            <span class="variable-tag">{location}</span>
+                            <span class="variable-tag">{summary}</span>
+                            <span class="variable-tag">{profileUrl}</span>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="saveTemplateBtn">Save Template</button>
+                        <button class="btn btn-secondary" id="previewTemplateBtn">Preview</button>
+                        <button class="btn btn-secondary" id="resetTemplateBtn">Reset to Default</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Management Section -->
+            <div class="section">
+                <h2 class="section-title">Data Management</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Export & Backup</label>
+                    <div class="form-description">Download all your candidate data</div>
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="exportAllBtn">Export All Data (JSON)</button>
+                        <button class="btn btn-secondary" id="exportTodayBtn">Export Today's Excel</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Import Data</label>
+                    <div class="form-description">Restore data from a previous export</div>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                    <button class="btn btn-secondary" id="importBtn">Import Data</button>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Clear Data</label>
+                    <div class="form-description">⚠️ This will permanently delete all candidate data</div>
+                    <button class="btn btn-danger" id="clearAllBtn">Clear All Data</button>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="section">
+                <h2 class="section-title">About</h2>
+                <div class="alert alert-info">
+                    <strong>LinkedIn-Atlas Candidate Analyzer v2.0.0</strong><br>
+                    Analyze LinkedIn candidates using ChatGPT Atlas AI with automated data extraction and export.<br>
+                    <br>
+                    <strong>How it works:</strong><br>
+                    1. Visit a LinkedIn profile page<br>
+                    2. Click the "Analyze with AI" button<br>
+                    3. The extension sends the profile to ChatGPT Atlas<br>
+                    4. AI analysis is automatically saved to database and Excel
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+
+</html>

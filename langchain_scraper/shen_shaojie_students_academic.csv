@@ -1,0 +1,22 @@
+name_cn,name_en,student_type,graduation_year,current_position,current_company,location,email,personal_website,github,google_scholar_citations,github_stars,github_contributions,top_paper,top_paper_citations,academic_score,data_source
+秦通,Tong Qin,PhD,2019,Associate Professor,SJTU,Shanghai,qintong@sjtu.edu.cn,https://qintong.xyz/,https://github.com/qintonguav,5192,2000+,High,VINS-Mono (TRO 2018),5192,95,alumni_page+scholar
+高飞,Fei Gao,PhD,2019,Associate Professor,Zhejiang University,Hangzhou,fgaoaa@zju.edu.cn,http://ustfei.com,https://github.com/USTfgaoaa,8306,High,High,100+ papers (Science Robotics/TRO),N/A,98,alumni_page+scholar
+周博宇,Boyu Zhou,PhD,2022,Assistant Professor,SUSTech,Shenzhen,uv.boyuzhou@gmail.com,https://boyuzhou.net/,https://github.com/BoyuZhou,3474,500+,Medium,EGO-Planner,522,88,alumni_page+scholar
+栗培梁,Peiliang Li,PhD,2020,Tech Leader,DJI Automotive,Shenzhen,peiliang.li@dji.com,https://peiliangli.github.io/,https://github.com/PeiliangLi,736+,200+,Medium,Stereo R-CNN (CVPR 2019),736,82,alumni_page+github
+丁文超,Wenchao Ding,PhD,2020,Tenure-Track Associate Professor,Fudan University,Shanghai,,https://wenchaoding.github.io/,https://github.com/WenchaoDing,1645,,Medium,Motion Planning,N/A,80,alumni_page+scholar
+徐浩,Hao Xu,PhD,2022,Associate Professor,Beihang University,Beijing,xuhao3e8@buaa.edu.cn,https://xuhao1.me/,,High,,High,D2-SLAM/RACER (TRO),N/A,85,alumni_page+scholar
+周易,Yi Zhou,Postdoc,2021,Professor,Hunan University,Changsha,eeyzhou@hnu.edu.cn,https://sites.google.com/view/zhouyi-joey/home,,Medium,,Medium,VO/SLAM,N/A,75,alumni_page+web
+史桀绮,Jieqi Shi,PhD,2024,Assistant Professor,Nanjing University (Suzhou),Suzhou,jayceesjq@gmail.com,https://jayceeshi.github.io/,,,,,Robot Perception,N/A,70,web_search
+李昊佳,Haojia Li,PhD,在读,PhD Student,HKUST,Hong Kong,hlied@connect.ust.hk,https://li-hj.com/,https://github.com/li-haojia,,362+,55,Science Robotics 2024,N/A,85,github+web
+杨振飞,YANG Zhenfei,校友,校友,ex-Algorithm Engineer,ex-DJI,Shenzhen,yangzhenfei0@gmail.com,https://yangzhenfei.com,https://github.com/dvorak0,,214,502,VI-MEAN,214,78,github
+乔志健,Zhijian Qiao,PhD,在读,PhD Student,HKUST,Hong Kong,zqiaoac@connect.ust.hk,https://qiaozhijian.github.io/,https://github.com/qiaozhijian,,,,SLAM,N/A,70,lab_homepage
+蒋辰星,Chenxing Jiang,PhD,在读,PhD Student,HKUST,Hong Kong,cjiangan@connect.ust.hk,https://jiang-cx.github.io/,https://github.com/JIANG-CX,,,,Implicit Mapping,N/A,70,lab_homepage
+冯宸,Chen Feng,PhD,在读,PhD Student,HKUST,Hong Kong,,http://chen-albert-feng.github.io/AlbertFeng.github.io/,https://github.com/chen-albert-feng,,,,Motion Prediction,N/A,68,lab_homepage
+张鲁,Lu Zhang,PhD,2024,Algorithm Engineer,ZYT,China,lzhangbz@connect.ust.hk,https://masterizumi.github.io/,https://github.com/MasterIzumi,,,,Autonomous Driving,N/A,72,alumni_page
+王凯旋,Kaixuan Wang,PhD,2022,Algorithm Engineer,DJI,Shenzhen,wkx1993@gmail.com,https://wang-kx.github.io/,https://github.com/WANG-KX,,,,Dense Mapping,N/A,72,alumni_page
+高文良,Wenliang Gao,MPhil,2018,Algorithm Engineer,DJI,Shenzhen,wenliang.gao@connect.ust.hk,https://gaowenliang.github.io/,https://github.com/gaowenliang,,,,Fisheye SLAM,N/A,70,alumni_page
+曹绍祖,Shaozu Cao,PhD,2022,Algorithm Engineer,Skyland Innovation,China,shaozu.cao@gmail.com,https://github.com/shaozu/,https://github.com/shaozu,,,,Sensor Fusion,N/A,70,alumni_page
+凌永根,Yonggen Ling,PhD,校友,Robotics Scientist,Tencent Robotics X,Shenzhen,ylingaa@connect.ust.hk,https://ygling2008.github.io/,https://github.com/ygling2008,,,,Visual-Inertial SLAM,N/A,75,github
+刘楚豪,Chuhao Liu,PhD,2025,Vision SLAM Engineer,Mammotion Technology,China,,https://glennliu.github.io/,https://github.com/glennliu,,,,Semantic SLAM,N/A,68,alumni_page
+洪晟,Hong Sheng,PhD,2025,TBC,TBC,TBC,,,https://github.com/sheng00125,,,,Gaussian Splatting,N/A,70,github_org
+潘杰,Jie Pan,MPhil,2019,CEO,Skyland Innovation,Shenzhen,,,https://github.com/pjrambo,,,,Aerial Inspection,N/A,72,alumni_page

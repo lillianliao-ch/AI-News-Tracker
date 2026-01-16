@@ -136,9 +136,9 @@ class MobileApiClient {
     options: RequestInit = {}
   ): Promise<ApiResponse<T>> {
     const url = `${this.baseUrl}${endpoint}`;
-    const headers: HeadersInit = {
+    const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...(options.headers as Record<string, string>),
     };
 
     // 添加认证token
@@ -337,7 +337,7 @@ class MobileApiClient {
   /**
    * 获取待审核信息列表（管理员）
    */
-  async getPendingPosts(): Promise<ApiResponse<HunterPostDetail[]>> {
+  async getPendingPosts(): Promise<ApiResponse<HunterPost[]>> {
     return this.getHunterPosts({ status: 'pending' });
   }
 

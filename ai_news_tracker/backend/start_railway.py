@@ -5,12 +5,21 @@ Railway启动脚本
 """
 import sys
 import os
+from pathlib import Path
 
 # 强制刷新输出，确保日志立即显示
 sys.stdout.reconfigure(line_buffering=True)
 
 # 添加当前目录到Python路径
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+# 创建必要的目录（确保 SQLite 数据库可以被创建）
+data_dir = Path("./data")
+cache_dir = Path("./data/cache")
+data_dir.mkdir(parents=True, exist_ok=True)
+cache_dir.mkdir(parents=True, exist_ok=True)
+print(f"📁 数据目录已确保存在: {data_dir.absolute()}", flush=True)
+
 
 if __name__ == "__main__":
     # 调试：打印所有环境变量

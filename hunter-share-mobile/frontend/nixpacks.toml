@@ -1,0 +1,16 @@
+# Nixpacks配置文件 - 兼容性修复版
+[build]
+cmd = "npm install && npm run build"
+
+[deploy]
+cmd = "npm start"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+
+[phases.install]
+nixPkgs = ["nodejs-20_x"]
+cmd = "npm install"
+
+[phases.build]
+nixPkgs = ["nodejs-20_x"]
+cmd = "npm run build"

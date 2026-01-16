@@ -1,0 +1,2 @@
+import{aa as u,ak as r,c as s}from"./index-C7NXy36f.js";const e="_aiButtonPrimary_1dbtc_2",B="_aiButtonLinkDefault_1dbtc_14",a={aiButtonPrimary:e,aiButtonLinkDefault:B},m=({type:t,className:n,children:o,...i})=>u.jsx(r,{className:s(a.aiButton,{[a.aiButtonLinkDefault]:t==="default"&&i.href},{[a.aiButtonPrimary]:t==="primary"},n),type:t,...i,children:o});export{m as A};
+//# sourceMappingURL=index-iIAHMU7Q.js.map

@@ -44,8 +44,15 @@ class News(Base):
     publish_time = Column(DateTime)
     crawl_time = Column(DateTime, default=datetime.now)
 
-    # AI 分析
-    category = Column(String(50))  # product/model/investment/view
+    # 分类信息
+    category = Column(String(50))  # 媒体分类：AI新闻、AI技术等（数据源配置）
+
+    # ✨ AI智能分析字段
+    ai_category = Column(String(50), comment='AI内容分类: product/model/investment/view/research/application')
+    ai_importance = Column(Integer, default=3, comment='AI分析的重要性: 1-5分')
+    ai_classified_at = Column(DateTime, comment='AI分类时间')
+
+    # 保留原有字段（兼容）
     tags = Column(String(500))  # JSON: ["GPT-5", "OpenAI"]
     sentiment = Column(String(20))  # positive/neutral/negative
     importance = Column(Integer, default=3)  # 1-5

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 400px;
+      font-family: sans-serif;
+    }
+    #result {
+      white-space: pre-wrap;
+      font-family: monospace;
+      background-color: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+      margin-top: 10px;
+      min-height: 100px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #0077b5;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005582;
+    }
+  </style>
+</head>
+<body>
+  <button id="fetchProfile">Fetch Profile</button>
+  <div id="status"></div>
+  <pre id="result"></pre>
+  <script src="popup.js"></script>
+</body>
+</html>

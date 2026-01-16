@@ -79,10 +79,14 @@ class NewsItem(BaseModel):
     content: str
     source: str
     source_url: str
-    category: str
+    category: str  # 媒体分类
+    ai_category: Optional[str] = None  # ✨ 新增：AI内容分类
+    ai_importance: Optional[int] = None  # ✨ 新增：重要性评分
+    ai_classified_at: Optional[datetime] = None  # ✨ 新增：AI分类时间
     icon: str
     publish_time: datetime
     crawl_time: datetime
+    language: Optional[str] = None  # 语言
 
     class Config:
         from_attributes = True
@@ -142,8 +146,10 @@ async def root():
 @app.get("/api/news", response_model=List[NewsItem])
 async def get_news(
     category: Optional[str] = None,
+    ai_category: Optional[str] = None,  # ✨ 新增：AI内容分类筛选
+    min_importance: Optional[int] = None,  # ✨ 新增：最低重要性筛选
     source: Optional[str] = None,
-    language: Optional[str] = None,  # 新增：语言筛选
+    language: Optional[str] = None,  # 语言筛选
     limit: int = 50,
     offset: int = 0
 ):
@@ -151,9 +157,11 @@ async def get_news(
     获取资讯列表
 
     参数:
-    - category: 筛选分类
+    - category: 媒体分类筛选 (产品/模型/融资/观点)
+    - ai_category: AI内容分类筛选 (product/model/investment/view/research/application) - ✨ 新增
+    - min_importance: 最低重要性评分 (1-5) - ✨ 新增
     - source: 筛选来源
-    - language: 筛选语言 (zh/en) - 新增
+    - language: 筛选语言 (zh/en)
     - limit: 限制数量（默认50）
     - offset: 偏移量（分页用）
     """
@@ -161,7 +169,7 @@ async def get_news(
     try:
         query = db.query(News)
 
-        # 分类筛选（支持映射）
+        # 媒体分类筛选（支持映射）
         if category:
             if category in CATEGORY_MAP:
                 # 使用映射关系
@@ -175,6 +183,14 @@ async def get_news(
             else:
                 # 直接使用原始分类名（兼容性）
                 query = query.filter(News.category == category)
+
+        # ✨ AI内容分类筛选（新增）
+        if ai_category:
+            query = query.filter(News.ai_category == ai_category)
+
+        # ✨ 重要性筛选（新增）
+        if min_importance:
+            query = query.filter(News.ai_importance >= min_importance)
 
         # 其他筛选
         if source:
@@ -295,6 +311,19 @@ async def get_stats():
         # 添加"全部"
         category_stats["全部"] = total_news
 
+        # ✨ AI分类统计（新增）
+        ai_category_stats = {}
+        ai_categories = ['product', 'model', 'investment', 'view', 'research', 'application']
+        for cat in ai_categories:
+            count = db.query(News).filter(News.ai_category == cat).count()
+            ai_category_stats[cat] = count
+
+        # ✨ 重要性统计（新增）
+        importance_stats = {}
+        for level in range(1, 6):
+            count = db.query(News).filter(News.ai_importance == level).count()
+            importance_stats[f"level_{level}"] = count
+
         # 按来源统计
         source_stats = {}
         for source_id, config in SOURCES_CONFIG.items():
@@ -306,6 +335,8 @@ async def get_stats():
             "total_news": total_news,
             "today_news": today_news,
             "category_stats": category_stats,
+            "ai_category_stats": ai_category_stats,  # ✨ 新增
+            "importance_stats": importance_stats,  # ✨ 新增
             "source_stats": source_stats,
             "last_crawl": db.query(News).order_by(News.crawl_time.desc()).first().crawl_time if total_news > 0 else None
         }

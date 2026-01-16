@@ -1,0 +1,11 @@
+streamlit
+pandas
+sqlalchemy
+openai
+chromadb>=1.4.0
+python-dotenv
+openpyxl
+tiktoken
+plotly
+
+

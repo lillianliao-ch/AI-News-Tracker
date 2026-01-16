@@ -1,0 +1,62 @@
+[
+  {
+    "login": "ideal",
+    "name": "Shang Yuanchun",
+    "contributions": 1,
+    "email": "idealities@gmail.com",
+    "location": "Hangzhou, China",
+    "company": "Alibaba",
+    "blog": "https://ideal.github.io",
+    "twitter": "",
+    "linkedin": "",
+    "bio": "",
+    "github_url": "https://github.com/ideal",
+    "followers": 323,
+    "reason": "Location: Hangzhou, China; Company: Alibaba"
+  },
+  {
+    "login": "dowithless",
+    "name": "neo",
+    "contributions": 1,
+    "email": "neo.dowithless@gmail.com",
+    "location": "上海",
+    "company": "",
+    "blog": "",
+    "twitter": "neo_dowithless",
+    "linkedin": "",
+    "bio": "",
+    "github_url": "https://github.com/dowithless",
+    "followers": 16,
+    "reason": "Location: 上海"
+  },
+  {
+    "login": "xushun007",
+    "name": "xushun",
+    "contributions": 1,
+    "email": "xsshun@gmail.com",
+    "location": "nanjing, china",
+    "company": "",
+    "blog": "https://www.agent-io.com",
+    "twitter": "",
+    "linkedin": "",
+    "bio": "",
+    "github_url": "https://github.com/xushun007",
+    "followers": 15,
+    "reason": "Location: nanjing, china"
+  },
+  {
+    "login": "fchange",
+    "name": "方程",
+    "contributions": 1,
+    "email": "fchangenow@163.com",
+    "location": "Shenzhen, China",
+    "company": "OSCHINA",
+    "blog": "",
+    "twitter": "",
+    "linkedin": "",
+    "bio": "Good at JavaScript HTML/CSS Python Java C# PHP C++ TypeScript C Ruby Go Swift R Kotlin Scala Rust Da",
+    "github_url": "https://github.com/fchange",
+    "followers": 12,
+    "reason": "Location: Shenzhen, China; Name: 方程"
+  }
+]

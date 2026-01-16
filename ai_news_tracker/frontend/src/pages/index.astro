@@ -62,16 +62,32 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
     </div>
 
     <script is:inline>
+      // ✨ AI分类映射（将前端标签映射到AI分类）
+      const AI_CATEGORY_MAP = {
+        '全部': null,
+        '产品': 'product',
+        '模型': 'model',
+        '融资': 'investment',
+        '观点': 'view'
+      };
+
       // 加载统计信息并更新分类按钮
       async function loadStatsAndUpdateCategories() {
         try {
           const response = await fetch('http://localhost:8000/api/stats');
           const stats = await response.json();
 
-          // 更新分类按钮，显示数量
+          // ✨ 使用AI分类统计
           document.querySelectorAll('.category-btn').forEach(btn => {
             const category = btn.dataset.category;
-            const count = stats.category_stats[category] || 0;
+            const aiCategory = AI_CATEGORY_MAP[category];
+
+            let count;
+            if (category === '全部') {
+              count = stats.total_news || 0;
+            } else {
+              count = stats.ai_category_stats?.[aiCategory] || 0;
+            }
             btn.textContent = `${category} (${count})`;
           });
         } catch (error) {
@@ -91,10 +107,11 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
           document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
           e.target.classList.add('active');
 
-          // 加载对应分类的资讯
-          const url = category === '全部'
-            ? 'http://localhost:8000/api/news?limit=50'
-            : `http://localhost:8000/api/news?category=${encodeURIComponent(category)}&limit=50`;
+          // ✨ 使用AI分类筛选
+          const aiCategory = AI_CATEGORY_MAP[category];
+          const url = aiCategory
+            ? `http://localhost:8000/api/news?ai_category=${aiCategory}&limit=50`
+            : 'http://localhost:8000/api/news?limit=50';
 
           const response = await fetch(url);
           const news = await response.json();

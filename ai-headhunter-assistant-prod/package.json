@@ -1,0 +1,32 @@
+{
+  "name": "ai-headhunter-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI 自动筛选简历 + 自动打招呼系统",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "echo 'Monorepo 开发服务器（待配置）'",
+    "build": "echo 'Monorepo 构建（待配置）'",
+    "test": "echo 'Monorepo 测试（待配置）'",
+    "lint": "echo 'Monorepo 代码检查（待配置）'",
+    "clean": "echo 'Monorepo 清理（待配置）'"
+  },
+  "keywords": [
+    "AI",
+    "headhunter",
+    "resume",
+    "recruitment",
+    "automation"
+  ],
+  "author": "Lillian Liao",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.0.0"
+}
+

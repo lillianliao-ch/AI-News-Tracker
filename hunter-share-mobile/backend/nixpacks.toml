@@ -1,0 +1,16 @@
+# Nixpacks配置文件 - Backend服务
+[build]
+cmd = "npm install && npm run build && npm run db:generate"
+
+[deploy]
+cmd = "npm start"
+healthcheckPath = "/health"
+healthcheckTimeout = 100
+
+[phases.install]
+nixPkgs = ["nodejs-20_x"]
+cmd = "npm install"
+
+[phases.build]
+nixPkgs = ["nodejs-20_x"]
+cmd = "npm run build && npm run db:generate"

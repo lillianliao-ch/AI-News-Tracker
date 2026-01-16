@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "Maimai Assistant",
+    "version": "1.0.0",
+    "description": "脉脉招聘候选人信息提取助手 - 持久悬浮面板",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "downloads"
+    ],
+    "host_permissions": [
+        "https://maimai.cn/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://maimai.cn/ent/v41/recruit/*"
+            ],
+            "js": [
+                "shared/constants.js",
+                "shared/utils.js",
+                "content/extractor.js",
+                "content/panel.js",
+                "content/content.js"
+            ],
+            "css": [
+                "content/content.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "background": {
+        "service_worker": "background/background.js"
+    },
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_title": "Maimai Assistant"
+    }
+}

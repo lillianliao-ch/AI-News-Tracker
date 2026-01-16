@@ -24,6 +24,25 @@ function getCategoryName(category) {
   };
   return names[category] || '资讯';
 }
+
+// ✨ 生成重要性星级显示
+function getImportanceStars(importance) {
+  const level = importance || 3;
+  return '⭐'.repeat(level);
+}
+
+// ✨ 获取重要性等级文本
+function getImportanceLabel(importance) {
+  const level = importance || 3;
+  const labels = {
+    1: '一般',
+    2: '关注',
+    3: '重要',
+    4: '重要',
+    5: '必读'
+  };
+  return labels[level] || '重要';
+}
 ---
 
 <article class="news-card" data-news-id={news.news_id}>
@@ -33,8 +52,8 @@ function getCategoryName(category) {
       <span class="source-name">{news.source}</span>
       <span class="publish-time">{publishTime}</span>
     </div>
-    <span class={`category category-${news.category || 'view'}`}>
-      {getCategoryName(news.category)}
+    <span class={`category category-${news.ai_category || news.category || 'view'}`}>
+      {getCategoryName(news.ai_category || news.category)}
     </span>
   </div>
 
@@ -53,8 +72,11 @@ function getCategoryName(category) {
   <!-- 卡片底部 -->
   <div class="card-footer">
     <div class="meta">
-      {news.importance && news.importance >= 4 && (
-        <span class="hot-badge">🔥 热门</span>
+      <!-- ✨ 显示重要性评分 -->
+      {news.ai_importance && (
+        <span class={`importance-badge importance-${news.ai_importance}`} title={`重要性：${getImportanceLabel(news.ai_importance)}`}>
+          {getImportanceStars(news.ai_importance)}
+        </span>
       )}
     </div>
 
@@ -195,6 +217,45 @@ function getCategoryName(category) {
     border-radius: 4px;
     font-size: 12px;
     font-weight: 500;
+  }
+
+  /* ✨ 重要性评分样式 - 根据分数显示不同配色 */
+  .importance-badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+  }
+
+  /* 1-2分：灰色 - 一般/关注 */
+  .importance-1,
+  .importance-2 {
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    color: #757575;
+  }
+
+  /* 3分：蓝色 - 重要 */
+  .importance-3 {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    color: #1976d2;
+  }
+
+  /* 4分：橙色 - 很重要 */
+  .importance-4 {
+    background: #fff3e0;
+    border: 1px solid #ffb74d;
+    color: #f57c00;
+  }
+
+  /* 5分：红色 - 必读 */
+  .importance-5 {
+    background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+    border: 1px solid #ef5350;
+    color: #c62828;
+    font-weight: 600;
   }
 
   .generate-btn {

@@ -1,0 +1,82 @@
+{
+  "manifest_version": 3,
+  "name": "多猎 AI",
+  "version": "1.2.1",
+  "description": "",
+  "action": {
+    "default_icon": "icon-32.png"
+  },
+  "icons": {
+    "32": "icon-32.png",
+    "64": "icon-64.png",
+    "128": "icon-128.png"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "storage",
+    "sidePanel",
+    "tabs",
+    "scripting",
+    "cookies",
+    "declarativeNetRequest",
+    "webNavigation",
+    "alarms"
+  ],
+  "background": {
+    "service_worker": "background.iife.js",
+    "type": "module"
+  },
+  "options_page": "options/index.html",
+  "side_panel": {
+    "default_path": "side-panel/index.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "*.js",
+        "*.css",
+        "*.svg",
+        "icon-128.png",
+        "icon-32.png"
+      ],
+      "matches": [
+        "*://*/*"
+      ]
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rule.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.duolie.com/*"
+      ],
+      "js": [
+        "scripts/bridge.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://*.duolie.com/*"
+      ],
+      "js": [
+        "content/index.iife.js"
+      ],
+      "css": [
+        "content/index.css"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "minimum_chrome_version": "117"
+}

@@ -1,0 +1,87 @@
+{
+  "basic_info": {
+    "job_title": "职位名称：高级算法工程师（Agent方向）",
+    "department": "阿里巴巴-阿里妈妈",
+    "location": "杭州, 上海, 北京",
+    "employment_type": ""
+  },
+  "salary": {
+    "salary_range": "55-85K",
+    "salary_min": 55,
+    "salary_max": 85,
+    "salary_months": 13,
+    "annual_salary_min": 71.5,
+    "annual_salary_max": 110.5
+  },
+  "requirements": {
+    "min_years": 3,
+    "max_years": 0,
+    "education": "硕士",
+    "major": [
+      "计算机"
+    ]
+  },
+  "skills": {
+    "hard_skills": [
+      "TensorFlow",
+      "Python",
+      "PyTorch"
+    ],
+    "soft_skills": [
+      "团队"
+    ],
+    "domains": [
+      "推荐系统",
+      "CV"
+    ],
+    "certificates": [],
+    "languages": []
+  },
+  "job_content": {
+    "responsibilities": [
+      "负责Agent系统和大模型在广告场景的算法研发与落地",
+      "设计和优化多模态大模型在广告创意生成中的应用",
+      "参与LLM在广告推荐",
+      "用户理解等方向的探索",
+      "工程团队紧密合作，推动算法产品化"
+    ],
+    "requirements": [
+      "3年以上算法研发经验，有大模型相关经验优先",
+      "计算机相关专业硕士及以上学历",
+      "精通Python，熟悉TensorFlow或PyTorch",
+      "熟悉Transformer架构，有LLM微调经验",
+      "优秀的算法分析和问题解决能力"
+    ],
+    "preferences": [
+      "- 有顶级会议论文（NeurIPS/ICML/ICLR/CVPR等）",
+      "- 有Agent系统开发经验",
+      "- 熟悉广告推荐系统",
+      "- 有团队管理经验"
+    ]
+  },
+  "company_info": {
+    "name": "",
+    "size": "",
+    "industry": ""
+  },
+  "benefits": [
+    "五险一金",
+    "带薪年假",
+    "股票",
+    "期权",
+    "体检",
+    "弹性工作"
+  ],
+  "keywords": [
+    "算法",
+    "工程师",
+    "开发",
+    "设计",
+    "Python"
+  ],
+  "metadata": {
+    "extracted_at": "2026-01-12T07:09:11.491256",
+    "source_file": "/Users/lillianliao/Downloads/test_jd_sample.txt",
+    "file_type": ".txt"
+  }
+}

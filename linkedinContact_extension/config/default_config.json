@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "defaultTemplate": "default",
+  "atlasUrls": [
+    "https://chat.openai.com",
+    "https://chatgpt.com"
+  ],
+  "linkedinPattern": "https://*.linkedin.com/in/*",
+  "exportFormat": "xlsx",
+  "autoExport": true,
+  "exportOnAnalysis": true,
+  "maxRetries": 3,
+  "responseTimeout": 60000
+}

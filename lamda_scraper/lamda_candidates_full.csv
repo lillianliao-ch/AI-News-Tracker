@@ -1,0 +1,463 @@
+﻿姓名,英文名,类型,主页,研究方向,导师,博士毕业年份,博士学校,当前职位,入职时间,顶会顶刊,Email,LinkedIn,GitHub,Scholar,数据质量,采集时间
+姜伟,Wei Jiang,alumni,http://www.lamda.nju.edu.cn/jiangw/,s,Lijun Zhang,2025,,Nanjing University of Science and Technology,2025.10,ICML×4; NeurIPS×5; ICLR×1; AAAI×1; TPAMI×2,jiangw@lamda.nju.edu.cn,,,https://scholar.google.com/citations?hl=zh-CN&user=TxdsiyYAAAAJ&view_op=list_works,full,2026-01-05T16:26:38.118322
+杨嘉祺,Jia,alumni,http://www.lamda.nju.edu.cn/yangjq/,s in machine learning and data mining.,Masashi Sugiyama,,,present,2025.7,ICML×1; NeurIPS×6; ICLR×3; AAAI×11; KDD×4; WWW×1; TKDE×1,,,https://github.com/ThyrixYang,https://scholar.google.com/citations?hl=en&user=_FlnONoAAAAJ,full,2026-01-05T16:26:41.380074
+吴锦辉,,alumni,http://www.lamda.nju.edu.cn/wujh/,s,Yuan Jiang,,,,,ICML×1; NeurIPS×2; ICLR×1; AAAI×1; JMLR×1,wujh@lamda.nju.edu.cn,,,,full,2026-01-05T16:26:45.178932
+邱梓豪,,alumni,http://www.lamda.nju.edu.cn/qiuzh/,I am interested in machine learning; data mining; and optimization.,Lijun Zhang,,,,,ICML×5; KDD×1,qiuzh@lamda.nju.edu.cn,,https://github.com/zhqiu/NDCG-Optimization,,full,2026-01-05T16:26:46.249409
+陈雄辉,Xiong,alumni,http://www.lamda.nju.edu.cn/chenxh/,s:,Yang Yu,,,,,ICML×1; NeurIPS×6; ICLR×1,xionghui.cxh@alibaba-inc.com,https://www.linkedin.com/in/xiong-hui-chen-9a94b411a/,https://pages.github.com/,https://scholar.google.com/citations?user=H5pguCYAAAAJ&hl=en,full,2026-01-05T16:26:47.306479
+罗凡明,,alumni,http://www.lamda.nju.edu.cn/luofm/,s,Yang Yu,,,,,ICML×1; NeurIPS×3; ICLR×1; AAAI×2; TPAMI×1,,,https://github.com/FanmingL/Recurrent-Offpolicy-RL,,partial,2026-01-05T16:26:50.585807
+庞竟成,About Jing,alumni,http://www.lamda.nju.edu.cn/pangjc/,,,,,,,NeurIPS×6; ICLR×4,pangjc@lamda.nju.edu.cn,,http://github.com/lafmdp,https://scholar.google.com/citations?user=R3Y_WrkAAAAJ&hl=en,partial,2026-01-05T16:26:51.632161
+许天,Tian Xu,alumni,http://www.lamda.nju.edu.cn/xut/,s lie in the theoretical foundation and algorithmic design in reinforcement learning. Curretly; I am mainly working on imitation learning; reinforcement learning and their applications in large language models.,,,,,,ICML×1; NeurIPS×4; ICLR×2; KDD×1,xut@lamda.nju.edu.cn,,,https://scholar.google.com/citations?user=dW3gcXoAAAAJ&hl=en,partial,2026-01-05T16:26:55.505905
+李新春,,alumni,http://www.lamda.nju.edu.cn/lixc/,s,,,,,,ICML×6; NeurIPS×4; CVPR×2; ACL×2; AAAI×3; IJCAI×4; KDD×2; TKDE×1,lixc@lamda.nju.edu.cn,,https://github.com/lxcnju/ATS-LargeKD,https://scholar.google.com/citations?user=7WOxRe0AAAAJ&hl=en,partial,2026-01-05T16:26:56.545223
+秦天,,alumni,http://www.lamda.nju.edu.cn/qint/,s,Zhi-Hua Zhou,,,,,ICML×2; NeurIPS×4; ICLR×1; AAAI×4,qint@lamda.nju.edu.cn,,,,full,2026-01-05T16:26:57.663699
+李龙飞,,alumni,http://www.lamda.nju.edu.cn/lilf/,s,Zhi-Hua Zhou,,,,,ICML×2; NeurIPS×6; ICLR×2; AAAI×3,lilf@lamda.nju.edu.cn,,https://github.com/longfeili1997/knowledge_consistency,,full,2026-01-05T16:26:58.721209
+马兰霁弘,,alumni,http://www.lamda.nju.edu.cn/maljh/,s,Zhi-Hua Zhou,,,,,NeurIPS×1; KDD×2,maljh@lamda.nju.edu.cn,,,,full,2026-01-05T16:26:59.942622
+余浩,Hao Yu,alumni,http://www.lamda.nju.edu.cn/yuh/,s,,2025,,,,AAAI×2; TPAMI×1,,,https://github.com/DoctorKey/DIGIX_2020_B_image_retrieval,,partial,2026-01-05T16:27:01.408997
+曹博文,,alumni,http://www.lamda.nju.edu.cn/caobw/,s,Li-Jun Zhang,,,,,,caobw@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:05.345677
+曹星辰,,alumni,http://www.lamda.nju.edu.cn/caoxc/,My research interests include,Associate Prof.,,,,,ICML×1; ICLR×1,caoxc@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:06.383578
+陈超,,alumni,http://www.lamda.nju.edu.cn/chenc/,s,Associate Prof.,,,,,AAAI×1; KDD×1,chenc@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:07.427210
+陈烽,,alumni,http://www.lamda.nju.edu.cn/chenf/,s,Associate Prof.,,,,,NeurIPS×1; ICLR×2; AAAI×2,chenf@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:08.509024
+陈思佳,,alumni,http://www.lamda.nju.edu.cn/chensj/,s,Lijun Zhang,,,,,ICML×1; NeurIPS×2; JMLR×1,chensj@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:09.558117
+陈武洋,,alumni,http://www.lamda.nju.edu.cn/chenwy/,s,Associate Prof.,,,,,,chenwy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:10.620280
+丁豪,,alumni,http://www.lamda.nju.edu.cn/dingh/,My research interests include Multi-Agent Reinforcement Learning and its applications. Most recently; I am interested in:,Zong-Zhang Zhang,,,,,,dingh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:11.666575
+高辰潇,,alumni,http://www.lamda.nju.edu.cn/gaocx/,My research interests include,Associate Prof.,,,,,ICLR×1; AAAI×2,gaocx@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:12.701322
+韩馥光,,alumni,http://www.lamda.nju.edu.cn/hanfg/,s,Associate Prof.,,,,,,,,,,partial,2026-01-05T16:27:13.746524
+黄楷宸,,alumni,http://www.lamda.nju.edu.cn/huangkc/,s,De-Chuan Zhan,,,,,NeurIPS×1,huangkc@lamda.nju.edu.cn,,https://github.com/huang-kc,,full,2026-01-05T16:27:14.837344
+黄廷基,,alumni,http://www.lamda.nju.edu.cn/huangtj/,s,,,,,,ICML×1; NeurIPS×1,huangtj@lamda.nju.edu.cn,,https://github.com/Tingji2419,,partial,2026-01-05T16:27:15.884352
+黄晓斌,,alumni,http://www.lamda.nju.edu.cn/huangxb/,s,Associate Professor,,,,,,huangxb@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:16.963905
+孔锐,,alumni,http://www.lamda.nju.edu.cn/kongr/,My research interests include,Associate Prof.,,,,,AAAI×6; IJCAI×1,kongr@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:18.119859
+廖永仪,,alumni,http://www.lamda.nju.edu.cn/liaoyy/,,,,,,,,,,,,minimal,2026-01-05T16:27:19.369310
+李济孚,,alumni,http://www.lamda.nju.edu.cn/lijf/,s,Associate professor,,,,,,lijf@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:19.765778
+李瑞翔,,alumni,http://www.lamda.nju.edu.cn/lirx/,s,,,,,,,lirx@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:21.010739
+刘二龙,,alumni,http://www.lamda.nju.edu.cn/liuel/,s,Associate Professor,,,,,,liuel@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:22.056183
+刘朗麒,,alumni,http://www.lamda.nju.edu.cn/liulq/,s,I am very fortunate to be advised by Professor,,,,,ICML×1; ICLR×1,liulq@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:23.112116
+李兆隆,,alumni,http://www.lamda.nju.edu.cn/lizl/,,,,,,,,,,,,minimal,2026-01-05T16:27:24.161297
+吕志存,,alumni,http://www.lamda.nju.edu.cn/lvzc/,s,Ming Li,,,,,,lvzc@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:24.187335
+马一骁,,alumni,http://www.lamda.nju.edu.cn/mayx/,s,Kai Ming,,,,,,mayx@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:25.228067
+马誉哲,,alumni,http://www.lamda.nju.edu.cn/mayz/,s,Associate Professor,,,,,,mayz@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:26.262209
+戚智泓,,alumni,http://www.lamda.nju.edu.cn/qizh/,s,De-Chuan Zhan,,,,,,qizh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:27.303379
+任璐,,alumni,http://www.lamda.nju.edu.cn/renl/,s,Assistant Researcher,,,,,,renl@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:28.343250
+邵明浩,,alumni,http://www.lamda.nju.edu.cn/shaomh/,s,,,,,,,,,,,minimal,2026-01-05T16:27:29.406824
+施浩森,,alumni,http://www.lamda.nju.edu.cn/shihs/,s,Associate Professor,,,,,,shihs@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:30.441333
+宋磊,,alumni,http://www.lamda.nju.edu.cn/songl/,,,,,,,NeurIPS×1,songl@lamda.nju.edu.cn,,https://github.com/wowchemy/wowchemy-hugo-themes,,partial,2026-01-05T16:27:31.477683
+宋鹏霄,,alumni,http://www.lamda.nju.edu.cn/songpx/,s,Yu-Feng Li,,,,,,songpx@lamda.nju.edu.cn,,https://github.com/pengxiao-song,,partial,2026-01-05T16:27:32.524181
+孙海航,,alumni,http://www.lamda.nju.edu.cn/sunhh/,s,De-Chuan Zhan,,,,,,sunhh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:33.580160
+孙一格,,alumni,http://www.lamda.nju.edu.cn/sunyg/,s,Wei Gao,,,,,,sunyg@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:34.760515
+唐宁远,,alumni,http://www.lamda.nju.edu.cn/tangny/,s,Jianxin Wu,,,,,,tangny@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:35.874125
+陶博文,,alumni,http://www.lamda.nju.edu.cn/taobw/,s,,,,,,,taobw@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:37.112035
+田鸿龙,,alumni,http://www.lamda.nju.edu.cn/tianhl/,s,Yang Yu,,,,,,,,,,partial,2026-01-05T16:27:38.228986
+王春力,,alumni,http://www.lamda.nju.edu.cn/wangcl/,s,De-Chuan Zhan,,,,,,wangcl@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:39.342924
+王子静,,alumni,http://www.lamda.nju.edu.cn/wangzj/,,,,,,,,,,,,minimal,2026-01-05T16:27:40.399786
+徐峰,,alumni,http://www.lamda.nju.edu.cn/xufeng/,s,Zongzhang Zhang,,,,,NeurIPS×2; AAAI×1,,,https://github.com/x35f/unstable_baselines,,partial,2026-01-05T16:27:40.443815
+薛江天,,alumni,http://www.lamda.nju.edu.cn/xuejt/,s,Ming Li,,,,,,xuejt@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:41.493518
+姚嘉和,,alumni,http://www.lamda.nju.edu.cn/yaojh/,s,Wei Gao,,,,,,yaojh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:42.531119
+叶俊胤,,alumni,http://www.lamda.nju.edu.cn/yejy/,s,Yang Yu,,,,,,yejy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:43.569540
+叶志浩,,alumni,http://www.lamda.nju.edu.cn/yezh/,s,Yang Yu,,,,,,yezh@lamda.nju.edu.cn,,https://github.com/Vigilans,,partial,2026-01-05T16:27:44.612638
+易超,,alumni,http://www.lamda.nju.edu.cn/yic/,s,Assistant Researcher,,,,,,yic@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:45.658229
+张博,,alumni,http://www.lamda.nju.edu.cn/zhangb/,s,,,,,,,,,,,minimal,2026-01-05T16:27:46.698768
+张含笑,,alumni,http://www.lamda.nju.edu.cn/zhanghx/,s,Jianxin Wu,,,,,,zhanghx@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:47.737655
+张恒恺,,alumni,http://www.lamda.nju.edu.cn/zhanghk/,s,Associate Professor,,,,,,zhanghk@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:48.776544
+张凯峰,,alumni,http://www.lamda.nju.edu.cn/zhangkf2022/,,,,,,,,,,,,minimal,2026-01-05T16:27:49.822176
+张立创,,alumni,http://www.lamda.nju.edu.cn/zhanglc/,,,,,,,,,,,,minimal,2026-01-05T16:27:49.852678
+张鑫钰,,alumni,http://www.lamda.nju.edu.cn/zhangxinyu/,s,,,,,,ICML×1,zhangxinyu@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:49.879074
+张智龙,,alumni,http://www.lamda.nju.edu.cn/zhangzl/,s,Yang Yu,,,,,ICML×4; NeurIPS×2; ICLR×5; TPAMI×1,zhangzl@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:50.925032
+郑泽荣,,alumni,http://www.lamda.nju.edu.cn/zhengzr/,s,Wei Gao,,,,,,zhengzr@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:51.969903
+周其乐,,alumni,http://www.lamda.nju.edu.cn/zhouql/,s,,,,,,,,,,,minimal,2026-01-05T16:27:53.007796
+周韧哲,Renzhe Zhou's Homepage,alumni,http://www.lamda.nju.edu.cn/zhourz/,s,Associate Prof.,,,,,AAAI×4,zhourz@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:54.054426
+周吾君,,alumni,http://www.lamda.nju.edu.cn/zhouwujun/,,,,,,,,,,,,minimal,2026-01-05T16:27:55.105532
+周雅雯,,alumni,http://www.lamda.nju.edu.cn/zhouyw/,s,Associate Professor,,,,,IJCAI×1,zhouyw@lamda.nju.edu.cn,,,,full,2026-01-05T16:27:55.149519
+庄镇华,,alumni,http://www.lamda.nju.edu.cn/zhuangzh/,,Li-Jun Zhang,,,,,NeurIPS×1,zhuangzh@lamda.nju.edu.cn,,https://github.com/Tencent/3TS/tree/coo-consistency-check,,partial,2026-01-05T16:27:56.189093
+邹正,,alumni,http://www.lamda.nju.edu.cn/zouz/,s,Wei Gao,,,,,,zouz@lamda.nju.edu.cn,,,,partial,2026-01-05T16:27:57.231323
+谭志豪,,alumni,http://www.lamda.nju.edu.cn/tanzh/,s,,,,,,ICML×1; NeurIPS×4; ICLR×1; AAAI×5; IJCAI×5; KDD×2; TPAMI×1,tanzh@lamda.nju.edu.cn,,https://github.com/Learnware-LAMDA,,partial,2026-01-05T16:27:58.287949
+马逸凡,,alumni,http://www.lamda.nju.edu.cn/mayf/,,Ming Li,,,,,IJCAI×1,,,,,partial,2026-01-05T16:27:59.437517
+沈芷玉,,alumni,http://www.lamda.nju.edu.cn/shenzy/,Correspondence,Biography,,,,,,shenzy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:00.493241
+陆苏,,alumni,http://www.lamda.nju.edu.cn/lus/,s,,,,,,ICML×2; NeurIPS×1; CVPR×3; ICCV×1; AAAI×6; IJCAI×1; KDD×1; TPAMI×2,,,https://github.com/njulus/GKD,,partial,2026-01-05T16:28:01.556735
+何雨橙,,alumni,http://www.lamda.nju.edu.cn/heyc/,s,Zhi-Hua Zhou,,,,,AAAI×2,heyc@lamda.nju.edu.cn,,,,full,2026-01-05T16:28:02.630655
+卞超,,alumni,http://www.lamda.nju.edu.cn/bianc/,s,Yang Yu,,,,,AAAI×6; IJCAI×6,bianc@lamda.nju.edu.cn,,,,full,2026-01-05T16:28:03.674442
+曹云浩,,alumni,http://www.lamda.nju.edu.cn/caoyh/,s include:,Jianxin Wu,,,,,CVPR×1; AAAI×1; TPAMI×2,caoyh@lamda.nju.edu.cn,,https://github.com/CupidJay/Efficient_SSL,,full,2026-01-05T16:28:04.814807
+管聪,,alumni,http://www.lamda.nju.edu.cn/guanc/,s,Yang Yu,,,,,NeurIPS×1; ICLR×3; AAAI×2; IJCAI×1,,,,,partial,2026-01-05T16:28:06.093477
+贺一笑,,alumni,http://www.lamda.nju.edu.cn/heyx/,s,Zhi-Hua Zhou,,,,,NeurIPS×1,heyx@lamda.nju.edu.cn,,,,full,2026-01-05T16:28:07.380596
+黄宇轩,,alumni,http://www.lamda.nju.edu.cn/huangyx/,s,Yuan Jiang,,,,,NeurIPS×1; AAAI×6; IJCAI×2; KDD×1,huangyx@lamda.nju.edu.cn,,https://github.com/AbductiveLearning/ABLkit,,full,2026-01-05T16:28:08.590602
+周大蔚,Da,alumni,http://www.lamda.nju.edu.cn/zhoudw/,s include machine learning and its applications in computer vision; currently focusing on continual learning; pre-trained model reuse; and multimodal large language models.,,,,,,ICML×7; NeurIPS×5; ICLR×6; CVPR×15; ICCV×5; ECCV×3; AAAI×4; IJCAI×6; TPAMI×11,,,https://github.com/yaoyao-liu/minimal-light,https://scholar.google.com/citations?user=kMNaR-YAAAAJ&hl=en,partial,2026-01-05T16:28:09.815664
+朱正茂,,alumni,http://www.lamda.nju.edu.cn/zhuzm/,s,Associate Prof.,,,,,AAAI×2; KDD×1,,,,,partial,2026-01-05T16:28:10.909734
+毕晓栋,,alumni,http://www.lamda.nju.edu.cn/bixd/,s include Machine Learning and Data Mining.,Zhi-Hua Zhou,,,,,AAAI×2,bixd@lamda.nju.edu.cn,https://www.linkedin.com/in/%E6%99%93%E6%A0%8B-%E6%AF%95-2213a91a9/,https://github.com/bxdd/,,full,2026-01-05T16:28:11.952859
+蔡驰宇,,alumni,http://www.lamda.nju.edu.cn/caicy/,s,Associate professor,,,,,,caicy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:12.998170
+程典,,alumni,http://www.lamda.nju.edu.cn/chengd/,s,De-Chuan Zhan,,,,,,chengd@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:14.037973
+宫雷,,alumni,http://www.lamda.nju.edu.cn/gongl/,s,Kai Ming Ting,,,,,,gongl@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:15.072798
+苟煜田,Yu,alumni,http://www.lamda.nju.edu.cn/gouyt/,s,Lijun Zhang,,,,,,gouyt@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:16.125311
+辜宇然,,alumni,http://www.lamda.nju.edu.cn/guyr/,s,,,,,,AAAI×2,,,https://github.com/glb400/Toy-RecLM,,partial,2026-01-05T16:28:17.170845
+韩欣艳,,alumni,http://www.lamda.nju.edu.cn/hanxy/,s,Associate Professor,,,,,,hanxy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:20.721227
+何浩源,Hao,alumni,http://www.lamda.nju.edu.cn/hehy/,s; . Currently; my research interests lie in the field of artificial intelligence; with a particular focus on:,,,,,,ICML×2; NeurIPS×3; ICLR×1; AAAI×1; TPAMI×2,,,https://github.com/Hao-Yuan-He/resume_typst/blob/main/main.pdf,,partial,2026-01-05T16:28:21.752409
+胡育玮,,alumni,http://www.lamda.nju.edu.cn/huyw/,s,Associate Professor,,,,,,huyw@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:25.241183
+金苡萱,,alumni,http://www.lamda.nju.edu.cn/jinyx/,s,Associate Professor,,,,,,jinyx@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:26.843447
+李顶为,,alumni,http://www.lamda.nju.edu.cn/lidw/,s,Ming,,,,,,lidw@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:28.153208
+李天赐,Tianci Li's Homepage,alumni,http://www.lamda.nju.edu.cn/litc/,s,Associate Prof.,,,,,NeurIPS×1,,,,,partial,2026-01-05T16:28:29.415092
+刘倩玉,,alumni,http://www.lamda.nju.edu.cn/liuqy/,s,Associate Professor,,,,,,liuqy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:30.614104
+刘天宇,,alumni,http://www.lamda.nju.edu.cn/liuty/,s,Jianxin Wu,,,,,,liuty@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:31.657516
+刘禹,,alumni,http://www.lamda.nju.edu.cn/liuy/,s,Ming Li,,,,,,liuy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:32.696052
+刘宗游,,alumni,http://www.lamda.nju.edu.cn/liuzy/,s,Kai Ming Ting,,,,,,liuzy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:33.737403
+李逸尘,,alumni,http://www.lamda.nju.edu.cn/liyc/,s,,,,,,ICML×4; NeurIPS×1; ICLR×4; AAAI×3; IJCAI×1,liyc@lamda.nju.edu.cn,,https://github.com/BepfCp/RL-pytorch,,partial,2026-01-05T16:28:34.789048
+倪杰,,alumni,http://www.lamda.nju.edu.cn/nij/,s,Associate Prof.,,,,,,nij@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:35.843539
+冉雨杭,Yuhang Ran's Homepage,alumni,http://www.lamda.nju.edu.cn/ranyh/,s,Associate Prof.,,,,,,ranyh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:36.911252
+宋帅斌,,alumni,http://www.lamda.nju.edu.cn/songsb/,s,Kai Ming Ting,,,,,,songsb@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:37.978195
+孙义皓,Yihao  Sun,alumni,http://www.lamda.nju.edu.cn/sunyh/,s,Pierre-Luc Bacon,,,,,ICML×3; NeurIPS×1; ICLR×3; AAAI×1,yihao.sun@mila.quebec,,https://pages.github.com/,https://scholar.google.com/citations?user=pFNG8fMAAAAJ&hl=en,full,2026-01-05T16:28:39.017381
+唐金麟,,alumni,http://www.lamda.nju.edu.cn/tangjl/,s,De-Chuan Zhan,,,,,,tangjl@lamda.nju.edu.cn,,https://github.com/NJU-TJL,,partial,2026-01-05T16:28:44.783382
+滕明卓,,alumni,http://www.lamda.nju.edu.cn/tengmz/,s,Wei Gao,,,,,,tengmz@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:45.830584
+王铖鹤,,alumni,http://www.lamda.nju.edu.cn/wangch/,s,Associate Prof.,,,,,AAAI×1; IJCAI×1,,,,,partial,2026-01-05T16:28:46.866185
+王琪玮,,alumni,http://www.lamda.nju.edu.cn/wangqiwei/,s,,,,,,ICLR×1; CVPR×1,wangqiwei@lamda.nju.edu.cn,,https://github.com/ZhangYikaii/chi-square,,partial,2026-01-05T16:28:47.906560
+吴泓秋,,alumni,http://www.lamda.nju.edu.cn/wuhq/,s,Yang Yu,,,,,,wuhq@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:48.944938
+吴宇畅,Yu,alumni,http://www.lamda.nju.edu.cn/wuyc/,,,,,,,ICML×1,wuyc@lamda.nju.edu.cn,,https://github.com/wowchemy/wowchemy-hugo-themes,https://scholar.google.com/citations?user=cvCw23sAAAAJ&hl=zh-CN,partial,2026-01-05T16:28:49.981650
+吴子源,,alumni,http://www.lamda.nju.edu.cn/wuzy/,s,Yuan Jiang,,,,,,wuzy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:51.034190
+谢欣然,,alumni,http://www.lamda.nju.edu.cn/xiexr/,s,Wei Gao,,,,,,xiexr@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:52.076407
+谢逸,,alumni,http://www.lamda.nju.edu.cn/xiey/,s,Zhi-Hua Zhou,,,,,NeurIPS×1,xiey@lamda.nju.edu.cn,,,,full,2026-01-05T16:28:53.436663
+徐嘉诚,Jiacheng Xu's Homepage,alumni,http://www.lamda.nju.edu.cn/xujc/,s,Associate Prof.,,,,,NeurIPS×1; ICLR×1; AAAI×2; KDD×1,,,,,partial,2026-01-05T16:28:54.479698
+杨馨雨,,alumni,http://www.lamda.nju.edu.cn/yangxy/,s,Yang Yu,,,,,,yangxy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:55.528476
+袁满杰,,alumni,http://www.lamda.nju.edu.cn/yuanmj/,s,Wei Gao,,,,,ICML×1; NeurIPS×2; ICLR×1,yuanmj@lamda.nju.edu.cn,,,,full,2026-01-05T16:28:56.564273
+俞星凯,,alumni,http://www.lamda.nju.edu.cn/yuxk/,s,Associate professor,,,,,,yuxk@lamda.nju.edu.cn,,,,partial,2026-01-05T16:28:57.607727
+张福翔,Fuxiang Zhang | Homepage,alumni,http://www.lamda.nju.edu.cn/zhangfx/,s,,,,,,ICML×1; NeurIPS×1; ICLR×3; AAAI×4; IJCAI×1; KDD×1; TPAMI×1,,https://www.linkedin.com/in/fuxiang-zhang-2b7bb418a/,https://github.com/SkyworkAI/Skywork-Reward-V2,https://scholar.google.com/citations?user=GZRrWXAAAAAJ,partial,2026-01-05T16:28:58.652017
+张嘉吉,,alumni,http://www.lamda.nju.edu.cn/zhangjj/,s,Yang Yu,,,,,ICML×1,,,,,partial,2026-01-05T16:29:02.115330
+张磊,,alumni,http://www.lamda.nju.edu.cn/zhangl/,s,Wei Wang,,,,,NeurIPS×1,zhangl@lamda.nju.edu.cn,,,,full,2026-01-05T16:29:03.154824
+张乐凡,,alumni,http://www.lamda.nju.edu.cn/zhanglf/,s,Associate professor,,,,,,zhanglf@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:04.194077
+张韶威,,alumni,http://www.lamda.nju.edu.cn/zhangsw/,s,De-Chuan Zhan,,,,,NeurIPS×1,zhangsw@lamda.nju.edu.cn,,https://github.com/Cjh327/LINDA-MARL,,full,2026-01-05T16:29:05.248488
+张溢戈,,alumni,http://www.lamda.nju.edu.cn/zhangyg/,s,Associate Professor,,,,,NeurIPS×1,zhangyg@lamda.nju.edu.cn,,,,full,2026-01-05T16:29:06.304311
+张子安,,alumni,http://www.lamda.nju.edu.cn/zhangza/,s,Associate Professor,,,,,,zhangza@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:07.346732
+张子逸,,alumni,http://www.lamda.nju.edu.cn/zhangziyi/,,,,,,,,,,,,minimal,2026-01-05T16:29:08.408221
+周煜恒,,alumni,http://www.lamda.nju.edu.cn/zhouyuheng/,s,Associate Professor,,,,,,zhouyuheng@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:08.436690
+周志健,,alumni,http://www.lamda.nju.edu.cn/zhouzj/,s,Wei Gao,,,,,,zhouzj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:09.471625
+秦熔均,Rong,alumni,http://www.lamda.nju.edu.cn/qinrj/,Currently my research interest is:,Yang Yu,,,,,,,,,,partial,2026-01-05T16:29:10.509348
+解铮,Zheng Xie,alumni,http://www.lamda.nju.edu.cn/xiez/,s.,,,,,,ICML×3; NeurIPS×3; ICLR×2; AAAI×16; IJCAI×6; TPAMI×1,,,https://github.com/alshedivat/al-folio,,partial,2026-01-05T16:29:11.576495
+王国华,Guo,alumni,http://www.lamda.nju.edu.cn/wangguohua/,s,Jianxin Wu,,,,,ICLR×1; CVPR×1; AAAI×2; IJCAI×2; TPAMI×2,,,https://github.com/wsshin/jemdoc_mathjax,,partial,2026-01-05T16:29:15.603917
+王天佐,,alumni,http://www.lamda.nju.edu.cn/wangtz/,s; and other related materials.,,,,,,ICML×9; NeurIPS×7; ICLR×1; AAAI×3; IJCAI×2,wangtz@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:16.661969
+袁雷,,alumni,http://www.lamda.nju.edu.cn/yuanl/,s,,,,,,ICML×4; NeurIPS×8; ICLR×5; AAAI×7; IJCAI×3; KDD×1; TPAMI×2,,,,https://scholar.google.com/citations?hl=zh-CN&user=kbDU8bEAAAAJ,partial,2026-01-05T16:29:17.708515
+艾政,,alumni,http://www.lamda.nju.edu.cn/aiz/,s,Wei Gao,,,,,,,,,,partial,2026-01-05T16:29:18.768038
+白勇,,alumni,http://www.lamda.nju.edu.cn/baiy/,s,Zhi-Hua Zhou,,,,,NeurIPS×1,baiy@lamda.nju.edu.cn,,,,full,2026-01-05T16:29:19.817918
+曹佳涵,,alumni,http://www.lamda.nju.edu.cn/caojh/,s,De-Chuan Zhan,,,,,,caojh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:20.864215
+柴磊,,alumni,http://www.lamda.nju.edu.cn/chail/,s,Ming Li,,,,,NeurIPS×1,chail@lamda.nju.edu.cn,,https://github.com/leichainju/pa-former,,full,2026-01-05T16:29:21.914157
+程子航,,alumni,http://www.lamda.nju.edu.cn/chengzh/,s,Associate Professor,,,,,,chengzh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:22.956208
+陈梓轩,,alumni,http://www.lamda.nju.edu.cn/chenzx/,s,Yuan Jiang,,,,,,chenzx@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:24.052729
+丁姝,,alumni,http://www.lamda.nju.edu.cn/dings/,s,Wei Wang,,,,,ICML×1; NeurIPS×1,dings@lamda.nju.edu.cn,,,,full,2026-01-05T16:29:25.087315
+杜映潇,,alumni,http://www.lamda.nju.edu.cn/duyx/,,,,,,,,duyx@lamda.nju.edu.cn,,,,minimal,2026-01-05T16:29:26.137281
+郭东宇,,alumni,http://www.lamda.nju.edu.cn/guody/,s,Associate Prof.,,,,,,guody@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:27.182037
+贺泉,,alumni,http://www.lamda.nju.edu.cn/heq/,s,Associate Prof.,,,,,,,,,,partial,2026-01-05T16:29:28.224142
+何银银,,alumni,http://www.lamda.nju.edu.cn/heyy/,s,Jianxin Wu,,,,,CVPR×2; ICCV×1,heyy@lamda.nju.edu.cn,,,,full,2026-01-05T16:29:29.265870
+胡亚飞,,alumni,http://www.lamda.nju.edu.cn/huyf/,s,Associate Prof.,,,,,,huyf@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:30.315413
+简迎春,,alumni,http://www.lamda.nju.edu.cn/jianyc/,s include:,Associate Professor,,,,,,jianyc@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:31.354836
+靳学坤,,alumni,http://www.lamda.nju.edu.cn/jinxk/,I am interested in Machine Learning; mainly focus on the following subfields:,Yang Yu,,,,,,jinxk@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:32.402137
+刘鼎铭,,alumni,http://www.lamda.nju.edu.cn/liudm/,I am interested in Machine Learning and Data Mining; especially in,Associate Prof.,,,,,,liudm@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:33.463902
+李鑫烨,李鑫烨 (Li,alumni,http://www.lamda.nju.edu.cn/lixy/,s,,,,,,AAAI×2,,https://www.linkedin.com/,https://github.com/yaoyao-liu/minimal-light,https://scholar.google.com/citations?user=U8v5VHoAAAAJ&hl=en,partial,2026-01-05T16:29:34.554959
+李颖,,alumni,http://www.lamda.nju.edu.cn/liy/,s,Ming Li,,,,,,liy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:35.608150
+祁欣桐,,alumni,http://www.lamda.nju.edu.cn/qixt/,s,Yang Yu,,,,,,qixt@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:36.642651
+商元义,,alumni,http://www.lamda.nju.edu.cn/shangyy/,I am interested in Machine Learning and Data Mining,Kai Ming Ting,,,,,,shangyy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:37.688473
+隋霖,,alumni,http://www.lamda.nju.edu.cn/suil/,s,esssor,,,,,CVPR×4; TPAMI×2,suil@lamda.nju.edu.cn,,,,full,2026-01-05T16:29:38.743790
+孙一轩,,alumni,http://www.lamda.nju.edu.cn/sunyixuan/,My research interests include ：,Wei Wang,,,,,,,,,,partial,2026-01-05T16:29:39.779656
+孙宇熙,,alumni,http://www.lamda.nju.edu.cn/sunyx/,s,Ming Li,,,,,,syuxi@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:40.822170
+王心禹,,alumni,http://www.lamda.nju.edu.cn/wangxinyu/,s,,,,,,,wangxinyu@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:41.857887
+汪钰岑,,alumni,http://www.lamda.nju.edu.cn/wangyc/,s,,,,,,ICML×3; IJCAI×1,wangyc@lamda.nju.edu.cn,,https://github.com/yixiaoshenghua/SeMAIL,,partial,2026-01-05T16:29:42.898264
+王雨凡,,alumni,http://www.lamda.nju.edu.cn/wangyf/,I am interested in Machine Learning and Data Mining.,Kai Ming Ting,,,,,,wangyf@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:44.016693
+王雨桐,,alumni,http://www.lamda.nju.edu.cn/wangyt/,s,Associate Prof.,,,,,,wangyt@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:45.105691
+吴晨阳,,alumni,http://www.lamda.nju.edu.cn/wucy/,s,Associate Prof.,,,,,ICML×1; NeurIPS×3; ICLR×1; AAAI×1; IJCAI×1,wucy@lamda.nju.edu.cn,,,https://scholar.google.co.uk/citations?user=r-MXTJgAAAAJ,full,2026-01-05T16:29:46.158173
+吴嘉梁,Jia,alumni,http://www.lamda.nju.edu.cn/wujl/,,,,,,,IJCAI×1,wujl@lamda.nju.edu.cn,,https://github.com/wowchemy/wowchemy-hugo-themes,https://scholar.google.co.uk/citations?hl=zh-CN&user=3A8AKDUAAAAJ,partial,2026-01-05T16:29:47.216662
+徐镱铭,,alumni,http://www.lamda.nju.edu.cn/xuym/,s,Ming Li,,,,,,xuym@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:48.373215
+杨国钰,,alumni,http://www.lamda.nju.edu.cn/yanggy/,s,Associate Prof.,,,,,AAAI×2,,,,,partial,2026-01-05T16:29:49.418081
+尹皓,,alumni,http://www.lamda.nju.edu.cn/yinh/,s,Yang Yu,,,,,AAAI×2,,,,,partial,2026-01-05T16:29:50.452123
+张艺,,alumni,http://www.lamda.nju.edu.cn/zhangyi/,s,Kai Ming Ting,,,,,,zhangyi@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:51.494803
+张振耀,Zhenyao Zhang @ NJUCS,alumni,http://www.lamda.nju.edu.cn/zhangzhenyao/,My research interests include: Deep Learning; Data Mining.,Associate professor,,,,,,zhangzhenyao@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:52.535573
+郑博文,Bowen Zheng @ NJUAI,alumni,http://www.lamda.nju.edu.cn/zhengbw/,,De-Chuan Zhan,,,,,ICML×1; CVPR×1,zhengbw@lamda.nju.edu.cn,,https://github.com/bwnzheng/LPA_ICME2023,,partial,2026-01-05T16:29:53.577425
+周逸帆,,alumni,http://www.lamda.nju.edu.cn/zhouyf/,,,,,,,,,,,,minimal,2026-01-05T16:29:54.622419
+庄众,,alumni,http://www.lamda.nju.edu.cn/zhuangz/,s,Kai Ming Ting,,,,,,zhuangz@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:54.645517
+朱小谢,,alumni,http://www.lamda.nju.edu.cn/zhuxx/,s,Associate Professor,,,,,,zhuxx@lamda.nju.edu.cn,,,,partial,2026-01-05T16:29:55.679009
+郭兰哲,Lan,alumni,http://www.lamda.nju.edu.cn/guolz/,s in,,,,,,ICML×3; NeurIPS×2; ICLR×3; EMNLP×1; AAAI×3; IJCAI×1; KDD×1,guolz@lamda.nju.edu.cn,,https://github.com/pengxiao-song/LaWGPT,https://scholar.google.com/citations?user=dpunvqgAAAAJ&hl=zh-CN&oi=ao,partial,2026-01-05T16:29:56.742540
+卢世银,Shiyin Lu,alumni,http://www.lamda.nju.edu.cn/lusy/,s,Lijun Zhang.,,,,,ICML×2; NeurIPS×4; ICLR×1; AAAI×7; IJCAI×2,lusy@lamda.nju.edu.cn,,,,full,2026-01-05T16:29:57.796023
+吕沈欢,Shen,alumni,http://www.lamda.nju.edu.cn/lvsh/,s include,,,,,,ICML×4; NeurIPS×4; ICLR×4; AAAI×1; IJCAI×2; TPAMI×1; JMLR×1; TKDE×1,,,https://github.com/lyushenhuan/lyu2019refined,https://scholar.google.com/citations?user=_NlDLQIAAAAJ&hl=zh-CN,partial,2026-01-05T16:29:58.864114
+王涵,,alumni,http://www.lamda.nju.edu.cn/wanghan/,s,Associate Professor,,,,,,wanghan@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:02.712076
+宛袁玉,Yuanyu Wan @ Nanjing University,alumni,http://www.lamda.nju.edu.cn/wanyy/,,,,,,,,,,,,minimal,2026-01-05T16:30:03.741919
+张绍群,Shao,alumni,http://www.lamda.nju.edu.cn/zhangsq/,s mainly include topics in,,,,,,ICML×1; NeurIPS×4; ICLR×1; CVPR×1; AAAI×7; IJCAI×2; TPAMI×1; JMLR×2,zhangsq@lamda.nju.edu.cn,,https://github.com/zhangsq-nju/TernaryCLIP,https://scholar.google.com/citations?user=TCh08AUAAAAJ&hl=en,partial,2026-01-05T16:30:04.780891
+张震宇,,alumni,http://www.lamda.nju.edu.cn/zhangzy/,s,,,,,,ICML×3; NeurIPS×1; ICLR×1; AAAI×1; IJCAI×1; KDD×3; TKDE×1,,,,,partial,2026-01-05T16:30:05.879102
+常田,,alumni,http://www.lamda.nju.edu.cn/changt/,s,Yang Yu,,,,,,,,,,partial,2026-01-05T16:30:06.928584
+程权,,alumni,http://www.lamda.nju.edu.cn/chengq/,s include,Lijun Zhang,,,,,NeurIPS×1; ICLR×1; IJCAI×1,chengq@lamda.nju.edu.cn,,,,full,2026-01-05T16:30:07.966697
+陈攀,,alumni,http://www.lamda.nju.edu.cn/chenp/,s,Wei Wang,,,,,,chenp@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:09.001434
+陈一赫,,alumni,http://www.lamda.nju.edu.cn/chenyh/,s,Yuan Jiang,,,,,,chenyh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:10.048618
+陈越,,alumni,http://www.lamda.nju.edu.cn/chenyue/,s,Yang Yu,,,,,,,,,,partial,2026-01-05T16:30:11.087863
+陈宇辉,,alumni,http://www.lamda.nju.edu.cn/chenyuhui/,s include,Associate professor,,,,,,chenyuhui@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:12.142198
+范彧,,alumni,http://www.lamda.nju.edu.cn/fanyu/,s,Yang Yu,,,,,KDD×1,fanyu@lamda.nju.edu.cn,,,,full,2026-01-05T16:30:13.197860
+傅聪,,alumni,http://www.lamda.nju.edu.cn/fuc/,s,Yang Yu,,,,,,fuc@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:14.457269
+葛一帆,Yifan Ge's Personal Web Page,alumni,http://www.lamda.nju.edu.cn/geyf/,My research interests include,Jianxin Wu,,,,,,,,,,partial,2026-01-05T16:30:15.870580
+韩路,,alumni,http://www.lamda.nju.edu.cn/hanlu/,s,Associate professor,,,,,ICML×1; NeurIPS×2; ICLR×1; CVPR×3; ECCV×1; AAAI×4; IJCAI×1; KDD×2; TPAMI×2; TKDE×1,hanlu@lamda.nju.edu.cn,,https://github.com/Secilia-Cxy/UNetTFI,,full,2026-01-05T16:30:17.316046
+韩韬,Tao Han,alumni,http://www.lamda.nju.edu.cn/hant/,s,,,,,,,,,,,minimal,2026-01-05T16:30:18.999295
+孔祥瀚,,alumni,http://www.lamda.nju.edu.cn/kongxh/,s,Yang Yu,,,,,,,,,,partial,2026-01-05T16:30:20.516665
+李杰,,alumni,http://www.lamda.nju.edu.cn/lijie/,s,Wei Gao,,,,,,lijie@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:21.857940
+李俊,Jun Li @ NJUCS,alumni,http://www.lamda.nju.edu.cn/lijun/,I'm interested in Machine Learning; Especially Deep Learning.,Associate Professor,,,,,,,,,,partial,2026-01-05T16:30:23.950515
+李岚,Li Lan (李岚),alumni,http://www.lamda.nju.edu.cn/lil/,s,,,,,,ICML×4; NeurIPS×2; AAAI×4,,,https://github.com/Lain810/DCE,https://scholar.google.com/citations?user=D2vVpPUAAAAJ&hl,partial,2026-01-05T16:30:25.312833
+米佳玮,Jia,alumni,http://www.lamda.nju.edu.cn/mijw/,s,Ming Li.,,,,,,mijw@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:30.240763
+明露,,alumni,http://www.lamda.nju.edu.cn/mingl/,s,,,,,,,mingl@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:31.311130
+尚昊璞,Haopu Shang,alumni,http://www.lamda.nju.edu.cn/shanghp/,,,,,,,ICML×1; IJCAI×3,,,https://github.com/jonbarron/jonbarron_website,,minimal,2026-01-05T16:30:32.389695
+施意,,alumni,http://www.lamda.nju.edu.cn/shiy/,s,,,,,,,,,,,minimal,2026-01-05T16:30:33.426741
+孙辉,Hui Sun (孙辉),alumni,http://www.lamda.nju.edu.cn/sunh/,s,Ming Li,,,,,ICML×2; ICCV×1; AAAI×8; WWW×1,sunh@lamda.nju.edu.cn,,,,full,2026-01-05T16:30:34.494551
+田章豪,Zhang,alumni,http://www.lamda.nju.edu.cn/tianzh/,s,Associate Professor,,,,,,tianzh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:35.585051
+王环宇,Huanyu Wang,alumni,http://www.lamda.nju.edu.cn/wanghy/,s,Jianxin Wu,,,,,CVPR×1,cjnjuwhy@gmail.com,,,,full,2026-01-05T16:30:36.658688
+汪许垚,Xuyao Wang @ NJUCS,alumni,http://www.lamda.nju.edu.cn/wangxy/,My research interests include: Machine Learning; Data Mining.,Associate professor,,,,,,wangxy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:37.703436
+吴志凡,,alumni,http://www.lamda.nju.edu.cn/wuzf/,,,,,,,,,,,,minimal,2026-01-05T16:30:38.744515
+解银朋,Yin,alumni,http://www.lamda.nju.edu.cn/xieyp/,I'm interested in Machine Learning; Especially Distributed Machine Learning.,Associate Professor,,,,,,xieyp@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:38.776446
+徐碧村,,alumni,http://www.lamda.nju.edu.cn/xubc/,s,Zhi-Hua Zhou,,南京大学,,,AAAI×2; KDD×2,xubc@lamda.nju.edu.cn,,,,full,2026-01-05T16:30:39.808785
+许丽军,,alumni,http://www.lamda.nju.edu.cn/xulj/,s,Associate Professor,,,,,,xulj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:40.854175
+颜番,,alumni,http://www.lamda.nju.edu.cn/yanf/,s,Ming Li,,,,,IJCAI×1,yanf@lamda.nju.edu.cn,,,,full,2026-01-05T16:30:41.897909
+尤一凡,,alumni,http://www.lamda.nju.edu.cn/youyf/,s,Lijun Zhang,,,,,,,,,,partial,2026-01-05T16:30:42.941495
+张逸风,,alumni,http://www.lamda.nju.edu.cn/zhangyf/,I am interested in Machine Learning; especially focus on the following subfields:,Yang Yu,,,,,AAAI×2; KDD×1,zhangyf@lamda.nju.edu.cn,,,,full,2026-01-05T16:30:43.978832
+张永顺,,alumni,http://www.lamda.nju.edu.cn/zhangys/,s,Jianxin Wu,,,,,CVPR×1; AAAI×2,zhangys@lamda.nju.edu.cn,,https://github.com/Megvii-Nanjing/ED-Net,,full,2026-01-05T16:30:45.024462
+张云天,,alumni,http://www.lamda.nju.edu.cn/zhangyt/,s,,,,,,,zhangyt@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:46.071629
+张钊钰,,alumni,http://www.lamda.nju.edu.cn/zhangzhaoyu/,s,Yuan Jiang,,,,,,zhangzhaoyu@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:47.125625
+周佳依,Jia,alumni,http://www.lamda.nju.edu.cn/zhoujy/,I am interested in Machine Learning and Data Mining.,Associate professor,,,,,,zhoujy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:48.157247
+朱明璇,,alumni,http://www.lamda.nju.edu.cn/zhumx/,s,Wei Wang,,,,,,zhumx@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:49.203932
+陈加略,,alumni,http://www.lamda.nju.edu.cn/chenjl/,s,Biography,,,,,,chenjialve-nj@hotmail.com,,,,partial,2026-01-05T16:30:50.278415
+胡毅奇,Yiqi Hu @ NJUCS,alumni,http://www.lamda.nju.edu.cn/huyq/,My research interests include: derivative-free optimization; automatic machine learning (AutoML); reinforcement learning. Currently; I am focusing on solving AutoML problems through high-efficient derivative-free optimization methods.,Associate professor,,,,,ICML×1; NeurIPS×1; AAAI×8; IJCAI×4,huyq@lamda.nju.edu.cn,,,,full,2026-01-05T16:30:51.345926
+魏通,Tong Wei,alumni,http://www.lamda.nju.edu.cn/weit/,s,Associate Professor,,,,,AAAI×4; IJCAI×2,,,https://github.com/Stomach-ache/AdaTTL,,partial,2026-01-05T16:30:52.403463
+张晨麟,Chen,alumni,http://www.lamda.nju.edu.cn/zhangcl/,,,,,,,,,,,,minimal,2026-01-05T16:30:53.691425
+赵鹏,,alumni,http://www.lamda.nju.edu.cn/zhaop/,s,,,,,,,,,,,minimal,2026-01-05T16:30:54.746148
+蔡乐文,,alumni,http://www.lamda.nju.edu.cn/cailw/,s,Yuan Jiang,,,,,,cailw@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:55.889664
+蔡欣强,,alumni,http://www.lamda.nju.edu.cn/caixq/,,,,,,,,,,,,minimal,2026-01-05T16:30:56.944323
+曹阳,Yang Cao,alumni,http://www.lamda.nju.edu.cn/caoy/,I'm interested in Machine Learning and Data Mining.,Ming Li.,,,,,,caoy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:30:58.100482
+房康,,alumni,http://www.lamda.nju.edu.cn/fangk/,,,,,,,,,,,,minimal,2026-01-05T16:30:59.192458
+桂贤进,,alumni,https://guixianjin.github.io/,s,Wei Wang,,,,,IJCAI×2,,,https://github.com/zhyhan/RDA,https://scholar.google.es/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence,partial,2026-01-05T16:31:07.735544
+杭诚,,alumni,http://www.lamda.nju.edu.cn/hangc/,,,,,,,,,,,,minimal,2026-01-05T16:31:12.691757
+蒋圣翊,,alumni,http://www.lamda.nju.edu.cn/jiangsy/,I am interested in Machine Learning. Currently I am focusing on the subfields:,Yang Yu,,,,,,,,,,partial,2026-01-05T16:31:12.830643
+李明威,,alumni,http://www.lamda.nju.edu.cn/limw/,Learn to Hash; Large-Scale Image/Video Retrieval,Associate Professor,,,,,NeurIPS×1,,,,,partial,2026-01-05T16:31:14.230091
+李文韬,Wen,alumni,http://www.lamda.nju.edu.cn/liwt/,s,Associate Professor,,,,,,,,,,partial,2026-01-05T16:31:15.886002
+李朝华,,alumni,http://www.lamda.nju.edu.cn/lizh/,Currently my research interest is:,Yang Yu,,,,,,,,,,partial,2026-01-05T16:31:18.661744
+沈松青,,alumni,http://www.lamda.nju.edu.cn/shensq/,s,Wei Gao,,,,,AAAI×4,shensq@lamda.nju.edu.cn,,,,full,2026-01-05T16:31:19.916728
+石锋,,alumni,http://www.lamda.nju.edu.cn/shif/,I'm interested in Machine Learning and Data Mining. More specifically; I now pay more attention to auto-ML and learnware.,Associate Professor,,,,,,shif@lamda.nju.edu.cn,,,,partial,2026-01-05T16:31:21.001936
+汤闻誉,Wenyu Tang@ NJUCS,alumni,http://www.lamda.nju.edu.cn/tangwy/,My research interests include Machine Learning and Data Mining.,Ming Li.,,,,,,,,,,partial,2026-01-05T16:31:22.613653
+王珺,Jun Wang's Homepage,alumni,http://www.lamda.nju.edu.cn/wangj/,s,,,,,,,,,,,minimal,2026-01-05T16:31:23.874528
+王易木,Yimu Wang's Homepage,alumni,http://www.lamda.nju.edu.cn/wangym/,s are,Krzysztof Czarnecki,,,,,NeurIPS×12; ICLR×3; CVPR×6; ICCV×3; ACL×3; EMNLP×19; NAACL×6; AAAI×16; IJCAI×10; JMLR×3,,https://www.linkedin.com/in/yimu-wang-854743151/,https://github.com/FLAIR-THU/CreamFL,https://scholar.google.com/citations?user=TV2vnN8AAAAJ&hl=en,partial,2026-01-05T16:31:25.023226
+薛波,Bo Xue,alumni,http://www.lamda.nju.edu.cn/xueb/,My research interests include: Online Learning and Stochastic Optimization.,Associate professor,,,,,,xueb@lamda.nju.edu.cn,,,,partial,2026-01-05T16:31:30.899280
+徐寅,,alumni,http://www.lamda.nju.edu.cn/xuyin/,I am interested in Machine Learning. Currently I am focusing on the subfields:,Yang Yu,,,,,,,,,,partial,2026-01-05T16:31:31.975786
+徐轶轩,,alumni,http://www.lamda.nju.edu.cn/xuyx/,My research interests include ：,Yuan Jiang,,,,,,,,,,partial,2026-01-05T16:31:33.017302
+余亚奇,Ya,alumni,https://yuyq96.github.io/,,,,,,,AAAI×2,yuyq96@126.com,,https://github.com/yuyq96/kaldifeat,https://scholar.google.com/citations?user=6JfwpDsAAAAJ&hl=en,partial,2026-01-05T16:31:34.047654
+张超,Chao Zhang（张超）,alumni,http://www.lamda.nju.edu.cn/zhangc/,Reinforcement learning has been shown to surpass human decision-making ability in the game; and the main reason behind this is that the game scene is a natural same-training-application environment for online learning. However; such a natural environment often does not exist in real business scenarios. Therefore; how to effectively combine the advantages of decision-making ability in reinforcement learning with the excellent ability of data mining in machine learning to improve the efficiency of,Yang Yu,,,,,ICML×1; AAAI×1; IJCAI×2,zhangc@lamda.nju.edu.cn,,https://github.com/Evanczhang/POSEC,,full,2026-01-05T16:31:36.906035
+张宇杰,,alumni,http://www.lamda.nju.edu.cn/zhangyj/,s,Zhi-Hua Zhou,,,,,NeurIPS×2; AAAI×4,zhangyj@lamda.nju.edu.cn,,,,full,2026-01-05T16:31:37.949816
+朱永南,Yong,alumni,http://www.lamda.nju.edu.cn/zhuyn/,s,Associate Professor,,,,,AAAI×2,zhuyn@lamda.nju.edu.cn,,,,full,2026-01-05T16:31:38.990730
+丁尧相,,alumni,http://www.lamda.nju.edu.cn/dingyx/,,,,,,,,,,,,minimal,2026-01-05T16:31:40.033840
+冯霁,Ji FENG,alumni,http://www.lamda.nju.edu.cn/fengj/,in SDU was mainly on Information Visualization and Visual Analytics. I also did some fun stuffs in differential privacy and computational geometry. Upon graduation at SDU; I was enrolled in the direct PhD program at Nanjing University.,Zhi-Hua Zhou,,,,,AAAI×4; IJCAI×1; WWW×1,,,https://github.com/kingfengji/DeepMIML,https://scholar.google.com/citations?user=PHgGTBsAAAAJ&hl=en,partial,2026-01-05T16:31:41.184928
+侯博建,,alumni,http://www.lamda.nju.edu.cn/houbj/,,,,,,,,,,,,minimal,2026-01-05T16:31:42.230714
+蒋庆远,Home,alumni,https://jiangqy.github.io,s are multimodal learning; multimodal large language models; information retrieval.,,,,,,NeurIPS×2; IJCAI×2; TPAMI×1,jiangqy@njust.edu.cn,,https://github.com/jiangqy,https://scholar.google.com/citations?user=2RtnHp4AAAAJ&hl=en&oi=ao,partial,2026-01-05T16:31:43.272385
+罗建豪,Jian,alumni,http://www.lamda.nju.edu.cn/luojh/,My research interests include:,Jianxin Wu.,,,,,CVPR×3; ICCV×2; ECCV×1; AAAI×1; TPAMI×1; TIP×1,,,https://github.com/Roll920/ThiNet_Code,https://scholar.google.com/citations?user=jiNokW0AAAAJ&hl=en,partial,2026-01-05T16:31:46.158770
+庞明,,alumni,http://www.lamda.nju.edu.cn/pangm/,My research interests include: Machine Learning and Data Mining. Currently; I am focusing on ensemble learning and anomaly detection.,Zhi-Hua Zhou,,,,,ICML×2; NeurIPS×3; AAAI×2,pangm@lamda.nju.edu.cn,,,,full,2026-01-05T16:31:47.209989
+钱鸿,,alumni,http://www.lamda.nju.edu.cn/qianh/,s,Associate Prof.,,,,,ICML×2; AAAI×13; IJCAI×4,,,https://github.com/eyounx/SRE,,partial,2026-01-05T16:31:48.261077
+王璐,,alumni,http://www.lamda.nju.edu.cn/wangl/,s,Zhi-Hua Zhou,,,,,NeurIPS×1; AAAI×2; IJCAI×1,wangl@lamda.nju.edu.cn,,https://github.com/wangwllu/spanning_attack,,full,2026-01-05T16:31:49.324565
+吴西竹,,alumni,http://www.lamda.nju.edu.cn/wuxz/,I am interested in machine learning. Currently I am; focusing on the subfields:,Zhi-Hua Zhou,,,,,ICML×7; NeurIPS×2; AAAI×2; TPAMI×1; TKDE×1,,,https://github.com/YuriWu/LIMO,https://scholar.google.com/citations?user=5sAhzH0AAAAJ,partial,2026-01-05T16:31:50.389274
+杨杨,Yang Yang,alumni,http://www.lamda.nju.edu.cn/yangy/,,,,,,,,,,,,minimal,2026-01-05T16:31:51.498007
+赵申宜,S.Y. Zhao @ NJUCS,alumni,http://www.lamda.nju.edu.cn/zhaosy/,My research interests include: Machine Learning; Convex Optimization; Parallel and Distributed Optimization (Project:,Associate professor,,,,,AAAI×6,zhaosy@lamda.nju.edu.cn,,,,full,2026-01-05T16:31:52.535379
+付朝阳,,alumni,http://www.lamda.nju.edu.cn/fuzy/,s,Associate professor,,,,,IJCAI×1,fuzy@lamda.nju.edu.cn,,,,full,2026-01-05T16:31:53.576571
+高昊,Hao Gao @ NJUCS,alumni,http://www.lamda.nju.edu.cn/gaoh/,My research interests include: Machine Learning; Data Mining.,Associate professor,,,,,,gaoh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:31:54.613135
+江晨舟,Chen,alumni,http://www.lamda.nju.edu.cn/jiangcz/,My research interests include: Machine Learning; Data Mining.,Associate professor,,,,,,jiangcz@lamda.nju.edu.cn,,,,partial,2026-01-05T16:31:55.663396
+姜明,Ming Jiang@ NJUCS,alumni,http://www.lamda.nju.edu.cn/jiangm/,My research interests include: Machine Learning; Data Mining.,Ming Li.,,,,,,jiangm@lamda.nju.edu.cn,,,,partial,2026-01-05T16:31:56.706166
+江悦,Yue Jiang @ NJUCS,alumni,http://www.lamda.nju.edu.cn/jiangyue/,My research interests include: Machine Learning; Neural Networks.,Associate professor,,,,,,jiangyue@lamda.nju.edu.cn,,,,partial,2026-01-05T16:31:57.812977
+姜允执,,alumni,http://www.lamda.nju.edu.cn/jiangyz/,Currently my research interest is:,Yang Yu,,,,,,,,,,partial,2026-01-05T16:31:58.852099
+焦润,,alumni,http://www.lamda.nju.edu.cn/jiaor/,I am interested in Machine Learning and Data Mining. Currently I am focusing on,Associate professor,,,,,,,,,,partial,2026-01-05T16:31:59.892976
+梁德明,,alumni,http://www.lamda.nju.edu.cn/liangdm/,I'm interested in Machine Learning and Data Mining. More specifically; I've done some 'little' work on semi-supervised learning. Currently; I'm interested in machine learning system for industrial engineering and heterogeneous parallel computing (OpenCL).,Associate Researcher,,,,,IJCAI×1,liangdm@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:00.933324
+李鹏程,Pengcheng Li @ NJUCS,alumni,http://www.lamda.nju.edu.cn/lipc/,My research interests include: Machine Learning; Data Mining.,Associate professor,,,,,,lipc@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:01.991549
+李述,,alumni,http://www.lamda.nju.edu.cn/lis/,,Dr. Associate Professor,,,,,AAAI×4; IJCAI×1,,,,,partial,2026-01-05T16:32:03.032764
+刘鑫鑫,Xin,alumni,http://www.lamda.nju.edu.cn/liuxx/,s,Jianxin Wu.,,,,,,liuxx@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:04.091869
+庞振家,,alumni,http://www.lamda.nju.edu.cn/pangzj/,I am interested in Machine Learning. Currently I am focusing on the subfields:,Yang Yu,,,,,AAAI×2,,,,,partial,2026-01-05T16:32:05.205859
+任婕,Jie Ren @ NJUCS,alumni,http://www.lamda.nju.edu.cn/renj/,My research interests include some sub-fields of machine learning and data mining.,Yuan Jiang.,,,,,,renj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:06.250914
+盛祥荣,,alumni,http://www.lamda.nju.edu.cn/shengxr/,s,,,,,,AAAI×2; IJCAI×2,,,,,partial,2026-01-05T16:32:07.307685
+史舒婷,,alumni,http://www.lamda.nju.edu.cn/shist/,s,Ming Li,,,,,AAAI×2,shist@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:08.378166
+王广辉,,alumni,http://www.lamda.nju.edu.cn/wanggh/,,,,,,,,,,,,minimal,2026-01-05T16:32:09.413964
+王科涛,,alumni,http://www.lamda.nju.edu.cn/wangkt/,s,Associate professor,,,,,,wangkt@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:10.461029
+王乾蔚,,alumni,http://www.lamda.nju.edu.cn/wangqw/,My research interests mainly include weakly supervised learning; domain adaptation and deep forest.,Zhi-Hua Zhou,,,,,AAAI×2; IJCAI×1,,,,,partial,2026-01-05T16:32:11.516518
+杨斌斌,,alumni,http://www.lamda.nju.edu.cn/yangbb/,s,Wei Gao,,,,,AAAI×2,yangbb@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:12.565379
+杨亮,,alumni,http://www.lamda.nju.edu.cn/yangl/,My research interests mainly include multi-label learning and deep forest.,Zhi-Hua Zhou,,,,,NeurIPS×1; AAAI×2,,,,,partial,2026-01-05T16:32:13.608410
+易坤,Kun Yi @ NJUCS,alumni,http://www.lamda.nju.edu.cn/yik/,My research interests include: Computer Vision; Label Noise; Machine Learning.,Jianxin Wu.,,,,,CVPR×1,yik@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:14.663809
+尤晶晶,Jing,alumni,http://www.lamda.nju.edu.cn/youjj/,My research interests include: Machine Learning; Data Mining.,Associate professor,,,,,,youjj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:15.699580
+张凯峰,,alumni,http://www.lamda.nju.edu.cn/zhangkf/,Currently I'm working on:,Yang Yu,,,,,,,,,,partial,2026-01-05T16:32:16.735295
+张妍雅,,alumni,http://www.lamda.nju.edu.cn/zhangyy/,s,Ming Li,,,,,AAAI×2,zhangyy@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:17.835208
+周勇,,alumni,http://www.lamda.nju.edu.cn/zhouy/,Currently my research interest is:,Yang Yu,,,,,,,,,,partial,2026-01-05T16:32:18.877522
+戴望州,index.html,alumni,http://www.lamda.nju.edu.cn/daiwz/,,,,,,,,,,,,minimal,2026-01-05T16:32:19.927546
+霍轩,,alumni,http://www.lamda.nju.edu.cn/huox/,s,,,,,,AAAI×2; IJCAI×2,huox@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:20.973668
+叶翰嘉,Han,alumni,http://www.lamda.nju.edu.cn/yehj/,,,,,,,ICML×9; NeurIPS×8; ICLR×10; CVPR×6; ICCV×2; ACL×1; AAAI×12; IJCAI×7; TPAMI×5; JMLR×1; TKDE×2,Update@2025.09,,https://github.com/sun-hailong/LAMDA-PILOT,https://scholar.google.com/citations?user=mgOYhtoAAAAJ&hl=en,partial,2026-01-05T16:32:22.016867
+张腾,Zhang Teng's Homepage,alumni,http://www.lamda.nju.edu.cn/zhangt/,s include some sub-fields; of Artificial Intelligence: Meachine Learning; Pattern Recognition and; Data Mining. I will try my best to learn more in these fields and now I; am working on Cost-Sensitive Learning.,Zhi-Hua Zhou,,,,,,zhangt@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:23.080606
+陈东东,,alumni,http://www.lamda.nju.edu.cn/chendd/,Currently my research interests include:,Zhi-Hua Zhou,,,,,IJCAI×1,chendd@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:24.142063
+陈龙意,,alumni,http://www.lamda.nju.edu.cn/chenly/,My research interests include:,Associate Professor,,,,,,,,,,partial,2026-01-05T16:32:25.187115
+陈雨,Yu Chen @ NJUCS,alumni,http://www.lamda.nju.edu.cn/cheny/,My research interests include: Machine Learning; Data Mining.,Associate professor,,,,,,,,,,partial,2026-01-05T16:32:26.247282
+董豪晨,,alumni,http://www.lamda.nju.edu.cn/donghc/,Efficiently Use Algebra and Geometry in Machine learning.,Zhi-Hua Zhou,,,,,AAAI×1,,,https://github.com/dhc123/SSWL,,partial,2026-01-05T16:32:27.299087
+董坚,,alumni,http://www.lamda.nju.edu.cn/dongj/,I am interested in Machine Learning; .,Yuan Jiang,,,,,,,,,,partial,2026-01-05T16:32:28.343882
+樊磊,Lei Fan @ NJUCS,alumni,http://www.lamda.nju.edu.cn/fanl/,My research interests include:,Associate professor,,,,,,,,,,partial,2026-01-05T16:32:29.386711
+郭瑞军,,alumni,http://www.lamda.nju.edu.cn/guorj/,I am interested in,Yuan Jiang,,,,,,guorj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:30.455563
+李恒毅,HengYi Li @ NJUCS,alumni,http://www.lamda.nju.edu.cn/lihy/,My research interests include some sub-fields of,Associate professor,,,,,,lihy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:31.509599
+屈伟洋,WeiYang Qu @ NJUCS,alumni,http://www.lamda.nju.edu.cn/quwy/,My research interests include: Machine Learning and Data Mining.,Associate professor,,,,,,quwy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:32.593716
+尚文杰,Wen,alumni,http://www.lamda.nju.edu.cn/shangwj/,My research interests include: Machine Learning; Data Mining.,Yuan Jiang.,,,,,,,,,,partial,2026-01-05T16:32:33.634820
+王嘉时,,alumni,http://www.lamda.nju.edu.cn/wangjs/,I am interested in,Yuan Jiang,,,,,,wangjs@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:34.668473
+吴逸峰,,alumni,http://www.lamda.nju.edu.cn/wuyf/,My research interests include:  Machine Learning.,De-Chuan Zhan,,,,,AAAI×2; KDD×1,wuyf@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:35.777902
+徐栋,,alumni,http://www.lamda.nju.edu.cn/xud/,Machine Learning; Neural Networks,Associate Professor  Dr.,,,,,,,,,,partial,2026-01-05T16:32:36.846657
+严欣雨,,alumni,http://www.lamda.nju.edu.cn/yanxy/,I am interested in Machine Learning and Data Mining. Currently I am focusing on the subfields of,Associate professor,,,,,,,,,,partial,2026-01-05T16:32:37.895584
+张公铎,Gong,alumni,http://www.lamda.nju.edu.cn/zhanggd/,My research interests include:,Associate professor,,,,,AAAI×2,zhanggd@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:38.953180
+张皓,,alumni,http://www.lamda.nju.edu.cn/zhangh/,,,,,,,,,,,,minimal,2026-01-05T16:32:40.006115
+周文吉,Wen,alumni,http://www.lamda.nju.edu.cn/zhouwj/,Currently my research interest is:,Yang Yu,,,,,ICML×1; IJCAI×4,zhouwj@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:41.433229
+高斌斌,Bin,alumni,http://www.lamda.nju.edu.cn/gaobb/,s include computer vision and machine learning,Jianxin Wu,,,,,CVPR×4; ICCV×12; ECCV×2; AAAI×7; IJCAI×3; TIP×1,csgaobb@gmail.com,,https://github.com/gaobb/DSP,http://scholar.google.com/citations?user=yYviZ-oAAAAJ&hl=en,full,2026-01-05T16:32:42.483042
+李绍园,,alumni,http://www.lamda.nju.edu.cn/lisy/,My research interests include:,Biography,,,,,AAAI×2,lisy@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:43.558591
+慕鑫,Xin Mu （慕鑫）,alumni,http://www.lamda.nju.edu.cn/mux/,s lie in the area of  data mining in the digital economy; including some sub-fields of data auditing; data incenttive and data trading; etc.,,,,,,ACL×1; AAAI×2; IJCAI×2; KDD×2; TKDE×2,mux@lamda.nju.edu.cn,,https://github.com/SwissDM52/SENCForest11,,partial,2026-01-05T16:32:44.636981
+魏秀参,Xiu,alumni,http://www.lamda.nju.edu.cn/weixs/,,,,,,,,,,,,minimal,2026-01-05T16:32:45.716682
+朱越,Yue Zhu's Homepage,alumni,http://www.lamda.nju.edu.cn/zhuy/,s,Zhi-Hua Zhou,,,,,AAAI×2; KDD×2; JMLR×2,,,,,partial,2026-01-05T16:32:46.760445
+陈世勇,Shi,alumni,http://www.lamda.nju.edu.cn/chensy/,s,Associate Prof.,,,,,AAAI×2; KDD×1,chensy@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:47.813014
+崔雪,,alumni,http://www.lamda.nju.edu.cn/cuix/,My research interests include:,Associate professor,,,,,,,,,,partial,2026-01-05T16:32:48.862565
+戴威,,alumni,http://www.lamda.nju.edu.cn/daiw/,,,,,,,,,,,,minimal,2026-01-05T16:32:49.907497
+范颖,Ying Fan @ NJUCS,alumni,http://www.lamda.nju.edu.cn/fany/,My research interests include some sub-fields of,Associate professor,,,,,,,,,,partial,2026-01-05T16:32:49.954667
+李润泽,,alumni,http://www.lamda.nju.edu.cn/lirz/,My research interests include:,Biography,,,,,,,,,,partial,2026-01-05T16:32:51.004554
+刘冲,Chong Liu @ Nanjing University,alumni,http://www.lamda.nju.edu.cn/liuc/,,,,,,,,,,,,minimal,2026-01-05T16:32:52.058739
+牛晓帆,Xiao,alumni,http://www.lamda.nju.edu.cn/niuxf/,My research interests include:,Associate professor,,,,,,,,,,partial,2026-01-05T16:32:53.094179
+牛心怡,,alumni,http://www.lamda.nju.edu.cn/niuxy/,My research interests include:,Assistant Researcher:,,,,,,niuxy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:54.148582
+侍竞成,Jing,alumni,http://www.lamda.nju.edu.cn/shijc/,I am interested in investigating towards the goal of artificial intelligence.,Associate professor,,,,,AAAI×2; IJCAI×3,shijc@lamda.nju.edu.cn,,,,full,2026-01-05T16:32:55.189579
+师颖毫,Ying,alumni,http://www.lamda.nju.edu.cn/shiyh/,My research interests include:,Associate professor,,,,,,shiyh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:56.264912
+司雪敏,,alumni,http://www.lamda.nju.edu.cn/sixm/,My research interests include:,Associate Professor,,,,,,sixm@lamda.nju.edu.cn,,,,partial,2026-01-05T16:32:57.319218
+宋歌,Ge Song @ NJUCS,alumni,http://www.lamda.nju.edu.cn/songg/,My research interests include some sub-fields of machine learning and data mining.,Yuan Jiang.,,,,,,,,,,partial,2026-01-05T16:32:58.367698
+孙涛,Tao Sun @ NJUCS,alumni,http://www.lamda.nju.edu.cn/sunt/,I was previously working on image processing for undergraduate study; specifically in cone-beam CT reconstruction. For master study; I mainly worked on one of the fundamental problems in ensemble learning: how to measure ensemble diversity.; (Goolge Scholar),Zhi-Hua Zhou,,,,,,,,,https://scholar.google.com/citations?user=izyo6gkAAAAJ&hl=zh-CN,partial,2026-01-05T16:32:59.432848
+王海,,alumni,http://www.lamda.nju.edu.cn/wanghai/,My research interests include:,Assistant Researcher:,,,,,,wanghai@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:00.475589
+魏慧慧,,alumni,http://www.lamda.nju.edu.cn/weihh/,s,,,,,,IJCAI×1,weihh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:01.520944
+肖一驰,Yi,alumni,http://www.lamda.nju.edu.cn/xiaoyc/,肖一驰,Biography,,,,,ICML×1; IJCAI×1,xiaoyc@lamda.nju.edu.cn,,,,full,2026-01-05T16:33:02.566819
+谢晨伟,Chen,alumni,http://www.lamda.nju.edu.cn/xiecw/,My research interests include: Machine Learning; Computer Vision.,Jianxin Wu.,,,,,,,,,,partial,2026-01-05T16:33:03.616395
+杨森,,alumni,http://www.lamda.nju.edu.cn/yangs/,I am interested in Machine Learning and Data Mining.,Associate Professor,,,,,,yangs@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:04.659086
+翟一飞,,alumni,http://www.lamda.nju.edu.cn/zhaiyf/,My research interests include:,Associate Professor,,,,,,,,,,partial,2026-01-05T16:33:05.693182
+张杰,,alumni,http://www.lamda.nju.edu.cn/zhangj/,My research interests include:,Associate Professor,,,,,,zhangj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:06.734673
+张雅淋,,alumni,http://www.lamda.nju.edu.cn/zhangyl/,Currently my research interests include:,Zhi-Hua Zhou,,,,,IJCAI×1; WWW×1,,,,,partial,2026-01-05T16:33:07.777852
+郑文豪,,alumni,http://www.lamda.nju.edu.cn/zhengwh/,I am interested in Software Mining. Currently I am focusing on the subfields of,Assoicate Professor,,,,,,,,,,partial,2026-01-05T16:33:08.851708
+周洪宇,Hong,alumni,http://www.lamda.nju.edu.cn/zhouhy/,s,Jianxin Wu,,,,,ICCV×1,,,,,partial,2026-01-05T16:33:09.897503
+周宇航,,alumni,http://www.lamda.nju.edu.cn/zhouyh/,I am interested in Machine Learning and Data Mining.,Zhi-Hua Zhou,,,,,AAAI×5; IJCAI×1; KDD×1; TKDE×1,,,,,partial,2026-01-05T16:33:10.951862
+徐淼,Miao's Homepage,alumni,http://www.lamda.nju.edu.cn/xum/,,,,,,,,,,,,minimal,2026-01-05T16:33:12.010848
+储醉,,alumni,http://www.lamda.nju.edu.cn/chuz/,,,,,,,,,,,,minimal,2026-01-05T16:33:13.056632
+范林鹏,,alumni,http://www.lamda.nju.edu.cn/fanlp/,,,,,,,,,,,,minimal,2026-01-05T16:33:13.099533
+高鹏,,alumni,http://www.lamda.nju.edu.cn/gaop/,My research interests include:,Biography,,,,,,gaop@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:14.173872
+郭翔宇,Xiang,alumni,http://www.lamda.nju.edu.cn/guoxy/,s,,,,,,,,,,,minimal,2026-01-05T16:33:15.234530
+侯鹏飞,,alumni,http://www.lamda.nju.edu.cn/houpf/,My research interests include:,Associate Professor,,,,,,houpf@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:16.276325
+黄真川,,alumni,http://www.lamda.nju.edu.cn/huangzc/,My research interests include some sub-fields of machine learning and data mining:,Associate professor,,,,,,,,http://github.com/chuan92,,partial,2026-01-05T16:33:17.342982
+苗园,Yuan Miao @ NJUCS,alumni,http://www.lamda.nju.edu.cn/miaoy/,My research interests include some sub-fields of machine learning and data mining:,,,,,,,,,,,minimal,2026-01-05T16:33:18.403989
+王盛,,alumni,http://www.lamda.nju.edu.cn/wangs/,My research interests include:,Associate Professor,,,,,,,,,,partial,2026-01-05T16:33:19.460808
+王少博,Shao,alumni,http://www.lamda.nju.edu.cn/wangsb/,My research interests include some sub-fields of machine learning:,Assistant researcher,,,,,IJCAI×1,wangsb@lamda.nju.edu.cn,,,,full,2026-01-05T16:33:20.517689
+项如,,alumni,http://www.lamda.nju.edu.cn/xiangr/,My research interests include:,Biography,,,,,,,,,,partial,2026-01-05T16:33:21.568288
+杨敬文,Jing,alumni,http://www.lamda.nju.edu.cn/yangjw/,I am interested in investigating towards the goal of artificial intelligence. Currently I am focusing on the subfields:,Associate professor,,,,,,,,,,partial,2026-01-05T16:33:22.649253
+周旺,,alumni,http://www.lamda.nju.edu.cn/zhouw/,My research; interests include:,Jianxin Wu,,,,,,,,,,partial,2026-01-05T16:33:23.695804
+陈加略,,alumni,http://www.lamda.nju.edu.cn/chenjl,s,Biography,,,,,,chenjialve-nj@hotmail.com,,,,partial,2026-01-05T16:33:24.753735
+韩乐,,alumni,http://www.lamda.nju.edu.cn/hanl,s include:,Biography,,,,,,hanl@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:25.820610
+胡鹏,,alumni,http://www.lamda.nju.edu.cn/hup,My research interests include:,De-Chuan Zhan,,,,,AAAI×2,hup@lamda.nju.edu.cn,,,,full,2026-01-05T16:33:26.885883
+李静,,alumni,http://www.lamda.nju.edu.cn/lij,My research interests include:,Biography:,,,,,,lij@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:27.957485
+李远肇,,alumni,http://www.lamda.nju.edu.cn/liyz,My research interests include:,Zhi-Hua Zhou,,,,,,liyz@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:29.039992
+马健,Jian Ma @ NJUCS,alumni,http://www.lamda.nju.edu.cn/maj,I am interested in investigating towards the goal of artificial intelligence. Currently I am focusing on the subfields:,Associate professor,,,,,,maj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:30.115829
+王晓东,,alumni,http://www.lamda.nju.edu.cn/wangxd,s,Biography,,,,,,,,,,partial,2026-01-05T16:33:31.202634
+杨杨,Yang Yang,alumni,http://www.lamda.nju.edu.cn/yangy,,,,,,,,,,,,minimal,2026-01-05T16:33:32.322206
+周国兵,,alumni,http://www.lamda.nju.edu.cn/zhougb,s,Research Interests,,,,,,zhougb@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:33.401110
+Cam-Tu Nguyen,,alumni,http://www.lamda.nju.edu.cn/nguyenct,,,,,,,,,,,,minimal,2026-01-05T16:33:34.469836
+李楠,,alumni,http://www.lamda.nju.edu.cn/lin,,,,,,,,,,,,minimal,2026-01-05T16:33:34.494721
+钱超,Chao Qian,alumni,http://www.lamda.nju.edu.cn/qianc,]; [Recent News]; [Publications]; [Awards]; [Students]; [Professional Activities]; [Teaching]; [Short Bio]; [中文简历],,,,,,ICML×14; NeurIPS×14; ICLR×10; AAAI×35; IJCAI×39; KDD×1,,,https://github.com/lamda-bbo/madac,,partial,2026-01-05T16:33:35.602306
+陈庆国,,alumni,http://www.lamda.nju.edu.cn/chenqg,s include:,Biography,,,,,,chenqg@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:36.821098
+钱煜,Yu Qian,alumni,http://www.lamda.nju.edu.cn/qiany,s,Associate Professor,,,,,,qiany@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:37.924574
+佘元博,,alumni,http://www.lamda.nju.edu.cn/sheyb,,,,,,,,,,,,minimal,2026-01-05T16:33:39.000443
+唐俊,,alumni,http://www.lamda.nju.edu.cn/tangj,My research interests include: Machine learning and Data mining.,Zhi-Hua Zhou,,,,,,tangj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:40.463928
+王东,,alumni,http://www.lamda.nju.edu.cn/wangd,My research interests include:,Associate Professor,,,,,,wangd@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:41.526676
+吴海飞,,alumni,http://www.lamda.nju.edu.cn/wuhf,My research interests include:,Associate Professor,,,,,,wuhf@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:42.600900
+杨子旭,,alumni,http://www.lamda.nju.edu.cn/yangzx,,,,,,,,,,,,minimal,2026-01-05T16:33:43.723907
+高尉,,alumni,http://www.lamda.nju.edu.cn/gaow,]; [ Publication ],,,,,,ICML×4; NeurIPS×3; AAAI×6; IJCAI×4,,,,,partial,2026-01-05T16:33:44.859058
+黄圣君,,alumni,http://www.lamda.nju.edu.cn/huangsj,,,,,,,,,,,,minimal,2026-01-05T16:33:45.929373
+郭训力,,alumni,http://www.lamda.nju.edu.cn/guoxl,My research interests include:,Associate Professor,,,,,,guoxl@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:47.015578
+李涛,,alumni,http://www.lamda.nju.edu.cn/lit,My research interests include:,Biography:,,,,,,lit@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:48.104820
+卢勃,,alumni,http://www.lamda.nju.edu.cn/lub,,,,,,,,,,,,minimal,2026-01-05T16:33:49.178273
+年素磊,,alumni,http://www.lamda.nju.edu.cn/niansl,My research interests include:,Biography,,,,,,niansl@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:49.212177
+宋拴,,alumni,http://www.lamda.nju.edu.cn/songs,,,,,,,,songs.cn@gmail.com,,,,minimal,2026-01-05T16:33:50.307949
+杨书君,,alumni,http://www.lamda.nju.edu.cn/yangsj,My research interests include:,Biography,,,,,,yangsj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:51.366319
+邹晓川,Xiao,alumni,http://www.lamda.nju.edu.cn/zouxc,s,Associate Professor: Yuan Jiang,,,,,,zouxiaochuan@163.com,,,,partial,2026-01-05T16:33:52.447488
+王魏,,alumni,http://www.lamda.nju.edu.cn/wangw,,,,,,,,,,,,minimal,2026-01-05T16:33:53.534892
+李宇峰,Yu,alumni,http://www.lamda.nju.edu.cn/liyf,s,,,,,,ICML×7; AAAI×28; IJCAI×7; KDD×1; TPAMI×3; JMLR×2; TKDE×3,,,,http://scholar.google.com/citations?hl=en&user=5iQDMtUAAAAJ&view_op=list_works&is_public_preview=1,partial,2026-01-05T16:33:53.756340
+陈虎,Hu Chen's Homepage,alumni,http://www.lamda.nju.edu.cn/chenh,s,Zhi-Hua Zhou,,,,,,chenh@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:54.841076
+笪庆,,alumni,http://www.lamda.nju.edu.cn/daq,s,,,,,,AAAI×3; KDD×2,daq@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:55.936202
+施梦圆,,alumni,http://www.lamda.nju.edu.cn/shimy,My research interests include:,Biography,,,,,,shimy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:57.011352
+曾繁江,Fan,alumni,http://www.lamda.nju.edu.cn/zengfj,s include some sub-fields; of Artificial Intelligence: Machine Learning; Natural Language Processing; Human-Computer Interaction and Virtual Reality. I will try my best to learn more; in these fields and now I am working on Human-Computer Interaction.,Ming Li,,,,,,zengfj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:33:58.120384
+胡菊花,Ju,alumni,http://www.lamda.nju.edu.cn/hujh,,,,,,,,,,,,minimal,2026-01-05T16:33:59.186999
+贾贝贝,,alumni,http://www.lamda.nju.edu.cn/jiabb,My research interests include:,Biogeraphy,,,,,,jiabb@lamda.nju.edu.cn,,,,partial,2026-01-05T16:34:00.257166
+郏夹,,alumni,http://www.lamda.nju.edu.cn/jiaj,Correspondence,Biogeraphy,,,,,,jiaj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:34:01.335861
+涂威威,,alumni,http://www.lamda.nju.edu.cn/tuww,]; [ Correspondence ],],,,,,,tuww@lamda.nju.edu.cn,,,,partial,2026-01-05T16:34:02.414241
+王少尉,Shaowei Wang's homepage,alumni,http://www.lamda.nju.edu.cn/wangsw,,,,,,,,,,,,minimal,2026-01-05T16:34:03.491019
+俞扬,,alumni,http://www.lamda.nju.edu.cn/yuy,,,,,,,,,,,,minimal,2026-01-05T16:34:04.569454
+钱祺,Qi Qian's Homepage,alumni,http://www.lamda.nju.edu.cn/qianq,,,,,,,,,,,,minimal,2026-01-05T16:34:06.621491
+佘俏俏,welcome to Qiao,alumni,http://www.lamda.nju.edu.cn/sheqq,s include Machine Learning and Data,is Associate Prof.,,,,,,,,,,partial,2026-01-05T16:34:07.685888
+孙雨音,Yu,alumni,http://www.lamda.nju.edu.cn/sunyy,s include some sub-fields of Artificial Intelligence:,,,,,,ICML×1; AAAI×4,,,,,partial,2026-01-05T16:34:08.751119
+李颖新,Ying,alumni,http://www.lamda.nju.edu.cn/liyx,My research interests mainly; include Machine Learning; Pattern Recognition and Bioinformatics.,] [,,,,,IJCAI×1,liyx@lamda.nju.edu.cn,,,,full,2026-01-05T16:34:09.816230
+詹德川,Main Page · 语雀,alumni,http://www.lamda.nju.edu.cn/zhandc,,,,,,,,,,,,minimal,2026-01-05T16:34:10.970993
+肖新攀,,alumni,http://www.lamda.nju.edu.cn/xiaoxp,,,,,,,,,,,,minimal,2026-01-05T16:34:14.732734
+张引,Yin Zhang,alumni,http://www.lamda.nju.edu.cn/zhangyin,,,,,,,,,,,,minimal,2026-01-05T16:34:21.989841
+孔祥南,welcome to Xiang,alumni,http://www.lamda.nju.edu.cn/kongxn,s include Machine Learning; Pattern Recognition and Data,,,,,,,,,,,minimal,2026-01-05T16:34:23.062998
+刘力平,"Liu, Li",alumni,http://www.lamda.nju.edu.cn/liulp,,,,,,,,,,,,minimal,2026-01-05T16:34:24.227293
+眭俊明,Jun,alumni,http://www.lamda.nju.edu.cn/xujm,s,Correspondence,,,,,ICML×1,,,,,partial,2026-01-05T16:34:25.285438
+李小琳,Xiao,alumni,http://www.lamda.nju.edu.cn/lixl,s; ]      [,,,,,,,,,,,minimal,2026-01-05T16:34:26.367075
+薛晓冰,Ѧ����,alumni,http://www.lamda.nju.edu.cn/xuexb/,,],,,,,AAAI×1; WWW×1,,,,,partial,2026-01-05T16:34:27.456929
+张宇,Welcome to Yu Zhang's Home Page,alumni,http://www.lamda.nju.edu.cn/zhangy,Publication,Research Interest,,,,,,zhangy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:34:28.507218
+刘驭壬,,phd,http://www.lamda.nju.edu.cn/liuyr/,,Yang Yu,,,,,NeurIPS×1; AAAI×2,liuyr@lamda.nju.edu.cn,,https://github.com/eyounx/ZOOpt,,partial,2026-01-05T16:34:29.571959
+范文殊,,phd,http://www.lamda.nju.edu.cn/fanws/,s,,,,,,ICML×2; NeurIPS×1; ACL×1; KDD×1; TPAMI×1,dz1937001@smail.nju.edu.cn,,,,partial,2026-01-05T16:34:30.620298
+李敏辉,Minhui Li,phd,http://www.lamda.nju.edu.cn/limh/,s,Yang Yu,,,,,,,,https://github.com/Jimenius,,partial,2026-01-05T16:34:31.663168
+王健树,,phd,http://www.lamda.nju.edu.cn/wangjianshu/,s,Yang Yu,,,,,,keavnn.wjs@gmail.com,,https://github.com/StepNeverStop/RLs,,partial,2026-01-05T16:34:32.711123
+张仲楠,Julian Zhang,phd,http://www.lamda.nju.edu.cn/zhangzn/,,Yang Yu,,,2019,2018.12,,zhangzn@lamda.nju.edu.cn,,,,partial,2026-01-05T16:34:33.756080
+贾乘兴,,phd,http://www.lamda.nju.edu.cn/jiacx/,s,Yang Yu,,,,,ICML×4; ICLR×4,jiacx@lamda.nju.edu.cn,,,https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=V1SjqeYAAAAJ&citation_for_view=V1SjqeYAAAAJ:zYLM7Y9cAGgC,full,2026-01-05T16:34:34.791728
+廖沩健,,phd,http://www.lamda.nju.edu.cn/liaowj/,s,Associate Prof.,,,,,,liaowj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:34:35.852017
+刘丹璇,,phd,http://www.lamda.nju.edu.cn/liudx/,My research interests include Machine Learning and Data Mining; especially in,Chao Qian,,,,,ICML×1; AAAI×3; IJCAI×2,liudx@lamda.nju.edu.cn,,https://github.com/lamda-bbo/MR-EMO,,full,2026-01-05T16:34:36.897959
+刘旭辉,,phd,http://www.lamda.nju.edu.cn/liuxh/,s,Yang Yu,,,,,ICML×2; NeurIPS×2,liuxh@lamda.nju.edu.cn,,,,full,2026-01-05T16:34:38.184493
+钱梦璋,,phd,http://www.lamda.nju.edu.cn/qianmz/,s,Lijun Zhang,,,,,IJCAI×1,qianmz@lamda.nju.edu.cn,,,,full,2026-01-05T16:34:39.239331
+单家威,,phd,http://www.lamda.nju.edu.cn/shanjw/,s,Zhi-Hua Zhou,,,,,,shanjw@lamda.nju.edu.cn,,,,partial,2026-01-05T16:34:40.291381
+邵杰晶,,phd,http://www.lamda.nju.edu.cn/shaojj/,s,Yu-Feng Li,,,,,ICML×5; NeurIPS×7; ICLR×1; AAAI×5; IJCAI×8; KDD×5,shaojj@lamda.nju.edu.cn,,https://github.com/sh-jj/SRA-KDD-2024,,full,2026-01-05T16:34:41.322324
+陶略,,phd,http://www.lamda.nju.edu.cn/taol/,s,,,,,,ICML×8; NeurIPS×7; ICLR×3; AAAI×8; IJCAI×4; KDD×1; TPAMI×1,,,https://github.com/TLMichael/Delusive-Adversary,,partial,2026-01-05T16:34:42.382120
+薛轲,Ke Xue @ NJU,phd,http://www.lamda.nju.edu.cn/xuek/,s include,,,,,,ICML×5; NeurIPS×11; ICLR×4; AAAI×2; IJCAI×4,,,https://github.com/lamda-bbo/WireMask-BBO,https://scholar.google.com/citations?user=78bZVOwAAAAJ,partial,2026-01-05T16:34:43.430028
+许逸初,,phd,http://www.lamda.nju.edu.cn/xuyc/,s,,,,,,,,,,,minimal,2026-01-05T16:34:44.492742
+闫雨呼,,phd,http://www.lamda.nju.edu.cn/yanyh/,My research interests include Machine Learning and Data Mining. Most recently; I am interested in Online Learning and Games.,Zhi-Hua Zhou,,,,,ICML×3; NeurIPS×5; ICLR×1; AAAI×5; TPAMI×1; JMLR×2,yanyh@lamda.nju.edu.cn,,,,full,2026-01-05T16:34:45.540635
+尹小龙,,phd,http://www.lamda.nju.edu.cn/yinxl/,s,,,,,,,,,,,minimal,2026-01-05T16:34:46.599108
+郑钦城,,phd,http://www.lamda.nju.edu.cn/zhengqc/,s,Yuan Jiang,,,,,,,,,,partial,2026-01-05T16:34:47.638923
+周植,Zhi Zhou (周植),phd,http://www.lamda.nju.edu.cn/zhouz/,,,,,,,ICML×2; NeurIPS×3; EMNLP×1; AAAI×3,zhouz@lamda.nju.edu.cn,,https://github.com/WNJXYK/RPC/,https://scholar.google.com/citations?user=VzvP5a8AAAAJ,partial,2026-01-05T16:34:48.688059
+朱可,,phd,http://www.lamda.nju.edu.cn/zhuk/,s,Jianxin Wu,,,,,NeurIPS×1; AAAI×4; TPAMI×1; TIP×1,zhuk@lamda.nju.edu.cn,,https://github.com/QwenLM/Qwen3-VL,,full,2026-01-05T16:34:52.762004
+陈瑞峰,,phd,http://www.lamda.nju.edu.cn/chenrf/,s,Yang Yu,,,,,ICML×3; ICLR×1,chenrf@lamda.nju.edu.cn,,,,full,2026-01-05T16:34:53.873429
+陈如莹,,phd,http://www.lamda.nju.edu.cn/chenry/,My research interests include: reinforcement learning; continual learning and hulman-computer interaction.,De-Chuan Zhan,,,,,,,,,,partial,2026-01-05T16:34:54.924033
+丁姝,,phd,https://www.lamda.nju.edu.cn/dings/,s,Wei Wang,,,,,ICML×1; NeurIPS×1,dings@lamda.nju.edu.cn,,,,full,2026-01-05T16:34:56.028691
+付明浩,,phd,http://www.lamda.nju.edu.cn/fumh/,s,Jianxin Wu,,,,,AAAI×1,fumh@lamda.nju.edu.cn,,https://github.com/heekhero/ACSR,,full,2026-01-05T16:34:57.211114
+高恩豪,,phd,http://www.lamda.nju.edu.cn/gaoeh/,s,Yuan Jiang,,,,,NeurIPS×1; AAAI×2,gaoeh@lamda.nju.edu.cn,,https://github.com/AbductiveLearning/ABL-HD,,full,2026-01-05T16:34:58.266502
+郭峻杞,,phd,http://www.lamda.nju.edu.cn/guojq/,s,Wei Gao,,,,,ICML×1,guojq@lamda.nju.edu.cn,,,,full,2026-01-05T16:34:59.324696
+胡文超,Wen,phd,http://www.lamda.nju.edu.cn/huwc/,,,,,,,ICML×3; NeurIPS×4; ICLR×1; CVPR×1; AAAI×10; IJCAI×2,huwc@lamda.nju.edu.cn,,https://github.com/AbductiveLearning/ABLkit,,partial,2026-01-05T16:35:00.365289
+蒋俊鹏,,phd,http://www.lamda.nju.edu.cn/jiangjp/,s,,,,,,ICML×3; NeurIPS×3; ICLR×1; AAAI×1; IJCAI×2; KDD×1; JMLR×1,,,https://github.com/LAMDA-Tabular/TALENT,,partial,2026-01-05T16:35:01.412905
+刘建东,,phd,http://www.lamda.nju.edu.cn/liujd/,s,Zhi-Hua Zhou,,,,,ICML×1; NeurIPS×1; ICLR×1; AAAI×2; IJCAI×1; KDD×2,liujd@lamda.nju.edu.cn,,https://github.com/Learnware-LAMDA,,full,2026-01-05T16:35:02.470536
+刘朋森,,phd,http://www.lamda.nju.edu.cn/liups/,s,Yang Yu,,,,,,liups@lamda.nju.edu.cn,https://www.linkedin.com/in/%E4%BB%81%E5%BD%AA-%E5%88%98-b225211a5/,,,partial,2026-01-05T16:35:03.527648
+刘仁彪,,phd,http://www.lamda.nju.edu.cn/liurb/,s,Ming Li,,,,,,liurb@lamda.nju.edu.cn,https://www.linkedin.com/in/%E4%BB%81%E5%BD%AA-%E5%88%98-b225211a5/,https://github.com/richardodliu,,partial,2026-01-05T16:35:04.572637
+钱宇阳,,phd,http://www.lamda.nju.edu.cn/qianyy/,s,Zhi-Hua,,,,,ICML×5; NeurIPS×2; ICLR×1; AAAI×1; KDD×3; TKDE×1,qianyy@lamda.nju.edu.cn,,https://github.com/ZinYY/StreamingWavelet/,https://scholar.google.com/citations?user=rFtaRxcAAAAJ,full,2026-01-05T16:35:05.620506
+侍蒋鑫,,phd,http://www.lamda.nju.edu.cn/shijx/,s,Yu-Feng Li,,,,,ICML×3; NeurIPS×4; ICLR×1; ICCV×1; AAAI×1; IJCAI×1; KDD×3,shijx@lamda.nju.edu.cn,,https://github.com/shijxcs/LIFT-plus,https://scholar.google.com/citations?user=KEgtGncAAAAJ,full,2026-01-05T16:35:06.679948
+王景,,phd,http://www.lamda.nju.edu.cn/wangjing/,s,Zhi-Hua Zhou,,,,,ICML×4; NeurIPS×2; ICLR×1; AAAI×2,wangjing@lamda.nju.edu.cn,,,,full,2026-01-05T16:35:07.737373
+王一博,,phd,http://www.lamda.nju.edu.cn/wangyb/,s,Lijun Zhang,,,,,ICML×8; NeurIPS×9; ICLR×1; AAAI×9; WWW×2; TPAMI×2; JMLR×2,wangyb@lamda.nju.edu.cn,,,,full,2026-01-05T16:35:08.788787
+万盛华,,phd,http://www.lamda.nju.edu.cn/wansh/,s,,,,,,ICML×5; NeurIPS×3; IJCAI×2,,,https://github.com/yixiaoshenghua/Multi-Temporal-Training-Based-Remote-Sensing-Images-Information-Extraction,https://scholar.google.com/citations?user=ohq28Z0AAAAJ&hl=en&oi=sra,partial,2026-01-05T16:35:09.848685
+薛迪,,phd,http://www.lamda.nju.edu.cn/xued/,s,Associate Prof.,,,,,IJCAI×1,,,,,partial,2026-01-05T16:35:10.916292
+许璠,,phd,http://www.lamda.nju.edu.cn/xuf/,s,Wei Gao,,,,,IJCAI×1,xuf@lamda.nju.edu.cn,,,,full,2026-01-05T16:35:11.961365
+许洋,,phd,http://www.lamda.nju.edu.cn/xuyang/,s,Kai Ming Ting,,,,,,xuyang@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:13.005830
+张航,,phd,http://www.lamda.nju.edu.cn/zhanghang/,s,KaiMing Ting,,,,,,zhanghang@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:14.048636
+张馨艺,,phd,http://www.lamda.nju.edu.cn/zhangxy/,s,De-Chuan Zhan,,,,,,zhangxy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:15.102535
+张逸凯,Redirecting...,phd,http://www.lamda.nju.edu.cn/zhangyk/,,,,,,,,,,,,minimal,2026-01-05T16:35:16.141620
+陈之锴,,phd,http://www.lamda.nju.edu.cn/chenzk/,My research interests include: large language model; human computer interaction.,,,,,,,,,,,minimal,2026-01-05T16:35:17.182477
+杜闻博,,phd,http://www.lamda.nju.edu.cn/duwb/,My research interests include Machine Learning and Data Mining.,Zhi-Hua Zhou,,,,,ICML×3; NeurIPS×3,duwb@lamda.nju.edu.cn,,https://github.com/DWB1115/Codes-for-conference-papers/tree/main/NeurIPS'24%20MICNS,,full,2026-01-05T16:35:18.257724
+杜雅莉,,phd,http://www.lamda.nju.edu.cn/duyl/,s,Ming Li,,,,,IJCAI×1,duyl@lamda.nju.edu.cn,,https://github.com/duyali2000/MQMC,,full,2026-01-05T16:35:19.324027
+高成睿,,phd,http://www.lamda.nju.edu.cn/gaocr/,My primary research focus lies in,,,,,,ICML×1; AAAI×2; IJCAI×1,,,,,partial,2026-01-05T16:35:20.372436
+何克杰,,phd,http://www.lamda.nju.edu.cn/hekj/,,,,,,,,hekj@lamda.nju.edu.cn,,,,minimal,2026-01-05T16:35:21.420775
+贾林瀚,,phd,http://www.lamda.nju.edu.cn/jialh/,s,Yu-Feng Li,,,,,ICML×4; NeurIPS×2; ICLR×2; EMNLP×1; AAAI×1; IJCAI×2; KDD×1,jialh@lamda.nju.edu.cn,,https://github.com/ygzwqzd/LAMDA-SSL/tree/master/Examples,https://scholar.google.com.hk/citations?user=2Z2bdDcAAAAJ&hl=en&oi=sra,full,2026-01-05T16:35:22.467024
+雷昊一,,phd,http://www.lamda.nju.edu.cn/leihy/,My research interests include Machine Learning and Data Mining. Most recently; I am interested in deep learning theory and privacy in Learnwares.,Zhi-Hua Zhou,,,,,ICML×1; NeurIPS×2,leihy@lamda.nju.edu.cn,,,,full,2026-01-05T16:35:23.519274
+林浩鑫,Haoxin Lin,phd,http://www.lamda.nju.edu.cn/linhx/,s,Yang Yu,,,,,NeurIPS×1; ICLR×3; AAAI×3,linhx@lamda.nju.edu.cn,,https://github.com/alshedivat/al-folio,https://scholar.google.com/citations?user=At1Sd0IAAAAJ&hl=en&oi=ao,full,2026-01-05T16:35:24.570108
+刘海天,,phd,http://www.lamda.nju.edu.cn/liuht/,s,Yuan Jiang,,,,,NeurIPS×1; KDD×1,liuht@lamda.nju.edu.cn,,,,full,2026-01-05T16:35:30.020010
+李鑫烨,李鑫烨 (Li,phd,https://www.lamda.nju.edu.cn/lixy/,s,,,,,,AAAI×2,,https://www.linkedin.com/,https://github.com/yaoyao-liu/minimal-light,https://scholar.google.com/citations?user=U8v5VHoAAAAJ&hl=en,partial,2026-01-05T16:35:31.064730
+栾岱洋,,phd,http://www.lamda.nju.edu.cn/luandy/,s,Ming Li,,,,,,luandy@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:32.152572
+饶睿策,,phd,http://www.lamda.nju.edu.cn/raorc/,s,Ming Li,,,,,,raorc@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:33.192507
+邵杰,,phd,http://www.lamda.nju.edu.cn/shaoj/,s,Jianxin Wu,,,,,,shaoj@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:34.237784
+沈新,,phd,http://www.lamda.nju.edu.cn/shenx/,s,Ming Li,,,,,,shenx@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:35.295427
+宋一飞,,phd,http://www.lamda.nju.edu.cn/songyf/,s,De-Chuan Zhan,,,,,,songyf@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:36.340712
+汤楠,,phd,http://www.lamda.nju.edu.cn/tangn/,s include,Yang Yu,,,,,ICLR×1,tangn@lamda.nju.edu.cn,,https://github.com/Trevor-emt/Reviwo,,full,2026-01-05T16:35:37.388407
+王傲然,,phd,http://www.lamda.nju.edu.cn/wangar/,My research interests include Reinforcement Learning and its applications. I am currently working on:,Zong-Zhang Zhang,,,,,AAAI×2,wangar@lamda.nju.edu.cn,,,,full,2026-01-05T16:35:38.437250
+王鹏远,,phd,http://www.lamda.nju.edu.cn/wangpy/,s,Yang Yu,,,,,ICML×2; ICLR×1,wangpy@lamda.nju.edu.cn,,,,full,2026-01-05T16:35:39.501465
+王任柬,,phd,http://www.lamda.nju.edu.cn/wangrj/,s,,,,,,ICML×2; NeurIPS×2; ICLR×2; AAAI×4; IJCAI×2,,,https://github.com/lamda-bbo/NSS/blob/main/CITATION.bib,https://scholar.google.com/citations?user=FQNe_R0AAAAJ,partial,2026-01-05T16:35:40.546822
+谢龑锋,,phd,http://www.lamda.nju.edu.cn/xieyf/,My research interests include Machine Learning and Data Mining.,Zhi-Hua Zhou,,,,,ICML×1; NeurIPS×4; ICLR×1; JMLR×1,,,,,partial,2026-01-05T16:35:41.606907
+杨文昊,,phd,http://www.lamda.nju.edu.cn/yangwh/,s,Lijun Zhang,,,,,ICML×4; NeurIPS×5; ICLR×1; AAAI×5; IJCAI×1; WWW×2,yangwh@lamda.nju.edu.cn,,https://github.com/tmllab/PICMM,https://scholar.google.com.hk/citations?user=ycccau7cWYIC&hl,full,2026-01-05T16:35:42.679919
+白昊民,,phd,http://www.lamda.nju.edu.cn/baihm/,s,Lijun Zhang,,,,,ICML×1,baihm@lamda.nju.edu.cn,,,,full,2026-01-05T16:35:43.738666
+陈政,,phd,http://www.lamda.nju.edu.cn/chenz/,s,Yang Yu,,,,,,chenz@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:44.787578
+江涛,,phd,http://www.lamda.nju.edu.cn/jiangt/,s,,,,,,ICML×1; NeurIPS×2; AAAI×2,jiangt@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:45.832477
+刘天硕,,phd,http://www.lamda.nju.edu.cn/liuts/,I am interested in Machine Learning; mainly focus on the following subfields:,Yang Yu,,,,,,liuts@lamda.nju.edu.cn,,,,partial,2026-01-05T16:35:46.866619
+毛子钰,,phd,http://www.lamda.nju.edu.cn/maozy/,,,,,,,,,,,,minimal,2026-01-05T16:35:47.911682
+王韬涛,,phd,http://www.lamda.nju.edu.cn/wangtt/,,,,,,,,,,,,minimal,2026-01-05T16:35:48.942781
+武强,,phd,http://www.lamda.nju.edu.cn/wuq/,My research interests include Reinforcement Learning; World Models and LLM.,De-Chuan Zhan,,,,,,wuq@lamda.nju.edu.cn,,https://github.com/QiangWu-AI,,partial,2026-01-05T16:35:48.978127
+邢存远,,phd,http://www.lamda.nju.edu.cn/xingcy/,s,Wei Gao,,,,,ICML×1,xingcy@lamda.nju.edu.cn,,https://github.com/WeltXing,,full,2026-01-05T16:35:50.020748
+杨斯凡,,phd,http://www.lamda.nju.edu.cn/yangsf/,s,Lijun Zhang,,,,,ICML×2; NeurIPS×3; AAAI×2; IJCAI×1; TPAMI×1,yangsf@lamda.nju.edu.cn,,,https://scholar.google.com/citations?user=qTISlvMAAAAJ&hl=zh-CN,full,2026-01-05T16:35:51.077596
+杨骁文,About Me,phd,http://www.lamda.nju.edu.cn/yangxw/,s,,,,,,ICML×2; NeurIPS×3; ICLR×2; ACL×1; AAAI×3; IJCAI×5; KDD×1,,,http://github.com/njuyxw,https://scholar.google.com/citations?user=QLnf8eQAAAAJ,partial,2026-01-05T16:35:52.127941
+张甲,Jia Zhang,phd,http://www.lamda.nju.edu.cn/zhangjia/,s mainly include Machine Learning; Learnware and Efficient Fine-Tuning for LLMs.; 📝 Publications,,,,,,AAAI×1; IJCAI×1,,,,https://scholar.google.com/citations?user=nPn-SJAAAAAJ,partial,2026-01-05T16:35:57.563459
+朱鑫浩,,phd,http://www.lamda.nju.edu.cn/zhuxh/,s,Zhi-Hua Zhou,,,,,,,,https://github.com/EricZhu-42,,partial,2026-01-05T16:36:01.657863

@@ -1,0 +1,62 @@
+[
+  {
+    "login": "cyrilselasi",
+    "name": "Cyril Selasi",
+    "contributions": 18,
+    "email": "",
+    "location": "Shanghai, China",
+    "company": "Crimson Education",
+    "blog": "",
+    "twitter": "cyrilselasi_",
+    "linkedin": "",
+    "bio": "",
+    "github_url": "https://github.com/cyrilselasi",
+    "followers": 38,
+    "reason": "Location: Shanghai, China"
+  },
+  {
+    "login": "MrMYHuang",
+    "name": "Meng-Yuan Huang",
+    "contributions": 3,
+    "email": "myh@live.com",
+    "location": "Taiwan",
+    "company": "",
+    "blog": "mrmyh.eu.org",
+    "twitter": "",
+    "linkedin": "",
+    "bio": "\r\n    \r\n",
+    "github_url": "https://github.com/MrMYHuang",
+    "followers": 15,
+    "reason": "Location: Taiwan"
+  },
+  {
+    "login": "la3rence",
+    "name": "",
+    "contributions": 2,
+    "email": "",
+    "location": "Shanghai, China",
+    "company": "",
+    "blog": "https://lawrenceli.me",
+    "twitter": "",
+    "linkedin": "",
+    "bio": "",
+    "github_url": "https://github.com/la3rence",
+    "followers": 89,
+    "reason": "Location: Shanghai, China"
+  },
+  {
+    "login": "huzky-v",
+    "name": "Jacky Fong",
+    "contributions": 1,
+    "email": "hello@huzky.dev",
+    "location": "Hong Kong",
+    "company": "",
+    "blog": "https://linktree.huzky.dev",
+    "twitter": "",
+    "linkedin": "",
+    "bio": "A random pol.",
+    "github_url": "https://github.com/huzky-v",
+    "followers": 2,
+    "reason": "Location: Hong Kong"
+  }
+]

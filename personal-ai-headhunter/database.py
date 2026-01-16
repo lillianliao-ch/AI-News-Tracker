@@ -141,24 +141,31 @@ class MatchRecord(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
 # Database Initialization
-# 优先从环境变量读取数据库路径，实现环境隔离
-db_env_path = os.getenv("DB_PATH")
-if db_env_path:
-    # 如果是相对路径，确保相对于当前工作目录
-    if not os.path.isabs(db_env_path):
-        db_path = os.path.abspath(db_env_path)
-    else:
-        db_path = db_env_path
+# 优先从 DATABASE_URL 环境变量读取（Railway 标准）
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL:
+    # Railway 使用 postgres://，SQLAlchemy 2.0 需要 postgresql://
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+    print(f"📦 Using PostgreSQL: {DATABASE_URL[:50]}...") # Debug info
 else:
-    # 默认路径 (开发环境 fallback)
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    db_path = os.path.join(base_dir, "data", "headhunter.db")
+    # 本地开发环境使用 SQLite
+    db_env_path = os.getenv("DB_PATH")
+    if db_env_path:
+        if not os.path.isabs(db_env_path):
+            db_path = os.path.abspath(db_env_path)
+        else:
+            db_path = db_env_path
+    else:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        db_path = os.path.join(base_dir, "data", "headhunter.db")
+    
+    # 确保目录存在
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)
+    DATABASE_URL = f"sqlite:///{db_path}"
+    print(f"📦 Using SQLite: {db_path}") # Debug info
 
-# 确保目录存在
-os.makedirs(os.path.dirname(db_path), exist_ok=True)
-
-DATABASE_URL = f"sqlite:///{db_path}"
-print(f"📦 Database Path: {db_path}") # Debug info
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
