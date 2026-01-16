@@ -34,6 +34,15 @@ app.add_middleware(
 # 全局依赖
 ai_service = AIService()
 
+# ==================== 分类映射配置 ====================
+# 将前端显示的分类映射到数据库中的实际分类
+CATEGORY_MAP = {
+    "产品": "AI产品",
+    "模型": ["AI技术", "AI研究"],
+    "融资": ["AI创投", "AI商业"],
+    "观点": ["AI新闻", "AI社区", "技术文章", "科技新闻"]
+}
+
 
 # ==================== 基础路由 ====================
 
@@ -152,12 +161,25 @@ async def get_news(
     try:
         query = db.query(News)
 
-        # 筛选
+        # 分类筛选（支持映射）
         if category:
-            query = query.filter(News.category == category)
+            if category in CATEGORY_MAP:
+                # 使用映射关系
+                mapped_categories = CATEGORY_MAP[category]
+                if isinstance(mapped_categories, str):
+                    # 单个分类
+                    query = query.filter(News.category == mapped_categories)
+                else:
+                    # 多个分类（使用 IN 查询）
+                    query = query.filter(News.category.in_(mapped_categories))
+            else:
+                # 直接使用原始分类名（兼容性）
+                query = query.filter(News.category == category)
+
+        # 其他筛选
         if source:
             query = query.filter(News.source == source)
-        if language:  # 新增：语言筛选
+        if language:  # 语言筛选
             query = query.filter(News.language == language)
 
         # 排序和分页
@@ -259,11 +281,19 @@ async def get_stats():
             News.crawl_time >= datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
         ).count()
 
-        # 按分类统计
+        # 按4大分类统计（使用映射）
         category_stats = {}
-        for category in ['product', 'model', 'investment', 'view']:
-            count = db.query(News).filter(News.category == category).count()
-            category_stats[category] = count
+        for display_name, db_categories in CATEGORY_MAP.items():
+            if isinstance(db_categories, str):
+                # 单个分类
+                count = db.query(News).filter(News.category == db_categories).count()
+            else:
+                # 多个分类（使用 IN 查询）
+                count = db.query(News).filter(News.category.in_(db_categories)).count()
+            category_stats[display_name] = count
+
+        # 添加"全部"
+        category_stats["全部"] = total_news
 
         # 按来源统计
         source_stats = {}

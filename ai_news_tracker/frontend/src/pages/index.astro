@@ -62,6 +62,26 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
     </div>
 
     <script is:inline>
+      // 加载统计信息并更新分类按钮
+      async function loadStatsAndUpdateCategories() {
+        try {
+          const response = await fetch('http://localhost:8000/api/stats');
+          const stats = await response.json();
+
+          // 更新分类按钮，显示数量
+          document.querySelectorAll('.category-btn').forEach(btn => {
+            const category = btn.dataset.category;
+            const count = stats.category_stats[category] || 0;
+            btn.textContent = `${category} (${count})`;
+          });
+        } catch (error) {
+          console.error('加载统计失败:', error);
+        }
+      }
+
+      // 页面加载时获取统计
+      loadStatsAndUpdateCategories();
+
       // 分类筛选
       document.querySelectorAll('.category-btn').forEach(btn => {
         btn.addEventListener('click', async (e) => {
@@ -74,7 +94,7 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
           // 加载对应分类的资讯
           const url = category === '全部'
             ? 'http://localhost:8000/api/news?limit=50'
-            : `http://localhost:8000/api/news?category=${category}&limit=50`;
+            : `http://localhost:8000/api/news?category=${encodeURIComponent(category)}&limit=50`;
 
           const response = await fetch(url);
           const news = await response.json();
