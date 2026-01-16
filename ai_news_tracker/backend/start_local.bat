@@ -81,16 +81,19 @@ if exist "migrate_add_language.py" (
 
 REM 启动应用
 echo ==================================================
-echo 🚀 启动 AI News Tracker...
+echo 🚀 启动 AI News Tracker 后端API...
 echo ==================================================
 echo.
-echo 📍 API 地址: http://localhost:4321
-echo 📍 API 文档: http://localhost:4321/docs
-echo 📍 健康检查: http://localhost:4321/health
+echo 📍 API 地址: http://localhost:8000
+echo 📍 API 文档: http://localhost:8000/docs
+echo 📍 健康检查: http://localhost:8000/health
+echo.
+echo 📝 注意: 前端请使用 frontend\start.bat 启动
+echo 📝 前端地址: http://localhost:4321
 echo.
 echo 按 Ctrl+C 停止服务器
 echo ==================================================
 echo.
 
 REM 启动uvicorn
-python -m uvicorn main:app --host 0.0.0.0 --port 4321 --reload
+python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload

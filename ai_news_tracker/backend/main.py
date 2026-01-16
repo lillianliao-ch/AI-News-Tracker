@@ -3,7 +3,7 @@ FastAPI 主应用 - 提供 API 接口
 """
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime

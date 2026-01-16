@@ -1,0 +1,42 @@
+---
+// src/components/Header.astro - 页面头部组件
+---
+
+<header class="header">
+  <div class="header-content">
+    <h1 class="title">🤖 AI News Now</h1>
+    <p class="subtitle">优雅的 AI 资讯追踪与内容生成</p>
+  </div>
+</header>
+
+<style>
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .header-content {
+    text-align: left;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 2rem;
+    }
+  }
+</style>

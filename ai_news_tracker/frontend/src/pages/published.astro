@@ -1,0 +1,62 @@
+---
+// src/pages/published.astro - 已发布内容页面
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>已发布 - AI News Tracker</title>
+  </head>
+  <body>
+    <div class="container">
+      <Header />
+      
+      <h1>📊 已发布内容</h1>
+      <p class="subtitle">查看已经发布到小红书的内容</p>
+
+      <div class="placeholder">
+        <p>🚧 功能开发中...</p>
+        <p>这个页面将显示已生成并发布到小红书的内容列表。</p>
+      </div>
+    </div>
+
+    <style is:global>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f5f7fa;
+        padding: 20px;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+
+      .subtitle {
+        color: #666;
+        margin-bottom: 32px;
+      }
+
+      .placeholder {
+        background: white;
+        padding: 60px 20px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .placeholder p {
+        color: #666;
+        margin: 8px 0;
+      }
+    </style>
+  </body>
+</html>

@@ -78,7 +78,7 @@ if [ -f "migrate_add_language.py" ]; then
 fi
 
 # 检查端口占用
-PORT=4321
+PORT=8000
 if lsof -Pi :$PORT -sTCP:LISTEN -t >/dev/null 2>&1; then
     echo "⚠️  端口 $PORT 已被占用"
     echo "正在尝试关闭现有进程..."
@@ -90,12 +90,15 @@ fi
 
 # 启动应用
 echo "=================================================="
-echo "🚀 启动 AI News Tracker..."
+echo "🚀 启动 AI News Tracker 后端API..."
 echo "=================================================="
 echo ""
 echo "📍 API 地址: http://localhost:$PORT"
 echo "📍 API 文档: http://localhost:$PORT/docs"
 echo "📍 健康检查: http://localhost:$PORT/health"
+echo ""
+echo "📝 注意: 前端请使用 frontend/start.sh 启动"
+echo "📝 前端地址: http://localhost:4321"
 echo ""
 echo "按 Ctrl+C 停止服务器"
 echo "=================================================="

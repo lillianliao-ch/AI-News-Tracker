@@ -1,0 +1,61 @@
+---
+// src/components/NewsGrid.astro - 资讯网格布局组件
+import NewsCard from './NewsCard.astro';
+
+const { news } = Astro.props;
+---
+
+<div class="news-grid" id="newsGrid">
+  {news.map(item => (
+    <NewsCard news={item} client:load />
+  ))}
+</div>
+
+<style>
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+
+  @media (max-width: 640px) {
+    .news-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // 监听资讯更新事件
+  window.addEventListener('news-updated', (event) => {
+    const newsGrid = document.getElementById('newsGrid');
+    if (newsGrid && event.detail) {
+      // 清空现有内容
+      newsGrid.innerHTML = '';
+
+      // 重新渲染（在实际应用中会用 React）
+      event.detail.forEach(item => {
+        // 这里应该渲染 NewsCard 组件
+        // 由于 Astro 的限制，我们需要用其他方式
+        console.log('更新资讯列表:', item);
+      });
+
+      // 触发页面刷新
+      window.location.reload();
+    }
+  });
+
+  // 监听资讯追加事件（加载更多）
+  window.addEventListener('news-appended', (event) => {
+    if (event.detail) {
+      event.detail.forEach(item => {
+        console.log('追加资讯:', item);
+        // 同样需要用其他方式渲染
+      });
+
+      // 触发页面刷新
+      window.location.reload();
+    }
+  });
+</script>

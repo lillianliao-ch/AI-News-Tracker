@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  # 后端API服务
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-news-tracker-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL}
+      - CLASSIFY_MODEL=${CLASSIFY_MODEL:-qwen-max}
+      - SUMMARY_MODEL=${SUMMARY_MODEL:-qwen-plus}
+      - GENERATE_MODEL=${GENERATE_MODEL:-qwen-max}
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/ainews
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - DEBUG=${DEBUG:-false}
+      - PORT=8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - ai-news-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # PostgreSQL数据库
+  postgres:
+    image: postgres:16-alpine
+    container_name: ai-news-tracker-db
+    environment:
+      - POSTGRES_DB=ainews
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-ainews123}
+      - POSTGRES_HOST_AUTH_METHOD=md5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - ai-news-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # 可选：持久化数据
+    # volumes:
+    #   - ./data/postgres:/var/lib/postgresql/data
+
+  # 前端（可选）
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ai-news-tracker-frontend
+    ports:
+      - "4321:4321"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - ai-news-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  ai-news-network:
+    driver: bridge

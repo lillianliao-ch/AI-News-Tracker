@@ -1,0 +1,502 @@
+/Users/lillianliao/notion_rag/ai_news_tracker/backend/main.py:81: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+INFO:     Started server process [2121]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+🚀 启动 AI News Tracker API
+📊 API 文档: http://localhost:8000/docs
+✅ 数据库初始化成功
+INFO:     127.0.0.1:60814 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60833 - "POST /api/crawl HTTP/1.1" 200 OK
+2026-01-13 19:57:57.535 | INFO     | tasks.crawler:crawl_all_sources:25 - 🚀 开始爬取所有数据源
+2026-01-13 19:57:57.536 | INFO     | tasks.crawler:crawl_all_sources:29 - 📊 共 3 个数据源
+2026-01-13 19:57:57.536 | INFO     | tasks.crawler:crawl_all_sources:37 - 开始爬取: 36氪
+2026-01-13 19:57:57.536 | INFO     | sources.base:get_data:97 - 开始爬取 36氪 RSS: https://36kr.com/feed
+2026-01-13 19:57:58.031 | INFO     | sources.base:get_data:124 - 成功爬取 36氪 30 条数据
+2026-01-13 19:57:58.031 | INFO     | tasks.crawler:crawl_all_sources:41 - 36氪 爬取到 30 条
+2026-01-13 19:57:58.086 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 氪星晚报｜美防长称马斯克旗下AI聊天机器人将接入五角大楼系统... (科技新闻)
+2026-01-13 19:57:58.088 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 最前线｜智能座舱开始AI变革，长城新车要标配车端智能体... (科技新闻)
+2026-01-13 19:57:58.089 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 看过一千个To B产品，钉钉最年轻副总裁创业，做了个不To ... (科技新闻)
+2026-01-13 19:57:58.089 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: xTool，下一个「影石」要IPO了？... (科技新闻)
+2026-01-13 19:57:58.090 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 头部公司估值几十亿的外骨骼，画大饼还是真愿景？... (科技新闻)
+2026-01-13 19:57:58.090 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 中国移动链长基金战略加持，国内首台原子量子计算系统研发团队完... (科技新闻)
+2026-01-13 19:57:58.091 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 8点1氪丨“死了么”APP团队再次回应争议；小米集团总裁卢伟... (科技新闻)
+2026-01-13 19:57:58.091 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 戴德梁行：房地产市场还有潜力 REITs扩围开启不动产金融化... (科技新闻)
+2026-01-13 19:57:58.092 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 氪星晚报｜加拿大Kepler公司发射10颗卫星；被传离职？小... (科技新闻)
+2026-01-13 19:57:58.092 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 狂飙的中国IP，掏空全球年轻人钱包丨36氪年度回眸... (科技新闻)
+2026-01-13 19:57:58.092 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 中远海控：子公司订造十二艘1.8万TEU型LNG双燃料动力集... (科技新闻)
+2026-01-13 19:57:58.093 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 杰华特微电子股份有限公司向港交所提交上市申请书... (科技新闻)
+2026-01-13 19:57:58.093 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 摩尔线程：联合智源成功完成智源自研具身大脑模型RoboBra... (科技新闻)
+2026-01-13 19:57:58.093 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 高特电子创业板IPO获上市委会议通过... (科技新闻)
+2026-01-13 19:57:58.094 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 4连板杭萧钢构：公司不存在“商业航天”业务... (科技新闻)
+2026-01-13 19:57:58.094 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: “武测空间”完成Pre-A轮融资... (科技新闻)
+2026-01-13 19:57:58.094 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 晨光生物：2025年净利同比预增272.14%-330.62... (科技新闻)
+2026-01-13 19:57:58.095 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: *ST立方：公司股票收盘价首次低于1元，可能因股价低于面值或... (科技新闻)
+2026-01-13 19:57:58.095 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 红墙股份：控股股东、实际控制人刘连军计划减持不超过211.6... (科技新闻)
+2026-01-13 19:57:58.095 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 速腾聚创激光雷达机器人业务年销量突破30万台，同比激增超11... (科技新闻)
+2026-01-13 19:57:58.095 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 浙江翼菲智能科技股份有限公司向港交所提交上市申请书... (科技新闻)
+2026-01-13 19:57:58.096 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 2连板电科芯片：有射频开关、低噪声放大器等产品应用于卫星通信... (科技新闻)
+2026-01-13 19:57:58.096 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 中文在线：预计2025年净亏损5.8亿元-7亿元，海外短剧业... (科技新闻)
+2026-01-13 19:57:58.096 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 立讯精密：终止收购印度闻泰业务资产包... (科技新闻)
+2026-01-13 19:57:58.097 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 华夏幸福：预计2025年净亏损160亿元-240亿元，股票可... (科技新闻)
+2026-01-13 19:57:58.097 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 空客任命Matthieu Louvot为直升机业务首席执行官... (科技新闻)
+2026-01-13 19:57:58.097 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: SK海力士将斥资近130亿美元在韩兴建芯片封装厂... (科技新闻)
+2026-01-13 19:57:58.098 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 3连板天龙集团：当前未因AI工具产生额外的收入... (科技新闻)
+2026-01-13 19:57:58.098 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 微软将停止在iOS和安卓平台上的Office Lens应用服... (科技新闻)
+2026-01-13 19:57:58.099 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 东方明珠：超聚变上市进程具有不确定性，目前对公司业绩无影响... (科技新闻)
+2026-01-13 19:57:58.104 | INFO     | tasks.crawler:save_news_items:132 - 💾 成功保存 30 条新资讯到数据库
+2026-01-13 19:57:58.106 | INFO     | tasks.crawler:crawl_all_sources:37 - 开始爬取: InfoQ
+2026-01-13 19:57:58.106 | INFO     | sources.base:get_data:97 - 开始爬取 InfoQ RSS: https://www.infoq.cn/feed
+2026-01-13 19:57:58.520 | INFO     | sources.base:get_data:124 - 成功爬取 InfoQ 20 条数据
+2026-01-13 19:57:58.520 | INFO     | tasks.crawler:crawl_all_sources:41 - InfoQ 爬取到 20 条
+2026-01-13 19:57:58.572 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Claude Code创建者的开发工作流程... (技术文章)
+2026-01-13 19:57:58.573 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 亚马逊云科技推出VPC加密控制，在传输过程中实施强制加密... (技术文章)
+2026-01-13 19:57:58.573 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: TanStack发布框架无关的AI工具包... (技术文章)
+2026-01-13 19:57:58.574 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Anthropic深夜放出王炸！白领饭碗要被AI砸了？网友：... (技术文章)
+2026-01-13 19:57:58.574 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 活久见！连Linux之父等“顽固派”大佬，都在用AI编程了... (技术文章)
+2026-01-13 19:57:58.574 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 刚刚，DeepSeek 突发梁文峰署名新论文：V4 新架构提... (技术文章)
+2026-01-13 19:57:58.575 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 阿里云把“华强北”们推向CES... (技术文章)
+2026-01-13 19:57:58.575 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 英伟达发布了跨AI、机器人和自动驾驶的开放模型、数据集和工具... (技术文章)
+2026-01-13 19:57:58.575 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: MongoBleed漏洞允许攻击者从MongoDB的堆内存中... (技术文章)
+2026-01-13 19:57:58.576 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 亚马逊云科技预览Route 53 Global Resolv... (技术文章)
+2026-01-13 19:57:58.576 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 抨击AI炒作、曝企业需求为先，Anthropic 联创：模型... (技术文章)
+2026-01-13 19:57:58.576 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: “死了么”APP爆火，3人开发成本1500元：不改名；姚顺雨... (技术文章)
+2026-01-13 19:57:58.577 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 测试人员可以做些什么来确保软件安全... (技术文章)
+2026-01-13 19:57:58.577 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 代理式终端——如何使用CLI智能体激活你的终端... (技术文章)
+2026-01-13 19:57:58.578 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: “机器人一次性卖完太亏！”真机智能刘智勇：今年中国本体厂商将... (技术文章)
+2026-01-13 19:57:58.578 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 发生在CES的六场对话：来自深圳的 AI 硬件“外卷”... (技术文章)
+2026-01-13 19:57:58.578 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Anthropic突然封禁第三方工具调用Claude，Cur... (技术文章)
+2026-01-13 19:57:58.579 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Facebook调查显示：越来越多的人开始采用带类型的Pyt... (技术文章)
+2026-01-13 19:57:58.579 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Manus高溢价收购背后，是Agent开发落地困境... (技术文章)
+2026-01-13 19:57:58.579 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 刚刚，AI企业IPO最速纪录刷新！MiniMax的技术野心，... (技术文章)
+2026-01-13 19:57:58.580 | INFO     | tasks.crawler:save_news_items:132 - 💾 成功保存 20 条新资讯到数据库
+2026-01-13 19:57:58.581 | INFO     | tasks.crawler:crawl_all_sources:37 - 开始爬取: TechCrunch
+2026-01-13 19:57:58.581 | INFO     | sources.base:get_data:97 - 开始爬取 TechCrunch RSS: https://techcrunch.com/feed/
+2026-01-13 19:57:59.759 | INFO     | sources.base:get_data:124 - 成功爬取 TechCrunch 20 条数据
+2026-01-13 19:57:59.759 | INFO     | tasks.crawler:crawl_all_sources:41 - TechCrunch 爬取到 20 条
+2026-01-13 19:57:59.812 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Converge Bio raises $25M, back... (国际科技)
+2026-01-13 19:57:59.813 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Meta-backed Hupo finds growth ... (国际科技)
+2026-01-13 19:57:59.814 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: More than 100 new tech unicorn... (国际科技)
+2026-01-13 19:57:59.814 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: OpenAI buys tiny health record... (国际科技)
+2026-01-13 19:57:59.814 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Hands-on with Bee, Amazon’s la... (国际科技)
+2026-01-13 19:57:59.815 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Why Amazon bought Bee, an AI w... (国际科技)
+2026-01-13 19:57:59.815 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Mark Zuckerberg says Meta is l... (国际科技)
+2026-01-13 19:57:59.815 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Anthropic announces Claude for... (国际科技)
+2026-01-13 19:57:59.816 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Pebble founder says his new co... (国际科技)
+2026-01-13 19:57:59.816 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Anthropic’s new Cowork tool of... (国际科技)
+2026-01-13 19:57:59.816 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Trump’s EPA plans to ignore he... (国际科技)
+2026-01-13 19:57:59.817 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Amazon says 97% of its devices... (国际科技)
+2026-01-13 19:57:59.817 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Fintech firm Betterment confir... (国际科技)
+2026-01-13 19:57:59.817 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Developers have made $550B on ... (国际科技)
+2026-01-13 19:57:59.817 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Google’s Gemini to power Apple... (国际科技)
+2026-01-13 19:57:59.818 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Paramount files lawsuit agains... (国际科技)
+2026-01-13 19:57:59.818 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: A New Jersey lawsuit shows how... (国际科技)
+2026-01-13 19:57:59.818 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Netflix had a huge night at th... (国际科技)
+2026-01-13 19:57:59.819 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Luminar lines up $22 million b... (国际科技)
+2026-01-13 19:57:59.819 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Meta hires former Trump adviso... (国际科技)
+2026-01-13 19:57:59.820 | INFO     | tasks.crawler:save_news_items:132 - 💾 成功保存 20 条新资讯到数据库
+2026-01-13 19:57:59.821 | INFO     | tasks.crawler:crawl_all_sources:70 - ✅ 爬虫任务完成，共 70 条新数据
+INFO:     127.0.0.1:60874 - "GET /api/news?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60888 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61388 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63317 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63329 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63332 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63358 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63371 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63377 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63377 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63418 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63418 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63432 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63435 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63443 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63443 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63454 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63457 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63464 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63464 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63475 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63475 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63486 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63486 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63496 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63498 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63508 - "GET /api/news?limit=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63533 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63547 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63549 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63570 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63583 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63583 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63608 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63636 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63636 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63714 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63735 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63735 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63762 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63771 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63771 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63799 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63808 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63808 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63799 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63808 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63811 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63866 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63918 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63929 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63929 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64091 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64227 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64227 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64382 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64537 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64537 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64688 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65034 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65520 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49433 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52758 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52775 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52775 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52960 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53005 - "POST /api/crawl HTTP/1.1" 200 OK
+2026-01-13 21:44:49.078 | INFO     | tasks.crawler:crawl_all_sources:25 - 🚀 开始爬取所有数据源
+2026-01-13 21:44:49.089 | INFO     | tasks.crawler:crawl_all_sources:29 - 📊 共 3 个数据源
+2026-01-13 21:44:49.090 | INFO     | tasks.crawler:crawl_all_sources:37 - 开始爬取: 36氪
+2026-01-13 21:44:49.091 | INFO     | sources.base:get_data:97 - 开始爬取 36氪 RSS: https://36kr.com/feed
+2026-01-13 21:44:49.574 | INFO     | sources.base:get_data:124 - 成功爬取 36氪 30 条数据
+2026-01-13 21:44:49.574 | INFO     | tasks.crawler:crawl_all_sources:41 - 36氪 爬取到 30 条
+2026-01-13 21:44:49.628 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 氪星晚报｜美防长称马斯克旗下AI聊天机器人将接入五角大楼系统...
+2026-01-13 21:44:49.628 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 最前线｜智能座舱开始AI变革，长城新车要标配车端智能体...
+2026-01-13 21:44:49.629 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 看过一千个To B产品，钉钉最年轻副总裁创业，做了个不To ...
+2026-01-13 21:44:49.629 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: xTool，下一个「影石」要IPO了？...
+2026-01-13 21:44:49.630 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 头部公司估值几十亿的外骨骼，画大饼还是真愿景？...
+2026-01-13 21:44:49.630 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 中国移动链长基金战略加持，国内首台原子量子计算系统研发团队完...
+2026-01-13 21:44:49.631 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 8点1氪丨“死了么”APP团队再次回应争议；小米集团总裁卢伟...
+2026-01-13 21:44:49.631 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 戴德梁行：房地产市场还有潜力 REITs扩围开启不动产金融化...
+2026-01-13 21:44:49.631 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 氪星晚报｜加拿大Kepler公司发射10颗卫星；被传离职？小...
+2026-01-13 21:44:49.631 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 狂飙的中国IP��掏空全球年轻人钱包丨36氪年度回眸...
+2026-01-13 21:44:49.633 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 莲池医院集团股份有限公司向港交所提交上市申请书... (科技新闻)
+2026-01-13 21:44:49.640 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 本周将裁员1000人？花旗回应... (科技新闻)
+2026-01-13 21:44:49.641 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 中国黄金：2025年净利同比预降55%-65%... (科技新闻)
+2026-01-13 21:44:49.641 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 达美航空订购多达60架波音787梦幻客机... (科技新闻)
+2026-01-13 21:44:49.642 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 热门中概股美股盘前普跌，拼多多跌超5%... (科技新闻)
+2026-01-13 21:44:49.642 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 美股大型科技股盘前涨跌不一，Arm跌超2%... (科技新闻)
+2026-01-13 21:44:49.642 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 锋龙股份：股票交易异常波动，将停牌核查... (科技新闻)
+2026-01-13 21:44:49.642 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 中远海控：子公司订造十二艘1.8万TEU型LNG双燃料动力集...
+2026-01-13 21:44:49.643 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 杰华特微电子股份有限公司向港交所提交上市申请书...
+2026-01-13 21:44:49.643 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 摩尔线程：联合智源成功完成智源自研具身大脑模型RoboBra...
+2026-01-13 21:44:49.643 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 高特电子创业板IPO获上市委会议通过...
+2026-01-13 21:44:49.643 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 4连板杭萧钢构：公司不存在“商业航天”业务...
+2026-01-13 21:44:49.643 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: “武测空间”完成Pre-A轮融资...
+2026-01-13 21:44:49.643 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 晨光生物：2025年净利同比预增272.14%-330.62...
+2026-01-13 21:44:49.643 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: *ST立方：公司股票收盘价首次低于1元，可能因股价低于面值或...
+2026-01-13 21:44:49.644 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 红墙股份：控股股东、实际控制人刘连军计划减持不超过211.6...
+2026-01-13 21:44:49.644 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 速腾聚创激光雷达机器人业务年销量突破30万台，同比激增超11...
+2026-01-13 21:44:49.644 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 浙江翼菲智能科技股份有限公司向港交所提交上市申请书...
+2026-01-13 21:44:49.644 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 2连板电科芯片：有射频开关、低噪声放大器等产品应用于卫星通信...
+2026-01-13 21:44:49.644 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 中文在线：预计2025年净亏损5.8亿元-7亿元，海外短剧业...
+2026-01-13 21:44:49.646 | INFO     | tasks.crawler:save_news_items:132 - 💾 成功保存 7 条新资讯到数据库
+2026-01-13 21:44:49.647 | INFO     | tasks.crawler:crawl_all_sources:37 - 开始爬取: InfoQ
+2026-01-13 21:44:49.647 | INFO     | sources.base:get_data:97 - 开始爬取 InfoQ RSS: https://www.infoq.cn/feed
+2026-01-13 21:44:51.263 | INFO     | sources.base:get_data:124 - 成功爬取 InfoQ 20 条数据
+2026-01-13 21:44:51.263 | INFO     | tasks.crawler:crawl_all_sources:41 - InfoQ 爬取到 20 条
+2026-01-13 21:44:51.297 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: 模力工场 028 周 AI 应用榜：AI “身体”觉醒，从工... (技术文章)
+2026-01-13 21:44:51.298 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Claude Code创建者的开发工作流程...
+2026-01-13 21:44:51.298 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 亚马逊云科技推出VPC加密控制，在传输过程中实施强制加密...
+2026-01-13 21:44:51.299 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: TanStack发布框架无关的AI工具包...
+2026-01-13 21:44:51.299 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Anthropic深夜放出王炸！白领饭碗要被AI砸了？网友：...
+2026-01-13 21:44:51.299 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 活久见！连Linux之父等“顽固派”大佬，都在用AI编程了...
+2026-01-13 21:44:51.299 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 刚刚，DeepSeek 突发梁文峰署名新论文：V4 新架构提...
+2026-01-13 21:44:51.300 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 阿里云把“华强北”们推向CES...
+2026-01-13 21:44:51.300 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 英伟达发布了跨AI、机器人和自动驾驶的开放模型、数据集和工具...
+2026-01-13 21:44:51.300 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: MongoBleed漏洞允许攻击者从MongoDB的堆内存中...
+2026-01-13 21:44:51.301 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 亚马逊云科技预览Route 53 Global Resolv...
+2026-01-13 21:44:51.301 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 抨击AI炒作、曝企业需求为先，Anthropic 联创：模型...
+2026-01-13 21:44:51.301 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: “死了么”APP爆火，3人开发成本1500元：不改名；姚顺雨...
+2026-01-13 21:44:51.301 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 测试人员可以做些什么来确保软件安全...
+2026-01-13 21:44:51.301 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 代理式终端——如何使用CLI智能体激活你的终端...
+2026-01-13 21:44:51.301 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: “机器人一次性卖完太亏！”真机智能刘智勇：今年中国本体厂商将...
+2026-01-13 21:44:51.302 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 发生在CES的六场对话：来自深圳的 AI 硬件“外卷”...
+2026-01-13 21:44:51.302 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Anthropic突然封禁第三方工具调用Claude，Cur...
+2026-01-13 21:44:51.302 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Facebook调查显示：越来越多的人开始采用带类型的Pyt...
+2026-01-13 21:44:51.302 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Manus高溢价收购背后，是Agent开发落地困境...
+2026-01-13 21:44:51.303 | INFO     | tasks.crawler:save_news_items:132 - 💾 成功保存 1 条新资讯到数据库
+2026-01-13 21:44:51.303 | INFO     | tasks.crawler:crawl_all_sources:37 - 开始爬取: TechCrunch
+2026-01-13 21:44:51.303 | INFO     | sources.base:get_data:97 - 开始爬取 TechCrunch RSS: https://techcrunch.com/feed/
+2026-01-13 21:44:52.603 | INFO     | sources.base:get_data:124 - 成功爬取 TechCrunch 20 条数据
+2026-01-13 21:44:52.603 | INFO     | tasks.crawler:crawl_all_sources:41 - TechCrunch 爬取到 20 条
+2026-01-13 21:44:52.654 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Deepgram raises $130M at $1.3B... (国际科技)
+2026-01-13 21:44:52.654 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Slackbot is an AI agent now... (国际科技)
+2026-01-13 21:44:52.655 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Superorganism raises $25M to b... (国际科技)
+2026-01-13 21:44:52.661 | INFO     | tasks.crawler:save_news_items:124 - ✅ 保存成功: Brazil orders Meta to suspend ... (国际科技)
+2026-01-13 21:44:52.661 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Converge Bio raises $25M, back...
+2026-01-13 21:44:52.661 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Meta-backed Hupo finds growth ...
+2026-01-13 21:44:52.661 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: More than 100 new tech unicorn...
+2026-01-13 21:44:52.662 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: OpenAI buys tiny health record...
+2026-01-13 21:44:52.662 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Hands-on with Bee, Amazon’s la...
+2026-01-13 21:44:52.662 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Why Amazon bought Bee, an AI w...
+2026-01-13 21:44:52.662 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Mark Zuckerberg says Meta is l...
+2026-01-13 21:44:52.662 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Anthropic announces Claude for...
+2026-01-13 21:44:52.662 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Pebble founder says his new co...
+2026-01-13 21:44:52.663 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Anthropic’s new Cowork tool of...
+2026-01-13 21:44:52.663 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Trump’s EPA plans to ignore he...
+2026-01-13 21:44:52.663 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Amazon says 97% of its devices...
+2026-01-13 21:44:52.663 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Fintech firm Betterment confir...
+2026-01-13 21:44:52.663 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Developers have made $550B on ...
+2026-01-13 21:44:52.663 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Google’s Gemini to power Apple...
+2026-01-13 21:44:52.664 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Paramount files lawsuit agains...
+2026-01-13 21:44:52.664 | INFO     | tasks.crawler:save_news_items:132 - 💾 成功保存 4 条新资讯到数据库
+2026-01-13 21:44:52.665 | INFO     | tasks.crawler:crawl_all_sources:70 - ✅ 爬虫任务完成，共 12 条新数据
+INFO:     127.0.0.1:53055 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53065 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53065 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53257 - "GET /api/news?category=%E4%BA%A7%E5%93%81&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53261 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53257 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53268 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53268 - "GET /api/news?category=%E4%BA%A7%E5%93%81&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53261 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53310 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53310 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53310 - "GET /api/news?category=%E4%BA%A7%E5%93%81&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53261 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53310 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53312 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53312 - "GET /api/news?category=%E6%A8%A1%E5%9E%8B&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53261 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53312 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53310 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53310 - "GET /api/news?category=%E8%9E%8D%E8%B5%84&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53261 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53310 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53312 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53312 - "GET /api/news?category=%E8%A7%82%E7%82%B9&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53261 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53312 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53310 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53342 - "POST /api/crawl HTTP/1.1" 200 OK
+2026-01-13 21:45:25.186 | INFO     | tasks.crawler:crawl_all_sources:25 - 🚀 开始爬取所有数据源
+2026-01-13 21:45:25.189 | INFO     | tasks.crawler:crawl_all_sources:29 - 📊 共 3 个数据源
+2026-01-13 21:45:25.189 | INFO     | tasks.crawler:crawl_all_sources:37 - 开始爬取: 36氪
+2026-01-13 21:45:25.189 | INFO     | sources.base:get_data:97 - 开始爬取 36氪 RSS: https://36kr.com/feed
+2026-01-13 21:45:25.632 | INFO     | sources.base:get_data:124 - 成功爬取 36氪 30 条数据
+2026-01-13 21:45:25.632 | INFO     | tasks.crawler:crawl_all_sources:41 - 36氪 爬取到 30 条
+2026-01-13 21:45:25.675 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 氪星晚报｜美防长称马斯克旗下AI聊天机器人将接入五角大楼系统...
+2026-01-13 21:45:25.676 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 最前线｜智能座舱开始AI变革，长城新车要标配车端智能体...
+2026-01-13 21:45:25.676 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 看过一千个To B产品，钉钉最年轻副总裁创业，做了个不To ...
+2026-01-13 21:45:25.676 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: xTool，下一个「影石」要IPO了？...
+2026-01-13 21:45:25.677 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 头部公司估值几十亿的外骨骼，画大饼还是真愿景？...
+2026-01-13 21:45:25.677 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 中国移动链长基金战略加持，国内首台原子量子计算系统研发团队完...
+2026-01-13 21:45:25.677 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 8点1氪丨“死了么”APP团队再次回应争议；小米集团总裁卢伟...
+2026-01-13 21:45:25.678 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 戴德梁行：房地产市场还有潜力 REITs扩围开启不动产金融化...
+2026-01-13 21:45:25.678 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 氪星晚报｜加拿大Kepler公司发射10颗卫星；被传离职？小...
+2026-01-13 21:45:25.678 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 狂飙的中国IP，掏空全球年轻人钱包丨36氪年度回眸...
+2026-01-13 21:45:25.678 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 莲池医院集团股份有限公司向港交所提交上市申请书...
+2026-01-13 21:45:25.678 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 本周将裁员1000人？花旗回应...
+2026-01-13 21:45:25.678 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 中国黄金：2025年净利同比预降55%-65%...
+2026-01-13 21:45:25.679 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 达美航空订购多达60架波音787梦幻客机...
+2026-01-13 21:45:25.679 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 热门中概股美股盘前普跌，拼多多跌超5%...
+2026-01-13 21:45:25.679 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 美股大型科技股盘前涨跌不一，Arm跌超2%...
+2026-01-13 21:45:25.679 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 锋龙股份：股票交易异常波动，将停牌核查...
+2026-01-13 21:45:25.680 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 中远海控：子公司订造十二艘1.8万TEU型LNG双燃料动力集...
+2026-01-13 21:45:25.680 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 杰华特微电子股份有限公司向港交所提交上市申请书...
+2026-01-13 21:45:25.680 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 摩尔线程：联合智源成功完成智源自研具身大脑模型RoboBra...
+2026-01-13 21:45:25.680 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 高特电子创业板IPO获上市委会议通过...
+2026-01-13 21:45:25.681 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 4连板杭萧钢构：公司不存在“商业航天”业务...
+2026-01-13 21:45:25.681 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: “武测空间”完成Pre-A轮融资...
+2026-01-13 21:45:25.681 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 晨光生物：2025年净利同比预增272.14%-330.62...
+2026-01-13 21:45:25.681 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: *ST立方：公司股票收盘价首次低于1元，可能因股价低于面值或...
+2026-01-13 21:45:25.681 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 红墙股份：控股股东、实际控制人刘连军计划减持不超过211.6...
+2026-01-13 21:45:25.681 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 速腾聚创激光雷达机器人业务年销量突破30万台，同比激增超11...
+2026-01-13 21:45:25.681 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 浙江翼菲智能科技股份有限公司向港交所提交上市申请书...
+2026-01-13 21:45:25.682 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 2连板电科芯片：有射频开关、低噪声放大器等产品应用于卫星通信...
+2026-01-13 21:45:25.682 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 中文在线：预计2025年净亏损5.8亿元-7亿元，海外短剧业...
+2026-01-13 21:45:25.682 | INFO     | tasks.crawler:save_news_items:132 - 💾 成功保存 0 条新资讯到数据库
+2026-01-13 21:45:25.684 | INFO     | tasks.crawler:crawl_all_sources:37 - 开始爬取: InfoQ
+2026-01-13 21:45:25.684 | INFO     | sources.base:get_data:97 - 开始爬取 InfoQ RSS: https://www.infoq.cn/feed
+2026-01-13 21:45:25.856 | INFO     | sources.base:get_data:124 - 成功爬取 InfoQ 20 条数据
+2026-01-13 21:45:25.856 | INFO     | tasks.crawler:crawl_all_sources:41 - InfoQ 爬取到 20 条
+2026-01-13 21:45:25.897 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 模力工场 028 周 AI 应用榜：AI “身体”觉醒，从工...
+2026-01-13 21:45:25.897 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Claude Code创建者的开发工作流程...
+2026-01-13 21:45:25.897 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 亚马逊云科技推出VPC加密控制，在传输过程中实施强制加密...
+2026-01-13 21:45:25.898 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: TanStack发布框架无关的AI工具包...
+2026-01-13 21:45:25.898 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Anthropic深夜放出王炸！白领饭碗要被AI砸了？网友：...
+2026-01-13 21:45:25.898 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 活久见！连Linux之父等“顽固派”大佬，都在用AI编程了...
+2026-01-13 21:45:25.898 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 刚刚，DeepSeek 突发梁文峰署名新论文：V4 新架构提...
+2026-01-13 21:45:25.898 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 阿里云把“华强北”们推向CES...
+2026-01-13 21:45:25.898 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 英伟达发布了跨AI、机器人和自动驾驶的开放模型、数据集和工具...
+2026-01-13 21:45:25.899 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: MongoBleed漏洞允许攻击者从MongoDB的堆内存中...
+2026-01-13 21:45:25.899 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 亚马逊云科技预览Route 53 Global Resolv...
+2026-01-13 21:45:25.899 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 抨击AI炒作、曝企业需求为先，Anthropic 联创：模型...
+2026-01-13 21:45:25.899 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: “死了么”APP爆火，3人开发成本1500元：不改名；姚顺雨...
+2026-01-13 21:45:25.899 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 测试人员可以做些什么来确保软件安全...
+2026-01-13 21:45:25.899 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 代理式终端——如何使用CLI智能体激活你的终端...
+2026-01-13 21:45:25.899 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: “机器人一次性卖完太亏！”真机智能刘智勇：今年中国本体厂商将...
+2026-01-13 21:45:25.900 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: 发生在CES的六场对话：来自深圳的 AI 硬件“外卷”...
+2026-01-13 21:45:25.900 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Anthropic突然封禁第三方工具调用Claude，Cur...
+2026-01-13 21:45:25.900 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Facebook调查显示：越来越多的人开始采用带类型的Pyt...
+2026-01-13 21:45:25.900 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Manus高溢价收购背后，是Agent开发落地困境...
+2026-01-13 21:45:25.900 | INFO     | tasks.crawler:save_news_items:132 - 💾 成功保存 0 条新资讯到数据库
+2026-01-13 21:45:25.901 | INFO     | tasks.crawler:crawl_all_sources:37 - 开始爬取: TechCrunch
+2026-01-13 21:45:25.901 | INFO     | sources.base:get_data:97 - 开始爬取 TechCrunch RSS: https://techcrunch.com/feed/
+2026-01-13 21:45:27.018 | INFO     | sources.base:get_data:124 - 成功爬取 TechCrunch 20 条数据
+2026-01-13 21:45:27.020 | INFO     | tasks.crawler:crawl_all_sources:41 - TechCrunch 爬取到 20 条
+2026-01-13 21:45:27.065 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Deepgram raises $130M at $1.3B...
+2026-01-13 21:45:27.065 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Slackbot is an AI agent now...
+2026-01-13 21:45:27.065 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Superorganism raises $25M to b...
+2026-01-13 21:45:27.066 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Brazil orders Meta to suspend ...
+2026-01-13 21:45:27.066 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Converge Bio raises $25M, back...
+2026-01-13 21:45:27.066 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Meta-backed Hupo finds growth ...
+2026-01-13 21:45:27.066 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: More than 100 new tech unicorn...
+2026-01-13 21:45:27.066 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: OpenAI buys tiny health record...
+2026-01-13 21:45:27.067 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Hands-on with Bee, Amazon’s la...
+2026-01-13 21:45:27.067 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Why Amazon bought Bee, an AI w...
+2026-01-13 21:45:27.067 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Mark Zuckerberg says Meta is l...
+2026-01-13 21:45:27.067 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Anthropic announces Claude for...
+2026-01-13 21:45:27.067 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Pebble founder says his new co...
+2026-01-13 21:45:27.068 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Anthropic’s new Cowork tool of...
+2026-01-13 21:45:27.068 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Trump’s EPA plans to ignore he...
+2026-01-13 21:45:27.068 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Amazon says 97% of its devices...
+2026-01-13 21:45:27.068 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Fintech firm Betterment confir...
+2026-01-13 21:45:27.068 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Developers have made $550B on ...
+2026-01-13 21:45:27.068 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Google’s Gemini to power Apple...
+2026-01-13 21:45:27.068 | DEBUG    | tasks.crawler:save_news_items:92 - 资讯已存在，跳过: Paramount files lawsuit agains...
+2026-01-13 21:45:27.068 | INFO     | tasks.crawler:save_news_items:132 - 💾 成功保存 0 条新资讯到数据库
+2026-01-13 21:45:27.069 | INFO     | tasks.crawler:crawl_all_sources:70 - ✅ 爬虫任务完成，共 0 条新数据
+INFO:     127.0.0.1:53392 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53402 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53402 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53881 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54087 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54087 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54271 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54517 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54517 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54719 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54923 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54925 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55287 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55315 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55491 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55681 - "GET /api/news?category=%E4%BA%A7%E5%93%81&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55689 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55681 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55681 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55953 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56128 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56128 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56293 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56523 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56523 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56722 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57024 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57211 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57213 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57261 - "GET /api/news?limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57428 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57522 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57533 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57533 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57730 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57773 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57779 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57779 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57979 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58158 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58158 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58337 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58535 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58535 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58743 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58851 - "GET /api/news?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58946 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58946 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58984 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58993 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58993 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59181 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59603 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59787 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59787 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59933 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59952 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59952 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60105 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60111 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60111 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60306 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60422 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60432 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60434 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60654 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60839 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60839 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61065 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61071 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61071 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61071 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61336 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61336 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61336 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61366 - "GET /api/news?limit=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61455 - "OPTIONS /api/generate HTTP/1.1" 200 OK
+2026-01-13 22:05:04.812 | ERROR    | services.ai_service:generate_xiaohongshu_content:149 - 小红书内容生成失败: 'Anthropic' object has no attribute 'messages'
+2026-01-13 22:05:04.818 | ERROR    | services.ai_service:generate_xiaohongshu_content:149 - 小红书内容生成失败: 'Anthropic' object has no attribute 'messages'
+2026-01-13 22:05:04.819 | ERROR    | services.ai_service:generate_xiaohongshu_content:149 - 小红书内容生成失败: 'Anthropic' object has no attribute 'messages'
+INFO:     127.0.0.1:61455 - "POST /api/generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61583 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61775 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61775 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61775 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61984 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61984 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62195 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62195 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62252 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62377 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62377 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62555 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62555 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62738 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62744 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62744 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63030 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63030 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63284 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63295 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63295 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63540 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63637 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63637 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63691 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63691 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63786 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63842 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63842 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63970 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64324 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64324 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64332 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64324 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64340 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64446 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64527 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64866 - "GET /api/news?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64874 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64874 - "GET /api/stats HTTP/1.1" 200 OK

@@ -1,0 +1,451 @@
+---
+// src/components/NewsCard.astro - 单条资讯卡片组件（参考 newsnow）
+const { news } = Astro.props;
+
+// 格式化发布时间
+const publishTime = news.publish_time
+  ? new Date(news.publish_time).toLocaleString('zh-CN', {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  : '-';
+
+// 获取分类显示名称
+function getCategoryName(category) {
+  const names = {
+    'product': '产品',
+    'model': '模型',
+    'investment': '融资',
+    'view': '观点',
+    'research': '研究',
+    'application': '应用'
+  };
+  return names[category] || '资讯';
+}
+---
+
+<article class="news-card" data-news-id={news.news_id}>
+  <!-- 卡片头部 -->
+  <div class="card-header">
+    <div class="source-info">
+      <span class="source-name">{news.source}</span>
+      <span class="publish-time">{publishTime}</span>
+    </div>
+    <span class={`category category-${news.category || 'view'}`}>
+      {getCategoryName(news.category)}
+    </span>
+  </div>
+
+  <!-- 标题 -->
+  <h2 class="news-title">
+    <a href={news.url || '#'} target="_blank" rel="noopener noreferrer">
+      {news.title}
+    </a>
+  </h2>
+
+  <!-- 摘要 -->
+  <p class="news-summary">
+    {news.summary || '暂无摘要'}
+  </p>
+
+  <!-- 卡片底部 -->
+  <div class="card-footer">
+    <div class="meta">
+      {news.importance && news.importance >= 4 && (
+        <span class="hot-badge">🔥 热门</span>
+      )}
+    </div>
+
+    <button
+      class="generate-btn"
+      data-news-id={news.news_id}
+    >
+      ✍️ 生成文案
+    </button>
+  </div>
+
+  <!-- 生成结果区域（默认隐藏） -->
+  <div class="generated-result" id={`result-${news.news_id}`} style="display: none;">
+    <div class="result-header">
+      <h4>✨ 生成的小红书文案</h4>
+      <button class="copy-btn" data-target={`result-content-${news.news_id}`}>
+        📋 复制
+      </button>
+    </div>
+    <div class="result-content" id={`result-content-${news.news_id}`}></div>
+  </div>
+
+  <!-- 隐藏的数据（用于 JS 读取） -->
+  <script type="application/json" data-news-data>
+    {JSON.stringify(news)}
+  </script>
+</article>
+
+<style>
+  .news-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .news-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .source-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .source-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+  }
+
+  .publish-time {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .category {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .category-product {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+
+  .category-model {
+    background: #f3e5f5;
+    color: #7b1fa2;
+  }
+
+  .category-investment {
+    background: #fff3e0;
+    color: #f57c00;
+  }
+
+  .category-view {
+    background: #e8f5e9;
+    color: #388e3c;
+  }
+
+  .category-view {
+    background: #faf5ff;
+    color: #7c4dff;
+  }
+
+  .news-title {
+    margin: 0;
+  }
+
+  .news-title a {
+    color: #1a1a1a;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.5;
+    display: block;
+  }
+
+  .news-title a:hover {
+    color: #667eea;
+  }
+
+  .news-summary {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hot-badge {
+    padding: 4px 8px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .generate-btn {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .generate-btn:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: scale(1.05);
+  }
+
+  .generated-result {
+    margin-top: 16px;
+    padding: 16px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+  }
+
+  .result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .result-header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #667eea;
+  }
+
+  .copy-btn {
+    padding: 4px 12px;
+    background: white;
+    border: 1px solid #667eea;
+    color: #667eea;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+  }
+
+  .copy-btn:hover {
+    background: #667eea;
+    color: white;
+  }
+
+  .copy-btn.copied {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+  }
+
+  .result-content {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    white-space: pre-wrap;
+  }
+
+  .result-content .title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+  }
+
+  .result-content .content {
+    margin-bottom: 8px;
+  }
+
+  .result-content .hashtags {
+    color: #667eea;
+  }
+
+  @media (max-width: 768px) {
+    .news-card {
+      padding: 16px;
+    }
+
+    .news-title a {
+      font-size: 1.1rem;
+    }
+
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+</style>
+
+<script>
+  // 为每个生成按钮添加点击事件
+  document.addEventListener('astro:page-load', () => {
+    const generateButtons = document.querySelectorAll('.generate-btn');
+    generateButtons.forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const newsId = e.target.dataset.newsId;
+        if (!newsId) {
+          alert('新闻 ID 不存在');
+          return;
+        }
+
+        // 防止重复点击
+        if (e.target.disabled) {
+          return;
+        }
+
+        const resultDiv = document.getElementById(`result-${newsId}`);
+        const resultContent = document.getElementById(`result-content-${newsId}`);
+
+        // 显示加载状态
+        const originalText = e.target.textContent;
+        e.target.textContent = '⏳ 生成中...';
+        e.target.disabled = true;
+        e.target.style.cursor = 'not-allowed';
+        e.target.style.opacity = '0.6';
+
+        if (resultDiv) {
+          resultDiv.style.display = 'block';
+          if (resultContent) {
+            resultContent.innerHTML = `
+              <div style="text-align: center; padding: 20px;">
+                <div style="color: #667eea; font-size: 14px; margin-bottom: 8px;">
+                  ⏳ 正在调用 AI 生成文案...
+                </div>
+                <div style="color: #999; font-size: 12px;">
+                  这可能需要 10-30 秒，请耐心等待
+                </div>
+                <div style="margin-top: 12px;">
+                  <div style="display: inline-block; width: 20px; height: 20px; border: 2px solid #f3f3f3; border-top: 2px solid #667eea; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                </div>
+              </div>
+              <style>
+                @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+                }
+              </style>
+            `;
+          }
+        }
+
+        try {
+          const response = await fetch('http://localhost:8000/api/generate', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              news_id: newsId,
+              versions: ['A', 'B', 'C']
+            })
+          });
+
+          if (response.ok) {
+            const results = await response.json();
+            if (results && results.length > 0) {
+              // 显示所有版本
+              let html = '';
+              results.forEach((result, index) => {
+                const versionNames = { 'A': '硬核技术风', 'B': '轻松科普风', 'C': '热点观点风' };
+                html += `
+                  <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px dashed #ddd;">
+                    <div class="title">版本 ${result.version} - ${versionNames[result.version]}</div>
+                    <div class="content">${result.content}</div>
+                    <div class="hashtags">${result.hashtags ? result.hashtags.join(' ') : ''}</div>
+                  </div>
+                `;
+              });
+              if (resultContent) {
+                resultContent.innerHTML = html;
+              }
+
+              // 成功提示
+              e.target.textContent = '✅ 生成成功';
+              setTimeout(() => {
+                e.target.textContent = originalText;
+                e.target.disabled = false;
+                e.target.style.cursor = 'pointer';
+                e.target.style.opacity = '1';
+              }, 2000);
+            } else {
+              if (resultContent) {
+                resultContent.innerHTML = '<p style="color: #dc3545;">❌ 生成失败：未返回内容</p>';
+              }
+              e.target.textContent = originalText;
+              e.target.disabled = false;
+              e.target.style.cursor = 'pointer';
+              e.target.style.opacity = '1';
+            }
+          } else {
+            const error = await response.json();
+            if (resultContent) {
+              resultContent.innerHTML = `<p style="color: #dc3545;">❌ 生成失败：${error.detail || '未知错误'}</p>`;
+            }
+            e.target.textContent = originalText;
+            e.target.disabled = false;
+            e.target.style.cursor = 'pointer';
+            e.target.style.opacity = '1';
+          }
+        } catch (error) {
+          console.error('生成错误:', error);
+          if (resultContent) {
+            resultContent.innerHTML = `<p style="color: #dc3545;">❌ 生成失败：${error.message}</p>`;
+          }
+          e.target.textContent = originalText;
+          e.target.disabled = false;
+          e.target.style.cursor = 'pointer';
+          e.target.style.opacity = '1';
+        }
+      });
+    });
+
+    // 复制按钮事件
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const targetId = e.target.dataset.target;
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          const text = targetElement.innerText || targetElement.textContent;
+
+          // 使用 Clipboard API
+          navigator.clipboard.writeText(text).then(() => {
+            const originalText = e.target.textContent;
+            e.target.textContent = '✅ 已复制';
+            e.target.classList.add('copied');
+
+            setTimeout(() => {
+              e.target.textContent = originalText;
+              e.target.classList.remove('copied');
+            }, 2000);
+          }).catch(err => {
+            console.error('复制失败:', err);
+            alert('复制失败，请手动复制');
+          });
+        }
+      });
+    });
+  });
+</script>

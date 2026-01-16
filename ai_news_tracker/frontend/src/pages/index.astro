@@ -1,0 +1,196 @@
+---
+// src/pages/index.astro - 主页（参考 newsnow 的布局）
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import NewsGrid from '../components/NewsGrid.astro';
+import RefreshButton from '../components/RefreshButton.astro';
+
+// 从 API 获取资讯
+let allNews = [];
+try {
+  const response = await fetch('http://localhost:8000/api/news?limit=50');
+  allNews = await response.json();
+} catch (error) {
+  console.error('获取资讯失败:', error);
+}
+
+// 分类
+const categories = ['全部', '产品', '模型', '融资', '观点'];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="AI News Tracker - 优雅的AI资讯阅读平台" />
+    <title>AI News Tracker - AI资讯追踪与内容生成</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 侧边栏 -->
+      <Sidebar client:load />
+
+      <!-- 主内容区 -->
+      <main class="main-content">
+        <!-- 头部 -->
+        <Header client:load />
+
+        <!-- 操作栏 -->
+        <div class="action-bar">
+          <div class="categories">
+            {categories.map((cat, index) => (
+              <button class={`category-btn ${index === 0 ? 'active' : ''}`} data-category={cat}>
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <RefreshButton client:load />
+        </div>
+
+        <!-- 资讯网格 -->
+        <NewsGrid news={allNews} client:load />
+
+        <!-- 加载更多 -->
+        <div class="load-more">
+          <button id="loadMoreBtn">加载更多</button>
+        </div>
+      </main>
+    </div>
+
+    <script is:inline>
+      // 分类筛选
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          const category = e.target.dataset.category;
+
+          // 更新活动状态
+          document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+
+          // 加载对应分类的资讯
+          const url = category === '全部'
+            ? 'http://localhost:8000/api/news?limit=50'
+            : `http://localhost:8000/api/news?category=${category}&limit=50`;
+
+          const response = await fetch(url);
+          const news = await response.json();
+
+          // 更新显示（触发自定义事件）
+          window.dispatchEvent(new CustomEvent('news-updated', { detail: news }));
+        });
+      });
+
+      // 加载更多
+      document.getElementById('loadMoreBtn')?.addEventListener('click', async () => {
+        const currentCount = document.querySelectorAll('.news-card').length;
+        const response = await fetch(`http://localhost:8000/api/news?offset=${currentCount}&limit=20`);
+        const news = await response.json();
+
+        // 触发更新事件
+        window.dispatchEvent(new CustomEvent('news-appended', { detail: news }));
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #f5f7fa;
+    color: #1a1a1a;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      padding: 16px;
+    }
+  }
+
+  .main-content {
+    min-width: 0;
+  }
+
+  .action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+
+  .categories {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .category-btn {
+    padding: 8px 20px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.2s ease;
+  }
+
+  .category-btn:hover {
+    border-color: #007bff;
+    color: #007bff;
+  }
+
+  .category-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+  }
+
+  .load-more {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .load-more button {
+    padding: 12px 32px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    transition: all 0.2s ease;
+  }
+
+  .load-more button:hover {
+    border-color: #667eea;
+    color: #667eea;
+  }
+</style>

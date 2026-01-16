@@ -1,0 +1,166 @@
+---
+// src/components/Sidebar.astro - 侧边栏组件
+---
+
+<aside class="sidebar">
+  <nav class="nav">
+    <a href="/" class="nav-item active">
+      <span class="icon">📰</span>
+      <span>资讯列表</span>
+    </a>
+    <a href="/generate" class="nav-item">
+      <span class="icon">✍️</span>
+      <span>内容生成</span>
+    </a>
+    <a href="/published" class="nav-item">
+      <span class="icon">📊</span>
+      <span>已发布</span>
+    </a>
+  </nav>
+
+  <div class="stats">
+    <h3>📊 统计信息</h3>
+    <div class="stat-item">
+      <span class="stat-label">总资讯</span>
+      <span class="stat-value" id="totalNews">-</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">今日新增</span>
+      <span class="stat-value" id="todayNews">-</span>
+    </div>
+  </div>
+
+  <div class="about">
+    <h3>ℹ️ 关于</h3>
+    <p>AI News Tracker 是一个基于 MediaCrawler 和 newsnow 设计理念的 AI 资讯追踪平台。</p>
+    <ul>
+      <li>✅ 多源资讯聚合</li>
+      <li>✅ AI 智能分类</li>
+      <li>✅ 小红书内容生成</li>
+      <li>✅ 用户偏好学习</li>
+    </ul>
+  </div>
+</aside>
+
+<style>
+  .sidebar {
+    position: sticky;
+    top: 24px;
+    height: fit-content;
+  }
+
+  .nav {
+    margin-bottom: 32px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #666;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-item:hover {
+    background: white;
+    color: #667eea;
+  }
+
+  .nav-item.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+
+  .icon {
+    font-size: 1.2em;
+  }
+
+  .stats,
+  .about {
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin-bottom: 16px;
+  }
+
+  .stats h3,
+  .about h3 {
+    margin: 0 0 16px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .stat-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #667eea;
+  }
+
+  .about p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .about ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .about li {
+    font-size: 14px;
+    color: #666;
+    padding: 4px 0;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // 加载统计信息
+  async function loadStats() {
+    try {
+      const response = await fetch('http://localhost:8000/api/stats');
+      const stats = await response.json();
+
+      document.getElementById('totalNews').textContent = stats.total_news || 0;
+      document.getElementById('todayNews').textContent = stats.today_news || 0;
+    } catch (error) {
+      console.error('加载统计失败:', error);
+    }
+  }
+
+  // 页面加载时获取统计
+  loadStats();
+
+  // 每30秒更新一次
+  setInterval(loadStats, 30000);
+</script>
