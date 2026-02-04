@@ -314,6 +314,12 @@ class MaimaiAssistant {
 
     // 消息监听
     setupMessageListeners() {
+        // 检查 chrome.runtime 是否可用（可能在某些上下文中不可用）
+        if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.onMessage) {
+            console.log('⚠️ chrome.runtime 不可用，跳过消息监听器设置');
+            return;
+        }
+
         chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             switch (message.type) {
                 case 'EXTRACT_INFO':
