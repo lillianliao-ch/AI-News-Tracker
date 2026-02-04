@@ -73,6 +73,10 @@ class AssistantPanel {
         
         <!-- 批量操作按钮 -->
         <div class="panel-section">
+          <button class="action-btn import-btn" id="importViewBtn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; margin-bottom: 8px;">
+            <span class="btn-icon">📥</span>
+            导入/查看候选人
+          </button>
           <button class="action-btn primary" id="batchAddFriendsBtn">
             <span class="btn-icon">🤝</span>
             批量加好友
@@ -151,6 +155,16 @@ class AssistantPanel {
 
         // 刷新检测
         this.panel.querySelector('#refreshBtn')?.addEventListener('click', () => this.detectCandidates());
+
+        // 导入/查看候选人
+        this.panel.querySelector('#importViewBtn')?.addEventListener('click', async () => {
+            if (window.DetailPanelExtractor) {
+                const extractor = new DetailPanelExtractor();
+                await extractor.importOrView();
+            } else {
+                MaimaiUtils.showNotification('详情提取器未加载', 'error');
+            }
+        });
 
         // 批量加好友
         this.panel.querySelector('#batchAddFriendsBtn')?.addEventListener('click', () => {

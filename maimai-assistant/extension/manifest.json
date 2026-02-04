@@ -14,12 +14,14 @@
     "content_scripts": [
         {
             "matches": [
-                "https://maimai.cn/ent/v41/recruit/*"
+                "https://maimai.cn/ent/v41/recruit/*",
+                "https://maimai.cn/ent/v41/groups*"
             ],
             "js": [
                 "shared/constants.js",
                 "shared/utils.js",
                 "content/extractor.js",
+                "content/detail-extractor.js",
                 "content/panel.js",
                 "content/content.js"
             ],
