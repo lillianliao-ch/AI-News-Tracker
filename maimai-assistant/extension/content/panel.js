@@ -91,12 +91,33 @@ class AssistantPanel {
           </button>
         </div>
         
+        <!-- 人才库功能 (沟通管理页面) -->
+        <div class="panel-section talent-section" style="border-top: 1px dashed #e0e0e0; padding-top: 12px; margin-top: 12px;">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">📌 人才库功能：</div>
+          <button class="action-btn" id="generateMsgBtn" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); border: none; color: white;">
+            <span class="btn-icon">📝</span>
+            生成沟通消息
+          </button>
+        </div>
+        
+        <!-- 生成的消息显示区 -->
+        <div class="panel-section message-result-section" id="messageResultSection" style="display: none; background: #f9f9f9; border-radius: 8px; padding: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 12px; font-weight: 600; color: #333;">📨 生成的消息：</span>
+            <button class="copy-btn" id="copyMsgBtn" style="font-size: 11px; padding: 2px 8px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer;">复制</button>
+          </div>
+          <div id="generatedMessage" style="font-size: 13px; line-height: 1.5; color: #333; white-space: pre-wrap; word-break: break-all; max-height: 120px; overflow-y: auto; background: white; padding: 8px; border-radius: 4px; border: 1px solid #e0e0e0;"></div>
+          <div style="margin-top: 8px; font-size: 11px; color: #999;">
+            候选人: <span id="candidateName" style="color: #667eea; font-weight: 500;"></span>
+          </div>
+        </div>
+        
         <!-- 消息模板 -->
         <div class="panel-section template-section">
           <label class="template-label">消息模板：</label>
           <textarea id="messageTemplate" class="template-textarea" 
             placeholder="您好{name}，我是XX公司的HR，看到您的简历很优秀，想和您聊聊..."></textarea>
-          <div class="template-hint">提示：{name} 会替换为候选人姓名</div>
+          <div class="template-hint">变量: {name} 姓名, {company} 公司, {position} 职位, {experience} 年限</div>
         </div>
         
         <!-- 进度显示 -->
@@ -200,11 +221,68 @@ class AssistantPanel {
         this.panel.querySelector('#exportCsvBtn')?.addEventListener('click', () => this.handleExport('csv'));
         this.panel.querySelector('#exportJsonBtn')?.addEventListener('click', () => this.handleExport('json'));
 
+        // 生成沟通消息 (人才库功能)
+        this.panel.querySelector('#generateMsgBtn')?.addEventListener('click', async () => {
+            await this.handleGenerateMessage();
+        });
+
+        // 复制消息
+        this.panel.querySelector('#copyMsgBtn')?.addEventListener('click', () => {
+            this.handleCopyMessage();
+        });
+
         // 拖拽
         this.bindDragEvents();
 
         // 双击折叠
         this.panel.querySelector('.panel-header')?.addEventListener('dblclick', () => this.toggle());
+    }
+
+    // 生成沟通消息
+    async handleGenerateMessage() {
+        console.log('📝 开始生成沟通消息...');
+
+        if (!window.TalentPanelExtractor) {
+            MaimaiUtils.showNotification('人才提取器未加载', 'error');
+            return;
+        }
+
+        const extractor = new TalentPanelExtractor();
+        const template = this.panel.querySelector('#messageTemplate')?.value ||
+            '您好{name}，我是XX公司的HR，看到您在{company}的工作经历很优秀，想和您聊聊新的机会，方便吗？';
+
+        const result = await extractor.extractAndGenerateMessage(template);
+
+        if (result.success) {
+            // 显示生成的消息
+            const msgSection = this.panel.querySelector('#messageResultSection');
+            const msgEl = this.panel.querySelector('#generatedMessage');
+            const nameEl = this.panel.querySelector('#candidateName');
+
+            if (msgSection && msgEl && nameEl) {
+                msgSection.style.display = 'block';
+                msgEl.textContent = result.message;
+                nameEl.textContent = `${result.candidate.name} - ${result.candidate.currentCompany} ${result.candidate.currentPosition}`;
+            }
+
+            MaimaiUtils.showNotification(`已为 ${result.candidate.name} 生成消息`, 'success');
+            console.log('  候选人数据:', result.candidate);
+            console.log('  生成消息:', result.message);
+        } else {
+            MaimaiUtils.showNotification(result.error || '生成消息失败', 'error');
+        }
+    }
+
+    // 复制消息
+    handleCopyMessage() {
+        const msgEl = this.panel.querySelector('#generatedMessage');
+        if (msgEl && msgEl.textContent) {
+            navigator.clipboard.writeText(msgEl.textContent).then(() => {
+                MaimaiUtils.showNotification('消息已复制到剪贴板', 'success');
+            }).catch(() => {
+                MaimaiUtils.showNotification('复制失败', 'error');
+            });
+        }
     }
 
     // 获取批量处理数量
