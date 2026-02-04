@@ -2426,7 +2426,7 @@ elif page == "人才库管理":
                 page_size = st.selectbox("每页显示", [20, 50], key="page_size", label_visibility="collapsed")
             
             with header_col3:
-                sort_option = st.selectbox("排序", ["最近沟通", "最新导入", "姓名 A-Z", "姓名 Z-A"], label_visibility="collapsed")
+                sort_option = st.selectbox("排序", ["最新导入", "最近沟通", "姓名 A-Z", "姓名 Z-A"], label_visibility="collapsed")
             
             # 使用SQL排序
             if sort_option == "姓名 A-Z":
