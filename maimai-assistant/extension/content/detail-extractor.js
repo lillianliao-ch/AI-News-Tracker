@@ -712,18 +712,15 @@ class DetailPanelExtractor {
         const checkResult = await this.checkCandidateExists(candidateData);
 
         if (checkResult.exists) {
-            // 已存在 - 跳转到详情页
-            MaimaiUtils.showNotification(`${candidateData.name} 已在系统中，正在打开...`, 'success');
-            window.open(`${this.STREAMLIT_BASE}/?page=candidate&id=${checkResult.candidateId}`, '_blank');
+            // 已存在 - 显示提示
+            MaimaiUtils.showNotification(`${candidateData.name} 已在系统中 (ID: ${checkResult.candidateId})`, 'success');
         } else {
             // 不存在 - 导入
             MaimaiUtils.showNotification(`正在导入 ${candidateData.name}...`, 'info');
             const importResult = await this.importCandidate(candidateData);
 
             if (importResult.success) {
-                MaimaiUtils.showNotification(`✅ ${candidateData.name} 导入成功！`, 'success');
-                // 打开新导入的候选人详情页
-                window.open(`${this.STREAMLIT_BASE}/?page=candidate&id=${importResult.candidateId}`, '_blank');
+                MaimaiUtils.showNotification(`✅ ${candidateData.name} 导入成功！(ID: ${importResult.candidateId})`, 'success');
             } else {
                 MaimaiUtils.showNotification(`导入失败: ${importResult.error}`, 'error');
             }
