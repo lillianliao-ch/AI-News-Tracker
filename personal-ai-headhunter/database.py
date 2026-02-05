@@ -19,7 +19,7 @@ class SystemPrompt(Base):
     prompt_name = Column(String(100)) # e.g. 'Default V1'
     content = Column(Text, nullable=False)
     is_active = Column(Boolean, default=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.now)  # 使用本地时间
 
 class Candidate(Base):
     __tablename__ = 'candidates'
@@ -59,12 +59,23 @@ class Candidate(Base):
     
     # 沟通记录
     communication_logs = Column(JSON)  # [{time, content, stage}, ...] 按时间倒序
+    last_communication_at = Column(DateTime)  # 最近一次沟通时间（用于高效排序）
+    scheduled_contact_date = Column(String(20))  # 预约沟通日期 (格式: YYYY-MM-DD)
 
     # 向量数据库关联
     vector_id = Column(String(100)) # ChromaDB 中的 ID
     
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    # 来源信息
+    source = Column(Text)  # 候选人来源（如：脉脉、LinkedIn、图片OCR等）
+    
+    # 奖项与科研成果
+    awards_achievements = Column(JSON)  # 奖项/荣誉/科研成果 [{type, title, time, description}, ...]
+    
+    # AI结构化标签
+    structured_tags = Column(JSON)  # AI提取的结构化标签
+    
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
     def to_dict(self):
         return {
@@ -104,13 +115,21 @@ class Job(Base):
     
     # 新增字段
     job_code = Column(String(100)) # 职位ID/编码
-    project_tags = Column(JSON) # 项目标签
+    project_tags = Column(JSON) # 项目标签（用户自定义）
+    structured_tags = Column(Text) # AI结构化标签（JSON字符串）
     notes = Column(Text) # 职位备注
+    
+    # 扩展字段
+    department = Column(String(200)) # 部门
+    seniority_level = Column(String(100)) # 职级（如P7/P8、高级专家等）
+    hr_contact = Column(String(200)) # HR联系人
+    jd_link = Column(String(500)) # JD原始链接
+    urgency = Column(Integer, default=0) # 紧急程度: 0=普通, 1=较急, 2=紧急, 3=非常紧急
 
     # 向量数据库关联
     vector_id = Column(String(100))
     
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.now)
     is_active = Column(Integer, default=1) # 1=Active, 0=Closed
 
     def to_dict(self):
@@ -138,7 +157,58 @@ class MatchRecord(Base):
     status = Column(String(50), default='pending') # pending, like, dislike, interview, hired
     feedback_notes = Column(Text) # 人工备注
     
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.now)
+
+
+class ResumeTask(Base):
+    """后台简历解析任务队列"""
+    __tablename__ = 'resume_tasks'
+    
+    id = Column(Integer, primary_key=True)
+    
+    # 文件信息
+    file_path = Column(String(500), nullable=False)  # 保存的文件路径
+    file_name = Column(String(200))  # 原始文件名
+    file_type = Column(String(20))  # pdf, txt, jpg, png
+    
+    # 任务状态
+    status = Column(String(20), default='pending')  # pending, processing, done, failed
+    
+    # 处理结果
+    candidate_id = Column(Integer, ForeignKey('candidates.id'), nullable=True)  # 创建的候选人ID
+    error_message = Column(Text, nullable=True)  # 失败原因
+    
+    # 时间戳
+    created_at = Column(DateTime, default=datetime.now)
+    started_at = Column(DateTime, nullable=True)  # 开始处理时间
+    finished_at = Column(DateTime, nullable=True)  # 完成时间
+
+
+class JobImportTask(Base):
+    """后台职位导入任务队列"""
+    __tablename__ = 'job_import_tasks'
+    
+    id = Column(Integer, primary_key=True)
+    
+    # 文件信息
+    file_path = Column(String(500), nullable=False)  # 保存的文件路径
+    file_name = Column(String(200))  # 原始文件名
+    file_type = Column(String(20))  # csv, xlsx
+    
+    # 任务状态
+    status = Column(String(20), default='pending')  # pending, processing, done, failed
+    
+    # 处理结果
+    jobs_imported = Column(Integer, default=0)  # 成功导入的职位数
+    jobs_skipped = Column(Integer, default=0)  # 跳过的职位数（重复）
+    jobs_failed = Column(Integer, default=0)  # 失败的职位数
+    tags_extracted = Column(Integer, default=0)  # 提取标签的职位数
+    error_message = Column(Text, nullable=True)  # 失败原因
+    
+    # 时间戳
+    created_at = Column(DateTime, default=datetime.now)
+    started_at = Column(DateTime, nullable=True)  # 开始处理时间
+    finished_at = Column(DateTime, nullable=True)  # 完成时间
 
 # Database Initialization
 # 优先从 DATABASE_URL 环境变量读取（Railway 标准）

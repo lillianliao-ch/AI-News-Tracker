@@ -4139,6 +4139,28 @@ elif page == "职位库管理":
                             st.rerun()
             
             with right_col:
+                # ===== 紧急程度设置（便捷按钮样式）=====
+                st.markdown("<div style='margin-bottom:10px'><b>🚨 紧急程度</b></div>", unsafe_allow_html=True)
+                urgency_options = ["普通", "较急", "紧急", "非常紧急"]
+                urgency_colors = ["#e0e0e0", "#ffe082", "#ffb74d", "#ef5350"]
+                current_urgency = getattr(job, 'urgency', 0) or 0
+                
+                # 使用4列按钮实现快速选择
+                urg_cols = st.columns(4)
+                for idx, (label, color) in enumerate(zip(urgency_options, urgency_colors)):
+                    with urg_cols[idx]:
+                        # 选中状态高亮
+                        is_selected = current_urgency == idx
+                        btn_style = f"background-color: {color}; border: 2px solid {'#333' if is_selected else 'transparent'}; border-radius: 4px; font-weight: {'bold' if is_selected else 'normal'};"
+                        if st.button(f"{'✓ ' if is_selected else ''}{label}", key=f"urg_{idx}_{job.id}", use_container_width=True):
+                            if current_urgency != idx:
+                                job.urgency = idx
+                                db.commit()
+                                st.toast(f"已设置为: {label}")
+                                st.rerun()
+                
+                st.markdown("<hr style='margin: 10px 0; border-color: #eee;'>", unsafe_allow_html=True)
+                
                 # ===== 职级、部门、HR、链接并列第一排 =====
                 info_parts = []
                 if seniority:
@@ -4325,11 +4347,12 @@ elif page == "职位库管理":
             page_jobs = jobs[start_idx:end_idx]
             
             with list_container:
-                # Header - 去掉标签和更新日期
-                # ID, Title, Comp, Dept, Level, Loc, PubDate, Action
-                h0, h1, h2, h3, h4, h5, h6, h7 = st.columns([1, 2.5, 1.5, 1.2, 0.8, 1.2, 1, 1])
+                # Header - 包含紧急程度列
+                # ID, Title, Urgency, Comp, Dept, Level, Loc, PubDate, Action
+                h0, h1, h1u, h2, h3, h4, h5, h6, h7 = st.columns([0.8, 2, 0.9, 1.3, 1, 0.6, 1, 0.9, 0.9])
                 h0.markdown("**职位ID**")
                 h1.markdown("**职位名称**")
+                h1u.markdown("**紧急程度**")
                 h2.markdown("**公司**")
                 h3.markdown("**部门**")
                 h4.markdown("**职级**")
@@ -4340,7 +4363,7 @@ elif page == "职位库管理":
                 
                 if page_jobs:
                     for job in page_jobs:
-                        c0, c1, c2, c3, c4, c5, c6, c7 = st.columns([1, 2.5, 1.5, 1.2, 0.8, 1.2, 1, 1])
+                        c0, c1, c1u, c2, c3, c4, c5, c6, c7 = st.columns([0.8, 2, 0.9, 1.3, 1, 0.6, 1, 0.9, 0.9])
                         
                         # Extract Fields - 优先从独立字段读取
                         dept = job.department if hasattr(job, 'department') and job.department else "-"
@@ -4370,6 +4393,17 @@ elif page == "职位库管理":
                             if "急" in job.title or "Urgent" in job.title:
                                 title_md += " 🔥"
                             st.markdown(title_md)
+                        
+                        # 紧急程度列 - 带颜色标签
+                        with c1u:
+                            urgency = getattr(job, 'urgency', 0) or 0
+                            urgency_labels = ["普通", "较急", "紧急", "非常紧急"]
+                            urgency_colors = ["#9e9e9e", "#ffc107", "#ff9800", "#f44336"]
+                            urgency_icons = ["", "⚡", "🔥", "🚨"]
+                            if urgency > 0:
+                                st.markdown(f"<span style='background-color:{urgency_colors[urgency]}; color:white; padding:2px 8px; border-radius:12px; font-size:12px;'>{urgency_icons[urgency]} {urgency_labels[urgency]}</span>", unsafe_allow_html=True)
+                            else:
+                                st.write("-")
                         
                         with c2: st.write(job.company)
                         with c3: st.write(dept)
