@@ -17,7 +17,30 @@ class AssistantPanel {
     }
 
     _detectTab() {
-        return window.location.href.includes('search_center') ? 'search' : 'recruit';
+        const url = window.location.href;
+        // 搜索页或搜索引擎导航到的详情页 → 社区 tab
+        if (url.includes('search_center') ||
+            url.includes('/profile/detail') ||
+            url.includes('/contact/') ||
+            url.includes('/card/')) {
+
+            // 但如果是从招聘页面进的详情页，保持 recruit tab
+            // 通过检查是否有正在运行的搜索引擎状态来判断
+            try {
+                const saved = localStorage.getItem('maimai_search_engine_state');
+                if (saved) {
+                    const state = JSON.parse(saved);
+                    if (state.running && state.phase === 'detail') {
+                        return 'search';
+                    }
+                }
+            } catch (e) { }
+
+            if (url.includes('search_center')) return 'search';
+            // 详情页默认用 recruit（当没有搜索引擎运行时）
+            return 'recruit';
+        }
+        return 'recruit';
     }
 
     async init() {

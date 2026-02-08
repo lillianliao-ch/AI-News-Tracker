@@ -1,4 +1,4 @@
-// 社区搜索页 - 批量搜索引擎（从 maimai-scraper 迁移 + 模块化）
+// 社区搜索页 - 批量搜索引擎（两阶段状态机：搜索→详情→下一个）
 class SearchEngine {
     constructor() {
         this.extractor = new SearchExtractor();
@@ -7,16 +7,18 @@ class SearchEngine {
             index: 0,
             running: false,
             results: [],
-            mode: 'first',      // first | all
+            mode: 'first',
             addFriend: false,
-            exportMode: 'excel', // excel | api
+            exportMode: 'excel',
+            phase: 'idle',          // idle | search | detail
+            currentDetailUrl: null, // 当前要跳转的详情页 URL
         };
         this._loadState();
     }
 
     _loadState() {
         try {
-            const saved = localStorage.getItem('maimai_search_state');
+            const saved = localStorage.getItem('maimai_search_engine_state');
             if (saved) {
                 const parsed = JSON.parse(saved);
                 Object.assign(this.state, parsed);
@@ -26,7 +28,7 @@ class SearchEngine {
 
     _saveState() {
         try {
-            localStorage.setItem('maimai_search_state', JSON.stringify(this.state));
+            localStorage.setItem('maimai_search_engine_state', JSON.stringify(this.state));
         } catch (e) { }
     }
 
@@ -37,31 +39,28 @@ class SearchEngine {
             return;
         }
 
-        this.state.list = keywords;
-        this.state.index = 0;
-        this.state.running = true;
-        this.state.results = [];
-        this.state.mode = mode;
-        this.state.addFriend = addFriend;
-        this.state.exportMode = exportMode;
+        this.state = {
+            list: keywords,
+            index: 0,
+            running: true,
+            results: [],
+            mode,
+            addFriend,
+            exportMode,
+            phase: 'search',
+            currentDetailUrl: null,
+        };
         this._saveState();
 
-        console.log(`[搜索引擎] 开始搜索 ${keywords.length} 个关键词, 模式=${mode}, 加好友=${addFriend}`);
+        console.log(`[搜索引擎] 🚀 开始搜索 ${keywords.length} 个关键词, 模式=${mode}, 加好友=${addFriend}`);
 
-        this._onProgress?.({
-            isRunning: true,
-            currentIndex: 0,
-            total: keywords.length,
-            successful: 0,
-            failed: 0,
-            resultCount: 0,
-        });
-
-        await this._processNext();
+        this._emitProgress();
+        this._navigateToSearch(keywords[0]);
     }
 
     stop() {
         this.state.running = false;
+        this.state.phase = 'idle';
         this._saveState();
         console.log('[搜索引擎] 已停止');
     }
@@ -75,106 +74,300 @@ class SearchEngine {
             mode: 'first',
             addFriend: false,
             exportMode: 'excel',
+            phase: 'idle',
+            currentDetailUrl: null,
         };
-        localStorage.removeItem('maimai_search_state');
+        localStorage.removeItem('maimai_search_engine_state');
     }
 
-    // 处理下一个关键词
-    async _processNext() {
-        if (!this.state.running || this.state.index >= this.state.list.length) {
-            this.state.running = false;
+    // === 核心状态机：页面加载后恢复执行 ===
+    resumeIfRunning() {
+        if (!this.state.running) return;
+
+        const url = window.location.href;
+        const phase = this.state.phase;
+
+        console.log(`[搜索引擎] 恢复执行 phase=${phase}, index=${this.state.index}/${this.state.list.length}`);
+        console.log(`[搜索引擎] 当前URL: ${url}`);
+
+        this._emitProgress();
+
+        if (phase === 'search' && url.includes('/web/search_center')) {
+            // 在搜索结果页 → 等待加载后提取 + 跳详情
+            setTimeout(() => this._handleSearchPage(), 3000);
+        } else if (phase === 'detail' && (
+            url.includes('/profile/detail') ||
+            url.includes('/contact/') ||
+            url.includes('/card/')
+        )) {
+            // 在详情页 → 提取完整信息
+            setTimeout(() => this._handleDetailPage(), 2000);
+        } else if (phase === 'search' && (
+            url.includes('/profile/detail') ||
+            url.includes('/contact/') ||
+            url.includes('/card/')
+        )) {
+            // phase 是 search 但已经在详情页了（通过点击卡片跳转）
+            this.state.phase = 'detail';
             this._saveState();
-            this._onComplete?.(this.state.results);
-            return;
+            setTimeout(() => this._handleDetailPage(), 2000);
+        } else {
+            console.log('[搜索引擎] 当前页面与状态不匹配，等待用户操作');
         }
+    }
 
-        const query = this.state.list[this.state.index];
-        console.log(`[搜索引擎] 搜索 ${this.state.index + 1}/${this.state.list.length}: "${query}"`);
-
-        // 导航到搜索页
+    // 导航到搜索页
+    _navigateToSearch(query) {
         const searchUrl = `https://maimai.cn/web/search_center?type=contact&query=${encodeURIComponent(query)}&highlight=true`;
+        console.log(`[搜索引擎] 跳转搜索: ${query}`);
+        this.state.phase = 'search';
+        this._saveState();
+        window.location.href = searchUrl;
+    }
 
-        if (!window.location.href.includes(`query=${encodeURIComponent(query)}`)) {
-            window.location.href = searchUrl;
-            // 页面会重载，后续由 resumeIfRunning() 继续
-            return;
-        }
+    // 阶段1: 处理搜索结果页
+    async _handleSearchPage() {
+        const query = this.state.list[this.state.index];
+        console.log(`[搜索引擎] 📋 搜索页处理: "${query}" (${this.state.index + 1}/${this.state.list.length})`);
 
-        // 等待搜索结果加载
+        // 切到"people"标签（人脉tab）
+        await this._ensurePeopleTab();
+
+        // 等待搜索结果
         await new Promise(r => setTimeout(r, 2000));
 
-        const results = this.extractor.getCurrentPageResults();
+        // 获取搜索结果
+        const results = this._findSearchResults();
+        console.log(`[搜索引擎] 找到 ${results.length} 个搜索结果`);
 
         if (results.length === 0) {
-            // 无结果
+            // 无结果 → 记录并跳下一个
             this.state.results.push({
                 query,
                 name: query,
+                found: 0,
                 company: '',
                 position: '',
                 workHistory: [],
                 education: [],
                 profileUrl: '',
-                searchStatus: 'no_result',
+                time: new Date().toLocaleString(),
             });
+            this._advanceToNext();
+            return;
+        }
+
+        // 取第一个结果卡片
+        const firstResult = results[0];
+
+        // 尝试提取 dstu 或 profileUrl
+        const profileUrl = this._extractProfileUrl(firstResult);
+
+        if (profileUrl) {
+            // 找到链接 → 跳转到详情页
+            console.log(`[搜索引擎] ✅ 找到详情页链接: ${profileUrl}`);
+            this.state.phase = 'detail';
+            this.state.currentDetailUrl = profileUrl;
+            this._saveState();
+            setTimeout(() => {
+                window.location.href = profileUrl;
+            }, 1000);
         } else {
-            const mode = this.state.mode;
-            const toProcess = mode === 'first' ? [results[0]] : results;
+            // 没找到链接 → 尝试点击卡片
+            console.log('[搜索引擎] ⚠️ 未找到链接，尝试点击卡片...');
+            this.state.phase = 'detail';
+            this.state.currentDetailUrl = 'CLICKED_CARD';
+            this._saveState();
 
-            for (const el of toProcess) {
-                const cardInfo = this.extractor.extractCardInfo(el);
+            const clickable = firstResult.querySelector('.media-left, .cursor-pointer, a, .media-body') || firstResult;
+            clickable.click();
 
-                // 尝试加好友
-                if (this.state.addFriend) {
-                    await this.extractor.tryAddFriend(el);
-                    await new Promise(r => setTimeout(r, 1000));
+            // 5秒后检查是否跳转成功
+            setTimeout(() => {
+                if (window.location.href.includes('/web/search_center')) {
+                    console.log('[搜索引擎] ❌ 点击5秒后未跳转，跳过');
+                    this.state.results.push({
+                        query,
+                        name: query,
+                        found: 0,
+                        note: '点击后未能跳转',
+                        time: new Date().toLocaleString(),
+                    });
+                    this._advanceToNext();
                 }
+            }, 5000);
+        }
+    }
 
-                this.state.results.push({
-                    query,
-                    ...cardInfo,
-                    searchStatus: 'found',
-                });
+    // 阶段2: 处理详情页
+    async _handleDetailPage() {
+        const query = this.state.list[this.state.index];
+        console.log(`[搜索引擎] 📄 详情页提取: "${query}"`);
+
+        // 等待页面完全加载
+        await new Promise(r => setTimeout(r, 2000));
+
+        // 如果开启了加好友，先执行
+        if (this.state.addFriend) {
+            console.log('[搜索引擎] 🤝 尝试添加好友...');
+            await this.extractor.tryAddFriendOnDetailPage();
+            await new Promise(r => setTimeout(r, 3000));
+        }
+
+        // 提取详情信息
+        const info = this.extractor.extractDetailInfo();
+        console.log(`[搜索引擎] 提取到: name=${info.name}, work=${info.workHistory.length}条, edu=${info.education.length}条`);
+
+        // 提取 dstu 作为 profileUrl
+        const dstu = new URLSearchParams(window.location.search).get('dstu');
+        const profileUrl = dstu
+            ? `https://maimai.cn/profile/detail?dstu=${dstu}`
+            : window.location.href;
+
+        // 保存结果
+        this.state.results.push({
+            query,
+            found: 1,
+            name: info.name || query,
+            company: info.company || '',
+            position: info.position || '',
+            workHistory: info.workHistory || [],
+            education: info.education || [],
+            profileUrl,
+            time: new Date().toLocaleString(),
+        });
+
+        this.state.currentDetailUrl = null;
+        this._saveState();
+
+        this._emitProgress();
+
+        // 跳到下一个
+        this._advanceToNext();
+    }
+
+    // 推进到下一个关键词
+    _advanceToNext() {
+        this.state.index++;
+        this.state.currentDetailUrl = null;
+        this._saveState();
+
+        this._emitProgress();
+
+        if (this.state.index >= this.state.list.length) {
+            // 全部完成
+            this.state.running = false;
+            this.state.phase = 'idle';
+            this._saveState();
+            this._onComplete?.(this.state.results);
+            return;
+        }
+
+        // 延迟后搜索下一个（防反爬）
+        const delay = 3000 + Math.random() * 4000;
+        console.log(`[搜索引擎] 等待 ${(delay / 1000).toFixed(1)} 秒后搜索下一个...`);
+        setTimeout(() => {
+            this._navigateToSearch(this.state.list[this.state.index]);
+        }, delay);
+    }
+
+    // 确保在"people"标签页
+    async _ensurePeopleTab() {
+        const tabs = document.querySelectorAll('[class*="tab"], [role="tab"]');
+        for (const tab of tabs) {
+            const text = tab.textContent?.trim() || '';
+            if (text === '人脉' || text.includes('人脉')) {
+                tab.click();
+                await new Promise(r => setTimeout(r, 1000));
+                console.log('[搜索引擎] 切换到人脉tab');
+                return;
+            }
+        }
+    }
+
+    // 查找搜索结果卡片
+    _findSearchResults() {
+        const selectors = [
+            '.list-group-item',
+            '[data-testid="search-result-item"]',
+            '.search-result-item',
+            '.contact-item',
+            '.user-item',
+        ];
+
+        for (const sel of selectors) {
+            const els = document.querySelectorAll(sel);
+            const filtered = Array.from(els).filter(el => {
+                const text = el.textContent?.trim() || '';
+                return text.length > 10 && !text.includes('推广');
+            });
+            if (filtered.length > 0) return filtered;
+        }
+
+        return [];
+    }
+
+    // 从卡片中提取详情页 URL
+    _extractProfileUrl(element) {
+        // 方法1: 找 href 中包含 dstu 的链接
+        const links = element.querySelectorAll('a[href]');
+        for (const link of links) {
+            const href = link.href;
+            if (href.includes('profile/detail') || href.includes('dstu=')) {
+                return href;
             }
         }
 
-        this.state.index++;
-        this._saveState();
-
-        this._onProgress?.({
-            isRunning: this.state.running,
-            currentIndex: this.state.index,
-            total: this.state.list.length,
-            successful: this.state.results.filter(r => r.searchStatus === 'found').length,
-            failed: this.state.results.filter(r => r.searchStatus === 'no_result').length,
-            resultCount: this.state.results.length,
-        });
-
-        // 延迟后处理下一个
-        const delay = 2000 + Math.random() * 3000;
-        await new Promise(r => setTimeout(r, delay));
-        await this._processNext();
-    }
-
-    // 页面重载后恢复搜索
-    resumeIfRunning() {
-        if (this.state.running && this.state.index < this.state.list.length) {
-            console.log('[搜索引擎] 恢复执行...');
-
-            this._onProgress?.({
-                isRunning: true,
-                currentIndex: this.state.index,
-                total: this.state.list.length,
-                successful: this.state.results.filter(r => r.searchStatus === 'found').length,
-                failed: this.state.results.filter(r => r.searchStatus === 'no_result').length,
-                resultCount: this.state.results.length,
-            });
-
-            setTimeout(() => this._processNext(), 3000);
+        // 方法2: 从 data 属性中提取 dstu
+        const allEls = element.querySelectorAll('*');
+        for (const el of allEls) {
+            for (const attr of el.attributes || []) {
+                if (attr.value && attr.value.includes('dstu=')) {
+                    const match = attr.value.match(/dstu=(\d+)/);
+                    if (match) {
+                        return `https://maimai.cn/profile/detail?dstu=${match[1]}&from=pc_web_search`;
+                    }
+                }
+            }
         }
+
+        // 方法3: 从 React props 中提取 dstu
+        for (const el of allEls) {
+            for (const key in el) {
+                if (key.startsWith('__react')) {
+                    try {
+                        const propsStr = JSON.stringify(el[key]);
+                        if (propsStr.includes('dstu')) {
+                            const match = propsStr.match(/dstu['":\s]+(\d+)/);
+                            if (match) {
+                                return `https://maimai.cn/profile/detail?dstu=${match[1]}&from=pc_web_search`;
+                            }
+                        }
+                    } catch (e) { }
+                }
+            }
+        }
+
+        return null;
     }
 
-    // 导出为 CSV
+    // === 进度 & 回调 ===
+    _emitProgress() {
+        const s = this.state;
+        this._onProgress?.({
+            isRunning: s.running,
+            currentIndex: s.index,
+            total: s.list.length,
+            successful: s.results.filter(r => r.found === 1).length,
+            failed: s.results.filter(r => r.found === 0).length,
+            resultCount: s.results.length,
+        });
+    }
+
+    onProgress(fn) { this._onProgress = fn; }
+    onComplete(fn) { this._onComplete = fn; }
+
+    // === 导出 ===
     exportToCSV() {
         if (this.state.results.length === 0) return null;
 
@@ -191,8 +384,6 @@ class SearchEngine {
         });
 
         let csv = '姓名,工作年限';
-
-        // 找最大工作/教育数
         let maxWork = 0, maxEdu = 0;
         parsedResults.forEach(r => {
             maxWork = Math.max(maxWork, r.parsedWork.length);
@@ -205,32 +396,26 @@ class SearchEngine {
 
         parsedResults.forEach(r => {
             let row = escapeCSV(r.name || '') + ',' + escapeCSV('');
-
             for (let i = 0; i < maxWork; i++) {
                 const w = r.parsedWork[i] || {};
                 row += ',' + escapeCSV(w.title || '') + ',' + escapeCSV(w.time_range || '');
             }
-
             for (let i = 0; i < maxEdu; i++) {
                 const e = r.parsedEdu[i] || {};
                 row += ',' + escapeCSV(e.school || '') + ',' + escapeCSV(e.time_range || '') + ',' + escapeCSV(e.major || '');
             }
-
             const allEdu = r.parsedEdu.map(e => [e.school, e.major, e.time_range ? `(${e.time_range})` : ''].filter(Boolean).join(' ')).join(' | ');
             const allWork = r.parsedWork.map(w => w.content).filter(Boolean).join('\n---\n');
-
             row += ',' + escapeCSV(allEdu);
             row += ',' + escapeCSV(allWork);
             row += ',' + escapeCSV(r.profileUrl || '');
             row += ',' + escapeCSV('maimai') + '\n';
-
             csv += row;
         });
 
         return '\uFEFF' + csv;
     }
 
-    // 导出到 API（导入 headhunter DB）
     async exportToAPI() {
         if (this.state.results.length === 0) return { success: 0, failed: 0 };
 
@@ -238,8 +423,7 @@ class SearchEngine {
         let success = 0, failed = 0;
 
         for (const r of this.state.results) {
-            if (r.searchStatus !== 'found') continue;
-
+            if (r.found !== 1) continue;
             try {
                 const body = {
                     name: r.name || r.query,
@@ -278,12 +462,8 @@ class SearchEngine {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body),
                 });
-
-                if (resp.ok) {
-                    success++;
-                } else {
-                    failed++;
-                }
+                if (resp.ok) success++;
+                else failed++;
             } catch (e) {
                 failed++;
                 console.error('[搜索引擎] API导入失败:', e);
@@ -292,14 +472,10 @@ class SearchEngine {
 
         return { success, failed };
     }
-
-    // 回调设置
-    onProgress(fn) { this._onProgress = fn; }
-    onComplete(fn) { this._onComplete = fn; }
 }
 
 if (typeof window !== 'undefined') {
     window.SearchEngine = SearchEngine;
 }
 
-console.log('✅ Search Engine 加载完成');
+console.log('✅ Search Engine v2 (两阶段状态机) 加载完成');

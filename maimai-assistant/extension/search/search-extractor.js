@@ -257,6 +257,102 @@ class SearchExtractor {
         }
     }
 
+    // 在详情页尝试添加好友
+    async tryAddFriendOnDetailPage() {
+        try {
+            console.log('[搜索助手] 详情页: 尝试加好友...');
+
+            // 查找页面上的"加好友"按钮
+            const buttonSelectors = ['button', '[role="button"]', '.btn', 'div[class*="btn"]', 'a[class*="btn"]'];
+            let candidates = [];
+
+            for (const sel of buttonSelectors) {
+                const buttons = Array.from(document.querySelectorAll(sel));
+                const matching = buttons.filter(btn => {
+                    const text = btn.textContent?.trim() || '';
+                    return text.length < 30 && (
+                        text.includes('加好友') ||
+                        text.includes('添加好友') ||
+                        text.includes('加为好友') ||
+                        text === '+ 加好友' ||
+                        text === '＋加好友'
+                    );
+                });
+                candidates.push(...matching);
+            }
+
+            if (candidates.length === 0) {
+                // 扩大搜索
+                const allEls = Array.from(document.querySelectorAll('*'));
+                candidates = allEls.filter(el => {
+                    const text = el.textContent?.trim() || '';
+                    return text.length < 20 && text.length > 0 && (
+                        text.includes('加好友') ||
+                        text.includes('添加好友') ||
+                        text === '+ 加好友' ||
+                        text === '＋加好友'
+                    );
+                });
+            }
+
+            console.log(`[搜索助手] 找到 ${candidates.length} 个加好友候选按钮`);
+
+            if (candidates.length > 0) {
+                // 按优先级排序
+                candidates.sort((a, b) => {
+                    const priority = (el) => {
+                        let p = 0;
+                        const text = el.textContent?.trim() || '';
+                        if (text === '＋加好友' || text === '+加好友') p += 100;
+                        else if (text.includes('加好友')) p += 80;
+                        if (el.tagName === 'BUTTON') p += 50;
+                        if (window.getComputedStyle(el).cursor === 'pointer') p += 30;
+                        const rect = el.getBoundingClientRect();
+                        if (rect.width > 0 && rect.height > 0) p += 10;
+                        return p;
+                    };
+                    return priority(b) - priority(a);
+                });
+
+                const btn = candidates[0];
+                console.log(`[搜索助手] 点击: "${btn.textContent?.trim()}" (${btn.tagName})`);
+                btn.click();
+                await new Promise(r => setTimeout(r, 2000));
+
+                // 检查是否弹出确认对话框 → 自动点击"发送"
+                const sendBtns = Array.from(document.querySelectorAll('button, [role="button"]'));
+                const sendBtn = sendBtns.find(b => {
+                    const t = b.textContent?.trim() || '';
+                    return t === '发送' || t === '确认' || t === '确定';
+                });
+                if (sendBtn) {
+                    sendBtn.click();
+                    console.log('[搜索助手] ✅ 已点击发送/确认');
+                    await new Promise(r => setTimeout(r, 1500));
+                }
+
+                // 关闭可能的弹窗
+                const closeBtns = document.querySelectorAll('[class*="close"], [class*="modal"] button');
+                for (const cb of closeBtns) {
+                    const text = cb.textContent?.trim() || '';
+                    if (text === '×' || text === '✕' || text === '关闭' || cb.getAttribute('aria-label') === 'Close') {
+                        cb.click();
+                        break;
+                    }
+                }
+
+                console.log('[搜索助手] ✅ 详情页加好友流程完成');
+                return true;
+            }
+
+            console.log('[搜索助手] ❌ 详情页未找到加好友按钮');
+            return false;
+        } catch (e) {
+            console.error('[搜索助手] 详情页加好友失败:', e);
+            return false;
+        }
+    }
+
     // 滚动加载更多
     async scrollToLoadMore() {
         const scrollContainer = document.querySelector('.search-list, [class*="list-wrap"]') || document.documentElement;
