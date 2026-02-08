@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "Maimai Assistant",
-    "version": "1.1.0",
-    "description": "脉脉招聘候选人信息提取助手 - 支持候选人采集与职位发布",
+    "version": "1.2.0",
+    "description": "脉脉招聘助手 - 支持招聘候选人采集、社区搜索批量加好友、AI消息生成与职位发布",
     "permissions": [
         "activeTab",
         "storage",
@@ -16,7 +16,8 @@
         {
             "matches": [
                 "https://maimai.cn/ent/v41/recruit/*",
-                "https://maimai.cn/ent/v41/groups*"
+                "https://maimai.cn/ent/v41/groups*",
+                "https://maimai.cn/web/search_center*"
             ],
             "js": [
                 "shared/config.js",
@@ -25,6 +26,8 @@
                 "content/extractor.js",
                 "content/detail-extractor.js",
                 "content/talent-extractor.js",
+                "search/search-extractor.js",
+                "search/search-engine.js",
                 "content/panel.js",
                 "content/content.js"
             ],

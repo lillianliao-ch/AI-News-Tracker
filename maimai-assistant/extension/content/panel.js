@@ -1,4 +1,4 @@
-// Maimai Assistant - 持久悬浮面板 UI (v2 - 自动检测候选人)
+// Maimai Assistant - 持久悬浮面板 UI (v3 - Tab切换：招聘+社区)
 class AssistantPanel {
     constructor() {
         this.panel = null;
@@ -7,11 +7,17 @@ class AssistantPanel {
         this.isCollapsed = false;
         this.stats = { today: 0, total: 0 };
         this.extractedData = [];
-        this.detectedCount = 0; // 检测到的候选人数量
-        this.activeJobs = []; // 活跃JD列表
-        this.selectedJobId = null; // 选中的JD
-        this.lastGeneratedMessage = ''; // 最近生成的消息
-        this.lastCandidate = null; // 最近的候选人
+        this.detectedCount = 0;
+        this.activeJobs = [];
+        this.selectedJobId = null;
+        this.lastGeneratedMessage = '';
+        this.lastCandidate = null;
+        this.activeTab = this._detectTab(); // 'recruit' | 'search'
+        this.searchEngine = null;
+    }
+
+    _detectTab() {
+        return window.location.href.includes('search_center') ? 'search' : 'recruit';
     }
 
     async init() {
@@ -46,9 +52,12 @@ class AssistantPanel {
         document.body.appendChild(this.panel);
     }
 
-    // 新版面板 - 支持指定批量数量
+    // 新版面板 - Tab切换
     render() {
         if (!this.panel) return;
+
+        const isRecruit = this.activeTab === 'recruit';
+        const isSearch = this.activeTab === 'search';
 
         this.panel.innerHTML = `
       <div class="panel-header">
@@ -57,6 +66,14 @@ class AssistantPanel {
       </div>
       
       <div class="panel-content">
+        <!-- Tab 切换 -->
+        <div class="panel-tab-bar">
+          <button class="panel-tab ${isRecruit ? 'active' : ''}" data-tab="recruit">招聘</button>
+          <button class="panel-tab ${isSearch ? 'active' : ''}" data-tab="search">社区</button>
+        </div>
+
+        <!-- ========== TAB 1: 招聘 ========== -->
+        <div class="tab-content" id="tabRecruit" style="display: ${isRecruit ? 'block' : 'none'}">
         <!-- 1️⃣ 导入/查看（最顶部） -->
         <div class="panel-section" style="padding-bottom: 8px;">
           <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 6px;">
@@ -166,12 +183,124 @@ class AssistantPanel {
             ⏹ 停止
           </button>
         </div>
+        </div><!-- /tabRecruit -->
+
+        <!-- ========== TAB 2: 社区搜索 ========== -->
+        <div class="tab-content" id="tabSearch" style="display: ${isSearch ? 'block' : 'none'}">
+          <div class="panel-section">
+            <textarea id="searchKeywords" class="search-textarea" placeholder="每行一个关键词&#10;廖娅伶&#10;张三"></textarea>
+          </div>
+          <div class="panel-section" style="display: flex; align-items: center; gap: 6px;">
+            <select id="searchMode" class="search-select">
+              <option value="first">首个结果</option>
+              <option value="all">所有结果</option>
+            </select>
+            <label class="search-checkbox">
+              <input type="checkbox" id="searchAddFriend">
+              <span>加好友</span>
+            </label>
+          </div>
+          <div class="panel-section" style="display: flex; gap: 6px;">
+            <button class="action-btn success" id="searchStartBtn" style="flex: 1;">▶ 开始</button>
+            <button class="action-btn primary" id="searchExportBtn" style="flex: 1;">📥 导出</button>
+          </div>
+          <div class="panel-section" style="display: flex; align-items: center; gap: 8px; padding-top: 4px;">
+            <span style="font-size: 10px; color: #999;">导出方式:</span>
+            <label class="search-radio"><input type="radio" name="exportMode" value="excel" checked><span>Excel</span></label>
+            <label class="search-radio"><input type="radio" name="exportMode" value="api"><span>API导入</span></label>
+          </div>
+          <div class="panel-section" style="font-size: 10px; color: #999; text-align: center; padding-top: 2px;">
+            已采集 <span id="searchResultCount" style="color: #667eea; font-weight: 600;">0</span> 条
+          </div>
+
+          <!-- 搜索进度 -->
+          <div class="panel-section progress-section" id="searchProgressSection">
+            <div class="progress-bar">
+              <div class="progress-fill" id="searchProgressFill"></div>
+            </div>
+            <div class="progress-text">
+              <span id="searchProgressText">0/0</span>
+              <span id="searchProgressPercent">0%</span>
+            </div>
+            <div class="progress-stats">
+              <span class="success">✓ <span id="searchSuccessCount">0</span></span>
+              &nbsp;|&nbsp;
+              <span class="failed">✗ <span id="searchFailedCount">0</span></span>
+            </div>
+            <button class="action-btn danger small" id="searchStopBtn" style="margin-top: 6px;">⏹ 停止</button>
+          </div>
+        </div><!-- /tabSearch -->
       </div>
     `;
     }
 
     bindEvents() {
         if (!this.panel) return;
+
+        // === Tab 切换 ===
+        this.panel.querySelectorAll('.panel-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+                this.activeTab = target;
+
+                // 更新 Tab 高亮
+                this.panel.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // 切换内容
+                const recruitTab = this.panel.querySelector('#tabRecruit');
+                const searchTab = this.panel.querySelector('#tabSearch');
+                if (recruitTab) recruitTab.style.display = target === 'recruit' ? 'block' : 'none';
+                if (searchTab) searchTab.style.display = target === 'search' ? 'block' : 'none';
+            });
+        });
+
+        // === 搜索 Tab 事件 ===
+        this._initSearchEngine();
+
+        this.panel.querySelector('#searchStartBtn')?.addEventListener('click', () => {
+            const textarea = this.panel.querySelector('#searchKeywords');
+            const keywords = (textarea?.value || '').split('\n').map(s => s.trim()).filter(Boolean);
+            if (keywords.length === 0) {
+                MaimaiUtils.showNotification('请输入关键词', 'warning');
+                return;
+            }
+
+            const mode = this.panel.querySelector('#searchMode')?.value || 'first';
+            const addFriend = this.panel.querySelector('#searchAddFriend')?.checked || false;
+            const exportMode = this.panel.querySelector('input[name="exportMode"]:checked')?.value || 'excel';
+
+            const section = this.panel.querySelector('#searchProgressSection');
+            if (section) section.classList.add('show');
+
+            this.searchEngine?.start(keywords, mode, addFriend, exportMode);
+        });
+
+        this.panel.querySelector('#searchStopBtn')?.addEventListener('click', () => {
+            this.searchEngine?.stop();
+            MaimaiUtils.showNotification('搜索已停止', 'info');
+        });
+
+        this.panel.querySelector('#searchExportBtn')?.addEventListener('click', async () => {
+            if (!this.searchEngine || this.searchEngine.state.results.length === 0) {
+                MaimaiUtils.showNotification('暂无数据可导出', 'warning');
+                return;
+            }
+
+            const exportMode = this.panel.querySelector('input[name="exportMode"]:checked')?.value || 'excel';
+
+            if (exportMode === 'excel') {
+                const csv = this.searchEngine.exportToCSV();
+                if (csv) {
+                    const ts = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
+                    MaimaiUtils.downloadAsFile(csv, `脉脉搜索结果_${ts}.csv`, 'text/csv;charset=utf-8');
+                    MaimaiUtils.showNotification(`已导出 ${this.searchEngine.state.results.length} 条`, 'success');
+                }
+            } else {
+                const result = await this.searchEngine.exportToAPI();
+                MaimaiUtils.showNotification(`API导入完成: 成功${result.success}, 失败${result.failed}`, result.failed > 0 ? 'warning' : 'success');
+            }
+        });
 
         // 折叠/展开
         this.panel.querySelector('#panelToggle')?.addEventListener('click', () => this.toggle());
@@ -564,6 +693,56 @@ class AssistantPanel {
         }
 
         console.log(`📊 检测到 ${this.detectedCount} 个候选人卡片`);
+    }
+
+    // 初始化搜索引擎
+    _initSearchEngine() {
+        if (!window.SearchEngine) {
+            console.log('⚠️ SearchEngine 未加载，跳过搜索初始化');
+            return;
+        }
+
+        this.searchEngine = new SearchEngine();
+
+        // 进度回调
+        this.searchEngine.onProgress((state) => {
+            const { currentIndex, total, successful, failed, resultCount } = state;
+            const percent = total > 0 ? Math.round((currentIndex / total) * 100) : 0;
+
+            const fill = this.panel?.querySelector('#searchProgressFill');
+            if (fill) fill.style.width = `${percent}%`;
+
+            const text = this.panel?.querySelector('#searchProgressText');
+            if (text) text.textContent = `${currentIndex}/${total}`;
+
+            const pct = this.panel?.querySelector('#searchProgressPercent');
+            if (pct) pct.textContent = `${percent}%`;
+
+            const suc = this.panel?.querySelector('#searchSuccessCount');
+            if (suc) suc.textContent = successful;
+
+            const fail = this.panel?.querySelector('#searchFailedCount');
+            if (fail) fail.textContent = failed;
+
+            const count = this.panel?.querySelector('#searchResultCount');
+            if (count) count.textContent = resultCount;
+        });
+
+        // 完成回调
+        this.searchEngine.onComplete((results) => {
+            MaimaiUtils.showNotification(`搜索完成，共 ${results.length} 条结果`, 'success');
+            setTimeout(() => {
+                const section = this.panel?.querySelector('#searchProgressSection');
+                if (section) section.classList.remove('show');
+            }, 3000);
+        });
+
+        // 恢复正在进行的搜索
+        this.searchEngine.resumeIfRunning();
+
+        // 更新结果计数
+        const count = this.panel?.querySelector('#searchResultCount');
+        if (count) count.textContent = this.searchEngine.state.results.length;
     }
 
     bindDragEvents() {
