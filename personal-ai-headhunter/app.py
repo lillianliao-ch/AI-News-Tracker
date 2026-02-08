@@ -3,9 +3,9 @@ import pandas as pd
 import os
 import io
 from datetime import datetime
-from sqlalchemy.orm import Session
-from sqlalchemy import String
-from database import engine, init_db, get_db, Candidate, Job, MatchRecord, SystemPrompt
+from sqlalchemy.orm import Session, defer
+from sqlalchemy import String, cast
+from database import engine, init_db, get_db, SessionLocal, Candidate, Job, MatchRecord, SystemPrompt
 from ai_service import AIService
 import json
 import re
@@ -61,6 +61,73 @@ def format_date(val):
     except:
         return str(val)
 
+
+@st.cache_data(ttl=30, show_spinner=False)
+def get_jobs_page_cached(
+    filter_job_code,
+    filter_title,
+    filter_company,
+    filter_location,
+    filter_level,
+    filter_tags,
+    filter_link,
+    filter_urgency,
+    page_num,
+    page_size,
+    cache_buster=0
+):
+    """
+    职位列表缓存查询：
+    - DB 侧过滤 + 分页
+    - 返回轻量字典，避免在缓存里放 ORM 对象
+    """
+    db = SessionLocal()
+    try:
+        urgency_options = ["全部", "较急", "紧急", "非常紧急"]
+        query = db.query(Job).filter(Job.is_active == 1)
+
+        if filter_job_code:
+            query = query.filter(Job.job_code.contains(filter_job_code))
+        if filter_title:
+            query = query.filter(Job.title.contains(filter_title))
+        if filter_company:
+            query = query.filter(Job.company.contains(filter_company))
+        if filter_location:
+            query = query.filter(Job.location.contains(filter_location))
+        if filter_link:
+            query = query.filter(Job.jd_link.contains(filter_link))
+        if filter_urgency != "全部":
+            urgency_value = urgency_options.index(filter_urgency)
+            query = query.filter(Job.urgency >= urgency_value)
+        if filter_level:
+            query = query.filter(cast(Job.detail_fields, String).contains(filter_level))
+        if filter_tags and filter_tags.strip():
+            for tag in [t.strip() for t in filter_tags.split(",") if t.strip()]:
+                query = query.filter(cast(Job.project_tags, String).contains(tag))
+
+        total_jobs = query.count()
+        start_idx = (page_num - 1) * page_size
+        jobs = query.order_by(Job.created_at.desc()).offset(start_idx).limit(page_size).all()
+
+        items = []
+        for job in jobs:
+            items.append({
+                "id": job.id,
+                "job_code": job.job_code,
+                "title": job.title,
+                "urgency": getattr(job, "urgency", 0) or 0,
+                "company": job.company,
+                "department": job.department,
+                "seniority_level": job.seniority_level,
+                "location": job.location,
+                "detail_fields": job.detail_fields,
+                "published_channels": job.published_channels,
+            })
+
+        return {"total": total_jobs, "items": items}
+    finally:
+        db.close()
+
 def extract_candidate_tags(candidate):
     """
     为候选人提取结构化标签。
@@ -99,12 +166,12 @@ def extract_candidate_tags(candidate):
 简历/画像: {resume_text[:2000]}
 
 请从以下维度提取标签:
-1. tech_domain (技术方向): 大模型/LLM, CV, NLP, 推荐系统, 搜索, 数据挖掘, MLOps, 语音/音频, 多模态, 自动驾驶, 机器人, 其他
-2. core_specialty (核心专长): 预训练, 对齐/RLHF, SFT微调, 推理优化, RAG/知识库, Agent开发, Prompt工程, 模型压缩/量化, 分布式训练, 框架开发
+1. tech_domain (技术方向): 【AI】大模型/LLM, CV, NLP, 推荐系统, 搜索, 语音/音频, 多模态, AI Infra, 具身智能, 垂直应用 【工程】客户端开发, 后端开发, 前端开发, 基础架构/Infra, 音视频 (不要用"其他")
+2. core_specialty (核心专长): 【AI】预训练, 对齐/RLHF, SFT微调, 推理优化, RAG/知识库, Agent开发, Prompt工程, 模型压缩/量化, 分布式训练, 框架开发 【工程】IM/即时通讯, 跨端框架, 客户端基础架构, 音视频引擎, 微服务架构, DevOps
 3. tech_skills (技术技能): 具体技术点
-4. role_type (岗位类型): 算法工程师, 算法专家, 算法研究员, 工程开发, 产品经理, 技术管理, 研究员
-5. seniority (职级层次): 初级(0-3年), 中级(3-5年), 高级(5-8年), 专家(8年+), 管理层
-6. industry_exp (行业背景): 互联网大厂, AI独角兽, 云厂商, 芯片/硬件, 外企, 学术背景
+4. role_type (岗位类型): 算法工程师, 算法专家, 算法研究员, 客户端工程师, 后端工程师, 前端工程师, 架构师, 工程开发, 产品经理, 技术管理, 研究员
+5. seniority (职级层次): 初级(0-3年), 中级(3-5年), 资深(5-10年), 专家(10年+), 管理层
+6. industry_exp (行业背景): 互联网大厂, AI独角兽, 云厂商, 芯片/硬件, 外企, 学术背景, IM/通信厂商
 
 请输出JSON格式，只输出JSON，不要其他内容:
 {{
@@ -326,12 +393,12 @@ st.markdown("""
 st.sidebar.title("🕵️ AI猎头")
 
 # 支持从其他页面跳转
-nav_options = ["Dashboard", "沟通跟进", "人才库管理", "职位库管理", "智能匹配", "批处理", "提示词配置"]
+nav_options = ["每日工作台", "Dashboard", "沟通跟进", "人才库管理", "职位库管理", "智能匹配", "批处理", "提示词配置"]
 
 # 获取当前应该显示的页面（优先使用session_state中的nav_page）
-current_page = st.session_state.get('nav_page', 'Dashboard')
+current_page = st.session_state.get('nav_page', '每日工作台')
 if current_page not in nav_options:
-    current_page = 'Dashboard'
+    current_page = '每日工作台'
 default_idx = nav_options.index(current_page)
 
 # 使用key来追踪radio的选择
@@ -348,8 +415,198 @@ else:
     # 保持当前的nav_page不变
     page = st.session_state.get('nav_page', page)
 
+# ---------------- 每日工作台 ----------------
+if page == "每日工作台":
+    st.title("📋 每日工作台")
+    st.caption("🧠 Agent-Lite — 基于数据库实时状态的智能行动建议")
+
+    from daily_planner import collect_daily_context, generate_plan_with_llm
+    import glob
+
+    # 数据采集（缓存1小时）
+    @st.cache_data(ttl=3600, show_spinner="正在采集数据库状态...")
+    def get_daily_context():
+        return collect_daily_context()
+
+    context = get_daily_context()
+    stats = context["stats"]
+
+    # ── 核心指标 ──
+    m1, m2, m3, m4, m5 = st.columns(5)
+    m1.metric("👥 候选人", stats["total_candidates"])
+    m2.metric("🤝 好友", stats["total_friends"])
+    m3.metric("📋 活跃JD", stats["total_active_jds"])
+    m4.metric("🔥 紧急JD", stats["urgent_jds_count"])
+    m5.metric("📭 空管道JD", stats["jds_no_pipeline_count"])
+
+    m6, m7, m8, m9, m10 = st.columns(5)
+    m6.metric("🏷 有标签", stats["candidates_with_tags"])
+    m7.metric("🙈 好友未沟通", stats["friends_no_comm_count"])
+    m8.metric("📥 本周新候选人", stats["recent_candidates_count"])
+    m9.metric("📥 本周新JD", stats["recent_jds_count"])
+    m10.metric("📅 今日预约", len(context["scheduled_today"]))
+
+    st.divider()
+
+    # ── 告警区域 ──
+    alert_col1, alert_col2 = st.columns(2)
+
+    with alert_col1:
+        # 今日预约
+        if context["scheduled_today"]:
+            st.markdown("### 📞 今日预约联系")
+            for c in context["scheduled_today"]:
+                st.markdown(f"- **{c['name']}** — {c.get('company') or ''} {c.get('title') or ''}")
+
+        # 过期预约
+        if context["overdue_scheduled"]:
+            st.markdown("### ⚠️ 过期未联系")
+            for c in context["overdue_scheduled"]:
+                st.warning(f"**{c['name']}** — 预约{c['scheduled_date']}，已过期", icon="⚠️")
+
+    with alert_col2:
+        # 紧急JD
+        if context["urgent_jds"]:
+            st.markdown("### 🔥 紧急JD")
+            for j in context["urgent_jds"]:
+                urgency_text = "🔴" * min(j.get("urgency", 1), 3)
+                hc = f" HC:{j['headcount']}" if j.get("headcount") else ""
+                code = f" [{j['job_code']}]" if j.get("job_code") else ""
+                st.markdown(f"{urgency_text} **{j['title']}** — {j['company']}{code}{hc}")
+
+        # 超期未跟进
+        if context["stale_candidates"]:
+            st.markdown("### 💤 超期未跟进")
+            for c in context["stale_candidates"][:5]:
+                st.markdown(f"- **{c['name']}** — {c.get('company') or ''} — 上次沟通: {c.get('last_comm', '-')}")
+
+    st.divider()
+
+    # ── LLM行动计划 ──
+    st.markdown("## 🧠 AI行动建议")
+
+    # 检查是否有今日已缓存的报告
+    reports_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    today_report = os.path.join(reports_dir, f"daily_plan_{today_str}.md")
+
+    # 用session_state缓存LLM结果
+    if "daily_plan" not in st.session_state:
+        st.session_state.daily_plan = None
+
+    col_gen, col_info = st.columns([1, 3])
+    with col_gen:
+        generate_btn = st.button("🧠 生成/刷新行动计划", type="primary")
+    with col_info:
+        if os.path.exists(today_report):
+            mod_time = datetime.fromtimestamp(os.path.getmtime(today_report))
+            st.caption(f"📄 今日报告已缓存（{mod_time.strftime('%H:%M')} 生成）")
+
+    if generate_btn:
+        with st.spinner("🧠 正在调用 AI 分析生成行动计划..."):
+            plan = generate_plan_with_llm(context)
+            if plan:
+                st.session_state.daily_plan = plan
+                # 保存报告
+                from daily_planner import save_daily_report
+                save_daily_report(context, plan)
+                st.success("✅ 行动计划已生成并保存")
+            else:
+                st.error("❌ AI 分析失败，请稍后重试")
+
+    # 显示行动计划
+    plan = st.session_state.daily_plan
+
+    # 如果session没有但有文件缓存，从文件读取显示
+    if not plan and os.path.exists(today_report):
+        with open(today_report, "r", encoding="utf-8") as f:
+            report_content = f.read()
+        # 只显示LLM部分（---分隔符之后）
+        if "---" in report_content:
+            llm_part = report_content.split("---", 1)[1]
+            st.markdown(llm_part)
+        else:
+            st.info("💡 今日报告中暂无AI建议，点击上方按钮生成")
+    elif plan:
+        if plan.get("greeting"):
+            st.info(f"💬 {plan['greeting']}")
+
+        plan_col1, plan_col2 = st.columns(2)
+
+        with plan_col1:
+            high = plan.get("high_priority", [])
+            if high:
+                st.markdown("### 🔴 今日必做")
+                for i, item in enumerate(high, 1):
+                    if not isinstance(item, dict) or not item:
+                        continue
+                    action = item.get('action', item.get('title', ''))
+                    reason = item.get('reason', '')
+                    how = item.get('how', '')
+                    st.markdown(f"**{i}. {action}**")
+                    if reason:
+                        st.caption(f"原因: {reason}")
+                    if how:
+                        st.caption(f"方法: {how}")
+                    st.markdown("---")
+
+        with plan_col2:
+            suggested = plan.get("suggested", [])
+            if suggested:
+                st.markdown("### 🟡 建议做")
+                for i, item in enumerate(suggested, 1):
+                    if not isinstance(item, dict) or not item:
+                        continue
+                    action = item.get('action', item.get('title', ''))
+                    reason = item.get('reason', '')
+                    st.markdown(f"**{i}. {action}**")
+                    if reason:
+                        st.caption(f"原因: {reason}")
+                    st.markdown("---")
+
+        if plan.get("pipeline_health"):
+            st.markdown(f"**📈 管道健康度:** {plan['pipeline_health']}")
+        if plan.get("weekly_insight"):
+            st.markdown(f"**💡 本周洞察:** {plan['weekly_insight']}")
+    else:
+        st.info("💡 点击上方「生成/刷新行动计划」按钮，获取AI智能分析")
+
+    # ── 公司分布 ──
+    st.divider()
+    if context.get("company_distribution"):
+        st.markdown("### 🏢 JD公司分布")
+        import pandas as pd
+        import plotly.express as px
+        df_co = pd.DataFrame(
+            list(context["company_distribution"].items()),
+            columns=["公司", "JD数量"]
+        ).sort_values("JD数量", ascending=True)
+        fig = px.bar(df_co, x="JD数量", y="公司", orientation="h", text="JD数量",
+                     color_discrete_sequence=["#2563eb"])
+        fig.update_layout(height=350, showlegend=False)
+        fig.update_traces(textposition="outside")
+        st.plotly_chart(fig, use_container_width=True)
+
+    # ── 历史报告 ──
+    with st.expander("📂 历史报告"):
+        if os.path.isdir(reports_dir):
+            report_files = sorted(glob.glob(os.path.join(reports_dir, "daily_plan_*.md")), reverse=True)
+            if report_files:
+                for rf in report_files[:10]:
+                    fname = os.path.basename(rf)
+                    date_str = fname.replace("daily_plan_", "").replace(".md", "")
+                    with open(rf, "r", encoding="utf-8") as f:
+                        content = f.read()
+                    st.markdown(f"**📅 {date_str}**")
+                    st.markdown(content[:500] + ("..." if len(content) > 500 else ""))
+                    st.divider()
+            else:
+                st.info("暂无历史报告")
+        else:
+            st.info("暂无历史报告")
+
 # ---------------- 批处理 ----------------
-if page == "批处理":
+elif page == "批处理":
     st.title("⚙️ 批处理任务")
     
     db = get_session()
@@ -736,7 +993,8 @@ elif page == "Dashboard":
     # 获取所有JD
     all_jobs = db.query(Job).filter(Job.is_active == 1).all()
     
-    jd_col1, jd_col2 = st.columns(2)
+    # 右侧饼图视觉上偏小，适当增加右列宽度
+    jd_col1, jd_col2 = st.columns([1.25, 1.15])
     
     with jd_col1:
         st.markdown("### 🏢 JD发布公司")
@@ -845,8 +1103,26 @@ elif page == "Dashboard":
         if role_counter:
             df_role = pd.DataFrame(list(role_counter.items()), columns=['职位类型', '数量'])
             fig_role = px.pie(df_role, values='数量', names='职位类型', hole=0.4)
-            fig_role.update_layout(height=350, showlegend=True)
-            fig_role.update_traces(textinfo='value+percent', textposition='inside')
+            fig_role.update_layout(
+                height=560,
+                showlegend=True,
+                margin=dict(l=10, r=10, t=10, b=70),
+                legend=dict(
+                    orientation='h',
+                    yanchor='top',
+                    y=-0.08,
+                    xanchor='center',
+                    x=0.5
+                ),
+                uniformtext_minsize=11,
+                uniformtext_mode='hide'
+            )
+            fig_role.update_traces(
+                textinfo='value+percent',
+                textposition='inside',
+                textfont_size=13,
+                insidetextorientation='auto'
+            )
             st.plotly_chart(fig_role, use_container_width=True)
         else:
             st.info("暂无职位类型数据")
@@ -891,6 +1167,109 @@ elif page == "沟通跟进":
     
     db = get_session()
     from datetime import date, timedelta
+    
+    # ===== 管道概览 =====
+    st.markdown("#### 📊 管道概览")
+    
+    STAGE_LABELS_LOCAL = {
+        "new": "🆕 新发现",
+        "contacted": "📤 已打招呼",
+        "following_up": "🔄 跟进中",
+        "replied": "💬 已回复",
+        "wechat_connected": "💚 已加微信",
+        "in_pipeline": "🎯 面试中",
+        "closed": "⏸️ 关闭",
+    }
+    
+    # 统计各阶段人数
+    stage_cols = st.columns(7)
+    for i, (stage, label) in enumerate(STAGE_LABELS_LOCAL.items()):
+        count = db.query(Candidate).filter(Candidate.pipeline_stage == stage).count()
+        with stage_cols[i]:
+            stage_name = label.split(" ", 1)[1] if " " in label else label
+            st.markdown(f"<div style='text-align:center'><span style='font-size:20px;font-weight:600;color:#333'>{count}</span><br><span style='font-size:12px;color:#888'>{stage_name}</span></div>", unsafe_allow_html=True)
+    
+    st.divider()
+    
+    # ===== 今日需跟进 =====
+    today = date.today()
+    today_str = today.strftime("%Y-%m-%d")
+    
+    followup_candidates = db.query(Candidate).filter(
+        Candidate.pipeline_stage.notin_(['closed', 'new']),
+        Candidate.follow_up_date.isnot(None),
+        Candidate.follow_up_date <= today_str
+    ).order_by(Candidate.follow_up_date.asc()).all()
+    
+    st.markdown(f"#### 🔔 策略跟进 ({len(followup_candidates)}人)")
+    
+    if followup_candidates:
+        for cand in followup_candidates:
+            days_overdue = 0
+            if cand.follow_up_date:
+                try:
+                    fu_date = datetime.strptime(cand.follow_up_date, "%Y-%m-%d").date()
+                    days_overdue = (today - fu_date).days
+                except:
+                    pass
+            
+            overdue_badge = f"🔴 逾期{days_overdue}天" if days_overdue > 0 else "🟢 今天"
+            stage_label = STAGE_LABELS_LOCAL.get(cand.pipeline_stage, cand.pipeline_stage)
+            
+            # 获取沟通次数
+            logs = cand.communication_logs or []
+            if isinstance(logs, str):
+                try:
+                    logs = json.loads(logs)
+                except:
+                    logs = []
+            outbound_count = sum(1 for l in logs if isinstance(l, dict) and l.get('direction') == 'outbound')
+            
+            with st.container(border=True):
+                col1, col2, col3, col4 = st.columns([3, 2, 2, 3])
+                with col1:
+                    st.markdown(f"**{cand.name}** {overdue_badge}")
+                    st.caption(f"{cand.current_company or ''} · {cand.current_title or ''}")
+                with col2:
+                    st.markdown(f"{stage_label}")
+                    st.caption(f"已联系 {outbound_count} 次")
+                with col3:
+                    if cand.wechat_id:
+                        st.markdown(f"💚 微信: {cand.wechat_id}")
+                    if cand.phone:
+                        st.markdown(f"📱 {cand.phone}")
+                with col4:
+                    # 阶段流转按钮
+                    btn_cols = st.columns(4)
+                    with btn_cols[0]:
+                        if st.button("💬 已回复", key=f"stage_replied_{cand.id}", use_container_width=True):
+                            cand.pipeline_stage = 'replied'
+                            cand.follow_up_date = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+                            db.commit()
+                            st.rerun()
+                    with btn_cols[1]:
+                        if st.button("🔄 再跟进", key=f"stage_followup_{cand.id}", use_container_width=True):
+                            cand.pipeline_stage = 'following_up'
+                            cand.follow_up_date = (datetime.now() + timedelta(days=5)).strftime("%Y-%m-%d")
+                            db.commit()
+                            st.rerun()
+                    with btn_cols[2]:
+                        if st.button("💚 加微信", key=f"stage_wechat_{cand.id}", use_container_width=True):
+                            cand.pipeline_stage = 'wechat_connected'
+                            cand.follow_up_date = (datetime.now() + timedelta(days=2)).strftime("%Y-%m-%d")
+                            db.commit()
+                            st.rerun()
+                    with btn_cols[3]:
+                        if st.button("⏸️ 关闭", key=f"stage_close_{cand.id}", use_container_width=True):
+                            cand.pipeline_stage = 'closed'
+                            cand.follow_up_date = None
+                            db.commit()
+                            st.rerun()
+    else:
+        st.info("今天没有需要策略跟进的候选人")
+    
+    st.divider()
+    st.markdown("#### 📅 预约跟进（手动排期）")
     
     today = date.today()
     today_str = today.strftime("%Y-%m-%d")
@@ -1097,7 +1476,7 @@ elif page == "沟通跟进":
                             # 自定义日期
                             max_date = today_date + timedelta(days=365)
                             dc1, dc2 = st.columns([2, 1])
-                            sel_next_date = dc1.date_input("", value=next_month, min_value=today_date, max_value=max_date, key=f"fu_done_date_{cand.id}", label_visibility="collapsed")
+                            sel_next_date = dc1.date_input("下次日期", value=next_month, min_value=today_date, max_value=max_date, key=f"fu_done_date_{cand.id}", label_visibility="collapsed")
                             if dc2.button("✓", key=f"fu_done_conf_{cand.id}", type="primary"):
                                 now_str = dt_module.now().strftime("%Y-%m-%d %H:%M")
                                 new_log = {"time": now_str, "content": f"已完成跟进，预约{sel_next_date}继续"}
@@ -1189,7 +1568,7 @@ elif page == "沟通跟进":
                             # 自定义日期
                             max_date = today + timedelta(days=90)
                             dc1, dc2 = st.columns([2, 1])
-                            sel_date = dc1.date_input("", value=tomorrow, min_value=today, max_value=max_date, key=f"fu_pop_date_{cand.id}", label_visibility="collapsed")
+                            sel_date = dc1.date_input("预约日期", value=tomorrow, min_value=today, max_value=max_date, key=f"fu_pop_date_{cand.id}", label_visibility="collapsed")
                             if dc2.button("✓", key=f"fu_pop_conf_{cand.id}", type="primary"):
                                 cand.scheduled_contact_date = sel_date.strftime("%Y-%m-%d")
                                 db.commit()
@@ -1268,8 +1647,8 @@ elif page == "人才库管理":
                 if st.button("← 返回列表", key="back_to_list_btn"):
                     back_to_list()
             
-            # === 第二行：姓名 + 好友标记 + 预约 ===
-            name_col, action_col = st.columns([6, 1])
+            # === 第二行：姓名（左）+ 状态徽章（右）===
+            name_col, status_col = st.columns([5, 3])
             
             with name_col:
                 # 显示预约徽章
@@ -1289,13 +1668,58 @@ elif page == "人才库管理":
                         pass
                 st.markdown(f"## {cand.name} {schedule_badge}")
             
-            with action_col:
-                ac1, ac2, ac3 = st.columns(3)
-                # 好友星星标记
+            with status_col:
+                # 管道阶段徽章
+                stage_badge_map = {
+                    "new": "", 
+                    "contacted": "📤已打招呼", 
+                    "following_up": "🔄跟进中", 
+                    "replied": "💬已回复",
+                    "wechat_connected": "💚已加微信", 
+                    "in_pipeline": "🎯面试中", 
+                    "closed": "⏸️关闭",
+                }
+                pipeline_badge = stage_badge_map.get(cand.pipeline_stage or 'new', '')
+                
+                # 跟进日期提示
+                followup_badge = ""
+                if cand.follow_up_date:
+                    try:
+                        fu_date = datetime.strptime(cand.follow_up_date, "%Y-%m-%d").date()
+                        from datetime import date as date_cls
+                        today_d = date_cls.today()
+                        if fu_date < today_d:
+                            days_late = (today_d - fu_date).days
+                            followup_badge = f"🔴逾期{days_late}天"
+                        elif fu_date == today_d:
+                            followup_badge = "🟡今天跟进"
+                        else:
+                            followup_badge = f"📅{fu_date.month}/{fu_date.day}跟进"
+                    except:
+                        pass
+                
+                st.markdown(f"<div style='text-align:right;margin-top:16px'><span style='font-size:13px'>{pipeline_badge}</span> <span style='font-size:12px;color:#e74c3c'>{followup_badge}</span></div>", unsafe_allow_html=True)
+            
+            # === 第三行：公司·职位·基本信息（左）+ 操作按钮（右）===
+            info_col, btn_col = st.columns([5, 3])
+            
+            with info_col:
+                company_str = cand.current_company or "-"
+                title_str = cand.current_title[:30] if cand.current_title else "-"
+                loc_str = cand.expect_location or "-"
+                edu_str = cand.education_level or "-"
+                exp_str = f"{cand.experience_years}年" if cand.experience_years else "-"
+                age_str = f"{cand.age}岁" if cand.age else "-"
+                st.markdown(f"🏢 **{company_str}** · {title_str} │ 📍 {loc_str} │ 🎓 {edu_str} │ ⏳ {exp_str} │ {age_str}")
+            
+            with btn_col:
+                # 好友星星 + 预约 + 标签更新
                 is_friend = cand.is_friend == 1
                 star_icon = "⭐" if is_friend else "☆"
                 star_label = "已关注" if is_friend else "关注"
-                if ac1.button(f"{star_icon}", key="toggle_friend_star", help=star_label):
+                
+                ac1, ac2, ac3 = st.columns(3)
+                if ac1.button(f"{star_icon} {star_label}", key="toggle_friend_star"):
                     from datetime import datetime
                     if is_friend:
                         cand.is_friend = 0
@@ -1342,7 +1766,7 @@ elif page == "人才库管理":
                     # 自定义日期 - 紧凑版
                     max_date = today + timedelta(days=90)
                     dc1, dc2 = st.columns([2, 1])
-                    sel_date = dc1.date_input("", value=tomorrow, min_value=today, max_value=max_date, key="d_pop_date", label_visibility="collapsed")
+                    sel_date = dc1.date_input("预约日期", value=tomorrow, min_value=today, max_value=max_date, key="d_pop_date", label_visibility="collapsed")
                     if dc2.button("✓", key="d_pop_conf", type="primary"):
                         cand.scheduled_contact_date = sel_date.strftime("%Y-%m-%d")
                         db.commit()
@@ -1405,14 +1829,14 @@ elif page == "人才库管理":
                                 
                                 TAG_SCHEMA = """
 ## 标签体系说明
-1. tech_domain (技术方向) - 多选，非技术岗可为空: 大模型/LLM, Agent/智能体, NLP, 多模态, 语音, CV, 推荐系统, 搜索, AI Infra, 具身智能, 垂直应用
-2. core_specialty (核心专长) - 多选1-2个，非技术岗可为空: 语音合成, 语音识别, 多模态理解, 多模态生成, 图像视频生成, 推荐系统, 搜索排序, Agent开发, 对话系统, AI客服, 代码生成
-3. tech_skills (技术技能) - 多选1-3个，非技术岗可为空: 预训练, SFT微调, RLHF/对齐, 推理加速, 模型压缩/量化, 分布式训练, RAG/知识库, 算子优化, 框架开发
-4. role_type (岗位类型) - 单选: 算法工程师, 算法专家, 算法研究员, 工程开发, 解决方案架构师, 产品经理, 技术管理, 研究员, 运营管理, 项目管理, 商务/销售, 人力资源, 其他非技术
+1. tech_domain (技术方向) - 多选，非技术岗可为空: 【AI】大模型/LLM, Agent/智能体, NLP, 多模态, 语音, CV, 推荐系统, 搜索, AI Infra, 具身智能, 垂直应用 【工程】客户端开发, 后端开发, 前端开发, 基础架构/Infra, 音视频 (不要用"其他")
+2. core_specialty (核心专长) - 多选1-2个，非技术岗可为空: 【AI】语音合成, 语音识别, 多模态理解, 多模态生成, 图像视频生成, 推荐系统, 搜索排序, Agent开发, 对话系统, AI客服, 代码生成 【工程】IM/即时通讯, 跨端框架, 客户端基础架构, 音视频引擎, 微服务架构, DevOps
+3. tech_skills (技术技能) - 多选1-3个，非技术岗可为空: 【AI】预训练, SFT微调, RLHF/对齐, 推理加速, 模型压缩/量化, 分布式训练, RAG/知识库, 算子优化, 框架开发 【工程】跨端开发, 性能优化, 高并发, 架构设计
+4. role_type (岗位类型) - 单选: 算法工程师, 算法专家, 算法研究员, 客户端工程师, 后端工程师, 前端工程师, 架构师, 工程开发, 解决方案架构师, 产品经理, 技术管理, 研究员, 运营管理, 项目管理, 商务/销售, 人力资源, 其他非技术
 5. role_orientation (角色定位) - 多选: Research型, Applied/落地型, Platform/Infra型, Tool/Agent Builder, Tech Lead, 纯IC, 团队管理
-6. tech_stack (技术栈) - 多选，非技术岗可为空: Python, C++, Java, Go, PyTorch, TensorFlow, LangChain, vLLM, Transformers, DeepSpeed, TensorRT, CUDA
-7. industry_exp (行业背景) - 多选: 互联网大厂, AI独角兽, 云厂商, 芯片/硬件, 外企, 学术背景, 教育培训, 物流/电商
-8. seniority (职级层次) - 单选: 初级(0-3年), 中级(3-5年), 高级(5-8年), 专家(8年+), 管理层
+6. tech_stack (技术栈) - 多选，非技术岗可为空: Python, C++, Java, Go, Rust, Swift, Kotlin, TypeScript, PyTorch, TensorFlow, QT, Flutter, K8s, CUDA
+7. industry_exp (行业背景) - 多选: 互联网大厂, AI独角兽, 云厂商, 芯片/硬件, 外企, 学术背景, 教育培训, 物流/电商, IM/通信厂商
+8. seniority (职级层次) - 单选: 初级(0-3年), 中级(3-5年), 资深(5-10年), 专家(10年+), 管理层
 """
                                 
                                 prompt = f"""请从以下候选人信息中提取结构化标签。
@@ -1467,15 +1891,6 @@ elif page == "人才库管理":
                             except Exception as e:
                                 st.error(f"更新失败: {e}")
             
-            # === 第三行：公司·职位 | 地点 | 学历 | 年限 | 年龄（紧凑一行）===
-            company_str = cand.current_company or "-"
-            title_str = cand.current_title[:30] if cand.current_title else "-"
-            loc_str = cand.expect_location or "-"
-            edu_str = cand.education_level or "-"
-            exp_str = f"{cand.experience_years}年" if cand.experience_years else "-"
-            age_str = f"{cand.age}岁" if cand.age else "-"
-            
-            st.markdown(f"🏢 **{company_str}** · {title_str} │ 📍 {loc_str} │ 🎓 {edu_str} │ ⏳ {exp_str} │ {age_str}")
             
             # === 第四行：技能标签（仅显示，编辑在"编辑基础信息"中）===
             current_skills = cand.skills if cand.skills and isinstance(cand.skills, list) else []
@@ -1724,12 +2139,15 @@ elif page == "人才库管理":
                                         new_major = st.text_input("专业", value=edu.get('major', ''), key=f"edit_edu_major_{i}")
                                     with col3:
                                         new_time = st.text_input("时间", value=edu.get('time', ''), key=f"edit_edu_time_{i}")
+                                    new_desc = st.text_input("描述(GPA/研究方向/导师)", value=edu.get('description', ''), key=f"edit_edu_desc_{i}")
                                 
                                     updated_edu.append({
                                         'school': new_school,
                                         'major': new_major,
                                         'time': new_time,
-                                        'degree': edu.get('degree', '')
+                                        'degree': edu.get('degree', ''),
+                                        'description': new_desc,
+                                        'tags': edu.get('tags', [])
                                     })
                         
                             if st.button("💾 保存教育经历", type="primary", key="save_edu"):
@@ -1745,6 +2163,8 @@ elif page == "人才库管理":
                                 # 兼容time, time_range, year字段
                                 time_range = edu.get('time_range') or edu.get('time', '') or edu.get('year', '')
                                 degree = edu.get('degree', '')
+                                description = edu.get('description', '')
+                                tags = edu.get('tags', [])
                             
                                 # 构建显示文本
                                 display_text = f"- **{school}** | {major}"
@@ -1752,8 +2172,12 @@ elif page == "人才库管理":
                                     display_text += f" | {degree}"
                                 if time_range and time_range != 'nan':
                                     display_text += f" ({time_range})"
+                                if tags:
+                                    display_text += f" `{'` `'.join(tags)}`"
                             
                                 st.markdown(display_text)
+                                if description:
+                                    st.caption(f"  {description}")
                     else:
                         st.info("暂无详细教育经历")
 
@@ -1922,6 +2346,19 @@ elif page == "人才库管理":
                         with r3c4:
                             new_github = st.text_input("💻 GitHub", value=cand.github_url or "", key="edit_github_basic")
                     
+                        # 第三行半：管道阶段 + 微信号
+                        r35c1, r35c2, r35c3 = st.columns([1.5, 1.5, 1])
+                        with r35c1:
+                            stage_options = ["new", "contacted", "following_up", "replied", "wechat_connected", "in_pipeline", "closed"]
+                            stage_labels = ["🆕 新发现", "📤 已打招呼", "🔄 跟进中", "💬 已回复", "💚 已加微信", "🎯 面试中", "⏸️ 关闭"]
+                            current_stage = cand.pipeline_stage or 'new'
+                            current_idx = stage_options.index(current_stage) if current_stage in stage_options else 0
+                            new_stage = st.selectbox("📊 管道阶段", stage_labels, index=current_idx, key="edit_pipeline_stage")
+                        with r35c2:
+                            new_wechat_id = st.text_input("💚 微信号", value=cand.wechat_id or "", key="edit_wechat_id")
+                        with r35c3:
+                            new_follow_up = st.date_input("📅 下次跟进", value=datetime.strptime(cand.follow_up_date, "%Y-%m-%d").date() if cand.follow_up_date else None, key="edit_follow_up_date", format="YYYY-MM-DD")
+                    
                         # 第四行：技能标签编辑
                         st.markdown("##### 🏷️ 技能标签")
                         current_skills = cand.skills if cand.skills and isinstance(cand.skills, list) else []
@@ -2007,6 +2444,11 @@ elif page == "人才库管理":
                             # 保存技能标签
                             cand.skills = updated_skills
                             flag_modified(cand, "skills")
+                            # 保存管道阶段、微信号、跟进日期
+                            selected_stage_idx = stage_labels.index(new_stage)
+                            cand.pipeline_stage = stage_options[selected_stage_idx]
+                            cand.wechat_id = new_wechat_id if new_wechat_id else None
+                            cand.follow_up_date = new_follow_up.strftime("%Y-%m-%d") if new_follow_up else None
                         
                             if uploaded_resume:
                                 print(f"📄 处理上传的简历: {uploaded_resume.name}")
@@ -2109,13 +2551,16 @@ elif page == "人才库管理":
                                     job_title = r.get('title', '未知职位')
                                     company = r.get('company', '')
                                     location = r.get('location', '')
+                                    seniority = r.get('seniority', '')
                                     
-                                    # 标题行：序号 + 职位信息 + 分数
-                                    col1, col2 = st.columns([4, 1])
-                                    with col1:
+                                    # 标题行：checkbox + 职位信息 + 分数
+                                    chk_col, info_col, score_col = st.columns([0.5, 4, 1])
+                                    with chk_col:
+                                        selected = st.checkbox("选", key=f"rec_chk_{cand.id}_{job_id}", label_visibility="collapsed")
+                                    with info_col:
                                         st.markdown(f"### {i}. [{job_code}] {job_title}")
                                         st.caption(f"🏢 {company} · 📍 {location}")
-                                    with col2:
+                                    with score_col:
                                         if score >= 80:
                                             st.success(f"**{score:.1f}分**")
                                         elif score >= 60:
@@ -2182,9 +2627,180 @@ elif page == "人才库管理":
                                             st.warning("无法加载职位详情")
                             
                             conn.close()
+                            
+                            # =============================================
+                            # 📤 推荐给候选人 — 从匹配列表中勾选 + 手动补充
+                            # =============================================
+                            st.divider()
+                            st.subheader("📤 推荐给候选人")
+                            
+                            # 收集已勾选的 JD
+                            selected_jobs = []
+                            for r in results:
+                                jid = r.get('job_id')
+                                if st.session_state.get(f"rec_chk_{cand.id}_{jid}"):
+                                    selected_jobs.append({
+                                        'job_id': jid,
+                                        'job_code': r.get('job_code', ''),
+                                        'job_title': r.get('title', ''),
+                                        'job_company': r.get('company', ''),
+                                        'job_location': r.get('location', ''),
+                                        'job_seniority': r.get('seniority', ''),
+                                    })
+                            
+                            # 手动补充 JD Code
+                            with st.expander("🔍 按 JD Code 补充推荐", expanded=False):
+                                extra_code = st.text_input("输入 JD Code（如 BT090）", key=f"extra_jd_code_{cand.id}")
+                                if extra_code and st.button("➕ 查找并添加", key=f"add_extra_jd_{cand.id}"):
+                                    from database import Job, SessionLocal as _DbSession
+                                    db_sess = _DbSession()
+                                    found_job = db_sess.query(Job).filter(Job.job_code == extra_code.strip()).first()
+                                    if found_job:
+                                        # 避免重复
+                                        existing_ids = [j['job_id'] for j in selected_jobs]
+                                        if found_job.id not in existing_ids:
+                                            extra_key = f"extra_jobs_{cand.id}"
+                                            if extra_key not in st.session_state:
+                                                st.session_state[extra_key] = []
+                                            st.session_state[extra_key].append({
+                                                'job_id': found_job.id,
+                                                'job_code': found_job.job_code or '',
+                                                'job_title': found_job.title or '',
+                                                'job_company': found_job.company or '',
+                                                'job_location': found_job.location or '',
+                                                'job_seniority': found_job.seniority_level or '',
+                                            })
+                                            st.success(f"✅ 已添加: [{found_job.job_code}] {found_job.title} · {found_job.company}")
+                                        else:
+                                            st.warning("该职位已在推荐列表中")
+                                    else:
+                                        st.error(f"❌ 未找到 JD Code: {extra_code}")
+                                    db_sess.close()
+                            
+                            # 合并手动添加的 JD
+                            extra_key = f"extra_jobs_{cand.id}"
+                            if extra_key in st.session_state:
+                                for ej in st.session_state[extra_key]:
+                                    existing_ids = [j['job_id'] for j in selected_jobs]
+                                    if ej['job_id'] not in existing_ids:
+                                        selected_jobs.append(ej)
+                            
+                            # 显示已选汇总
+                            if selected_jobs:
+                                st.info(f"📋 已选 **{len(selected_jobs)}** 个职位：" + 
+                                        "、".join([f"[{j['job_code']}]{j['job_title']}" for j in selected_jobs]))
+                            else:
+                                st.caption("💡 请在上方匹配结果中勾选要推荐的职位")
+                            
+                            # 推荐按钮
+                            if selected_jobs:
+                                if st.button(f"🚀 一键推荐 {len(selected_jobs)} 个职位", type="primary", key=f"push_rec_{cand.id}"):
+                                    import hashlib, requests
+                                    PORTAL_BASE = "https://jobs.rupro-consulting.com"
+                                    token = hashlib.sha256('ruproAI'.encode()).hexdigest()
+                                    cookies = {'auth_token': token}
+                                    
+                                    with st.spinner("正在推荐..."):
+                                        # 1. 创建/获取门户
+                                        portal_resp = requests.post(f"{PORTAL_BASE}/api/portal/create", json={
+                                            'candidate_id': cand.id,
+                                            'candidate_name': cand.name,
+                                        }, cookies=cookies, timeout=15)
+                                        
+                                        if portal_resp.status_code != 200:
+                                            st.error(f"创建门户失败 (HTTP {portal_resp.status_code}): {portal_resp.text[:200]}")
+                                        else:
+                                            portal_data = portal_resp.json()
+                                            
+                                            if portal_data.get('success'):
+                                                portal_code = portal_data['portal_code']
+                                                
+                                                # 2. 逐个推荐 JD
+                                                success_count = 0
+                                                from database import Job, SessionLocal as _DbSession
+                                                for j in selected_jobs:
+                                                    try:
+                                                        db_s = _DbSession()
+                                                        job_obj = db_s.query(Job).filter(Job.id == j['job_id']).first()
+                                                        jd_text = ""
+                                                        if job_obj and job_obj.raw_jd_text:
+                                                            jd_text = job_obj.raw_jd_text[:3000]
+                                                        db_s.close()
+                                                        
+                                                        rec_resp = requests.post(f"{PORTAL_BASE}/api/portal/recommend", json={
+                                                            'portal_code': portal_code,
+                                                            'local_job_id': j['job_id'],
+                                                            'job_code': j.get('job_code', ''),
+                                                            'job_title': j.get('job_title', ''),
+                                                            'job_company': j.get('job_company', ''),
+                                                            'job_location': j.get('job_location', ''),
+                                                            'job_seniority': j.get('job_seniority', ''),
+                                                            'job_description': jd_text,
+                                                        }, cookies=cookies, timeout=15)
+                                                        
+                                                        if rec_resp.status_code == 200 and rec_resp.json().get('success'):
+                                                            success_count += 1
+                                                        else:
+                                                            st.warning(f"推荐 {j.get('job_code', '')} 失败: {rec_resp.text[:100]}")
+                                                    except Exception as e:
+                                                        st.warning(f"推荐 {j.get('job_code', '')} 失败: {e}")
+                                                
+                                                # 3. 显示结果和链接
+                                                st.success(f"🎉 成功推荐 {success_count}/{len(selected_jobs)} 个职位！")
+                                                
+                                                portal_url = f"{PORTAL_BASE}/p/{portal_code}"
+                                                friend_url = f"{portal_url}?f=1"
+                                                
+                                                st.session_state[f"portal_urls_{cand.id}"] = {
+                                                    'portal_url': portal_url,
+                                                    'friend_url': friend_url,
+                                                    'portal_code': portal_code,
+                                                }
+                                            else:
+                                                st.error(f"创建门户失败: {portal_data}")
+                            
 
 
             with side_col:
+                # === 📱 VIP 服务通道名片卡（最顶部，方便截图） ===
+                try:
+                    import hashlib, requests
+                    PORTAL_BASE = "https://jobs.rupro-consulting.com"
+                    token = hashlib.sha256('ruproAI'.encode()).hexdigest()
+                    
+                    # 获取或创建门户
+                    portal_resp = requests.post(f"{PORTAL_BASE}/api/portal/create", json={
+                        'candidate_id': cand.id,
+                        'candidate_name': cand.name,
+                    }, cookies={'auth_token': token}, timeout=10)
+                    
+                    if portal_resp.status_code == 200 and portal_resp.json().get('success'):
+                        portal_code = portal_resp.json()['portal_code']
+                        portal_url = f"{PORTAL_BASE}/p/{portal_code}"
+                        friend_url = f"{portal_url}?f=1"
+                        
+                        with st.expander("📱 VIP 服务通道", expanded=False):
+                            # 生成名片卡
+                            from portal_card import generate_portal_card_base64
+                            card_b64 = generate_portal_card_base64(cand.name, portal_code)
+                            
+                            st.markdown(
+                                f'<img src="data:image/png;base64,{card_b64}" '
+                                f'style="width:100%;border-radius:10px;">',
+                                unsafe_allow_html=True
+                            )
+                            st.caption("👆 截图发给候选人即可")
+                            
+                            lc1, lc2 = st.columns(2)
+                            with lc1:
+                                st.code(portal_url, language=None)
+                                st.caption("📨 普通链接")
+                            with lc2:
+                                st.code(friend_url, language=None)
+                                st.caption("💚 微信好友链接")
+                except Exception as e:
+                    st.caption(f"⚠️ 门户加载失败: {e}")
+                
                 # --- 简历附件（紧凑布局）---
                 if cand.source_file:
                     resume_path = f"/Users/lillianliao/notion_rag/personal-ai-headhunter/data/resumes/{cand.id}_{cand.source_file}"
@@ -2239,13 +2855,26 @@ elif page == "人才库管理":
                 st.markdown("### 💬 沟通记录")
                 
                 # 添加新记录
-                new_log_content = st.text_area(
-                    "新沟通记录", 
-                    key="new_comm_log", 
-                    placeholder="输入沟通内容...",
-                    height=80,
-                    label_visibility="collapsed"
-                )
+                log_input_col, channel_col = st.columns([4, 1])
+                with log_input_col:
+                    new_log_content = st.text_area(
+                        "新沟通记录", 
+                        key="new_comm_log", 
+                        placeholder="输入沟通内容...",
+                        height=80,
+                        label_visibility="collapsed"
+                    )
+                with channel_col:
+                    channel_options = ["微信", "脉脉", "LinkedIn", "邮件", "电话"]
+                    channel_values = ["wechat", "maimai", "linkedin", "email", "phone"]
+                    selected_channel_label = st.selectbox("渠道", channel_options, key="comm_channel_select")
+                    selected_channel = channel_values[channel_options.index(selected_channel_label)]
+                    
+                    direction_options = ["📤 我发的", "📥 对方发的"]
+                    direction_values = ["outbound", "inbound"]
+                    selected_dir_label = st.selectbox("方向", direction_options, key="comm_direction_select")
+                    selected_direction = direction_values[direction_options.index(selected_dir_label)]
+                
                 if st.button("➕ 添加记录", key="add_comm_log", type="primary"):
                     if new_log_content:
                         from datetime import datetime
@@ -2253,11 +2882,21 @@ elif page == "人才库管理":
                         logs = list(cand.communication_logs) if cand.communication_logs else []
                         new_entry = {
                             "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                            "content": new_log_content
+                            "channel": selected_channel,
+                            "action": "manual_log",
+                            "content": new_log_content,
+                            "direction": selected_direction,
                         }
                         logs.insert(0, new_entry)
                         cand.communication_logs = logs
+                        cand.last_communication_at = datetime.now()
                         flag_modified(cand, "communication_logs")
+                        
+                        # 如果对方回复了，自动更新阶段
+                        if selected_direction == 'inbound' and cand.pipeline_stage in ('contacted', 'following_up'):
+                            cand.pipeline_stage = 'replied'
+                            cand.follow_up_date = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+                        
                         db.commit()
                         st.toast("✅ 沟通记录已添加")
                         st.rerun()
@@ -2271,7 +2910,12 @@ elif page == "人才库管理":
                         # 最近3条默认展开
                         is_recent = i < 3
                         
-                        with st.expander(f"🕐 {log.get('time', '')}", expanded=is_recent):
+                        channel_icons = {"wechat": "💚微信", "maimai": "🟠脉脉", "linkedin": "🔵LinkedIn", "email": "📧邮件", "phone": "📞电话", "maimai_direct": "🟠脉脉", "system": "⚙️系统"}
+                        dir_icons = {"outbound": "📤", "inbound": "📥", "system": "⚙️"}
+                        ch = channel_icons.get(log.get('channel', ''), log.get('channel', ''))
+                        d = dir_icons.get(log.get('direction', ''), '')
+                        
+                        with st.expander(f"🕐 {log.get('time', '')}  {ch} {d}", expanded=is_recent):
                             # 检查是否在编辑模式
                             edit_key = f"edit_log_{cand.id}_{i}"
                             is_editing = st.session_state.get(edit_key, False)
@@ -2373,7 +3017,10 @@ elif page == "人才库管理":
                         st.rerun()
             
             # --- Query Data ---
-            query = db.query(Candidate).filter(Candidate.name != "Parse Error")
+            query = db.query(Candidate).options(
+                defer(Candidate.raw_resume_text),
+                defer(Candidate.ai_summary),
+            ).filter(Candidate.name != "Parse Error")
             
             if filter_name:
                 query = query.filter(Candidate.name.contains(filter_name) | Candidate.skills.contains(filter_name))
@@ -2560,7 +3207,7 @@ elif page == "人才库管理":
                                 # 自定义日期 - 紧凑版
                                 max_date = today + timedelta(days=90)
                                 dc1, dc2 = st.columns([2, 1])
-                                sel_date = dc1.date_input("", value=tomorrow, min_value=today, max_value=max_date, key=f"pop_date_{cand.id}", label_visibility="collapsed")
+                                sel_date = dc1.date_input("预约日期", value=tomorrow, min_value=today, max_value=max_date, key=f"pop_date_{cand.id}", label_visibility="collapsed")
                                 if dc2.button("✓", key=f"pop_conf_{cand.id}", type="primary"):
                                     cand.scheduled_contact_date = sel_date.strftime("%Y-%m-%d")
                                     db.commit()
@@ -2672,30 +3319,31 @@ elif page == "人才库管理":
                                 st.caption(f"📅 {time_str}")
                                 st.markdown(f"<div style='font-size:0.85rem;color:#666;margin-bottom:8px;'>{content}</div>", unsafe_allow_html=True)
                             
-                            # 快速输入
-                            quick_note = st.text_area(
-                                "新增记录",
-                                key=f"quick_log_{cand.id}",
-                                placeholder="输入新的沟通内容...",
-                                height=68,
-                                label_visibility="collapsed"
-                            )
-                            if st.button("💾 保存", key=f"save_quick_{cand.id}", type="primary", use_container_width=True):
-                                if quick_note:
-                                    from datetime import datetime
-                                    from sqlalchemy.orm.attributes import flag_modified
-                                    now = datetime.now()
-                                    logs = list(cand.communication_logs) if cand.communication_logs else []
-                                    logs.insert(0, {
-                                        "time": now.strftime("%Y-%m-%d %H:%M"),
-                                        "content": quick_note
-                                    })
-                                    cand.communication_logs = logs
-                                    cand.last_communication_at = now  # 更新最近沟通时间
-                                    flag_modified(cand, "communication_logs")
-                                    db.commit()
-                                    st.toast(f"✅ 已保存 {cand.name} 的沟通记录")
-                                    st.rerun()
+                            # 快速输入（按需展开，减少首屏 widget）
+                            with st.popover("📝 新增记录", use_container_width=True):
+                                quick_note = st.text_area(
+                                    "新增沟通记录",
+                                    key=f"quick_log_{cand.id}",
+                                    placeholder="输入新的沟通内容...",
+                                    height=100,
+                                    label_visibility="collapsed"
+                                )
+                                if st.button("💾 保存", key=f"save_quick_{cand.id}", type="primary", use_container_width=True):
+                                    if quick_note:
+                                        from datetime import datetime
+                                        from sqlalchemy.orm.attributes import flag_modified
+                                        now = datetime.now()
+                                        logs = list(cand.communication_logs) if cand.communication_logs else []
+                                        logs.insert(0, {
+                                            "time": now.strftime("%Y-%m-%d %H:%M"),
+                                            "content": quick_note
+                                        })
+                                        cand.communication_logs = logs
+                                        cand.last_communication_at = now  # 更新最近沟通时间
+                                        flag_modified(cand, "communication_logs")
+                                        db.commit()
+                                        st.toast(f"✅ 已保存 {cand.name} 的沟通记录")
+                                        st.rerun()
                         
                         st.markdown("")  # 卡片底部间距
                 
@@ -3460,19 +4108,22 @@ elif page == "人才库管理":
 ## 标签体系说明
 
 1. tech_domain (技术方向) - 多选:
-   大模型/LLM, Agent/智能体, NLP, 多模态, 语音, CV, 推荐系统, 搜索, AI Infra, 具身智能, 垂直应用
+   【AI】大模型/LLM, Agent/智能体, NLP, 多模态, 语音, CV, 推荐系统, 搜索, AI Infra, 具身智能, 垂直应用
+   【工程】客户端开发, 后端开发, 前端开发, 基础架构/Infra, 音视频 (不要用"其他")
 
 2. core_specialty (核心专长) - 多选1-2个:
-   语音合成, 语音识别, 多模态理解, 多模态生成, 图像/视频生成, 推荐系统, 搜索排序, Agent/智能体开发, 对话系统, 代码生成
+   【AI】语音合成, 语音识别, 多模态理解, 多模态生成, 图像/视频生成, 推荐系统, 搜索排序, Agent/智能体开发, 对话系统, 代码生成
+   【工程】IM/即时通讯, 跨端框架, 客户端基础架构, 音视频引擎, 微服务架构, DevOps
 
 3. tech_skills (技术技能) - 多选1-3个:
-   预训练, SFT微调, RLHF/对齐, 推理加速, 模型压缩/量化, 分布式训练, RAG/知识库, 算子优化, 框架开发
+   【AI】预训练, SFT微调, RLHF/对齐, 推理加速, 模型压缩/量化, 分布式训练, RAG/知识库, 算子优化, 框架开发
+   【工程】跨端开发, 性能优化, 高并发, 架构设计
 
 4. role_type (岗位类型) - 单选:
-   算法工程师, 算法专家, 算法研究员, 工程开发, 解决方案架构师, 产品经理, 技术管理, 研究员
+   算法工程师, 算法专家, 算法研究员, 客户端工程师, 后端工程师, 前端工程师, 架构师, 工程开发, 解决方案架构师, 产品经理, 技术管理, 研究员
 
 5. seniority (职级层次) - 单选:
-   初级(0-3年), 中级(3-5年), 高级(5-8年), 专家(8年+), 管理层
+   初级(0-3年), 中级(3-5年), 资深(5-10年), 专家(10年+), 管理层
 
 6. industry_exp (行业背景) - 多选:
    互联网大厂, AI独角兽, 云厂商, 芯片/硬件, 外企, 学术背景
@@ -4159,6 +4810,22 @@ elif page == "职位库管理":
                                 st.toast(f"已设置为: {label}")
                                 st.rerun()
                 
+                # ===== 发布渠道 =====
+                published = job.published_channels or []
+                if isinstance(published, str):
+                    try:
+                        published = json.loads(published)
+                    except:
+                        published = []
+                if published:
+                    channel_map = {"MM": "🟠 脉脉", "LI": "🔵 LinkedIn", "BOSS": "🟢 Boss"}
+                    ch_parts = []
+                    for ch in published:
+                        ch_name = channel_map.get(ch.get("channel"), ch.get("channel", ""))
+                        ch_time = ch.get("published_at", "")[:10]  # 只取日期部分
+                        ch_parts.append(f"{ch_name} ({ch_time})")
+                    st.markdown(f"**📢 已发布**: {' / '.join(ch_parts)}")
+                
                 st.markdown("<hr style='margin: 10px 0; border-color: #eee;'>", unsafe_allow_html=True)
                 
                 # ===== 职级、部门、HR、链接并列第一排 =====
@@ -4247,86 +4914,54 @@ elif page == "职位库管理":
         tab1, tab2, tab3, tab4 = st.tabs(["职位列表", "发布职位(手动)", "导入导出职位", "批量画像"])
         
         with tab1:
-            # --- Search Filters ---
+            if "job_list_cache_buster" not in st.session_state:
+                st.session_state.job_list_cache_buster = 0
+
+            # --- Search Filters (紧凑单行布局) ---
             with st.expander("🔍 筛选条件", expanded=True):
-                c1, c2, c3, c4 = st.columns(4)
-                with c1:
-                    filter_job_code = st.text_input("职位ID", value=st.session_state.get('filter_job_code', ''), key="filter_job_code_input")
+                # 所有筛选项在一行
+                cols = st.columns([1, 1.5, 1, 0.8, 0.8, 0.8, 1.2, 1, 0.6, 0.6])
+                with cols[0]:
+                    filter_job_code = st.text_input("职位ID", value=st.session_state.get('filter_job_code', ''), key="filter_job_code_input", label_visibility="collapsed", placeholder="职位ID")
                     st.session_state.filter_job_code = filter_job_code
-                with c2:
-                    filter_title = st.text_input("职位名称/关键词", value=st.session_state.get('filter_title', ''), key="filter_title_input")
+                with cols[1]:
+                    filter_title = st.text_input("关键词", value=st.session_state.get('filter_title', ''), key="filter_title_input", label_visibility="collapsed", placeholder="职位名称/关键词")
                     st.session_state.filter_title = filter_title
-                with c3:
-                    filter_company = st.text_input("公司", value=st.session_state.get('filter_job_company', ''), key="filter_job_company_input")
+                with cols[2]:
+                    filter_company = st.text_input("公司", value=st.session_state.get('filter_job_company', ''), key="filter_job_company_input", label_visibility="collapsed", placeholder="公司")
                     st.session_state.filter_job_company = filter_company
-                with c4:
-                    filter_dept = st.text_input("部门", value=st.session_state.get('filter_dept', ''), key="filter_dept_input")
-                    st.session_state.filter_dept = filter_dept
-
-                c5, c6, c7, c8 = st.columns(4)
-                with c5:
-                    filter_location = st.text_input("地点", value=st.session_state.get('filter_job_location', ''), key="filter_job_location_input")
+                with cols[3]:
+                    filter_location = st.text_input("地点", value=st.session_state.get('filter_job_location', ''), key="filter_job_location_input", label_visibility="collapsed", placeholder="地点")
                     st.session_state.filter_job_location = filter_location
-                with c6:
-                    filter_level = st.text_input("职级", value=st.session_state.get('filter_job_level', ''), key="filter_job_level_input")
+                with cols[4]:
+                    filter_level = st.text_input("职级", value=st.session_state.get('filter_job_level', ''), key="filter_job_level_input", label_visibility="collapsed", placeholder="职级")
                     st.session_state.filter_job_level = filter_level
-                with c7:
-                    filter_tags = st.text_input("标签", value=st.session_state.get('filter_job_tags', ''), key="filter_job_tags_input")
+                with cols[5]:
+                    filter_tags = st.text_input("标签", value=st.session_state.get('filter_job_tags', ''), key="filter_job_tags_input", label_visibility="collapsed", placeholder="标签")
                     st.session_state.filter_job_tags = filter_tags
-                with c8:
-                    filter_urgent = st.checkbox("只看紧急职位", value=st.session_state.get('filter_job_urgent', False), key="filter_job_urgent_input")
-                    st.session_state.filter_job_urgent = filter_urgent
-
-                # 清空筛选按钮
-                if st.button("🔄 清空筛选", key="clear_job_filters"):
-                    st.session_state.filter_job_code = ''
-                    st.session_state.filter_title = ''
-                    st.session_state.filter_job_company = ''
-                    st.session_state.filter_dept = ''
-                    st.session_state.filter_job_location = ''
-                    st.session_state.filter_job_level = ''
-                    st.session_state.filter_job_tags = ''
-                    st.session_state.filter_job_urgent = False
-                    st.rerun()
-            
-            query = db.query(Job).filter(Job.is_active == 1)
-            
-            if filter_job_code:
-                query = query.filter(Job.job_code.contains(filter_job_code))
-            if filter_title:
-                query = query.filter(Job.title.contains(filter_title))
-            if filter_company:
-                query = query.filter(Job.company.contains(filter_company))
-            if filter_location:
-                query = query.filter(Job.location.contains(filter_location))
-            if filter_urgent:
-                query = query.filter(Job.title.contains("急") | Job.title.contains("Urgent"))
-                
-            jobs = query.order_by(Job.created_at.desc()).all()
-            
-            # Python-side filtering for JSON fields
-            if filter_dept:
-                jobs = [j for j in jobs if j.detail_fields and filter_dept in str(j.detail_fields)]
-            if filter_level:
-                jobs = [j for j in jobs if j.detail_fields and filter_level in str(j.detail_fields)]
-            
-            # Filter by project tags (AND logic)
-            if filter_tags.strip():
-                # Split tags by comma and create list
-                tag_list = [tag.strip() for tag in filter_tags.split(",") if tag.strip()]
-                if tag_list:
-                    # AND logic: must match all input tags
-                    def matches_all_tags(job_tags):
-                        if not job_tags:
-                            return False
-                        job_tags_str = [str(tag).lower() for tag in job_tags]
-                        return all(any(tag_filter.lower() in job_tag 
-                                      for job_tag in job_tags_str) 
-                                  for tag_filter in tag_list)
-                    
-                    jobs = [j for j in jobs if j.project_tags and matches_all_tags(j.project_tags)]
-            
-            st.markdown(f"共 **{len(jobs)}** 个职位")
+                with cols[6]:
+                    filter_link = st.text_input("链接", value=st.session_state.get('filter_job_link', ''), key="filter_job_link_input", label_visibility="collapsed", placeholder="链接/职位ID")
+                    st.session_state.filter_job_link = filter_link
+                with cols[7]:
+                    urgency_options = ["全部", "较急", "紧急", "非常紧急"]
+                    filter_urgency = st.selectbox("紧急", urgency_options, index=st.session_state.get('filter_job_urgency_idx', 0), key="filter_job_urgency_input", label_visibility="collapsed")
+                    st.session_state.filter_job_urgency_idx = urgency_options.index(filter_urgency)
+                with cols[8]:
+                    if st.button("清空", key="clear_job_filters", use_container_width=True):
+                        st.session_state.filter_job_code = ''
+                        st.session_state.filter_title = ''
+                        st.session_state.filter_job_company = ''
+                        st.session_state.filter_job_location = ''
+                        st.session_state.filter_job_level = ''
+                        st.session_state.filter_job_tags = ''
+                        st.session_state.filter_job_link = ''
+                        st.session_state.filter_job_urgency_idx = 0
+                        st.session_state.job_list_cache_buster += 1
+                        st.rerun()
+                with cols[9]:
+                    if st.button("🔄", key="refresh_job_list", use_container_width=True, help="刷新"):
+                        st.session_state.job_list_cache_buster += 1
+                        st.rerun()
             
             # Pagination
             list_container = st.container()
@@ -4338,18 +4973,41 @@ elif page == "职位库管理":
                 with cp2:
                     page_size = st.selectbox("每页显示", [20, 50, 100], key="job_page_size", label_visibility="collapsed")
                 with cp3:
-                    total_pages = max(1, (len(jobs) - 1) // page_size + 1)
-                    page_num = st.number_input(f"页码 (共{total_pages}页)", min_value=1, max_value=total_pages, value=1, key="job_page_num")
-            
-            # Slicing
-            start_idx = (page_num - 1) * page_size
-            end_idx = start_idx + page_size
-            page_jobs = jobs[start_idx:end_idx]
+                    page_num = st.number_input(
+                        "页码",
+                        min_value=1,
+                        value=st.session_state.get("job_page_num", 1),
+                        key="job_page_num"
+                    )
+
+            # 缓存查询（DB侧过滤 + 分页）
+            result = get_jobs_page_cached(
+                filter_job_code=filter_job_code,
+                filter_title=filter_title,
+                filter_company=filter_company,
+                filter_location=filter_location,
+                filter_level=filter_level,
+                filter_tags=filter_tags,
+                filter_link=filter_link,
+                filter_urgency=filter_urgency,
+                page_num=int(page_num),
+                page_size=int(page_size),
+                cache_buster=int(st.session_state.job_list_cache_buster),
+            )
+            total_jobs = result["total"]
+            total_pages = max(1, (total_jobs - 1) // page_size + 1)
+
+            if page_num > total_pages:
+                st.session_state.job_page_num = total_pages
+                st.rerun()
+
+            st.markdown(f"共 **{total_jobs}** 个职位")
+            page_jobs = result["items"]
             
             with list_container:
-                # Header - 包含紧急程度列
-                # ID, Title, Urgency, Comp, Dept, Level, Loc, PubDate, Action
-                h0, h1, h1u, h2, h3, h4, h5, h6, h7 = st.columns([0.8, 2, 0.9, 1.3, 1, 0.6, 1, 0.9, 0.9])
+                # Header - 包含紧急程度列和发布渠道列
+                # ID, Title, Urgency, Comp, Dept, Level, Loc, Channel, PubDate, Action
+                h0, h1, h1u, h2, h3, h4, h5, h5c, h6, h7 = st.columns([0.8, 2, 0.9, 1.3, 1, 0.6, 0.8, 0.8, 0.9, 0.9])
                 h0.markdown("**职位ID**")
                 h1.markdown("**职位名称**")
                 h1u.markdown("**紧急程度**")
@@ -4357,26 +5015,27 @@ elif page == "职位库管理":
                 h3.markdown("**部门**")
                 h4.markdown("**职级**")
                 h5.markdown("**地点**")
+                h5c.markdown("**发布渠道**")
                 h6.markdown("**发布日期**")
                 h7.markdown("**操作**")
                 st.divider()
                 
                 if page_jobs:
                     for job in page_jobs:
-                        c0, c1, c1u, c2, c3, c4, c5, c6, c7 = st.columns([0.8, 2, 0.9, 1.3, 1, 0.6, 1, 0.9, 0.9])
+                        c0, c1, c1u, c2, c3, c4, c5, c5c, c6, c7 = st.columns([0.8, 2, 0.9, 1.3, 1, 0.6, 0.8, 0.8, 0.9, 0.9])
                         
                         # Extract Fields - 优先从独立字段读取
-                        dept = job.department if hasattr(job, 'department') and job.department else "-"
-                        level = job.seniority_level if hasattr(job, 'seniority_level') and job.seniority_level else "-"
+                        dept = job.get("department") or "-"
+                        level = job.get("seniority_level") or "-"
                         pub_date = "-"
                         
-                        # 如果独立字段为空，尝试从detail_fields补充
-                        if job.detail_fields and (dept == "-" or level == "-"):
+                        # 如果独立字段为空，尝试从 detail_fields 补充
+                        if job.get("detail_fields") and (dept == "-" or level == "-"):
                             try:
-                                if isinstance(job.detail_fields, str):
-                                    d = json.loads(job.detail_fields)
+                                if isinstance(job.get("detail_fields"), str):
+                                    d = json.loads(job.get("detail_fields"))
                                 else:
-                                    d = job.detail_fields
+                                    d = job.get("detail_fields")
                                 # Fuzzy key match
                                 for k in d:
                                     k_str = str(k).lower()
@@ -4386,17 +5045,17 @@ elif page == "职位库管理":
                             except:
                                 pass
 
-                        with c0: st.write(job.job_code or "-")
+                        with c0: st.write(job.get("job_code") or "-")
 
                         with c1:
-                            title_md = f"**{job.title}**"
-                            if "急" in job.title or "Urgent" in job.title:
+                            title_md = f"**{job.get('title')}**"
+                            if "急" in (job.get("title") or "") or "Urgent" in (job.get("title") or ""):
                                 title_md += " 🔥"
                             st.markdown(title_md)
                         
                         # 紧急程度列 - 带颜色标签
                         with c1u:
-                            urgency = getattr(job, 'urgency', 0) or 0
+                            urgency = job.get("urgency", 0) or 0
                             urgency_labels = ["普通", "较急", "紧急", "非常紧急"]
                             urgency_colors = ["#9e9e9e", "#ffc107", "#ff9800", "#f44336"]
                             urgency_icons = ["", "⚡", "🔥", "🚨"]
@@ -4405,21 +5064,47 @@ elif page == "职位库管理":
                             else:
                                 st.write("-")
                         
-                        with c2: st.write(job.company)
+                        with c2: st.write(job.get("company"))
                         with c3: st.write(dept)
                         with c4: st.write(level)
-                        with c5: st.write(job.location or "-")
+                        with c5: st.write(job.get("location") or "-")
+                        
+                        # 发布渠道列
+                        with c5c:
+                            channels = job.get("published_channels") or []
+                            if isinstance(channels, str):
+                                try:
+                                    channels = json.loads(channels)
+                                except:
+                                    channels = []
+                            if channels:
+                                channel_styles = {
+                                    "MM": ("🟠", "#ff9800", "脉脉"),
+                                    "LI": ("🔵", "#0077b5", "LinkedIn"),
+                                    "BOSS": ("🟢", "#00c853", "Boss")
+                                }
+                                badges = []
+                                for c in channels:
+                                    ch = c.get("channel", "")
+                                    t = c.get("published_at", "")[:10]
+                                    icon, color, name = channel_styles.get(ch, ("⚪", "#999", ch))
+                                    badges.append(f"<span title='{name} {t}' style='background:{color};color:#fff;padding:1px 6px;border-radius:10px;font-size:11px;margin-right:2px;cursor:default;'>{ch}</span>")
+                                st.markdown("".join(badges), unsafe_allow_html=True)
+                            else:
+                                st.write("-")
+                        
                         with c6: st.write(format_date(pub_date))
                             
                         with c7:
                             cb1, cb2 = st.columns(2)
-                            if cb1.button("📄", key=f"view_job_{job.id}", help="查看详情"):
-                                st.session_state.selected_job_id = job.id
+                            if cb1.button("📄", key=f"view_job_{job.get('id')}", help="查看详情"):
+                                st.session_state.selected_job_id = job.get("id")
                                 st.session_state.job_view_mode = 'detail'
                                 st.rerun()
                             
-                            if cb2.button("🗑️", key=f"del_job_{job.id}", help="删除"):
-                                delete_job(job.id)
+                            if cb2.button("🗑️", key=f"del_job_{job.get('id')}", help="删除"):
+                                delete_job(job.get("id"))
+                                st.session_state.job_list_cache_buster += 1
                                 st.rerun()
                         
                         st.markdown("---")
