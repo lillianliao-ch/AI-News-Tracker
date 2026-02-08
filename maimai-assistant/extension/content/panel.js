@@ -727,6 +727,25 @@ class AssistantPanel {
 
         this.searchEngine = new SearchEngine();
 
+        // 从保存的状态恢复 UI 表单字段
+        const s = this.searchEngine.state;
+        if (s.list && s.list.length > 0) {
+            const textarea = this.panel?.querySelector('#searchKeywords');
+            if (textarea) textarea.value = s.list.join('\n');
+        }
+        const modeSelect = this.panel?.querySelector('#searchMode');
+        if (modeSelect && s.mode) modeSelect.value = s.mode;
+        const addFriendCb = this.panel?.querySelector('#searchAddFriend');
+        if (addFriendCb) addFriendCb.checked = !!s.addFriend;
+        const exportRadio = this.panel?.querySelector(`input[name="exportMode"][value="${s.exportMode || 'excel'}"]`);
+        if (exportRadio) exportRadio.checked = true;
+
+        // 如果正在运行，显示进度区域
+        if (s.running) {
+            const section = this.panel?.querySelector('#searchProgressSection');
+            if (section) section.classList.add('show');
+        }
+
         // 进度回调
         this.searchEngine.onProgress((state) => {
             const { currentIndex, total, successful, failed, resultCount } = state;
