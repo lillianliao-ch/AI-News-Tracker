@@ -76,7 +76,7 @@ class SearchExtractor {
         return info;
     }
 
-    // 提取详情页完整信息
+    // 提取详情页完整信息 - 直接使用原始 maimai-scraper 的久经考验的逻辑
     extractDetailInfo() {
         const info = {
             name: '',
@@ -87,15 +87,26 @@ class SearchExtractor {
         };
 
         try {
-            console.log('[搜索助手] 提取详情页信息...');
+            console.log('[搜索助手] 开始提取详情页信息...');
 
-            // 提取姓名
+            // 获取页面所有文本
+            const bodyText = document.body.textContent;
+
+            // 提取姓名 - 尝试多个选择器
             const nameCandidates = [
                 document.querySelector('h1'),
                 document.querySelector('[class*="name"]'),
+                document.querySelector('[class*="title"]'),
+                ...Array.from(document.querySelectorAll('*')).filter(el => {
+                    const text = el.textContent?.trim() || '';
+                    return text.length > 2 && text.length < 30 &&
+                        el.children.length === 0 &&
+                        !text.includes('工作') && !text.includes('教育');
+                }).slice(0, 5),
             ];
+
             for (let el of nameCandidates) {
-                if (el?.textContent) {
+                if (el && el.textContent) {
                     const text = el.textContent.trim();
                     if (text && text.length > 1 && text.length < 50) {
                         info.name = text;
@@ -104,64 +115,157 @@ class SearchExtractor {
                 }
             }
 
-            // 提取工作经历
-            this._extractSection(info, '工作经历', 'workHistory');
-            // 提取教育经历
-            this._extractSection(info, '教育经历', 'education');
+            // ========== 提取工作经历 ==========
+            const workHeaders = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, div, span, p')).filter(el => {
+                const text = el.textContent?.trim() || '';
+                return (text === '工作经历' || text === '工作经历：') && text.length < 20;
+            });
+
+            if (workHeaders.length > 0) {
+                const workHeader = workHeaders[0];
+                let currentEl = workHeader.nextElementSibling;
+
+                if (currentEl && (currentEl.tagName === 'UL' || currentEl.tagName === 'OL')) {
+                    let listItems = currentEl.querySelectorAll('li');
+                    if (listItems.length === 0) {
+                        listItems = Array.from(currentEl.children);
+                    }
+
+                    if (listItems.length > 0) {
+                        listItems.forEach((item) => {
+                            const text = item.textContent?.trim() || '';
+                            if (text.length > 15 && text.length < 2000 &&
+                                (text.includes('公司') || text.includes('有限') || text.includes('科技') ||
+                                    text.includes('至今') || text.match(/\d{4}/))) {
+                                const isDuplicate = info.workHistory.some(existing =>
+                                    existing.substring(0, 30) === text.substring(0, 30)
+                                );
+                                if (!isDuplicate) info.workHistory.push(text);
+                            }
+                        });
+                    } else {
+                        currentEl = currentEl.nextElementSibling;
+                        let iterations = 0;
+                        while (currentEl && iterations < 10) {
+                            iterations++;
+                            const text = currentEl.textContent?.trim() || '';
+                            if (text === '教育经历' || text === '自我介绍' || text === '个人信息') break;
+                            const hasKeyword = text.includes('公司') || text.includes('有限') || text.includes('科技') ||
+                                text.includes('至今') || text.match(/\d{4}/);
+                            if (text.length > 15 && text.length < 800 && !text.startsWith('工作经历') && hasKeyword) {
+                                const isDuplicate = info.workHistory.some(existing =>
+                                    existing.substring(0, 30) === text.substring(0, 30)
+                                );
+                                if (!isDuplicate) info.workHistory.push(text);
+                            }
+                            currentEl = currentEl.nextElementSibling;
+                        }
+                    }
+                } else {
+                    let iterations = 0;
+                    while (currentEl && iterations < 10) {
+                        iterations++;
+                        const text = currentEl.textContent?.trim() || '';
+                        if (text === '教育经历' || text === '自我介绍' || text === '个人信息') break;
+                        const hasKeyword = text.includes('公司') || text.includes('有限') || text.includes('科技') ||
+                            text.includes('至今') || text.match(/\d{4}/);
+                        if (text.length > 15 && text.length < 800 && !text.startsWith('工作经历') && hasKeyword) {
+                            const isDuplicate = info.workHistory.some(existing =>
+                                existing.substring(0, 30) === text.substring(0, 30)
+                            );
+                            if (!isDuplicate) info.workHistory.push(text);
+                        }
+                        currentEl = currentEl.nextElementSibling;
+                    }
+                }
+            }
+
+            // ========== 提取教育经历 ==========
+            const eduHeaders = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, div, span, p')).filter(el => {
+                const text = el.textContent?.trim() || '';
+                return (text === '教育经历' || text === '教育经历：') && text.length < 20;
+            });
+
+            console.log('[搜索助手] 找到教育经历标题:', eduHeaders.length, '个');
+
+            if (eduHeaders.length > 0) {
+                const eduHeader = eduHeaders[0];
+                let currentEl = eduHeader.nextElementSibling;
+
+                if (currentEl && (currentEl.tagName === 'UL' || currentEl.tagName === 'OL')) {
+                    let listItems = currentEl.querySelectorAll('li');
+                    if (listItems.length === 0) {
+                        listItems = Array.from(currentEl.children);
+                    }
+
+                    if (listItems.length > 0) {
+                        listItems.forEach((item) => {
+                            const text = item.textContent?.trim() || '';
+                            if (text.length > 10 && text.length < 500 &&
+                                (text.includes('大学') || text.includes('学院') || text.includes('本科') ||
+                                    text.includes('硕士') || text.includes('博士') || text.includes('学位') ||
+                                    text.match(/\d{4}年/))) {
+                                const isDuplicate = info.education.some(existing =>
+                                    existing.substring(0, 20) === text.substring(0, 20)
+                                );
+                                if (!isDuplicate) info.education.push(text);
+                            }
+                        });
+                    } else {
+                        currentEl = currentEl.nextElementSibling;
+                        let iterations = 0;
+                        while (currentEl && iterations < 10) {
+                            iterations++;
+                            const text = currentEl.textContent?.trim() || '';
+                            if (text === '自我介绍' || text === '个人信息' || text === '技能特长') break;
+                            const hasKeyword = text.includes('大学') || text.includes('学院') || text.includes('本科') ||
+                                text.includes('硕士') || text.includes('博士') || text.includes('学位') ||
+                                text.match(/\d{4}年/);
+                            if (text.length > 10 && text.length < 500 && !text.startsWith('教育经历') && hasKeyword) {
+                                const isDuplicate = info.education.some(existing =>
+                                    existing.substring(0, 20) === text.substring(0, 20)
+                                );
+                                if (!isDuplicate) info.education.push(text);
+                            }
+                            currentEl = currentEl.nextElementSibling;
+                        }
+                    }
+                } else {
+                    let iterations = 0;
+                    while (currentEl && iterations < 10) {
+                        iterations++;
+                        const text = currentEl.textContent?.trim() || '';
+                        if (text === '自我介绍' || text === '个人信息' || text === '技能特长') break;
+                        const hasKeyword = text.includes('大学') || text.includes('学院') || text.includes('本科') ||
+                            text.includes('硕士') || text.includes('博士') || text.includes('学位') ||
+                            text.match(/\d{4}年/);
+                        if (text.length > 10 && text.length < 500 && !text.startsWith('教育经历') && hasKeyword) {
+                            const isDuplicate = info.education.some(existing =>
+                                existing.substring(0, 20) === text.substring(0, 20)
+                            );
+                            if (!isDuplicate) info.education.push(text);
+                        }
+                        currentEl = currentEl.nextElementSibling;
+                    }
+                }
+            }
+
+            // 从工作经历中提取当前公司和职位
+            if (info.workHistory.length > 0) {
+                const current = info.workHistory[0];
+                const companyMatch = current.match(/([^\s]{2,}公司|[^\s]{2,}有限|[^\s]{2,}科技)/);
+                if (companyMatch) {
+                    info.company = companyMatch[0];
+                }
+            }
+
+            console.log('[搜索助手] ✅ 提取完成:', info.name, '| 工作', info.workHistory.length, '条 | 教育', info.education.length, '条');
 
         } catch (e) {
             console.error('[搜索助手] 提取失败:', e);
         }
 
         return info;
-    }
-
-    // 通用段落提取
-    _extractSection(info, sectionTitle, targetKey) {
-        const headers = Array.from(
-            document.querySelectorAll('h1, h2, h3, h4, h5, h6, div, span, p')
-        ).filter(el => {
-            const text = el.textContent?.trim() || '';
-            return (text === sectionTitle || text === `${sectionTitle}：`) && text.length < 20;
-        });
-
-        if (headers.length === 0) return;
-
-        const header = headers[0];
-        let currentEl = header.nextElementSibling;
-        let iterations = 0;
-
-        // 处理列表元素
-        if (currentEl && (currentEl.tagName === 'UL' || currentEl.tagName === 'OL')) {
-            const items = currentEl.querySelectorAll('li') || currentEl.children;
-            Array.from(items).forEach(item => {
-                const text = item.textContent?.trim() || '';
-                if (text.length > 15 && text.length < 2000) {
-                    if (!info[targetKey].some(e => e.substring(0, 30) === text.substring(0, 30))) {
-                        info[targetKey].push(text);
-                    }
-                }
-            });
-            return;
-        }
-
-        // 遍历兄弟元素
-        const stopWords = ['教育经历', '自我介绍', '个人信息', '工作经历'];
-        while (currentEl && iterations < 10) {
-            iterations++;
-            const text = currentEl.textContent?.trim() || '';
-
-            if (stopWords.some(s => text === s) && text !== sectionTitle) break;
-
-            const hasKeyword = /公司|有限|科技|至今|\d{4}/.test(text);
-            if (text.length > 15 && text.length < 800 && !text.startsWith(sectionTitle) && hasKeyword) {
-                if (!info[targetKey].some(e => e.substring(0, 30) === text.substring(0, 30))) {
-                    info[targetKey].push(text);
-                }
-            }
-
-            currentEl = currentEl.nextElementSibling;
-        }
     }
 
     // 解析工作经历文本
