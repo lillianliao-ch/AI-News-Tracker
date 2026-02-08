@@ -10,8 +10,9 @@ class SearchEngine {
             mode: 'first',
             addFriend: false,
             exportMode: 'excel',
-            phase: 'idle',          // idle | search | detail
-            currentDetailUrl: null, // 当前要跳转的详情页 URL
+            phase: 'idle',            // idle | search | detail
+            currentDetailUrl: null,   // 当前要跳转的详情页 URL
+            pendingDetailUrls: [],    // "所有结果"模式：待访问的详情页队列
         };
         this._loadState();
     }
@@ -49,6 +50,7 @@ class SearchEngine {
             exportMode,
             phase: 'search',
             currentDetailUrl: null,
+            pendingDetailUrls: [],
         };
         this._saveState();
 
@@ -76,6 +78,7 @@ class SearchEngine {
             exportMode: 'excel',
             phase: 'idle',
             currentDetailUrl: null,
+            pendingDetailUrls: [],
         };
         localStorage.removeItem('maimai_search_engine_state');
     }
@@ -130,6 +133,19 @@ class SearchEngine {
         const query = this.state.list[this.state.index];
         console.log(`[搜索引擎] 📋 搜索页处理: "${query}" (${this.state.index + 1}/${this.state.list.length})`);
 
+        // 如果 pendingDetailUrls 已有待处理的URL（从详情页返回的情况），直接跳转下一个
+        if (this.state.pendingDetailUrls && this.state.pendingDetailUrls.length > 0) {
+            const nextUrl = this.state.pendingDetailUrls[0];
+            console.log(`[搜索引擎] 📋 队列中还有 ${this.state.pendingDetailUrls.length} 个结果待处理`);
+            this.state.phase = 'detail';
+            this.state.currentDetailUrl = nextUrl;
+            this._saveState();
+            setTimeout(() => {
+                window.location.href = nextUrl;
+            }, 1500);
+            return;
+        }
+
         // 切到"people"标签（人脉tab）
         await this._ensurePeopleTab();
 
@@ -157,32 +173,33 @@ class SearchEngine {
             return;
         }
 
-        // 取第一个结果卡片
-        const firstResult = results[0];
+        // 根据模式决定处理多少结果
+        const targetResults = this.state.mode === 'all' ? results : [results[0]];
 
-        // 尝试提取 dstu 或 profileUrl
-        const profileUrl = this._extractProfileUrl(firstResult);
+        // 收集所有结果卡片的详情页 URL
+        const allUrls = [];
+        for (const card of targetResults) {
+            const url = this._extractProfileUrl(card);
+            if (url) {
+                allUrls.push(url);
+            } else {
+                console.log('[搜索引擎] ⚠️ 某个卡片未提取到URL，跳过');
+            }
+        }
 
-        if (profileUrl) {
-            // 找到链接 → 跳转到详情页
-            console.log(`[搜索引擎] ✅ 找到详情页链接: ${profileUrl}`);
-            this.state.phase = 'detail';
-            this.state.currentDetailUrl = profileUrl;
-            this._saveState();
-            setTimeout(() => {
-                window.location.href = profileUrl;
-            }, 1000);
-        } else {
-            // 没找到链接 → 尝试点击卡片
-            console.log('[搜索引擎] ⚠️ 未找到链接，尝试点击卡片...');
+        console.log(`[搜索引擎] 🔗 共提取到 ${allUrls.length} 个详情页URL (模式: ${this.state.mode})`);
+
+        if (allUrls.length === 0) {
+            // 尝试点击第一个卡片（fallback）
+            console.log('[搜索引擎] ⚠️ 未找到任何URL，尝试点击第一个卡片...');
             this.state.phase = 'detail';
             this.state.currentDetailUrl = 'CLICKED_CARD';
+            this.state.pendingDetailUrls = [];
             this._saveState();
 
-            const clickable = firstResult.querySelector('.media-left, .cursor-pointer, a, .media-body') || firstResult;
+            const clickable = results[0].querySelector('.media-left, .cursor-pointer, a, .media-body') || results[0];
             clickable.click();
 
-            // 5秒后检查是否跳转成功
             setTimeout(() => {
                 if (window.location.href.includes('/web/search_center')) {
                     console.log('[搜索引擎] ❌ 点击5秒后未跳转，跳过');
@@ -196,7 +213,20 @@ class SearchEngine {
                     this._advanceToNext();
                 }
             }, 5000);
+            return;
         }
+
+        // 取第一个URL跳转，其余存入队列
+        const firstUrl = allUrls.shift();
+        this.state.pendingDetailUrls = allUrls;
+        this.state.phase = 'detail';
+        this.state.currentDetailUrl = firstUrl;
+        this._saveState();
+
+        console.log(`[搜索引擎] ✅ 跳转第1个详情页, 队列剩余 ${allUrls.length} 个`);
+        setTimeout(() => {
+            window.location.href = firstUrl;
+        }, 1000);
     }
 
     // 阶段2: 处理详情页
@@ -242,14 +272,29 @@ class SearchEngine {
 
         this._emitProgress();
 
-        // 跳到下一个
-        this._advanceToNext();
+        // 检查队列中是否还有待处理的详情页
+        if (this.state.pendingDetailUrls && this.state.pendingDetailUrls.length > 0) {
+            const nextUrl = this.state.pendingDetailUrls.shift();
+            console.log(`[搜索引擎] ➡️ 跳转下一个详情页, 队列剩余 ${this.state.pendingDetailUrls.length} 个`);
+            this.state.phase = 'detail';
+            this.state.currentDetailUrl = nextUrl;
+            this._saveState();
+
+            const delay = 2000 + Math.random() * 3000;
+            setTimeout(() => {
+                window.location.href = nextUrl;
+            }, delay);
+        } else {
+            // 当前关键词所有结果处理完毕，跳到下一个关键词
+            this._advanceToNext();
+        }
     }
 
     // 推进到下一个关键词
     _advanceToNext() {
         this.state.index++;
         this.state.currentDetailUrl = null;
+        this.state.pendingDetailUrls = [];
         this._saveState();
 
         this._emitProgress();
