@@ -1,7 +1,9 @@
 import json
 from datetime import datetime
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, JSON, ForeignKey, Float, Boolean
+from sqlalchemy import inspect
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
+from sqlalchemy import text
 import os
 from dotenv import load_dotenv
 
@@ -58,9 +60,14 @@ class Candidate(Base):
     friend_channel = Column(String(100))  # 加好友渠道（脉脉/微信/LinkedIn等）
     
     # 沟通记录
-    communication_logs = Column(JSON)  # [{time, content, stage}, ...] 按时间倒序
+    communication_logs = Column(JSON)  # [{time, channel, action, content, direction}, ...] 按时间倒序
     last_communication_at = Column(DateTime)  # 最近一次沟通时间（用于高效排序）
     scheduled_contact_date = Column(String(20))  # 预约沟通日期 (格式: YYYY-MM-DD)
+    
+    # 运营管道
+    pipeline_stage = Column(String(50), default='new')  # new/contacted/following_up/replied/wechat_connected/in_pipeline/closed
+    follow_up_date = Column(String(20))  # 下次跟进日期 (YYYY-MM-DD)
+    wechat_id = Column(String(100))  # 微信号
 
     # 向量数据库关联
     vector_id = Column(String(100)) # ChromaDB 中的 ID
@@ -123,8 +130,13 @@ class Job(Base):
     department = Column(String(200)) # 部门
     seniority_level = Column(String(100)) # 职级（如P7/P8、高级专家等）
     hr_contact = Column(String(200)) # HR联系人
-    jd_link = Column(String(500)) # JD原始链接
+    jd_link = Column(String(500)) # JD原始链接（客户发布给猎头的来源链接）
     urgency = Column(Integer, default=0) # 紧急程度: 0=普通, 1=较急, 2=紧急, 3=非常紧急
+    headcount = Column(Integer) # 职位数量/HC，表示该职位要招聘的人数
+    # 二次发布渠道追踪（猎头在招聘平台发布的记录，与 jd_link 客户原始来源不同）
+    # 格式: [{"channel": "MM", "published_at": "2026-02-07T10:00:00"}, {"channel": "LI", ...}]
+    # 渠道代码: MM=脉脉, LI=LinkedIn, BOSS=Boss直聘
+    published_channels = Column(JSON)
 
     # 向量数据库关联
     vector_id = Column(String(100))
@@ -229,7 +241,8 @@ else:
             db_path = db_env_path
     else:
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        db_path = os.path.join(base_dir, "data", "headhunter.db")
+        # 本地默认使用 dev 库，避免误连历史 headhunter.db 导致字段不一致
+        db_path = os.path.join(base_dir, "data", "headhunter_dev.db")
     
     # 确保目录存在
     os.makedirs(os.path.dirname(db_path), exist_ok=True)
@@ -239,8 +252,41 @@ else:
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+
+def _ensure_legacy_schema_compatibility():
+    """
+    兼容历史数据库：
+    老库可能缺少 jobs.urgency，导致 ORM 查询直接崩溃。
+    启动时自动补齐该字段，避免 Streamlit 连接中断。
+    """
+    try:
+        inspector = inspect(engine)
+        if "jobs" not in inspector.get_table_names():
+            return
+
+        job_cols = {c["name"] for c in inspector.get_columns("jobs")}
+        if "urgency" not in job_cols:
+            with engine.begin() as conn:
+                conn.execute(text("ALTER TABLE jobs ADD COLUMN urgency INTEGER DEFAULT 0"))
+            print("🔧 Auto-migrated: added jobs.urgency")
+    except Exception as e:
+        print(f"⚠️ Legacy schema compatibility check failed: {e}")
+
+
+_ensure_legacy_schema_compatibility()
+
 def init_db():
     Base.metadata.create_all(bind=engine)
+    
+    # 为高频筛选字段创建索引（幂等）
+    with engine.begin() as conn:
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_is_active ON jobs(is_active)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_created_at ON jobs(created_at DESC)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_company ON jobs(company)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_title ON jobs(title)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_location ON jobs(location)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_job_code ON jobs(job_code)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_urgency ON jobs(urgency)"))
     
     # 初始化默认 Prompt
     session = SessionLocal()

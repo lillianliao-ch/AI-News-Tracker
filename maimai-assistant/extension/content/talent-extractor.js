@@ -326,7 +326,8 @@ class TalentPanelExtractor {
             major: '',
             startYear: '',
             endYear: '',
-            tags: []
+            tags: [],
+            description: ''
         };
 
         // 学校名 - .line1___9Pe0z 中的 span span
@@ -368,6 +369,52 @@ class TalentPanelExtractor {
             if (match) {
                 result.startYear = match[1];
                 result.endYear = match[2];
+            }
+        }
+
+        // 描述 - GPA、研究方向、导师、奖学金等
+        // 方法1: .line4___178ur 内的 styled spans
+        const line4 = card.querySelector('.line4___178ur');
+        if (line4) {
+            const descSpans = line4.querySelectorAll('span[style*="color: rgb(21, 22, 31)"]');
+            const descTexts = [];
+            descSpans.forEach(span => {
+                if (!span.querySelector('.spread_button___1ln7r')) {
+                    descTexts.push(span.textContent.trim());
+                }
+            });
+            if (descTexts.length > 0) {
+                result.description = descTexts.join(' ').substring(0, 300);
+            } else {
+                // 方法2: 直接取 line4 文本（排除按钮文字）
+                let text = line4.textContent.trim();
+                text = text.replace(/展开|收起|该段经历来自附件简历/g, '').trim();
+                if (text) {
+                    result.description = text.substring(0, 300);
+                }
+            }
+        }
+
+        // 方法3: 扫描 card 内所有文本节点，查找 GPA/研究方向/导师等关键信息
+        if (!result.description) {
+            const cardText = card.textContent || '';
+            const descParts = [];
+            const patterns = [
+                /GPA[:\s]*[\d.]+\/[\d.]+/i,
+                /研究方向[:\s：]*[^•\n]+/,
+                /导师[:\s：]*[^•\n]+/,
+                /排名[:\s：]*[^•\n]+/,
+                /奖学金[^•\n]*/,
+                /前\d+%/
+            ];
+            for (const pattern of patterns) {
+                const match = cardText.match(pattern);
+                if (match) {
+                    descParts.push(match[0].trim());
+                }
+            }
+            if (descParts.length > 0) {
+                result.description = descParts.join('; ').substring(0, 300);
             }
         }
 
@@ -490,6 +537,91 @@ class TalentPanelExtractor {
             candidate: candidateData,
             message: message
         };
+    }
+
+    // 检查候选人是否已存在于系统
+    async checkCandidateExists(candidateData) {
+        try {
+            // 提取学校和公司列表用于匹配
+            const school = candidateData.educations?.[0]?.school || '';
+            const companies = candidateData.workExperiences?.map(w => w.company).filter(Boolean) || [];
+            if (candidateData.currentCompany) {
+                companies.unshift(candidateData.currentCompany);
+            }
+
+            const response = await fetch(`${this.API_BASE}/api/candidate/check`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: candidateData.name,
+                    school: school,
+                    companies: companies
+                })
+            });
+            if (response.ok) {
+                return await response.json();
+            }
+            return { exists: false };
+        } catch (e) {
+            console.error('检查候选人失败:', e);
+            return { exists: false };
+        }
+    }
+
+    // 导入候选人到系统
+    async importCandidate(candidateData) {
+        try {
+            const response = await fetch(`${this.API_BASE}/api/candidate/import`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(candidateData)
+            });
+            if (response.ok) {
+                const result = await response.json();
+                return { success: true, candidateId: result.candidate_id || result.id };
+            }
+            const error = await response.text();
+            return { success: false, error };
+        } catch (e) {
+            console.error('导入候选人失败:', e);
+            return { success: false, error: e.message };
+        }
+    }
+
+    // 一键导入或查看候选人
+    async importOrView() {
+        console.log('🚀 [TalentPanel] 开始一键导入/查看...');
+
+        // 1. 提取数据
+        const candidateData = this.extractFromTalentPanel();
+
+        if (!candidateData || !candidateData.name) {
+            MaimaiUtils.showNotification('未能提取到候选人信息，请先打开候选人详情', 'warning');
+            return;
+        }
+
+        // 2. 补充 source 信息
+        candidateData.source = 'maimai';
+        candidateData.sourceUrl = window.location.href;
+        candidateData.extractedAt = new Date().toISOString();
+
+        // 3. 检查是否已存在
+        MaimaiUtils.showNotification(`正在检查 ${candidateData.name}...`, 'info');
+        const checkResult = await this.checkCandidateExists(candidateData);
+
+        if (checkResult.exists) {
+            MaimaiUtils.showNotification(`${candidateData.name} 已在系统中 (ID: ${checkResult.candidateId})`, 'success');
+        } else {
+            // 不存在 - 导入
+            MaimaiUtils.showNotification(`正在导入 ${candidateData.name}...`, 'info');
+            const importResult = await this.importCandidate(candidateData);
+
+            if (importResult.success) {
+                MaimaiUtils.showNotification(`✅ ${candidateData.name} 导入成功！(ID: ${importResult.candidateId})`, 'success');
+            } else {
+                MaimaiUtils.showNotification(`导入失败: ${importResult.error}`, 'error');
+            }
+        }
     }
 }
 

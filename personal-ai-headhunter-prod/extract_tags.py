@@ -38,29 +38,47 @@ TAG_SCHEMA = """
 1. tech_domain (技术方向) - 多选:
    大模型/LLM, Agent/智能体, NLP, 多模态, 语音, CV, 推荐系统, 搜索, AI Infra, 具身智能, 垂直应用
 
-2. specialty (细分专长) - 多选，从以下选择最相关的1-3个:
-   - 模型训练类: 预训练, SFT微调, RLHF/对齐, 继续预训练
-   - 模型优化类: 推理加速, 模型压缩/量化, 分布式训练
-   - 模态方向: 多模态理解, 多模态生成, 语音合成, 图像/视频生成
-   - 应用方向: Agent/智能体, RAG/知识库, 对话系统, 代码生成, 搜索排序
-   - 底层能力: 算子优化, 框架开发, AI Compiler, 高性能计算
+2. ★★ core_specialty (核心专长/主线) - 多选，选择最能定义"做什么"的1-2个 ★★
+   这是最重要的标签！指定此人/岗位的核心职业方向：
+   - 语音合成 (TTS)
+   - 语音识别 (ASR)
+   - 多模态理解
+   - 多模态生成
+   - 图像/视频生成
+   - 推荐系统
+   - 搜索排序
+   - Agent/智能体开发
+   - 对话系统
+   - 代码生成
+   
+3. tech_skills (技术技能/辅线) - 多选，选择1-3个通用技能
+   这些是"怎么做"的方法，不定义职业方向：
+   - 预训练
+   - SFT微调
+   - RLHF/对齐
+   - 推理加速
+   - 模型压缩/量化
+   - 分布式训练
+   - RAG/知识库
+   - 算子优化
+   - 框架开发
 
-3. role_type (岗位类型) - 单选:
+4. role_type (岗位类型) - 单选:
    算法工程师, 算法专家, 算法研究员, 工程开发, 解决方案架构师, 产品经理, 技术管理, 研究员, 运维/SRE, 数据工程师
 
-4. role_orientation (角色定位) - 多选:
+5. role_orientation (角色定位) - 多选:
    Research型, Applied/落地型, Platform/Infra型, Tool/Agent Builder, Tech Lead, 纯IC
 
-5. tech_stack (技术栈) - 多选:
+6. tech_stack (技术栈) - 多选:
    Python, C++, Java, Go, PyTorch, TensorFlow, LangChain, vLLM, Transformers, DeepSpeed, TensorRT, CUDA, K8s, Ray, Spark, FAISS
 
-6. industry_exp (行业背景) - 多选:
+7. industry_exp (行业背景) - 多选:
    互联网大厂, AI独角兽, 云厂商, 芯片/硬件, 外企, 学术背景
 
-7. seniority (职级层次) - 单选:
+8. seniority (职级层次) - 单选:
    初级(0-3年), 中级(3-5年), 高级(5-8年), 专家(8年+), 管理层
 
-8. education (教育背景):
+9. education (教育背景):
    - degree: 博士/硕士/本科
    - school_tier: 顶级名校/985/211/海外Top100/普通本科
 """
@@ -74,10 +92,13 @@ JD_PROMPT = """请从以下JD中提取结构化标签。
 公司: {company}
 描述: {description}
 
+⚠️ 重要：请仔细区分 core_specialty（核心专长，定义"做什么"）和 tech_skills（技术技能，定义"怎么做"）
+
 请输出JSON格式，只输出JSON，不要其他内容:
 {{
   "tech_domain": ["技术方向1", "技术方向2"],
-  "specialty": ["细分专长1", "细分专长2"],
+  "core_specialty": ["核心专长1"],
+  "tech_skills": ["技术技能1", "技术技能2"],
   "role_type": "岗位类型",
   "role_orientation": ["角色定位1"],
   "tech_stack": ["技术栈1", "技术栈2"],
@@ -98,10 +119,14 @@ CANDIDATE_PROMPT = """请从以下候选人信息中提取结构化标签。
 学历: {education}
 简历/画像: {resume}
 
+⚠️ 重要：请仔细区分 core_specialty（核心专长，定义此人"做什么"职业方向）和 tech_skills（技术技能，定义"怎么做"的方法）
+例如：语音合成工程师的 core_specialty 是 ["语音合成"]，tech_skills 可能是 ["SFT微调", "预训练"]
+
 请输出JSON格式，只输出JSON，不要其他内容:
 {{
   "tech_domain": ["技术方向1", "技术方向2"],
-  "specialty": ["细分专长1", "细分专长2"],
+  "core_specialty": ["核心专长1"],
+  "tech_skills": ["技术技能1", "技术技能2"],
   "role_type": "岗位类型",
   "role_orientation": ["角色定位1"],
   "tech_stack": ["技术栈1", "技术栈2"],
@@ -136,14 +161,20 @@ def extract_tags(prompt: str, max_retries=3) -> dict:
     return None
 
 
-def process_jobs():
-    """处理所有JD"""
+def process_jobs(force=False):
+    """处理所有JD
+    Args:
+        force: 如果为 True，重新处理所有记录（包括已有标签的）
+    """
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     
-    cursor.execute("SELECT id, title, company, raw_jd_text FROM jobs WHERE structured_tags IS NULL OR structured_tags = 'null'")
+    if force:
+        cursor.execute("SELECT id, title, company, raw_jd_text FROM jobs")
+    else:
+        cursor.execute("SELECT id, title, company, raw_jd_text FROM jobs WHERE structured_tags IS NULL OR structured_tags = 'null'")
     jobs = cursor.fetchall()
-    print(f"\n=== 开始处理 {len(jobs)} 个JD ===")
+    print(f"\n=== 开始处理 {len(jobs)} 个JD {'(强制更新)' if force else ''} ===")
     
     for i, (jid, title, company, jd_text) in enumerate(jobs):
         prompt = JD_PROMPT.format(
@@ -170,19 +201,29 @@ def process_jobs():
     print("JD处理完成！")
 
 
-def process_candidates():
-    """处理所有候选人"""
+def process_candidates(force=False):
+    """处理所有候选人
+    Args:
+        force: 如果为 True，重新处理所有记录（包括已有标签的）
+    """
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     
-    cursor.execute("""
-        SELECT id, name, current_title, current_company, experience_years, 
-               education_level, raw_resume_text, ai_summary 
-        FROM candidates 
-        WHERE structured_tags IS NULL OR structured_tags = 'null'
-    """)
+    if force:
+        cursor.execute("""
+            SELECT id, name, current_title, current_company, experience_years, 
+                   education_level, raw_resume_text, ai_summary 
+            FROM candidates
+        """)
+    else:
+        cursor.execute("""
+            SELECT id, name, current_title, current_company, experience_years, 
+                   education_level, raw_resume_text, ai_summary 
+            FROM candidates 
+            WHERE structured_tags IS NULL OR structured_tags = 'null'
+        """)
     candidates = cursor.fetchall()
-    print(f"\n=== 开始处理 {len(candidates)} 个候选人 ===")
+    print(f"\n=== 开始处理 {len(candidates)} 个候选人 {'(强制更新)' if force else ''} ===")
     
     for i, (cid, name, title, company, years, edu, resume, summary) in enumerate(candidates):
         # 优先使用ai_summary，其次使用raw_resume_text
@@ -219,17 +260,22 @@ if __name__ == "__main__":
     import sys
     
     if len(sys.argv) < 2:
-        print("用法: python extract_tags.py [jobs|candidates|all]")
+        print("用法: python extract_tags.py [jobs|candidates|all] [--force]")
+        print("  --force: 强制更新所有记录（包括已有标签的）")
         sys.exit(1)
     
     target = sys.argv[1]
+    force = '--force' in sys.argv
+    
+    if force:
+        print("⚠️ 强制更新模式：将重新处理所有记录")
     
     if target == "jobs":
-        process_jobs()
+        process_jobs(force=force)
     elif target == "candidates":
-        process_candidates()
+        process_candidates(force=force)
     elif target == "all":
-        process_jobs()
-        process_candidates()
+        process_jobs(force=force)
+        process_candidates(force=force)
     else:
         print(f"未知目标: {target}")

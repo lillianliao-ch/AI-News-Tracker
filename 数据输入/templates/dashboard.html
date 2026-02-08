@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}管理面板 - 猎头联盟{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-3">
+        <!-- 侧边栏 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-user"></i> 企业信息</h5>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-3">
+                    <i class="fas fa-building fa-3x text-primary"></i>
+                </div>
+                <h6 class="text-center">{{ current_user.company_name }}</h6>
+                <p class="text-muted small text-center">{{ current_user.email }}</p>
+                <hr>
+                <div class="row text-center">
+                    <div class="col-6">
+                        <h5 class="text-primary">{{ jobs|length }}</h5>
+                        <small class="text-muted">发布职位</small>
+                    </div>
+                    <div class="col-6">
+                        <h5 class="text-success">{{ jobs|selectattr('is_active')|list|length }}</h5>
+                        <small class="text-muted">活跃职位</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 快速操作 -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-tools"></i> 快速操作</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('post_job') }}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> 发布新职位
+                    </a>
+                    <a href="{{ url_for('jobs') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-search"></i> 浏览所有职位
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-9">
+        <!-- 统计卡片 -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="mb-0">{{ jobs|length }}</h4>
+                                <p class="mb-0">总职位数</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-briefcase fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="mb-0">{{ jobs|selectattr('is_active')|list|length }}</h4>
+                                <p class="mb-0">活跃职位</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-check-circle fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-info text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="mb-0">{{ jobs|rejectattr('is_active')|list|length }}</h4>
+                                <p class="mb-0">已关闭</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="fas fa-pause-circle fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 职位列表 -->
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="fas fa-list"></i> 我的职位</h5>
+                <a href="{{ url_for('post_job') }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus"></i> 发布职位
+                </a>
+            </div>
+            <div class="card-body">
+                {% if jobs %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>职位名称</th>
+                                <th>工作地点</th>
+                                <th>薪资范围</th>
+                                <th>状态</th>
+                                <th>发布时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for job in jobs %}
+                            <tr>
+                                <td>
+                                    <strong>{{ job.title }}</strong>
+                                    <br>
+                                    <small class="text-muted">{{ job.job_type }} | {{ job.experience_level }}</small>
+                                </td>
+                                <td>{{ job.location }}</td>
+                                <td>{{ job.salary_range or '面议' }}</td>
+                                <td>
+                                    {% if job.is_active %}
+                                    <span class="badge bg-success">活跃</span>
+                                    {% else %}
+                                    <span class="badge bg-secondary">已关闭</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ job.posted_at.strftime('%Y-%m-%d') }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a href="{{ url_for('job_detail', job_id=job.id) }}" class="btn btn-outline-primary" title="查看">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <button class="btn btn-outline-warning" title="编辑" onclick="editJob({{ job.id }})">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline-danger" title="删除" onclick="deleteJob({{ job.id }})">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-briefcase fa-3x text-muted mb-3"></i>
+                    <h4 class="text-muted">暂无职位信息</h4>
+                    <p class="text-muted">开始发布您的第一个职位吧！</p>
+                    <a href="{{ url_for('post_job') }}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> 发布职位
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function editJob(jobId) {
+    // 这里可以添加编辑职位的功能
+    alert('编辑功能开发中...');
+}
+
+function deleteJob(jobId) {
+    if (confirm('确定要删除这个职位吗？此操作不可恢复。')) {
+        // 这里可以添加删除职位的功能
+        alert('删除功能开发中...');
+    }
+}
+</script>
+{% endblock %} 

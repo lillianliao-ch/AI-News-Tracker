@@ -38,7 +38,9 @@ class PersonalWebsiteScraper:
         result = {
             'website_email': '',
             'website_company': '',
-            'website_position': ''
+            'website_position': '',
+            'final_url': '',  # 添加最终 URL（跟随重定向后）
+            'redirect_count': 0  # 添加重定向次数
         }
 
         if not website_url:
@@ -50,11 +52,21 @@ class PersonalWebsiteScraper:
 
         try:
             # SSL verification enabled for security
-            resp = self.session.get(website_url, timeout=30, verify=True)
+            # Enable redirect following to handle cases like LAMDA homepage -> GitHub Pages
+            resp = self.session.get(website_url, timeout=30, verify=True, allow_redirects=True)
             self.scraped_count += 1
 
             if resp.status_code != 200:
                 return result
+
+            # Check if URL was redirected
+            final_url = resp.url
+            redirect_count = len(resp.history)
+            result['final_url'] = final_url
+            result['redirect_count'] = redirect_count
+
+            if final_url != website_url:
+                print(f"  → 重定向 ({redirect_count}次): {website_url[:50]}... → {final_url[:50]}...")
 
             soup = BeautifulSoup(resp.text, 'html.parser')
 
@@ -181,6 +193,8 @@ class PersonalWebsiteScraper:
             candidate['website_email'] = website_info['website_email']
             candidate['website_company'] = website_info['website_company']
             candidate['website_position'] = website_info['website_position']
+            candidate['website_final_url'] = website_info['final_url']
+            candidate['website_redirect_count'] = website_info['redirect_count']
 
             # 显示结果
             if website_info['website_email']:
@@ -213,13 +227,17 @@ class PersonalWebsiteScraper:
                     c.update({
                         'website_email': enhanced_record.get('website_email', ''),
                         'website_company': enhanced_record.get('website_company', ''),
-                        'website_position': enhanced_record.get('website_position', '')
+                        'website_position': enhanced_record.get('website_position', ''),
+                        'website_final_url': enhanced_record.get('final_url', ''),
+                        'website_redirect_count': enhanced_record.get('redirect_count', 0)
                     })
             else:
                 # 没有个人网站的候选人，添加空字段
                 c['website_email'] = ''
                 c['website_company'] = ''
                 c['website_position'] = ''
+                c['website_final_url'] = ''
+                c['website_redirect_count'] = 0
 
         # 保存结果
         fieldnames = list(candidates[0].keys())

@@ -8,6 +8,10 @@ class AssistantPanel {
         this.stats = { today: 0, total: 0 };
         this.extractedData = [];
         this.detectedCount = 0; // 检测到的候选人数量
+        this.activeJobs = []; // 活跃JD列表
+        this.selectedJobId = null; // 选中的JD
+        this.lastGeneratedMessage = ''; // 最近生成的消息
+        this.lastCandidate = null; // 最近的候选人
     }
 
     async init() {
@@ -53,72 +57,96 @@ class AssistantPanel {
       </div>
       
       <div class="panel-content">
-        <!-- 检测状态 -->
-        <div class="panel-section detection-section">
-          <div class="detection-row">
-            <span>📊 检测到候选人:</span>
-            <span class="detection-count" id="detectedCount">0 人</span>
-            <button class="refresh-btn" id="refreshBtn" title="刷新检测">🔄</button>
+        <!-- 1️⃣ 导入/查看（最顶部） -->
+        <div class="panel-section" style="padding-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 6px;">
+            <button class="action-btn" id="importFriendsBtn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 4px;">
+              📥 好友页导入
+            </button>
+            <button class="action-btn" id="importTalentBtn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 4px;">
+              📥 人才库导入
+            </button>
+            <button class="refresh-btn" id="refreshBtn" title="刷新检测" style="flex-shrink: 0;">🔄</button>
+          </div>
+          <div style="font-size: 10px; color: #888; text-align: center;">
+            检测到 <span class="detection-count" id="detectedCount" style="color: #667eea; font-weight: 600;">0</span> 位候选人
           </div>
         </div>
         
-        <!-- 批量数量设置 -->
-        <div class="panel-section batch-config">
-          <label class="config-label">批量处理数量:</label>
-          <div class="batch-input-row">
-            <input type="number" id="batchCount" class="batch-input" value="10" min="1" max="100" />
-            <span class="batch-hint">条</span>
+        <!-- 2️⃣ AI 个性化消息（核心功能） -->
+        <div class="panel-section ai-section" style="border-top: 1.5px solid #667eea; padding-top: 10px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-size: 13px; font-weight: 600; color: #667eea;">✨ AI 个性化消息</span>
+            <button id="refreshJobsBtn" style="font-size: 10px; color: #999; background: none; border: none; cursor: pointer;">🔄 刷新JD</button>
           </div>
-        </div>
-        
-        <!-- 批量操作按钮 -->
-        <div class="panel-section">
-          <button class="action-btn import-btn" id="importViewBtn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; margin-bottom: 8px;">
-            <span class="btn-icon">📥</span>
-            导入/查看候选人
+          <select id="jobSelect" style="width: 100%; padding: 5px 8px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 11px; background: white; cursor: pointer; margin-bottom: 8px;">
+            <option value="auto">🎯 自动匹配（紧急JD优先）</option>
+          </select>
+          <button class="action-btn" id="aiGenerateBtn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; color: white; font-weight: 600;">
+            <span class="btn-icon">🤖</span> AI 生成个性化消息
           </button>
-          <button class="action-btn primary" id="batchAddFriendsBtn">
-            <span class="btn-icon">🤝</span>
-            批量加好友
-          </button>
-          <button class="action-btn warning" id="batchSendMsgBtn">
-            <span class="btn-icon">💬</span>
-            批量发消息
-          </button>
-          <button class="action-btn" id="extractBtn">
-            <span class="btn-icon">📋</span>
-            提取信息
-          </button>
-        </div>
-        
-        <!-- 人才库功能 (沟通管理页面) -->
-        <div class="panel-section talent-section" style="border-top: 1px dashed #e0e0e0; padding-top: 12px; margin-top: 12px;">
-          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">📌 人才库功能：</div>
-          <button class="action-btn" id="generateMsgBtn" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); border: none; color: white;">
-            <span class="btn-icon">📝</span>
-            生成沟通消息
-          </button>
+          <div id="aiGenerateStatus" style="font-size: 11px; color: #999; margin-top: 4px; display: none;"></div>
         </div>
         
         <!-- 生成的消息显示区 -->
-        <div class="panel-section message-result-section" id="messageResultSection" style="display: none; background: #f9f9f9; border-radius: 8px; padding: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span style="font-size: 12px; font-weight: 600; color: #333;">📨 生成的消息：</span>
-            <button class="copy-btn" id="copyMsgBtn" style="font-size: 11px; padding: 2px 8px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer;">复制</button>
+        <div class="panel-section message-result-section" id="messageResultSection" style="display: none; background: linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%); border-radius: 8px; padding: 10px; border: 1px solid #e0e6ff;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 11px; font-weight: 600; color: #333;">📨 AI 消息</span>
+            <div>
+              <button class="copy-btn" id="copyMsgBtn" style="font-size: 10px; padding: 2px 6px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; margin-right: 4px;">📋 复制</button>
+              <button class="copy-btn" id="fillMsgBtn" style="font-size: 10px; padding: 2px 6px; border: 1px solid #667eea; border-radius: 4px; background: #667eea; color: white; cursor: pointer;">📝 填入对话框</button>
+            </div>
           </div>
-          <div id="generatedMessage" style="font-size: 13px; line-height: 1.5; color: #333; white-space: pre-wrap; word-break: break-all; max-height: 120px; overflow-y: auto; background: white; padding: 8px; border-radius: 4px; border: 1px solid #e0e0e0;"></div>
-          <div style="margin-top: 8px; font-size: 11px; color: #999;">
-            候选人: <span id="candidateName" style="color: #667eea; font-weight: 500;"></span>
+          <div id="generatedMessage" style="font-size: 12px; line-height: 1.5; color: #333; white-space: pre-wrap; word-break: break-all; max-height: 120px; overflow-y: auto; background: white; padding: 8px; border-radius: 6px; border: 1px solid #e0e0e0;"></div>
+          <div style="margin-top: 6px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 10px; color: #999;">
+              <span id="candidateName" style="color: #667eea;"></span>
+            </span>
+            <span style="font-size: 10px; color: #999;">
+              <span id="charCount"></span>字
+              <span id="jobUsed" style="color: #764ba2; margin-left: 4px;"></span>
+            </span>
           </div>
         </div>
-        
-        <!-- 消息模板 -->
-        <div class="panel-section template-section">
-          <label class="template-label">消息模板：</label>
-          <textarea id="messageTemplate" class="template-textarea" 
-            placeholder="您好{name}，我是XX公司的HR，看到您的简历很优秀，想和您聊聊..."></textarea>
-          <div class="template-hint">变量: {name} 姓名, {company} 公司, {position} 职位, {experience} 年限</div>
-        </div>
+
+        <!-- 3️⃣ 批量操作（折叠） -->
+        <details class="panel-section" style="margin-top: 6px;">
+          <summary style="font-size: 11px; color: #999; cursor: pointer; padding: 4px 0;">⚡ 批量操作</summary>
+          <div style="margin-top: 8px;">
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+              <label style="font-size: 11px; color: #666; white-space: nowrap;">数量:</label>
+              <input type="number" id="batchCount" class="batch-input" value="10" min="1" max="100" style="width: 60px;" />
+              <span style="font-size: 11px; color: #999;">条</span>
+            </div>
+            <button class="action-btn primary" id="batchAddFriendsBtn" style="margin-bottom: 6px;">
+              <span class="btn-icon">🤝</span> 批量加好友
+            </button>
+            <button class="action-btn warning" id="batchSendMsgBtn" style="margin-bottom: 6px;">
+              <span class="btn-icon">💬</span> 批量发消息
+            </button>
+            <div style="display: flex; gap: 6px; margin-bottom: 6px;">
+              <button class="action-btn" id="extractBtn" style="flex: 1;">
+                <span class="btn-icon">📋</span> 提取信息
+              </button>
+            </div>
+            <details style="margin-top: 4px;">
+              <summary style="font-size: 10px; color: #bbb; cursor: pointer;">📝 消息模板</summary>
+              <textarea id="messageTemplate" class="template-textarea" 
+                placeholder="您好{name}，我是XX公司的HR..."></textarea>
+              <div class="template-hint" style="font-size: 10px;">变量: {name} {company} {position} {experience}</div>
+            </details>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 6px; border-top: 1px solid #eee;">
+              <div style="display: flex; gap: 4px;">
+                <button class="action-btn success" id="exportCsvBtn" style="font-size: 10px; padding: 3px 6px; width: auto;">📄 CSV</button>
+                <button class="action-btn" id="exportJsonBtn" style="font-size: 10px; padding: 3px 6px; width: auto;">📋 JSON</button>
+              </div>
+              <div style="font-size: 10px; color: #999;">
+                今日 <span id="todayCount" style="color: #667eea; font-weight: 600;">${this.stats.today}</span> · 
+                总计 <span id="totalCount" style="color: #667eea; font-weight: 600;">${this.stats.total}</span>
+              </div>
+            </div>
+          </div>
+        </details>
         
         <!-- 进度显示 -->
         <div class="panel-section progress-section" id="progressSection">
@@ -134,35 +162,9 @@ class AssistantPanel {
             &nbsp;|&nbsp;
             <span class="failed">✗ <span id="failedCount">0</span></span>
           </div>
-          <button class="action-btn danger small" id="stopBtn" style="margin-top: 8px;">
+          <button class="action-btn danger small" id="stopBtn" style="margin-top: 6px;">
             ⏹ 停止
           </button>
-        </div>
-        
-        <!-- 导出区 -->
-        <div class="panel-section">
-          <div class="action-row">
-            <button class="action-btn success" id="exportCsvBtn">
-              📄 导出 CSV
-            </button>
-            <button class="action-btn" id="exportJsonBtn">
-              📋 JSON
-            </button>
-          </div>
-        </div>
-        
-        <!-- 统计 -->
-        <div class="panel-section stats-section">
-          <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-number" id="todayCount">${this.stats.today}</div>
-              <div class="stat-label">今日</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number" id="totalCount">${this.stats.total}</div>
-              <div class="stat-label">总计</div>
-            </div>
-          </div>
         </div>
       </div>
     `;
@@ -177,13 +179,23 @@ class AssistantPanel {
         // 刷新检测
         this.panel.querySelector('#refreshBtn')?.addEventListener('click', () => this.detectCandidates());
 
-        // 导入/查看候选人
-        this.panel.querySelector('#importViewBtn')?.addEventListener('click', async () => {
+        // 好友页导入
+        this.panel.querySelector('#importFriendsBtn')?.addEventListener('click', async () => {
             if (window.DetailPanelExtractor) {
                 const extractor = new DetailPanelExtractor();
                 await extractor.importOrView();
             } else {
-                MaimaiUtils.showNotification('详情提取器未加载', 'error');
+                MaimaiUtils.showNotification('好友详情提取器未加载', 'error');
+            }
+        });
+
+        // 人才库导入
+        this.panel.querySelector('#importTalentBtn')?.addEventListener('click', async () => {
+            if (window.TalentPanelExtractor) {
+                const extractor = new TalentPanelExtractor();
+                await extractor.importOrView();
+            } else {
+                MaimaiUtils.showNotification('人才库提取器未加载', 'error');
             }
         });
 
@@ -221,15 +233,28 @@ class AssistantPanel {
         this.panel.querySelector('#exportCsvBtn')?.addEventListener('click', () => this.handleExport('csv'));
         this.panel.querySelector('#exportJsonBtn')?.addEventListener('click', () => this.handleExport('json'));
 
-        // 生成沟通消息 (人才库功能)
-        this.panel.querySelector('#generateMsgBtn')?.addEventListener('click', async () => {
-            await this.handleGenerateMessage();
+        // AI 生成个性化消息
+        this.panel.querySelector('#aiGenerateBtn')?.addEventListener('click', async () => {
+            await this.handleAIGenerateMessage();
+        });
+
+        // 刷新JD列表
+        this.panel.querySelector('#refreshJobsBtn')?.addEventListener('click', async () => {
+            await this.loadActiveJobs();
         });
 
         // 复制消息
         this.panel.querySelector('#copyMsgBtn')?.addEventListener('click', () => {
             this.handleCopyMessage();
         });
+
+        // 填入对话框
+        this.panel.querySelector('#fillMsgBtn')?.addEventListener('click', () => {
+            this.handleFillMessage();
+        });
+
+        // 初始加载JD列表
+        this.loadActiveJobs();
 
         // 拖拽
         this.bindDragEvents();
@@ -238,38 +263,255 @@ class AssistantPanel {
         this.panel.querySelector('.panel-header')?.addEventListener('dblclick', () => this.toggle());
     }
 
-    // 生成沟通消息
-    async handleGenerateMessage() {
-        console.log('📝 开始生成沟通消息...');
+    // AI 生成个性化消息（调用后端 LLM API）
+    async handleAIGenerateMessage() {
+        console.log('🤖 开始AI生成个性化消息...');
+        const btn = this.panel.querySelector('#aiGenerateBtn');
+        const statusEl = this.panel.querySelector('#aiGenerateStatus');
 
-        if (!window.TalentPanelExtractor) {
-            MaimaiUtils.showNotification('人才提取器未加载', 'error');
+        // 提取当前候选人信息
+        let candidateData = null;
+
+        // 方法1: 从人才库面板提取
+        if (window.TalentPanelExtractor) {
+            const extractor = new TalentPanelExtractor();
+            candidateData = extractor.extractFromTalentPanel();
+        }
+
+        // 方法2: 从招聘页候选人卡片提取（立即沟通弹窗上方的信息）
+        if (!candidateData || !candidateData.name) {
+            candidateData = this._extractFromRecruitPage();
+        }
+
+        if (!candidateData || !candidateData.name) {
+            MaimaiUtils.showNotification('未能提取到候选人信息，请先打开候选人详情面板', 'warning');
             return;
         }
 
-        const extractor = new TalentPanelExtractor();
-        const template = this.panel.querySelector('#messageTemplate')?.value ||
-            '您好{name}，我是XX公司的HR，看到您在{company}的工作经历很优秀，想和您聊聊新的机会，方便吗？';
+        // 获取选中的JD
+        const jobSelect = this.panel.querySelector('#jobSelect');
+        const selectedValue = jobSelect?.value;
+        const jobId = (selectedValue && selectedValue !== 'auto') ? parseInt(selectedValue) : null;
 
-        const result = await extractor.extractAndGenerateMessage(template);
+        // 显示加载状态
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '<span class="btn-icon">⏳</span> AI 正在思考...';
+        }
+        if (statusEl) {
+            statusEl.style.display = 'block';
+            statusEl.textContent = `正在为 ${candidateData.name} 生成个性化消息...`;
+        }
 
-        if (result.success) {
-            // 显示生成的消息
-            const msgSection = this.panel.querySelector('#messageResultSection');
-            const msgEl = this.panel.querySelector('#generatedMessage');
-            const nameEl = this.panel.querySelector('#candidateName');
+        try {
+            const apiUrl = `${MaimaiConfig.api.baseUrl}/api/generate-message`;
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    candidate: candidateData,
+                    job_id: jobId
+                }),
+                signal: AbortSignal.timeout(MaimaiConfig.api.timeout)
+            });
 
-            if (msgSection && msgEl && nameEl) {
-                msgSection.style.display = 'block';
-                msgEl.textContent = result.message;
-                nameEl.textContent = `${result.candidate.name} - ${result.candidate.currentCompany} ${result.candidate.currentPosition}`;
+            if (!response.ok) {
+                const err = await response.json().catch(() => ({}));
+                throw new Error(err.detail || `API错误: ${response.status}`);
             }
 
-            MaimaiUtils.showNotification(`已为 ${result.candidate.name} 生成消息`, 'success');
-            console.log('  候选人数据:', result.candidate);
-            console.log('  生成消息:', result.message);
+            const result = await response.json();
+
+            if (result.success) {
+                this.lastGeneratedMessage = result.message;
+                this.lastCandidate = candidateData;
+
+                // 显示生成的消息
+                const msgSection = this.panel.querySelector('#messageResultSection');
+                const msgEl = this.panel.querySelector('#generatedMessage');
+                const nameEl = this.panel.querySelector('#candidateName');
+                const charCountEl = this.panel.querySelector('#charCount');
+                const jobUsedEl = this.panel.querySelector('#jobUsed');
+
+                if (msgSection && msgEl) {
+                    msgSection.style.display = 'block';
+                    msgEl.textContent = result.message;
+                }
+                if (nameEl) {
+                    nameEl.textContent = `${candidateData.name} - ${candidateData.currentCompany || ''} ${candidateData.currentPosition || ''}`;
+                }
+                if (charCountEl) {
+                    charCountEl.textContent = `${result.char_count || result.message.length}/300`;
+                    charCountEl.style.color = (result.char_count || result.message.length) > 300 ? '#ff4d4f' : '#52c41a';
+                }
+                if (jobUsedEl && result.job_used) {
+                    jobUsedEl.textContent = `📌 ${result.job_used.company} · ${result.job_used.title}`;
+                }
+
+                MaimaiUtils.showNotification(`✨ 已为 ${candidateData.name} 生成AI个性化消息`, 'success');
+                console.log('  候选人:', candidateData);
+                console.log('  消息:', result.message);
+                console.log('  关联JD:', result.job_used);
+            } else {
+                throw new Error(result.error || '生成失败');
+            }
+        } catch (error) {
+            console.error('❌ AI消息生成失败:', error);
+            MaimaiUtils.showNotification(`AI消息生成失败: ${error.message}`, 'error');
+        } finally {
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = '<span class="btn-icon">🤖</span> AI 生成个性化消息';
+            }
+            if (statusEl) {
+                statusEl.style.display = 'none';
+            }
+        }
+    }
+
+    // 从招聘搜索页提取候选人信息（立即沟通弹窗）
+    _extractFromRecruitPage() {
+        // 试图从立即沟通弹窗提取
+        const dialog = document.querySelector('.recruit-direct-dialog, .ant-modal-content, [class*="dialog"]');
+        if (dialog) {
+            const name = dialog.querySelector('.name, [class*="name"]')?.textContent?.trim();
+            const desc = dialog.querySelector('.desc, [class*="desc"]')?.textContent?.trim();
+            if (name) {
+                return { name, currentCompany: desc || '', currentPosition: '' };
+            }
+        }
+
+        // 试图从当前选中/悬停的候选人卡片提取
+        const cards = document.querySelectorAll('.talent-card, [class*="talent-card"], [class*="candidate-card"]');
+        for (const card of cards) {
+            const nameEl = card.querySelector('.name, [class*="name"]');
+            const name = nameEl?.textContent?.trim();
+            if (!name) continue;
+
+            // 获取工作信息
+            const workInfo = card.querySelector('.work-info, [class*="work"]')?.textContent?.trim() || '';
+            const eduInfo = card.querySelector('.edu-info, [class*="edu"]')?.textContent?.trim() || '';
+            const tagsEls = card.querySelectorAll('.tag, [class*="tag"]');
+            const skills = Array.from(tagsEls).map(t => t.textContent.trim()).filter(Boolean);
+
+            return {
+                name,
+                currentCompany: workInfo.split(/[·,，]/)[0] || '',
+                currentPosition: workInfo.split(/[·,，]/)[1] || '',
+                education: eduInfo,
+                skills
+            };
+        }
+
+        return null;
+    }
+
+    // 填入对话框
+    handleFillMessage() {
+        if (!this.lastGeneratedMessage) {
+            MaimaiUtils.showNotification('请先生成消息', 'warning');
+            return;
+        }
+
+        // 查找立即沟通对话框的输入区域
+        const selectors = [
+            'textarea[placeholder*="沟通"]',
+            'textarea[placeholder*="打招呼"]',
+            '.recruit-direct-dialog textarea',
+            '.ant-modal-content textarea',
+            '[class*="dialog"] textarea',
+            '[class*="modal"] textarea',
+            'textarea',
+        ];
+
+        let textarea = null;
+        for (const sel of selectors) {
+            textarea = document.querySelector(sel);
+            if (textarea) break;
+        }
+
+        if (textarea) {
+            // 设置值并触发事件
+            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+                window.HTMLTextAreaElement.prototype, 'value'
+            ).set;
+            nativeInputValueSetter.call(textarea, this.lastGeneratedMessage);
+            textarea.dispatchEvent(new Event('input', { bubbles: true }));
+            textarea.dispatchEvent(new Event('change', { bubbles: true }));
+
+            MaimaiUtils.showNotification('消息已填入对话框', 'success');
+
+            // 记录沟通日志
+            this._recordCommLog();
         } else {
-            MaimaiUtils.showNotification(result.error || '生成消息失败', 'error');
+            // 回退：复制到剪贴板
+            navigator.clipboard.writeText(this.lastGeneratedMessage).then(() => {
+                MaimaiUtils.showNotification('未找到对话框，已复制到剪贴板', 'warning');
+                this._recordCommLog();
+            });
+        }
+    }
+
+    // 记录沟通日志到后端DB
+    async _recordCommLog() {
+        if (!this.lastCandidate) return;
+
+        const jobSelect = this.panel.querySelector('#jobSelect');
+        const jobId = jobSelect?.value !== 'auto' ? parseInt(jobSelect.value) : null;
+
+        try {
+            const apiUrl = `${MaimaiConfig.api.baseUrl}/api/comm-log`;
+            await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    candidate_name: this.lastCandidate.name,
+                    message: this.lastGeneratedMessage,
+                    channel: 'maimai_direct',
+                    job_id: jobId,
+                    candidate_company: this.lastCandidate.currentCompany || '',
+                    candidate_position: this.lastCandidate.currentPosition || '',
+                })
+            });
+            console.log('📝 沟通日志已记录');
+        } catch (e) {
+            console.warn('记录沟通日志失败:', e);
+        }
+    }
+
+    // 加载活跃JD列表
+    async loadActiveJobs() {
+        try {
+            const apiUrl = `${MaimaiConfig.api.baseUrl}/api/jobs/active?limit=30`;
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error(`API错误: ${response.status}`);
+
+            const result = await response.json();
+            if (result.success) {
+                this.activeJobs = result.jobs;
+                this._renderJobSelect();
+                console.log(`📋 已加载 ${result.count} 个活跃JD`);
+            }
+        } catch (e) {
+            console.warn('加载JD列表失败:', e);
+        }
+    }
+
+    // 渲染JD下拉选择
+    _renderJobSelect() {
+        const select = this.panel?.querySelector('#jobSelect');
+        if (!select) return;
+
+        // 保留第一个auto选项
+        select.innerHTML = '<option value="auto">🎯 自动匹配（紧急JD优先）</option>';
+
+        for (const job of this.activeJobs) {
+            const opt = document.createElement('option');
+            opt.value = job.id;
+            const urgencyIcon = job.urgency >= 2 ? '🔴' : (job.urgency >= 1 ? '🟡' : '');
+            const hc = job.headcount ? ` HC:${job.headcount}` : '';
+            opt.textContent = `${urgencyIcon} ${job.company} · ${job.title}${hc}`;
+            select.appendChild(opt);
         }
     }
 
@@ -279,6 +521,7 @@ class AssistantPanel {
         if (msgEl && msgEl.textContent) {
             navigator.clipboard.writeText(msgEl.textContent).then(() => {
                 MaimaiUtils.showNotification('消息已复制到剪贴板', 'success');
+                this._recordCommLog();
             }).catch(() => {
                 MaimaiUtils.showNotification('复制失败', 'error');
             });
@@ -316,8 +559,8 @@ class AssistantPanel {
 
         const countEl = this.panel?.querySelector('#detectedCount');
         if (countEl) {
-            countEl.textContent = `${this.detectedCount} 人`;
-            countEl.style.color = this.detectedCount > 0 ? '#52c41a' : '#999';
+            countEl.textContent = `${this.detectedCount}`;
+            countEl.style.color = this.detectedCount > 0 ? '#667eea' : '#999';
         }
 
         console.log(`📊 检测到 ${this.detectedCount} 个候选人卡片`);

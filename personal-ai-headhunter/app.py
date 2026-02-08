@@ -1153,6 +1153,90 @@ elif page == "Dashboard":
         st.plotly_chart(fig_domain, use_container_width=True)
     else:
         st.info("暂无技术方向数据")
+    
+    # --- 门户转化漏斗 ---
+    st.divider()
+    st.markdown("## 🔗 门户转化漏斗")
+    
+    try:
+        import hashlib, requests
+        PORTAL_BASE = "https://jobs.rupro-consulting.com"
+        token = hashlib.sha256('ruproAI'.encode()).hexdigest()
+        stats_resp = requests.get(f"{PORTAL_BASE}/api/portal/stats",
+                                  cookies={'auth_token': token}, timeout=10)
+        
+        if stats_resp.status_code == 200 and stats_resp.json().get('success'):
+            stats = stats_resp.json()
+            funnel = stats['funnel']
+            recent = stats['recent_7d']
+            top_viewed = stats.get('top_viewed', [])
+            
+            # 漏斗指标卡片
+            fc1, fc2, fc3, fc4, fc5, fc6 = st.columns(6)
+            fc1.metric("🏠 门户总数", funnel['total_portals'])
+            fc2.metric("📨 已推JD", funnel['portals_with_recs'])
+            fc3.metric("👁️ 已打开", funnel['viewed_portals'])
+            fc4.metric("💬 有反馈", funnel['total_feedback'])
+            fc5.metric("✅ 感兴趣", funnel['interested'])
+            fc6.metric("🎯 进面试", funnel['advanced_pipeline'])
+            
+            # 漏斗图 + 近7天
+            funnel_col, recent_col = st.columns([2, 1])
+            
+            with funnel_col:
+                import plotly.graph_objects as go
+                
+                funnel_stages = ["门户总数", "已推送JD", "已打开", "有反馈", "感兴趣", "进入面试"]
+                funnel_values = [
+                    funnel['total_portals'],
+                    funnel['portals_with_recs'],
+                    funnel['viewed_portals'],
+                    funnel['total_feedback'],
+                    funnel['interested'],
+                    funnel['advanced_pipeline'],
+                ]
+                
+                fig_funnel = go.Figure(go.Funnel(
+                    y=funnel_stages,
+                    x=funnel_values,
+                    textinfo="value+percent initial",
+                    marker=dict(color=["#3b82f6", "#8b5cf6", "#d4af55", "#f59e0b", "#10b981", "#ef4444"]),
+                ))
+                fig_funnel.update_layout(height=350, margin=dict(l=10, r=10, t=10, b=10))
+                st.plotly_chart(fig_funnel, use_container_width=True)
+            
+            with recent_col:
+                st.markdown("#### 📅 近 7 天")
+                st.metric("反馈数", recent['feedback'])
+                st.metric("感兴趣", recent['interested'])
+                st.markdown("---")
+                st.markdown("#### 📊 总量")
+                st.metric("总访问次数", funnel['total_views'])
+                st.metric("不感兴趣", funnel['not_interested'])
+            
+            # Top 10 最活跃门户
+            if top_viewed:
+                with st.expander(f"🏆 最活跃门户 Top {len(top_viewed)}", expanded=False):
+                    tv_data = []
+                    for p in top_viewed:
+                        last_visit = p.get('last_visited_at', '')
+                        if last_visit:
+                            try:
+                                from datetime import datetime as dt
+                                lv = dt.fromisoformat(last_visit)
+                                last_visit = lv.strftime("%m/%d %H:%M")
+                            except:
+                                pass
+                        tv_data.append({
+                            "候选人": p['candidate_name'],
+                            "访问次数": p['visit_count'],
+                            "最后访问": last_visit,
+                        })
+                    st.dataframe(pd.DataFrame(tv_data), use_container_width=True, hide_index=True)
+        else:
+            st.warning("门户统计接口返回异常")
+    except Exception as e:
+        st.caption(f"⚠️ 门户统计加载失败: {e}")
 
 # ---------------- 沟通跟进 ----------------
 elif page == "沟通跟进":

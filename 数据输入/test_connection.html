@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连接测试 - 猎头联盟</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .success { background: rgba(76, 175, 80, 0.8); }
+        .info { background: rgba(33, 150, 243, 0.8); }
+        .warning { background: rgba(255, 193, 7, 0.8); }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 猎头联盟网站连接测试</h1>
+        
+        <div class="status success">
+            ✅ 服务器运行正常 - 端口 8080
+        </div>
+        
+        <div class="grid">
+            <div>
+                <h3>📱 访问地址</h3>
+                <p><strong>本机访问:</strong><br>
+                <a href="http://localhost:8080" class="btn">http://localhost:8080</a></p>
+                
+                <p><strong>局域网访问:</strong><br>
+                <a href="http://192.168.3.97:8080" class="btn">http://192.168.3.97:8080</a></p>
+            </div>
+            
+            <div>
+                <h3>🔧 功能测试</h3>
+                <p>请测试以下功能：</p>
+                <ul>
+                    <li>✅ 首页加载</li>
+                    <li>✅ 企业注册</li>
+                    <li>✅ 职位发布</li>
+                    <li>✅ 职位搜索</li>
+                    <li>✅ 移动端显示</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="status info">
+            <h3>📋 部署信息</h3>
+            <p><strong>服务器IP:</strong> 192.168.3.97</p>
+            <p><strong>端口:</strong> 8080</p>
+            <p><strong>状态:</strong> 运行中</p>
+            <p><strong>模式:</strong> 开发模式（局域网访问已启用）</p>
+        </div>
+        
+        <div class="status warning">
+            <h3>⚠️ 注意事项</h3>
+            <ul>
+                <li>确保所有设备在同一WiFi网络下</li>
+                <li>如果无法访问，请检查防火墙设置</li>
+                <li>当前为开发模式，仅用于内部测试</li>
+                <li>生产环境请使用HTTPS和更安全的配置</li>
+            </ul>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="http://localhost:8080" class="btn" style="font-size: 18px; padding: 15px 30px;">
+                🚀 进入猎头联盟网站
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // 测试连接状态
+        fetch('http://localhost:8080')
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ 网站连接正常');
+                }
+            })
+            .catch(error => {
+                console.log('❌ 连接失败:', error);
+            });
+    </script>
+</body>
+</html> 

@@ -48,6 +48,14 @@ class Candidate(Base):
     twitter_url = Column(String(500))
     notes = Column(Text)
 
+    # 好友管理
+    is_friend = Column(Integer, default=0) # 是否标记为好友 (0=否, 1=是)
+    friend_added_at = Column(String) # 添加为好友的时间
+    friend_channel = Column(String) # 好友来源渠道
+    communication_logs = Column(Text) # 沟通记录
+    structured_tags = Column(JSON) # 结构化标签
+    source = Column(String, default='脉脉') # 数据来源
+
     # 向量数据库关联
     vector_id = Column(String(100)) # ChromaDB 中的 ID
     
@@ -138,9 +146,10 @@ if db_env_path:
     else:
         db_path = db_env_path
 else:
-    # 默认路径 (开发环境 fallback)
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    db_path = os.path.join(base_dir, "data", "headhunter.db")
+    # 默认路径 - 使用 personal-ai-headhunter 项目的 headhunter_dev.db
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(current_dir)
+    db_path = os.path.join(parent_dir, "personal-ai-headhunter", "data", "headhunter_dev.db")
 
 # 确保目录存在
 os.makedirs(os.path.dirname(db_path), exist_ok=True)

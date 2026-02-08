@@ -1,0 +1,16 @@
+================================================================================
+优先级邮箱提取
+================================================================================
+
+总候选人: 462
+需要提取信息的候选人: 462
+
+Traceback (most recent call last):
+  File "/Users/lillianliao/notion_rag/lamda_scraper/priority_email_extractor.py", line 357, in <module>
+    main()
+  File "/Users/lillianliao/notion_rag/lamda_scraper/priority_email_extractor.py", line 353, in main
+    extractor.process_candidates(args.input, args.output, args.limit)
+  File "/Users/lillianliao/notion_rag/lamda_scraper/priority_email_extractor.py", line 240, in process_candidates
+    print(f"[{i}/{min(limit, len(high_priority))}] {name} | 优先级: {score}")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'int' and 'NoneType'

@@ -1,0 +1,682 @@
+================================================================================
+LAMDA 候选人 GitHub 邮箱批量提取
+================================================================================
+
+📊 总候选人: 462
+✓ 有 GitHub: 91
+✗ 无 GitHub: 371
+
+⚠️ 未设置 GITHUB_TOKEN 环境变量
+   继续执行（未认证模式，限流更严格）
+
+开始提取邮箱...
+================================================================================
+
+[1/91] 杨嘉祺
+  GitHub: https://github.com/ThyrixYang
+  📧 为 ThyrixYang 提取邮箱...
+    抓取网站: https://academic.thyrixyang.com
+    网站找到 1 个邮箱: ['thyrixyang@gmail.com']
+    检查 README: ThyrixYang/es_dfm
+    检查 README: ThyrixYang/IDToolkit
+    检查 README: ThyrixYang/nju_cs_kaoyan_19
+    检查 README: ThyrixYang/nju_cs_kaoyan
+    检查 README: ThyrixYang/awesome-artificial-intelligence-research
+  ✓ 找到 1 个邮箱:
+    - thyrixyang@gmail.com (来源: 网站)
+  ✓ 邮箱: thyrixyang@gmail.com
+  来源: 网站
+
+[2/91] 邱梓豪
+  GitHub: https://github.com/zhqiu/NDCG-Optimization
+  📧 为 zhqiu 提取邮箱...
+    检查 README: zhqiu/TempNet
+    检查 README: zhqiu/diffusion
+    检查 README: zhqiu/contrastive-learning-iSogCLR
+    检查 README: zhqiu/NDCG-Optimization
+    检查 README: zhqiu/UWM-CS524-Intro-To-Optimization
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[3/91] 陈雄辉
+  GitHub: https://pages.github.com/
+  ✗ 未找到邮箱
+
+[4/91] 罗凡明
+  GitHub: https://github.com/FanmingL/Recurrent-Offpolicy-RL
+  📧 为 FanmingL 提取邮箱...
+    检查 README: FanmingL/Recurrent-Offpolicy-RL
+    检查 README: FanmingL/USPL
+    检查 README: FanmingL/SmartLogger
+    检查 README: FanmingL/independent-analysis
+    检查 README: FanmingL/ESCP
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[5/91] 庞竟成
+  GitHub: http://github.com/lafmdp
+  📧 为 lafmdp 提取邮箱...
+    抓取网站: https://jingchengpang.github.io
+    网站找到 1 个邮箱: ['pangjc@lamda.nju.edu.cn']
+    检查 README: lafmdp/Awesome-Papers-Autonomous-Agent
+    检查 README: lafmdp/ReViWo
+    检查 README: lafmdp/O3F
+    检查 README: lafmdp/awesome-RLAIF
+    检查 README: lafmdp/MCTS-2048
+  ✓ 找到 1 个邮箱:
+    - pangjc@lamda.nju.edu.cn (来源: 网站)
+  ✓ 邮箱: pangjc@lamda.nju.edu.cn
+  来源: 网站
+
+[6/91] 李新春
+  GitHub: https://github.com/lxcnju/ATS-LargeKD
+  📧 为 lxcnju 提取邮箱...
+    抓取网站: https://github.com/lxcnju
+    网站抓取失败: HTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /lxcnju (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104071c70>: Failed to resolve 'github.com' ([Errno 8] nodename nor servname provided, or not known)"))
+    检查 README: lxcnju/FedRepo
+    检查 README: lxcnju/histogram_equalization
+    检查 README: lxcnju/approximated_kmeans
+    检查 README: lxcnju/lenet5_tensorflow
+    检查 README: lxcnju/DMIS
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[7/91] 李龙飞
+  GitHub: https://github.com/longfeili1997/knowledge_consistency
+  📧 为 longfeili1997 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[8/91] 余浩
+  GitHub: https://github.com/DoctorKey/DIGIX_2020_B_image_retrieval
+  📧 为 DoctorKey 提取邮箱...
+    抓取网站: https://doctorkey.github.io/
+    检查 README: DoctorKey/C-3PO
+    检查 README: DoctorKey/diffusers
+    检查 README: DoctorKey/DoctorKey.github.io
+    检查 README: DoctorKey/DoctorKey
+    检查 README: DoctorKey/njuthesis
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[9/91] 黄楷宸
+  GitHub: https://github.com/huang-kc
+  📧 为 huang-kc 提取邮箱...
+    检查 README: huang-kc/web-chain
+    检查 README: huang-kc/MINER
+    检查 README: huang-kc/huang-kc.github.io
+    检查 README: huang-kc/huang-kc
+    README 找到 1 个邮箱
+    检查 README: huang-kc/ViT4RL
+  ✓ 找到 1 个邮箱:
+    - huangkc@lamda.nju.edu.cn (来源: README)
+  ✓ 邮箱: huangkc@lamda.nju.edu.cn
+  来源: README
+
+[10/91] 黄廷基
+  GitHub: https://github.com/Tingji2419
+  📧 为 Tingji2419 提取邮箱...
+    API 请求失败: HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=10)
+    检查 README: Tingji2419/META-ID
+    检查 README: Tingji2419/SeqFusion
+    检查 README: Tingji2419/Model-Spider
+    检查 README: Tingji2419/MSS
+    检查 README: Tingji2419/IDSTA
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[11/91] 宋磊
+  GitHub: https://github.com/wowchemy/wowchemy-hugo-themes
+  📧 为 wowchemy 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[12/91] 宋鹏霄
+  GitHub: https://github.com/pengxiao-song
+  📧 为 pengxiao-song 提取邮箱...
+    检查 README: pengxiao-song/LaWGPT
+    README 找到 1 个邮箱
+    检查 README: pengxiao-song/awesome-chinese-legal-resources
+    检查 README: pengxiao-song/TI4ALL
+    检查 README: pengxiao-song/pengxiao-song
+    README 找到 1 个邮箱
+    检查 README: pengxiao-song/MatrixSlowPro
+  ✓ 找到 2 个邮箱:
+    - git@github.com (来源: README)
+    - songpx@yeah.net (来源: README)
+  ✓ 邮箱: git@github.com
+  来源: README
+
+[13/91] 徐峰
+  GitHub: https://github.com/x35f/unstable_baselines
+  📧 为 x35f 提取邮箱...
+    抓取网站: https://www.lamda.nju.edu.cn/xufeng
+    检查 README: x35f/alpha2
+    检查 README: x35f/unstable_baselines
+    检查 README: x35f/meta_rl
+    检查 README: x35f/model_based_rl
+    检查 README: x35f/baselines
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[14/91] 叶志浩
+  GitHub: https://github.com/Vigilans
+  📧 为 Vigilans 提取邮箱...
+    检查 README: Vigilans/helmwave
+    检查 README: Vigilans/accountcolors
+    检查 README: Vigilans/docs
+    检查 README: Vigilans/public-image-mirror
+    检查 README: Vigilans/cri-dockerd
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[15/91] 庄镇华
+  GitHub: https://github.com/Tencent/3TS/tree/coo-consistency-check
+  📧 为 Tencent 提取邮箱...
+    API 请求失败: HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=10)
+    抓取网站: https://opensource.tencent.com
+    网站找到 1 个邮箱: ['tencentopen@tencent.com']
+    检查 README: Tencent/tmagic-editor
+    检查 README: Tencent/WeKnora
+    检查 README: Tencent/tdesign-flutter
+    检查 README: Tencent/wepy
+    检查 README: Tencent/ncnn
+  ✓ 找到 1 个邮箱:
+    - tencentopen@tencent.com (来源: 网站)
+  ✓ 邮箱: tencentopen@tencent.com
+  来源: 网站
+
+[16/91] 谭志豪
+  GitHub: https://github.com/Learnware-LAMDA
+  📧 为 Learnware-LAMDA 提取邮箱...
+    API 直接返回: bmwu-support@lamda.nju.edu.cn
+    抓取网站: https://bmwu.cloud/
+    检查 README: Learnware-LAMDA/Beimingwu
+    检查 README: Learnware-LAMDA/Learnware
+  ✓ 找到 1 个邮箱:
+    - bmwu-support@lamda.nju.edu.cn (来源: API)
+  ✓ 邮箱: bmwu-support@lamda.nju.edu.cn
+  来源: API
+
+[17/91] 陆苏
+  GitHub: https://github.com/njulus/GKD
+  📧 为 njulus 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[18/91] 曹云浩
+  GitHub: https://github.com/CupidJay/Efficient_SSL
+  📧 为 CupidJay 提取邮箱...
+    检查 README: CupidJay/neural-networks-from-scratch
+    检查 README: CupidJay/Training-Vision-Transformers-with-only-2040-images
+    检查 README: CupidJay/Scaled-down-self-supervised-learning
+    检查 README: CupidJay/MoCov3-pytorch
+    检查 README: CupidJay/Tobias
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[19/91] 黄宇轩
+  GitHub: https://github.com/AbductiveLearning/ABLkit
+  📧 为 AbductiveLearning 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[20/91] 周大蔚
+  GitHub: https://github.com/yaoyao-liu/minimal-light
+  📧 为 yaoyao-liu 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[21/91] 毕晓栋
+  GitHub: https://github.com/bxdd/
+  📧 为 bxdd 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[22/91] 辜宇然
+  GitHub: https://github.com/glb400/Toy-RecLM
+  📧 为 glb400 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[23/91] 何浩源
+  GitHub: https://github.com/Hao-Yuan-He/resume_typst/blob/main/main.pdf
+  📧 为 Hao-Yuan-He 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[24/91] 李逸尘
+  GitHub: https://github.com/BepfCp/RL-pytorch
+  📧 为 BepfCp 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[25/91] 孙义皓
+  GitHub: https://pages.github.com/
+  ✗ 未找到邮箱
+
+[26/91] 唐金麟
+  GitHub: https://github.com/NJU-TJL
+  📧 为 NJU-TJL 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[27/91] 王琪玮
+  GitHub: https://github.com/ZhangYikaii/chi-square
+  📧 为 ZhangYikaii 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[28/91] 吴宇畅
+  GitHub: https://github.com/wowchemy/wowchemy-hugo-themes
+  📧 为 wowchemy 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[29/91] 张福翔
+  GitHub: https://github.com/SkyworkAI/Skywork-Reward-V2
+  📧 为 SkyworkAI 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[30/91] 张韶威
+  GitHub: https://github.com/Cjh327/LINDA-MARL
+  📧 为 Cjh327 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[31/91] 解铮
+  GitHub: https://github.com/alshedivat/al-folio
+  📧 为 alshedivat 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[32/91] 王国华
+  GitHub: https://github.com/wsshin/jemdoc_mathjax
+  📧 为 wsshin 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[33/91] 柴磊
+  GitHub: https://github.com/leichainju/pa-former
+  📧 为 leichainju 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[34/91] 李鑫烨
+  GitHub: https://github.com/yaoyao-liu/minimal-light
+  📧 为 yaoyao-liu 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[35/91] 汪钰岑
+  GitHub: https://github.com/yixiaoshenghua/SeMAIL
+  📧 为 yixiaoshenghua 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[36/91] 吴嘉梁
+  GitHub: https://github.com/wowchemy/wowchemy-hugo-themes
+  📧 为 wowchemy 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[37/91] 郑博文
+  GitHub: https://github.com/bwnzheng/LPA_ICME2023
+  📧 为 bwnzheng 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[38/91] 郭兰哲
+  GitHub: https://github.com/pengxiao-song/LaWGPT
+  📧 为 pengxiao-song 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[39/91] 吕沈欢
+  GitHub: https://github.com/lyushenhuan/lyu2019refined
+  📧 为 lyushenhuan 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[40/91] 张绍群
+  GitHub: https://github.com/zhangsq-nju/TernaryCLIP
+  📧 为 zhangsq-nju 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[41/91] 韩路
+  GitHub: https://github.com/Secilia-Cxy/UNetTFI
+  📧 为 Secilia-Cxy 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[42/91] 李岚
+  GitHub: https://github.com/Lain810/DCE
+  📧 为 Lain810 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[43/91] 尚昊璞
+  GitHub: https://github.com/jonbarron/jonbarron_website
+  📧 为 jonbarron 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[44/91] 张永顺
+  GitHub: https://github.com/Megvii-Nanjing/ED-Net
+  📧 为 Megvii-Nanjing 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[45/91] 魏通
+  GitHub: https://github.com/Stomach-ache/AdaTTL
+  📧 为 Stomach-ache 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[46/91] 桂贤进
+  GitHub: https://github.com/zhyhan/RDA
+  📧 为 zhyhan 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[47/91] 王易木
+  GitHub: https://github.com/FLAIR-THU/CreamFL
+  📧 为 FLAIR-THU 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[48/91] 余亚奇
+  GitHub: https://github.com/yuyq96/kaldifeat
+  📧 为 yuyq96 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[49/91] 张超
+  GitHub: https://github.com/Evanczhang/POSEC
+  📧 为 Evanczhang 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[50/91] 冯霁
+  GitHub: https://github.com/kingfengji/DeepMIML
+  📧 为 kingfengji 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[51/91] 蒋庆远
+  GitHub: https://github.com/jiangqy
+  📧 为 jiangqy 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[52/91] 罗建豪
+  GitHub: https://github.com/Roll920/ThiNet_Code
+  📧 为 Roll920 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[53/91] 钱鸿
+  GitHub: https://github.com/eyounx/SRE
+  📧 为 eyounx 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[54/91] 王璐
+  GitHub: https://github.com/wangwllu/spanning_attack
+  📧 为 wangwllu 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[55/91] 吴西竹
+  GitHub: https://github.com/YuriWu/LIMO
+  📧 为 YuriWu 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[56/91] 叶翰嘉
+  GitHub: https://github.com/sun-hailong/LAMDA-PILOT
+  📧 为 sun-hailong 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[57/91] 董豪晨
+  GitHub: https://github.com/dhc123/SSWL
+  📧 为 dhc123 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[58/91] 高斌斌
+  GitHub: https://github.com/gaobb/DSP
+  📧 为 gaobb 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[59/91] 慕鑫
+  GitHub: https://github.com/SwissDM52/SENCForest11
+  📧 为 SwissDM52 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[60/91] 黄真川
+  GitHub: http://github.com/chuan92
+  📧 为 chuan92 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[61/91] 钱超
+  GitHub: https://github.com/lamda-bbo/madac
+  📧 为 lamda-bbo 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[62/91] 刘驭壬
+  GitHub: https://github.com/eyounx/ZOOpt
+  📧 为 eyounx 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[63/91] 李敏辉
+  GitHub: https://github.com/Jimenius
+  📧 为 Jimenius 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[64/91] 王健树
+  GitHub: https://github.com/StepNeverStop/RLs
+  📧 为 StepNeverStop 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[65/91] 刘丹璇
+  GitHub: https://github.com/lamda-bbo/MR-EMO
+  📧 为 lamda-bbo 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[66/91] 邵杰晶
+  GitHub: https://github.com/sh-jj/SRA-KDD-2024
+  📧 为 sh-jj 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[67/91] 陶略
+  GitHub: https://github.com/TLMichael/Delusive-Adversary
+  📧 为 TLMichael 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[68/91] 薛轲
+  GitHub: https://github.com/lamda-bbo/WireMask-BBO
+  📧 为 lamda-bbo 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[69/91] 周植
+  GitHub: https://github.com/WNJXYK/RPC/
+  📧 为 WNJXYK 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[70/91] 朱可
+  GitHub: https://github.com/QwenLM/Qwen3-VL
+  📧 为 QwenLM 提取邮箱...
+    API 请求失败: HTTPSConnectionPool(host='api.github.com', port=443): Read timed out. (read timeout=10)
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[71/91] 付明浩
+  GitHub: https://github.com/heekhero/ACSR
+  📧 为 heekhero 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[72/91] 高恩豪
+  GitHub: https://github.com/AbductiveLearning/ABL-HD
+  📧 为 AbductiveLearning 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[73/91] 胡文超
+  GitHub: https://github.com/AbductiveLearning/ABLkit
+  📧 为 AbductiveLearning 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[74/91] 蒋俊鹏
+  GitHub: https://github.com/LAMDA-Tabular/TALENT
+  📧 为 LAMDA-Tabular 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[75/91] 刘建东
+  GitHub: https://github.com/Learnware-LAMDA
+  📧 为 Learnware-LAMDA 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[76/91] 刘仁彪
+  GitHub: https://github.com/richardodliu
+  📧 为 richardodliu 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[77/91] 钱宇阳
+  GitHub: https://github.com/ZinYY/StreamingWavelet/
+  📧 为 ZinYY 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[78/91] 侍蒋鑫
+  GitHub: https://github.com/shijxcs/LIFT-plus
+  📧 为 shijxcs 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[79/91] 万盛华
+  GitHub: https://github.com/yixiaoshenghua/Multi-Temporal-Training-Based-Remote-Sensing-Images-Information-Extraction
+  📧 为 yixiaoshenghua 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[80/91] 杜闻博
+  GitHub: https://github.com/DWB1115/Codes-for-conference-papers/tree/main/NeurIPS'24%20MICNS
+  📧 为 DWB1115 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[81/91] 杜雅莉
+  GitHub: https://github.com/duyali2000/MQMC
+  📧 为 duyali2000 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[82/91] 贾林瀚
+  GitHub: https://github.com/ygzwqzd/LAMDA-SSL/tree/master/Examples
+  📧 为 ygzwqzd 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[83/91] 林浩鑫
+  GitHub: https://github.com/alshedivat/al-folio
+  📧 为 alshedivat 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[84/91] 李鑫烨
+  GitHub: https://github.com/yaoyao-liu/minimal-light
+  📧 为 yaoyao-liu 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[85/91] 汤楠
+  GitHub: https://github.com/Trevor-emt/Reviwo
+  📧 为 Trevor-emt 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[86/91] 王任柬
+  GitHub: https://github.com/lamda-bbo/NSS/blob/main/CITATION.bib
+  📧 为 lamda-bbo 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[87/91] 杨文昊
+  GitHub: https://github.com/tmllab/PICMM
+  📧 为 tmllab 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[88/91] 武强
+  GitHub: https://github.com/QiangWu-AI
+  📧 为 QiangWu-AI 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[89/91] 邢存远
+  GitHub: https://github.com/WeltXing
+  📧 为 WeltXing 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[90/91] 杨骁文
+  GitHub: http://github.com/njuyxw
+  📧 为 njuyxw 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+[91/91] 朱鑫浩
+  GitHub: https://github.com/EricZhu-42
+  📧 为 EricZhu-42 提取邮箱...
+  ✗ 未找到邮箱
+  ✗ 未找到邮箱
+
+================================================================================
+保存结果...
+
+================================================================================
+提取统计
+================================================================================
+总数: 91
+已处理: 91
+找到邮箱: 6 (6.6%)
+失败: 0
+
+来源分布:
+  API: 1
+  网站: 3
+  Commits: 0
+  README: 2
+
+🏆 找到邮箱的候选人:
+  • 杨嘉祺        | thyrixyang@gmail.com           | 网站
+  • 庞竟成        | pangjc@lamda.nju.edu.cn        | 网站
+  • 黄楷宸        | huangkc@lamda.nju.edu.cn       | README
+  • 宋鹏霄        | git@github.com                 | README
+  • 庄镇华        | tencentopen@tencent.com        | 网站
+  • 谭志豪        | bmwu-support@lamda.nju.edu.cn  | API
+
+✓ 结果已保存到: lamda_candidates_with_emails.csv
+✓ 共找到 6 个邮箱
+

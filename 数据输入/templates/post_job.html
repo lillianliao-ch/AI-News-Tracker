@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}发布职位 - 猎头联盟{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header">
+                <h3 class="mb-0"><i class="fas fa-plus-circle"></i> 发布新职位</h3>
+                <p class="text-muted mb-0">为您的企业发布招聘职位</p>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    <!-- 基本信息 -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h5 class="mb-3"><i class="fas fa-info-circle"></i> 基本信息</h5>
+                        </div>
+                        
+                        <div class="col-md-8 mb-3">
+                            <label for="title" class="form-label">职位名称 *</label>
+                            <input type="text" class="form-control" id="title" name="title" required placeholder="如：高级软件工程师">
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <label for="job_type" class="form-label">工作类型 *</label>
+                            <select class="form-select" id="job_type" name="job_type" required>
+                                <option value="">请选择</option>
+                                <option value="全职">全职</option>
+                                <option value="兼职">兼职</option>
+                                <option value="实习">实习</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="location" class="form-label">工作地点 *</label>
+                            <input type="text" class="form-control" id="location" name="location" required placeholder="如：北京、上海、深圳">
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="experience_level" class="form-label">经验要求</label>
+                            <select class="form-select" id="experience_level" name="experience_level">
+                                <option value="">请选择</option>
+                                <option value="初级">初级（0-2年）</option>
+                                <option value="中级">中级（3-5年）</option>
+                                <option value="高级">高级（5年以上）</option>
+                                <option value="专家">专家（8年以上）</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="salary_range" class="form-label">薪资范围</label>
+                            <input type="text" class="form-control" id="salary_range" name="salary_range" placeholder="如：15k-25k、面议">
+                        </div>
+                    </div>
+                    
+                    <!-- 职位描述 -->
+                    <div class="mb-4">
+                        <h5 class="mb-3"><i class="fas fa-file-alt"></i> 职位描述 *</h5>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">详细描述</label>
+                            <textarea class="form-control" id="description" name="description" rows="6" required placeholder="请详细描述职位的工作内容、职责等..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- 职位要求 -->
+                    <div class="mb-4">
+                        <h5 class="mb-3"><i class="fas fa-list-check"></i> 职位要求</h5>
+                        <div class="mb-3">
+                            <label for="requirements" class="form-label">任职要求</label>
+                            <textarea class="form-control" id="requirements" name="requirements" rows="4" placeholder="请列出具体的任职要求，如技能、经验、学历等..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- 福利待遇 -->
+                    <div class="mb-4">
+                        <h5 class="mb-3"><i class="fas fa-gift"></i> 福利待遇</h5>
+                        <div class="mb-3">
+                            <label for="benefits" class="form-label">公司福利</label>
+                            <textarea class="form-control" id="benefits" name="benefits" rows="3" placeholder="请描述公司提供的福利待遇，如五险一金、年终奖、带薪休假等..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- 联系方式 -->
+                    <div class="mb-4">
+                        <h5 class="mb-3"><i class="fas fa-address-card"></i> 联系方式</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="contact_email" class="form-label">联系邮箱</label>
+                                <input type="email" class="form-control" id="contact_email" name="contact_email" placeholder="hr@company.com">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="contact_phone" class="form-label">联系电话</label>
+                                <input type="tel" class="form-control" id="contact_phone" name="contact_phone" placeholder="13800138000">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 提交按钮 -->
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left"></i> 返回
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> 发布职位
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// 表单验证
+document.querySelector('form').addEventListener('submit', function(e) {
+    const title = document.getElementById('title').value.trim();
+    const jobType = document.getElementById('job_type').value;
+    const location = document.getElementById('location').value.trim();
+    const description = document.getElementById('description').value.trim();
+    
+    if (!title) {
+        alert('请填写职位名称');
+        e.preventDefault();
+        return;
+    }
+    
+    if (!jobType) {
+        alert('请选择工作类型');
+        e.preventDefault();
+        return;
+    }
+    
+    if (!location) {
+        alert('请填写工作地点');
+        e.preventDefault();
+        return;
+    }
+    
+    if (!description) {
+        alert('请填写职位描述');
+        e.preventDefault();
+        return;
+    }
+});
+</script>
+{% endblock %} 

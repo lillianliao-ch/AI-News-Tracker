@@ -1,0 +1,295 @@
+# =============================================================================
+# 同义词配置文件 - Personal AI Headhunter
+# =============================================================================
+# 
+# 📋 使用说明：
+# - 每个同义词组包含一个 canonical（标准形式）和多个 aliases（别名）
+# - 匹配时，所有别名都会被视为与标准形式等价
+# - 修改此文件后，下次匹配时自动生效（无需重启服务）
+#
+# 📝 维护指南：
+# 1. 添加新同义词：在对应分类下添加新条目
+# 2. 扩展现有词组：在 aliases 列表中添加新别名
+# 3. 验证配置：运行 python scripts/validate_synonyms.py
+#
+# =============================================================================
+
+version: "1.0"
+last_updated: "2026-01-27"
+maintainer: "Lilian"
+
+# =============================================================================
+# 专业方向 (core_specialty) - 定义"做什么"
+# =============================================================================
+specialties:
+
+  # --- 3D/三维视觉 ---
+  - canonical: "三维重建"
+    aliases:
+      - "3d重建"
+      - "3d视觉"
+      - "三维视觉"
+      - "nerf"
+      - "gaussian splatting"
+      - "3dgs"
+      - "3d reconstruction"
+
+  # --- 语音合成 ---
+  - canonical: "语音合成"
+    aliases:
+      - "tts"
+      - "text-to-speech"
+      - "语音生成"
+      - "speech synthesis"
+      - "text to speech"
+
+  # --- 语音识别 ---
+  - canonical: "语音识别"
+    aliases:
+      - "asr"
+      - "speech recognition"
+      - "speech-to-text"
+      - "自动语音识别"
+      - "语音转文字"
+
+  # --- Agent/智能体 ---
+  - canonical: "Agent/智能体开发"
+    aliases:
+      - "agent"
+      - "agents"
+      - "智能体"
+      - "ai agent"
+      - "ai智能体"
+      - "智能agent"
+      - "agent开发"
+
+  # --- 对话系统 ---
+  - canonical: "对话系统"
+    aliases:
+      - "chatbot"
+      - "对话机器人"
+      - "conversational ai"
+      - "dialogue system"
+      - "chat system"
+      - "对话ai"
+
+  # --- 多模态理解 ---
+  - canonical: "多模态理解"
+    aliases:
+      - "multimodal understanding"
+      - "视觉语言理解"
+      - "vlm"
+      - "vision-language model"
+
+  # --- 多模态生成 ---
+  - canonical: "多模态生成"
+    aliases:
+      - "multimodal generation"
+      - "跨模态生成"
+
+  # --- 图像生成 ---
+  - canonical: "图像生成"
+    aliases:
+      - "文生图"
+      - "text-to-image"
+      - "t2i"
+      - "image generation"
+      - "stable diffusion"
+      - "sd"
+      - "midjourney"
+
+  # --- 视频生成 ---
+  - canonical: "视频生成"
+    aliases:
+      - "文生视频"
+      - "text-to-video"
+      - "t2v"
+      - "video generation"
+      - "sora"
+
+  # --- 推荐系统 ---
+  - canonical: "推荐系统"
+    aliases:
+      - "推荐算法"
+      - "recommendation"
+      - "个性化推荐"
+      - "推荐引擎"
+      - "rec system"
+
+  # --- 搜索排序 ---
+  - canonical: "搜索排序"
+    aliases:
+      - "search ranking"
+      - "搜索算法"
+      - "检索排序"
+      - "信息检索"
+      - "ir"
+
+  # --- 代码生成 ---
+  - canonical: "代码生成"
+    aliases:
+      - "code generation"
+      - "代码补全"
+      - "copilot"
+      - "代码助手"
+
+  # --- 具身智能 ---
+  - canonical: "具身智能"
+    aliases:
+      - "embodied ai"
+      - "机器人ai"
+      - "具身智能体"
+      - "物理智能"
+      - "robotics ai"
+
+# =============================================================================
+# 技术技能 (tech_skills) - 定义"怎么做"
+# =============================================================================
+tech_skills:
+
+  # --- RAG ---
+  - canonical: "RAG/知识库"
+    aliases:
+      - "rag"
+      - "检索增强生成"
+      - "知识库"
+      - "retrieval augmented generation"
+      - "知识检索"
+
+  # --- RLHF ---
+  - canonical: "RLHF/对齐"
+    aliases:
+      - "rlhf"
+      - "对齐"
+      - "alignment"
+      - "人类反馈强化学习"
+      - "dpo"
+      - "ppo"
+      - "安全对齐"
+
+  # --- 预训练 ---
+  - canonical: "预训练"
+    aliases:
+      - "pretrain"
+      - "pre-training"
+      - "基座模型训练"
+      - "foundation model training"
+      - "预训练模型"
+
+  # --- SFT微调 ---
+  - canonical: "SFT微调"
+    aliases:
+      - "sft"
+      - "微调"
+      - "fine-tuning"
+      - "指令微调"
+      - "instruction tuning"
+      - "lora"
+      - "qlora"
+
+  # --- 推理加速 ---
+  - canonical: "推理加速"
+    aliases:
+      - "inference optimization"
+      - "推理优化"
+      - "tensorrt"
+      - "vllm"
+      - "模型加速"
+
+  # --- 模型压缩/量化 ---
+  - canonical: "模型压缩/量化"
+    aliases:
+      - "quantization"
+      - "量化"
+      - "模型压缩"
+      - "蒸馏"
+      - "distillation"
+      - "剪枝"
+      - "pruning"
+
+  # --- 分布式训练 ---
+  - canonical: "分布式训练"
+    aliases:
+      - "distributed training"
+      - "megatron"
+      - "deepspeed"
+      - "fsdp"
+      - "并行训练"
+
+  # --- 算子优化 ---
+  - canonical: "算子优化"
+    aliases:
+      - "operator optimization"
+      - "cuda优化"
+      - "kernel优化"
+      - "triton"
+
+  # --- 框架开发 ---
+  - canonical: "框架开发"
+    aliases:
+      - "framework development"
+      - "训练框架"
+      - "推理框架"
+
+# =============================================================================
+# 技术方向 (tech_domain) - 宏观领域
+# =============================================================================
+tech_domains:
+
+  # --- 大模型/LLM ---
+  - canonical: "大模型/LLM"
+    aliases:
+      - "llm"
+      - "大语言模型"
+      - "large language model"
+      - "gpt"
+      - "基座模型"
+      - "大模型"
+
+  # --- CV ---
+  - canonical: "CV"
+    aliases:
+      - "计算机视觉"
+      - "computer vision"
+      - "视觉"
+      - "图像"
+      - "视觉算法"
+
+  # --- NLP ---
+  - canonical: "NLP"
+    aliases:
+      - "自然语言处理"
+      - "natural language processing"
+      - "文本"
+      - "nlp算法"
+
+  # --- 语音 ---
+  - canonical: "语音"
+    aliases:
+      - "speech"
+      - "音频"
+      - "audio"
+      - "语音技术"
+      - "声音"
+
+  # --- 多模态 ---
+  - canonical: "多模态"
+    aliases:
+      - "multimodal"
+      - "多模态ai"
+      - "跨模态"
+
+  # --- Agent/智能体 (技术方向层面，与specialties区分) ---
+  - canonical: "Agent/智能体"
+    aliases:
+      - "agent方向"
+      - "智能体方向"
+      - "agent领域"
+
+  # --- AI Infra ---
+  - canonical: "AI Infra"
+    aliases:
+      - "ai基础设施"
+      - "mlops"
+      - "训练平台"
+      - "推理平台"

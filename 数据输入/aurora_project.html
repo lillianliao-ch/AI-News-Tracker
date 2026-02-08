@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>猎头协作平台 · 协同增长引擎</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-4Rr0O+kO2CxYGEYuwZQ+ebSuykJGQfevxoAyRDoD1cpcqI+G/BCjBz9XfB9NA47zg+v4nXH0Li8P2a8hV+Kkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: '#EEF3FF',
+            layer: '#F6F8FF',
+            card: '#FFFFFF',
+            accent: '#2F6BFF',
+            accentSoft: '#84AFFF',
+            text: {
+              primary: '#12172B',
+              secondary: 'rgba(18, 23, 43, 0.62)'
+            },
+            outline: 'rgba(47, 107, 255, 0.18)'
+          },
+          fontFamily: {
+            display: ['"Noto Sans SC"', 'sans-serif'],
+            sans: ['"Manrope"', 'sans-serif']
+          },
+          boxShadow: {
+            card: '0 28px 60px rgba(34, 64, 156, 0.15)',
+            soft: '0 12px 30px rgba(34, 64, 156, 0.12)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at 12% 18%, rgba(179, 203, 255, 0.32), transparent 48%),
+                  radial-gradient(circle at 82% 8%, rgba(200, 224, 255, 0.38), transparent 55%),
+                  #EEF3FF;
+      color: #12172B;
+      font-family: "Manrope", "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .hero-surface {
+      background: linear-gradient(140deg, rgba(247, 249, 255, 0.94) 8%, rgba(226, 235, 255, 0.92) 48%, rgba(210, 224, 255, 0.9) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-surface::before {
+      content: "";
+      position: absolute;
+      inset: -25% -30% -35% -30%;
+      background: radial-gradient(circle at 22% 30%, rgba(76, 128, 255, 0.35), transparent 60%),
+                  radial-gradient(circle at 70% 18%, rgba(143, 184, 255, 0.28), transparent 62%);
+      filter: blur(120px);
+      opacity: 0.75;
+      z-index: -1;
+    }
+    .stats-card {
+      background: linear-gradient(150deg, rgba(32, 42, 73, 0.92), rgba(44, 56, 94, 0.88));
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 26px 70px rgba(17, 26, 52, 0.35);
+    }
+    .feature-card {
+      background: linear-gradient(140deg, rgba(255, 255, 255, 0.95), rgba(243, 247, 255, 0.96));
+      border: 1px solid rgba(47, 107, 255, 0.08);
+    }
+    .cta-card {
+      background: linear-gradient(120deg, rgba(247, 249, 255, 0.95), rgba(217, 228, 255, 0.95));
+      border: 1px solid rgba(47, 107, 255, 0.12);
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <header class="border-b border-white/60 bg-white/80 backdrop-blur" id="top">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a href="#top" class="flex items-center gap-3">
+        <span class="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#DFE7FF] to-[#C7D8FF] text-accent text-lg">
+          <i class="fa-solid fa-people-group"></i>
+        </span>
+        <div>
+          <p class="font-display text-xl font-bold text-text-primary">猎头协作 · Aurora</p>
+          <p class="text-xs uppercase tracking-[0.32em] text-text-secondary">Project Intelligence Hub</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-8 text-sm text-text-secondary md:flex">
+        <a href="#features" class="hover:text-text-primary transition">项目概览</a>
+        <a href="#workflow" class="hover:text-text-primary transition">核心指标</a>
+        <a href="#analytics" class="hover:text-text-primary transition">可视化</a>
+        <a href="#cta" class="hover:text-text-primary transition">洞察</a>
+      </nav>
+      <div class="flex items-center gap-3 text-sm font-semibold">
+        <a href="#" class="rounded-full border border-outline px-4 py-2 text-text-secondary transition hover:text-accent">登录</a>
+        <a href="#" class="rounded-full bg-text-primary px-4 py-2 text-base font-bold text-white transition hover:bg-gray-900">Launch Project</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-surface">
+      <div class="mx-auto flex max-w-6xl flex-col gap-12 px-6 pb-24 pt-28 lg:flex-row lg:items-start lg:gap-16">
+        <div class="flex-1 space-y-8 text-left">
+          <p class="uppercase tracking-[0.42em] text-xs text-text-secondary">Aurora Gradient Hero</p>
+          <h1 class="font-display text-[54px] font-black leading-[1.08] text-text-primary sm:text-[62px]">
+            猎头协作平台<br />Project Command Hub
+          </h1>
+          <p class="text-base leading-relaxed text-text-secondary sm:text-lg">
+            中台对齐 <strong>职位池</strong>、<strong>跨公司顾问</strong> 与 <strong>实时数据</strong>，用 Apple 式视觉差动效与高级设计让 PM 在 30 秒内洞悉全盘节奏。
+          </p>
+          <div class="flex flex-col gap-4 text-sm font-semibold sm:flex-row">
+            <a href="#" class="flex items-center justify-center rounded-full bg-text-primary px-6 py-3 text-white transition hover:bg-gray-900">即刻发起项目</a>
+            <a href="#" class="flex items-center justify-center rounded-full border border-outline px-6 py-3 text-text-primary transition hover:border-accent hover:text-accent">Explore Playbook</a>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="rounded-[32px] bg-white/50 p-6 shadow-soft backdrop-blur-xl lg:p-8">
+            <div class="stats-card rounded-3xl px-8 py-10 text-white">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.38em] text-white/50">PM Monitor</p>
+                  <p class="font-display text-5xl font-black leading-none">34</p>
+                  <p class="text-xs uppercase tracking-[0.28em] text-white/60">Active Projects</p>
+                </div>
+                <span class="rounded-full bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white">LIVE</span>
+              </div>
+              <div class="mt-8 grid grid-cols-2 gap-6 text-sm">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.3em] text-white/60">Offer Rate</p>
+                  <p class="font-display text-2xl font-bold text-accentSoft">28%</p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-[0.3em] text-white/60">Time-to-Match</p>
+                  <p class="font-display text-2xl font-bold text-white">42h</p>
+                </div>
+                <div class="col-span-2 border-t border-white/10 pt-5 text-white/70">
+                  <p class="text-xs uppercase tracking-[0.3em] text-white/50 mb-2">Live Highlights</p>
+                  <p>[智联创新科技] - AI 运维总监项目新增 3 位顾问，系统自动同步 12 条在投订单。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="mx-auto max-w-6xl px-6 py-20">
+      <div class="text-center">
+        <p class="text-sm uppercase tracking-[0.45em] text-text-secondary">为了与你协作</p>
+        <h2 class="mt-4 font-display text-3xl font-bold text-text-primary sm:text-4xl">PM 项目指挥中枢 · 立即掌控节奏</h2>
+        <p class="mt-3 text-base text-text-secondary">每个模块都源自与资深猎头的共创，真实解决协作痛点。</p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="feature-card rounded-3xl p-8 shadow-card">
+          <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-accentSoft/25 text-accent text-xl">
+            <i class="fa-solid fa-user-group"></i>
+          </span>
+          <h3 class="mt-6 font-display text-xl font-bold text-text-primary">智能协作匹配</h3>
+          <p class="mt-3 text-sm leading-relaxed text-text-secondary">基于能力和资源互补自动匹配最佳项目成员，职位派发即刻完成。</p>
+        </div>
+        <div class="feature-card rounded-3xl p-8 shadow-card">
+          <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-accentSoft/25 text-accent text-xl">
+            <i class="fa-solid fa-bullseye"></i>
+          </span>
+          <h3 class="mt-6 font-display text-xl font-bold text-text-primary">高效资源共享</h3>
+          <p class="mt-3 text-sm leading-relaxed text-text-secondary">候选人、客户、职位数据统一安全共享，协作效率提升 240%。</p>
+        </div>
+        <div class="feature-card rounded-3xl p-8 shadow-card">
+          <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-accentSoft/25 text-accent text-xl">
+            <i class="fa-solid fa-bolt"></i>
+          </span>
+          <h3 class="mt-6 font-display text-xl font-bold text-text-primary">实时协作工具</h3>
+          <p class="mt-3 text-sm leading-relaxed text-text-secondary">项目沟通、进度追踪、审批提醒一站搞定，协作体验如单机工具般顺畅。</p>
+        </div>
+        <div class="feature-card rounded-3xl p-8 shadow-card">
+          <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-accentSoft/25 text-accent text-xl">
+            <i class="fa-solid fa-shield-halved"></i>
+          </span>
+          <h3 class="mt-6 font-display text-xl font-bold text-text-primary">信任机制保障</h3>
+          <p class="mt-3 text-sm leading-relaxed text-text-secondary">实名认证、信用评级、协作履历，建立跨公司团队之间的信任。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="bg-layer py-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid gap-12 lg:grid-cols-2">
+          <div class="space-y-6">
+            <p class="text-sm uppercase tracking-[0.45em] text-accent">Project Workflow</p>
+            <h2 class="font-display text-3xl font-bold text-text-primary">PM 多项目协同 · 全程透明</h2>
+            <p class="text-base leading-relaxed text-text-secondary">项目概览、职位池管理、顾问协作、订单追踪、递交记录导出——从发起到闭环，每个动作都在统一指挥面板中完成。</p>
+            <ul class="space-y-4 text-sm leading-relaxed text-text-secondary">
+              <li><i class="fa-solid fa-circle-check mr-3 text-accent"></i> 项目发起：选择授权客户与职位池，系统默认派发给 Active 成员。</li>
+              <li><i class="fa-solid fa-circle-check mr-3 text-accent"></i> 邀约链接：生成链接邀请顾问，支持申请审批与权限控制。</li>
+              <li><i class="fa-solid fa-circle-check mr-3 text-accent"></i> 职位变更：新增、暂停、关闭自动通知项目成员，并同步任务面板。</li>
+              <li><i class="fa-solid fa-circle-check mr-3 text-accent"></i> 成员管理：合作中 / 暂停 / 终止状态与全局系统对齐。</li>
+              <li><i class="fa-solid fa-circle-check mr-3 text-accent"></i> 递交记录：项目内职位 + 项目成员的投递，支持批量更新与简历导出。</li>
+            </ul>
+          </div>
+          <div class="rounded-[28px] border border-outline bg-card p-10 shadow-card">
+            <div class="space-y-8 text-text-secondary">
+              <div>
+                <p class="text-xs uppercase tracking-[0.4em] text-accent">Step 01</p>
+                <h3 class="mt-3 font-display text-xl font-bold text-text-primary">Create Project</h3>
+                <p class="mt-2 text-sm leading-relaxed">PM 选择公司和职位池，系统自动完成成员派发，项目仪表盘实时生成。</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.4em] text-accent">Step 02</p>
+                <h3 class="mt-3 font-display text-xl font-bold text-text-primary">Invite & Collaborate</h3>
+                <p class="mt-2 text-sm leading-relaxed">自助链接加入、外部顾问申请流程统一管理，状态、权限与任务同步。</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-[0.4em] text-accent">Step 03</p>
+                <h3 class="mt-3 font-display text-xl font-bold text-text-primary">Track & Export</h3>
+                <p class="mt-2 text-sm leading-relaxed">递交记录筛选、批量更新、简历导出，配合通知中心提醒，帮助 PM 快速闭环。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="analytics" class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-12 lg:grid-cols-5">
+        <div class="lg:col-span-2 space-y-6">
+          <p class="text-sm uppercase tracking-[0.45em] text-accent">Data Insight</p>
+          <h2 class="font-display text-3xl font-bold text-text-primary">递交节奏一目了然</h2>
+          <p class="text-base leading-relaxed text-text-secondary">Apache ECharts 勾线图与主题色保持统一，呈现项目内职位和成员的实时投递状态，帮助 PM 快速捕捉趋势。</p>
+          <ul class="space-y-3 text-sm text-text-secondary">
+            <li><i class="fa-solid fa-chart-line mr-2 text-accent"></i> 按职位 / 顾问 / 状态快速筛选</li>
+            <li><i class="fa-solid fa-layer-group mr-2 text-accent"></i> 列表直接更新阶段，同步订单状态</li>
+            <li><i class="fa-solid fa-download mr-2 text-accent"></i> 一键导出筛选条件下的简历包</li>
+          </ul>
+        </div>
+        <div class="lg:col-span-3">
+          <div id="submission-chart" class="h-[360px] rounded-3xl border border-outline bg-card p-4 shadow-soft"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="py-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="cta-card rounded-[32px] px-12 py-14 shadow-card">
+          <div class="flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
+            <div>
+              <p class="text-xs uppercase tracking-[0.45em] text-accent">Ready to Scale</p>
+              <h2 class="mt-4 font-display text-3xl font-bold text-text-primary">加入 Project Aurora，释放协作潜能</h2>
+              <p class="mt-3 max-w-xl text-sm leading-relaxed text-text-secondary">整合项目管理、职位派发、递交记录与数据洞察，让猎头团队更快达成共识并提升成单率。</p>
+            </div>
+            <div class="flex flex-col gap-4 text-sm font-semibold sm:flex-row">
+              <a href="#" class="rounded-full bg-accent px-8 py-3 text-white transition hover:bg-[#3F7CFF]">预约演示</a>
+              <a href="#" class="rounded-full border border-outline px-8 py-3 text-text-primary transition hover:border-accent hover:text-accent">下载资料</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white/80 py-8 text-sm text-text-secondary">
+    <div class="mx-auto flex max-w-6xl flex-col justify-between gap-3 px-6 sm:flex-row">
+      <p>© 2025 猎头协作平台 · 以科技重塑协作体验。</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-accent">隐私政策</a>
+        <a href="#" class="hover:text-accent">服务条款</a>
+        <a href="#" class="hover:text-accent">联系我们</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <script>
+    const chart = echarts.init(document.getElementById('submission-chart'));
+    const option = {
+      backgroundColor: 'transparent',
+      grid: { left: 40, right: 20, top: 40, bottom: 30 },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
+        axisLine: { lineStyle: { color: 'rgba(47, 107, 255, 0.2)' } },
+        axisLabel: { color: 'rgba(18, 23, 43, 0.55)', fontFamily: 'Manrope' }
+      },
+      yAxis: {
+        type: 'value',
+        axisLine: { show: false },
+        splitLine: { lineStyle: { color: 'rgba(47, 107, 255, 0.18)', type: 'dashed' } },
+        axisLabel: { color: 'rgba(18, 23, 43, 0.5)' }
+      },
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: '#12172B',
+        borderWidth: 0,
+        textStyle: { color: '#EEF3FF', fontFamily: 'Manrope' }
+      },
+      series: [{
+        name: '递交数量',
+        type: 'line',
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: { color: '#2F6BFF' },
+        lineStyle: { width: 3, color: '#2F6BFF' },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: 'rgba(47, 107, 255, 0.32)' },
+            { offset: 1, color: 'rgba(47, 107, 255, 0.05)' }
+          ])
+        },
+        data: [15, 24, 18, 32, 38, 30, 45]
+      }]
+    };
+    chart.setOption(option);
+    window.addEventListener('resize', () => chart.resize());
+  </script>
+</body>
+</html>
+

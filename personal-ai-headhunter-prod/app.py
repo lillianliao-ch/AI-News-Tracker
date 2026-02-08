@@ -2764,7 +2764,7 @@ elif page == "智能匹配":
     st.title("🎯 智能匹配中心")
     
     db = get_session()
-    match_type = st.radio("匹配模式", ["为职位找人 (Job -> Candidates)", "为人才找职位 (Candidate -> Jobs)"])
+    match_type = st.radio("匹配模式", ["为职位找人 (Job -> Candidates)", "为人才找职位 (Candidate -> Jobs)", "🔍 AI语义搜索职位"])
     
     # 导入匹配引擎
     import sqlite3
@@ -2913,7 +2913,7 @@ elif page == "智能匹配":
         
         conn.close()
 
-    else:  # Candidate -> Jobs
+    elif match_type == "为人才找职位 (Candidate -> Jobs)":
         # 获取有标签的候选人
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
@@ -2956,181 +2956,32 @@ elif page == "智能匹配":
         if selected_cand_label and st.button("🚀 开始匹配", type="primary"):
             cand_id = cand_options[selected_cand_label]
             
-            # 获取候选人标签
+            # 获取候选人信息
             cursor.execute("SELECT name, structured_tags FROM candidates WHERE id = ?", (cand_id,))
             cand_row = cursor.fetchone()
-            if not cand_row or not cand_row[1]:
-                st.error("该候选人没有结构化标签，无法匹配")
+            if not cand_row:
+                st.error("该候选人不存在")
             else:
                 cand_name, cand_tags_str = cand_row
-                cand_tags = json.loads(cand_tags_str)
+                cand_tags = json.loads(cand_tags_str) if cand_tags_str else {}
                 
-                
-                # 获取职位并匹配（过滤空JD）
-                cursor.execute("""
-                    SELECT id, title, company, location, structured_tags 
-                    FROM jobs 
-                    WHERE structured_tags IS NOT NULL AND structured_tags != 'null' 
-                    AND is_active = 1
-                    AND raw_jd_text IS NOT NULL AND LENGTH(raw_jd_text) > 50
-                """)
-                jobs = cursor.fetchall()
-                
-                results = []
-                for jid, title, company, location, tags_str in jobs:
+                # 使用向量语义匹配
+                with st.spinner("AI 正在进行语义匹配..."):
                     try:
-                        job_tags = json.loads(tags_str)
+                        from job_search import match_candidate_to_jobs
+                        results = match_candidate_to_jobs(cand_id, top_k=20)
                         
-                        # === 硬过滤规则 ===
-                        cand_role = cand_tags.get("role_type", "")
-                        job_role = job_tags.get("role_type", "")
-                        cand_seniority = cand_tags.get("seniority", "")
-                        job_seniority = job_tags.get("seniority", "")
-                        
-                        # 1. 管理层不匹配纯IC岗位
-                        is_manager = cand_seniority == "管理层" or "Tech Lead" in cand_tags.get("role_orientation", [])
-                        job_is_ic = job_seniority in ["初级(0-3年)", "中级(3-5年)"]
-                        if is_manager and job_is_ic:
-                            continue  # 跳过
-                        
-                        # 2. 岗位类型匹配 - 细分组
-                        role_penalty = 1.0
-                        role_match_groups = {
-                            "算法": ["算法工程师", "算法专家", "算法研究员", "高级算法工程师"],  # 扩展算法组
-                            "非技术研究": ["研究员"],  # 非技术类研究(法律/政策)
-                            "工程": ["工程开发", "运维/SRE", "数据工程师"],
-                            "管理": ["技术管理"],
-                            "产品": ["产品经理", "解决方案架构师"]
-                        }
-                        cand_group = None
-                        job_group = None
-                        for group, roles in role_match_groups.items():
-                            if cand_role in roles:
-                                cand_group = group
-                            if job_role in roles:
-                                job_group = group
-                        
-                        # 3. 不同组严重惩罚
-                        if cand_group and job_group and cand_group != job_group:
-                            if cand_group == "算法开发" and job_group == "研究":
-                                role_penalty = 0.3  # 算法开发不太适合研究岗
-                            elif cand_group == "算法开发" and job_group == "工程":
-                                role_penalty = 0.5
-                            elif cand_group == "管理" and job_group != "管理":
-                                role_penalty = 0.6
-                            else:
-                                role_penalty = 0.4
-                        
-                        # === 评分逻辑 ===
-                        # 技术方向匹配 (30%) - 增加相关领域相似度
-                        job_domains = set(job_tags.get("tech_domain", []))
-                        cand_domains = set(cand_tags.get("tech_domain", []))
-                        
-                        # 相关领域映射（可获得额外加分）
-                        domain_similarity = {
-                            "语音": ["多模态", "NLP", "大模型/LLM"],  # 语音与多模态、NLP相关
-                            "多模态": ["语音", "CV", "大模型/LLM"],  # 多模态涵盖音视频
-                            "CV": ["多模态"],
-                            "NLP": ["大模型/LLM", "语音", "Agent/智能体"],
-                            "大模型/LLM": ["NLP", "Agent/智能体", "语音", "多模态"],
-                            "AI Infra": ["大模型/LLM"],  # AI Infra支持大模型
-                        }
-                        
-                        # 计算直接匹配
-                        direct_match = len(job_domains & cand_domains)
-                        
-                        # 计算间接匹配（相关领域）
-                        indirect_match = 0
-                        for jd in job_domains:
-                            if jd not in cand_domains:  # 没有直接匹配
-                                related = domain_similarity.get(jd, [])
-                                if any(cd in related for cd in cand_domains):
-                                    indirect_match += 0.5  # 相关领域算半分
-                        
-                        total_match = direct_match + indirect_match
-                        tech_score = total_match / max(len(job_domains), 1) * 100 if job_domains else 50
-                        tech_score = min(tech_score, 100)  # 上限100
-                        
-                        # 细分专长匹配 (15%) - 新增
-                        job_specialty = set(job_tags.get("specialty", []))
-                        cand_specialty = set(cand_tags.get("specialty", []))
-                        if job_specialty:
-                            # 简化标签比较（去除前缀）
-                            job_spec_clean = set()
-                            for s in job_specialty:
-                                if ": " in s:
-                                    job_spec_clean.add(s.split(": ")[1])
-                                else:
-                                    job_spec_clean.add(s)
-                            cand_spec_clean = set()
-                            for s in cand_specialty:
-                                if ": " in s:
-                                    cand_spec_clean.add(s.split(": ")[1])
-                                else:
-                                    cand_spec_clean.add(s)
-                            specialty_score = len(job_spec_clean & cand_spec_clean) / len(job_spec_clean) * 100
+                        if not results:
+                            st.warning("未找到匹配的职位，请确保候选人有简历信息")
                         else:
-                            specialty_score = 50  # 无要求时给中等分
-                        
-                        # 技术栈匹配 (20%)
-                        job_stack = set(job_tags.get("tech_stack", []))
-                        cand_stack = set(cand_tags.get("tech_stack", []))
-                        stack_score = len(job_stack & cand_stack) / max(len(job_stack), 1) * 100 if job_stack else 50
-                        
-                        # 岗位类型匹配 (20%) - 改进：考虑升级匹配
-                        # 升级路径：算法工程师 → 算法专家 → 高级算法工程师/算法研究员
-                        role_upgrade_paths = {
-                            ("算法工程师", "算法专家"): 95,  # 工程师升专家，良好匹配
-                            ("算法工程师", "高级算法工程师"): 95,
-                            ("算法专家", "算法研究员"): 90,
-                        }
-                        
-                        if cand_role == job_role:
-                            role_score = 100
-                        elif (cand_role, job_role) in role_upgrade_paths:
-                            role_score = role_upgrade_paths[(cand_role, job_role)]
-                        elif cand_group == job_group:
-                            role_score = 90  # 同组匹配提高到90分
-                        else:
-                            role_score = 20
-                        
-                        # 职级匹配 (15%) - 改进高配逻辑
-                        seniority_order = ["初级(0-3年)", "中级(3-5年)", "高级(5-8年)", "专家(8年+)", "管理层"]
-                        seniority_score = 50
-                        if cand_seniority in seniority_order and job_seniority in seniority_order:
-                            gap = seniority_order.index(cand_seniority) - seniority_order.index(job_seniority)
-                            if gap == 0:
-                                seniority_score = 100
-                            elif gap == 1:
-                                seniority_score = 90  # 候选人稍高，很好的匹配（提高）
-                            elif gap == 2:
-                                seniority_score = 75  # 候选人高2级，仍可接受
-                            elif gap == -1:
-                                seniority_score = 70
-                            elif gap > 2:
-                                seniority_score = 60  # 高配较多
-                            else:
-                                seniority_score = 40  # 低配
-                        
-                        # 加权总分 + 角色惩罚 (新权重: 30+15+20+20+15=100)
-                        total = (tech_score * 0.30 + specialty_score * 0.15 + stack_score * 0.20 + 
-                                 role_score * 0.20 + seniority_score * 0.15) * role_penalty
-                        
-                        results.append({
-                            "id": jid, "title": title, "company": company, 
-                            "location": location, "score": round(total, 1)
-                        })
-                    except:
-                        pass
-                
-                results.sort(key=lambda x: x["score"], reverse=True)
-                results = results[:20]
-                
-                # 缓存匹配结果到 session_state
-                st.session_state['cand_match_results'] = results
-                st.session_state['cand_match_cand_id'] = cand_id
-                st.session_state['cand_match_cand_name'] = cand_name
-                st.session_state['cand_match_cand_tags'] = cand_tags
+                            # 缓存匹配结果到 session_state
+                            st.session_state['cand_match_results'] = results
+                            st.session_state['cand_match_cand_id'] = cand_id
+                            st.session_state['cand_match_cand_name'] = cand_name
+                            st.session_state['cand_match_cand_tags'] = cand_tags
+                    except Exception as e:
+                        st.error(f"向量匹配失败: {e}")
+                        st.info("请确保已运行 python job_search.py build 构建索引")
         
         # 显示缓存的匹配结果（如果有）
         if 'cand_match_results' in st.session_state and st.session_state.get('cand_match_results'):
@@ -3157,15 +3008,18 @@ elif page == "智能匹配":
                 with st.container(border=True):
                     col1, col2 = st.columns([4, 1])
                     with col1:
-                        st.markdown(f"### {i}. {r['title']}")
-                        st.caption(f"🏢 {r['company']} · 📍 {r['location'] or '未知'}")
+                        st.markdown(f"### {i}. [#{r['id']}] {r['title']}")
+                        # 提取职级信息
+                        import re
+                        level_match = re.search(r'[（(]?(P\d+)[）)]?', r['title'])
+                        level_tag = level_match.group(1) if level_match else r.get('tags', {}).get('seniority', '')
+                        st.caption(f"🏢 {r['company']} · 📍 {r.get('location') or '未知'} · 🎯 {level_tag}")
+                        
+                        # 显示匹配原因（向量搜索返回的）
+                        if r.get("match_reasons"):
+                            st.markdown(f"✅ **匹配原因**: {', '.join(r['match_reasons'])}")
                     with col2:
-                        if r["score"] >= 70:
-                            st.success(f"{r['score']}分")
-                        elif r["score"] >= 50:
-                            st.warning(f"{r['score']}分")
-                        else:
-                            st.error(f"{r['score']}分")
+                        st.metric("匹配度", f"{r['score']}分")
                     
                     # 使用 expander 显示职位详情（不需要 rerun）
                     with st.expander("📄 查看职位详情", expanded=False):
@@ -3233,3 +3087,113 @@ elif page == "智能匹配":
                                     st.json(ai_analysis)
         
         conn.close()
+    
+    # AI 语义搜索职位
+    elif match_type == "🔍 AI语义搜索职位":
+        st.subheader("🧠 用自然语言搜索职位")
+        st.caption("输入任意描述，AI 会帮你找到最相关的职位。例如：'语音相关的AIGC算法工作' 或 '机器学习推荐系统专家'")
+        
+        # 导入搜索模块
+        try:
+            from job_search import search_jobs, get_index_stats
+            
+            # 显示索引状态
+            stats = get_index_stats()
+            if stats["status"] == "ready":
+                st.success(f"✅ 向量索引就绪，共 {stats['count']} 条职位")
+            else:
+                st.warning("⚠️ 向量索引未构建，请先运行: python job_search.py build")
+            
+            # 搜索输入
+            col1, col2 = st.columns([4, 1])
+            with col1:
+                search_query = st.text_input(
+                    "搜索职位",
+                    placeholder="例如：找语音相关的AIGC算法工作、机器学习专家、大模型训练...",
+                    label_visibility="collapsed"
+                )
+            with col2:
+                top_k = st.selectbox("结果数", [10, 20, 30, 50], index=1, label_visibility="collapsed")
+            
+            if search_query and st.button("🚀 智能搜索", type="primary"):
+                with st.spinner("AI 正在搜索..."):
+                    results = search_jobs(search_query, top_k=top_k)
+                
+                if results:
+                    st.success(f"✅ 找到 {len(results)} 个匹配职位")
+                    
+                    # 连接数据库获取详情
+                    import sqlite3
+                    conn = sqlite3.connect('/Users/lillianliao/notion_rag/personal-ai-headhunter/data/headhunter_dev.db')
+                    cursor = conn.cursor()
+                    
+                    for i, r in enumerate(results, 1):
+                        with st.container(border=True):
+                            col1, col2 = st.columns([4, 1])
+                            
+                            with col1:
+                                st.markdown(f"### {i}. [#{r['id']}] {r['title']}")
+                                # 提取职级信息（优先从标题提取P级，其次用seniority标签）
+                                import re
+                                level_match = re.search(r'[（(]?(P\d+)[）)]?', r['title'])
+                                level_tag = level_match.group(1) if level_match else r.get('tags', {}).get('seniority', '')
+                                st.caption(f"🏢 {r['company']} · 📍 {r.get('location', '未知')} · 🎯 {level_tag}")
+                                
+                                # 匹配原因
+                                if r.get("match_reasons"):
+                                    st.markdown(f"✅ **匹配原因**: {', '.join(r['match_reasons'])}")
+                                
+                                # 标签展示
+                                tags = r.get("tags", {})
+                                if tags:
+                                    tag_items = []
+                                    if tags.get("tech_domain"):
+                                        tag_items.append(f"📂 {', '.join(tags['tech_domain'][:3])}")
+                                    if tags.get("role_type"):
+                                        tag_items.append(f"👤 {tags['role_type']}")
+                                    if tags.get("seniority"):
+                                        tag_items.append(f"📊 {tags['seniority']}")
+                                    if tag_items:
+                                        st.caption(" | ".join(tag_items))
+                            
+                            with col2:
+                                st.metric("匹配度", f"{r['score']}分")
+                            
+                            # 使用 expander 展示详情（不跳转）
+                            with st.expander("📄 查看职位详情", expanded=False):
+                                cursor.execute("""
+                                    SELECT raw_jd_text, ai_analysis, structured_tags, salary_range, 
+                                           required_experience_years
+                                    FROM jobs WHERE id = ?
+                                """, (r['id'],))
+                                job_detail = cursor.fetchone()
+                                
+                                if job_detail:
+                                    jd_text, ai_analysis, struct_tags, salary, exp_years = job_detail
+                                    
+                                    # 基本信息
+                                    info_col1, info_col2 = st.columns(2)
+                                    with info_col1:
+                                        st.markdown(f"**💰 薪资**: {salary or '面议'}")
+                                    with info_col2:
+                                        st.markdown(f"**📅 经验要求**: {exp_years or '-'}年+")
+                                    
+                                    st.divider()
+                                    
+                                    # JD 全文
+                                    st.markdown("**📝 职位描述**")
+                                    if jd_text:
+                                        display_text = jd_text[:2000] + ("..." if len(jd_text) > 2000 else "")
+                                        st.markdown(display_text)
+                                    else:
+                                        st.info("暂无JD内容")
+                                else:
+                                    st.warning("无法获取职位详情")
+                    
+                    conn.close()
+                else:
+                    st.info("未找到匹配的职位，请尝试其他关键词")
+        
+        except ImportError as e:
+            st.error(f"搜索模块加载失败: {e}")
+            st.info("请确保 job_search.py 文件存在并已正确配置")

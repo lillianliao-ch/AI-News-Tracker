@@ -1,0 +1,18 @@
+# Notion API配置
+NOTION_TOKEN=your_notion_integration_token
+NOTION_DATABASE_ID=your_database_id
+
+# OpenAI API配置
+OPENAI_API_KEY=your_openai_api_key
+OPENAI_MODEL=gpt-3.5-turbo
+
+# 系统配置
+CHUNK_SIZE=1000
+CHUNK_OVERLAP=200
+EMBEDDING_MODEL=all-MiniLM-L6-v2
+VECTOR_DB_PATH=./data/vector_db
+DOCUMENTS_PATH=./data/documents
+
+# Web服务配置
+HOST=0.0.0.0
+PORT=8000 

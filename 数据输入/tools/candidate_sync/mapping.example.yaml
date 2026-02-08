@@ -1,0 +1,52 @@
+mappings:
+  - source: "Candidate ID"
+    target: candidate_id
+  - source: "Full Name"
+    target: full_name
+  - source: "Email"
+    target: email
+    transforms: [lowercase, trim]
+  - source: "Phone"
+    target: phone
+    transforms: [trim, strip_non_digits_keep_plus]
+  - source: "City"
+    target: city
+  - source: "Region/State"
+    target: region
+  - source: "Country"
+    target: country
+  - source: "Location"
+    target: location
+  - source: "Current Company"
+    target: current_company
+  - source: "Current Title"
+    target: current_title
+  - source: "Skills"
+    target: skills
+    transforms: [split_semicolon, lowercase, trim_items, dedup]
+  - source: "Tags"
+    target: tags
+    transforms: [split_semicolon, lowercase, trim_items, dedup]
+  - source: "LinkedIn"
+    target: linkedin_url
+  - source: "Resume URL"
+    target: resume_url
+  - source: "Status"
+    target: status
+  - source: "Owner"
+    target: owner
+  - source: "Last Activity"
+    target: last_activity_at
+    transforms: [to_datetime]
+  - source: "Created At"
+    target: created_at
+    transforms: [to_datetime]
+  - source: "Updated At"
+    target: updated_at
+    transforms: [to_datetime]
+
+options:
+  array_delimiter: ";"
+  timezone: "Asia/Shanghai"
+  keep: first
+
