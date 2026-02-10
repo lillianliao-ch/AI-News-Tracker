@@ -3785,147 +3785,114 @@ elif page == "人才库管理":
                                 delete_candidate(cand.id)
                                 st.rerun()
                         
-                        # 主体：左侧基础信息 + 中间时间线 + 右侧快速记录
-                        left_col, mid_col, right_col = st.columns([1.2, 2, 1.2])
+                        # 主体：左侧基础信息 + 中间时间线 + 右侧沟通记录（全部用 HTML 合并渲染）
+                        import html as _html
                         
-                        with left_col:
-                            # 基础信息
-                            age_str = f"{cand.age}岁" if cand.age else "-"
-                            exp_str = f"{cand.experience_years}年" if cand.experience_years else "-"
-                            edu_str = cand.education_level or "未知"
-                            
-                            st.markdown(f"**{age_str}** · **{exp_str}** · **{edu_str}**")
-                            
-                            # 当前公司/职位
-                            if cand.current_company:
-                                st.write(f"🏢 {cand.current_company}")
-                            if cand.current_title:
-                                st.caption(f"{cand.current_title[:40]}")
-                            
-                            # 联系方式
-                            _contacts = []
-                            if cand.phone:
-                                _contacts.append(f"📱 {cand.phone}")
-                            if cand.email:
-                                _contacts.append(f"📧 {cand.email}")
-                            if cand.linkedin_url:
-                                _contacts.append(f"[🔗 LI]({cand.linkedin_url})")
-                            if cand.github_url:
-                                _contacts.append(f"[💻 GH]({cand.github_url})")
-                            if _contacts:
-                                st.markdown(" │ ".join(_contacts))
-                            
-                            # 技能标签
-                            if cand.skills and isinstance(cand.skills, list):
-                                tags = " ".join([f"`{s}`" for s in cand.skills[:5]])
-                                st.markdown(f"🏷️ {tags}")
-                            
-                            # 进入渠道
-                            if cand.source:
-                                _src_map = {'maimai': '🟦脉脉', 'github': '💻GitHub', 'linkedin': '🔗LinkedIn', 'boss': '🟧Boss'}
-                                _src_parts = []
-                                for _k, _v in _src_map.items():
-                                    if _k in (cand.source or '').lower() and _v not in _src_parts:
-                                        _src_parts.append(_v)
-                                if not _src_parts:
-                                    _src_parts = [cand.source[:20]]
-                                st.caption(f"📂 {' '.join(_src_parts)}")
-                            
-                            # 评分信息（从 notes 解析）
-                            if cand.notes:
-                                import re
-                                score_match = re.search(r'总分:(\d+)', str(cand.notes))
-                                if score_match:
-                                    st.metric("评分", score_match.group(1), label_visibility="collapsed")
-                            
-                            # 简历来源
-                            if cand.source_file:
-                                st.caption(f"📄 来源: {cand.source_file}")
+                        # === 构建左栏 HTML ===
+                        left_parts = []
+                        age_str = f"{cand.age}岁" if cand.age else "-"
+                        exp_str = f"{cand.experience_years}年" if cand.experience_years else "-"
+                        edu_str = _html.escape(cand.education_level or "未知")
+                        left_parts.append(f"<b>{age_str}</b> · <b>{exp_str}</b> · <b>{edu_str}</b>")
                         
-                        with mid_col:
-                            # 工作经历时间线
-                            st.markdown("**💼 工作经历**")
-                            if cand.work_experiences and isinstance(cand.work_experiences, list):
-                                for i, w in enumerate(cand.work_experiences[:3]):
-                                    # 兼容多种时间格式
-                                    time_str = w.get('time', '') or w.get('time_range', '')
-                                    if not time_str:
-                                        start = w.get('start_date', '')
-                                        end = w.get('end_date', '')
-                                        if start and end:
-                                            time_str = f"{start}-{end}"
-                                        elif w.get('duration'):
-                                            time_str = w.get('duration')
-                                    company = w.get('company', '') or ''
-                                    title = w.get('position') or w.get('title', '') or ''
-                                    
-                                    if company or title:
-                                        st.markdown(f"📅 `{time_str}` **{company}** · {title[:30]}")
-                            else:
-                                st.caption("暂无工作经历")
-                            
-                            st.markdown("")  # 间距
-                            
-                            # 教育经历时间线
-                            st.markdown("**🎓 教育经历**")
-                            if cand.education_details and isinstance(cand.education_details, list):
-                                for e in cand.education_details[:2]:
-                                    time_str = e.get('time', '') or e.get('year', '') or ''
-                                    school = (e.get('school', '') or '').strip()
-                                    # 清理学校名前的特殊字符
-                                    if school and school[0] in '·、-':
-                                        school = school[1:].strip()
-                                    major = e.get('major', '') or ''
-                                    
-                                    if school:
-                                        display = f"🏫 **{school}**"
-                                        if time_str:
-                                            display += f" ({time_str})"
-                                        if major:
-                                            display += f" · {major}"
-                                        st.markdown(display)
-                            else:
-                                st.caption("暂无教育经历")
+                        if cand.current_company:
+                            left_parts.append(f"🏢 {_html.escape(cand.current_company)}")
+                        if cand.current_title:
+                            left_parts.append(f"<span style='color:#888;font-size:0.85rem'>{_html.escape(cand.current_title[:40])}</span>")
                         
-                        with right_col:
-                            # 最近沟通记录 + 快速输入 + 预约徽章
-                            st.markdown(f"**💬 沟通记录** {schedule_badge}")
-                            
-                            # 显示最近一条沟通记录
-                            if cand.communication_logs and len(cand.communication_logs) > 0:
-                                latest = cand.communication_logs[0]
-                                time_str = latest.get("time", "")
-                                content = latest.get("content", "")[:80]  # 截取前80字
-                                if len(latest.get("content", "")) > 80:
-                                    content += "..."
-                                st.caption(f"📅 {time_str}")
-                                st.markdown(f"<div style='font-size:0.85rem;color:#666;margin-bottom:8px;'>{content}</div>", unsafe_allow_html=True)
-                            
-                            # 快速输入（按需展开，减少首屏 widget）
-                            with st.popover("📝 新增记录", use_container_width=True):
-                                quick_note = st.text_area(
-                                    "新增沟通记录",
-                                    key=f"quick_log_{cand.id}",
-                                    placeholder="输入新的沟通内容...",
-                                    height=100,
-                                    label_visibility="collapsed"
-                                )
-                                if st.button("💾 保存", key=f"save_quick_{cand.id}", type="primary", use_container_width=True):
-                                    if quick_note:
-                                        from datetime import datetime
-                                        from sqlalchemy.orm.attributes import flag_modified
-                                        now = datetime.now()
-                                        logs = list(cand.communication_logs) if cand.communication_logs else []
-                                        logs.insert(0, {
-                                            "time": now.strftime("%Y-%m-%d %H:%M"),
-                                            "content": quick_note
-                                        })
-                                        cand.communication_logs = logs
-                                        cand.last_communication_at = now  # 更新最近沟通时间
-                                        flag_modified(cand, "communication_logs")
-                                        db.commit()
-                                        st.toast(f"✅ 已保存 {cand.name} 的沟通记录")
-                                        st.rerun()
+                        # 联系方式
+                        _contacts = []
+                        if cand.phone:
+                            _contacts.append(f"📱 {_html.escape(cand.phone)}")
+                        if cand.email:
+                            _contacts.append(f"📧 {_html.escape(cand.email)}")
+                        if cand.linkedin_url:
+                            _contacts.append(f"<a href='{_html.escape(cand.linkedin_url)}' target='_blank'>🔗 LI</a>")
+                        if cand.github_url:
+                            _contacts.append(f"<a href='{_html.escape(cand.github_url)}' target='_blank'>💻 GH</a>")
+                        if _contacts:
+                            left_parts.append(" │ ".join(_contacts))
+                        
+                        # 技能标签
+                        if cand.skills and isinstance(cand.skills, list):
+                            tags_html = " ".join([f"<code>{_html.escape(s)}</code>" for s in cand.skills[:5]])
+                            left_parts.append(f"🏷️ {tags_html}")
+                        
+                        # 渠道
+                        if cand.source:
+                            _src_map = {'maimai': '🟦脉脉', 'github': '💻GitHub', 'linkedin': '🔗LinkedIn', 'boss': '🟧Boss'}
+                            _src_parts = []
+                            for _k, _v in _src_map.items():
+                                if _k in (cand.source or '').lower() and _v not in _src_parts:
+                                    _src_parts.append(_v)
+                            if not _src_parts:
+                                _src_parts = [_html.escape(cand.source[:20])]
+                            left_parts.append(f"<span style='color:#888;font-size:0.8rem'>📂 {' '.join(_src_parts)}</span>")
+                        
+                        left_html = "<br>".join(left_parts)
+                        
+                        # === 构建中栏 HTML ===
+                        mid_parts = ["<b>💼 工作经历</b>"]
+                        if cand.work_experiences and isinstance(cand.work_experiences, list):
+                            for w in cand.work_experiences[:3]:
+                                time_str = w.get('time', '') or w.get('time_range', '')
+                                if not time_str:
+                                    start = w.get('start_date', '')
+                                    end = w.get('end_date', '')
+                                    if start and end:
+                                        time_str = f"{start}-{end}"
+                                    elif w.get('duration'):
+                                        time_str = w.get('duration')
+                                company = _html.escape(w.get('company', '') or '')
+                                title = _html.escape((w.get('position') or w.get('title', '') or '')[:30])
+                                if company or title:
+                                    mid_parts.append(f"📅 <code>{_html.escape(time_str or '')}</code> <b>{company}</b> · {title}")
+                        else:
+                            mid_parts.append("<span style='color:#888;font-size:0.85rem'>暂无工作经历</span>")
+                        
+                        mid_parts.append("<br><b>🎓 教育经历</b>")
+                        if cand.education_details and isinstance(cand.education_details, list):
+                            for e in cand.education_details[:2]:
+                                time_str = e.get('time', '') or e.get('year', '') or ''
+                                school = (e.get('school', '') or '').strip()
+                                if school and school[0] in '·、-':
+                                    school = school[1:].strip()
+                                major = e.get('major', '') or ''
+                                if school:
+                                    display = f"🏫 <b>{_html.escape(school)}</b>"
+                                    if time_str:
+                                        display += f" ({_html.escape(time_str)})"
+                                    if major:
+                                        display += f" · {_html.escape(major)}"
+                                    mid_parts.append(display)
+                        else:
+                            mid_parts.append("<span style='color:#888;font-size:0.85rem'>暂无教育经历</span>")
+                        
+                        mid_html = "<br>".join(mid_parts)
+                        
+                        # === 构建右栏 HTML（沟通记录，只读） ===
+                        right_parts = [f"<b>💬 沟通记录</b> {schedule_badge}"]
+                        if cand.communication_logs and len(cand.communication_logs) > 0:
+                            latest = cand.communication_logs[0]
+                            log_time = _html.escape(latest.get("time", ""))
+                            log_content = _html.escape(latest.get("content", "")[:80])
+                            if len(latest.get("content", "")) > 80:
+                                log_content += "..."
+                            right_parts.append(f"<span style='color:#888;font-size:0.8rem'>📅 {log_time}</span>")
+                            right_parts.append(f"<span style='font-size:0.85rem;color:#666'>{log_content}</span>")
+                        else:
+                            right_parts.append("<span style='color:#aaa;font-size:0.85rem'>暂无记录</span>")
+                        right_html = "<br>".join(right_parts)
+                        
+                        # === 一次性渲染三栏 ===
+                        card_html = f"""
+                        <div style="display:flex;gap:16px;padding:4px 0;font-size:0.9rem;line-height:1.6">
+                            <div style="flex:1.2;min-width:0">{left_html}</div>
+                            <div style="flex:2;min-width:0">{mid_html}</div>
+                            <div style="flex:1.2;min-width:0">{right_html}</div>
+                        </div>
+                        """
+                        st.markdown(card_html, unsafe_allow_html=True)
                         
                         st.markdown("")  # 卡片底部间距
                 
