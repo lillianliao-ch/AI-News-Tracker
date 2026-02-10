@@ -873,7 +873,7 @@ def linkedin_sync(request: LinkedInSyncRequest):
                 Candidate.linkedin_url == url_http,
                 Candidate.linkedin_url == url_http + '/',
             )
-        ).first()
+        ).with_for_update().first()
         
         # 如果匹配上且存的是 http, 顺便修正为 https
         if existing and existing.linkedin_url and existing.linkedin_url.startswith('http://'):
