@@ -824,7 +824,13 @@ elif page == "提示词配置":
 
 # ---------------- DASHBOARD ----------------
 elif page == "Dashboard":
-    st.title("📊 概览")
+    title_col, refresh_col = st.columns([6, 1])
+    with title_col:
+        st.title("📊 概览")
+    with refresh_col:
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("🔄 刷新", key="dashboard_refresh", use_container_width=True):
+            st.rerun()
     
     db = get_session()
     cand_count = db.query(Candidate).count()
