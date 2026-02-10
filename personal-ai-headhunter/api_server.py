@@ -54,11 +54,11 @@ from database import init_db, SessionLocal, Candidate, Job
 
 app = FastAPI(title="AI Headhunter API", version="1.0.0")
 
-# CORS 配置 - 允许脉脉页面跨域请求
+# CORS 配置 - 允许所有来源（本地开发API）
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://maimai.cn", "http://localhost:*"],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
