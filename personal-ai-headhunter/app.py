@@ -1105,6 +1105,114 @@ elif page == "Dashboard":
         df_table = pd.DataFrame(table_data)
         st.dataframe(df_table, use_container_width=True, hide_index=True)
     
+    # --- 🏅 人才评级分析 ---
+    st.divider()
+    st.markdown("## 🏅 人才评级分析")
+    
+    # 查询所有候选人的 source 和 talent_tier
+    tier_data = db.query(
+        Candidate.source,
+        Candidate.talent_tier
+    ).all()
+    
+    # 定义评级顺序和颜色
+    TIER_ORDER = ['S', 'A', 'B+', 'B', 'C']
+    TIER_COLORS = {'S': '#FFD700', 'A': '#FF4D4F', 'B+': '#FF8C00', 'B': '#1890FF', 'C': '#BFBFBF'}
+    TIER_LABELS = {'S': '🏆 S 顶尖', 'A': '⭐ A 优秀', 'B+': '📈 B+ 良好', 'B': '📋 B 一般', 'C': '📎 C 关注'}
+    
+    # 统计总体分布
+    overall_tier = {}
+    channel_tier = {}  # {channel: {tier: count}}
+    
+    for src, tier in tier_data:
+        ch = src if src else '未知'
+        t = tier if tier and tier in TIER_ORDER else '未评级'
+        overall_tier[t] = overall_tier.get(t, 0) + 1
+        if ch not in channel_tier:
+            channel_tier[ch] = {}
+        channel_tier[ch][t] = channel_tier[ch].get(t, 0) + 1
+    
+    tier_col1, tier_col2 = st.columns(2)
+    
+    with tier_col1:
+        st.markdown("### 📊 总体评级分布")
+        
+        # 按固定顺序排列
+        pie_labels = []
+        pie_values = []
+        pie_colors = []
+        for t in TIER_ORDER:
+            if t in overall_tier:
+                pie_labels.append(TIER_LABELS.get(t, t))
+                pie_values.append(overall_tier[t])
+                pie_colors.append(TIER_COLORS.get(t, '#999'))
+        if '未评级' in overall_tier:
+            pie_labels.append('❓ 未评级')
+            pie_values.append(overall_tier['未评级'])
+            pie_colors.append('#E0E0E0')
+        
+        if pie_values:
+            fig_tier = px.pie(
+                names=pie_labels, values=pie_values,
+                hole=0.45,
+                color_discrete_sequence=pie_colors
+            )
+            fig_tier.update_traces(textinfo='label+value+percent', textposition='outside')
+            fig_tier.update_layout(height=400, showlegend=False)
+            st.plotly_chart(fig_tier, use_container_width=True)
+    
+    with tier_col2:
+        st.markdown("### 📡 各渠道人才质量")
+        
+        # 构建堆叠柱状图
+        stack_data = []
+        sorted_ch = sorted(channel_tier.items(), key=lambda x: sum(x[1].values()), reverse=True)
+        
+        for ch, tiers in sorted_ch:
+            ch_total = sum(tiers.values())
+            for t in TIER_ORDER:
+                cnt = tiers.get(t, 0)
+                stack_data.append({
+                    '渠道': ch,
+                    '评级': t,
+                    '人数': cnt,
+                    '占比': round(cnt / ch_total * 100, 1) if ch_total > 0 else 0
+                })
+        
+        if stack_data:
+            df_stack = pd.DataFrame(stack_data)
+            fig_stack = px.bar(
+                df_stack, x='渠道', y='人数', color='评级',
+                barmode='stack', text='人数',
+                color_discrete_map=TIER_COLORS,
+                category_orders={'评级': TIER_ORDER}
+            )
+            fig_stack.update_traces(textposition='inside', textfont_size=10)
+            fig_stack.update_layout(
+                height=400,
+                legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
+            )
+            st.plotly_chart(fig_stack, use_container_width=True)
+    
+    # 评级明细表格
+    tier_table = []
+    for ch, tiers in sorted_ch:
+        ch_total = sum(tiers.values())
+        row = {'渠道': ch, '总人数': ch_total}
+        for t in TIER_ORDER:
+            row[t] = tiers.get(t, 0)
+        # 计算 S+A 率
+        sa_count = tiers.get('S', 0) + tiers.get('A', 0)
+        row['S+A率'] = f"{round(sa_count / ch_total * 100, 1)}%" if ch_total > 0 else '0%'
+        # 计算 B+以上率
+        above_b_plus = sa_count + tiers.get('B+', 0)
+        row['B+以上率'] = f"{round(above_b_plus / ch_total * 100, 1)}%" if ch_total > 0 else '0%'
+        tier_table.append(row)
+    
+    if tier_table:
+        df_tier_table = pd.DataFrame(tier_table)
+        st.dataframe(df_tier_table, use_container_width=True, hide_index=True)
+    
     # --- JD 分析 ---
     st.divider()
     st.markdown("## 📋 JD 分析")
