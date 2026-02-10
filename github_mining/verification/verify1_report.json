@@ -1,0 +1,190 @@
+{
+  "timestamp": "2026-02-08T16:43:30.464557",
+  "total_users": 6081,
+  "unique_users": 6081,
+  "field_rates": {
+    "username": 1.0,
+    "name": 0.8942608123663871,
+    "email": 0.5354382502877816,
+    "bio": 0.6005591185660253,
+    "company": 0.6842624568327578,
+    "location": 0.7465877322808748,
+    "blog": 0.4015786877158362
+  },
+  "top_companies": [
+    [
+      "Tencent",
+      288
+    ],
+    [
+      "Alibaba",
+      211
+    ],
+    [
+      "ByteDance",
+      140
+    ],
+    [
+      "Baidu",
+      72
+    ],
+    [
+      "@Tencent",
+      72
+    ],
+    [
+      "@bytedance",
+      69
+    ],
+    [
+      "Tsinghua University",
+      67
+    ],
+    [
+      "Bytedance",
+      65
+    ],
+    [
+      "Alibaba Group",
+      54
+    ],
+    [
+      "alibaba",
+      54
+    ],
+    [
+      "@alibaba",
+      48
+    ],
+    [
+      "bytedance",
+      42
+    ],
+    [
+      "@Alibaba",
+      40
+    ],
+    [
+      "tencent",
+      39
+    ],
+    [
+      "Meituan",
+      39
+    ],
+    [
+      "Peking University",
+      36
+    ],
+    [
+      "NetEase",
+      33
+    ],
+    [
+      "Alibaba Cloud",
+      31
+    ],
+    [
+      "Shanghai Jiao Tong University",
+      31
+    ],
+    [
+      "Microsoft",
+      30
+    ]
+  ],
+  "top_locations": [
+    [
+      "Beijing",
+      436
+    ],
+    [
+      "Beijing, China",
+      318
+    ],
+    [
+      "China",
+      282
+    ],
+    [
+      "Shanghai",
+      208
+    ],
+    [
+      "Shanghai, China",
+      200
+    ],
+    [
+      "Hangzhou, China",
+      176
+    ],
+    [
+      "Hangzhou",
+      131
+    ],
+    [
+      "Shenzhen, China",
+      109
+    ],
+    [
+      "beijing",
+      89
+    ],
+    [
+      "Shenzhen",
+      84
+    ],
+    [
+      "hangzhou",
+      71
+    ],
+    [
+      "shanghai",
+      70
+    ],
+    [
+      "HangZhou",
+      68
+    ],
+    [
+      "北京",
+      68
+    ],
+    [
+      "Singapore",
+      63
+    ],
+    [
+      "Beijing China",
+      53
+    ],
+    [
+      "Hong Kong",
+      51
+    ],
+    [
+      "Beijing,China",
+      48
+    ],
+    [
+      "Shanghai,China",
+      37
+    ],
+    [
+      "杭州",
+      37
+    ]
+  ],
+  "samples": [
+    "LarFii",
+    "sunnyxibei",
+    "LyricZhao",
+    "ltfish",
+    "wilson-song",
+    "liubaikang",
+    "pureweber",
+    "Coldmist-Lu",
+    "Zack-Zhaoo",
+    "ericzw"
+  ]
+}

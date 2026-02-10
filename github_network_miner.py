@@ -437,7 +437,7 @@ class GitHubNetworkMiner:
         import random as rnd
         samples = rnd.sample(users, min(10, total))
         for s in samples:
-            print(f"  - {s['username']:25s} | {s.get('name',''):20s} | {s.get('company',''):30s} | {s.get('location','')}")
+            print(f"  - {s['username']:25s} | {(s.get('name') or ''):20s} | {(s.get('company') or ''):30s} | {s.get('location') or ''}")
             print(f"    URL: https://github.com/{s['username']}")
 
         # 保存报告
@@ -628,7 +628,8 @@ class GitHubNetworkMiner:
         import random as rnd
         samples_a = rnd.sample(tier_a, min(20, len(tier_a)))
         for i, s in enumerate(samples_a, 1):
-            print(f"  {i:2d}. {s['username']:25s} | Score: {s['ai_score']:5.1f} | {s.get('bio','')[:60]}")
+            bio = (s.get('bio') or '')[:60]
+            print(f"  {i:2d}. {s['username']:25s} | Score: {s['ai_score']:5.1f} | {bio}")
             print(f"      Signals: {', '.join(s.get('ai_signals', []))}")
             print(f"      URL: https://github.com/{s['username']}")
 
@@ -637,7 +638,9 @@ class GitHubNetworkMiner:
             print(f"\n🎲 Rejected 随机抽样 20 人 (检查是否有漏判的 AI 人才):")
             samples_r = rnd.sample(rejected, min(20, len(rejected)))
             for i, s in enumerate(samples_r, 1):
-                print(f"  {i:2d}. {s['username']:25s} | {s.get('company',''):20s} | {s.get('bio','')[:60]}")
+                bio = (s.get('bio') or '')[:60]
+                company = (s.get('company') or '')
+                print(f"  {i:2d}. {s['username']:25s} | {company:20s} | {bio}")
                 print(f"      URL: https://github.com/{s['username']}")
 
         # 保存报告
@@ -762,7 +765,9 @@ class GitHubNetworkMiner:
         print(f"   有邮箱: {sum(1 for e in enriched if e.get('all_emails'))}")
         print(f"   Top 10 候选人:")
         for i, c in enumerate(enriched[:10], 1):
-            print(f"     {i}. {c['username']:20s} | Score: {c['final_score']:.1f} | {c.get('company',''):20s} | Emails: {c.get('all_emails','N/A')[:40]}")
+            company = (c.get('company') or '')
+            emails = (c.get('all_emails') or 'N/A')
+            print(f"     {i}. {c['username']:20s} | Score: {c['final_score']:.1f} | {company:20s} | Emails: {emails[:40]}")
 
         return enriched
 
@@ -870,6 +875,364 @@ class GitHubNetworkMiner:
             "blog_rate": has_blog / total if total else 0,
         }
         self._save_json(report, BASE_DIR / "verification" / "verify3_report.json")
+
+    # ============================================================
+    # Phase 3.5: 个人主页深度数据提取
+    # ============================================================
+    def phase3_5_enrich(self, top: int = None, resume: bool = False):
+        """爬取个人主页，提取结构化信息（职位、经历、论文、邮箱等）"""
+        from bs4 import BeautifulSoup
+        import urllib3
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+        print("\n" + "=" * 60)
+        print("🌐 Phase 3.5: 个人主页深度数据提取")
+        print("=" * 60)
+
+        # 加载 Phase 3 结果
+        enriched_path = BASE_DIR / "phase3_enriched.json"
+        if not enriched_path.exists():
+            print("❌ 请先运行 Phase 3")
+            return
+        users = self._load_json(enriched_path)
+
+        # 限制处理数量
+        if top:
+            users_to_process = users[:top]
+            print(f"\n📡 准备处理 Top {top} 候选人的个人主页...")
+        else:
+            users_to_process = users
+            print(f"\n📡 准备处理全部 {len(users)} 候选人的个人主页...")
+
+        # 断点续传
+        output_path = BASE_DIR / "phase3_5_enriched.json"
+        already_done = set()
+        if resume and output_path.exists():
+            existing = self._load_json(output_path)
+            already_done = {u['username'] for u in existing if u.get('homepage_scraped')}
+            print(f"📂 断点续传: 已处理 {len(already_done)} 人")
+
+        # 统计
+        has_blog = sum(1 for u in users_to_process if u.get('blog'))
+        print(f"   有个人网站: {has_blog} 人")
+        print(f"   无个人网站: {len(users_to_process) - has_blog} 人\n")
+
+        scraped = 0
+        failed = 0
+        skipped = 0
+
+        for idx, user in enumerate(users_to_process):
+            username = user['username']
+
+            # 跳过已处理的
+            if username in already_done:
+                skipped += 1
+                continue
+
+            blog = user.get('blog', '')
+            if not blog:
+                user['homepage_scraped'] = False
+                continue
+
+            # 规范化 URL
+            if not blog.startswith(('http://', 'https://')):
+                blog = 'https://' + blog
+
+            # 跳过非个人网站的 URL
+            skip_domains = ['github.com/', 'twitter.com/', 'x.com/', 'linkedin.com/',
+                           'zhihu.com/', 'weibo.com/', 'bilibili.com/', 'medium.com/']
+            if any(d in blog.lower() for d in skip_domains):
+                # 但可以提取 LinkedIn URL
+                if 'linkedin.com/' in blog.lower():
+                    user['linkedin_url'] = blog
+                user['homepage_scraped'] = False
+                continue
+
+            try:
+                resp = requests.get(blog, timeout=10, verify=False,
+                                   headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'})
+                resp.encoding = resp.apparent_encoding or 'utf-8'
+
+                if resp.status_code == 200:
+                    extracted = self._extract_profile_from_page(resp.text, blog)
+                    # 合并提取的数据
+                    for key, val in extracted.items():
+                        if val:  # 只合并非空值
+                            user[key] = val
+                    user['homepage_scraped'] = True
+                    user['homepage_url'] = blog
+                    scraped += 1
+                else:
+                    user['homepage_scraped'] = False
+                    failed += 1
+            except Exception as e:
+                user['homepage_scraped'] = False
+                failed += 1
+
+            # 进度报告
+            processed = idx + 1 - skipped
+            if processed > 0 and processed % 10 == 0:
+                total_target = has_blog - len(already_done)
+                print(f"  进度: {processed}/{total_target} | 成功: {scraped} | 失败: {failed}")
+
+            # 中间保存
+            if processed > 0 and processed % 50 == 0:
+                self._save_json(users_to_process if top else users, output_path)
+                print(f"  💾 中间保存: {scraped} 人已提取")
+
+            # 爬取间隔（避免被封）
+            time.sleep(0.3)
+
+        # Google Scholar 数据提取
+        scholar_users = [u for u in users_to_process if u.get('scholar_url')]
+        if scholar_users:
+            print(f"\n🎓 提取 Google Scholar 数据 ({len(scholar_users)} 人)...")
+            for u in scholar_users:
+                scholar_data = self._fetch_scholar_data(u['scholar_url'])
+                if scholar_data:
+                    u.update(scholar_data)
+
+        # 更新评分
+        print("\n📊 更新评分...")
+        for user in users_to_process if top else users:
+            if user.get('homepage_scraped'):
+                bonus = self._calculate_enrichment_bonus(user)
+                user['enrichment_bonus'] = bonus
+                user['final_score_v2'] = round(user.get('final_score', 0) + bonus, 1)
+            else:
+                user['final_score_v2'] = user.get('final_score', 0)
+
+        # 按新评分排序
+        result = users_to_process if top else users
+        result.sort(key=lambda x: x.get('final_score_v2', 0), reverse=True)
+
+        # 保存结果
+        self._save_json(result, output_path)
+        self._save_csv(result, BASE_DIR / "phase3_5_enriched.csv")
+
+        # 统计报告
+        print(f"\n✅ Phase 3.5 完成!")
+        print(f"   总处理: {scraped + failed} 人")
+        print(f"   成功爬取: {scraped} 人")
+        print(f"   失败: {failed} 人")
+
+        # 提取统计
+        has_title = sum(1 for u in result if u.get('current_title'))
+        has_exp = sum(1 for u in result if u.get('work_experience'))
+        has_edu = sum(1 for u in result if u.get('education'))
+        has_pubs = sum(1 for u in result if u.get('top_venues_count', 0) > 0)
+        has_extra_email = sum(1 for u in result if u.get('extra_emails'))
+        has_linkedin = sum(1 for u in result if u.get('linkedin_url'))
+        has_scholar = sum(1 for u in result if u.get('scholar_url'))
+        has_twitter = sum(1 for u in result if u.get('twitter_url') or u.get('twitter_username'))
+
+        print(f"\n📊 数据增强统计:")
+        print(f"   当前职位: {has_title} 人")
+        print(f"   工作经历: {has_exp} 人")
+        print(f"   教育背景: {has_edu} 人")
+        print(f"   顶会论文: {has_pubs} 人")
+        print(f"   额外邮箱: {has_extra_email} 人")
+        print(f"   LinkedIn: {has_linkedin} 人")
+        print(f"   Scholar:  {has_scholar} 人")
+        print(f"   Twitter:  {has_twitter} 人")
+
+        # Top 10
+        print(f"\n🌟 更新后 Top 10:")
+        for i, c in enumerate(result[:10], 1):
+            company = (c.get('current_title') or c.get('company') or '')[:30]
+            score_old = c.get('final_score', 0)
+            score_new = c.get('final_score_v2', 0)
+            bonus = c.get('enrichment_bonus', 0)
+            print(f"  {i:2d}. {c['username']:20s} | {score_old:.1f}→{score_new:.1f} (+{bonus:.1f}) | {company}")
+
+        return result
+
+    def _extract_profile_from_page(self, html: str, url: str) -> Dict:
+        """从网页 HTML 中提取结构化信息"""
+        from bs4 import BeautifulSoup
+        import re
+
+        result = {}
+        soup = BeautifulSoup(html, 'html.parser')
+        text = soup.get_text(separator='\n', strip=True)
+
+        # === 邮箱提取 ===
+        email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
+        # 从 mailto 链接
+        mailto_emails = [a['href'].replace('mailto:', '') for a in soup.find_all('a', href=True)
+                        if 'mailto:' in a['href']]
+        # 从 [at] 格式
+        at_pattern = r'([a-zA-Z0-9._%+-]+)\s*\[at\]\s*([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})'
+        at_emails = [f"{m.group(1)}@{m.group(2)}" for m in re.finditer(at_pattern, text)]
+        # 从纯文本
+        text_emails = re.findall(email_pattern, text)
+        # 排除 noreply 和常见噪声
+        all_emails = set(mailto_emails + at_emails + text_emails)
+        all_emails = {e for e in all_emails if 'noreply' not in e and 'example.com' not in e
+                     and '@scdn.' not in e and 'wixpress' not in e and '.png' not in e
+                     and '@w3.org' not in e and 'schema.org' not in e}
+        if all_emails:
+            result['extra_emails'] = list(all_emails)
+
+        # === 社交链接提取 ===
+        all_links = [a.get('href', '') for a in soup.find_all('a', href=True)]
+
+        # LinkedIn
+        linkedin = [l for l in all_links if 'linkedin.com/in/' in l]
+        if linkedin:
+            result['linkedin_url'] = linkedin[0]
+
+        # Twitter
+        twitter = [l for l in all_links if 'twitter.com/' in l or 'x.com/' in l]
+        if twitter:
+            result['twitter_url'] = twitter[0]
+
+        # Google Scholar
+        scholar = [l for l in all_links if 'scholar.google' in l]
+        if scholar:
+            result['scholar_url'] = scholar[0]
+
+        # 知乎
+        zhihu = [l for l in all_links if 'zhihu.com/people/' in l]
+        if zhihu:
+            result['zhihu_url'] = zhihu[0]
+
+        # === 当前职位提取 ===
+        title_patterns = [
+            r'(?:I am|I\'m|currently|现在)\s+(?:a |an )?((?:Staff |Senior |Principal |Lead |Chief )?(?:Research(?:er|ier)? (?:Scientist|Engineer)|Software Engineer|Professor|Assistant Professor|Associate Professor|Engineer|Scientist|Developer|CTO|CEO|VP|Director|Manager|Architect|Fellow))',
+            r'((?:Staff |Senior |Principal |Lead |Chief )?(?:Research(?:er|ier)? (?:Scientist|Engineer)|Software Engineer|Professor|Assistant Professor|Associate Professor|Fellow))\s+(?:at|@)\s+(\S+(?:\s\S+){0,4})',
+        ]
+        for pat in title_patterns:
+            m = re.search(pat, text, re.IGNORECASE)
+            if m:
+                result['current_title'] = m.group(0)[:100]
+                break
+
+        # === 工作经历提取 ===
+        exp_patterns = [
+            # "2020-2023 Researcher at Company" 格式
+            r'(\d{4})\s*[-–—~至]\s*((?:\d{4}|present|now|至今|Present|Now))\s*[,\s:]*([^.\n]{5,80})',
+            # "[2020-2023] Company" 格式
+            r'\[(\d{4})\s*[-–—]\s*((?:\d{4}|present|Present))\]\s*([^.\n]{5,80})',
+        ]
+        experiences = []
+        for pat in exp_patterns:
+            for m in re.finditer(pat, text):
+                exp_text = m.group(0).strip()
+                if len(exp_text) > 10:
+                    experiences.append(exp_text)
+        if experiences:
+            result['work_experience'] = experiences[:5]  # 最多保留 5 条
+
+        # === 教育背景提取 ===
+        edu_keywords = ['Ph.D', 'PhD', 'B.S', 'B.Eng', 'M.S', 'M.Eng', 'Master', 'Bachelor',
+                       'Doctor', '博士', '硕士', '学士', 'Postdoc']
+        edu_items = []
+        for line in text.split('\n'):
+            if any(kw.lower() in line.lower() for kw in edu_keywords):
+                line_clean = line.strip()
+                if 10 < len(line_clean) < 200:
+                    edu_items.append(line_clean)
+        if edu_items:
+            result['education'] = edu_items[:3]  # 最多保留 3 条
+
+        # === 论文/顶会统计 ===
+        top_venues = ['ICLR', 'NeurIPS', 'ICML', 'ACL', 'EMNLP', 'NAACL',
+                      'CVPR', 'ICCV', 'ECCV', 'AAAI', 'IJCAI', 'KDD',
+                      'SIGIR', 'COLING', 'WWW', 'ICASSP', 'INTERSPEECH']
+        venue_counts = {}
+        for venue in top_venues:
+            count = len(re.findall(rf'\b{venue}\b', text))
+            if count > 0:
+                venue_counts[venue] = count
+        if venue_counts:
+            result['top_venues'] = venue_counts
+            result['top_venues_count'] = sum(venue_counts.values())
+
+        # === 研究方向提取 ===
+        research_kw = ['natural language processing', 'computer vision', 'machine learning',
+                      'deep learning', 'reinforcement learning', 'generative ai',
+                      'large language model', 'foundation model', 'transfer learning',
+                      'reasoning', 'multimodal', 'diffusion', 'transformer',
+                      'autonomous', 'robotics', 'speech', 'recommendation',
+                      'NLP', 'CV', 'ML', 'DL', 'RL', 'LLM', 'AGI']
+        found_topics = []
+        for kw in research_kw:
+            if re.search(rf'\b{kw}\b', text, re.IGNORECASE):
+                found_topics.append(kw)
+        if found_topics:
+            result['research_topics'] = found_topics
+
+        # === 正在招聘检测 ===
+        hire_patterns = [r'(?:we are |we\'re )?hiring', r'招聘', r'looking for',
+                        r'open position', r'join\s+(?:us|my|our)\s+team']
+        for pat in hire_patterns:
+            if re.search(pat, text, re.IGNORECASE):
+                result['is_hiring'] = True
+                break
+
+        return result
+
+    def _fetch_scholar_data(self, scholar_url: str) -> Dict:
+        """从 Google Scholar 页面提取引用数据"""
+        try:
+            resp = requests.get(scholar_url, timeout=10, verify=False,
+                              headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'})
+            if resp.status_code != 200:
+                return {}
+
+            import re
+            text = resp.text
+
+            # 提取引用数
+            citations_match = re.search(r'Citations.*?(\d+)', text)
+            h_index_match = re.search(r'h-index.*?(\d+)', text)
+
+            result = {}
+            if citations_match:
+                result['scholar_citations'] = int(citations_match.group(1))
+            if h_index_match:
+                result['scholar_h_index'] = int(h_index_match.group(1))
+
+            return result
+        except Exception:
+            return {}
+
+    def _calculate_enrichment_bonus(self, user: Dict) -> float:
+        """计算主页丰富后的评分加成"""
+        bonus = 0.0
+
+        # 顶会论文加成 (最多 +10)
+        venues_count = user.get('top_venues_count', 0)
+        if venues_count > 0:
+            bonus += min(venues_count * 0.5, 10)
+
+        # 额外邮箱加成 (+3)
+        if user.get('extra_emails'):
+            bonus += 3
+
+        # 完整工作经历加成 (+3)
+        if user.get('work_experience'):
+            bonus += 3
+
+        # 教育背景加成 (+2)
+        if user.get('education'):
+            bonus += 2
+
+        # LinkedIn 加成 (+2)
+        if user.get('linkedin_url'):
+            bonus += 2
+
+        # Scholar 引用数加成 (最多 +5)
+        citations = user.get('scholar_citations', 0)
+        if citations > 0:
+            bonus += min(citations / 1000, 5)
+
+        # 正在招聘标记 (+1 - 方便后续精准推荐)
+        if user.get('is_hiring'):
+            bonus += 1
+
+        return round(bonus, 1)
 
     # ============================================================
     # Phase 4: 社交网络扩展
@@ -1081,12 +1444,15 @@ def main():
         "phase1", "phase1_resume", "verify1",
         "phase2", "verify2",
         "phase3", "verify3",
+        "phase3_5",
         "phase4", "verify4",
     ], help="执行的阶段")
     parser.add_argument("--target", default="Neal12332", help="目标用户名")
     parser.add_argument("--token", default=None, help="GitHub Token")
     parser.add_argument("--seed-top", type=int, default=300, help="Phase 4 种子数量")
     parser.add_argument("--min-cooccurrence", type=int, default=3, help="Phase 4 最小共现次数")
+    parser.add_argument("--top", type=int, default=None, help="Phase 3.5 只处理 Top N")
+    parser.add_argument("--resume", action="store_true", help="Phase 3.5 断点续传")
     parser.add_argument("--max-users", type=int, default=None, help="Phase 3 最大处理人数")
 
     args = parser.parse_args()
@@ -1101,7 +1467,7 @@ def main():
         except ImportError:
             pass
 
-    if not token and args.command not in ["verify1", "verify2", "verify3", "verify4"]:
+    if not token and args.command not in ["verify1", "verify2", "verify3", "verify4", "phase3_5"]:
         print("⚠️ 未提供 GitHub Token，API 速率限制为 60次/小时")
         print("   建议: python github_network_miner.py phase1 --token ghp_xxxxx")
         print("   或设置环境变量: export GITHUB_TOKEN=ghp_xxxxx\n")
@@ -1122,6 +1488,8 @@ def main():
         miner.phase3_enrich(max_users=args.max_users)
     elif args.command == "verify3":
         miner.verify3()
+    elif args.command == "phase3_5":
+        miner.phase3_5_enrich(top=args.top, resume=args.resume)
     elif args.command == "phase4":
         miner.phase4_expand(seed_top=args.seed_top, min_cooccurrence=args.min_cooccurrence)
     elif args.command == "verify4":

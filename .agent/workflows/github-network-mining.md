@@ -2,219 +2,295 @@
 description: 从AI猎头的GitHub Following网络中挖掘AI人才，包括采集、过滤、扩展、联系信息提取和自动Follow
 ---
 
-# GitHub 社交网络挖掘 AI 人才 - 统一实施与验证方案
+# GitHub 社交网络挖掘 AI 人才
+
+> ⚠️ **文档治理规则**
+>
+> GitHub Mining 项目**有且仅有**以下 2 个文档：
+> 1. **本文件**: `github-network-mining.md` — 路线图 + Runbooks（做什么）
+> 2. **参考文件**: `github-mining-reference.md` — 执行细节（怎么做）
+>
+> **规则**：
+> - 🚫 **不得新建**其他 GitHub Mining 相关文档
+> - ✅ 新信息必须**更新到这两个文件中**对应章节
+> - 📍 分级标准**唯一以 reference 文档为准**
+
+> 📄 **详细执行参考**: [github-mining-reference.md](file:///Users/lillianliao/notion_rag/.agent/workflows/github-mining-reference.md)
+> 包含：爬取细节、分级标准、字段映射、评分公式、验证方法等
+
+---
+
+## 📍 路线图 (Roadmap)
+
+| 阶段 | 名称 | 状态 | 结果 | 说明 |
+|:---|:---|:---|:---|:---|
+| Phase 1 | 种子采集 | ✅ 完成 | 6,081 人 | Neal12332 的 Following 列表 |
+| Phase 2 | AI 相关性过滤 | ✅ 完成 | 3,723 AI 人才 | Tier A 1,027 / Tier B 2,508 |
+| Phase 3 | 深度信息提取 + 评分 | ✅ 完成 | 3,723 人，邮箱 61.6% | commit邮箱、Top仓库、语言 |
+| Phase 3.5 | 个人网站 + Scholar 深挖 | ✅ Top500 完成 | **500/1,027** (48.7%) | LinkedIn 42, Scholar 67, Twitter 136 |
+| Phase 4 | 社交网络扩展 | ❌ 未开始 | — | 种子用户的Following交叉挖掘 |
+| Phase 5 | 脉脉交叉匹配 | ❌ 未开始 | — | 补全手机号/微信 |
+| Phase 6 | 入库猎头系统 | ✅ Top500 完成 | **486 人已入库** | 全部已分级(S27/A76/B+239/B130/C14) |
+| Phase 7 | 个性化邮件触达 | ❌ 未开始 | — | 分层邮件模板 |
+| Phase 8 | 持续跟进 + 关系维护 | ❌ 未开始 | — | GitHub Follow/脉脉/微信 |
+| Phase 9 | 长期人才运营 | ❌ 未开始 | — | CRM Pipeline + 智能匹配 |
+
+**当前重点**: Top 500 全流程完成 (Phase 3.5 → 导入 → 分级)，下一步可扩展至 Top 1000 或启动 Phase 7 邮件触达
+
+> **💡 快速入库路径**: 可跳过 Phase 3.5 直接从 phase3_enriched.json 导入（基础字段完整度 70-100%），
+> 后续用 `phase3_5 --resume` 批量补充数据，再用 DB 增强脚本更新到数据库。
+
+---
 
 ## 前提准备
 
-1. **GitHub 登录**: 用户必须在浏览器中登录其 GitHub 账号（lillianliao），否则部分邮箱不可见
-2. **GitHub Token**: 需要 Personal Access Token 用于 API 调用（Settings -> Developer settings -> Personal access tokens -> Tokens (classic)，勾选 `public_repo` 和 `read:user` 权限）
-3. **脚本位置**: `/Users/lillianliao/notion_rag/github_network_miner.py`
+1. **GitHub Token**: Personal Access Token（Settings → Developer settings → Tokens (classic)，勾选 `public_repo` 和 `read:user`）
+2. **脚本位置**: `/Users/lillianliao/notion_rag/github_network_miner.py`
+3. **猎头系统**: `/Users/lillianliao/notion_rag/personal-ai-headhunter/`
 
 ---
 
-## Phase 1: 种子采集（采集 Neal12332 的 Following 列表）
+## Runbook 1: 增量处理 N 个候选人 ⭐ 最常用
 
-### 1.1 执行
+> 用户说「继续处理 20 个人」「再跑一批」时执行此流程
+> **必须完整执行所有 5 个步骤，缺一不可**
+
+### 步骤 1/5: 检查当前进度
 
 ```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py phase1 --target Neal12332
+cd /Users/lillianliao/notion_rag
+python3 -c "
+import json
+d = json.load(open('github_mining/phase3_5_enriched.json'))
+scraped = sum(1 for u in d if u.get('homepage_scraped'))
+print(f'Phase 3.5 已处理: {len(d)} 人 (成功爬取: {scraped})')
+"
 ```
 
-**功能**: 
-- 调用 GitHub API `GET /users/Neal12332/following?per_page=100` 分页采集全部 ~6,100 个 following 用户
-- 采集基本信息: username, name, bio, company, location, email, followers, following, public_repos
-- 保存到 `github_mining/phase1_seed_users.json` 和 `.csv`
+记下当前人数 N。
 
-### 1.2 验证 ✅ 检查点
+### 步骤 2/5: Phase 3.5 爬取个人主页
 
-运行验证脚本:
 ```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py verify1
+cd /Users/lillianliao/notion_rag
+python3 github_network_miner.py phase3_5 --top $((N + 20)) --resume
 ```
 
-验证项:
-- [ ] **总数校验**: 采集数量 ≈ 6,100（与 GitHub 页面显示的 6.1k 一致，允许 ±50 误差）
-- [ ] **去重校验**: username 无重复
-- [ ] **字段完整率**: `username` 100%, `name` ≥ 80%, `bio` ≥ 40%
-- [ ] **抽样比对**: 随机抽 10 人，用浏览器打开其 GitHub 页面，验证数据一致性
+- `--top`: 设为 N + 新增数量（如已有 70 人，想加 20 人，则 --top 90）
+- `--resume`: 跳过已处理的用户
+- 耗时约 10-30 分钟（取决于网络和网站可达性）
 
-**🚦 通过标准**: 总数误差 < 2% 且抽样比对全部通过
-**🚦 未通过**: 检查 API 分页逻辑或 Token 权限
+### 步骤 3/5: 导入到猎头系统
+
+```bash
+cd /Users/lillianliao/notion_rag/personal-ai-headhunter
+python3 import_github_candidates.py --file ../github_mining/phase3_5_enriched.json
+```
+
+- 自动去重（基于 GitHub username），已导入的会跳过
+- 组织账号自动过滤
+
+### 步骤 4/5: 自动分级
+
+```bash
+cd /Users/lillianliao/notion_rag/personal-ai-headhunter
+python3 batch_update_tiers.py
+```
+
+- 分级标准详见 [reference 文档的「分级标准」章节](file:///Users/lillianliao/notion_rag/.agent/workflows/github-mining-reference.md)
+- S/A/B/C 四级，对齐大厂 P 级体系
+
+### 步骤 5/5: 验证结果
+
+```bash
+cd /Users/lillianliao/notion_rag/personal-ai-headhunter
+python3 -c "
+from database import SessionLocal, Candidate
+from collections import Counter
+session = SessionLocal()
+all_gh = session.query(Candidate).filter(Candidate.source == 'github').all()
+tier_dist = Counter(c.talent_tier for c in all_gh)
+untiered = tier_dist.get(None, 0)
+print(f'GitHub 候选人总数: {len(all_gh)}')
+for tier in ['S', 'A', 'B', 'C']:
+    print(f'  {tier}: {tier_dist.get(tier, 0)} 人')
+if untiered > 0:
+    print(f'  ⚠️ 未分级: {untiered} 人（需要重新运行步骤 4）')
+else:
+    print('✅ 全部已分级')
+session.close()
+"
+```
+
+**验证检查清单**:
+- [ ] 新增候选人数是否正确
+- [ ] 未分级人数为 0
+- [ ] 无报错信息
+
+### 最后: 更新路线图
+
+完成后，更新本文件中「路线图」的 Phase 3.5 和 Phase 6 的数据。
 
 ---
 
-## Phase 2: AI 相关性过滤
+## Runbook 2: 首次全量执行（Phase 1 → 3）
 
-### 2.1 执行
+> 从零开始采集新的种子用户网络
 
-```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py phase2
-```
-
-**功能**:
-- 从 Phase 1 结果中，通过 Bio/公司/仓库 关键词匹配过滤 AI 相关人才
-- AI 关键词集: LLM, NLP, CV, transformer, diffusion, AIGC, agent, RAG, ML, DL, CUDA, GPU, 大模型, 多模态, 预训练, reinforcement learning...
-- AI 公司集: ByteDance, Alibaba, Tencent, Baidu, ZhipuAI, Moonshot, Baichuan, MiniMax, SenseTime, Megvii, Huawei, OpenAI, DeepMind, Meta AI...
-- AI 学校集: Tsinghua, PKU, NJU, SJTU, ZJU, USTC, Stanford, MIT, CMU, Berkeley...
-- 输出分层: Tier A (强 AI 信号), Tier B (中 AI 信号), Tier C (弱/疑似 AI 信号)
-- 保存到 `github_mining/phase2_ai_filtered.json` 和 `.csv`
-
-### 2.2 验证 ✅ 检查点
+### 步骤 1: 种子采集 (Phase 1)
 
 ```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py verify2
+cd /Users/lillianliao/notion_rag
+python github_network_miner.py phase1 --target <GitHub用户名>
 ```
 
-验证项:
-- [ ] **分布统计**: 打印公司 Top 20、地域 Top 10、关键词命中分布
-- [ ] **精确率抽检**: 从 Tier A 随机抽 20 人，检查是否确实做 AI → 目标: ≥ 90%
-- [ ] **精确率抽检**: 从 Tier B 随机抽 20 人 → 目标: ≥ 70%
-- [ ] **召回率抽检**: 从被过滤掉的人中随机抽 20 人，检查是否有遗漏 → 目标: 漏判 ≤ 20%
-- [ ] **直觉校验**: 公司分布 Top 10 应包含字节、阿里等主流 AI 公司
+- 采集指定用户的全部 Following 列表
+- 断点续传: `python github_network_miner.py phase1_resume`
+- 产出: `github_mining/phase1_seed_users.json`
 
-**🚦 通过标准**: Tier A 精确率 ≥ 90%, Tier B ≥ 70%
-**🚦 未通过**: 调整关键词集重新执行 Phase 2
+**验证**:
+```bash
+python github_network_miner.py verify1
+```
+- ✅ 总数与 GitHub 页面一致（±2%）
+- ✅ username 无重复
+- ✅ `name` 覆盖率 ≥ 80%
+
+### 步骤 2: AI 相关性过滤 (Phase 2)
+
+```bash
+python github_network_miner.py phase2
+```
+
+- 通过 Bio/公司/仓库关键词过滤 AI 相关人才
+- 输出分层: Tier A（强信号）、Tier B（中信号）
+- 产出: `github_mining/phase2_ai_filtered.json`
+
+**验证**:
+```bash
+python github_network_miner.py verify2
+```
+- ✅ Tier A 精确率 ≥ 90%
+- ✅ Tier B 精确率 ≥ 70%
+
+### 步骤 3: 深度信息提取 + 评分 (Phase 3)
+
+```bash
+python github_network_miner.py phase3
+```
+
+- 提取: 公开邮箱、commit 邮箱、Top 仓库、编程语言、Star 数
+- 评分: AI 相关度 30% + 影响力 25% + 活跃度 20% + 可联系性 15% + 地域 10%
+- 产出: `github_mining/phase3_enriched.json`
+
+**验证**:
+```bash
+python github_network_miner.py verify3
+```
+- ✅ 邮箱覆盖率 ≥ 50%（排除 noreply）
+- ✅ Top 20 人工审核通过率 ≥ 80%
+
+### 步骤 4-6: 继续 Phase 3.5 → 导入 → 分级
+
+完成 Phase 3 后，按 **Runbook 1** 执行增量处理流程。
 
 ---
 
-## Phase 3: 深度信息提取 + 浏览器验证（需要用户登录）
+## Runbook 3: 社交网络扩展 (Phase 4)
 
-### 3.1 执行 — 批量 API 深度信息
-
-```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py phase3
-```
-
-**功能**:
-- 对 Phase 2 的 Tier A + Tier B 用户进行深度信息提取
-- 提取: 公开邮箱, commit 邮箱, Top 仓库详情, 编程语言, Star 数
-- 评分排序(AI 相关度 30% + 影响力 25% + 活跃度 20% + 可联系性 15% + 地域 10%)
-- 保存到 `github_mining/phase3_enriched.json` 和 `.csv`
-
-### 3.2 执行 — 浏览器补充（需要用户手动登录 GitHub）
-
-> ⚠️ **提醒用户**: 请先在浏览器中登录你的 GitHub 账号
+> 通过种子用户的 Following 交叉挖掘新人才
 
 ```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py phase3_browser --top 200
+cd /Users/lillianliao/notion_rag
+python github_network_miner.py phase4 --seed-top 300 --min-cooccurrence 3
 ```
 
-**功能**:
-- 用浏览器逐一打开 Top 200 人的 GitHub 页面
-- 采集仅登录可见的邮箱
-- 对评分 ≥ 阈值的人才，自动点击 "Follow" 按钮
-- 截图保存到 `github_mining/screenshots/`
+- 采集 Top 300 种子用户的 Following 列表
+- 被 ≥ 3 个种子用户共同 Follow 的新用户进入候选池
+- 对新用户执行 AI 过滤 + 去重
+- 产出: `github_mining/phase4_expanded.json`
 
-### 3.3 验证 ✅ 检查点
-
+**验证**:
 ```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py verify3
+python github_network_miner.py verify4
 ```
-
-验证项:
-- [ ] **邮箱恢复率**: ≥ 50%（排除 `noreply@github.com`）
-- [ ] **邮箱格式校验**: 无 noreply 邮箱混入
-- [ ] **Follow 执行率**: 已 Follow 的人数统计
-- [ ] **Tier A Top 20 人工审核**: 用户审核评分排名前 20 的人，确认质量
-
-**🚦 通过标准**: 邮箱恢复率 ≥ 50%, Top 20 人工审核通过率 ≥ 80%
+- ✅ 新发现 AI 人才 ≥ 2,000
+- ✅ AI 精确率 ≥ 70%
+- ✅ 共现 ≥ 5 的人应为业内知名人士
 
 ---
 
-## Phase 4: 社交网络扩展
+## Runbook 4: 脉脉交叉匹配 (Phase 5)
 
-### 4.1 执行
+> 用脉脉补全手机号、微信、详细工作经历
 
-```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py phase4 --seed-top 300 --min-cooccurrence 3
-```
+**前置条件**: 浏览器登录脉脉 + 安装脉脉助手 Chrome 插件
 
-**功能**:
-- 从 Phase 3 评分 Top 300 的种子用户出发
-- 采集他们各自的 following 列表
-- 统计共现频率: 被 ≥ 3 个种子用户共同 follow 的新用户
-- 对新发现的用户执行 Phase 2 同样的 AI 过滤
-- 全局去重（与已有人才库对比）
-- 保存到 `github_mining/phase4_expanded.json`
+**匹配策略（优先级）**:
+1. 真名 + 公司名搜索（精确匹配率最高）
+2. 邮箱前缀辅助验证
+3. GitHub 用户名搜索
 
-### 4.2 验证 ✅ 检查点
+**补充字段**: 手机号、微信号、详细工作经历、教育背景、脉脉 ID
 
-```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py verify4
-```
-
-验证项:
-- [ ] **去重率**: 新发现用户中与 Phase 1-3 的重复率统计
-- [ ] **AI 精确率**: 随机抽 30 个新发现用户，AI 相关率 ≥ 70%
-- [ ] **共现分布**: 共现频率 Top 50 人名单是否合理
-- [ ] **高共现人才质量**: 共现 ≥ 5 的人应该是业内知名人士
-
-**🚦 通过标准**: 新发现 AI 人才 ≥ 2,000 且精确率 ≥ 70%
+**验证**: Top 200 匹配率 ≥ 40%
 
 ---
 
-## Phase 5: 入库 & 触达
+## Runbook 5: 邮件触达 (Phase 7)
 
-### 5.1 入库到猎头系统
+> 个性化邮件建立联系，核心目标：加微信
 
-```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py phase5_import
-```
+**邮件模板分层**:
 
-**功能**:
-- 将最终人才清单导入 `personal-ai-headhunter` 数据库
-- 字段映射: name → candidate.name, company → work_experience, email → contact
-- 标记来源为 "GitHub Network Mining"
+| 层级 | 对象 | 个性化程度 | 关键策略 |
+|:---|:---|:---|:---|
+| Tier A | Top 200 | 完全个性化 | 提到具体项目名、Star 数、技术方向 |
+| Tier B | 200-500 | 半模板化 | 提到公司和方向，邀请加入社群 |
+| Tier C | 500+ | 标准模板 | 简短邀请 |
 
-### 5.2 浏览器 Follow + 触达
+**发送策略**:
+- 工作日上午 10:00-11:00 发送
+- 先发 20 人测试 → 观察回复率 → 调整 → 全量
+- 间隔 30-60 秒/封，3天无回复发 1 次 Follow-up
+- **目标回复率**: Tier A ≥ 20%, Tier B ≥ 10%
 
-> ⚠️ **提醒用户**: 请确保浏览器中已登录 GitHub 账号
-
-```bash
-cd /Users/lillianliao/notion_rag && python github_network_miner.py phase5_follow --tier A
-```
-
-**功能**:
-- 批量 Follow Phase 4 新发现的优质人才
-- 生成个性化邮件模板（引用其 GitHub 项目）
-
-### 5.3 最终验证 ✅
-
-- [ ] **交叉验证**: 抽 20 人在脉脉/LinkedIn 搜索，比对信息一致性
-- [ ] **试触达**: 挑 5-10 人发邮件，观察回复率
-- [ ] **总产出统计**: 总人才数、有邮箱人数、已 Follow 人数、已触达人数
+**价值前置**: 不直接说"我是猎头"，提供行业报告/薪资数据/社群邀请作为交换
 
 ---
 
-## 输出文件目录结构
+## Runbook 6: 长期运营 (Phase 8-9)
 
+> 持续跟进和关系维护
+
+**多渠道触达节奏**:
+
+| 天数 | 动作 | 渠道 |
+|:---|:---|:---|
+| Day 0 | GitHub Follow + Star 热门项目 | GitHub |
+| Day 1 | 第一封个性化邮件 | Email |
+| Day 2 | 脉脉加好友 | 脉脉 |
+| Day 4 | Follow-up 邮件（换角度） | Email |
+| Day 7 | 脉脉打招呼（最后一次主动） | 脉脉 |
+| 每月 | 行业资讯推送 | Email/微信 |
+
+**候选人生命周期**:
 ```
-github_mining/
-├── phase1_seed_users.json          # Phase 1 原始数据
-├── phase1_seed_users.csv
-├── phase2_ai_filtered.json         # Phase 2 AI 过滤结果
-├── phase2_ai_filtered.csv
-├── phase2_rejected.json            # Phase 2 被过滤掉的（用于召回率验证）
-├── phase3_enriched.json            # Phase 3 深度信息
-├── phase3_enriched.csv
-├── phase3_follow_log.json          # Phase 3 Follow 记录
-├── phase4_expanded.json            # Phase 4 扩展结果
-├── phase4_expanded.csv
-├── verification/                   # 验证报告
-│   ├── verify1_report.txt
-│   ├── verify2_report.txt
-│   ├── verify3_report.txt
-│   └── verify4_report.txt
-├── screenshots/                    # 浏览器截图
-└── final_candidates.xlsx           # 最终候选人清单
+未触达 → 已Follow → 已发邮件 → 已回复 → 已加微信 → 有岗位匹配 → 推荐中 → 成交
 ```
+
+**系统未来需建设**:
+- Pipeline Dashboard（各阶段候选人看板）
+- 智能匹配通知（新 JD 自动匹配候选人）
+- 邮件模板引擎（自动填充个性化变量）
+- 候选人动态监控（GitHub 活动变化 → 触达时机）
 
 ---
 
 ## 关键注意事项
 
-1. **必须使用已登录的 GitHub 账号**: API 使用 Token，浏览器操作需要手动登录
-2. **Token 权限**: 需要 `public_repo` + `read:user`，Follow 操作需要 `user:follow`
-3. **速率控制**: API 有 Token 时 5,000次/小时，无 Token 仅 60次/小时
-4. **Follow 策略**: 只 Follow 评分 ≥ 阈值（默认 Top 30%）的 AI 人才
-5. **数据安全**: 所有数据仅用于合法招聘目的，不外泄
+1. **Token 限流**: API 5,000 次/小时，限流时自动暂停等待重置
+2. **多 Token 轮换**: 限流时用 `phase1_resume` 断点续传并切换 Token
+3. **中间保存**: 脚本每 200 人自动保存，中断可恢复
+4. **Follow 策略**: 只 Follow 评分 Top 30% 的 AI 人才，需 Classic Token
+5. **数据安全**: 所有数据仅用于合法招聘目的

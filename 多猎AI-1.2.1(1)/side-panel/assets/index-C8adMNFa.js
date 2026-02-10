@@ -1,2 +1,0 @@
-import{z as t,af as r}from"./index-s6tpV7Gq.js";import{q as n,u as i}from"./react-vendors-Qf0Y7mO5.js";import{C as e,E as m}from"./index-DNZ3nPBY.js";import{A as c}from"./index-DqVQNrtc.js";const d="_notFind_1f79t_1",p={notFind:d},E=()=>{const[s]=n(),o=s.get("msg"),a=i();return t.jsx("div",{className:p.notFind,children:t.jsxs("div",{children:[t.jsx(e,{status:m.NOT_FOUND,description:o||"网络出现了问题，请稍后再试"}),t.jsx(c,{type:"primary",onClick:()=>{a(r.HOME)},children:"刷新"})]})})};export{E as default};
-//# sourceMappingURL=index-C8adMNFa.js.map

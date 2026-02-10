@@ -136,3 +136,32 @@ Phase 1 (W1-5)     Phase 2 (W6-9)      Phase 3 (W10-12+)
 - [市场可行性分析](/.gemini/antigravity/brain/b1d3f26f-b4f7-4e34-ad36-71dddf73b132/ai_headhunter_strategy_feasibility.md)
 - [Agent人才匹配方法论](/Users/lillianliao/notion_rag/Agent人才匹配方法论.md)
 
+---
+
+## 六、Workflow & Skill 索引
+
+> ⚠️ **查看项目进度时，先查下面的 Workflow**，它们包含各项目最新的任务状态和 Runbook。
+
+### Workflows (`.agent/workflows/`)
+
+| Slash 命令 | 文件 | 对应模块 | 说明 |
+|:---|:---|:---|:---|
+| `/github-network-mining` | `github-network-mining.md` | 👁 感知层：GitHub 人才发现 | **Phase 1→9 完整路线图 + Runbooks**，当前 Phase 3.5 进行中 |
+| `/github-mining-reference` | `github-mining-reference.md` | 👁 (配套参考) | 爬取方法、分级标准(S/A/B/C)、字段映射、评分公式 |
+| `/professor-student-sourcing` | `professor-student-sourcing.md` | 👁 感知层：学术人才发现 | 查找知名教授学生 → 当前去向 → 联系方式 |
+| `/jd-batch-import` | `jd-batch-import.md` | 📊 记忆层：JD 导入 | CSV/Excel 批量导入职位 |
+| `/batch-resume-import` | (外部) | 📊 记忆层：候选人导入 | 批量导入简历并自动解析 |
+| `/bytedance-jd-import` | (外部) | 📊 记忆层：JD 导入 | 飞书文档批量导入字节跳动职位 |
+
+### Skills (`.agent/skills/`)
+
+| Skill | 说明 | 触发时机 |
+|:---|:---|:---|
+| `jd-naming-convention` | 职位编号(job_code)命名规范 | 导入/新建/更新 JD 时自动查阅 |
+
+### 关键执行文档
+
+| 文档 | 位置 | 说明 |
+|:---|:---|:---|
+| Sourcing 推进记录 | `personal-ai-headhunter/data/sourcing_推进.md` | 脉脉打招呼/加好友每日执行日志 |
+

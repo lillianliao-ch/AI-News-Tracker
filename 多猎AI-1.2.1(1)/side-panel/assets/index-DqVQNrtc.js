@@ -1,2 +1,0 @@
-import"./react-vendors-Qf0Y7mO5.js";import{z as r,B as u,c as s}from"./index-s6tpV7Gq.js";const e="_aiButtonPrimary_1dbtc_2",B="_aiButtonLinkDefault_1dbtc_14",a={aiButtonPrimary:e,aiButtonLinkDefault:B},l=({type:t,className:n,children:o,...i})=>r.jsx(u,{className:s(a.aiButton,{[a.aiButtonLinkDefault]:t==="default"&&i.href},{[a.aiButtonPrimary]:t==="primary"},n),type:t,...i,children:o});export{l as A};
-//# sourceMappingURL=index-DqVQNrtc.js.map

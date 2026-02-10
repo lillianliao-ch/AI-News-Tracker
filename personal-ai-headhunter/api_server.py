@@ -787,17 +787,28 @@ def linkedin_sync(request: LinkedInSyncRequest):
     
     db = SessionLocal()
     try:
-        # URL 标准化：去掉尾部斜杠，统一格式
+        # URL 标准化：去掉尾部斜杠，统一协议为 https
         normalized_url = request.linkedinUrl.strip().rstrip('/')
+        # 统一 http → https
+        if normalized_url.startswith('http://'):
+            normalized_url = 'https://' + normalized_url[7:]
+        # 生成所有可能变体用于匹配
+        url_http = normalized_url.replace('https://', 'http://')
         
-        # 用 linkedin_url 匹配（兼容有/无尾部斜杠）
+        # 用 linkedin_url 匹配（兼容 http/https + 有/无尾部斜杠）
         from sqlalchemy import or_, func
         existing = db.query(Candidate).filter(
             or_(
                 Candidate.linkedin_url == normalized_url,
-                Candidate.linkedin_url == normalized_url + '/'
+                Candidate.linkedin_url == normalized_url + '/',
+                Candidate.linkedin_url == url_http,
+                Candidate.linkedin_url == url_http + '/',
             )
         ).first()
+        
+        # 如果匹配上且存的是 http, 顺便修正为 https
+        if existing and existing.linkedin_url and existing.linkedin_url.startswith('http://'):
+            existing.linkedin_url = normalized_url
         
         # ===== 名字回退匹配：URL 未命中时按名字去重 =====
         name_matched = False

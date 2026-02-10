@@ -1,0 +1,492 @@
+{
+  "huybery": {
+    "current_position": "Staff Research Scientist at Alibaba Qwen Team",
+    "career_timeline": [
+      {
+        "company": "Alibaba Qwen Team",
+        "title": "Staff Research Scientist / Senior Staff Algorithm Engineer",
+        "period": "2020.02-Present",
+        "note": "Rapid promotion, ~10 years coding experience. Initiator of OpenDevin."
+      },
+      {
+        "company": "Unknown (pre-Alibaba)",
+        "title": "Software Developer",
+        "period": "Before 2020",
+        "note": "4 years as software developer before Alibaba"
+      }
+    ],
+    "education_details": [
+      {
+        "school": "Tianjin University (天津大学)",
+        "degree": "Unknown",
+        "field": "Computer Science / Parsing"
+      }
+    ],
+    "key_achievements": [
+      "Initiator of OpenDevin",
+      "Core contributor to Qwen/Qwen-Coder/QwQ models"
+    ],
+    "research_focus": [
+      "Foundation Models",
+      "Reasoning Models",
+      "Coding Agents",
+      "LLM"
+    ],
+    "seniority": "Senior Staff",
+    "search_note": "Binyuan Hui is a Staff Research Scientist at Alibaba Qwen Team, where he joined in February 2020. He is the initiator of OpenDevin, aiming to build autonomous coding models. He specializes in conversational AI, natural-language-to-SQL systems, model evaluation, and production-ready data pipelines. He has 10 years of coding experience and four years as a software developer prior to Alibaba. He received rapid internal promotions to Senior Staff Algorithm Engineer. He is an academic researcher from Tianjin University in Computer Science and Parsing. Active open-source contributor to AlibabaResearch/DAMO-ConvAI (r2sql/sdsql, sunsql, dial2vec, cgodial). Research interests: Foundation Models, Reasoning Models, Coding Agents.",
+    "linkedin_search_url": "https://www.linkedin.com/search/results/people/?keywords=Binyuan%20Hui"
+  },
+  "jindongwang": {
+    "current_position": "Assistant Professor at William & Mary",
+    "career_timeline": [
+      {
+        "company": "William & Mary",
+        "title": "Assistant Professor",
+        "period": "2024-Present"
+      },
+      {
+        "company": "Microsoft Research Asia",
+        "title": "Senior Researcher",
+        "period": "2019-2024"
+      }
+    ],
+    "education_details": [
+      {
+        "school": "Unknown",
+        "degree": "PhD",
+        "field": "AI/ML"
+      }
+    ],
+    "key_achievements": [
+      "World Top 2% Highly Cited Scientists",
+      "Most Influential AI Scholars",
+      "23000+ citations, H-index 54",
+      "60+ papers at top venues"
+    ],
+    "research_focus": [
+      "Machine Learning",
+      "Transfer Learning",
+      "LLM",
+      "Generative AI for Social Science"
+    ],
+    "seniority": "Professor",
+    "search_note": "Jindong Wang is an Assistant Professor at William & Mary Department of Computer Science. Previously, he was a Senior Researcher at Microsoft Research Asia (2019-2024). He is a World Top 2% Highly Cited Scientist and one of the Most Influential AI Scholars. He has 23,000+ citations and H-index 54, with 60+ papers at top venues including ICLR, NeurIPS, ICML, ACL, CVPR, AAAI, IJCAI, KDD. His research interests include machine learning, transfer learning, LLM, and generative AI for social science.",
+    "linkedin_url": "https://www.linkedin.com/in/jindong-wang/"
+  },
+  "xinntao": {
+    "current_position": "Senior Staff Researcher at Kuaishou Kling Team",
+    "career_timeline": [
+      {
+        "company": "Kuaishou Technology (Kling Team)",
+        "title": "Senior Staff Researcher",
+        "period": "2024-Present"
+      },
+      {
+        "company": "Tencent ARC Lab",
+        "title": "Senior Staff Researcher",
+        "period": "2020-2023"
+      }
+    ],
+    "education_details": [
+      {
+        "school": "Chinese University of Hong Kong (MMLab)",
+        "degree": "PhD",
+        "field": "Multimedia"
+      },
+      {
+        "school": "Zhejiang University",
+        "degree": "B.Eng",
+        "period": "2012-2016"
+      }
+    ],
+    "key_achievements": [
+      "Leading multimodal generation and world models at Kling"
+    ],
+    "research_focus": [
+      "Multimodal Generation",
+      "Image/Video Generation",
+      "3D Generation",
+      "World Models"
+    ],
+    "seniority": "Senior Staff",
+    "search_note": "Xintao Wang is a Senior Staff Researcher at Kuaishou Technology, currently part of the Kling Team where he leads efforts in multimodal generation and world models. Previously, he was a Senior Staff Researcher at Tencent ARC Lab and Tencent AI Lab (2020-2023). He received his Ph.D. from the Multimedia Lab (MMLab) at the Chinese University of Hong Kong and bachelor degree from Zhejiang University (2012-2016). His research focuses on multimodal generation including image/video generation and 3D generation.",
+    "linkedin_search_url": "https://www.linkedin.com/search/results/people/?keywords=Xintao%20Wang"
+  },
+  "feifeibear": {
+    "current_position": "Software Engineer (Team Lead) at ByteDance",
+    "career_timeline": [
+      {
+        "company": "ByteDance",
+        "title": "Software Engineer (LLM/DiT Training Lead)",
+        "period": "2025.01-Present"
+      },
+      {
+        "company": "Tencent",
+        "title": "Principal Software Engineer",
+        "period": "2019-2025"
+      },
+      {
+        "company": "HPC-AI Technology",
+        "title": "CTO",
+        "period": "2022-2023",
+        "note": "ColossalAI flagship product"
+      },
+      {
+        "company": "LightYearAI",
+        "title": "Technical Partner",
+        "period": "2022",
+        "note": "Acquired by Meituan in 3 months"
+      }
+    ],
+    "education_details": [
+      {
+        "school": "Tsinghua University",
+        "degree": "PhD",
+        "field": "Computer Science",
+        "year": "2019"
+      },
+      {
+        "school": "UC Davis",
+        "degree": "Visiting Scholar",
+        "period": "2018-2019"
+      },
+      {
+        "school": "Beijing University of Posts and Telecommunications",
+        "degree": "B.S.",
+        "year": "2014"
+      }
+    ],
+    "key_achievements": [
+      "Led veMLP + Volcano Ark MaaS at ByteDance",
+      "Created PatrickStar (Tencent highest individual award 2021)",
+      "CTO of ColossalAI"
+    ],
+    "research_focus": [
+      "LLM Training/Inference",
+      "DiT Training",
+      "RL",
+      "AI Infrastructure"
+    ],
+    "seniority": "Senior/Principal",
+    "search_note": "Jiarui Fang is currently a Software Engineer at ByteDance since January 2025, leading a team focused on LLM/DiT training, inference, and reinforcement learning. He is responsible for the Volcano Machine Learning Platform (veMLP) team and the Volcano Ark seedance/seedream MaaS service. Previously, he was a Principal Software Engineer at Tencent from June 2019 to January 2025, managing LLM and DiT training/inference software for heterogeneous hardware platforms. He contributed to PatrickStar (open-sourced LLM training software) and TurboTransformers, earning Tencent highest individual award in 2021. From February 2022 to March 2023, he served as CTO at HPC-AI Technology, leading ColossalAI as flagship product. He also initiated xDiT, a scalable inference engine for Diffusion Transformers. PhD in Computer Science from Tsinghua University (2019), BS from Beijing University of Posts and Telecommunications (2014).",
+    "linkedin_search_url": "https://www.linkedin.com/search/results/people/?keywords=Jiarui%20Fang"
+  },
+  "AtmaHou": {
+    "current_position": "PhD Candidate at Harbin Institute of Technology",
+    "career_timeline": [
+      {
+        "company": "Harbin Institute of Technology",
+        "title": "PhD in Computer Science",
+        "period": "2017-Present"
+      },
+      {
+        "company": "Microsoft Research Asia",
+        "title": "Research Intern",
+        "note": "Drug discovery with NLP"
+      },
+      {
+        "company": "Tencent AI Lab",
+        "title": "Research Intern",
+        "note": "Low-resource chatbots"
+      },
+      {
+        "company": "Northwestern University",
+        "title": "Visiting Researcher",
+        "note": "Meta Learning for few-shot"
+      }
+    ],
+    "education_details": [
+      {
+        "school": "Harbin Institute of Technology",
+        "degree": "PhD",
+        "field": "Computer Science"
+      }
+    ],
+    "research_focus": [
+      "NLP",
+      "Dialogue Systems",
+      "Few-shot Learning",
+      "Natural Language Generation"
+    ],
+    "seniority": "PhD/Research",
+    "search_note": "Yutai Hou is an NLP researcher currently pursuing a Ph.D. in Computer Science at Harbin Institute of Technology. His research interests encompass Natural Language Processing, Dialogue Systems, and Natural Language Generation. He has held research intern positions at Microsoft Research Asia (drug discovery with NLP and low-resource ML), Tencent AI Lab (low-resource task-oriented chatbots), and was a Visiting Researcher at Northwestern University (Meta Learning for few-shot sequence labeling). Notable publications include \"Inverse is Better! Fast and Accurate Prompt for Few-shot Slot Tagging\" (ACL 2022) and \"FewJoint: few-shot learning for joint dialogue understanding\" (IJMLC 2022).",
+    "linkedin_url": "https://www.linkedin.com/in/yutai-hou-64013b120/"
+  },
+  "wyhsirius": {
+    "current_position": "Research Scientist at Shanghai AI Laboratory",
+    "career_timeline": [
+      {
+        "company": "Shanghai AI Laboratory",
+        "title": "Research Scientist",
+        "period": "2022-Present"
+      },
+      {
+        "company": "Inria (STARS team)",
+        "title": "PhD Student",
+        "note": "Advised by Antitza Dantcheva"
+      }
+    ],
+    "education_details": [
+      {
+        "school": "Inria",
+        "degree": "PhD",
+        "field": "Computer Vision/Deep Generative Models"
+      },
+      {
+        "school": "Universite Paris-Saclay",
+        "degree": "M.S.",
+        "field": "Machine Learning",
+        "year": "2017"
+      },
+      {
+        "school": "Xidian University",
+        "degree": "B.S.",
+        "field": "Microelectronics Engineering",
+        "year": "2015"
+      }
+    ],
+    "research_focus": [
+      "Deep Generative Models",
+      "Image/Video Synthesis",
+      "Text-to-Video Generation"
+    ],
+    "seniority": "Mid-level",
+    "search_note": "Yaohui Wang is a Research Scientist at Shanghai AI Laboratory, where he joined in 2022. His research primarily focuses on deep generative models for image and video synthesis, including text-to-video generation. He earned his Ph.D. from Inria (STARS team), supervised by Antitza Dantcheva and François Brémond. He obtained a Master degree in Machine Learning from Université Paris-Saclay in 2017 and a Bachelor degree in Microelectronics Engineering from Xidian University in China in 2015.",
+    "linkedin_url": "https://www.linkedin.com/in/yaohui-wang-586983112"
+  },
+  "ZubinGou": {
+    "current_position": "Researcher at DeepSeek / M.S. Student at Tsinghua University",
+    "career_timeline": [
+      {
+        "company": "DeepSeek",
+        "title": "Researcher",
+        "period": "Current",
+        "note": "Core contributor to DeepSeek-R1"
+      },
+      {
+        "company": "Microsoft",
+        "title": "Intern",
+        "period": "2023-2024"
+      },
+      {
+        "company": "Baidu",
+        "title": "Intern",
+        "period": "2021-2022"
+      }
+    ],
+    "education_details": [
+      {
+        "school": "Tsinghua University",
+        "degree": "M.S.",
+        "field": "Artificial Intelligence",
+        "year": "2025 expected",
+        "advisor": "Prof. Yujiu Yang"
+      },
+      {
+        "school": "Beijing University of Posts and Telecommunications",
+        "degree": "B.S.",
+        "field": "Computer Science",
+        "period": "2018-2022"
+      }
+    ],
+    "key_achievements": [
+      "DeepSeek-R1 core contributor",
+      "ToRA (ICLR 2024)",
+      "CRITIC (NeurIPS 2024 Oral)",
+      "Rho-1 (NeurIPS 2024 Best Paper Runner-up)"
+    ],
+    "research_focus": [
+      "LLM Reasoning",
+      "Reinforcement Learning",
+      "Mathematical Problem Solving"
+    ],
+    "seniority": "Junior/Rising Star",
+    "search_note": "Zhibin Gou is an AI researcher currently affiliated with DeepSeek, specializing in large language model (LLM) reasoning and reinforcement learning (RL). He is an M.S. student in Artificial Intelligence at Tsinghua University (expected 2025), advised by Prof. Yujiu Yang. BS in Computer Science from Beijing University of Posts and Telecommunications (2018-2022). Internships at Baidu (2021-2022) and Microsoft (2023-2024). Key contributions: DeepSeek-R1 core contributor, ToRA (ICLR 2024), CRITIC (ICLR 2024 + NeurIPS 2024 Oral), Rho-1 (NeurIPS 2024 Best Paper Runner-up). Long-term aspiration: advancing artificial superintelligence (ASI).",
+    "linkedin_search_url": "https://www.linkedin.com/search/results/people/?keywords=Zhibin%20Gou"
+  },
+  "Yikun": {
+    "current_position": "Senior Software Engineer at Huawei",
+    "career_timeline": [
+      {
+        "company": "Huawei",
+        "title": "Senior Software Engineer (Open Source)",
+        "period": "2016-Present"
+      }
+    ],
+    "education_details": [],
+    "key_achievements": [
+      "PyTorch Technical Advisory Council member",
+      "OpenStack core member",
+      "openEuler maintainer",
+      "Spark committer"
+    ],
+    "research_focus": [
+      "Open Source Infrastructure",
+      "Multi-architecture Support",
+      "Big Data"
+    ],
+    "seniority": "Senior",
+    "search_note": "Yikun Jiang is a senior software engineer on Huawei open source development team. He joined Huawei computing open source team in 2016 and has actively contributed to various open-source communities. His work involves multi-architecture support and big data projects. He is a core member of the OpenStack community, a maintainer for the openEuler community, a reviewer for the Volcano community, and a committer for the Spark community. He holds a position on the PyTorch Technical Advisory Council (TAC).",
+    "linkedin_url": "https://www.linkedin.com/in/jiangyikun/"
+  },
+  "lafmdp": {
+    "current_position": "Senior AI Researcher at Huawei (TopMinds Program)",
+    "career_timeline": [
+      {
+        "company": "Huawei",
+        "title": "Senior AI Researcher (TopMinds)",
+        "period": "2025.07-Present"
+      },
+      {
+        "company": "RIKEN-AIP (Tokyo)",
+        "title": "Visiting Scholar",
+        "period": "2024",
+        "note": "With Prof. Masashi Sugiyama"
+      },
+      {
+        "company": "Nanjing University (LAMDA Group)",
+        "title": "PhD Student",
+        "period": "2019-2025",
+        "note": "Advised by Prof. Yang Yu"
+      }
+    ],
+    "education_details": [
+      {
+        "school": "Nanjing University",
+        "degree": "PhD",
+        "field": "RL/AI",
+        "period": "2019-2025",
+        "group": "LAMDA"
+      },
+      {
+        "school": "UESTC",
+        "degree": "B.Sc.",
+        "field": "CS",
+        "year": "2019"
+      }
+    ],
+    "key_achievements": [
+      "Huawei TopMinds Talent Program",
+      "Domain Agents using RL + LLM"
+    ],
+    "research_focus": [
+      "Reinforcement Learning",
+      "LLM-based Agents",
+      "Embodied AI",
+      "Robotics",
+      "Sim2Real"
+    ],
+    "seniority": "Mid-level",
+    "search_note": "Jing-Cheng Pang (庞竟成) is a Senior AI Researcher at Huawei, specializing in reinforcement learning and large language models. He joined Huawei in July 2025 as part of the TopMinds Talent Program. His research focuses on developing Domain Agents using RL and LLM for tasks like wireless and data communication. PhD completed June 2025 at Nanjing University within the LAMDA Group under Prof. Yang Yu. Visiting scholar at RIKEN-AIP Tokyo in 2024 (Prof. Masashi Sugiyama team). BSc from UESTC (2019). Research interests: language-conditioned RL, imitation learning, generalist agents, LLM training/optimization, embodied AI, robotics, sim2real.",
+    "linkedin_search_url": "https://www.linkedin.com/search/results/people/?keywords=Jing-Cheng%20Pang"
+  },
+  "PureWhiteWu": {
+    "current_position": "Engineer at ByteDance CloudWeGo",
+    "career_timeline": [
+      {
+        "company": "ByteDance CloudWeGo",
+        "title": "Infrastructure Engineer",
+        "period": "Current",
+        "location": "Shanghai",
+        "note": "Golang middleware, ORCID: 0009-0002-2214-9183"
+      }
+    ],
+    "key_achievements": [
+      "gopkg contributor (ByteDance internal Go utility)",
+      "monoio (async io-uring runtime)"
+    ],
+    "research_focus": [
+      "Golang",
+      "High-performance Infrastructure",
+      "Async Runtime"
+    ],
+    "seniority": "Mid-level",
+    "search_note": "PureWhiteWu is a ByteDance engineer specializing in Golang, affiliated with @bytedance @CloudWeGo. He has contributed to gopkg (universal Go utility collection migrated from ByteDance internal codebase), monoio (async thread-per-core runtime with io-uring support), and other Go-related infrastructure projects at ByteDance.",
+    "linkedin_search_url": "https://www.linkedin.com/search/results/people/?keywords=PureWhiteWu"
+  },
+  "singwhatiwanna": {
+    "current_position": "Android Engineer at DiDi",
+    "career_timeline": [
+      {
+        "company": "DiDi",
+        "title": "Android Engineer",
+        "period": "Current",
+        "location": "Beijing"
+      }
+    ],
+    "key_achievements": [
+      "Android dynamic loading/plugin framework expert"
+    ],
+    "research_focus": [
+      "Android Development",
+      "Plugin Frameworks",
+      "Dynamic Loading"
+    ],
+    "seniority": "Senior",
+    "search_note": "singwhatiwanna is an Android engineer at DiDi, based in Beijing. Recognized for contributions to Android development, particularly in dynamic loading and plugin frameworks. Author of Android App-Hook and Plug-In Technology related work.",
+    "linkedin_search_url": "https://www.linkedin.com/search/results/people/?keywords=singwhatiwanna"
+  },
+  "huangshiyu13": {
+    "current_position": "Researcher at XPENG (Vision-Language Models)",
+    "career_timeline": [
+      {
+        "company": "XPENG",
+        "title": "Researcher",
+        "period": "Current",
+        "note": "Vision-language models, 10 years AI experience"
+      },
+      {
+        "company": "Zhipu AI",
+        "title": "Principal Researcher",
+        "period": "Previous"
+      },
+      {
+        "company": "4Paradigm Inc.",
+        "title": "Principal Researcher",
+        "period": "Previous"
+      },
+      {
+        "company": "Huawei Noah Ark Lab",
+        "title": "Research Intern",
+        "period": "Previous"
+      },
+      {
+        "company": "Tencent AI Lab",
+        "title": "Research Intern",
+        "period": "Previous"
+      },
+      {
+        "company": "Carnegie Mellon University",
+        "title": "Research Intern",
+        "period": "Previous"
+      },
+      {
+        "company": "SenseTime",
+        "title": "Research Intern",
+        "period": "Previous"
+      }
+    ],
+    "education_details": [
+      {
+        "school": "Tsinghua University",
+        "degree": "PhD + B.E.",
+        "field": "Computer Science"
+      }
+    ],
+    "key_achievements": [
+      "OpenRL Lab leader",
+      "TARTRL group leader",
+      "10+ years AI experience"
+    ],
+    "research_focus": [
+      "Deep RL",
+      "Multi-agent RL",
+      "Vision-Language Models",
+      "Computer Vision",
+      "AGI"
+    ],
+    "seniority": "Senior/Principal",
+    "search_note": "Shiyu Huang is a researcher at XPENG specializing in deep and multi-agent reinforcement learning, with approximately 10 years of AI experience. Currently developing vision-language models at XPENG. Previously led multimodal LLM work at Zhipu AI and held principal researcher roles at 4Paradigm Inc. Received B.E. and Ph.D. from Tsinghua University Computer Science. Research internships at Huawei Noah Ark Lab, Tencent AI Lab, Carnegie Mellon University, and SenseTime. Founder of the OpenRL Lab and TARTRL group. Research interests include deep RL, multi-agent RL, computer vision, NLP, and AGI.",
+    "linkedin_url": "https://www.linkedin.com/in/shiyu-huang-841b92106/"
+  }
+}

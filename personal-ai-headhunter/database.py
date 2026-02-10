@@ -52,6 +52,7 @@ class Candidate(Base):
     linkedin_url = Column(String(500))
     github_url = Column(String(500))
     twitter_url = Column(String(500))
+    personal_website = Column(String(500))  # 个人主页/博客
     notes = Column(Text)
     
     # 好友标记
@@ -81,6 +82,9 @@ class Candidate(Base):
     # AI结构化标签
     structured_tags = Column(JSON)  # AI提取的结构化标签
     
+    # 人才分级
+    talent_tier = Column(String(10))  # S=顶尖大牛, A=优秀, B=不错, C=一般关注
+    
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
@@ -98,7 +102,12 @@ class Candidate(Base):
             "age": self.age,
             "expect_location": self.expect_location,
             "skills": self.skills,
-            "summary": self.ai_summary
+            "summary": self.ai_summary,
+            "linkedin_url": self.linkedin_url,
+            "github_url": self.github_url,
+            "twitter_url": self.twitter_url,
+            "personal_website": self.personal_website,
+            "talent_tier": self.talent_tier,
         }
 
 class Job(Base):
@@ -133,6 +142,7 @@ class Job(Base):
     jd_link = Column(String(500)) # JD原始链接（客户发布给猎头的来源链接）
     urgency = Column(Integer, default=0) # 紧急程度: 0=普通, 1=较急, 2=紧急, 3=非常紧急
     headcount = Column(Integer) # 职位数量/HC，表示该职位要招聘的人数
+    sourcing_notes = Column(Text) # HR提供的sourcing策略原文（对标公司、搜索方向等）
     # 二次发布渠道追踪（猎头在招聘平台发布的记录，与 jd_link 客户原始来源不同）
     # 格式: [{"channel": "MM", "published_at": "2026-02-07T10:00:00"}, {"channel": "LI", ...}]
     # 渠道代码: MM=脉脉, LI=LinkedIn, BOSS=Boss直聘
@@ -256,8 +266,8 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 def _ensure_legacy_schema_compatibility():
     """
     兼容历史数据库：
-    老库可能缺少 jobs.urgency，导致 ORM 查询直接崩溃。
-    启动时自动补齐该字段，避免 Streamlit 连接中断。
+    老库可能缺少新增字段，导致 ORM 查询直接崩溃。
+    启动时自动补齐，避免连接中断。
     """
     try:
         inspector = inspect(engine)
@@ -265,10 +275,15 @@ def _ensure_legacy_schema_compatibility():
             return
 
         job_cols = {c["name"] for c in inspector.get_columns("jobs")}
-        if "urgency" not in job_cols:
-            with engine.begin() as conn:
-                conn.execute(text("ALTER TABLE jobs ADD COLUMN urgency INTEGER DEFAULT 0"))
-            print("🔧 Auto-migrated: added jobs.urgency")
+        migrations = {
+            "urgency": "ALTER TABLE jobs ADD COLUMN urgency INTEGER DEFAULT 0",
+            "sourcing_notes": "ALTER TABLE jobs ADD COLUMN sourcing_notes TEXT",
+        }
+        for col, sql in migrations.items():
+            if col not in job_cols:
+                with engine.begin() as conn:
+                    conn.execute(text(sql))
+                print(f"🔧 Auto-migrated: added jobs.{col}")
     except Exception as e:
         print(f"⚠️ Legacy schema compatibility check failed: {e}")
 

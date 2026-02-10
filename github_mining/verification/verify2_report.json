@@ -1,0 +1,193 @@
+{
+  "timestamp": "2026-02-08T16:47:41.644480",
+  "tier_a_count": 1027,
+  "tier_b_count": 2508,
+  "tier_c_count": 188,
+  "rejected_count": 1877,
+  "top_companies": [
+    [
+      "Tencent",
+      279
+    ],
+    [
+      "Alibaba",
+      206
+    ],
+    [
+      "ByteDance",
+      133
+    ],
+    [
+      "@Tencent",
+      71
+    ],
+    [
+      "@bytedance",
+      66
+    ],
+    [
+      "Baidu",
+      66
+    ],
+    [
+      "Bytedance",
+      62
+    ],
+    [
+      "Tsinghua University",
+      57
+    ],
+    [
+      "Alibaba Group",
+      51
+    ],
+    [
+      "alibaba",
+      51
+    ],
+    [
+      "@alibaba",
+      47
+    ],
+    [
+      "bytedance",
+      40
+    ],
+    [
+      "@Alibaba",
+      40
+    ],
+    [
+      "Meituan",
+      37
+    ],
+    [
+      "tencent",
+      37
+    ],
+    [
+      "Peking University",
+      34
+    ],
+    [
+      "NetEase",
+      30
+    ],
+    [
+      "Alibaba Cloud",
+      29
+    ],
+    [
+      "Netease",
+      25
+    ],
+    [
+      "Shanghai Jiao Tong University",
+      24
+    ]
+  ],
+  "top_signals": [
+    [
+      "school:thu",
+      876
+    ],
+    [
+      "company:alibaba",
+      734
+    ],
+    [
+      "company:tencent",
+      574
+    ],
+    [
+      "company:bytedance",
+      457
+    ],
+    [
+      "weak:research",
+      324
+    ],
+    [
+      "company:baidu",
+      178
+    ],
+    [
+      "keyword:nlp",
+      142
+    ],
+    [
+      "keyword:llm",
+      125
+    ],
+    [
+      "company:meituan",
+      116
+    ],
+    [
+      "school:tsinghua",
+      110
+    ],
+    [
+      "company:netease",
+      110
+    ],
+    [
+      "weak:data",
+      102
+    ],
+    [
+      "keyword:machine learning",
+      77
+    ],
+    [
+      "weak:algorithm",
+      74
+    ],
+    [
+      "company:huawei",
+      71
+    ],
+    [
+      "keyword:deep learning",
+      59
+    ],
+    [
+      "company:didi",
+      55
+    ],
+    [
+      "weak:python",
+      44
+    ],
+    [
+      "keyword:agent",
+      40
+    ],
+    [
+      "keyword:computer vision",
+      38
+    ]
+  ],
+  "tier_a_samples": [
+    "chenchun",
+    "funcwj",
+    "jimbozhang",
+    "JacksonTian",
+    "wangxuekui",
+    "villasu0313",
+    "likaiucas",
+    "zhanglei1949",
+    "YongGuCheng",
+    "douhaopeng",
+    "zhanglaplace",
+    "mileistone",
+    "renxm",
+    "AlanCheen",
+    "PureWhiteWu",
+    "Yochengliu",
+    "csming1995",
+    "WuKongCoo1",
+    "ishare-zh",
+    "YaoZengzeng"
+  ]
+}
