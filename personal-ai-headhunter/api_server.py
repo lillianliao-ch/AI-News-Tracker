@@ -791,13 +791,50 @@ def linkedin_sync(request: LinkedInSyncRequest):
         normalized_url = request.linkedinUrl.strip().rstrip('/')
         
         # 用 linkedin_url 匹配（兼容有/无尾部斜杠）
-        from sqlalchemy import or_
+        from sqlalchemy import or_, func
         existing = db.query(Candidate).filter(
             or_(
                 Candidate.linkedin_url == normalized_url,
                 Candidate.linkedin_url == normalized_url + '/'
             )
         ).first()
+        
+        # ===== 名字回退匹配：URL 未命中时按名字去重 =====
+        name_matched = False
+        if not existing:
+            import re as _re
+            raw_name = request.name.strip()
+            # 提取所有名字变体：
+            #   "赵黎明 (Liming Zhao)" → ["赵黎明", "Liming Zhao"]
+            #   "Liming Zhao" → ["Liming Zhao"]
+            #   "Liming Zhao (赵黎明)" → ["Liming Zhao", "赵黎明"]
+            name_variants = set()
+            # 括号内容提取
+            paren_match = _re.search(r'[（(](.+?)[)）]', raw_name)
+            if paren_match:
+                inner = paren_match.group(1).strip()
+                outer = _re.sub(r'[（(].+?[)）]', '', raw_name).strip()
+                if inner: name_variants.add(inner)
+                if outer: name_variants.add(outer)
+            else:
+                name_variants.add(raw_name)
+            # 追加原始全名
+            name_variants.add(raw_name)
+            
+            # 逐个尝试匹配
+            for variant in name_variants:
+                if not variant:
+                    continue
+                existing = db.query(Candidate).filter(
+                    func.lower(Candidate.name) == variant.lower()
+                ).first()
+                if existing:
+                    name_matched = True
+                    # 回填 linkedin_url
+                    if not existing.linkedin_url:
+                        existing.linkedin_url = normalized_url
+                    print(f"🔗 名字匹配成功: '{variant}' → ID {existing.id} ({existing.name})")
+                    break
         
         # 构建工作经历 JSON
         new_work_exps = []

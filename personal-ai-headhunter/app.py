@@ -1926,7 +1926,10 @@ elif page == "人才库管理":
                 star_icon = "⭐" if is_friend else "☆"
                 star_label = "已关注" if is_friend else "关注"
                 
-                ac1, ac2, ac3, ac4 = st.columns(4)
+                ac1, ac2, ac3, ac4, ac5 = st.columns(5)
+                if ac5.button("🔄", key="refresh_detail", help="刷新"):
+                    st.cache_data.clear()
+                    st.rerun()
                 if ac1.button(f"{star_icon} {star_label}", key="toggle_friend_star"):
                     from datetime import datetime
                     if is_friend:
@@ -3405,23 +3408,31 @@ elif page == "人才库管理":
                         st.session_state.filter_friend = '全部'
                         st.session_state.filter_tier = '全部'
                         st.session_state.filter_source = '全部'
+                        for _ck in ['_persist_has_phone','_persist_has_email','_persist_has_linkedin','_persist_has_github','_persist_has_website','_persist_has_friend']:
+                            st.session_state[_ck] = False
                         st.rerun()
                 
                 # 第三行：联系方式筛选
                 st.caption("📞 联系方式筛选")
                 cc1, cc2, cc3, cc4, cc5, cc6 = st.columns(6)
                 with cc1:
-                    f_has_phone = st.checkbox("📱 有电话", key="filter_has_phone")
+                    f_has_phone = st.checkbox("📱 有电话", value=st.session_state.get('_persist_has_phone', False), key="filter_has_phone")
+                    st.session_state._persist_has_phone = f_has_phone
                 with cc2:
-                    f_has_email = st.checkbox("📧 有邮件", key="filter_has_email")
+                    f_has_email = st.checkbox("📧 有邮件", value=st.session_state.get('_persist_has_email', False), key="filter_has_email")
+                    st.session_state._persist_has_email = f_has_email
                 with cc3:
-                    f_has_linkedin = st.checkbox("🔗 有LinkedIn", key="filter_has_linkedin")
+                    f_has_linkedin = st.checkbox("🔗 有LinkedIn", value=st.session_state.get('_persist_has_linkedin', False), key="filter_has_linkedin")
+                    st.session_state._persist_has_linkedin = f_has_linkedin
                 with cc4:
-                    f_has_github = st.checkbox("💻 有GitHub", key="filter_has_github")
+                    f_has_github = st.checkbox("💻 有GitHub", value=st.session_state.get('_persist_has_github', False), key="filter_has_github")
+                    st.session_state._persist_has_github = f_has_github
                 with cc5:
-                    f_has_website = st.checkbox("🌐 有网站", key="filter_has_website")
+                    f_has_website = st.checkbox("🌐 有网站", value=st.session_state.get('_persist_has_website', False), key="filter_has_website")
+                    st.session_state._persist_has_website = f_has_website
                 with cc6:
-                    f_has_friend = st.checkbox("🤝 加好友", key="filter_has_friend")
+                    f_has_friend = st.checkbox("🤝 加好友", value=st.session_state.get('_persist_has_friend', False), key="filter_has_friend")
+                    st.session_state._persist_has_friend = f_has_friend
             
             # --- Query Data ---
             query = db.query(Candidate).options(
