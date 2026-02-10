@@ -1,6 +1,37 @@
 """
-候选人导入 API 服务
-用于接收脉脉插件发送的候选人数据
+AI 猎头 API Server (FastAPI, port 8502)
+========================================
+候选人导入 & 数据管理 API，供浏览器插件（脉脉/LinkedIn）和 Streamlit 前端调用。
+
+端点一览:
+─────────────────────────────────────────────────────────────
+候选人 - 导入与同步
+  POST /api/candidate/check          检查候选人是否已存在（maimai_id/姓名+学校/姓名+公司）
+  POST /api/candidate/import         脉脉插件导入新候选人（仅新建，不更新）
+  POST /api/candidate/maimai-sync    脉脉 Upsert 同步：不存在→新建，已存在→合并更新
+  POST /api/candidate/linkedin-sync  LinkedIn Upsert 同步：按 linkedin_url 去重，合并更新
+
+候选人 - 数据增强
+  POST /api/candidate/{id}/re-tier        重新 AI 评级（调用 LLM）
+  POST /api/candidate/{id}/refresh-github 刷新 GitHub 数据
+  GET  /api/candidate/{id}/search-scholar 搜索 Google Scholar 候选匹配
+  POST /api/candidate/{id}/fetch-scholar  获取并保存 Scholar 论文数据
+  GET  /api/candidate/{id}                获取候选人详情
+
+职位 (JD)
+  GET  /api/jobs                 职位列表（支持公司/关键词筛选）
+  GET  /api/jobs/active          活跃职位简要列表
+  GET  /api/jobs/{id}            职位详情
+  GET  /api/jobs/{id}/maimai-form 脉脉发布表单数据
+  POST /api/jobs/{id}/publish    标记职位已发布
+
+沟通 & 招聘管线
+  POST /api/generate-message     AI 生成个性化沟通消息
+  POST /api/comm-log             记录沟通日志
+  POST /api/pipeline/update      更新招聘管线状态
+  GET  /api/pipeline/follow-ups  获取待跟进列表
+  GET  /api/pipeline/stats       管线统计数据
+─────────────────────────────────────────────────────────────
 """
 import os
 import sys
@@ -78,6 +109,17 @@ class CandidateImportRequest(BaseModel):
     education: str = ""
     gender: str = ""
     statusTags: List[str] = []
+
+class LinkedInSyncRequest(BaseModel):
+    """LinkedIn ContactOut Scraper 同步请求"""
+    name: str
+    linkedinUrl: str = ""
+    currentTitle: str = ""
+    location: str = ""
+    workExperiences: List[WorkExperience] = []
+    educations: List[Education] = []
+    notes: str = ""
+    source: str = "linkedin"
 
 # 初始化数据库
 init_db()
@@ -340,6 +382,924 @@ def import_candidate(request: CandidateImportRequest):
     except Exception as e:
         db.rollback()
         print(f"❌ 导入候选人失败: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+@app.post("/api/candidate/maimai-sync")
+def maimai_sync(request: CandidateImportRequest):
+    """
+    脉脉候选人同步（upsert）：
+    1. 匹配策略：maimai_id → 姓名+学校 → 姓名+公司
+    2. 不存在 → 新建（复用 import 逻辑）
+    3. 已存在 → 比较后补充更新（参考 linkedin-sync）
+    """
+    if not request.name or not request.name.strip():
+        raise HTTPException(status_code=400, detail="姓名不能为空")
+    
+    db = SessionLocal()
+    try:
+        # ===== Step 1: 查找已有候选人 =====
+        existing = None
+        match_type = ""
+        
+        # 策略1: maimai_id 精确匹配
+        if request.maimaiUserId:
+            candidates = db.query(Candidate).filter(
+                Candidate.notes.contains(f"maimai_id:{request.maimaiUserId}")
+            ).all()
+            if candidates:
+                existing = candidates[0]
+                match_type = "maimaiUserId"
+        
+        # 策略2: 姓名 + 学校
+        if not existing and request.name and request.educations:
+            first_school = request.educations[0].school if request.educations else ""
+            if first_school:
+                candidates = db.query(Candidate).filter(
+                    Candidate.name == request.name.strip()
+                ).all()
+                for candidate in candidates:
+                    if candidate.education_details:
+                        try:
+                            edu_list = json.loads(candidate.education_details) if isinstance(candidate.education_details, str) else candidate.education_details
+                            for edu in (edu_list or []):
+                                if isinstance(edu, dict) and first_school in str(edu.get('school', '')):
+                                    existing = candidate
+                                    match_type = "name+school"
+                                    break
+                        except:
+                            pass
+                    if existing:
+                        break
+        
+        # 策略3: 姓名 + 公司
+        if not existing and request.name:
+            req_companies = [request.currentCompany] if request.currentCompany else []
+            for exp in request.workExperiences:
+                if exp.company and exp.company not in req_companies:
+                    req_companies.append(exp.company)
+            
+            if req_companies:
+                candidates = db.query(Candidate).filter(
+                    Candidate.name == request.name.strip()
+                ).all()
+                for candidate in candidates:
+                    candidate_companies = []
+                    if candidate.current_company:
+                        candidate_companies.append(candidate.current_company)
+                    if candidate.work_experiences:
+                        try:
+                            exps = json.loads(candidate.work_experiences) if isinstance(candidate.work_experiences, str) else candidate.work_experiences
+                            for exp in (exps or []):
+                                if isinstance(exp, dict) and exp.get('company'):
+                                    candidate_companies.append(exp['company'])
+                        except:
+                            pass
+                    for company in req_companies:
+                        if company and any(company in c or c in company for c in candidate_companies):
+                            existing = candidate
+                            match_type = "name+company"
+                            break
+                    if existing:
+                        break
+        
+        # ===== 构建数据 =====
+        new_work_exps = []
+        for exp in request.workExperiences:
+            new_work_exps.append({
+                "company": exp.company,
+                "position": exp.position,
+                "start_date": exp.startDate,
+                "end_date": exp.endDate,
+                "duration": exp.duration,
+                "description": exp.description
+            })
+        
+        new_edu_list = []
+        for edu in request.educations:
+            edu_item = {
+                "school": edu.school,
+                "degree": edu.degree,
+                "major": edu.major,
+                "start_year": edu.startYear,
+                "end_year": edu.endYear,
+            }
+            if edu.description:
+                edu_item["description"] = edu.description
+            if edu.tags:
+                edu_item["tags"] = edu.tags
+            new_edu_list.append(edu_item)
+        
+        new_projects = []
+        for proj in request.projects:
+            new_projects.append({
+                "name": proj.name,
+                "time": proj.time,
+                "description": proj.description
+            })
+        
+        if existing:
+            # ===== 更新模式：只补充空字段 + 合并去重 =====
+            from sqlalchemy.orm.attributes import flag_modified
+            updated_fields = []
+            
+            # 简单字段：只补充空的
+            if not existing.current_title and request.currentPosition:
+                existing.current_title = request.currentPosition
+                updated_fields.append("current_title")
+            
+            if not existing.current_company and request.currentCompany:
+                existing.current_company = request.currentCompany
+                updated_fields.append("current_company")
+            
+            if not existing.expect_location and request.location:
+                existing.expect_location = request.location
+                updated_fields.append("expect_location")
+            
+            if not existing.experience_years and request.experienceYears:
+                existing.experience_years = request.experienceYears
+                updated_fields.append("experience_years")
+            
+            if not existing.education_level and request.education:
+                existing.education_level = request.education
+                updated_fields.append("education_level")
+            
+            # work_experiences: 合并去重（按 company + position）
+            if new_work_exps:
+                existing_exps = []
+                if existing.work_experiences:
+                    existing_exps = json.loads(existing.work_experiences) if isinstance(existing.work_experiences, str) else existing.work_experiences
+                    existing_exps = existing_exps or []
+                
+                for new_exp in new_work_exps:
+                    if not new_exp.get("company"):
+                        continue
+                    is_dup = any(
+                        e.get("company", "").strip() == new_exp["company"].strip() and
+                        e.get("position", "").strip() == new_exp["position"].strip()
+                        for e in existing_exps
+                    )
+                    if not is_dup:
+                        existing_exps.append(new_exp)
+                        updated_fields.append(f"work:{new_exp['company']}")
+                
+                existing.work_experiences = existing_exps
+                flag_modified(existing, "work_experiences")
+            
+            # education_details: 合并去重（按 school）
+            if new_edu_list:
+                existing_edus = []
+                if existing.education_details:
+                    existing_edus = json.loads(existing.education_details) if isinstance(existing.education_details, str) else existing.education_details
+                    existing_edus = existing_edus or []
+                
+                for new_edu in new_edu_list:
+                    if not new_edu.get("school"):
+                        continue
+                    is_dup = any(
+                        e.get("school", "").strip() == new_edu["school"].strip()
+                        for e in existing_edus
+                    )
+                    if not is_dup:
+                        existing_edus.append(new_edu)
+                        updated_fields.append(f"edu:{new_edu['school']}")
+                
+                existing.education_details = existing_edus
+                flag_modified(existing, "education_details")
+            
+            # project_experiences: 合并去重（按 name）
+            if new_projects:
+                existing_projs = []
+                if existing.project_experiences:
+                    existing_projs = json.loads(existing.project_experiences) if isinstance(existing.project_experiences, str) else existing.project_experiences
+                    existing_projs = existing_projs or []
+                
+                for new_proj in new_projects:
+                    if not new_proj.get("name"):
+                        continue
+                    is_dup = any(
+                        p.get("name", "").strip() == new_proj["name"].strip()
+                        for p in existing_projs
+                    )
+                    if not is_dup:
+                        existing_projs.append(new_proj)
+                        updated_fields.append(f"proj:{new_proj['name']}")
+                
+                existing.project_experiences = existing_projs
+                flag_modified(existing, "project_experiences")
+            
+            # skills: 合并去重
+            if request.skills:
+                existing_skills = existing.skills or []
+                if isinstance(existing_skills, str):
+                    try:
+                        existing_skills = json.loads(existing_skills)
+                    except:
+                        existing_skills = []
+                
+                for skill in request.skills:
+                    if skill and skill not in existing_skills:
+                        existing_skills.append(skill)
+                        updated_fields.append(f"skill:{skill}")
+                
+                existing.skills = existing_skills
+                flag_modified(existing, "skills")
+            
+            # source: 追加 maimai 标记
+            if existing.source:
+                if "maimai" not in existing.source:
+                    existing.source = existing.source + ", maimai"
+                    updated_fields.append("source")
+            else:
+                existing.source = "maimai"
+                updated_fields.append("source")
+            
+            # notes: 追加
+            notes_parts = []
+            if request.maimaiUserId and (not existing.notes or f"maimai_id:{request.maimaiUserId}" not in existing.notes):
+                notes_parts.append(f"maimai_id:{request.maimaiUserId}")
+            if request.sourceUrl:
+                notes_parts.append(f"maimai_url:{request.sourceUrl}")
+            if request.statusTags:
+                notes_parts.append(f"status_tags:{','.join(request.statusTags)}")
+            
+            if notes_parts:
+                existing_notes = existing.notes or ""
+                separator = "\n" if existing_notes else ""
+                new_note = f"[maimai_sync {datetime.now().strftime('%Y-%m-%d')}] " + " | ".join(notes_parts)
+                if new_note not in existing_notes:
+                    existing.notes = existing_notes + separator + new_note
+                    updated_fields.append("notes")
+            
+            existing.updated_at = datetime.now()
+            db.commit()
+            
+            action = "updated" if updated_fields else "unchanged"
+            print(f"🔄 脉脉同步 [{action}] ({match_type}): {existing.name} (ID: {existing.id}) 字段: {updated_fields}")
+            
+            return {
+                "success": True,
+                "action": action,
+                "candidateId": existing.id,
+                "matchType": match_type,
+                "updatedFields": updated_fields,
+                "message": f"{'已更新 ' + str(len(updated_fields)) + ' 个字段' if updated_fields else '已在库中，无新数据'}"
+            }
+        
+        else:
+            # ===== 新建模式（复用 import 逻辑）=====
+            current_year = datetime.now().year
+            
+            # 推测最高学历
+            education_level = request.education or ""
+            if not education_level:
+                degree_priority = {"博士": 4, "PhD": 4, "硕士": 3, "Master": 3, "本科": 2, "Bachelor": 2, "专科": 1}
+                max_priority = 0
+                for edu in new_edu_list:
+                    degree = edu.get("degree", "")
+                    priority = degree_priority.get(degree, 0)
+                    if priority > max_priority:
+                        max_priority = priority
+                        education_level = degree
+            
+            # 推测工作年限
+            experience_years = request.experienceYears or 0
+            earliest_work_year = current_year
+            if not experience_years:
+                for exp in new_work_exps:
+                    start_date = exp.get("start_date", "")
+                    if start_date:
+                        try:
+                            year = int(start_date.split(".")[0])
+                            if year < earliest_work_year:
+                                earliest_work_year = year
+                        except:
+                            pass
+                if earliest_work_year < current_year:
+                    experience_years = current_year - earliest_work_year
+            
+            # 推测年龄
+            age = None
+            for edu in new_edu_list:
+                degree = edu.get("degree", "")
+                start_year = edu.get("start_year", "")
+                if degree in ["本科", "Bachelor"] and start_year:
+                    try:
+                        age = current_year - int(start_year) + 18
+                        break
+                    except:
+                        pass
+            if not age and earliest_work_year < current_year:
+                age = current_year - earliest_work_year + 22
+            
+            # 构建 notes
+            notes_parts = []
+            if request.maimaiUserId:
+                notes_parts.append(f"maimai_id:{request.maimaiUserId}")
+            if request.sourceUrl:
+                notes_parts.append(f"source_url:{request.sourceUrl}")
+            notes_parts.append(f"imported_at:{datetime.now().isoformat()}")
+            
+            candidate = Candidate(
+                name=request.name.strip(),
+                current_company=request.currentCompany,
+                current_title=request.currentPosition,
+                expect_location=request.location,
+                work_experiences=new_work_exps if new_work_exps else None,
+                education_details=new_edu_list if new_edu_list else None,
+                project_experiences=new_projects if new_projects else None,
+                skills=request.skills if request.skills else None,
+                source="maimai",
+                notes="\n".join(notes_parts),
+                education_level=education_level if education_level else None,
+                experience_years=experience_years if experience_years > 0 else None,
+                age=age,
+                created_at=datetime.now(),
+                updated_at=datetime.now()
+            )
+            
+            db.add(candidate)
+            db.commit()
+            db.refresh(candidate)
+            
+            print(f"✅ 脉脉同步 [created]: {candidate.name} (ID: {candidate.id})")
+            
+            # 异步：提取标签 + 创建门户
+            import threading
+            def _post_maimai_sync_bg(cid, cname):
+                try:
+                    from extract_tags import extract_tags_for_candidate_by_id
+                    print(f"🏷️ 脉脉候选人 {cname} (ID={cid}) 标签提取中...")
+                    tags = extract_tags_for_candidate_by_id(cid)
+                    if tags:
+                        print(f"🏷️ ✅ {cname} 标签提取完成")
+                except Exception as e:
+                    print(f"🏷️ ❌ {cname} 标签提取异常: {e}")
+                
+                try:
+                    import hashlib, requests
+                    PORTAL_BASE = "https://jobs.rupro-consulting.com"
+                    token = hashlib.sha256('ruproAI'.encode()).hexdigest()
+                    resp = requests.post(f"{PORTAL_BASE}/api/portal/create", json={
+                        'candidate_id': cid,
+                        'candidate_name': cname,
+                    }, cookies={'auth_token': token}, timeout=15)
+                    if resp.status_code == 200 and resp.json().get('success'):
+                        portal_code = resp.json()['portal_code']
+                        print(f"🔗 ✅ {cname} 门户已创建: /p/{portal_code}")
+                except Exception as e:
+                    print(f"🔗 ❌ {cname} 门户创建异常: {e}")
+            
+            threading.Thread(target=_post_maimai_sync_bg, args=(candidate.id, candidate.name), daemon=True).start()
+            
+            return {
+                "success": True,
+                "action": "created",
+                "candidateId": candidate.id,
+                "message": f"新建候选人: {candidate.name}（标签提取+门户创建中...）"
+            }
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        print(f"❌ 脉脉同步失败: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+@app.post("/api/candidate/linkedin-sync")
+def linkedin_sync(request: LinkedInSyncRequest):
+    """
+    LinkedIn 候选人同步（由 linkedin-contactout-scraper 插件调用）：
+    1. 用 linkedin_url 精确匹配去重
+    2. 不存在 → 新建
+    3. 已存在 → 只补充空字段（不覆盖已有数据）
+    """
+    # 空数据过滤
+    if not request.name or not request.name.strip():
+        raise HTTPException(status_code=400, detail="姓名不能为空")
+    if not request.linkedinUrl or not request.linkedinUrl.strip():
+        raise HTTPException(status_code=400, detail="LinkedIn URL 不能为空")
+    
+    db = SessionLocal()
+    try:
+        # URL 标准化：去掉尾部斜杠，统一格式
+        normalized_url = request.linkedinUrl.strip().rstrip('/')
+        
+        # 用 linkedin_url 匹配（兼容有/无尾部斜杠）
+        from sqlalchemy import or_
+        existing = db.query(Candidate).filter(
+            or_(
+                Candidate.linkedin_url == normalized_url,
+                Candidate.linkedin_url == normalized_url + '/'
+            )
+        ).first()
+        
+        # 构建工作经历 JSON
+        new_work_exps = []
+        for exp in request.workExperiences:
+            new_work_exps.append({
+                "company": exp.company,
+                "position": exp.position,
+                "start_date": exp.startDate,
+                "end_date": exp.endDate,
+                "duration": exp.duration,
+                "description": exp.description
+            })
+        
+        # 构建教育经历 JSON
+        new_edu_list = []
+        for edu in request.educations:
+            new_edu_list.append({
+                "school": edu.school,
+                "degree": edu.degree,
+                "major": edu.major,
+                "start_year": edu.startYear,
+                "end_year": edu.endYear,
+                "description": edu.description
+            })
+        
+        if existing:
+            # ===== 更新模式：只补充空字段 =====
+            updated_fields = []
+            
+            if not existing.current_title and request.currentTitle:
+                existing.current_title = request.currentTitle
+                updated_fields.append("current_title")
+            
+            if not existing.expect_location and request.location:
+                existing.expect_location = request.location
+                updated_fields.append("expect_location")
+            
+            # work_experiences: 合并去重（用 company + position）
+            if new_work_exps:
+                existing_exps = []
+                if existing.work_experiences:
+                    existing_exps = json.loads(existing.work_experiences) if isinstance(existing.work_experiences, str) else existing.work_experiences
+                
+                for new_exp in new_work_exps:
+                    is_dup = any(
+                        e.get("company", "").strip() == new_exp["company"].strip() and
+                        e.get("position", "").strip() == new_exp["position"].strip()
+                        for e in existing_exps
+                    ) if new_exp["company"] else False
+                    if not is_dup:
+                        existing_exps.append(new_exp)
+                        updated_fields.append(f"work:{new_exp['company']}")
+                
+                existing.work_experiences = existing_exps
+            
+            # education_details: 合并去重（用 school）
+            if new_edu_list:
+                existing_edus = []
+                if existing.education_details:
+                    existing_edus = json.loads(existing.education_details) if isinstance(existing.education_details, str) else existing.education_details
+                
+                for new_edu in new_edu_list:
+                    is_dup = any(
+                        e.get("school", "").strip() == new_edu["school"].strip()
+                        for e in existing_edus
+                    ) if new_edu["school"] else False
+                    if not is_dup:
+                        existing_edus.append(new_edu)
+                        updated_fields.append(f"edu:{new_edu['school']}")
+                
+                existing.education_details = existing_edus
+            
+            # source: 追加 linkedin 标记
+            if existing.source:
+                if "linkedin" not in existing.source:
+                    existing.source = existing.source + ", linkedin"
+                    updated_fields.append("source")
+            else:
+                existing.source = "linkedin"
+                updated_fields.append("source")
+            
+            # notes: 追加备注
+            if request.notes and request.notes.strip():
+                existing_notes = existing.notes or ""
+                if request.notes.strip() not in existing_notes:
+                    separator = "\n" if existing_notes else ""
+                    existing.notes = existing_notes + separator + f"[linkedin] {request.notes.strip()}"
+                    updated_fields.append("notes")
+            
+            existing.updated_at = datetime.now()
+            
+            # 强制标记 JSON 字段为已修改（SQLAlchemy 不会自动检测 JSON 的就地修改）
+            from sqlalchemy.orm.attributes import flag_modified
+            if new_work_exps:
+                flag_modified(existing, "work_experiences")
+            if new_edu_list:
+                flag_modified(existing, "education_details")
+            
+            db.commit()
+            
+            action = "updated" if updated_fields else "unchanged"
+            print(f"🔄 LinkedIn同步 [{action}]: {existing.name} (ID: {existing.id}) 字段: {updated_fields}")
+            
+            return {
+                "success": True,
+                "action": action,
+                "candidateId": existing.id,
+                "updatedFields": updated_fields,
+                "message": f"已存在，{'完成合并（' + str(len(updated_fields)) + ' 个字段）' if updated_fields else '无需合并'}"
+            }
+        
+        else:
+            # ===== 新建模式 =====
+            education_level = ""
+            degree_priority = {"博士": 4, "PhD": 4, "硕士": 3, "Master": 3, "本科": 2, "Bachelor": 2, "专科": 1}
+            max_priority = 0
+            for edu in new_edu_list:
+                degree = edu.get("degree", "")
+                priority = degree_priority.get(degree, 0)
+                if priority > max_priority:
+                    max_priority = priority
+                    education_level = degree
+            
+            # 从 title 提取 current_company（"Position at Company" 格式）
+            current_company = ""
+            if request.currentTitle and " at " in request.currentTitle:
+                parts = request.currentTitle.split(" at ", 1)
+                current_company = parts[1].strip() if len(parts) > 1 else ""
+            
+            candidate = Candidate(
+                name=request.name.strip(),
+                linkedin_url=request.linkedinUrl,
+                current_title=request.currentTitle,
+                current_company=current_company,
+                expect_location=request.location,
+                work_experiences=new_work_exps if new_work_exps else None,
+                education_details=new_edu_list if new_edu_list else None,
+                education_level=education_level if education_level else None,
+                source="linkedin",
+                notes=f"[linkedin] {request.notes.strip()}" if request.notes and request.notes.strip() else None,
+                created_at=datetime.now(),
+                updated_at=datetime.now()
+            )
+            
+            db.add(candidate)
+            db.commit()
+            db.refresh(candidate)
+            
+            print(f"✅ LinkedIn同步 [created]: {candidate.name} (ID: {candidate.id})")
+            
+            # 异步提取标签 + 创建门户
+            import threading
+            def _post_sync_bg(cid, cname):
+                try:
+                    from extract_tags import extract_tags_for_candidate_by_id
+                    print(f"🏷️ LinkedIn候选人 {cname} (ID={cid}) 标签提取中...")
+                    tags = extract_tags_for_candidate_by_id(cid)
+                    if tags:
+                        print(f"🏷️ ✅ {cname} 标签提取完成")
+                except Exception as e:
+                    print(f"🏷️ ❌ {cname} 标签提取异常: {e}")
+                
+                try:
+                    import hashlib, requests
+                    PORTAL_BASE = "https://jobs.rupro-consulting.com"
+                    token = hashlib.sha256('ruproAI'.encode()).hexdigest()
+                    resp = requests.post(f"{PORTAL_BASE}/api/portal/create", json={
+                        'candidate_id': cid,
+                        'candidate_name': cname,
+                    }, cookies={'auth_token': token}, timeout=15)
+                    if resp.status_code == 200 and resp.json().get('success'):
+                        portal_code = resp.json()['portal_code']
+                        print(f"🔗 ✅ {cname} 门户已创建: /p/{portal_code}")
+                except Exception as e:
+                    print(f"🔗 ❌ {cname} 门户创建异常: {e}")
+            
+            threading.Thread(target=_post_sync_bg, args=(candidate.id, candidate.name), daemon=True).start()
+            
+            return {
+                "success": True,
+                "action": "created",
+                "candidateId": candidate.id,
+                "message": f"新建候选人: {candidate.name}（标签提取+门户创建中...）"
+            }
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        print(f"❌ LinkedIn同步失败: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+# ===== 重新评级 =====
+@app.post("/api/candidate/{candidate_id}/re-tier")
+def re_tier_candidate(candidate_id: int):
+    """
+    用 DB 现有数据重新计算候选人分级
+    调用 batch_update_tiers.auto_tier()
+    """
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        
+        from batch_update_tiers import auto_tier
+        old_tier = candidate.talent_tier or "未分级"
+        
+        # auto_tier 需要 structured_tags 和 awards_achievements 为 dict/list
+        if isinstance(candidate.structured_tags, str):
+            candidate.structured_tags = json.loads(candidate.structured_tags)
+        if isinstance(candidate.awards_achievements, str):
+            candidate.awards_achievements = json.loads(candidate.awards_achievements)
+        
+        new_tier, reason = auto_tier(candidate)
+        
+        candidate.talent_tier = new_tier
+        candidate.updated_at = datetime.now()
+        db.commit()
+        
+        print(f"🔄 重新评级: {candidate.name} (ID: {candidate.id}) {old_tier} → {new_tier} ({reason})")
+        
+        return {
+            "success": True,
+            "oldTier": old_tier,
+            "newTier": new_tier,
+            "reason": reason,
+            "message": f"{old_tier} → {new_tier}（{reason}）"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+# ===== GitHub 数据刷新 =====
+@app.post("/api/candidate/{candidate_id}/refresh-github")
+def refresh_github_data(candidate_id: int):
+    """
+    从 GitHub API 刷新候选人的 followers/stars/repos 数据
+    并更新 structured_tags
+    """
+    import requests as req
+    
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        
+        github_url = candidate.github_url
+        if not github_url:
+            raise HTTPException(status_code=400, detail="该候选人没有 GitHub URL")
+        
+        # 从 URL 提取 username
+        username = github_url.rstrip('/').split('/')[-1]
+        if not username:
+            raise HTTPException(status_code=400, detail=f"无法从 URL 提取 GitHub username: {github_url}")
+        
+        # GitHub API headers
+        headers = {'Accept': 'application/vnd.github.v3+json'}
+        token = os.environ.get('GITHUB_TOKEN')
+        if token:
+            headers['Authorization'] = f'token {token}'
+        
+        # 1. 获取用户信息
+        user_resp = req.get(f"https://api.github.com/users/{username}", headers=headers, timeout=10)
+        if user_resp.status_code != 200:
+            raise HTTPException(status_code=502, detail=f"GitHub API 错误: {user_resp.status_code} {user_resp.text[:200]}")
+        
+        user_data = user_resp.json()
+        followers = user_data.get('followers', 0)
+        public_repos = user_data.get('public_repos', 0)
+        
+        # 2. 获取仓库数据计算 total stars
+        total_stars = 0
+        page = 1
+        while True:
+            repos_resp = req.get(
+                f"https://api.github.com/users/{username}/repos?per_page=100&sort=stars&page={page}",
+                headers=headers, timeout=10
+            )
+            if repos_resp.status_code != 200:
+                break
+            repos = repos_resp.json()
+            if not repos:
+                break
+            for repo in repos:
+                total_stars += repo.get('stargazers_count', 0)
+            if len(repos) < 100:
+                break
+            page += 1
+        
+        # 3. 更新 structured_tags
+        from sqlalchemy.orm.attributes import flag_modified
+        tags = candidate.structured_tags or {}
+        if isinstance(tags, str):
+            tags = json.loads(tags)
+        
+        old_followers = tags.get('github_followers', 0)
+        old_stars = tags.get('github_total_stars', 0)
+        
+        tags['github_username'] = username
+        tags['github_followers'] = followers
+        tags['github_repos'] = public_repos
+        tags['github_total_stars'] = total_stars
+        tags['github_refreshed_at'] = datetime.now().isoformat()
+        
+        candidate.structured_tags = tags
+        flag_modified(candidate, "structured_tags")
+        candidate.updated_at = datetime.now()
+        db.commit()
+        
+        print(f"🐙 GitHub刷新: {candidate.name} | followers: {old_followers}→{followers} | stars: {old_stars}→{total_stars}")
+        
+        return {
+            "success": True,
+            "username": username,
+            "followers": followers,
+            "publicRepos": public_repos,
+            "totalStars": total_stars,
+            "message": f"GitHub 数据已更新: ⭐{total_stars} 👥{followers} 📦{public_repos}"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+# ===== Semantic Scholar 搜索作者 =====
+@app.get("/api/candidate/{candidate_id}/search-scholar")
+def search_scholar(candidate_id: int, query: str = None):
+    """
+    搜索 Semantic Scholar 作者列表（用于用户确认正确的人）
+    """
+    import requests as req
+    
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        
+        search_name = query or candidate.name
+        if not search_name:
+            raise HTTPException(status_code=400, detail="搜索名称不能为空")
+        
+        # Semantic Scholar Author Search API (免费, 无需 key)
+        resp = req.get(
+            "https://api.semanticscholar.org/graph/v1/author/search",
+            params={
+                "query": search_name,
+                "fields": "name,paperCount,citationCount,hIndex,affiliations",
+                "limit": 10
+            },
+            timeout=15
+        )
+        
+        if resp.status_code != 200:
+            raise HTTPException(status_code=502, detail=f"Semantic Scholar API 错误: {resp.status_code}")
+        
+        result = resp.json()
+        authors = []
+        for a in result.get('data', []):
+            authors.append({
+                "authorId": a.get('authorId'),
+                "name": a.get('name'),
+                "paperCount": a.get('paperCount', 0),
+                "citationCount": a.get('citationCount', 0),
+                "hIndex": a.get('hIndex', 0),
+                "affiliations": a.get('affiliations', []),
+            })
+        
+        return {"success": True, "authors": authors, "query": search_name}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+# ===== Semantic Scholar 获取学术数据 =====
+class FetchScholarRequest(BaseModel):
+    authorId: str
+
+@app.post("/api/candidate/{candidate_id}/fetch-scholar")
+def fetch_scholar_data(candidate_id: int, request: FetchScholarRequest):
+    """
+    用 Semantic Scholar authorId 获取论文数据并存入 awards_achievements
+    """
+    import requests as req
+    
+    # 顶会列表
+    TOP_VENUES = {
+        'ICLR', 'NeurIPS', 'NIPS', 'ICML', 'ACL', 'EMNLP', 'NAACL',
+        'CVPR', 'ICCV', 'ECCV', 'AAAI', 'IJCAI', 'SIGIR', 'KDD',
+        'WWW', 'ICSE', 'OSDI', 'SOSP', 'SIGMOD', 'VLDB',
+    }
+    
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        
+        # 获取作者详情和论文列表
+        resp = req.get(
+            f"https://api.semanticscholar.org/graph/v1/author/{request.authorId}",
+            params={
+                "fields": "name,paperCount,citationCount,hIndex,papers.title,papers.venue,papers.year,papers.citationCount"
+            },
+            timeout=30
+        )
+        
+        if resp.status_code != 200:
+            raise HTTPException(status_code=502, detail=f"Semantic Scholar API 错误: {resp.status_code}")
+        
+        data = resp.json()
+        h_index = data.get('hIndex', 0)
+        citation_count = data.get('citationCount', 0)
+        paper_count = data.get('paperCount', 0)
+        
+        # 统计顶会论文
+        venue_counts = {}
+        papers = data.get('papers', [])
+        for paper in papers:
+            venue = paper.get('venue', '') or ''
+            for top_venue in TOP_VENUES:
+                if top_venue.lower() in venue.lower():
+                    venue_counts[top_venue] = venue_counts.get(top_venue, 0) + 1
+                    break
+        
+        total_top_papers = sum(venue_counts.values())
+        
+        # 更新 awards_achievements
+        from sqlalchemy.orm.attributes import flag_modified
+        awards = candidate.awards_achievements or []
+        if isinstance(awards, str):
+            awards = json.loads(awards)
+        
+        # 移除旧的学术数据条目
+        awards = [a for a in awards if a.get('type') not in ('publications', 'scholar_stats')]
+        
+        # 添加顶会论文统计
+        if venue_counts:
+            venue_str = ', '.join(f"{k}: {v}" for k, v in sorted(venue_counts.items(), key=lambda x: -x[1]))
+            awards.append({
+                'type': 'publications',
+                'title': f"顶会论文: {venue_str}",
+                'description': f"共 {total_top_papers} 篇顶会论文"
+            })
+        
+        # 添加学术指标
+        awards.append({
+            'type': 'scholar_stats',
+            'title': f"H-index: {h_index} | 引用: {citation_count:,} | 论文: {paper_count}",
+            'description': f"Semantic Scholar ID: {request.authorId}"
+        })
+        
+        candidate.awards_achievements = awards
+        flag_modified(candidate, "awards_achievements")
+        
+        # 同步更新 structured_tags 中的数据（auto_tier 需要）
+        tags = candidate.structured_tags or {}
+        if isinstance(tags, str):
+            tags = json.loads(tags)
+        tags['scholar_h_index'] = h_index
+        tags['scholar_citations'] = citation_count
+        tags['scholar_papers'] = paper_count
+        tags['scholar_top_venues'] = venue_counts
+        tags['scholar_refreshed_at'] = datetime.now().isoformat()
+        candidate.structured_tags = tags
+        flag_modified(candidate, "structured_tags")
+        
+        candidate.updated_at = datetime.now()
+        db.commit()
+        
+        print(f"📄 学术数据: {candidate.name} | H-index={h_index} | 顶会={total_top_papers} | 引用={citation_count}")
+        
+        return {
+            "success": True,
+            "hIndex": h_index,
+            "citationCount": citation_count,
+            "paperCount": paper_count,
+            "topVenues": venue_counts,
+            "totalTopPapers": total_top_papers,
+            "message": f"学术数据已更新: H-index={h_index}, 顶会论文={total_top_papers}"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         db.close()

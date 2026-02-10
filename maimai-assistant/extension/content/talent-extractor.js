@@ -539,58 +539,28 @@ class TalentPanelExtractor {
         };
     }
 
-    // 检查候选人是否已存在于系统
-    async checkCandidateExists(candidateData) {
+    // 同步候选人到系统（新建或更新）
+    async syncCandidate(candidateData) {
         try {
-            // 提取学校和公司列表用于匹配
-            const school = candidateData.educations?.[0]?.school || '';
-            const companies = candidateData.workExperiences?.map(w => w.company).filter(Boolean) || [];
-            if (candidateData.currentCompany) {
-                companies.unshift(candidateData.currentCompany);
-            }
-
-            const response = await fetch(`${this.API_BASE}/api/candidate/check`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: candidateData.name,
-                    school: school,
-                    companies: companies
-                })
-            });
-            if (response.ok) {
-                return await response.json();
-            }
-            return { exists: false };
-        } catch (e) {
-            console.error('检查候选人失败:', e);
-            return { exists: false };
-        }
-    }
-
-    // 导入候选人到系统
-    async importCandidate(candidateData) {
-        try {
-            const response = await fetch(`${this.API_BASE}/api/candidate/import`, {
+            const response = await fetch(`${this.API_BASE}/api/candidate/maimai-sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(candidateData)
             });
             if (response.ok) {
-                const result = await response.json();
-                return { success: true, candidateId: result.candidate_id || result.id };
+                return await response.json();
             }
             const error = await response.text();
             return { success: false, error };
         } catch (e) {
-            console.error('导入候选人失败:', e);
+            console.error('同步候选人失败:', e);
             return { success: false, error: e.message };
         }
     }
 
-    // 一键导入或查看候选人
+    // 一键导入或更新候选人
     async importOrView() {
-        console.log('🚀 [TalentPanel] 开始一键导入/查看...');
+        console.log('🚀 [TalentPanel] 开始一键导入/更新...');
 
         // 1. 提取数据
         const candidateData = this.extractFromTalentPanel();
@@ -605,22 +575,29 @@ class TalentPanelExtractor {
         candidateData.sourceUrl = window.location.href;
         candidateData.extractedAt = new Date().toISOString();
 
-        // 3. 检查是否已存在
-        MaimaiUtils.showNotification(`正在检查 ${candidateData.name}...`, 'info');
-        const checkResult = await this.checkCandidateExists(candidateData);
+        // 3. 调用 sync 端点（自动判断新建/更新）
+        MaimaiUtils.showNotification(`正在同步 ${candidateData.name}...`, 'info');
+        const result = await this.syncCandidate(candidateData);
 
-        if (checkResult.exists) {
-            MaimaiUtils.showNotification(`${candidateData.name} 已在系统中 (ID: ${checkResult.candidateId})`, 'success');
-        } else {
-            // 不存在 - 导入
-            MaimaiUtils.showNotification(`正在导入 ${candidateData.name}...`, 'info');
-            const importResult = await this.importCandidate(candidateData);
+        if (!result.success) {
+            MaimaiUtils.showNotification(`同步失败: ${result.error}`, 'error');
+            return;
+        }
 
-            if (importResult.success) {
-                MaimaiUtils.showNotification(`✅ ${candidateData.name} 导入成功！(ID: ${importResult.candidateId})`, 'success');
-            } else {
-                MaimaiUtils.showNotification(`导入失败: ${importResult.error}`, 'error');
-            }
+        // 4. 根据 action 显示不同通知
+        switch (result.action) {
+            case 'created':
+                MaimaiUtils.showNotification(`✅ ${candidateData.name} 导入成功！(ID: ${result.candidateId})`, 'success');
+                break;
+            case 'updated':
+                const fields = result.updatedFields || [];
+                MaimaiUtils.showNotification(`🔄 ${candidateData.name} 已更新 ${fields.length} 个字段 (ID: ${result.candidateId})`, 'success');
+                break;
+            case 'unchanged':
+                MaimaiUtils.showNotification(`📋 ${candidateData.name} 已在库中，无新数据 (ID: ${result.candidateId})`, 'info');
+                break;
+            default:
+                MaimaiUtils.showNotification(`${result.message || '同步完成'}`, 'success');
         }
     }
 }
