@@ -986,6 +986,125 @@ elif page == "Dashboard":
         else:
             st.info("暂无工作经历数据")
     
+    # --- 📡 渠道分析 ---
+    st.divider()
+    st.markdown("## 📡 渠道分析")
+    
+    # 查询所有候选人的 source 和联系方式字段
+    channel_data = db.query(
+        Candidate.source,
+        Candidate.phone,
+        Candidate.email,
+        Candidate.linkedin_url,
+        Candidate.github_url,
+        Candidate.personal_website,
+        Candidate.is_friend
+    ).all()
+    
+    # 统计各渠道人数和联系方式覆盖
+    from collections import defaultdict
+    channel_stats = defaultdict(lambda: {'total': 0, 'phone': 0, 'email': 0, 'linkedin': 0, 'github': 0, 'website': 0, 'friend': 0, 'any_contact': 0})
+    
+    for src, phone, email, linkedin, github, website, is_friend in channel_data:
+        ch = src if src else '未知'
+        channel_stats[ch]['total'] += 1
+        has_any = False
+        if phone:
+            channel_stats[ch]['phone'] += 1
+            has_any = True
+        if email:
+            channel_stats[ch]['email'] += 1
+            has_any = True
+        if linkedin:
+            channel_stats[ch]['linkedin'] += 1
+            has_any = True
+        if github:
+            channel_stats[ch]['github'] += 1
+            has_any = True
+        if website:
+            channel_stats[ch]['website'] += 1
+            has_any = True
+        if is_friend == 1:
+            channel_stats[ch]['friend'] += 1
+        if has_any:
+            channel_stats[ch]['any_contact'] += 1
+    
+    # 按人数排序
+    sorted_channels = sorted(channel_stats.items(), key=lambda x: x[1]['total'], reverse=True)
+    
+    ch_col1, ch_col2 = st.columns(2)
+    
+    with ch_col1:
+        st.markdown("### 🎯 渠道来源分布")
+        ch_names = [ch for ch, _ in sorted_channels]
+        ch_counts = [s['total'] for _, s in sorted_channels]
+        color_map = {'脉脉': '#1E6FFF', 'github': '#24292e', 'Boss': '#FF6A00', 'linkedin': '#0A66C2'}
+        ch_colors = [color_map.get(ch, '#999999') for ch in ch_names]
+        
+        fig_ch = px.pie(
+            names=ch_names, values=ch_counts,
+            hole=0.45,
+            color_discrete_sequence=ch_colors
+        )
+        fig_ch.update_traces(textinfo='label+value+percent', textposition='outside')
+        fig_ch.update_layout(height=400, showlegend=False)
+        st.plotly_chart(fig_ch, use_container_width=True)
+    
+    with ch_col2:
+        st.markdown("### 📱 联系方式完备度")
+        
+        # 构建分组柱状图数据
+        bar_data = []
+        for ch, stats_d in sorted_channels:
+            total = stats_d['total']
+            if total > 0:
+                bar_data.append({'渠道': ch, '类型': '📱 手机', '覆盖率': round(stats_d['phone'] / total * 100, 1)})
+                bar_data.append({'渠道': ch, '类型': '📧 邮箱', '覆盖率': round(stats_d['email'] / total * 100, 1)})
+                bar_data.append({'渠道': ch, '类型': '🔗 LinkedIn', '覆盖率': round(stats_d['linkedin'] / total * 100, 1)})
+                bar_data.append({'渠道': ch, '类型': '💻 GitHub', '覆盖率': round(stats_d['github'] / total * 100, 1)})
+                bar_data.append({'渠道': ch, '类型': '🌐 个人网站', '覆盖率': round(stats_d['website'] / total * 100, 1)})
+                bar_data.append({'渠道': ch, '类型': '🤝 加好友', '覆盖率': round(stats_d['friend'] / total * 100, 1)})
+        
+        if bar_data:
+            df_bar = pd.DataFrame(bar_data)
+            fig_bar = px.bar(
+                df_bar, x='渠道', y='覆盖率', color='类型',
+                barmode='group', text='覆盖率',
+                color_discrete_map={
+                    '📱 手机': '#4CAF50', '📧 邮箱': '#2196F3',
+                    '🔗 LinkedIn': '#0A66C2', '💻 GitHub': '#24292e',
+                    '🌐 个人网站': '#FF9800', '🤝 加好友': '#E91E63'
+                }
+            )
+            fig_bar.update_traces(texttemplate='%{text}%', textposition='outside')
+            fig_bar.update_layout(
+                height=400, yaxis_title='覆盖率 (%)',
+                yaxis=dict(range=[0, 105]),
+                legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
+            )
+            st.plotly_chart(fig_bar, use_container_width=True)
+    
+    # 明细表格
+    table_data = []
+    for ch, stats_d in sorted_channels:
+        total = stats_d['total']
+        completeness = round(stats_d['any_contact'] / total * 100, 1) if total > 0 else 0
+        table_data.append({
+            '渠道': ch,
+            '总人数': total,
+            '📱 有手机': stats_d['phone'],
+            '📧 有邮箱': stats_d['email'],
+            '🔗 有LinkedIn': stats_d['linkedin'],
+            '💻 有GitHub': stats_d['github'],
+            '🌐 有网站': stats_d['website'],
+            '🤝 加好友': stats_d['friend'],
+            '✅ 完备率': f"{completeness}%"
+        })
+    
+    if table_data:
+        df_table = pd.DataFrame(table_data)
+        st.dataframe(df_table, use_container_width=True, hide_index=True)
+    
     # --- JD 分析 ---
     st.divider()
     st.markdown("## 📋 JD 分析")
@@ -3260,8 +3379,7 @@ elif page == "人才库管理":
                     age_max = st.number_input("至", min_value=18, max_value=60, value=saved_age[1], key="filter_age_max", label_visibility="collapsed", placeholder="最大")
                     st.session_state.filter_age = (age_min, age_max)
                 
-                # 第二行：次要筛选条件
-                col7, col8, col9, col10, col11 = st.columns([1, 1, 3, 0.6, 0.6])
+                col7, col8, col8b, col11 = st.columns([1, 1, 1, 0.6])
                 with col7:
                     friend_options = ["全部", "✅ 仅好友", "❌ 非好友"]
                     saved_friend_idx = friend_options.index(st.session_state.get('filter_friend', '全部')) if st.session_state.get('filter_friend') in friend_options else 0
@@ -3272,11 +3390,11 @@ elif page == "人才库管理":
                     saved_tier_filter_idx = tier_filter_options.index(st.session_state.get('filter_tier', '全部')) if st.session_state.get('filter_tier') in tier_filter_options else 0
                     filter_tier = st.selectbox("人才分级", tier_filter_options, index=saved_tier_filter_idx, key="filter_tier_input", label_visibility="collapsed")
                     st.session_state.filter_tier = filter_tier
-                with col9:
-                    filter_tags = st.text_input("技能标签", value=st.session_state.get('filter_tags', ''), placeholder="Python, 机器学习, LLM (逗号分隔)", key="filter_tags_input", label_visibility="collapsed")
-                    st.session_state.filter_tags = filter_tags
-                with col10:
-                    only_urgent = st.checkbox("紧急", key="filter_urgent")
+                with col8b:
+                    source_filter_options = ["全部", "🟦 脉脉", "💻 GitHub", "🔗 LinkedIn", "🟧 Boss", "❓ 其他"]
+                    saved_source_idx = source_filter_options.index(st.session_state.get('filter_source', '全部')) if st.session_state.get('filter_source') in source_filter_options else 0
+                    filter_source = st.selectbox("渠道", source_filter_options, index=saved_source_idx, key="filter_source_input", label_visibility="collapsed")
+                    st.session_state.filter_source = filter_source
                 with col11:
                     if st.button("🔄 清空"):
                         st.session_state.filter_name = ''
@@ -3286,8 +3404,24 @@ elif page == "人才库管理":
                         st.session_state.filter_age = (20, 45)
                         st.session_state.filter_friend = '全部'
                         st.session_state.filter_tier = '全部'
-                        st.session_state.filter_tags = ''
+                        st.session_state.filter_source = '全部'
                         st.rerun()
+                
+                # 第三行：联系方式筛选
+                st.caption("📞 联系方式筛选")
+                cc1, cc2, cc3, cc4, cc5, cc6 = st.columns(6)
+                with cc1:
+                    f_has_phone = st.checkbox("📱 有电话", key="filter_has_phone")
+                with cc2:
+                    f_has_email = st.checkbox("📧 有邮件", key="filter_has_email")
+                with cc3:
+                    f_has_linkedin = st.checkbox("🔗 有LinkedIn", key="filter_has_linkedin")
+                with cc4:
+                    f_has_github = st.checkbox("💻 有GitHub", key="filter_has_github")
+                with cc5:
+                    f_has_website = st.checkbox("🌐 有网站", key="filter_has_website")
+                with cc6:
+                    f_has_friend = st.checkbox("🤝 加好友", key="filter_has_friend")
             
             # --- Query Data ---
             query = db.query(Candidate).options(
@@ -3321,11 +3455,29 @@ elif page == "人才库管理":
                 from sqlalchemy import or_
                 query = query.filter(or_(Candidate.talent_tier == None, Candidate.talent_tier == ''))
             
-            # 标签筛选
-            if filter_tags:
-                tags = [t.strip() for t in filter_tags.split(",") if t.strip()]
-                for tag in tags:
-                    query = query.filter(Candidate.skills.contains(tag) | Candidate.raw_resume_text.contains(tag))
+            # 渠道筛选
+            source_filter_map = {"🟦 脉脉": "脉脉", "💻 GitHub": "github", "🔗 LinkedIn": "linkedin", "🟧 Boss": "Boss", "📷 图片OCR": "图片OCR", "📄 PDF解析": "PDF解析"}
+            if filter_source in source_filter_map:
+                query = query.filter(Candidate.source.contains(source_filter_map[filter_source]))
+            elif filter_source == "❓ 其他":
+                from sqlalchemy import or_, and_, not_
+                known_sources = ['maimai', 'github', 'linkedin', 'boss', '图片OCR', 'PDF解析']
+                conditions = [not_(Candidate.source.contains(s)) for s in known_sources]
+                query = query.filter(and_(Candidate.source != None, *conditions))
+            
+            # 联系方式筛选
+            if f_has_phone:
+                query = query.filter(Candidate.phone != None, Candidate.phone != '')
+            if f_has_email:
+                query = query.filter(Candidate.email != None, Candidate.email != '')
+            if f_has_linkedin:
+                query = query.filter(Candidate.linkedin_url != None, Candidate.linkedin_url != '')
+            if f_has_github:
+                query = query.filter(Candidate.github_url != None, Candidate.github_url != '')
+            if f_has_website:
+                query = query.filter(Candidate.personal_website != None, Candidate.personal_website != '')
+            if f_has_friend:
+                query = query.filter(Candidate.is_friend == 1)
             
             # Age Filtering (Logic: if age is 0 or null, we might include or exclude. Here we filter strict range if age > 0)
             # 仅对已解析出年龄的做筛选，未解析出的暂且保留或放后面? 

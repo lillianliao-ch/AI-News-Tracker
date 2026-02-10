@@ -711,7 +711,7 @@ def maimai_sync(request: CandidateImportRequest):
                 education_details=new_edu_list if new_edu_list else None,
                 project_experiences=new_projects if new_projects else None,
                 skills=request.skills if request.skills else None,
-                source="maimai",
+                source="脉脉",
                 notes="\n".join(notes_parts),
                 education_level=education_level if education_level else None,
                 experience_years=experience_years if experience_years > 0 else None,
