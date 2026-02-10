@@ -1750,7 +1750,12 @@ elif page == "人才库管理":
                             schedule_badge = f"📅{sched_date.month}/{sched_date.day}"
                     except:
                         pass
-                st.markdown(f"## {cand.name} {schedule_badge}")
+                # 人才分级徽章
+                tier_badge_map = {
+                    'S': '🔴S', 'A+': '🟠A+', 'A': '🟠A', 'B+': '🟡B+', 'B': '🟡B', 'C': '🟢C'
+                }
+                tier_badge = tier_badge_map.get(cand.talent_tier, '') if cand.talent_tier else ''
+                st.markdown(f"## {tier_badge} {cand.name} {schedule_badge}")
             
             with status_col:
                 # 管道阶段徽章
@@ -1802,7 +1807,7 @@ elif page == "人才库管理":
                 star_icon = "⭐" if is_friend else "☆"
                 star_label = "已关注" if is_friend else "关注"
                 
-                ac1, ac2, ac3 = st.columns(3)
+                ac1, ac2, ac3, ac4 = st.columns(4)
                 if ac1.button(f"{star_icon} {star_label}", key="toggle_friend_star"):
                     from datetime import datetime
                     if is_friend:
@@ -1862,6 +1867,31 @@ elif page == "人才库管理":
                             cand.scheduled_contact_date = None
                             db.commit()
                             st.rerun()
+                
+                # 重新评级按钮
+                with ac4.popover("🏅", help="重新评级"):
+                    st.markdown("**🔄 重新评级**")
+                    st.caption("根据当前数据（工作经历、学校、GitHub、论文等）重新计算分级")
+                    
+                    tier_map = {'S': '🔴 S', 'A+': '🟠 A+', 'A': '🟠 A', 'B+': '🟡 B+', 'B': '🟡 B', 'C': '🟢 C'}
+                    current_tier = cand.talent_tier or '未分级'
+                    st.markdown(f"**当前评级：** {tier_map.get(current_tier, current_tier)}")
+                    
+                    st.divider()
+                    
+                    if st.button("🚀 开始评级", key="re_tier_btn", type="primary", use_container_width=True):
+                        with st.spinner("评级中..."):
+                            try:
+                                import requests as req
+                                resp = req.post(f"http://localhost:8502/api/candidate/{cand.id}/re-tier", timeout=10)
+                                result = resp.json()
+                                if result.get('success'):
+                                    st.success(f"✅ {result['message']}")
+                                    st.rerun()
+                                else:
+                                    st.error(f"❌ {result.get('detail', '评级失败')}")
+                            except Exception as e:
+                                st.error(f"❌ 评级失败: {e}")
                 
                 # 更新标签按钮
                 with ac3.popover("🏷️", help="更新标签"):
@@ -2006,18 +2036,44 @@ elif page == "人才库管理":
                     pass
             
             # 联系方式（有内容才显示）
-            contact_info = []
+            contact_parts = []
             if cand.phone:
-                contact_info.append(f"📱 {cand.phone}")
+                contact_parts.append(f"📱 {cand.phone}")
             if cand.email:
-                contact_info.append(f"📧 {cand.email}")
+                contact_parts.append(f"📧 [{cand.email}](mailto:{cand.email})")
             if cand.linkedin_url:
-                contact_info.append("🔗 LinkedIn")
+                contact_parts.append(f"[🔗 LinkedIn]({cand.linkedin_url})")
             if cand.github_url:
-                contact_info.append("💻 GitHub")
+                contact_parts.append(f"[💻 GitHub]({cand.github_url})")
+            if hasattr(cand, 'personal_website') and cand.personal_website:
+                contact_parts.append(f"[🌐 主页]({cand.personal_website if cand.personal_website.startswith('http') else 'https://' + cand.personal_website})")
+            if hasattr(cand, 'twitter_url') and cand.twitter_url:
+                contact_parts.append(f"[🐦 Twitter]({cand.twitter_url})")
             
-            if contact_info:
-                st.caption(" │ ".join(contact_info))
+            if contact_parts:
+                st.markdown(" │ ".join(contact_parts))
+            
+            # 进入渠道（来源）
+            if cand.source:
+                source_icons = {
+                    'maimai': '🟦 脉脉', 'github': '💻 GitHub', 'linkedin': '🔗 LinkedIn',
+                    'boss': '🟧 Boss', '图片OCR': '📷 图片OCR', 'PDF解析': '📄 PDF解析',
+                    '文档解析': '📝 文档解析', '后台解析': '⚙️ 后台解析'
+                }
+                sources = [s.strip() for s in cand.source.replace(',', ' ').split() if s.strip()]
+                source_display = []
+                for s in sources:
+                    matched = False
+                    for key, label in source_icons.items():
+                        if key.lower() in s.lower():
+                            if label not in source_display:
+                                source_display.append(label)
+                            matched = True
+                            break
+                    if not matched and s not in source_display:
+                        source_display.append(s)
+                if source_display:
+                    st.markdown(f"📂 **进入渠道**: {' │ '.join(source_display)}")
             
             # 左右布局：左侧主要经历，右侧备注和沟通记录
             main_col, side_col = st.columns([3, 2])
@@ -2362,6 +2418,115 @@ elif page == "人才库管理":
                         else:
                             st.info("暂无荣誉与科研成果，点击 ✏️ 添加")
 
+                    # --- GitHub 概览 ---
+                    if cand.github_url:
+                        st.subheader("🐙 GitHub 概览")
+                        
+                        # 从 structured_tags 获取缓存的 GitHub 数据
+                        gh_tags = cand.structured_tags or {}
+                        if isinstance(gh_tags, str):
+                            try:
+                                gh_tags = json.loads(gh_tags)
+                            except:
+                                gh_tags = {}
+                        
+                        gh_followers = gh_tags.get('github_followers', 0)
+                        gh_stars = gh_tags.get('github_total_stars', 0)
+                        gh_repos = gh_tags.get('github_repos', 0)
+                        gh_score = gh_tags.get('github_score', 0)
+                        gh_username = gh_tags.get('github_username', '')
+                        gh_refreshed = gh_tags.get('github_refreshed_at', '')
+                        
+                        # 指标展示
+                        gc1, gc2, gc3, gc4 = st.columns(4)
+                        gc1.metric("⭐ Stars", f"{gh_stars:,}" if gh_stars else "-")
+                        gc2.metric("👥 Followers", f"{gh_followers:,}" if gh_followers else "-")
+                        gc3.metric("📦 Repos", gh_repos if gh_repos else "-")
+                        gc4.metric("📊 Score", f"{gh_score:.1f}" if gh_score else "-")
+                        
+                        # GitHub 链接 + 刷新按钮
+                        ghc1, ghc2 = st.columns([3, 1])
+                        ghc1.markdown(f"🔗 [{gh_username or cand.github_url}]({cand.github_url})")
+                        if gh_refreshed:
+                            ghc1.caption(f"上次更新: {gh_refreshed[:10]}")
+                        
+                        if ghc2.button("🔄 更新", key="refresh_github_btn", use_container_width=True):
+                            with st.spinner("查询 GitHub API..."):
+                                try:
+                                    import requests as req
+                                    resp = req.post(f"http://localhost:8502/api/candidate/{cand.id}/refresh-github", timeout=30)
+                                    result = resp.json()
+                                    if result.get('success'):
+                                        st.success(f"✅ {result['message']}")
+                                        st.rerun()
+                                    else:
+                                        st.error(f"❌ {result.get('detail', '刷新失败')}")
+                                except Exception as e:
+                                    st.error(f"❌ GitHub 数据刷新失败: {e}")
+                        
+                        st.divider()
+                    
+                    # --- 学术数据查询 ---
+                    with st.expander("🔍 查询学术数据 (Semantic Scholar)"):
+                        sc_tags = cand.structured_tags or {}
+                        if isinstance(sc_tags, str):
+                            try:
+                                sc_tags = json.loads(sc_tags)
+                            except:
+                                sc_tags = {}
+                        
+                        # 展示已有学术数据
+                        if sc_tags.get('scholar_h_index'):
+                            st.markdown(f"**已缓存学术数据：** H-index: {sc_tags.get('scholar_h_index', 0)} | 引用: {sc_tags.get('scholar_citations', 0):,} | 论文: {sc_tags.get('scholar_papers', 0)}")
+                            if sc_tags.get('scholar_top_venues'):
+                                venues = sc_tags['scholar_top_venues']
+                                venue_str = ' | '.join(f"{k}: {v}" for k, v in sorted(venues.items(), key=lambda x: -x[1]))
+                                st.caption(f"📄 顶会: {venue_str}")
+                            if sc_tags.get('scholar_refreshed_at'):
+                                st.caption(f"上次更新: {sc_tags['scholar_refreshed_at'][:10]}")
+                            st.divider()
+                        
+                        # 搜索作者
+                        search_name = st.text_input("搜索作者姓名", value=cand.name, key="scholar_search_name")
+                        if st.button("🔍 搜索", key="search_scholar_btn"):
+                            with st.spinner("查询 Semantic Scholar..."):
+                                try:
+                                    import requests as req
+                                    resp = req.get(f"http://localhost:8502/api/candidate/{cand.id}/search-scholar", params={"query": search_name}, timeout=20)
+                                    result = resp.json()
+                                    if result.get('success'):
+                                        authors = result.get('authors', [])
+                                        if authors:
+                                            st.session_state['scholar_authors'] = authors
+                                        else:
+                                            st.warning("未找到匹配的作者")
+                                except Exception as e:
+                                    st.error(f"❌ 搜索失败: {e}")
+                        
+                        # 显示搜索结果
+                        if 'scholar_authors' in st.session_state:
+                            for idx, author in enumerate(st.session_state['scholar_authors']):
+                                aff_str = ', '.join(author.get('affiliations', [])) if author.get('affiliations') else ''
+                                st.markdown(f"**{author['name']}** — 论文: {author['paperCount']} | 引用: {author['citationCount']:,} | H-index: {author['hIndex']} {('| ' + aff_str) if aff_str else ''}")
+                                if st.button(f"✅ 选择此人", key=f"select_scholar_{idx}"):
+                                    with st.spinner("获取学术数据..."):
+                                        try:
+                                            import requests as req
+                                            resp = req.post(
+                                                f"http://localhost:8502/api/candidate/{cand.id}/fetch-scholar",
+                                                json={"authorId": author['authorId']},
+                                                timeout=30
+                                            )
+                                            result = resp.json()
+                                            if result.get('success'):
+                                                st.success(f"✅ {result['message']}")
+                                                del st.session_state['scholar_authors']
+                                                st.rerun()
+                                            else:
+                                                st.error(f"❌ {result.get('detail', '获取失败')}")
+                                        except Exception as e:
+                                            st.error(f"❌ 获取学术数据失败: {e}")
+
                     # --- 原始简历 ---
                     with st.expander("📄 查看原始简历全文"):
                         # 构建完整简历文本
@@ -2430,8 +2595,15 @@ elif page == "人才库管理":
                         with r3c4:
                             new_github = st.text_input("💻 GitHub", value=cand.github_url or "", key="edit_github_basic")
                     
-                        # 第三行半：管道阶段 + 微信号
-                        r35c1, r35c2, r35c3 = st.columns([1.5, 1.5, 1])
+                        # 第三行半前：个人网站 + Twitter
+                        r3b1, r3b2 = st.columns(2)
+                        with r3b1:
+                            new_website = st.text_input("🌐 个人网站", value=cand.personal_website or "", key="edit_website_basic")
+                        with r3b2:
+                            new_twitter = st.text_input("🐦 Twitter", value=cand.twitter_url or "", key="edit_twitter_basic")
+                    
+                        # 第三行半：管道阶段 + 微信号 + 人才分级
+                        r35c1, r35c2, r35c3, r35c4 = st.columns([1.5, 1.5, 1, 1])
                         with r35c1:
                             stage_options = ["new", "contacted", "following_up", "replied", "wechat_connected", "in_pipeline", "closed"]
                             stage_labels = ["🆕 新发现", "📤 已打招呼", "🔄 跟进中", "💬 已回复", "💚 已加微信", "🎯 面试中", "⏸️ 关闭"]
@@ -2442,6 +2614,12 @@ elif page == "人才库管理":
                             new_wechat_id = st.text_input("💚 微信号", value=cand.wechat_id or "", key="edit_wechat_id")
                         with r35c3:
                             new_follow_up = st.date_input("📅 下次跟进", value=datetime.strptime(cand.follow_up_date, "%Y-%m-%d").date() if cand.follow_up_date else None, key="edit_follow_up_date", format="YYYY-MM-DD")
+                        with r35c4:
+                            tier_options = ["", "S", "A+", "A", "B+", "B", "C"]
+                            tier_labels = ["未分级", "🔴 S-顶尖大牛", "🟠 A+-卓越", "🟠 A-优秀", "🟡 B+-良好", "🟡 B-不错", "🟢 C-一般"]
+                            current_tier = cand.talent_tier or ''
+                            current_tier_idx = tier_options.index(current_tier) if current_tier in tier_options else 0
+                            new_tier = st.selectbox("🏅 人才分级", tier_labels, index=current_tier_idx, key="edit_talent_tier")
                     
                         # 第四行：技能标签编辑
                         st.markdown("##### 🏷️ 技能标签")
@@ -2525,14 +2703,19 @@ elif page == "人才库管理":
                             cand.email = new_email
                             cand.linkedin_url = new_linkedin
                             cand.github_url = new_github
+                            cand.personal_website = new_website if new_website else None
+                            cand.twitter_url = new_twitter if new_twitter else None
                             # 保存技能标签
                             cand.skills = updated_skills
                             flag_modified(cand, "skills")
-                            # 保存管道阶段、微信号、跟进日期
+                            # 保存管道阶段、微信号、跟进日期、人才分级
                             selected_stage_idx = stage_labels.index(new_stage)
                             cand.pipeline_stage = stage_options[selected_stage_idx]
                             cand.wechat_id = new_wechat_id if new_wechat_id else None
                             cand.follow_up_date = new_follow_up.strftime("%Y-%m-%d") if new_follow_up else None
+                            # 保存人才分级
+                            selected_tier_idx = tier_labels.index(new_tier)
+                            cand.talent_tier = tier_options[selected_tier_idx] if tier_options[selected_tier_idx] else None
                         
                             if uploaded_resume:
                                 print(f"📄 处理上传的简历: {uploaded_resume.name}")
@@ -3078,18 +3261,23 @@ elif page == "人才库管理":
                     st.session_state.filter_age = (age_min, age_max)
                 
                 # 第二行：次要筛选条件
-                col7, col8, col9, col10 = st.columns([1, 3, 1, 1])
+                col7, col8, col9, col10, col11 = st.columns([1, 1, 3, 0.6, 0.6])
                 with col7:
                     friend_options = ["全部", "✅ 仅好友", "❌ 非好友"]
                     saved_friend_idx = friend_options.index(st.session_state.get('filter_friend', '全部')) if st.session_state.get('filter_friend') in friend_options else 0
                     filter_friend = st.selectbox("好友状态", friend_options, index=saved_friend_idx, key="filter_friend_input", label_visibility="collapsed")
                     st.session_state.filter_friend = filter_friend
                 with col8:
+                    tier_filter_options = ["全部", "🔴 S-顶尖", "🟠 A+-卓越", "🟠 A-优秀", "🟡 B+-良好", "🟡 B-不错", "🟢 C-一般", "❓ 未分级"]
+                    saved_tier_filter_idx = tier_filter_options.index(st.session_state.get('filter_tier', '全部')) if st.session_state.get('filter_tier') in tier_filter_options else 0
+                    filter_tier = st.selectbox("人才分级", tier_filter_options, index=saved_tier_filter_idx, key="filter_tier_input", label_visibility="collapsed")
+                    st.session_state.filter_tier = filter_tier
+                with col9:
                     filter_tags = st.text_input("技能标签", value=st.session_state.get('filter_tags', ''), placeholder="Python, 机器学习, LLM (逗号分隔)", key="filter_tags_input", label_visibility="collapsed")
                     st.session_state.filter_tags = filter_tags
-                with col9:
-                    only_urgent = st.checkbox("紧急", key="filter_urgent")
                 with col10:
+                    only_urgent = st.checkbox("紧急", key="filter_urgent")
+                with col11:
                     if st.button("🔄 清空"):
                         st.session_state.filter_name = ''
                         st.session_state.filter_company = ''
@@ -3097,6 +3285,7 @@ elif page == "人才库管理":
                         st.session_state.filter_location = ''
                         st.session_state.filter_age = (20, 45)
                         st.session_state.filter_friend = '全部'
+                        st.session_state.filter_tier = '全部'
                         st.session_state.filter_tags = ''
                         st.rerun()
             
@@ -3123,6 +3312,14 @@ elif page == "人才库管理":
             elif filter_friend == "❌ 非好友":
                 from sqlalchemy import or_
                 query = query.filter(or_(Candidate.is_friend == 0, Candidate.is_friend == None))
+            
+            # 人才分级筛选
+            tier_filter_map = {"🔴 S-顶尖": "S", "🟠 A+-卓越": "A+", "🟠 A-优秀": "A", "🟡 B+-良好": "B+", "🟡 B-不错": "B", "🟢 C-一般": "C"}
+            if filter_tier in tier_filter_map:
+                query = query.filter(Candidate.talent_tier == tier_filter_map[filter_tier])
+            elif filter_tier == "❓ 未分级":
+                from sqlalchemy import or_
+                query = query.filter(or_(Candidate.talent_tier == None, Candidate.talent_tier == ''))
             
             # 标签筛选
             if filter_tags:
@@ -3239,7 +3436,11 @@ elif page == "人才库管理":
                                 except:
                                     pass
                             
-                            st.markdown(f"### {cand.name} {friend_badge} {phone_badge}")
+                            # 人才分级徽章
+                            tier_map = {'S': '🔴S', 'A+': '🟠A+', 'A': '🟠A', 'B+': '🟡B+', 'B': '🟡B', 'C': '🟢C'}
+                            tier_str = tier_map.get(cand.talent_tier, '') if cand.talent_tier else ''
+                            
+                            st.markdown(f"### {tier_str} {cand.name} {friend_badge} {phone_badge}")
                         
                         with top_right:
                             btn1, btn2, btn3, btn4 = st.columns([2, 1, 1, 1])
@@ -3324,14 +3525,34 @@ elif page == "人才库管理":
                             if cand.current_title:
                                 st.caption(f"{cand.current_title[:40]}")
                             
-                            # 期望地点
-                            if cand.expect_location:
-                                st.write(f"📍 期望: {cand.expect_location}")
+                            # 联系方式
+                            _contacts = []
+                            if cand.phone:
+                                _contacts.append(f"📱 {cand.phone}")
+                            if cand.email:
+                                _contacts.append(f"📧 {cand.email}")
+                            if cand.linkedin_url:
+                                _contacts.append(f"[🔗 LI]({cand.linkedin_url})")
+                            if cand.github_url:
+                                _contacts.append(f"[💻 GH]({cand.github_url})")
+                            if _contacts:
+                                st.markdown(" │ ".join(_contacts))
                             
                             # 技能标签
                             if cand.skills and isinstance(cand.skills, list):
                                 tags = " ".join([f"`{s}`" for s in cand.skills[:5]])
                                 st.markdown(f"🏷️ {tags}")
+                            
+                            # 进入渠道
+                            if cand.source:
+                                _src_map = {'maimai': '🟦脉脉', 'github': '💻GitHub', 'linkedin': '🔗LinkedIn', 'boss': '🟧Boss'}
+                                _src_parts = []
+                                for _k, _v in _src_map.items():
+                                    if _k in (cand.source or '').lower() and _v not in _src_parts:
+                                        _src_parts.append(_v)
+                                if not _src_parts:
+                                    _src_parts = [cand.source[:20]]
+                                st.caption(f"📂 {' '.join(_src_parts)}")
                             
                             # 评分信息（从 notes 解析）
                             if cand.notes:
@@ -5004,7 +5225,7 @@ elif page == "职位库管理":
             # --- Search Filters (紧凑单行布局) ---
             with st.expander("🔍 筛选条件", expanded=True):
                 # 所有筛选项在一行
-                cols = st.columns([1, 1.5, 1, 0.8, 0.8, 0.8, 1.2, 1, 0.6, 0.6])
+                cols = st.columns([1, 1.5, 1, 0.8, 0.8, 1, 1.2, 0.6, 0.6])
                 with cols[0]:
                     filter_job_code = st.text_input("职位ID", value=st.session_state.get('filter_job_code', ''), key="filter_job_code_input", label_visibility="collapsed", placeholder="职位ID")
                     st.session_state.filter_job_code = filter_job_code
@@ -5021,28 +5242,25 @@ elif page == "职位库管理":
                     filter_level = st.text_input("职级", value=st.session_state.get('filter_job_level', ''), key="filter_job_level_input", label_visibility="collapsed", placeholder="职级")
                     st.session_state.filter_job_level = filter_level
                 with cols[5]:
-                    filter_tags = st.text_input("标签", value=st.session_state.get('filter_job_tags', ''), key="filter_job_tags_input", label_visibility="collapsed", placeholder="标签")
-                    st.session_state.filter_job_tags = filter_tags
+                    urgency_options = ["全部", "较急", "紧急", "非常紧急"]
+                    filter_urgency = st.selectbox("紧急度", urgency_options, index=st.session_state.get('filter_job_urgency_idx', 0), key="filter_job_urgency_input", label_visibility="collapsed")
+                    st.session_state.filter_job_urgency_idx = urgency_options.index(filter_urgency)
+                filter_tags = ''  # 标签搜索已隐藏，传空值保持后端兼容
                 with cols[6]:
                     filter_link = st.text_input("链接", value=st.session_state.get('filter_job_link', ''), key="filter_job_link_input", label_visibility="collapsed", placeholder="链接/职位ID")
                     st.session_state.filter_job_link = filter_link
                 with cols[7]:
-                    urgency_options = ["全部", "较急", "紧急", "非常紧急"]
-                    filter_urgency = st.selectbox("紧急", urgency_options, index=st.session_state.get('filter_job_urgency_idx', 0), key="filter_job_urgency_input", label_visibility="collapsed")
-                    st.session_state.filter_job_urgency_idx = urgency_options.index(filter_urgency)
-                with cols[8]:
                     if st.button("清空", key="clear_job_filters", use_container_width=True):
                         st.session_state.filter_job_code = ''
                         st.session_state.filter_title = ''
                         st.session_state.filter_job_company = ''
                         st.session_state.filter_job_location = ''
                         st.session_state.filter_job_level = ''
-                        st.session_state.filter_job_tags = ''
                         st.session_state.filter_job_link = ''
                         st.session_state.filter_job_urgency_idx = 0
                         st.session_state.job_list_cache_buster += 1
                         st.rerun()
-                with cols[9]:
+                with cols[8]:
                     if st.button("🔄", key="refresh_job_list", use_container_width=True, help="刷新"):
                         st.session_state.job_list_cache_buster += 1
                         st.rerun()
