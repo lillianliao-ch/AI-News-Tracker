@@ -771,6 +771,75 @@ def maimai_sync(request: CandidateImportRequest):
         db.close()
 
 
+class RecordFriendRequestPayload(BaseModel):
+    linkedinUrl: str
+    name: str = ""
+    message: str = ""   # AI 生成的加好友消息内容
+
+@app.post("/api/candidate/record-friend-request")
+def record_friend_request(req: RecordFriendRequestPayload):
+    """
+    记录 LinkedIn 加好友操作（由插件"复制"按钮触发）
+    按 linkedin_url 匹配候选人，更新好友状态并追加沟通记录
+    """
+    db = SessionLocal()
+    try:
+        from datetime import datetime as _dt
+        from sqlalchemy import or_
+
+        # URL 标准化
+        url = req.linkedinUrl.strip().rstrip('/')
+        if url.startswith('http://'):
+            url = 'https://' + url[len('http://'):]
+
+        candidate = db.query(Candidate).filter(
+            or_(
+                Candidate.linkedin_url == url,
+                Candidate.linkedin_url == url + '/'
+            )
+        ).first()
+
+        if not candidate:
+            return {"success": False, "error": f"未找到候选人: {req.name or url}"}
+
+        # 更新好友状态
+        candidate.is_friend = 1
+        candidate.friend_added_at = _dt.now().strftime('%Y-%m-%d %H:%M')
+        candidate.friend_channel = 'LinkedIn'
+
+        # 追加沟通记录
+        logs = candidate.communication_logs or []
+        logs.insert(0, {
+            "time": _dt.now().strftime('%Y-%m-%d %H:%M'),
+            "channel": "LinkedIn",
+            "action": "sent_friend_request",
+            "content": req.message[:500] if req.message else "",
+            "direction": "outbound"
+        })
+        candidate.communication_logs = logs
+
+        # 更新 pipeline_stage（如果还是 new 就推进到 contacted）
+        if candidate.pipeline_stage in (None, 'new'):
+            candidate.pipeline_stage = 'contacted'
+
+        candidate.last_communication_at = _dt.now()
+
+        db.commit()
+        print(f"🤝 已记录LinkedIn加好友: {candidate.name} (ID: {candidate.id})")
+        return {
+            "success": True,
+            "candidateId": candidate.id,
+            "candidateName": candidate.name,
+            "message": f"已记录 {candidate.name} 的LinkedIn好友请求"
+        }
+
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
 @app.post("/api/candidate/linkedin-sync")
 def linkedin_sync(request: LinkedInSyncRequest):
     """
