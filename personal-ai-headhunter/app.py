@@ -430,7 +430,7 @@ else:
 # ---------------- 每日工作台 ----------------
 if page == "每日工作台":
     st.title("📋 每日工作台")
-    st.caption("🧠 Agent-Lite — 基于数据库实时状态的智能行动建议")
+    st.caption("🧠 Daily Cockpit — 今日动态 · Sourcing进度 · 跟进提醒 · AI建议")
 
     from daily_planner import collect_daily_context, generate_plan_with_llm
     import glob
@@ -443,181 +443,141 @@ if page == "每日工作台":
     context = get_daily_context()
     stats = context["stats"]
 
-    # ── 核心指标 ──
-    m1, m2, m3, m4, m5 = st.columns(5)
-    m1.metric("👥 候选人", stats["total_candidates"])
-    m2.metric("🤝 好友", stats["total_friends"])
-    m3.metric("📋 活跃JD", stats["total_active_jds"])
-    m4.metric("🔥 紧急JD", stats["urgent_jds_count"])
-    m5.metric("📭 空管道JD", stats["jds_no_pipeline_count"])
+    # ══════════════════════════════════════════
+    # 区域1: JD 动态
+    # ══════════════════════════════════════════
+    st.markdown("### 📋 JD 动态")
+    jd1, jd2, jd3, jd4 = st.columns(4)
+    jd1.metric("活跃JD", stats["total_active_jds"])
+    jd2.metric("🔥 紧急JD", stats["urgent_jds_count"])
+    jd3.metric("📥 本周新增JD", stats["recent_jds_count"])
+    jd4.metric("🆕 本周新紧急", stats.get("recent_urgent_jds_count", 0))
 
-    m6, m7, m8, m9, m10 = st.columns(5)
-    m6.metric("🏷 有标签", stats["candidates_with_tags"])
-    m7.metric("🙈 好友未沟通", stats["friends_no_comm_count"])
-    m8.metric("📥 本周新候选人", stats["recent_candidates_count"])
-    m9.metric("📥 本周新JD", stats["recent_jds_count"])
-    m10.metric("📅 今日预约", len(context["scheduled_today"]))
-
-    st.divider()
-
-    # ── 告警区域 ──
-    alert_col1, alert_col2 = st.columns(2)
-
-    with alert_col1:
-        # 今日预约
-        if context["scheduled_today"]:
-            st.markdown("### 📞 今日预约联系")
-            for c in context["scheduled_today"]:
-                st.markdown(f"- **{c['name']}** — {c.get('company') or ''} {c.get('title') or ''}")
-
-        # 过期预约
-        if context["overdue_scheduled"]:
-            st.markdown("### ⚠️ 过期未联系")
-            for c in context["overdue_scheduled"]:
-                st.warning(f"**{c['name']}** — 预约{c['scheduled_date']}，已过期", icon="⚠️")
-
-    with alert_col2:
-        # 紧急JD
-        if context["urgent_jds"]:
-            st.markdown("### 🔥 紧急JD")
+    if context["urgent_jds"]:
+        with st.expander(f"🔥 紧急JD列表 (Top {len(context['urgent_jds'])})", expanded=False):
             for j in context["urgent_jds"]:
                 urgency_text = "🔴" * min(j.get("urgency", 1), 3)
                 hc = f" HC:{j['headcount']}" if j.get("headcount") else ""
                 code = f" [{j['job_code']}]" if j.get("job_code") else ""
                 st.markdown(f"{urgency_text} **{j['title']}** — {j['company']}{code}{hc}")
 
-        # 超期未跟进
-        if context["stale_candidates"]:
-            st.markdown("### 💤 超期未跟进")
-            for c in context["stale_candidates"][:5]:
-                st.markdown(f"- **{c['name']}** — {c.get('company') or ''} — 上次沟通: {c.get('last_comm', '-')}")
+    st.divider()
+
+    # ══════════════════════════════════════════
+    # 区域2: 候选人 Sourcing 动态
+    # ══════════════════════════════════════════
+    st.markdown("### 👥 候选人 Sourcing 动态")
+
+    cs1, cs2, cs3, cs4 = st.columns(4)
+    cs1.metric("👥 候选人总数", stats["total_candidates"])
+    cs2.metric("🤝 好友", stats["total_friends"])
+    cs3.metric("📥 本周新增", stats["recent_candidates_count"])
+    cs4.metric("📥 昨日新增", stats.get("yesterday_count", 0))
+
+    yesterday_src = context.get("yesterday_by_source", {})
+    if yesterday_src:
+        src_parts = " · ".join([f"{k} {v}" for k, v in yesterday_src.items()])
+        st.caption(f"昨日渠道: {src_parts}")
+
+    tech_col, src_col = st.columns(2)
+
+    with tech_col:
+        week_tech = context.get("week_tech_domains", {})
+        if week_tech:
+            st.markdown("**📊 本周新增技术分布**")
+            max_val = max(week_tech.values()) if week_tech else 1
+            for domain, count in list(week_tech.items())[:8]:
+                bar_len = int(count / max_val * 15)
+                bar = "█" * bar_len + "░" * (15 - bar_len)
+                st.caption(f"{domain} {bar} {count}")
+
+    with src_col:
+        week_src = context.get("week_by_source", {})
+        if week_src:
+            st.markdown("**📡 本周新增渠道分布**")
+            max_val = max(week_src.values()) if week_src else 1
+            for source, count in list(week_src.items())[:6]:
+                bar_len = int(count / max_val * 15)
+                bar = "█" * bar_len + "░" * (15 - bar_len)
+                st.caption(f"{source} {bar} {count}")
 
     st.divider()
 
-    # ── LLM行动计划 ──
-    st.markdown("## 🧠 AI行动建议")
+    # ══════════════════════════════════════════
+    # 区域3: Sourcing 渠道进度 & Pipeline 漏斗
+    # ══════════════════════════════════════════
+    st.markdown("### 🎯 Sourcing 进度 & 转化漏斗")
 
-    # 检查是否有今日已缓存的报告
-    reports_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
-    today_str = datetime.now().strftime("%Y-%m-%d")
-    today_report = os.path.join(reports_dir, f"daily_plan_{today_str}.md")
+    progress_col, funnel_col = st.columns(2)
 
-    # 用session_state缓存LLM结果
-    if "daily_plan" not in st.session_state:
-        st.session_state.daily_plan = None
+    with progress_col:
+        sp = context.get("sourcing_progress")
+        if sp:
+            totals = sp['totals']
+            targets = sp['targets']
 
-    col_gen, col_info = st.columns([1, 3])
-    with col_gen:
-        generate_btn = st.button("🧠 生成/刷新行动计划", type="primary")
-    with col_info:
-        if os.path.exists(today_report):
-            mod_time = datetime.fromtimestamp(os.path.getmtime(today_report))
-            st.caption(f"📄 今日报告已缓存（{mod_time.strftime('%H:%M')} 生成）")
-
-    if generate_btn:
-        with st.spinner("🧠 正在调用 AI 分析生成行动计划..."):
-            plan = generate_plan_with_llm(context)
-            if plan:
-                st.session_state.daily_plan = plan
-                # 保存报告
-                from daily_planner import save_daily_report
-                save_daily_report(context, plan)
-                st.success("✅ 行动计划已生成并保存")
-            else:
-                st.error("❌ AI 分析失败，请稍后重试")
-
-    # 显示行动计划
-    plan = st.session_state.daily_plan
-
-    # 如果session没有但有文件缓存，从文件读取显示
-    if not plan and os.path.exists(today_report):
-        with open(today_report, "r", encoding="utf-8") as f:
-            report_content = f.read()
-        # 只显示LLM部分（---分隔符之后）
-        if "---" in report_content:
-            llm_part = report_content.split("---", 1)[1]
-            st.markdown(llm_part)
-        else:
-            st.info("💡 今日报告中暂无AI建议，点击上方按钮生成")
-    elif plan:
-        if plan.get("greeting"):
-            st.info(f"💬 {plan['greeting']}")
-
-        plan_col1, plan_col2 = st.columns(2)
-
-        with plan_col1:
-            high = plan.get("high_priority", [])
-            if high:
-                st.markdown("### 🔴 今日必做")
-                for i, item in enumerate(high, 1):
-                    if not isinstance(item, dict) or not item:
-                        continue
-                    action = item.get('action', item.get('title', ''))
-                    reason = item.get('reason', '')
-                    how = item.get('how', '')
-                    st.markdown(f"**{i}. {action}**")
-                    if reason:
-                        st.caption(f"原因: {reason}")
-                    if how:
-                        st.caption(f"方法: {how}")
-                    st.markdown("---")
-
-        with plan_col2:
-            suggested = plan.get("suggested", [])
-            if suggested:
-                st.markdown("### 🟡 建议做")
-                for i, item in enumerate(suggested, 1):
-                    if not isinstance(item, dict) or not item:
-                        continue
-                    action = item.get('action', item.get('title', ''))
-                    reason = item.get('reason', '')
-                    st.markdown(f"**{i}. {action}**")
-                    if reason:
-                        st.caption(f"原因: {reason}")
-                    st.markdown("---")
-
-        if plan.get("pipeline_health"):
-            st.markdown(f"**📈 管道健康度:** {plan['pipeline_health']}")
-        if plan.get("weekly_insight"):
-            st.markdown(f"**💡 本周洞察:** {plan['weekly_insight']}")
-    else:
-        st.info("💡 点击上方「生成/刷新行动计划」按钮，获取AI智能分析")
-
-    # ── Sourcing 进度 ──
-    sp = context.get("sourcing_progress")
-    if sp:
-        st.divider()
-        st.markdown("### 📈 Sourcing 进度")
-        totals = sp['totals']
-        targets = sp['targets']
-
-        # 渠道进度条
-        s_col1, s_col2, s_col3 = st.columns(3)
-
-        def _progress_metric(col, label, key, icon):
-            done = totals.get(key, 0)
-            goal = targets.get(key, 0)
-            pct = done / goal if goal > 0 else 0
-            with col:
+            def _progress_metric(label, key, icon):
+                done = totals.get(key, 0)
+                goal = targets.get(key, 0)
+                pct = done / goal if goal > 0 else 0
                 st.markdown(f"**{icon} {label}**")
                 st.progress(min(pct, 1.0))
                 st.caption(f"{done} / {goal} ({pct*100:.0f}%)")
 
-        _progress_metric(s_col1, "脉脉打招呼", "maimai_greeting", "💬")
-        _progress_metric(s_col2, "脉脉加好友", "maimai_friend", "🤝")
-        _progress_metric(s_col3, "LinkedIn", "linkedin_request", "🔗")
+            _progress_metric("脉脉打招呼", "maimai_greeting", "💬")
+            _progress_metric("脉脉加好友", "maimai_friend", "🤝")
+            _progress_metric("LinkedIn", "linkedin_request", "🔗")
+            _progress_metric("Email", "email", "📧")
+            _progress_metric("全渠道回复", "replies", "💬")
 
-        s_col4, s_col5, s_col6 = st.columns(3)
-        _progress_metric(s_col4, "Email", "email", "📧")
-        _progress_metric(s_col5, "全渠道回复", "replies", "💬")
-        _progress_metric(s_col6, "推荐提交", "referrals", "🎯")
+            today_target = sp.get('today_target')
+            if today_target:
+                st.info(f"🎯 **今日目标公司**: {today_target['target_company']}")
+        else:
+            st.info("暂无 Sourcing 进度数据（请填写 sourcing_推进.md）")
 
-        today_target = sp.get('today_target')
-        if today_target:
-            st.info(f"🎯 **今日目标公司**: {today_target['target_company']}")
+    with funnel_col:
+        funnel = context.get("funnel", {})
+        pipeline_stages = context.get("pipeline_stages", {})
 
-    # ── 今日跟进提醒 ──
+        if pipeline_stages:
+            st.markdown("**🔄 Pipeline 漏斗**")
+
+            stage_display = [
+                ("🆕 新发现", pipeline_stages.get('new', 0) + pipeline_stages.get(None, 0)),
+                ("📤 已触达", funnel.get('contacted', 0)),
+                ("💬 已回复", funnel.get('replied', 0)),
+                ("💚 加微信", funnel.get('wechat', 0)),
+                ("🎯 面试中", funnel.get('in_pipeline', 0)),
+            ]
+
+            max_width = 20
+            first_val = max(stage_display[0][1], 1)
+            for label, count in stage_display:
+                bar_width = max(1, int(count / first_val * max_width))
+                padding = (max_width - bar_width) // 2
+                bar = " " * padding + "█" * bar_width
+                st.caption(f"{label} {bar} **{count}**")
+
+            if funnel.get('contacted', 0) > 0:
+                reply_rate = funnel.get('replied', 0) / funnel['contacted'] * 100
+                wechat_rate = funnel.get('wechat', 0) / funnel['contacted'] * 100
+                st.caption(f"回复率 {reply_rate:.1f}% · 加微率 {wechat_rate:.1f}%")
+
+            st.markdown("---")
+            fu1, fu2 = st.columns(2)
+            fu1.metric("🙈 好友未沟通", stats["friends_no_comm_count"])
+            fu2.metric("🏷 有标签", stats["candidates_with_tags"])
+        else:
+            st.info("暂无 Pipeline 数据")
+
     st.divider()
+
+    # ══════════════════════════════════════════
+    # 区域4: 跟进状态摘要
+    # ══════════════════════════════════════════
+
+    st.markdown("### 🔔 今日跟进提醒")
     st.markdown("### 🔔 今日跟进提醒")
     db = get_session()
     from datetime import date as _date_type
@@ -662,6 +622,94 @@ if page == "每日工作台":
             st.rerun()
     else:
         st.success("✅ 今天没有需要跟进的候选人")
+
+
+    st.divider()
+
+    # ══════════════════════════════════════════
+    # 区域5: AI行动建议
+    # ══════════════════════════════════════════
+    st.markdown("### 🧠 AI行动建议")
+
+    reports_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    today_report = os.path.join(reports_dir, f"daily_plan_{today_str}.md")
+
+    if "daily_plan" not in st.session_state:
+        st.session_state.daily_plan = None
+
+    col_gen, col_info = st.columns([1, 3])
+    with col_gen:
+        generate_btn = st.button("🧠 生成/刷新行动计划", type="primary")
+    with col_info:
+        if os.path.exists(today_report):
+            mod_time = datetime.fromtimestamp(os.path.getmtime(today_report))
+            st.caption(f"📄 今日报告已缓存（{mod_time.strftime('%H:%M')} 生成）")
+
+    if generate_btn:
+        with st.spinner("🧠 正在调用 AI 分析生成行动计划..."):
+            plan = generate_plan_with_llm(context)
+            if plan:
+                st.session_state.daily_plan = plan
+                from daily_planner import save_daily_report
+                save_daily_report(context, plan)
+                st.success("✅ 行动计划已生成并保存")
+            else:
+                st.error("❌ AI 分析失败，请稍后重试")
+
+    plan = st.session_state.daily_plan
+
+    if not plan and os.path.exists(today_report):
+        with open(today_report, "r", encoding="utf-8") as f:
+            report_content = f.read()
+        if "---" in report_content:
+            llm_part = report_content.split("---", 1)[1]
+            st.markdown(llm_part)
+        else:
+            st.info("💡 今日报告中暂无AI建议，点击上方按钮生成")
+    elif plan:
+        if plan.get("greeting"):
+            st.info(f"💬 {plan['greeting']}")
+
+        plan_col1, plan_col2 = st.columns(2)
+
+        with plan_col1:
+            high = plan.get("high_priority", [])
+            if high:
+                st.markdown("#### 🔴 今日必做")
+                for i, item in enumerate(high, 1):
+                    if not isinstance(item, dict) or not item:
+                        continue
+                    action = item.get('action', item.get('title', ''))
+                    reason = item.get('reason', '')
+                    how = item.get('how', '')
+                    st.markdown(f"**{i}. {action}**")
+                    if reason:
+                        st.caption(f"原因: {reason}")
+                    if how:
+                        st.caption(f"方法: {how}")
+                    st.markdown("---")
+
+        with plan_col2:
+            suggested = plan.get("suggested", [])
+            if suggested:
+                st.markdown("#### 🟡 建议做")
+                for i, item in enumerate(suggested, 1):
+                    if not isinstance(item, dict) or not item:
+                        continue
+                    action = item.get('action', item.get('title', ''))
+                    reason = item.get('reason', '')
+                    st.markdown(f"**{i}. {action}**")
+                    if reason:
+                        st.caption(f"原因: {reason}")
+                    st.markdown("---")
+
+        if plan.get("pipeline_health"):
+            st.markdown(f"**📈 管道健康度:** {plan['pipeline_health']}")
+        if plan.get("weekly_insight"):
+            st.markdown(f"**💡 本周洞察:** {plan['weekly_insight']}")
+    else:
+        st.info("💡 点击上方「生成/刷新行动计划」按钮，获取AI智能分析")
 
     # ── 历史报告 ──
     with st.expander("📂 历史报告"):
