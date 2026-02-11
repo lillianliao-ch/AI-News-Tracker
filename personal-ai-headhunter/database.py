@@ -295,6 +295,7 @@ def init_db():
     
     # 为高频筛选字段创建索引（幂等）
     with engine.begin() as conn:
+        # Job indexes
         conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_is_active ON jobs(is_active)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_created_at ON jobs(created_at DESC)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_company ON jobs(company)"))
@@ -302,6 +303,16 @@ def init_db():
         conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_location ON jobs(location)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_job_code ON jobs(job_code)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS idx_jobs_urgency ON jobs(urgency)"))
+        
+        # Candidate indexes - 加速筛选查询
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_name ON candidates(name)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_company ON candidates(current_company)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_tier ON candidates(talent_tier)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_source ON candidates(source)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_is_friend ON candidates(is_friend)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_created_at ON candidates(created_at DESC)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_last_comm ON candidates(last_communication_at DESC)"))
+
     
     # 初始化默认 Prompt
     session = SessionLocal()

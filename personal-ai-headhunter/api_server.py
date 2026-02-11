@@ -840,6 +840,74 @@ def record_friend_request(req: RecordFriendRequestPayload):
         db.close()
 
 
+def _parse_contact_from_notes(notes_text: str) -> dict:
+    """
+    从备注文本中解析联系方式：
+    - GitHub URL → github_url
+    - Google Scholar URL → google_scholar_url (存入 personal_website 或 notes)
+    - 邮箱 → email
+    - 手机号 → phone
+    - 微信号 → wechat_id
+    - 其他网站 → personal_website
+    """
+    import re
+    result = {}
+    if not notes_text:
+        return result
+    
+    text = notes_text.strip()
+    
+    # 1. GitHub URL
+    gh_match = re.search(r'(?:https?://)?(?:www\.)?github\.com/([A-Za-z0-9_.-]+)', text, re.IGNORECASE)
+    if gh_match:
+        result['github_url'] = f"https://github.com/{gh_match.group(1)}"
+    
+    # 2. Google Scholar URL
+    scholar_match = re.search(r'(?:https?://)?scholar\.google\.com[^\s）)]*', text, re.IGNORECASE)
+    if scholar_match:
+        url = scholar_match.group(0)
+        if not url.startswith('http'):
+            url = 'https://' + url
+        result['google_scholar_url'] = url
+    
+    # 3. 邮箱
+    email_match = re.search(r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', text)
+    if email_match:
+        result['email'] = email_match.group(0)
+    
+    # 4. 手机号（中国大陆：1开头11位 | 国际：+开头含空格分隔）
+    phone_match = re.search(r'\+\d{1,3}[\s-]?\d[\d\s-]{6,12}\d|1[3-9]\d{9}', text)
+    if phone_match:
+        result['phone'] = re.sub(r'\s+', ' ', phone_match.group(0)).strip()
+    
+    # 5. 微信号（常见格式：微信：xxx / WeChat: xxx / wx: xxx）
+    wechat_match = re.search(r'(?:微信|wechat|wx)\s*[:：]\s*(\S+)', text, re.IGNORECASE)
+    if wechat_match:
+        result['wechat_id'] = wechat_match.group(1).strip()
+    
+    # 6. 其他个人网站（排除已匹配的 github/scholar/linkedin + 邮箱域名）
+    # 收集邮箱域名用于排除
+    email_domains = set()
+    for em in re.finditer(r'[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})', text):
+        email_domains.add(em.group(1).lower())
+    
+    url_pattern = re.compile(r'(?:https?://)?(?:www\.)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?:/[^\s）)]*)?', re.IGNORECASE)
+    for m in url_pattern.finditer(text):
+        domain = m.group(1).lower()
+        # 排除已匹配的、邮箱域名、和常见非个人网站
+        if domain in email_domains:
+            continue
+        if any(skip in domain for skip in ['github.com', 'scholar.google', 'linkedin.com', 'google.com/citations', 'mailto:', 'gmail.com', 'outlook.com', 'qq.com', '163.com', 'hotmail.com']):
+            continue
+        full_url = m.group(0)
+        if not full_url.startswith('http'):
+            full_url = 'https://' + full_url
+        result['personal_website'] = full_url
+        break  # 只取第一个
+    
+    return result
+
+
 @app.post("/api/candidate/linkedin-sync")
 def linkedin_sync(request: LinkedInSyncRequest):
     """
@@ -853,6 +921,12 @@ def linkedin_sync(request: LinkedInSyncRequest):
         raise HTTPException(status_code=400, detail="姓名不能为空")
     if not request.linkedinUrl or not request.linkedinUrl.strip():
         raise HTTPException(status_code=400, detail="LinkedIn URL 不能为空")
+    
+    # 解析备注中的联系方式
+    parsed_contacts = _parse_contact_from_notes(request.notes) if request.notes else {}
+    if parsed_contacts:
+        print(f"📋 从备注中解析到: {list(parsed_contacts.keys())}")
+    
     
     db = SessionLocal()
     try:
@@ -987,7 +1061,7 @@ def linkedin_sync(request: LinkedInSyncRequest):
                 
                 existing.education_details = existing_edus
             
-            # source: 追加 linkedin 标记
+            # source: 追加 linkedin 渠道（保留完整渠道历史）
             if existing.source:
                 if "linkedin" not in existing.source:
                     existing.source = existing.source + ", linkedin"
@@ -1003,6 +1077,27 @@ def linkedin_sync(request: LinkedInSyncRequest):
                     separator = "\n" if existing_notes else ""
                     existing.notes = existing_notes + separator + f"[linkedin] {request.notes.strip()}"
                     updated_fields.append("notes")
+            
+            # 从备注解析的联系方式：只补充空字段
+            if parsed_contacts:
+                if not existing.github_url and parsed_contacts.get('github_url'):
+                    existing.github_url = parsed_contacts['github_url']
+                    updated_fields.append("github_url")
+                if not existing.email and parsed_contacts.get('email'):
+                    existing.email = parsed_contacts['email']
+                    updated_fields.append("email")
+                if not existing.phone and parsed_contacts.get('phone'):
+                    existing.phone = parsed_contacts['phone']
+                    updated_fields.append("phone")
+                if not existing.wechat_id and parsed_contacts.get('wechat_id'):
+                    existing.wechat_id = parsed_contacts['wechat_id']
+                    updated_fields.append("wechat_id")
+                if not existing.personal_website and parsed_contacts.get('personal_website'):
+                    existing.personal_website = parsed_contacts['personal_website']
+                    updated_fields.append("personal_website")
+                if not existing.personal_website and parsed_contacts.get('google_scholar_url'):
+                    existing.personal_website = parsed_contacts['google_scholar_url']
+                    updated_fields.append("personal_website(scholar)")
             
             existing.updated_at = datetime.now()
             
@@ -1055,6 +1150,12 @@ def linkedin_sync(request: LinkedInSyncRequest):
                 education_level=education_level if education_level else None,
                 source="linkedin",
                 notes=f"[linkedin] {request.notes.strip()}" if request.notes and request.notes.strip() else None,
+                # 从备注解析的联系方式
+                github_url=parsed_contacts.get('github_url'),
+                email=parsed_contacts.get('email'),
+                phone=parsed_contacts.get('phone'),
+                wechat_id=parsed_contacts.get('wechat_id'),
+                personal_website=parsed_contacts.get('personal_website') or parsed_contacts.get('google_scholar_url'),
                 created_at=datetime.now(),
                 updated_at=datetime.now()
             )
@@ -1076,6 +1177,22 @@ def linkedin_sync(request: LinkedInSyncRequest):
                         print(f"🏷️ ✅ {cname} 标签提取完成")
                 except Exception as e:
                     print(f"🏷️ ❌ {cname} 标签提取异常: {e}")
+                
+                # 自动评级（需要标签提取完成后）
+                try:
+                    from batch_update_tiers import auto_tier
+                    from database import SessionLocal
+                    tier_db = SessionLocal()
+                    cand_obj = tier_db.query(Candidate).filter(Candidate.id == cid).first()
+                    if cand_obj:
+                        new_tier, reason = auto_tier(cand_obj)
+                        cand_obj.talent_tier = new_tier
+                        cand_obj.talent_tier_reason = reason
+                        tier_db.commit()
+                        print(f"🏅 ✅ {cname} 自动评级: {new_tier} ({reason})")
+                    tier_db.close()
+                except Exception as e:
+                    print(f"🏅 ❌ {cname} 自动评级异常: {e}")
                 
                 try:
                     import hashlib, requests
@@ -1759,16 +1876,21 @@ MESSAGE_SYSTEM_PROMPT = """你是Lillian的AI助手。Lillian是一位专注AI/�
    - 🚫 其他情况下，不要提任何具体公司名或岗位名！直接说"我们有一些机会跟您比较匹配"
    - 🚫🚫 绝对禁止"虽然目前职位与您不完全一致"这类句式！不要提任何"不一致/不匹配"的字眼，只说正面的
    - 第一次打招呼的目的是建立联系，不是硬推某个JD
-5. 行动呼吁：用"希望能与您进一步交流"，不要说"了解您的职业规划和发展方向"这种套话
-6. 末尾附上：我的电话/微信 13585841775，方便时联系我～
+5. 行动呼吁：用"希望能与您加好友，建立链接，未来能进一步交流"
+6. 末尾另起一行附上签名：Lillian 电话/微信 13585841775 GitHub: github.com/lillianliao-ch
 7. 语气：专业但亲切自然，像朋友推荐机会一样，不要过于正式或吹捧
 
 ## 格式要求
 - 严格控制在250字以内（给300字限制留余量）
 - 直接输出消息文本，不要加引号或markdown标记
-- 不要分点列举，写成自然的一段话
-- 不要用"巨大价值"、"非常匹配"、"非常丰富"、"令人印象深刻"等空洞的吹捧词
-- 🚫 不要加"祝好""Best regards"等签名，不要单独一行写"您好，"，直接写成连贯的一段话"""
+- ⚠️ 必须分三段，每段之间用空行（两个换行符）分隔，这非常重要：
+  - 第一段：自我介绍 + 对方亮点
+  - 第二段：只写"希望能与您加好友，建立链接，未来能进一步交流。"（不要加"我们有一些机会跟您比较匹配"之类的推销语句，第一次打招呼只建立联系）
+  - 第三段：签名（"Lillian 电话/微信 13585841775 GitHub: github.com/lillianliao-ch"）
+- 三段之间必须有空行！候选人在手机上看消息，不分段会挤在一起很难读
+- 🚫 不要加"期待您的回复""祝好""Best regards"等多余客套
+- 不要用"巨大价值""非常匹配""非常丰富""令人印象深刻"等空洞的吹捧词
+- 🚫 不要单独一行写"您好，"，称呼要和第一句话连在一起"""
 
 
 import re

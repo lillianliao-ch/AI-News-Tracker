@@ -11,6 +11,7 @@ Headhunter Agent-Lite — 每日工作台
 import os
 import sys
 import json
+import re
 from datetime import datetime, timedelta
 from collections import Counter
 
@@ -32,6 +33,111 @@ from sqlalchemy import func, text
 
 
 # ──────────────────────────────────────────────
+# 步骤0：Sourcing 执行数据采集
+# ──────────────────────────────────────────────
+
+# 两周 KPI 目标 (与 sourcing_execution_plan.md 对齐)
+SOURCING_TARGETS = {
+    'maimai_greeting': 250,     # 脉脉打招呼总目标 (精准)
+    'maimai_friend': 4000,      # 脉脉加好友总目标 (广撒网)
+    'linkedin_request': 250,    # LinkedIn Connection 总目标
+    'linkedin_post': 11,        # LinkedIn 帖子总目标
+    'email': 150,               # Email 发送总目标
+    'replies': 200,             # 全渠道回复总目标
+    'referrals': 20,            # 推荐提交总目标
+}
+
+
+def collect_sourcing_progress():
+    """从 sourcing_推进.md 解析多渠道数据追踪表"""
+    sourcing_file = os.path.join(BASE_DIR, 'data', 'sourcing_推进.md')
+    if not os.path.exists(sourcing_file):
+        return None
+
+    with open(sourcing_file, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # 找到数据追踪表
+    daily_records = []
+    in_table = False
+    header_found = False
+
+    for line in content.split('\n'):
+        line = line.strip()
+        if '脉脉招呼' in line and '脉脉加友' in line:
+            in_table = True
+            header_found = False
+            continue
+        if in_table and line.startswith('|:'):
+            header_found = True
+            continue
+        if in_table and header_found and line.startswith('|'):
+            cells = [c.strip() for c in line.split('|')[1:-1]]
+            if len(cells) >= 9:
+                record = {
+                    'date': cells[0],
+                    'target_company': cells[1],
+                    'maimai_greeting': _parse_num(cells[2]),
+                    'maimai_friend': _parse_num(cells[3]),
+                    'linkedin_request': _parse_num(cells[4]),
+                    'linkedin_post': _parse_num(cells[5]),
+                    'email': _parse_num(cells[6]),
+                    'replies': _parse_num(cells[7]),
+                    'referrals': _parse_num(cells[8]),
+                    'notes': cells[9] if len(cells) > 9 else '',
+                }
+                daily_records.append(record)
+        elif in_table and header_found and not line.startswith('|'):
+            break
+
+    # 计算合计
+    totals = {k: 0 for k in SOURCING_TARGETS}
+    days_with_data = 0
+    for r in daily_records:
+        has_data = False
+        for key in SOURCING_TARGETS:
+            val = r.get(key, 0)
+            if val > 0:
+                totals[key] += val
+                has_data = True
+        if has_data:
+            days_with_data += 1
+
+    # 找到今日目标
+    today_str = datetime.now().strftime('%-m/%d')
+    today_weekday = ['一', '二', '三', '四', '五', '六', '日'][datetime.now().weekday()]
+    today_target = None
+    for r in daily_records:
+        if today_str in r['date'] or f'({today_weekday})' in r['date']:
+            today_target = r
+            break
+
+    # 找到昨日数据
+    yesterday_data = None
+    if len(daily_records) >= 2:
+        yesterday_data = daily_records[-2] if daily_records[-1] == today_target else daily_records[-1]
+
+    return {
+        'daily_records': daily_records,
+        'totals': totals,
+        'targets': SOURCING_TARGETS,
+        'days_with_data': days_with_data,
+        'today_target': today_target,
+        'yesterday_data': yesterday_data,
+    }
+
+
+def _parse_num(val):
+    """解析数字，处理空值和特殊符号"""
+    if not val or val in ('—', '___', '-', ''):
+        return 0
+    try:
+        return int(re.sub(r'[^0-9]', '', val))
+    except (ValueError, TypeError):
+        return 0
+
+
+# ──────────────────────────────────────────────
 # 步骤1：数据采集层
 # ──────────────────────────────────────────────
 
@@ -39,8 +145,10 @@ def collect_daily_context():
     """采集当日所需的所有上下文数据"""
     session = SessionLocal()
     today = datetime.now().strftime("%Y-%m-%d")
+    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
     week_ago = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
     two_weeks_ago = (datetime.now() - timedelta(days=14)).strftime("%Y-%m-%d")
+    three_months_ago = (datetime.now() - timedelta(days=90)).strftime("%Y-%m-%d")
 
     try:
         # ── 候选人统计 ──
@@ -57,6 +165,47 @@ def collect_daily_context():
         recent_candidates = session.query(Candidate).filter(
             Candidate.created_at >= week_ago
         ).order_by(Candidate.created_at.desc()).all()
+
+        # 昨日新增候选人 + 分渠道明细
+        yesterday_candidates = session.query(Candidate).filter(
+            Candidate.created_at >= yesterday,
+            Candidate.created_at < today
+        ).all()
+
+        yesterday_by_source = Counter()
+        yesterday_tech_domains = Counter()
+        for c in yesterday_candidates:
+            yesterday_by_source[c.source or "未知"] += 1
+            # 提取技术方向
+            if c.structured_tags and isinstance(c.structured_tags, dict):
+                for domain in c.structured_tags.get('tech_domain', []):
+                    yesterday_tech_domains[domain] += 1
+            elif c.structured_tags and isinstance(c.structured_tags, str):
+                try:
+                    tags = json.loads(c.structured_tags)
+                    for domain in tags.get('tech_domain', []):
+                        yesterday_tech_domains[domain] += 1
+                except:
+                    pass
+
+        # 本周新增候选人技术分布
+        week_tech_domains = Counter()
+        for c in recent_candidates:
+            if c.structured_tags and isinstance(c.structured_tags, dict):
+                for domain in c.structured_tags.get('tech_domain', []):
+                    week_tech_domains[domain] += 1
+            elif c.structured_tags and isinstance(c.structured_tags, str):
+                try:
+                    tags = json.loads(c.structured_tags)
+                    for domain in tags.get('tech_domain', []):
+                        week_tech_domains[domain] += 1
+                except:
+                    pass
+
+        # 本周新增候选人分渠道
+        week_by_source = Counter()
+        for c in recent_candidates:
+            week_by_source[c.source or "未知"] += 1
 
         # 今天需要联系的候选人（scheduled_contact_date）
         scheduled_today = session.query(Candidate).filter(
@@ -84,6 +233,26 @@ def collect_daily_context():
             Candidate.last_communication_at < two_weeks_ago
         ).order_by(Candidate.last_communication_at.asc()).limit(20).all()
 
+        # ── Pipeline 漏斗统计 ──
+        pipeline_stages = {}
+        stage_rows = session.query(
+            Candidate.pipeline_stage, func.count(Candidate.id)
+        ).group_by(Candidate.pipeline_stage).all()
+        for stage, count in stage_rows:
+            pipeline_stages[stage or 'new'] = count
+
+        # 漏斗计算（累加式）
+        funnel = {
+            'total': total_candidates,
+            'contacted': sum(pipeline_stages.get(s, 0) for s in
+                           ['contacted', 'following_up', 'replied', 'wechat_connected', 'in_pipeline']),
+            'replied': sum(pipeline_stages.get(s, 0) for s in
+                         ['replied', 'wechat_connected', 'in_pipeline']),
+            'wechat': sum(pipeline_stages.get(s, 0) for s in
+                        ['wechat_connected', 'in_pipeline']),
+            'in_pipeline': pipeline_stages.get('in_pipeline', 0),
+        }
+
         # ── JD统计 ──
         total_active_jds = session.query(func.count(Job.id)).filter(
             Job.is_active == 1
@@ -100,6 +269,16 @@ def collect_daily_context():
             Job.is_active == 1,
             Job.created_at >= week_ago
         ).order_by(Job.created_at.desc()).all()
+
+        # 本周新增紧急JD
+        recent_urgent_jds = [j for j in recent_jds if (j.urgency or 0) >= 2]
+
+        # 3个月内紧急JD
+        urgent_jds_3m = session.query(Job).filter(
+            Job.is_active == 1,
+            Job.urgency >= 2,
+            Job.created_at >= three_months_ago
+        ).all()
 
         # JD的匹配记录统计
         jd_match_counts = dict(
@@ -132,9 +311,21 @@ def collect_daily_context():
                 "recent_candidates_count": len(recent_candidates),
                 "recent_jds_count": len(recent_jds),
                 "urgent_jds_count": len(urgent_jds),
+                "recent_urgent_jds_count": len(recent_urgent_jds),
+                "urgent_jds_3m_count": len(urgent_jds_3m),
                 "jds_no_pipeline_count": len(jds_no_pipeline),
                 "friends_no_comm_count": len(friends_no_comm),
+                "yesterday_count": len(yesterday_candidates),
             },
+            # 昨日分渠道
+            "yesterday_by_source": dict(yesterday_by_source.most_common(10)),
+            "yesterday_tech_domains": dict(yesterday_tech_domains.most_common(10)),
+            # 本周分渠道 & 技术分布
+            "week_by_source": dict(week_by_source.most_common(10)),
+            "week_tech_domains": dict(week_tech_domains.most_common(10)),
+            # Pipeline 漏斗
+            "pipeline_stages": pipeline_stages,
+            "funnel": funnel,
             "scheduled_today": [
                 {"name": c.name, "company": c.current_company, "title": c.current_title,
                  "scheduled_date": c.scheduled_contact_date}
@@ -175,6 +366,7 @@ def collect_daily_context():
             ],
             "company_distribution": dict(company_counts.most_common(10)),
             "source_distribution": dict(source_counts.most_common(10)),
+            "sourcing_progress": collect_sourcing_progress(),
         }
     finally:
         session.close()
@@ -376,6 +568,47 @@ def format_terminal_output(context: dict, plan: dict = None):
         if plan.get("weekly_insight"):
             print(f"\n💡 本周洞察: {plan['weekly_insight']}")
 
+    # ── Sourcing 进度 ──
+    sp = context.get("sourcing_progress")
+    if sp:
+        print(f"\n{'─' * 60}")
+        print(f"\n📈 Sourcing 进度")
+        totals = sp['totals']
+        targets = sp['targets']
+
+        def _bar(done, goal):
+            pct = (done / goal * 100) if goal > 0 else 0
+            filled = int(pct / 5)  # 20格满
+            bar = '█' * min(filled, 20) + '░' * (20 - min(filled, 20))
+            return f"{bar} {done}/{goal} ({pct:.0f}%)"
+
+        print(f"  脉脉打招呼 {_bar(totals['maimai_greeting'], targets['maimai_greeting'])}")
+        print(f"  脉脉加好友 {_bar(totals['maimai_friend'], targets['maimai_friend'])}")
+        print(f"  LinkedIn   {_bar(totals['linkedin_request'], targets['linkedin_request'])}")
+        print(f"  Email      {_bar(totals['email'], targets['email'])}")
+        print(f"  全渠道回复 {_bar(totals['replies'], targets['replies'])}")
+        print(f"  推荐提交   {_bar(totals['referrals'], targets['referrals'])}")
+
+        today = sp.get('today_target')
+        if today:
+            print(f"\n  🎯 今日目标: {today['target_company']}")
+
+        yesterday = sp.get('yesterday_data')
+        if yesterday and yesterday.get('target_company'):
+            yd_total = sum([
+                yesterday.get('maimai_greeting', 0),
+                yesterday.get('maimai_friend', 0),
+                yesterday.get('linkedin_request', 0),
+                yesterday.get('email', 0),
+            ])
+            if yd_total > 0:
+                print(f"  📊 昨日({yesterday['target_company']}): "
+                      f"脉脉招呼{yesterday.get('maimai_greeting', 0)} "
+                      f"加友{yesterday.get('maimai_friend', 0)} "
+                      f"LI{yesterday.get('linkedin_request', 0)} "
+                      f"Email{yesterday.get('email', 0)} "
+                      f"回复{yesterday.get('replies', 0)}")
+
     print(f"\n{'=' * 60}\n")
 
 
@@ -475,6 +708,37 @@ def save_daily_report(context: dict, plan: dict = None):
         if plan.get("weekly_insight"):
             lines.append(f"## 💡 本周洞察")
             lines.append(f"{plan['weekly_insight']}")
+            lines.append("")
+
+    # ── Sourcing 进度 ──
+    sp = context.get("sourcing_progress")
+    if sp:
+        lines.append("---")
+        lines.append("")
+        lines.append("## 📈 Sourcing 进度")
+        lines.append("")
+        totals = sp['totals']
+        targets = sp['targets']
+        lines.append("| 渠道 | 完成 | 目标 | 进度 |")
+        lines.append("|:---|:---:|:---:|:---:|")
+        channel_names = {
+            'maimai_greeting': '脉脉打招呼',
+            'maimai_friend': '脉脉加好友',
+            'linkedin_request': 'LinkedIn',
+            'email': 'Email',
+            'replies': '全渠道回复',
+            'referrals': '推荐提交',
+        }
+        for key, name in channel_names.items():
+            done = totals.get(key, 0)
+            goal = targets.get(key, 0)
+            pct = f"{done/goal*100:.0f}%" if goal > 0 else "—"
+            lines.append(f"| {name} | {done} | {goal} | {pct} |")
+        lines.append("")
+
+        today = sp.get('today_target')
+        if today:
+            lines.append(f"**🎯 今日目标**: {today['target_company']}")
             lines.append("")
 
     with open(filepath, "w", encoding="utf-8") as f:

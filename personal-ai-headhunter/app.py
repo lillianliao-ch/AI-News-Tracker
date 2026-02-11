@@ -10,6 +10,18 @@ from ai_service import AIService
 import json
 import re
 from job_search import match_candidate_to_jobs
+import time as _time
+import logging as _logging
+
+# ⏱️ 性能计时 — 脚本开始执行
+_PERF_SCRIPT_START = _time.time()
+_perf_logger = _logging.getLogger('headhunter_perf')
+if not _perf_logger.handlers:
+    _fh = _logging.FileHandler('/tmp/headhunter_perf.log', mode='a')
+    _fh.setFormatter(_logging.Formatter('%(asctime)s %(message)s', datefmt='%H:%M:%S'))
+    _perf_logger.addHandler(_fh)
+    _perf_logger.setLevel(_logging.DEBUG)
+_perf_logger.debug(f"\n====== 脚本开始执行 ======")
 
 # 初始化页面配置
 st.set_page_config(
@@ -393,7 +405,7 @@ st.markdown("""
 st.sidebar.title("🕵️ AI猎头")
 
 # 支持从其他页面跳转
-nav_options = ["每日工作台", "Dashboard", "沟通跟进", "人才库管理", "职位库管理", "智能匹配", "批处理", "提示词配置"]
+nav_options = ["每日工作台", "沟通跟进", "人才库管理", "职位库管理", "智能匹配", "数据分析", "批处理", "提示词配置"]
 
 # 获取当前应该显示的页面（优先使用session_state中的nav_page）
 current_page = st.session_state.get('nav_page', '每日工作台')
@@ -571,21 +583,85 @@ if page == "每日工作台":
     else:
         st.info("💡 点击上方「生成/刷新行动计划」按钮，获取AI智能分析")
 
-    # ── 公司分布 ──
+    # ── Sourcing 进度 ──
+    sp = context.get("sourcing_progress")
+    if sp:
+        st.divider()
+        st.markdown("### 📈 Sourcing 进度")
+        totals = sp['totals']
+        targets = sp['targets']
+
+        # 渠道进度条
+        s_col1, s_col2, s_col3 = st.columns(3)
+
+        def _progress_metric(col, label, key, icon):
+            done = totals.get(key, 0)
+            goal = targets.get(key, 0)
+            pct = done / goal if goal > 0 else 0
+            with col:
+                st.markdown(f"**{icon} {label}**")
+                st.progress(min(pct, 1.0))
+                st.caption(f"{done} / {goal} ({pct*100:.0f}%)")
+
+        _progress_metric(s_col1, "脉脉打招呼", "maimai_greeting", "💬")
+        _progress_metric(s_col2, "脉脉加好友", "maimai_friend", "🤝")
+        _progress_metric(s_col3, "LinkedIn", "linkedin_request", "🔗")
+
+        s_col4, s_col5, s_col6 = st.columns(3)
+        _progress_metric(s_col4, "Email", "email", "📧")
+        _progress_metric(s_col5, "全渠道回复", "replies", "💬")
+        _progress_metric(s_col6, "推荐提交", "referrals", "🎯")
+
+        today_target = sp.get('today_target')
+        if today_target:
+            st.info(f"🎯 **今日目标公司**: {today_target['target_company']}")
+
+    # ── 今日跟进提醒 ──
     st.divider()
-    if context.get("company_distribution"):
-        st.markdown("### 🏢 JD公司分布")
-        import pandas as pd
-        import plotly.express as px
-        df_co = pd.DataFrame(
-            list(context["company_distribution"].items()),
-            columns=["公司", "JD数量"]
-        ).sort_values("JD数量", ascending=True)
-        fig = px.bar(df_co, x="JD数量", y="公司", orientation="h", text="JD数量",
-                     color_discrete_sequence=["#2563eb"])
-        fig.update_layout(height=350, showlegend=False)
-        fig.update_traces(textposition="outside")
-        st.plotly_chart(fig, use_container_width=True)
+    st.markdown("### 🔔 今日跟进提醒")
+    db = get_session()
+    from datetime import date as _date_type
+    _today_date = _date_type.today()
+    _today_str = _today_date.strftime("%Y-%m-%d")
+
+    # 策略跟进 (follow_up_date)
+    fu_candidates = db.query(Candidate).filter(
+        Candidate.pipeline_stage.notin_(['closed', 'new']),
+        Candidate.follow_up_date.isnot(None),
+        Candidate.follow_up_date <= _today_str
+    ).order_by(Candidate.follow_up_date.asc()).all()
+
+    # 手动预约 (scheduled_contact_date)
+    sched_candidates = db.query(Candidate).filter(
+        Candidate.scheduled_contact_date.isnot(None),
+        Candidate.scheduled_contact_date != '',
+        Candidate.scheduled_contact_date <= _today_str
+    ).order_by(Candidate.scheduled_contact_date.asc()).all()
+
+    # 去重（同一人可能同时出现在两套系统中）
+    seen_ids = set()
+    followup_merged = []
+    for c in fu_candidates + sched_candidates:
+        if c.id not in seen_ids:
+            seen_ids.add(c.id)
+            followup_merged.append(c)
+
+    if followup_merged:
+        fu_col1, fu_col2 = st.columns([1, 5])
+        with fu_col1:
+            st.metric("待跟进", len(followup_merged))
+        with fu_col2:
+            for c in followup_merged[:5]:
+                stage_icons = {"contacted": "📤", "following_up": "🔄", "replied": "💬", "wechat_connected": "💚", "in_pipeline": "🎯"}
+                icon = stage_icons.get(c.pipeline_stage, "○")
+                st.markdown(f"{icon} **{c.name}** — {c.current_company or ''} · {c.current_title or ''}")
+            if len(followup_merged) > 5:
+                st.caption(f"... 还有 {len(followup_merged) - 5} 人，前往「沟通跟进」查看")
+        if st.button("📋 前往沟通跟进", key="goto_followup"):
+            st.session_state.nav_page = '沟通跟进'
+            st.rerun()
+    else:
+        st.success("✅ 今天没有需要跟进的候选人")
 
     # ── 历史报告 ──
     with st.expander("📂 历史报告"):
@@ -823,10 +899,10 @@ elif page == "提示词配置":
     render_prompt_config()
 
 # ---------------- DASHBOARD ----------------
-elif page == "Dashboard":
+elif page == "数据分析":
     title_col, refresh_col = st.columns([6, 1])
     with title_col:
-        st.title("📊 概览")
+        st.title("📊 数据分析")
     with refresh_col:
         st.markdown("<br>", unsafe_allow_html=True)
         if st.button("🔄 刷新", key="dashboard_refresh", use_container_width=True):
@@ -1934,6 +2010,9 @@ elif page == "沟通跟进":
 
 # ---------------- CANDIDATES ----------------
 elif page == "人才库管理":
+    
+    _perf_page_enter = _time.time()
+    _perf_logger.debug(f"进入人才库管理页 — 距脚本启动 {_perf_page_enter - _PERF_SCRIPT_START:.3f}s")
     
     db = get_session()
 
@@ -3472,90 +3551,120 @@ elif page == "人才库管理":
         tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["人才列表", "导入导出", "好友标记", "批量画像", "搜索人才", "➕ 添加人才"])
         
         with tab1:
-            # --- Search Filters (更紧凑的布局) ---
-            with st.expander("🔍 筛选条件", expanded=True):
-                # 第一行：主要筛选条件
-                col1, col2, col3, col4, col5, col6 = st.columns([1.5, 1.5, 1.5, 1.5, 0.6, 0.6])
-                with col1:
-                    filter_name = st.text_input("姓名/关键词", value=st.session_state.get('filter_name', ''), key="filter_name_input", label_visibility="collapsed", placeholder="姓名/关键词")
-                    st.session_state.filter_name = filter_name
-                with col2:
-                    filter_company = st.text_input("公司", value=st.session_state.get('filter_company', ''), key="filter_company_input", label_visibility="collapsed", placeholder="公司")
-                    st.session_state.filter_company = filter_company
-                with col3:
-                    filter_school = st.text_input("名校/学历", value=st.session_state.get('filter_school', ''), key="filter_school_input", label_visibility="collapsed", placeholder="名校/学历")
-                    st.session_state.filter_school = filter_school
-                with col4:
-                    filter_location = st.text_input("期望地点", value=st.session_state.get('filter_location', ''), key="filter_location_input", label_visibility="collapsed", placeholder="期望地点")
-                    st.session_state.filter_location = filter_location
-                with col5:
-                    # 年龄改为数字输入
-                    saved_age = st.session_state.get('filter_age', (20, 45))
-                    age_min = st.number_input("年龄", min_value=18, max_value=60, value=saved_age[0], key="filter_age_min", label_visibility="collapsed", placeholder="最小")
-                with col6:
-                    age_max = st.number_input("至", min_value=18, max_value=60, value=saved_age[1], key="filter_age_max", label_visibility="collapsed", placeholder="最大")
-                    st.session_state.filter_age = (age_min, age_max)
-                
-                col7, col8, col8b, col11 = st.columns([1, 1, 1, 0.6])
-                with col7:
-                    friend_options = ["全部", "✅ 仅好友", "❌ 非好友"]
-                    saved_friend_idx = friend_options.index(st.session_state.get('filter_friend', '全部')) if st.session_state.get('filter_friend') in friend_options else 0
-                    filter_friend = st.selectbox("好友状态", friend_options, index=saved_friend_idx, key="filter_friend_input", label_visibility="collapsed")
-                    st.session_state.filter_friend = filter_friend
-                with col8:
-                    tier_filter_options = ["全部", "🔴 S-顶尖", "🟠 A+-卓越", "🟠 A-优秀", "🟡 B+-良好", "🟡 B-不错", "🟢 C-一般", "❓ 未分级"]
-                    saved_tier_filter_idx = tier_filter_options.index(st.session_state.get('filter_tier', '全部')) if st.session_state.get('filter_tier') in tier_filter_options else 0
-                    filter_tier = st.selectbox("人才分级", tier_filter_options, index=saved_tier_filter_idx, key="filter_tier_input", label_visibility="collapsed")
-                    st.session_state.filter_tier = filter_tier
-                with col8b:
-                    source_filter_options = ["全部", "🟦 脉脉", "💻 GitHub", "🔗 LinkedIn", "🟧 Boss", "❓ 其他"]
-                    saved_source_idx = source_filter_options.index(st.session_state.get('filter_source', '全部')) if st.session_state.get('filter_source') in source_filter_options else 0
-                    filter_source = st.selectbox("渠道", source_filter_options, index=saved_source_idx, key="filter_source_input", label_visibility="collapsed")
-                    st.session_state.filter_source = filter_source
-                with col11:
-                    if st.button("🔄 清空"):
-                        st.session_state.filter_name = ''
-                        st.session_state.filter_company = ''
-                        st.session_state.filter_school = ''
-                        st.session_state.filter_location = ''
-                        st.session_state.filter_age = (20, 45)
-                        st.session_state.filter_friend = '全部'
-                        st.session_state.filter_tier = '全部'
-                        st.session_state.filter_source = '全部'
-                        for _ck in ['_persist_has_phone','_persist_has_email','_persist_has_linkedin','_persist_has_github','_persist_has_website','_persist_has_friend']:
-                            st.session_state[_ck] = False
-                        st.rerun()
-                
-                # 第三行：联系方式筛选
-                st.caption("📞 联系方式筛选")
-                cc1, cc2, cc3, cc4, cc5, cc6 = st.columns(6)
-                with cc1:
-                    f_has_phone = st.checkbox("📱 有电话", value=st.session_state.get('_persist_has_phone', False), key="filter_has_phone")
-                    st.session_state._persist_has_phone = f_has_phone
-                with cc2:
-                    f_has_email = st.checkbox("📧 有邮件", value=st.session_state.get('_persist_has_email', False), key="filter_has_email")
-                    st.session_state._persist_has_email = f_has_email
-                with cc3:
-                    f_has_linkedin = st.checkbox("🔗 有LinkedIn", value=st.session_state.get('_persist_has_linkedin', False), key="filter_has_linkedin")
-                    st.session_state._persist_has_linkedin = f_has_linkedin
-                with cc4:
-                    f_has_github = st.checkbox("💻 有GitHub", value=st.session_state.get('_persist_has_github', False), key="filter_has_github")
-                    st.session_state._persist_has_github = f_has_github
-                with cc5:
-                    f_has_website = st.checkbox("🌐 有网站", value=st.session_state.get('_persist_has_website', False), key="filter_has_website")
-                    st.session_state._persist_has_website = f_has_website
-                with cc6:
-                    f_has_friend = st.checkbox("🤝 加好友", value=st.session_state.get('_persist_has_friend', False), key="filter_has_friend")
-                    st.session_state._persist_has_friend = f_has_friend
+            # --- Search Filters (用 st.form 包裹，防止每次按键触发 rerun) ---
+            with st.form("candidate_filter_form", border=False):
+                with st.expander("🔍 筛选条件", expanded=True):
+                    # 第一行：主要筛选条件
+                    col1, col2, col3, col4, col5, col6 = st.columns([1.5, 1.5, 1.5, 1.5, 0.6, 0.6])
+                    with col1:
+                        filter_name = st.text_input("姓名/关键词", value=st.session_state.get('filter_name', ''), key="filter_name_input", label_visibility="collapsed", placeholder="姓名/关键词")
+                    with col2:
+                        filter_company = st.text_input("公司", value=st.session_state.get('filter_company', ''), key="filter_company_input", label_visibility="collapsed", placeholder="公司")
+                    with col3:
+                        filter_school = st.text_input("名校/学历", value=st.session_state.get('filter_school', ''), key="filter_school_input", label_visibility="collapsed", placeholder="名校/学历")
+                    with col4:
+                        filter_location = st.text_input("期望地点", value=st.session_state.get('filter_location', ''), key="filter_location_input", label_visibility="collapsed", placeholder="期望地点")
+                    with col5:
+                        # 年龄改为数字输入
+                        saved_age = st.session_state.get('filter_age', (20, 45))
+                        age_min = st.number_input("年龄", min_value=18, max_value=60, value=saved_age[0], key="filter_age_min", label_visibility="collapsed", placeholder="最小")
+                    with col6:
+                        age_max = st.number_input("至", min_value=18, max_value=60, value=saved_age[1], key="filter_age_max", label_visibility="collapsed", placeholder="最大")
+                    
+                    col7, col8, col8b, col11 = st.columns([1, 1, 1, 0.6])
+                    with col7:
+                        friend_options = ["全部", "✅ 仅好友", "❌ 非好友"]
+                        saved_friend_idx = friend_options.index(st.session_state.get('filter_friend', '全部')) if st.session_state.get('filter_friend') in friend_options else 0
+                        filter_friend = st.selectbox("好友状态", friend_options, index=saved_friend_idx, key="filter_friend_input", label_visibility="collapsed")
+                    with col8:
+                        tier_filter_options = ["全部", "🔴 S-顶尖", "🟠 A+-卓越", "🟠 A-优秀", "🟡 B+-良好", "🟡 B-不错", "🟢 C-一般", "❓ 未分级"]
+                        saved_tier_filter_idx = tier_filter_options.index(st.session_state.get('filter_tier', '全部')) if st.session_state.get('filter_tier') in tier_filter_options else 0
+                        filter_tier = st.selectbox("人才分级", tier_filter_options, index=saved_tier_filter_idx, key="filter_tier_input", label_visibility="collapsed")
+                    with col8b:
+                        source_filter_options = ["全部", "🟦 脉脉", "💻 GitHub", "🔗 LinkedIn", "🟧 Boss", "❓ 其他"]
+                        saved_source_idx = source_filter_options.index(st.session_state.get('filter_source', '全部')) if st.session_state.get('filter_source') in source_filter_options else 0
+                        filter_source = st.selectbox("渠道", source_filter_options, index=saved_source_idx, key="filter_source_input", label_visibility="collapsed")
+                    with col11:
+                        st.form_submit_button("🔍 搜索", use_container_width=True)
+                    
+                    # 第三行：联系方式筛选
+                    st.caption("📞 联系方式筛选")
+                    cc1, cc2, cc3, cc4, cc5, cc6 = st.columns(6)
+                    with cc1:
+                        f_has_phone = st.checkbox("📱 有电话", value=st.session_state.get('_persist_has_phone', False), key="filter_has_phone")
+                    with cc2:
+                        f_has_email = st.checkbox("📧 有邮件", value=st.session_state.get('_persist_has_email', False), key="filter_has_email")
+                    with cc3:
+                        f_has_linkedin = st.checkbox("🔗 有LinkedIn", value=st.session_state.get('_persist_has_linkedin', False), key="filter_has_linkedin")
+                    with cc4:
+                        f_has_github = st.checkbox("💻 有GitHub", value=st.session_state.get('_persist_has_github', False), key="filter_has_github")
+                    with cc5:
+                        f_has_website = st.checkbox("🌐 有网站", value=st.session_state.get('_persist_has_website', False), key="filter_has_website")
+                    with cc6:
+                        f_has_friend = st.checkbox("🤝 加好友", value=st.session_state.get('_persist_has_friend', False), key="filter_has_friend")
+            
+            # Form 提交后更新 session_state（在 form 外部）
+            st.session_state.filter_name = filter_name
+            st.session_state.filter_company = filter_company
+            st.session_state.filter_school = filter_school
+            st.session_state.filter_location = filter_location
+            st.session_state.filter_age = (age_min, age_max)
+            st.session_state.filter_friend = filter_friend
+            st.session_state.filter_tier = filter_tier
+            st.session_state.filter_source = filter_source
+            st.session_state._persist_has_phone = f_has_phone
+            st.session_state._persist_has_email = f_has_email
+            st.session_state._persist_has_linkedin = f_has_linkedin
+            st.session_state._persist_has_github = f_has_github
+            st.session_state._persist_has_website = f_has_website
+            st.session_state._persist_has_friend = f_has_friend
+            
+            # 操作按钮（表单外部）
+            _btn_col1, _btn_col2, _btn_spacer = st.columns([0.5, 0.5, 5])
+            with _btn_col1:
+                if st.button("🔄 刷新", help="重新加载候选人列表"):
+                    st.rerun()
+            with _btn_col2:
+                def _do_clear_filters():
+                    """Callback: 在 rerun 之前清空所有筛选条件"""
+                    for _wk in ['filter_name_input','filter_company_input','filter_school_input','filter_location_input',
+                                'filter_age_min','filter_age_max',
+                                'filter_friend_input','filter_tier_input','filter_source_input',
+                                'filter_has_phone','filter_has_email','filter_has_linkedin','filter_has_github','filter_has_website','filter_has_friend']:
+                        st.session_state.pop(_wk, None)
+                    st.session_state.filter_name = ''
+                    st.session_state.filter_company = ''
+                    st.session_state.filter_school = ''
+                    st.session_state.filter_location = ''
+                    st.session_state.filter_age = (20, 45)
+                    st.session_state.filter_friend = '全部'
+                    st.session_state.filter_tier = '全部'
+                    st.session_state.filter_source = '全部'
+                    for _ck in ['_persist_has_phone','_persist_has_email','_persist_has_linkedin','_persist_has_github','_persist_has_website','_persist_has_friend']:
+                        st.session_state[_ck] = False
+                st.button("🧹 清空", help="清空所有筛选条件", on_click=_do_clear_filters)
             
             # --- Query Data ---
+            _perf_query_start = _time.time()
+            _perf_logger.debug(f"开始构建查询 — 距脚本启动 {_perf_query_start - _PERF_SCRIPT_START:.3f}s, 距进入页面 {_perf_query_start - _perf_page_enter:.3f}s")
             query = db.query(Candidate).options(
                 defer(Candidate.raw_resume_text),
                 defer(Candidate.ai_summary),
+                defer(Candidate.project_experiences),
+                defer(Candidate.structured_tags),
+                defer(Candidate.communication_logs),
+                defer(Candidate.awards_achievements),
             ).filter(Candidate.name != "Parse Error")
             
             if filter_name:
-                query = query.filter(Candidate.name.contains(filter_name) | Candidate.skills.contains(filter_name))
+                import re as _re
+                # 智能搜索：纯中文名(2-4字)只搜name字段，避免扫描skills JSON
+                _is_chinese_name = bool(_re.match(r'^[\u4e00-\u9fff]{2,4}$', filter_name.strip()))
+                _perf_logger.debug(f"搜索关键词='{filter_name}', 中文名={_is_chinese_name}")
+                if _is_chinese_name:
+                    query = query.filter(Candidate.name.contains(filter_name))
+                else:
+                    query = query.filter(Candidate.name.contains(filter_name) | Candidate.skills.cast(String).contains(filter_name))
             
             if filter_company:
                 # Search in current company OR historical work experiences (JSON)
@@ -3648,8 +3757,14 @@ elif page == "人才库管理":
             else:  # 最新导入
                 query = query.order_by(Candidate.created_at.desc())
             
-            # 先获取总数（高效的count查询）
-            total_count = query.count()
+            # 显示加载状态
+            with st.spinner("🔍 正在筛选候选人..."):
+                # 先获取总数（高效的count查询 — 用 func.count 避免构造ORM对象）
+                from sqlalchemy import func as _func
+                _perf_count_start = _time.time()
+                total_count = query.with_entities(_func.count(Candidate.id)).scalar()
+                _perf_count_end = _time.time()
+                _perf_logger.debug(f"COUNT完成 = {total_count}条 — 耗时 {_perf_count_end - _perf_count_start:.3f}s, 距脚本启动 {_perf_count_end - _PERF_SCRIPT_START:.3f}s")
             
             with header_col1:
                 st.markdown(f"共 **{total_count}** 人")
@@ -3669,11 +3784,15 @@ elif page == "人才库管理":
             
             # 使用SQL分页（高效）
             offset = (st.session_state.current_page - 1) * page_size
+            _perf_page_start = _time.time()
             candidates_page = query.offset(offset).limit(page_size).all()
+            _perf_page_end = _time.time()
+            _perf_logger.debug(f"分页查询完成 — 取{len(candidates_page)}条, 耗时 {_perf_page_end - _perf_page_start:.3f}s, 距脚本启动 {_perf_page_end - _PERF_SCRIPT_START:.3f}s")
 
             # --- 卡片式列表 (参考脉脉UI) ---
             if candidates_page:
-                for cand in candidates_page:
+                _perf_render_start = _time.time()
+                for _cand_idx, cand in enumerate(candidates_page):
                     with st.container(border=True):
                         # 顶部：姓名 + 活跃状态 + 操作按钮
                         top_left, top_right = st.columns([3, 1])
@@ -3720,21 +3839,10 @@ elif page == "人才库管理":
                             st.markdown(f"### {tier_str} {cand.name} {friend_badge} {phone_badge}")
                         
                         with top_right:
-                            btn1, btn2, btn3, btn4 = st.columns([2, 1, 1, 1])
+                            btn1, btn3, btn4 = st.columns([2, 1, 1])
                             if btn1.button("📄 详情", key=f"view_{cand.id}", use_container_width=True):
                                 st.session_state.selected_candidate_id = cand.id
                                 st.session_state.view_mode = 'detail'
-                                st.rerun()
-                            # 好友标记按钮（五角星）
-                            star_icon = "⭐" if cand.is_friend else "☆"
-                            if btn2.button(star_icon, key=f"star_{cand.id}", help="标记为好友" if not cand.is_friend else "取消好友"):
-                                if cand.is_friend:
-                                    cand.is_friend = 0
-                                    cand.friend_added_at = None
-                                else:
-                                    cand.is_friend = 1
-                                    cand.friend_added_at = datetime.now().strftime("%Y-%m-%d %H:%M")
-                                db.commit()
                                 st.rerun()
                             # 预约沟通 - 使用 popover 弹出面板
                             with btn3.popover("📅", help="预约沟通"):
@@ -3785,8 +3893,8 @@ elif page == "人才库管理":
                                 delete_candidate(cand.id)
                                 st.rerun()
                         
-                        # 主体：左侧基础信息 + 中间时间线 + 右侧快速记录
-                        left_col, mid_col, right_col = st.columns([1.2, 2, 1.2])
+                        # 主体：左侧基础信息 + 中间时间线
+                        left_col, mid_col = st.columns([1.2, 2])
                         
                         with left_col:
                             # 基础信息
@@ -3887,67 +3995,30 @@ elif page == "人才库管理":
                             else:
                                 st.caption("暂无教育经历")
                         
-                        with right_col:
-                            # 最近沟通记录 + 快速输入 + 预约徽章
-                            st.markdown(f"**💬 沟通记录** {schedule_badge}")
-                            
-                            # 显示最近一条沟通记录
-                            if cand.communication_logs and len(cand.communication_logs) > 0:
-                                latest = cand.communication_logs[0]
-                                time_str = latest.get("time", "")
-                                content = latest.get("content", "")[:80]  # 截取前80字
-                                if len(latest.get("content", "")) > 80:
-                                    content += "..."
-                                st.caption(f"📅 {time_str}")
-                                st.markdown(f"<div style='font-size:0.85rem;color:#666;margin-bottom:8px;'>{content}</div>", unsafe_allow_html=True)
-                            
-                            # 快速输入（按需展开，减少首屏 widget）
-                            with st.popover("📝 新增记录", use_container_width=True):
-                                quick_note = st.text_area(
-                                    "新增沟通记录",
-                                    key=f"quick_log_{cand.id}",
-                                    placeholder="输入新的沟通内容...",
-                                    height=100,
-                                    label_visibility="collapsed"
-                                )
-                                if st.button("💾 保存", key=f"save_quick_{cand.id}", type="primary", use_container_width=True):
-                                    if quick_note:
-                                        from datetime import datetime
-                                        from sqlalchemy.orm.attributes import flag_modified
-                                        now = datetime.now()
-                                        logs = list(cand.communication_logs) if cand.communication_logs else []
-                                        logs.insert(0, {
-                                            "time": now.strftime("%Y-%m-%d %H:%M"),
-                                            "content": quick_note
-                                        })
-                                        cand.communication_logs = logs
-                                        cand.last_communication_at = now  # 更新最近沟通时间
-                                        flag_modified(cand, "communication_logs")
-                                        db.commit()
-                                        st.toast(f"✅ 已保存 {cand.name} 的沟通记录")
-                                        st.rerun()
-                        
                         st.markdown("")  # 卡片底部间距
+                
+                _perf_render_end = _time.time()
+                _perf_logger.debug(f"渲染{len(candidates_page)}张卡片完成 — 耗时 {_perf_render_end - _perf_render_start:.3f}s, 距脚本启动 {_perf_render_end - _PERF_SCRIPT_START:.3f}s")
+                _perf_logger.debug(f"====== 总耗时 {_perf_render_end - _PERF_SCRIPT_START:.3f}s ======\n")
                 
                 # --- 底部分页控件 ---
                 st.divider()
-                pag_col1, pag_col2, pag_col3 = st.columns([2, 1, 2])
-                with pag_col1:
-                    st.markdown("")
-                with pag_col2:
-                    prev_btn, page_info, next_btn = st.columns([1, 2, 1])
-                    with prev_btn:
-                        if st.button("◀ 上页", disabled=st.session_state.current_page <= 1, use_container_width=True, key="prev_page"):
-                            st.session_state.current_page -= 1
-                            st.rerun()
-                    with page_info:
-                        st.markdown(f"<div style='text-align:center;padding-top:8px;'>**{st.session_state.current_page}** / {total_pages} 页</div>", unsafe_allow_html=True)
-                    with next_btn:
-                        if st.button("下页 ▶", disabled=st.session_state.current_page >= total_pages, use_container_width=True, key="next_page"):
-                            st.session_state.current_page += 1
-                            st.rerun()
-                with pag_col3:
-                    st.markdown("")
+                prev_col, info_col, next_col, jump_col = st.columns([1, 1, 1, 1.5])
+                with prev_col:
+                    if st.button("◀ 上一页", disabled=st.session_state.current_page <= 1, use_container_width=True, key="prev_page"):
+                        st.session_state.current_page -= 1
+                        st.rerun()
+                with info_col:
+                    st.markdown(f"<div style='text-align:center;padding-top:8px;font-size:16px;'><b>{st.session_state.current_page}</b> / {total_pages} 页</div>", unsafe_allow_html=True)
+                with next_col:
+                    if st.button("下一页 ▶", disabled=st.session_state.current_page >= total_pages, use_container_width=True, key="next_page"):
+                        st.session_state.current_page += 1
+                        st.rerun()
+                with jump_col:
+                    jump_page = st.number_input("跳转", min_value=1, max_value=max(total_pages, 1), value=st.session_state.current_page, step=1, key="page_jump", label_visibility="collapsed")
+                    if jump_page != st.session_state.current_page:
+                        st.session_state.current_page = jump_page
+                        st.rerun()
             else:
                 st.info("没有找到符合条件的候选人")
 
