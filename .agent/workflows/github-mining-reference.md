@@ -360,8 +360,12 @@ GITHUB_TOKEN=xxx python3 github_mining/scripts/github_network_miner.py phase3
 # Phase 3.5: 网站爬取（增量）
 python3 github_mining/scripts/github_network_miner.py phase3_5 --top 100 --resume
 
-# Phase 4: 网络扩展
+# Phase 4: 网络扩展（标准模式）
 python3 github_mining/scripts/github_network_miner.py phase4 --seed-top 300
+
+# Phase 4: 网络扩展（自动重启模式，推荐）
+python3 github_mining/scripts/auto_restart_wrapper.py -- \
+  python3 github_mining/scripts/github_network_miner.py phase4 --seed-top 300
 
 # === 系统操作 ===
 cd /Users/lillianliao/notion_rag/personal-ai-headhunter
@@ -380,4 +384,130 @@ GITHUB_TOKENS='t1,t2,t3' python3 scripts/fetch_github_bios.py
 # 从缓存重跑（不需要 API）
 python3 scripts/fetch_github_bios.py --from-cache
 ```
+
+---
+
+## 11. 自动重启包装器（Auto Restart Wrapper）
+
+### 11.1 为什么需要？
+
+长时间任务（如 Phase 4 的 2-6 小时）面临的风险：
+
+| 风险 | 场景 | 后果 |
+|:---|:---|:---|
+| **网络闪断** | 家里 WiFi 突然断开 3 分钟 | 脚本崩溃，需人工重启 |
+| **API 异常** | GitHub 返回 502 Bad Gateway | 脚本退出，进度丢失 |
+| **临时故障** | 系统资源不足、DNS 解析失败 | 任务中断，无法恢复 |
+
+**结果**: 你晚上 11 点启动任务，半夜 2 点网络闪断，第二天早上 9 点醒来发现只跑到 2 点。
+
+### 11.2 解决方案
+
+**自动重启包装器** = 一个"自动按回车键的监工"
+
+- 捕获所有异常和崩溃
+- 等待指定时间（默认 30 秒）
+- 自动重启任务（配合 `--resume` 参数实现断点续传）
+- 真正的"睡眠自由"
+
+### 11.3 使用方法
+
+#### 基础用法
+
+```bash
+cd /Users/lillianliao/notion_rag
+
+# 前台运行（可以看到实时输出）
+python3 github_mining/scripts/auto_restart_wrapper.py -- \
+  python3 github_mining/scripts/github_network_miner.py phase4 \
+  --seed-tier S,A+,A \
+  --seed-top 264 \
+  --min-cooccurrence 3
+
+# 后台运行（真正的无人值守）
+nohup python3 github_mining/scripts/auto_restart_wrapper.py -- \
+  python3 github_mining/scripts/github_network_miner.py phase4 \
+  --seed-tier S,A+,A \
+  --seed-top 264 \
+  --min-cooccurrence 3 > /dev/null 2>&1 &
+```
+
+#### 自定义参数
+
+```bash
+# 自定义最大重启次数和延迟
+python3 github_mining/scripts/auto_restart_wrapper.py \
+  --max-restarts 50 \
+  --delay 60 \
+  -- \
+  python3 github_mining/scripts/github_network_miner.py phase4
+```
+
+#### 查看日志
+
+```bash
+# 实时查看自动重启日志
+tail -f github_mining/auto_restart.log
+
+# 日志示例
+# [2026-02-23 22:00:00] 🚀 自动重启包装器启动
+# [2026-02-23 22:00:00] 📝 执行命令: python3 github_network_miner.py phase4
+# [2026-02-23 22:00:00] 🔄 启动任务（第 1 次尝试）
+# ...
+# [2026-02-24 02:13:45] ⚠️  任务异常退出（返回码: 1）
+# [2026-02-24 02:13:45] 🔁 30 秒后自动重启（第 1/100 次）...
+# [2026-02-24 02:14:15] 🔄 继续执行（将自动从断点恢复）
+# ...
+# [2026-02-24 08:30:22] ✅ 任务成功完成！
+```
+
+### 11.4 参数说明
+
+| 参数 | 默认值 | 说明 |
+|:---|:---|:---|
+| `--max-restarts` | 100 | 最大重启次数 |
+| `--delay` | 30 | 重启延迟（秒） |
+
+### 11.5 工作原理
+
+```
+┌─────────────────────────────────────────────────────┐
+│           Auto Restart Wrapper (外层)               │
+│  - 监控内层命令的退出码                              │
+│  - 捕获所有异常                                      │
+│  - 失败后等待并自动重启                              │
+└──────────────────┬──────────────────────────────────┘
+                   │
+         ┌─────────▼──────────┐
+         │ github_network_     │
+         │ miner.py phase4     │
+         │ (内层任务)          │
+         │ - 执行实际逻辑      │
+         │ - 保存断点状态      │
+         └─────────────────────┘
+```
+
+**配合断点续传**:
+1. `github_network_miner.py` 保存进度到 JSON 文件
+2. 崩溃后，自动重启包装器重新启动命令
+3. `github_network_miner.py` 从 JSON 文件恢复进度
+4. 继续处理，不会重复
+
+### 11.6 适用场景
+
+| 场景 | 是否需要 | 原因 |
+|:---|:---:|:---|
+| Phase 1（采集 Following） | ✅ | 1-2 小时，API 限流风险 |
+| Phase 2 V3（轻富化） | ✅ | 2-4 小时，网络请求多 |
+| Phase 3 V3（AI 判定） | ❌ | 本地计算，5-10 分钟 |
+| **Phase 4（社交扩展）** | ✅✅✅ | **2-6 小时，最高风险** |
+| Phase 3.5（网站爬取） | ✅ | 1-3 小时，网络爬虫 |
+
+### 11.7 注意事项
+
+1. **日志文件**: 所有重启记录保存在 `github_mining/auto_restart.log`
+2. **手动中断**: Ctrl+C 可以正常退出，不会自动重启
+3. **最大重启次数**: 默认 100 次，对于大多数任务足够
+4. **重启延迟**: 默认 30 秒，给 GitHub API 恢复时间
+5. **不保证成功率**: 如果是代码逻辑错误，自动重启也会失败
 

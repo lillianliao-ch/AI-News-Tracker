@@ -498,25 +498,298 @@ python3 github_mining/scripts/github_network_miner.py verify3
 
 ## Runbook 3: 社交网络扩展 (Phase 4)
 
-> 通过种子用户的 Following 交叉挖掘新人才
+> 通过高质量种子的 Following 交叉挖掘新人才
+>
+> **核心理念**：从已验证的高质量候选人（S/A+/A tier）出发，挖掘他们社交网络中的隐藏人才
+> **前置条件**：✅ 已完成 Phase 5（入库+分级），数据库中有 tier 标签
+
+---
+
+### 步骤 1/5: 选择种子用户
+
+**种子选择标准**（质量优先）:
+
+| 优先级 | Tier | 描述 | 预期数量 |
+|:---|:---|:---|:---|
+| 1 | S | 行业领军（Followers>5k 或 Stars>5k） | ~30-50 人 |
+| 2 | A+ | 学术/技术强者（3+顶会论文） | ~100-200 人 |
+| 3 | A | 顶尖Lab（通义/MSRA/Seed等） | ~500-1000 人 |
+| 4 | B+ | 一线+名校（可选，用于快速扩展） | ~2000+ 人 |
+
+**从数据库导出种子**:
+
+```bash
+cd /Users/lillianliao/notion_rag/personal-ai-headhunter
+python3 -c "
+from database import SessionLocal, Candidate
+import json
+
+session = SessionLocal()
+
+# 选择 S/A+/A tier 的候选人
+seeds = session.query(Candidate).filter(
+    Candidate.source == 'github',
+    Candidate.talent_tier.in_(['S', 'A+', 'A']),
+    Candidate.github.isnot(None)
+).all()
+
+# 提取 GitHub username（从 github URL 中解析）
+seed_usernames = []
+for s in seeds:
+    if s.github:
+        # 从 https://github.com/username 提取 username
+        username = s.github.strip('/').split('/')[-1]
+        seed_usernames.append(username)
+
+# 保存到文件
+with open('../github_mining/phase4_seeds.json', 'w') as f:
+    json.dump(seed_usernames, f, indent=2)
+
+print(f'✅ 导出种子: {len(seed_usernames)} 人')
+print(f'   S/A+/A 分布: S={sum(1 for s in seeds if s.talent_tier==\"S\")}, A+={sum(1 for s in seeds if s.talent_tier==\"A+\")}, A={sum(1 for s in seeds if s.talent_tier==\"A\")}')
+session.close()
+"
+```
+
+**预期输出**:
+```
+✅ 导出种子: 264 人
+   S/A+/A 分布: S=37, A+=5, A=222
+```
+
+---
+
+### 步骤 2/5: 执行社交网络扩展
+
+> ⚠️ **重要**: Phase 4 是长时间任务（2-6 小时），建议使用自动重启包装器实现"无人值守"
+
+#### 选项 A: 标准模式（适合白天监控）
 
 ```bash
 cd /Users/lillianliao/notion_rag
-python3 github_mining/scripts/github_network_miner.py phase4 --seed-top 300 --min-cooccurrence 3
+
+# 标准模式（使用导出的种子文件）
+python3 github_mining/scripts/github_network_miner.py phase4 \
+  --seeds-file github_mining/phase4_seeds.json \
+  --min-cooccurrence 3
+
+# 或使用简化版（从数据库自动选择 Top N）
+python3 github_mining/scripts/github_network_miner.py phase4 \
+  --seed-tier S,A+,A \
+  --seed-top 264 \
+  --min-cooccurrence 3
 ```
 
-- 采集 Top 300 种子用户的 Following 列表
-- 被 ≥ 3 个种子用户共同 Follow 的新用户进入候选池
-- 对新用户执行 AI 过滤 + 去重
-- 产出: `github_mining/phase4_expanded.json`
+**缺点**: 如果网络闪断或 API 异常，脚本会崩溃，需要人工手动重启
 
-**验证**:
+#### 选项 B: 自动重启模式（推荐，适合夜间运行）⭐
+
 ```bash
+cd /Users/lillianliao/notion_rag
+
+# 前台运行（自动重启）
+python3 github_mining/scripts/auto_restart_wrapper.py -- \
+  python3 github_mining/scripts/github_network_miner.py phase4 \
+  --seed-tier S,A+,A \
+  --seed-top 264 \
+  --min-cooccurrence 3
+
+# 后台运行（真正的无人值守）
+nohup python3 github_mining/scripts/auto_restart_wrapper.py -- \
+  python3 github_mining/scripts/github_network_miner.py phase4 \
+  --seed-tier S,A+,A \
+  --seed-top 264 \
+  --min-cooccurrence 3 > /dev/null 2>&1 &
+
+# 查看自动重启日志
+tail -f github_mining/auto_restart.log
+```
+
+**自动重启包装器的优势**:
+- ✅ 网络闪断自动恢复
+- ✅ API 502 错误自动重试
+- ✅ 临时故障自动重启
+- ✅ 真正的"睡眠自由" - 睡前启动，醒来查看结果
+- ✅ 配合断点续传机制，不会重复处理
+
+**自动重启日志示例**:
+```
+[2026-02-23 22:00:00] 🚀 自动重启包装器启动
+[2026-02-23 22:00:00] 📝 执行命令: python3 github_network_miner.py phase4 --seed-top 264
+[2026-02-23 22:00:00] 🔄 启动任务（第 1 次尝试）
+...
+[2026-02-24 02:13:45] ⚠️  任务异常退出（返回码: 1）
+[2026-02-24 02:13:45] 🔁 30 秒后自动重启（第 1/100 次）...
+[2026-02-24 02:14:15] 🔄 继续执行（将自动从断点恢复）
+[2026-02-24 02:14:15] 🔄 启动任务（第 2 次尝试）
+...
+[2026-02-24 08:30:22] ✅ 任务成功完成！
+```
+
+---
+
+**参数说明**:
+
+| 参数 | 默认值 | 说明 |
+|:---|:---|:---|
+| `--seeds-file` | - | 种子用户列表文件（JSON array） |
+| `--seed-tier` | S,A+,A | 按 tier 选择种子（逗号分隔） |
+| `--seed-top` | 300 | 限制种子数量 |
+| `--min-cooccurrence` | 3 | 最小共现次数（越高越精准） |
+
+**共现次数建议**:
+
+| 共现次数 | 预期质量 | 适用场景 | 预期产出 |
+|:---|:---|:---|:---|
+| 2+ | 宽松 | 快速扩大人才池 | 种子数的 20-30 倍 |
+| **3+** | **平衡** | **推荐**，质量与数量平衡 | **种子数的 10-20 倍** |
+| 5+ | 严格 | 挖掘业内领袖级人物 | 种子数的 3-5 倍 |
+
+**执行过程**:
+1. 采集每个种子的 Following 列表
+2. 统计被多个种子共同 Follow 的新用户
+3. 自动去重（排除已存在的用户）
+4. 对新用户执行 AI 过滤
+5. 产出: `github_mining/phase4_expanded.json`
+
+**预期耗时**: 2-6 小时（取决于种子数量和网速）
+
+---
+
+### 步骤 3/5: 验证结果
+
+```bash
+cd /Users/lillianliao/notion_rag
 python3 github_mining/scripts/github_network_miner.py verify4
 ```
-- ✅ 新发现 AI 人才 ≥ 2,000
-- ✅ AI 精确率 ≥ 70%
-- ✅ 共现 ≥ 5 的人应为业内知名人士
+
+**验收标准**:
+
+| 指标 | 目标 | 说明 |
+|:---|:---|:---|
+| 新发现 AI 人才 | ≥ 2,000 | 或种子的 5 倍以上 |
+| AI 精确率 | ≥ 70% | 人工抽检 50 人验证 |
+| 高共现人物质量 | Top级 | 共现 ≥ 5 的人应为业内知名 |
+
+**查看结果分布**:
+
+```bash
+cd /Users/lillianliao/notion_rag
+python3 -c "
+import json
+from collections import Counter
+
+with open('github_mining/phase4_expanded.json') as f:
+    data = json.load(f)
+
+print(f'📊 Phase 4 结果统计')
+print(f'=' * 50)
+print(f'总发现: {len(data)} 人')
+
+# 共现分布
+co = Counter(u.get('cooccurrence_count', 0) for u in data)
+print(f'\n共现分布:')
+for count in sorted(co.keys(), reverse=True):
+    print(f'  {count}+ 人共同关注: {co[count]} 人')
+
+# Tier 分布（如果有）
+if any('tier' in u for u in data):
+    tiers = Counter(u.get('tier', 'Unknown') for u in data)
+    print(f'\n预估 Tier 分布:')
+    for tier in ['S', 'A+', 'A', 'B+', 'B', 'C']:
+        if tier in tiers:
+            print(f'  {tier}: {tiers[tier]} 人')
+"
+```
+
+---
+
+### 步骤 4/5: 继续处理（进入 Phase 2 V3 → Phase 3 V3 → Phase 5）
+
+新发现的用户需要经过完整的富化 + 分级流程：
+
+```bash
+cd /Users/lillianliao/notion_rag
+
+# Phase 2 V3: 全量轻富化（Repo+网站探活+Scholar）
+python3 github_mining/scripts/github_network_miner.py phase2_v3 \
+  --input github_mining/phase4_expanded.json
+
+# Phase 3 V3: 统一 AI 判定
+python3 github_mining/scripts/github_network_miner.py phase3_v3
+
+# Phase 5: 导入系统 + 分级（参考 Runbook 1 步骤 3-5）
+cd /Users/lillianliao/notion_rag/personal-ai-headhunter
+python3 import_github_candidates.py --file ../github_mining/phase3_v3_enriched.json
+python3 batch_update_tiers.py
+```
+
+---
+
+### 步骤 5/5: （可选）迭代扩展
+
+如果 Phase 4 发掘了新的 S/A+/A 级人才，可以用他们作为新种子继续扩展：
+
+```bash
+# 重新导出种子（包含新发现的高质量人才）
+cd /Users/lillianliao/notion_rag/personal-ai-headhunter
+python3 -c "
+from database import SessionLocal, Candidate
+import json
+
+session = SessionLocal()
+seeds = session.query(Candidate).filter(
+    Candidate.source == 'github',
+    Candidate.talent_tier.in_(['S', 'A+', 'A']),
+    Candidate.github.isnot(None)
+).all()
+
+seed_usernames = [s.github.strip('/').split('/')[-1) for s in seeds if s.github]
+
+with open('../github_mining/phase4_seeds_v2.json', 'w') as f:
+    json.dump(seed_usernames, f)
+
+print(f'✅ 种子 v2: {len(seed_usernames)} 人（包含上一轮发现的新人才）')
+session.close()
+"
+
+# 再次执行 Phase 4
+cd /Users/lillianliao/notion_rag
+python3 github_mining/scripts/github_network_miner.py phase4 \
+  --seeds-file github_mining/phase4_seeds_v2.json \
+  --min-cooccurrence 3
+```
+
+---
+
+### 变体：从单个用户启动完整流程
+
+如果你想从**任意用户**（如新的目标用户）开始完整挖掘：
+
+```bash
+# 1. Phase 1: 采集 Following
+cd /Users/lillianliao/notion_rag
+python3 github_mining/scripts/github_network_miner.py phase1 --target USERNAME
+
+# 2. Phase 2 V3: 全量轻富化
+python3 github_mining/scripts/github_network_miner.py phase2_v3
+
+# 3. Phase 3 V3: 统一 AI 判定
+python3 github_mining/scripts/github_network_miner.py phase3_v3
+
+# 4. Phase 5: 入库+分级（参考 Runbook 1 步骤 3-5）
+cd /Users/lillianliao/notion_rag/personal-ai-headhunter
+python3 import_github_candidates.py --file ../github_mining/phase3_v3_enriched.json
+python3 batch_update_tiers.py
+
+# 5. （可选）Phase 4: 用新发现的 S/A+/A 用户作为种子继续扩展
+python3 github_mining/scripts/github_network_miner.py phase4 --seed-tier S,A+,A
+```
+
+这个变体适用于：
+- 🆕 新增目标用户（如某技术大牛）
+- 🔄 重新执行全流程（如算法更新后）
+- 📊 批量处理多个种子用户
 
 ---
 
