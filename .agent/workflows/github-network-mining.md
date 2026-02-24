@@ -840,18 +840,42 @@ if any('tier' in u for u in data):
 **启动命令（无人值守）**:
 
 ```bash
+cd /Users/lillianliao/notion_rag
+
+# ✅ 推荐：全链路端到端（Phase 4 爬取 + 富化 + 入库 + 分级，真正一键无人值守）
+nohup bash github_mining/scripts/run_phase4_full_pipeline.sh \
+  > /tmp/phase4_pipeline.log 2>&1 &
+tail -f /tmp/phase4_pipeline.log
+
+# 可选参数（环境变量形式）：
+# SEED_TOP=300        种子数量（默认 300）
+# MIN_CO=3            最小共现次数（默认 3）
+# SEED_TIER=S,A       按 Tier 选种子（空=从文件取）
+# SKIP_PHASE4=1       跳过爬取，直接用已有 phase4_expanded.json
+
+# 旧方式（仅富化后半段，Phase 4 爬取需手动完成）：
 cd /Users/lillianliao/notion_rag/github_mining/scripts
-
-# 启动全自动静默采集（推荐）
-# 此脚本在后台静默运行 Phase 4 之后的所有 enrichment、import 和 batch_tier 逻辑
 bash run_phase4_followup_daemon.sh
-
-# 查看进度
-tail -f enrichment.log
-
-# 查看流水线状态
-cat github_mining/pipeline_state.json
 ```
+
+**各脚本对比**:
+
+| 脚本 | 覆盖范围 | 断点续传 | 自动重启 |
+|:---|:---|:---|:---|
+| `run_phase4_full_pipeline.sh` | **Phase4爬取 + 富化 + 入库 + 分级（全链路）** | ✅ | ✅ |
+| `run_phase4_followup_daemon.sh` | 富化 + 入库 + 分级（Phase4后半段，需手动先跑爬取） | ✅ | ✅ |
+
+**查看进度**:
+
+```bash
+# 全链路日志
+tail -f /tmp/phase4_pipeline.log
+
+# 流水线状态
+cat github_mining/scripts/github_mining/pipeline_state_phase4.json
+cat github_mining/scripts/github_mining/pipeline_state.json
+```
+
 
 **产出文件**:
 
