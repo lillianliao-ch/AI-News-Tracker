@@ -52,7 +52,7 @@ LOG_FILE="${BATCH_DIR}/pipeline.log"
 FRESH="${FRESH:-0}"
 
 # Phase 3.5 爬取 Top N
-PHASE35_TOP="${PHASE35_TOP:-500}"
+PHASE35_TOP="${PHASE35_TOP:-9999}"   # 默认全量处理所有 AI 候选人
 
 # 起始阶段（用于断点重跑）
 START_FROM="${START_FROM:-auto}"
@@ -212,7 +212,7 @@ else
     run_with_retry "Phase 3.5 主页爬取" \
         python3 "${MINING_SCRIPTS}/github_network_miner.py" phase3_5 \
             --top "${PHASE35_TOP}" \
-            --input phase3_v3_ai_candidates.json \
+            --input "${DATA_DIR}/phase3_v3_ai_candidates.json" \
             --resume
     step_done "phase3_5"
     cp "${DATA_DIR}/phase3_5_enriched.json" "${BATCH_DIR}/" 2>/dev/null || true
