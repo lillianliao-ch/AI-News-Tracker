@@ -9,6 +9,7 @@ GitHub 候选人自动分级脚本
 import json
 import re
 import os
+from datetime import datetime
 from database import SessionLocal, Candidate
 from import_github_candidates import import_candidates
 
@@ -23,14 +24,39 @@ TIER1_KEYWORDS = [k.lower() for k in CONFIG['tier1_companies']['keywords']]
 TIER2_KEYWORDS = [k.lower() for k in CONFIG['tier2_companies']['keywords']]
 TOP_LAB_KEYWORDS = [k.lower() for k in CONFIG['top_labs']['keywords']]
 UNI_985_KEYWORDS = [k.lower() for k in CONFIG['985_universities']['keywords']]
+UNI_985_TOP20_KEYWORDS = [k.lower() for k in CONFIG['985_top20']['keywords']]
 
 
 def _match_any(text: str, keywords: list) -> bool:
-    """检查文本是否包含任意关键词"""
+    """检查文本是否包含任意关键词 (带英文单词边界保护)"""
     if not text:
         return False
     text_lower = text.lower()
-    return any(kw in text_lower for kw in keywords)
+    for kw in keywords:
+        kw = kw.lower()
+        # 如果关键词全由英文字母/数字/常见符号组成，使用单词边界匹配，防止 thu 匹配到 github
+        if re.match(r'^[a-z0-9\s\.\-]+$', kw):
+            if re.search(r'\b' + re.escape(kw) + r'\b', text_lower):
+                return True
+        else:
+            # 包含中文等字符，使用普通子串匹配
+            if kw in text_lower:
+                return True
+    return False
+
+
+def _parse_tags(tags) -> dict:
+    """安全解析 structured_tags，处理字符串或字典格式"""
+    if tags is None:
+        return {}
+    if isinstance(tags, dict):
+        return tags
+    if isinstance(tags, str):
+        try:
+            return json.loads(tags)
+        except:
+            return {}
+    return {}
 
 
 def _get_searchable_text(candidate) -> str:
@@ -41,19 +67,19 @@ def _get_searchable_text(candidate) -> str:
         candidate.current_title or '',
     ]
     # structured_tags 里的信息
-    tags = candidate.structured_tags or {}
-    parts.append(tags.get('github_bio', ''))
-    parts.append(tags.get('github_company', ''))
+    tags = _parse_tags(candidate.structured_tags)
+    parts.append(tags.get('github_bio') or '')
+    parts.append(tags.get('github_company') or '')
     # 工作经历
     if candidate.work_experiences:
         if isinstance(candidate.work_experiences, list):
             for exp in candidate.work_experiences:
                 if isinstance(exp, dict):
-                    parts.append(exp.get('company', ''))
-                    parts.append(exp.get('title', ''))
+                    parts.append(exp.get('company') or '')
+                    parts.append(exp.get('title') or '')
         elif isinstance(candidate.work_experiences, str):
             parts.append(candidate.work_experiences)
-    return ' '.join(parts)
+    return ' '.join(str(p) for p in parts if p)
 
 
 def _get_education_text(candidate) -> str:
@@ -63,18 +89,18 @@ def _get_education_text(candidate) -> str:
         if isinstance(candidate.education_details, list):
             for edu in candidate.education_details:
                 if isinstance(edu, dict):
-                    parts.append(edu.get('school', ''))
-                    parts.append(edu.get('degree', ''))
+                    parts.append(edu.get('school') or '')
+                    parts.append(edu.get('degree') or '')
                 elif isinstance(edu, str):
                     parts.append(edu)
         elif isinstance(candidate.education_details, str):
             parts.append(candidate.education_details)
     # education_level 也可能有学校信息
     if candidate.education_level:
-        parts.append(candidate.education_level)
+        parts.append(str(candidate.education_level))
     # bio 里也可能提到学校
     parts.append(candidate.notes or '')
-    return ' '.join(parts)
+    return ' '.join(str(p) for p in parts if p)
 
 
 def _normalize_achievements(achievements) -> str:
@@ -113,7 +139,7 @@ def auto_tier(candidate) -> tuple:
 
     优先级: S > A+ > A > C(方向不符) > B+ > B > C(默认)
     """
-    tags = candidate.structured_tags or {}
+    tags = _parse_tags(candidate.structured_tags)
     followers = tags.get('github_followers', 0)
     total_stars = tags.get('github_total_stars', 0)
     score = tags.get('github_score', 0)
@@ -125,13 +151,23 @@ def auto_tier(candidate) -> tuple:
     searchable = _get_searchable_text(candidate)
     edu_text = _get_education_text(candidate)
 
-    # === S级: 行业领军 ===
-    if followers > 5000:
-        return 'S', f'Followers={followers}'
-    if total_stars > 5000:
-        return 'S', f'Stars={total_stars}'
-    if h_index > 30:
-        return 'S', f'H-index={h_index}'
+    # AI方向检查 (用于S级判断)
+    ai_keywords = ['ai', 'artificial intelligence', 'machine learning', 'ml', 'deep learning',
+                    'nlp', 'natural language', 'cv', 'computer vision', 'llm', 'large language model',
+                    'neural', 'reinforcement learning', 'transformer', 'pytorch', 'tensorflow',
+                    'chatgpt', 'gpt', 'bert', 'diffusion', 'stable diffusion', 'openai']
+    is_ai_related = any(kw in searchable.lower() for kw in ai_keywords)
+
+    # === S级: AI领域行业领军 ===
+    # 必须是AI相关 + 满足影响力条件之一
+    if not is_ai_related:
+        pass  # 不符合S级，继续检查其他级别
+    elif followers > 5000:
+        return 'S', f'AI领域, Followers={followers}'
+    elif total_stars > 5000:
+        return 'S', f'AI领域, Stars={total_stars}'
+    elif h_index > 30:
+        return 'S', f'AI领域, H-index={h_index}'
 
     # === A+级: 有3+顶会论文 ===
     if top_venues >= 3:
@@ -141,29 +177,32 @@ def auto_tier(candidate) -> tuple:
     if _match_any(searchable, TOP_LAB_KEYWORDS):
         return 'A', '顶尖Lab'
 
-    # === C级: 方向不符 (提前判断，避免被 B+/B 吸收) ===
+    # === A级: 一线大厂 + 985 Top20 ===
+    is_tier1 = _match_any(searchable, TIER1_KEYWORDS)
+    is_985_top20 = _match_any(edu_text, UNI_985_TOP20_KEYWORDS)
+    is_985 = _match_any(edu_text, UNI_985_KEYWORDS)
+
+    if is_tier1 and is_985_top20:
+        return 'A', '一线+985Top20'
+
+    # === D级: 非AI方向 (提前判断，避免被 B+/B 吸收) ===
     bio_lower = (candidate.notes or '').lower()
     non_ai_keywords = ['android', 'ios开发', 'ios app', 'frontend', 'react', 'vue', 'angular',
                        'swift developer', 'kotlin android', '前端', '移动端']
     if any(kw in bio_lower for kw in non_ai_keywords):
         # 但如果在大厂做 AI 相关的移动端工作，不降级
         if not _match_any(searchable, ['ai', 'ml', 'deep learning', 'nlp', 'cv', 'llm']):
-            return 'C', '方向不符'
+            return 'D', '非AI方向'
 
-    # === B+级: 一线大厂 + 985高校 ===
-    is_tier1 = _match_any(searchable, TIER1_KEYWORDS)
-    is_985 = _match_any(edu_text, UNI_985_KEYWORDS)
-
+    # === B+级: 一线大厂 + 985高校(全部985) ===
     if is_tier1 and is_985:
         return 'B+', '一线+985'
 
-    # === B级: 一线大厂(学校不明), 或 985+二线大厂 ===
+    # === B级: 一线大厂 or 985高校 ===
     is_tier2 = _match_any(searchable, TIER2_KEYWORDS)
 
     if is_tier1:
         return 'B', '一线大厂'
-    if is_985 and is_tier2:
-        return 'B', '985+二线'
     if is_985:
         return 'B', '985高校'
     if is_tier2:
@@ -214,58 +253,88 @@ manual_overrides = {
 # ============================================================
 # 执行
 # ============================================================
+import sys
+from datetime import timedelta, datetime
+
 session = SessionLocal()
-candidates = session.query(Candidate).filter(Candidate.source == 'github').all()
+
+# 支持命令行参数：指定重新评级的时间段
+# 例如：python batch_update_tiers.py yesterday 重新评级昨日的候选人
+#      python batch_update_tiers.py all 重新评级所有候选人
+rerun_mode = len(sys.argv) > 1
+target_period = sys.argv[1] if rerun_mode else None
+
+# 确定筛选条件
+if target_period == 'yesterday':
+    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+    today = datetime.now().strftime('%Y-%m-%d')
+    candidates = session.query(Candidate).filter(
+        Candidate.created_at >= yesterday,
+        Candidate.created_at < today
+    ).all()
+    print(f"🔄 重新评级昨日新增候选人 ({yesterday})...")
+elif target_period == 'all':
+    candidates = session.query(Candidate).all()
+    print("🔄 重新评级所有候选人...")
+elif target_period == 'github':
+    candidates = session.query(Candidate).filter(Candidate.source == 'github').all()
+    print("🔄 重新评级GitHub来源候选人...")
+else:
+    # 默认：只处理GitHub来源未分级的候选人
+    candidates = session.query(Candidate).filter(
+        Candidate.source == 'github',
+        Candidate.talent_tier == None
+    ).all()
+    print("🤖 自动分级GitHub未分级候选人...")
 
 # 步骤 1: 应用人工审核
-print("🔄 应用人工审核分级...")
 manual_count = 0
 for c in candidates:
-    tags = c.structured_tags or {}
+    tags = _parse_tags(c.structured_tags)
     gh = tags.get('github_username', '')
     if gh in manual_overrides:
         c.talent_tier = manual_overrides[gh]
+        c.tier_updated_at = datetime.now()
         manual_count += 1
         print(f"  ✅ {c.name} ({gh}) -> {manual_overrides[gh]}")
 
 session.commit()
-print(f"✨ 人工审核 {manual_count} 人\n")
+if manual_count > 0:
+    print(f"✨ 人工审核 {manual_count} 人\n")
 
-# 步骤 2: 导入新候选人
-print("📦 导入新候选人...")
-file_path = '../github_mining/phase3_5_enriched.json'
-if os.path.exists(file_path):
-    import_candidates(file_path, dry_run=False)
-else:
-    print(f"  ⚠️ {file_path} 不存在，跳过导入")
-
-# 步骤 3: 自动分级（仅对未分级的候选人）
-print("\n🤖 自动分级未分级候选人...")
-new_candidates = session.query(Candidate).filter(
-    Candidate.source == 'github',
-    Candidate.talent_tier == None
-).all()
+# 步骤 2: 自动分级
+print("\n🤖 自动分级...")
 auto_count = 0
 
-for c in new_candidates:
+for c in candidates:
+    # 跳过已有人工审核的
+    tags = _parse_tags(c.structured_tags)
+    gh = tags.get('github_username', '')
+    if gh in manual_overrides:
+        continue
+
+    # 如果不是rerun模式，跳过已分级的
+    if not rerun_mode and c.talent_tier is not None:
+        continue
+
     tier, reason = auto_tier(c)
     c.talent_tier = tier
+    c.tier_updated_at = datetime.now()
     auto_count += 1
     print(f"  🤖 {c.name}: {reason} -> {tier}")
 
 session.commit()
-
-# 步骤 4: 打印统计
 print(f"\n✨ 自动分级 {auto_count} 人")
+
+# 步骤 3: 打印统计
 print("\n📊 最终分级分布:")
 from collections import Counter
-all_gh = session.query(Candidate).filter(Candidate.source == 'github').all()
-tier_dist = Counter(c.talent_tier for c in all_gh)
-for tier in ['S', 'A+', 'A', 'B+', 'B', 'C', None]:
+tier_dist = Counter(c.talent_tier for c in candidates)
+for tier in ['S', 'A+', 'A', 'B+', 'B', 'C', 'D', None]:
     count = tier_dist.get(tier, 0)
     if count > 0:
         label = tier if tier else '未分级'
         print(f"  {label}: {count} 人")
-print(f"  总计: {len(all_gh)} 人")
+print(f"  总计: {len(candidates)} 人")
 
 session.close()
