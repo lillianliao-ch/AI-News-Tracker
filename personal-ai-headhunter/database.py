@@ -46,6 +46,7 @@ class Candidate(Base):
     work_experiences = Column(JSON) # 存储详细工作经历 [{company, title, time, description}, ...]
     project_experiences = Column(JSON) # 存储详细项目经历 [{name, role, time, description}, ...]
     current_company = Column(String(200))
+    company_normalized = Column(String(200))  # 标准化公司名（通过 company_aliases.json 映射）
     current_title = Column(String(200))
     
     # 社交链接与备注
@@ -465,6 +466,23 @@ def _ensure_legacy_schema_compatibility():
 
 
 _ensure_legacy_schema_compatibility()
+
+
+# =============================================
+# 自动标准化公司名（任何写入路径都生效）
+# =============================================
+from sqlalchemy import event
+
+def _auto_normalize_company(target, value, oldvalue, initiator):
+    """当 current_company 被设置时，自动填充 company_normalized"""
+    if value and value != oldvalue:
+        try:
+            from normalize_companies import normalize_company
+            target.company_normalized = normalize_company(value)
+        except Exception:
+            pass  # normalize 模块未加载时跳过
+
+event.listen(Candidate.current_company, 'set', _auto_normalize_company)
 
 def init_db():
     Base.metadata.create_all(bind=engine)

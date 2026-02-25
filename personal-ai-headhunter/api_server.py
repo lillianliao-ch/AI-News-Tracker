@@ -36,8 +36,8 @@ AI 猎头 API Server (FastAPI, port 8502)
 import os
 import sys
 import json
-from datetime import datetime
-from fastapi import FastAPI, HTTPException
+from datetime import datetime, timedelta
+from fastapi import FastAPI, HTTPException, Body, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
@@ -50,7 +50,17 @@ from dotenv import load_dotenv
 load_dotenv()
 load_dotenv('config.env')  # 加载 LLM API keys
 
-from database import init_db, SessionLocal, Candidate, Job
+from database import init_db, SessionLocal, Candidate, Job, EmailOutreach, OutreachRecord
+import json
+from prompts import (
+    LINKEDIN_SYSTEM_PROMPT,
+    LINKEDIN_CONNECT_ONLY_PROMPT,
+    MESSAGE_SYSTEM_PROMPT,
+    EMAIL_PROMPT_ACADEMIC,
+    EMAIL_PROMPT_HAS_WEBSITE,
+    EMAIL_PROMPT_GITHUB_ONLY,
+    EMAIL_PROMPT_EMAIL_ONLY,
+)
 
 app = FastAPI(title="AI Headhunter API", version="1.0.0")
 
@@ -102,13 +112,14 @@ class CandidateImportRequest(BaseModel):
     projects: List[Project] = []
     skills: List[str] = []
     maimaiUserId: str = ""
-    source: str = "maimai"
+    source: str = "脉脉"
     sourceUrl: str = ""
     extractedAt: str = ""
     experienceYears: int = 0
     education: str = ""
     gender: str = ""
     statusTags: List[str] = []
+    talentTier: str = None
 
 class LinkedInSyncRequest(BaseModel):
     """LinkedIn ContactOut Scraper 同步请求"""
@@ -138,6 +149,51 @@ def root():
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
+
+class DebugGenerateRequest(BaseModel):
+    prompt: str
+    temperature: float = 0.7
+
+@app.post("/api/debug/generate-raw")
+def debug_generate_raw(req: DebugGenerateRequest):
+    """
+    调试用接口：直接调用 LLM 生成文本
+    """
+    try:
+        # 尝试复用 job_search.py 或其他地方的 LLM 客户端
+        # 这里为了简单，直接从 os.environ 读取配置并调用 OpenAI 兼容接口
+        # 或者如果有 job_search.py 中的 client，可以直接用
+        
+        # 简单起见，这里直接 import openai
+        import openai
+        from openai import OpenAI
+        
+        api_key = os.getenv("DASHSCOPE_API_KEY") or os.getenv("OPENAI_API_KEY")
+        base_url = os.getenv("DASHSCOPE_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
+        model = os.getenv("LLM_MODEL", "qwen-plus")
+        
+        if not api_key:
+            raise HTTPException(status_code=500, detail="Missing API Key config")
+            
+        client = OpenAI(
+            api_key=api_key,
+            base_url=base_url
+        )
+        
+        completion = client.chat.completions.create(
+            model=model,
+            messages=[
+                {'role': 'system', 'content': 'You are a helpful assistant.'},
+                {'role': 'user', 'content': req.prompt}
+            ],
+            temperature=req.temperature,
+            stream=False
+        )
+        return {"text": completion.choices[0].message.content}
+        
+    except Exception as e:
+        print(f"LLM Error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/candidate/check")
 def check_candidate(request: CandidateCheckRequest):
@@ -358,7 +414,7 @@ def import_candidate(request: CandidateImportRequest):
             # 2. 创建专属门户
             try:
                 import hashlib, requests
-                PORTAL_BASE = "https://jobs.rupro-consulting.com"
+                PORTAL_BASE = "https://job-share-service-production.up.railway.app"
                 token = hashlib.sha256('ruproAI'.encode()).hexdigest()
                 resp = requests.post(f"{PORTAL_BASE}/api/portal/create", json={
                     'candidate_id': cid,
@@ -366,7 +422,7 @@ def import_candidate(request: CandidateImportRequest):
                 }, cookies={'auth_token': token}, timeout=15)
                 if resp.status_code == 200 and resp.json().get('success'):
                     portal_code = resp.json()['portal_code']
-                    print(f"🔗 ✅ {cname} 门户已创建: /p/{portal_code}")
+                    print(f"🔗 ✅ {cname} 门户已创建: {PORTAL_BASE}/p/{portal_code}")
                 else:
                     print(f"🔗 ⚠️ {cname} 门户创建失败: {resp.text[:100]}")
             except Exception as e:
@@ -510,6 +566,14 @@ def maimai_sync(request: CandidateImportRequest):
                 existing.current_title = request.currentPosition
                 updated_fields.append("current_title")
             
+            if request.talentTier:
+                existing.talent_tier = request.talentTier
+                updated_fields.append("talent_tier")
+            elif not existing.talent_tier:
+                # 默认给 B
+                existing.talent_tier = "B"
+                updated_fields.append("talent_tier (default)")
+            
             if not existing.current_company and request.currentCompany:
                 existing.current_company = request.currentCompany
                 updated_fields.append("current_company")
@@ -609,11 +673,11 @@ def maimai_sync(request: CandidateImportRequest):
             
             # source: 追加 maimai 标记
             if existing.source:
-                if "maimai" not in existing.source:
-                    existing.source = existing.source + ", maimai"
+                if "脉脉" not in existing.source:
+                    existing.source = existing.source + ", 脉脉"
                     updated_fields.append("source")
             else:
-                existing.source = "maimai"
+                existing.source = "脉脉"
                 updated_fields.append("source")
             
             # notes: 追加
@@ -716,6 +780,7 @@ def maimai_sync(request: CandidateImportRequest):
                 education_level=education_level if education_level else None,
                 experience_years=experience_years if experience_years > 0 else None,
                 age=age,
+                talent_tier=request.talentTier if request.talentTier else "B",
                 created_at=datetime.now(),
                 updated_at=datetime.now()
             )
@@ -740,7 +805,7 @@ def maimai_sync(request: CandidateImportRequest):
                 
                 try:
                     import hashlib, requests
-                    PORTAL_BASE = "https://jobs.rupro-consulting.com"
+                    PORTAL_BASE = "https://job-share-service-production.up.railway.app"
                     token = hashlib.sha256('ruproAI'.encode()).hexdigest()
                     resp = requests.post(f"{PORTAL_BASE}/api/portal/create", json={
                         'candidate_id': cid,
@@ -824,6 +889,41 @@ def record_friend_request(req: RecordFriendRequestPayload):
 
         candidate.last_communication_at = _dt.now()
 
+        # ========== 新系统：创建 outreach_records 记录 ==========
+        try:
+            from outreach_service import OutreachService, OutreachChannel, OutreachType, OutreachStatus
+            outreach_record = OutreachService.create_outreach(
+                candidate_id=candidate.id,
+                channel=OutreachChannel.LINKEDIN,
+                outreach_type=OutreachType.LINKEDIN_CONNECT,
+                content=req.message or "LinkedIn 加好友请求",
+                status=OutreachStatus.SENT,
+                sent_at=_dt.now(),
+                meta_data={"linkedin_url": url, "source": "browser_extension"}
+            )
+
+            # 更新 candidates 表的新字段
+            candidate.outreach_count = OutreachService.get_candidate_outreach_count(
+                candidate.id, count_only=True
+            )
+            candidate.last_outreach_channel = OutreachChannel.LINKEDIN
+            candidate.last_outreach_date = _dt.now()
+
+            # 同时更新 contacted_channels（兼容旧系统）
+            channels = candidate.contacted_channels or {}
+            if isinstance(channels, str):
+                try: channels = json.loads(channels)
+                except: channels = {}
+            if isinstance(channels, list):
+                channels = {ch: '' for ch in channels}
+            channels['linkedin'] = _dt.now().strftime('%Y-%m-%d %H:%M')
+            candidate.contacted_channels = channels
+
+            print(f"✅ 已创建outreach记录: record_id={outreach_record.id}")
+        except Exception as e:
+            print(f"⚠️ 创建outreach记录失败（旧系统仍可用）: {e}")
+        # ========== 新系统结束 ==========
+
         db.commit()
         print(f"🤝 已记录LinkedIn加好友: {candidate.name} (ID: {candidate.id})")
         return {
@@ -897,7 +997,13 @@ def _parse_contact_from_notes(notes_text: str) -> dict:
         # 排除已匹配的、邮箱域名、和常见非个人网站
         if domain in email_domains:
             continue
-        if any(skip in domain for skip in ['github.com', 'scholar.google', 'linkedin.com', 'google.com/citations', 'mailto:', 'gmail.com', 'outlook.com', 'qq.com', '163.com', 'hotmail.com']):
+        if any(skip in domain for skip in ['github.com', 'github.io', 'scholar.google', 'linkedin.com', 'google.com/citations', 'mailto:', 'gmail.com', 'outlook.com', 'qq.com', '163.com', 'hotmail.com']):
+            # *.github.io → 当作 github_url（如果尚未有）
+            if 'github.io' in domain and 'github_url' not in result:
+                full_url = m.group(0)
+                if not full_url.startswith('http'):
+                    full_url = 'https://' + full_url
+                result['github_url'] = full_url
             continue
         full_url = m.group(0)
         if not full_url.startswith('http'):
@@ -906,6 +1012,89 @@ def _parse_contact_from_notes(notes_text: str) -> dict:
         break  # 只取第一个
     
     return result
+
+
+    return result
+
+
+
+
+    return result
+
+
+def _translate_profile_if_needed(req: LinkedInSyncRequest):
+    """
+    智能翻译中间件：如果检测到英文简历，自动生成中文摘要和Title
+    """
+    # 1. 检测英文含量
+    check_text = (req.currentTitle or "") + (req.notes or "")
+    if len(check_text) < 10: 
+        return None
+    
+    en_count = sum(1 for c in check_text if ord(c) < 128)
+    if en_count / len(check_text) < 0.5: 
+        return None  # 中文内容 > 50%，无需翻译
+
+    print(f"🌍 检测到英文简历 (EN ratio: {en_count/len(check_text):.2f})，开始自动翻译...")
+
+    # 2. 构建 Prompt
+    profile_text = f"Name: {req.name}\nTitle: {req.currentTitle}\n"
+    if req.notes: profile_text += f"About: {req.notes}\n"
+    
+    profile_text += "\nExperience:\n"
+    for exp in req.workExperiences[:5]: # 只看最近5段
+        profile_text += f"- {exp.position} @ {exp.company} ({exp.duration})\n"
+        if exp.description: 
+            profile_text += f"  Desc: {exp.description[:300]}...\n" # 截断描述
+        
+    profile_text += "\nEducation:\n"
+    for edu in req.educations:
+        profile_text += f"- {edu.degree} in {edu.major} @ {edu.school}\n"
+
+    # 3. 调用 LLM
+    try:
+        import os
+        from openai import OpenAI
+        import json
+        
+        api_key = os.getenv("DASHSCOPE_API_KEY") or os.getenv("OPENAI_API_KEY")
+        base_url = os.getenv("DASHSCOPE_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
+        model = os.getenv("LLM_MODEL", "qwen-plus")
+        
+        if not api_key: return None
+
+        client = OpenAI(api_key=api_key, base_url=base_url)
+        
+        prompt = f"""
+You are an expert AI Headhunter Assistant.
+Analyze and Summarize the following LinkedIn profile for a Chinese recruitment database.
+
+Profile Data:
+{profile_text}
+
+Task:
+1. Translate "Title" to standard Chinese (e.g. "Senior Engineer" -> "高级工程师").
+2. Generate a "Chinese Summary" (ai_summary_cn) of the candidate's background, highlight skills, seniority, and key achievements.
+3. Extract Tags (skills_cn).
+
+Output valid JSON:
+{{
+  "translated_title": "...",
+  "ai_summary_cn": "...",
+  "skills_cn": ["...", "..."]
+}}
+"""
+        resp = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3,
+            response_format={"type": "json_object"}
+        )
+        # 简单验证 JSON
+        return json.loads(resp.choices[0].message.content)
+    except Exception as e:
+        print(f"❌ 自动翻译失败: {e}")
+        return None
 
 
 @app.post("/api/candidate/linkedin-sync")
@@ -926,26 +1115,39 @@ def linkedin_sync(request: LinkedInSyncRequest):
     parsed_contacts = _parse_contact_from_notes(request.notes) if request.notes else {}
     if parsed_contacts:
         print(f"📋 从备注中解析到: {list(parsed_contacts.keys())}")
+    if parsed_contacts:
+        print(f"📋 从备注中解析到: {list(parsed_contacts.keys())}")
+    
+    if parsed_contacts:
+        print(f"📋 从备注中解析到: {list(parsed_contacts.keys())}")
+    
+    # ===== 自动翻译/摘要 (新增) =====
+    translated_data = _translate_profile_if_needed(request)
+    if translated_data:
+        print(f"✅ 翻译完成: {translated_data.get('translated_title')} | Summary len: {len(translated_data.get('ai_summary_cn', ''))}")
+        # 覆盖/填充字段
+        if translated_data.get('translated_title'):
+            request.currentTitle = translated_data['translated_title']  # 更新 Request 对象中的 Title
     
     
     db = SessionLocal()
     try:
-        # URL 标准化：去掉尾部斜杠，统一协议为 https
-        normalized_url = request.linkedinUrl.strip().rstrip('/')
+        # URL 标准化：去掉尾部斜杠，统一协议为 https，统一小写
+        normalized_url = request.linkedinUrl.strip().rstrip('/').lower()
         # 统一 http → https
         if normalized_url.startswith('http://'):
             normalized_url = 'https://' + normalized_url[7:]
         # 生成所有可能变体用于匹配
         url_http = normalized_url.replace('https://', 'http://')
         
-        # 用 linkedin_url 匹配（兼容 http/https + 有/无尾部斜杠）
+        # 用 linkedin_url 匹配（兼容 http/https + 有/无尾部斜杠 + 大小写不敏感）
         from sqlalchemy import or_, func
         existing = db.query(Candidate).filter(
             or_(
-                Candidate.linkedin_url == normalized_url,
-                Candidate.linkedin_url == normalized_url + '/',
-                Candidate.linkedin_url == url_http,
-                Candidate.linkedin_url == url_http + '/',
+                func.lower(Candidate.linkedin_url) == normalized_url,
+                func.lower(Candidate.linkedin_url) == normalized_url + '/',
+                func.lower(Candidate.linkedin_url) == url_http,
+                func.lower(Candidate.linkedin_url) == url_http + '/',
             )
         ).with_for_update().first()
         
@@ -1022,6 +1224,19 @@ def linkedin_sync(request: LinkedInSyncRequest):
                 existing.current_title = request.currentTitle
                 updated_fields.append("current_title")
             
+            # 如果有翻译后的 Summary，且原 Summary 为空，填充它
+            if translated_data and translated_data.get('ai_summary_cn'):
+                if not existing.ai_summary:
+                    existing.ai_summary = translated_data['ai_summary_cn']
+                    updated_fields.append("ai_summary (translated)")
+                # 如果有翻译后的 Skills，且原 Skills 为空
+                if translated_data.get('skills_cn') and not existing.skills:
+                    existing.skills = json.dumps(translated_data['skills_cn'], ensure_ascii=False)
+                    updated_fields.append("skills (translated)")
+
+
+            
+
             if not existing.expect_location and request.location:
                 existing.expect_location = request.location
                 updated_fields.append("expect_location")
@@ -1150,6 +1365,9 @@ def linkedin_sync(request: LinkedInSyncRequest):
                 education_level=education_level if education_level else None,
                 source="linkedin",
                 notes=f"[linkedin] {request.notes.strip()}" if request.notes and request.notes.strip() else None,
+                # 注入翻译后的 AI Summary 和 Skills
+                ai_summary=translated_data.get('ai_summary_cn') if translated_data else None,
+                skills=json.dumps(translated_data.get('skills_cn'), ensure_ascii=False) if translated_data and translated_data.get('skills_cn') else None,
                 # 从备注解析的联系方式
                 github_url=parsed_contacts.get('github_url'),
                 email=parsed_contacts.get('email'),
@@ -1196,7 +1414,7 @@ def linkedin_sync(request: LinkedInSyncRequest):
                 
                 try:
                     import hashlib, requests
-                    PORTAL_BASE = "https://jobs.rupro-consulting.com"
+                    PORTAL_BASE = "https://job-share-service-production.up.railway.app"
                     token = hashlib.sha256('ruproAI'.encode()).hexdigest()
                     resp = requests.post(f"{PORTAL_BASE}/api/portal/create", json={
                         'candidate_id': cid,
@@ -1541,7 +1759,7 @@ def fetch_scholar_data(candidate_id: int, request: FetchScholarRequest):
 @app.get("/api/candidate/{candidate_id}")
 def get_candidate(candidate_id: int):
     """
-    获取候选人详情
+    获取候选人完整详情（供详情页使用）
     """
     db = SessionLocal()
     try:
@@ -1552,17 +1770,1022 @@ def get_candidate(candidate_id: int):
         return {
             "id": candidate.id,
             "name": candidate.name,
+            "talent_tier": candidate.talent_tier,
+            "talent_labels": candidate.talent_labels or [],
+            "age": candidate.age,
+            "experience_years": candidate.experience_years,
+            "education_level": candidate.education_level,
             "current_company": candidate.current_company,
             "current_title": candidate.current_title,
-            "location": candidate.expect_location,
-            "education_details": candidate.education_details,
-            "skills": candidate.skills,
-            "source": candidate.source
+            "expect_location": candidate.expect_location,
+            "phone": candidate.phone,
+            "email": candidate.email,
+            "linkedin_url": candidate.linkedin_url,
+            "github_url": candidate.github_url,
+            "twitter_url": candidate.twitter_url,
+            "personal_website": candidate.personal_website,
+            "website_content": candidate.website_content,
+            "is_friend": bool(candidate.is_friend),
+            "source": candidate.source,
+            "skills": candidate.skills or [],
+            "work_experiences": candidate.work_experiences or [],
+            "education_details": candidate.education_details or [],
+            "project_experiences": candidate.project_experiences or [],
+            "ai_summary": candidate.ai_summary,
+            "notes": candidate.notes,
+            "greeting_drafts": candidate.greeting_drafts or {},
+            "structured_tags": candidate.structured_tags,
+            "communication_logs": candidate.communication_logs or [],
+            "pipeline_stage": candidate.pipeline_stage,
+            "contacted_channels": candidate.contacted_channels or [],
+            "scheduled_contact_date": candidate.scheduled_contact_date,
+            "last_communication_at": candidate.last_communication_at.isoformat() if candidate.last_communication_at else None,
+            "created_at": candidate.created_at.isoformat() if candidate.created_at else None,
+            "updated_at": candidate.updated_at.isoformat() if candidate.updated_at else None,
+            "awards_achievements": candidate.awards_achievements or [],
         }
     finally:
         db.close()
 
+@app.post("/api/candidate/{candidate_id}/portal")
+def get_or_create_portal(candidate_id: int):
+    """获取或创建候选人VIP门户（代理到 job-share-service）"""
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        
+        import hashlib, requests
+        PORTAL_BASE = "https://job-share-service-production.up.railway.app"
+        token = hashlib.sha256('ruproAI'.encode()).hexdigest()
+        resp = requests.post(f"{PORTAL_BASE}/api/portal/create", json={
+            'candidate_id': candidate_id,
+            'candidate_name': candidate.name,
+        }, cookies={'auth_token': token}, timeout=15)
+        
+        if resp.status_code == 200 and resp.json().get('success'):
+            data = resp.json()
+            return {
+                "success": True,
+                "portal_url": f"{PORTAL_BASE}/p/{data['portal_code']}",
+                "portal_code": data['portal_code'],
+                "is_existing": data.get('is_existing', False),
+            }
+        else:
+            raise HTTPException(status_code=500, detail=f"门户创建失败: {resp.text[:200]}")
+    except requests.exceptions.RequestException as e:
+        raise HTTPException(status_code=502, detail=f"无法连接门户服务: {str(e)}")
+    finally:
+        db.close()
+
+@app.put("/api/candidate/{candidate_id}")
+def update_candidate(candidate_id: int, body: dict = Body(...)):
+    """更新候选人基础信息"""
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        
+        # 允许更新的字段列表
+        updatable_fields = [
+            'name', 'age', 'experience_years', 'education_level',
+            'current_company', 'current_title', 'expect_location',
+            'phone', 'email', 'linkedin_url', 'github_url', 'twitter_url',
+            'personal_website', 'website_content', 'pipeline_stage', 'wechat_id',
+            'scheduled_contact_date', 'talent_tier', 'talent_labels', 'skills', 'notes',
+            'awards_achievements', 'project_experiences',
+        ]
+        
+        updated = []
+        for field in updatable_fields:
+            if field in body:
+                val = body[field]
+                # 特殊处理空字符串为 None
+                if isinstance(val, str) and val.strip() == '' and field not in ('notes',):
+                    val = None
+                setattr(candidate, field, val)
+                updated.append(field)
+        
+        if updated:
+            from datetime import datetime
+            candidate.updated_at = datetime.now()
+            db.commit()
+        
+        return {"success": True, "updated_fields": updated}
+    finally:
+        db.close()
+
+@app.post("/api/candidate/{candidate_id}/match-jobs")
+def match_jobs_for_candidate(candidate_id: int, body: dict = Body(default={})):
+    """为候选人匹配职位"""
+    top_k = body.get('top_k', 15)
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        
+        from job_search import match_candidate_to_jobs
+        results = match_candidate_to_jobs(candidate_id, top_k=top_k)
+        
+        return {
+            "success": True,
+            "count": len(results),
+            "results": results,
+            "tags": candidate.structured_tags,
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"匹配失败: {str(e)}")
+    finally:
+        db.close()
+
+@app.post("/api/candidate/{candidate_id}/extract-tags")
+def extract_tags_api(candidate_id: int):
+    """重新提取候选人结构化标签"""
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        
+        from extract_tags import extract_tags_for_candidate_by_id
+        tags = extract_tags_for_candidate_by_id(candidate_id)
+        
+        if tags:
+            return {"success": True, "message": f"标签提取完成", "tags": tags}
+        else:
+            return {"success": False, "message": "标签提取失败，请检查候选人是否有简历数据"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"标签提取失败: {str(e)}")
+    finally:
+        db.close()
+
+# ============ 手动添加候选人 (供 React 前端调用) ============
+
+class ManualAddRequest(BaseModel):
+    """手动添加候选人请求 — 对齐 Streamlit 快速/标准录入"""
+    name: str
+    current_company: str
+    current_title: str
+    phone: str = ""
+    email: str = ""
+    age: Optional[int] = None
+    experience_years: Optional[int] = None
+    education_level: str = ""
+    expect_location: str = ""
+    linkedin_url: str = ""
+    github_url: str = ""
+    twitter_url: str = ""
+    work_exp_text: str = ""   # 标准录入: 工作经历原始文本
+    edu_exp_text: str = ""    # 标准录入: 教育经历原始文本
+    tags: str = ""            # 快速录入: 逗号分隔标签
+    notes: str = ""
+    mode: str = "quick"       # "quick" | "standard"
+
+@app.post("/api/candidate/manual-add")
+def manual_add_candidate(req: ManualAddRequest):
+    """
+    手动添加候选人 (React前端)
+    忠实复刻 Streamlit app.py L4742-5104 的快速/标准录入逻辑
+    """
+    if not req.name or not req.current_company or not req.current_title:
+        raise HTTPException(status_code=400, detail="姓名、公司、职位为必填项")
+    
+    db = SessionLocal()
+    try:
+        work_experiences = None
+        education_details = None
+        
+        # === 标准录入: 用 LLM 解析经历文本 (与 Streamlit L4897-4957 一致) ===
+        if req.mode == "standard" and (req.work_exp_text.strip() or req.edu_exp_text.strip()):
+            try:
+                from openai import OpenAI
+                client = OpenAI(
+                    api_key=os.getenv('DASHSCOPE_API_KEY'),
+                    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+                )
+                
+                parse_prompt = f"""请解析以下工作经历和教育经历文本，返回JSON格式。
+
+工作经历文本：
+{req.work_exp_text if req.work_exp_text.strip() else "(无)"}
+
+教育经历文本：
+{req.edu_exp_text if req.edu_exp_text.strip() else "(无)"}
+
+请返回如下JSON格式（不要有其他内容）：
+{{
+  "work_experiences": [
+    {{"time": "2022.03-至今", "company": "字节跳动", "title": "高级算法工程师", "description": "工作内容..."}}
+  ],
+  "education_details": [
+    {{"year": "2020-2023", "school": "北京大学", "major": "人工智能", "degree": "硕士"}}
+  ]
+}}
+
+注意：
+- 如果某个字段无法识别，设为空字符串
+- 保持原文中的时间格式
+- 如果没有对应经历，返回空数组[]"""
+                
+                response = client.chat.completions.create(
+                    model="qwen-plus",
+                    messages=[{"role": "user", "content": parse_prompt}],
+                    temperature=0.1
+                )
+                
+                result_text = response.choices[0].message.content.strip()
+                if "```json" in result_text:
+                    result_text = result_text.split("```json")[1].split("```")[0]
+                elif "```" in result_text:
+                    result_text = result_text.split("```")[1].split("```")[0]
+                
+                parsed = json.loads(result_text)
+                work_experiences = parsed.get("work_experiences", [])
+                education_details = parsed.get("education_details", [])
+                print(f"🤖 AI解析成功: {len(work_experiences or [])} 段工作经历, {len(education_details or [])} 段教育经历")
+                
+            except Exception as e:
+                print(f"⚠️ AI解析失败，保存原始文本: {e}")
+                if req.work_exp_text.strip():
+                    work_experiences = [{"raw_text": req.work_exp_text}]
+                if req.edu_exp_text.strip():
+                    education_details = [{"raw_text": req.edu_exp_text}]
+        
+        # 解析快速标签
+        skills = None
+        if req.tags:
+            skills = [t.strip() for t in req.tags.split(",") if t.strip()]
+        
+        # 生成 AI 总结 (与 Streamlit 一致)
+        ai_summary = ""
+        if req.mode == "quick":
+            if skills:
+                ai_summary = f"**技能标签**: {', '.join(skills)}\n\n快速录入记录，待完善详细信息。"
+            else:
+                ai_summary = "快速录入记录，待完善详细信息。"
+        else:
+            summary_parts = []
+            if work_experiences:
+                companies = [exp.get('company', '') for exp in work_experiences if exp.get('company')]
+                if companies:
+                    summary_parts.append(f"**工作经历**: {', '.join(companies[:3])}")
+            if education_details:
+                schools = [edu.get('school', '') for edu in education_details if edu.get('school')]
+                if schools:
+                    summary_parts.append(f"**教育背景**: {', '.join(schools[:2])}")
+            ai_summary = "\n\n".join(summary_parts) if summary_parts else "标准录入记录。"
+        
+        # 创建候选人 (与 Streamlit L4772-4979 一致)
+        new_candidate = Candidate(
+            name=req.name.strip(),
+            current_company=req.current_company.strip(),
+            current_title=req.current_title.strip(),
+            phone=req.phone or None,
+            email=req.email or None,
+            age=req.age if req.age and req.age > 0 else None,
+            experience_years=req.experience_years if req.experience_years and req.experience_years > 0 else None,
+            education_level=req.education_level if req.education_level and req.education_level != "未知" else None,
+            expect_location=req.expect_location or None,
+            linkedin_url=req.linkedin_url or None,
+            github_url=req.github_url or None,
+            twitter_url=req.twitter_url or None,
+            skills=skills,
+            work_experiences=work_experiences if work_experiences else None,
+            education_details=education_details if education_details else None,
+            notes=req.notes or None,
+            ai_summary=ai_summary,
+            source_file=f'manual_{req.mode}',
+            source=f'手动录入({req.mode})',
+            created_at=datetime.now(),
+            updated_at=datetime.now()
+        )
+        
+        db.add(new_candidate)
+        db.commit()
+        db.refresh(new_candidate)
+        
+        print(f"✅ 手动添加候选人成功: {new_candidate.name} (ID: {new_candidate.id}, mode={req.mode})")
+        
+        # 异步：提取标签 (与 Streamlit L4792-4813 一致)
+        import threading
+        def _post_add_bg(cid, cname):
+            try:
+                from extract_tags import extract_tags_for_candidate_by_id
+                print(f"🏷️ 手动录入候选人 {cname} (ID={cid}) 标签提取中...")
+                tags = extract_tags_for_candidate_by_id(cid)
+                if tags:
+                    print(f"🏷️ ✅ {cname} 标签提取完成")
+                else:
+                    print(f"🏷️ ⚠️ {cname} 标签提取失败")
+            except Exception as e:
+                print(f"🏷️ ❌ {cname} 标签提取异常: {e}")
+        
+        threading.Thread(target=_post_add_bg, args=(new_candidate.id, new_candidate.name), daemon=True).start()
+        
+        result = {
+            "success": True,
+            "candidateId": new_candidate.id,
+            "message": f"成功添加人才: {new_candidate.name}"
+        }
+        
+        if req.mode == "standard" and work_experiences:
+            result["parsed_work_count"] = len(work_experiences)
+        if req.mode == "standard" and education_details:
+            result["parsed_edu_count"] = len(education_details)
+        
+        return result
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        print(f"❌ 手动添加候选人失败: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+# ============ 简历解析 API (供 React 前端调用) ============
+
+from fastapi import File, UploadFile
+from typing import List
+
+@app.post("/api/resume/parse")
+async def parse_resume_upload(files: List[UploadFile] = File(...)):
+    """
+    上传简历文件(PDF/TXT/DOCX/图片)，AI解析返回结构化数据。
+    支持多文件上传：多张图片会自动拼接。
+    
+    返回: { success, parsed_data, file_type, file_names }
+    前端拿到 parsed_data 后展示预览，用户确认后调用 /api/resume/save 保存。
+    """
+    from ai_service import AIService
+    import base64
+    from io import BytesIO
+    
+    if not files:
+        raise HTTPException(status_code=400, detail="没有上传文件")
+    
+    file_names = [f.filename for f in files]
+    first_ext = files[0].filename.split('.')[-1].lower() if files[0].filename else ''
+    
+    # 判断文件类型
+    image_exts = {'png', 'jpg', 'jpeg', 'webp'}
+    doc_exts = {'pdf', 'txt', 'docx'}
+    
+    is_image = first_ext in image_exts
+    is_doc = first_ext in doc_exts
+    
+    if not is_image and not is_doc:
+        raise HTTPException(status_code=400, detail=f"不支持的文件格式: {first_ext}")
+    
+    try:
+        if is_image:
+            # --- 图片 OCR 流程 ---
+            from PIL import Image
+            
+            if len(files) > 1:
+                # 多张图片拼接
+                images = []
+                for f in files:
+                    img_bytes = await f.read()
+                    img = Image.open(BytesIO(img_bytes))
+                    if img.mode != 'RGB':
+                        img = img.convert('RGB')
+                    images.append(img)
+                
+                max_width = max(img.width for img in images)
+                total_height = sum(img.height for img in images)
+                
+                combined = Image.new('RGB', (max_width, total_height), (255, 255, 255))
+                y_offset = 0
+                for img in images:
+                    x_offset = (max_width - img.width) // 2
+                    combined.paste(img, (x_offset, y_offset))
+                    y_offset += img.height
+                
+                # 缩放过大图片
+                MAX_HEIGHT = 4000
+                if total_height > MAX_HEIGHT:
+                    scale = MAX_HEIGHT / total_height
+                    new_width = int(max_width * scale)
+                    combined = combined.resize((new_width, MAX_HEIGHT), Image.Resampling.LANCZOS)
+                
+                buffer = BytesIO()
+                combined.save(buffer, format='JPEG', quality=90)
+                image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
+            else:
+                # 单张图片
+                img_bytes = await files[0].read()
+                image_base64 = base64.b64encode(img_bytes).decode('utf-8')
+            
+            parsed_data = AIService.ocr_resume_image(image_base64)
+            
+            if not parsed_data or parsed_data.get("name") == "OCR识别失败":
+                return {"success": False, "message": "OCR 识别失败，请尝试更清晰的图片", "parsed_data": parsed_data}
+            
+            return {
+                "success": True,
+                "parsed_data": parsed_data,
+                "file_type": "image",
+                "file_names": file_names
+            }
+        
+        else:
+            # --- 文档解析流程 (仅处理第一个文件) ---
+            file = files[0]
+            file_bytes = await file.read()
+            resume_content = ""
+            
+            if first_ext == 'txt':
+                resume_content = file_bytes.decode('utf-8')
+            
+            elif first_ext == 'pdf':
+                import PyPDF2
+                pdf_reader = PyPDF2.PdfReader(BytesIO(file_bytes))
+                resume_content = "\n".join([page.extract_text() for page in pdf_reader.pages])
+            
+            elif first_ext == 'docx':
+                import docx
+                doc = docx.Document(BytesIO(file_bytes))
+                resume_content = "\n".join([p.text for p in doc.paragraphs])
+            
+            if not resume_content.strip():
+                return {"success": False, "message": "文件内容为空，无法解析"}
+            
+            parsed_data = AIService.parse_resume(resume_content)
+            
+            if not parsed_data or parsed_data.get("name") == "Parse Error":
+                return {"success": False, "message": "AI 解析失败，请检查简历格式或重试", "parsed_data": parsed_data}
+            
+            # 保存原始PDF文件
+            saved_file_path = None
+            if first_ext == 'pdf':
+                try:
+                    import os
+                    resume_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "resumes")
+                    os.makedirs(resume_dir, exist_ok=True)
+                    import uuid
+                    unique_name = f"{uuid.uuid4().hex[:8]}_{file.filename}"
+                    saved_file_path = os.path.join(resume_dir, unique_name)
+                    with open(saved_file_path, 'wb') as f:
+                        f.write(file_bytes)
+                    print(f"✅ 原始PDF文件已保存: {saved_file_path}")
+                except Exception as e:
+                    print(f"⚠️ PDF文件保存失败: {e}")
+            
+            return {
+                "success": True,
+                "parsed_data": parsed_data,
+                "file_type": first_ext,
+                "file_names": file_names,
+                "raw_text_preview": resume_content[:500],
+                "saved_file_path": saved_file_path
+            }
+    
+    except Exception as e:
+        print(f"❌ 简历解析失败: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"简历解析失败: {str(e)}")
+
+
+class ResumeSaveRequest(BaseModel):
+    """保存已解析的简历数据"""
+    parsed_data: dict
+    file_type: str = ""       # "pdf" | "txt" | "docx" | "image"
+    file_names: list = []
+    raw_text: str = ""
+
+@app.post("/api/resume/save")
+def save_parsed_resume(req: ResumeSaveRequest):
+    """
+    将前端已确认的解析数据保存为候选人。
+    """
+    db = SessionLocal()
+    try:
+        pd = req.parsed_data
+        
+        # 确定 source
+        source_map = {
+            "pdf": "PDF解析",
+            "txt": "文档解析", 
+            "docx": "文档解析",
+            "image": "图片OCR"
+        }
+        source = source_map.get(req.file_type, "简历解析")
+        source_file = ", ".join(req.file_names[:3]) if req.file_names else ""
+        
+        new_candidate = Candidate(
+            name=pd.get("name", "未知"),
+            email=pd.get("email"),
+            phone=pd.get("phone"),
+            age=pd.get("age"),
+            experience_years=pd.get("experience_years"),
+            expect_location=pd.get("expect_location"),
+            education_level=pd.get("education_level"),
+            current_company=pd.get("current_company"),
+            current_title=pd.get("current_title"),
+            skills=pd.get("skills"),
+            education_details=pd.get("education_details"),
+            work_experiences=pd.get("work_experiences"),
+            project_experiences=pd.get("project_experiences"),
+            awards_achievements=pd.get("awards_achievements"),
+            ai_summary=pd.get("summary"),
+            notes=pd.get("notes"),
+            raw_resume_text=req.raw_text or pd.get("raw_text", ""),
+            source_file=source_file,
+            source=source,
+            created_at=datetime.now()
+        )
+        
+        db.add(new_candidate)
+        db.commit()
+        db.refresh(new_candidate)
+        
+        candidate_id = new_candidate.id
+        candidate_name = new_candidate.name
+        
+        # 异步提取标签
+        import threading
+        def _extract_bg():
+            try:
+                from extract_tags import extract_tags_for_candidate_by_id
+                extract_tags_for_candidate_by_id(candidate_id)
+                print(f"✅ 简历解析候选人 {candidate_name} 标签提取完成")
+            except Exception as e:
+                print(f"⚠️ 标签提取失败: {e}")
+        
+        threading.Thread(target=_extract_bg, daemon=True).start()
+        
+        return {
+            "success": True,
+            "candidate_id": candidate_id,
+            "message": f"成功添加人才: {candidate_name}"
+        }
+    
+    except Exception as e:
+        db.rollback()
+        print(f"❌ 保存简历解析候选人失败: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+
+
+@app.get("/api/candidates")
+def list_candidates(
+    page: int = 1,
+    page_size: int = 20,
+    sort_by: str = "created_at",
+    sort_order: str = "desc",
+    name: Optional[str] = None,
+    company: Optional[str] = None,
+    school: Optional[str] = None,
+    location: Optional[str] = None,
+    linkedin_url: Optional[str] = None,
+    email: Optional[str] = None,
+    github_url: Optional[str] = None,
+    website_url: Optional[str] = None,
+    tier: Optional[str] = None,
+    source: Optional[str] = None,
+    has_phone: Optional[bool] = None,
+    has_email: Optional[bool] = None,
+    has_linkedin: Optional[bool] = None,
+    has_github: Optional[bool] = None,
+    has_website: Optional[bool] = None,
+    is_friend: Optional[bool] = None,
+    age_min: Optional[int] = None,
+    age_max: Optional[int] = None,
+    exp_min: Optional[int] = None,
+    exp_max: Optional[int] = None,
+    talent_label: Optional[str] = None,
+    outreach_status: Optional[str] = None,
+    is_primary_source: Optional[bool] = None,
+):
+    """
+    候选人分页列表 + 筛选 + 排序
+    供 React 前端人才库管理页面使用
+    """
+    from sqlalchemy.orm import defer
+    from sqlalchemy import func, case, or_, and_, String as SAString
+    import re as _re
+
+    db = SessionLocal()
+    try:
+        query = db.query(Candidate).options(
+            defer(Candidate.raw_resume_text),
+            defer(Candidate.ai_summary),
+            defer(Candidate.project_experiences),
+            defer(Candidate.structured_tags),
+            defer(Candidate.communication_logs),
+            defer(Candidate.awards_achievements),
+        ).filter(Candidate.name != "Parse Error")
+
+        # --- 筛选 ---
+        if name:
+            is_chinese_name = bool(_re.match(r'^[\u4e00-\u9fff]{2,4}$', name.strip()))
+            if is_chinese_name:
+                query = query.filter(Candidate.name.contains(name))
+            else:
+                query = query.filter(
+                    Candidate.name.contains(name) | Candidate.skills.cast(SAString).contains(name)
+                )
+
+        if company:
+            query = query.filter(
+                Candidate.company_normalized.contains(company) |
+                Candidate.current_company.contains(company) |
+                Candidate.work_experiences.cast(SAString).contains(company)
+            )
+
+        if school:
+            query = query.filter(
+                Candidate.education_details.cast(SAString).contains(school)
+            )
+
+        if location:
+            query = query.filter(Candidate.expect_location.contains(location))
+
+        # URL搜索（精确匹配）
+        if linkedin_url:
+            query = query.filter(Candidate.linkedin_url.contains(linkedin_url))
+        if email:
+            query = query.filter(Candidate.email.contains(email))
+        if github_url:
+            query = query.filter(Candidate.github_url.contains(github_url))
+        if website_url:
+            query = query.filter(Candidate.personal_website.contains(website_url))
+
+        if tier:
+            if tier == "untiered":
+                query = query.filter(or_(Candidate.talent_tier == None, Candidate.talent_tier == ''))
+            else:
+                query = query.filter(Candidate.talent_tier == tier)
+
+        if source:
+            source_map = {"maimai": "脉脉", "github": "github", "linkedin": "linkedin", "boss": "Boss"}
+            search_term = source_map.get(source, source)
+            if is_primary_source:
+                # 只匹配以该渠道开头的 (忽略大小写)
+                query = query.filter(Candidate.source.ilike(f"{search_term}%"))
+            else:
+                # 包含该渠道
+                query = query.filter(Candidate.source.contains(search_term))
+
+        if has_phone:
+            query = query.filter(Candidate.phone != None, Candidate.phone != '')
+        if has_email:
+            query = query.filter(Candidate.email != None, Candidate.email != '')
+        if has_linkedin:
+            query = query.filter(Candidate.linkedin_url != None, Candidate.linkedin_url != '')
+        if has_github:
+            query = query.filter(Candidate.github_url != None, Candidate.github_url != '')
+        if has_website:
+            query = query.filter(Candidate.personal_website != None, Candidate.personal_website != '')
+        if is_friend:
+            query = query.filter(Candidate.is_friend == 1)
+
+        if talent_label:
+            # SQLite JSON stores Chinese as unicode escapes, so search both forms
+            import json as _json
+            escaped = _json.dumps(talent_label, ensure_ascii=True).strip('"')
+            query = query.filter(
+                or_(
+                    Candidate.talent_labels.cast(SAString).contains(talent_label),
+                    Candidate.talent_labels.cast(SAString).contains(escaped),
+                )
+            )
+
+        if age_min is not None or age_max is not None:
+            _amin = age_min or 18
+            _amax = age_max or 60
+            query = query.filter(or_(
+                Candidate.age == None,
+                (Candidate.age >= _amin) & (Candidate.age <= _amax)
+            ))
+
+        if exp_min is not None or exp_max is not None:
+            _emin = exp_min or 0
+            _emax = exp_max or 99
+            query = query.filter(or_(
+                Candidate.experience_years == None,
+                (Candidate.experience_years >= _emin) & (Candidate.experience_years <= _emax)
+            ))
+
+        # --- 触达状态筛选 ---
+        if outreach_status:
+            if outreach_status == "not_contacted":
+                from sqlalchemy import exists
+                # 新生成未触达：没有任何触达记录(old field) 且 outreach_records 表中无记录
+                # 子查询：检查是否有 outreach_records
+                has_outreach_stmt = exists().where(OutreachRecord.candidate_id == Candidate.id)
+                
+                query = query.filter(
+                    or_(
+                        Candidate.contacted_channels == None,
+                        Candidate.contacted_channels == '',
+                        Candidate.contacted_channels == '{}'
+                    ),
+                    ~has_outreach_stmt  # 取反：不存在记录
+                )
+            elif outreach_status == "contacted_no_reply":
+                # 已触达未回复：(有旧字段记录 OR 有 outreach_records) 且 无回复时间戳
+                from sqlalchemy import exists
+                has_outreach_stmt = exists().where(OutreachRecord.candidate_id == Candidate.id)
+                
+                query = query.filter(
+                    or_(
+                        and_(Candidate.contacted_channels != None, Candidate.contacted_channels != '', Candidate.contacted_channels != '{}'),
+                        has_outreach_stmt
+                    ),
+                    Candidate.linkedin_accepted_at == None,
+                    Candidate.maimai_accepted_at == None,
+                    Candidate.email_replied_at == None
+                )
+            elif outreach_status == "replied_no_phone":
+                # 已回复未交换电话：有任一回复字段非空，但 phone_exchanged_at 为空
+                query = query.filter(
+                    or_(
+                        Candidate.linkedin_accepted_at != None,
+                        Candidate.maimai_accepted_at != None,
+                        Candidate.email_replied_at != None
+                    ),
+                    Candidate.phone_exchanged_at == None
+                )
+            elif outreach_status == "phone_exchanged":
+                # 已交换电话：phone_exchanged_at 不为空
+                query = query.filter(Candidate.phone_exchanged_at != None)
+
+        # --- 总数 ---
+        total = query.with_entities(func.count(Candidate.id)).scalar()
+
+        # --- 排序 ---
+        if sort_by == "name":
+            order_col = Candidate.name.asc() if sort_order == "asc" else Candidate.name.desc()
+            query = query.order_by(order_col)
+        elif sort_by == "last_communication_at":
+            query = query.order_by(
+                case((Candidate.last_communication_at == None, 1), else_=0),
+                Candidate.last_communication_at.desc()
+            )
+        elif sort_by == "last_outreach_date":
+            # 最新触达
+            query = query.order_by(
+                case((Candidate.last_outreach_date == None, 1), else_=0),
+                Candidate.last_outreach_date.desc()
+            )
+        elif sort_by == "latest_reply":
+            # 最新回复 (取各个渠道回复时间的最大值)
+            # SQLite 支持 MAX(col1, col2...)
+            latest_reply_expr = func.max(
+                Candidate.linkedin_accepted_at,
+                Candidate.maimai_accepted_at,
+                Candidate.email_replied_at
+            )
+            query = query.order_by(
+                case((latest_reply_expr == None, 1), else_=0),
+                latest_reply_expr.desc()
+            )
+        else:  # created_at (default)
+            query = query.order_by(Candidate.created_at.desc())
+
+        # --- 分页 ---
+        offset = (max(1, page) - 1) * page_size
+        candidates = query.offset(offset).limit(page_size).all()
+
+        # --- 序列化 ---
+        result = []
+        for c in candidates:
+            result.append({
+                "id": c.id,
+                "name": c.name,
+                "talent_tier": c.talent_tier,
+                "talent_labels": c.talent_labels or [],
+                "age": c.age,
+                "experience_years": c.experience_years,
+                "education_level": c.education_level,
+                "current_company": c.current_company,
+                "company_normalized": c.company_normalized,
+                "current_title": c.current_title,
+                "phone": c.phone,
+                "email": c.email,
+                "linkedin_url": c.linkedin_url,
+                "github_url": c.github_url,
+                "personal_website": c.personal_website,
+                "is_friend": bool(c.is_friend),
+                "friend_added_at": c.friend_added_at,
+                "linkedin_accepted_at": c.linkedin_accepted_at.isoformat() if c.linkedin_accepted_at else None,
+                "maimai_accepted_at": c.maimai_accepted_at.isoformat() if c.maimai_accepted_at else None,
+                "email_replied_at": c.email_replied_at.isoformat() if c.email_replied_at else None,
+                "source": c.source,
+                "skills": c.skills or [],
+                "work_experiences": c.work_experiences or [],
+                "education_details": c.education_details or [],
+                "scheduled_contact_date": c.scheduled_contact_date,
+                "notes": c.notes,
+                "greeting_drafts": c.greeting_drafts or {},
+                "pipeline_stage": c.pipeline_stage,
+                "contacted_channels": c.contacted_channels or [],
+                "created_at": c.created_at.isoformat() if c.created_at else None,
+                "updated_at": c.updated_at.isoformat() if c.updated_at else None,
+            })
+
+        return {
+            "total": total,
+            "page": page,
+            "page_size": page_size,
+            "candidates": result,
+        }
+    finally:
+        db.close()
+
+
+@app.delete("/api/candidate/{candidate_id}")
+def api_delete_candidate(candidate_id: int):
+    """删除候选人及其关联数据"""
+    from database import MatchRecord, ResumeTask
+    db = SessionLocal()
+    try:
+        cand = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not cand:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        name = cand.name
+        # 清理关联数据（避免孤儿记录）
+        del_outreach = db.query(OutreachRecord).filter(OutreachRecord.candidate_id == candidate_id).delete()
+        del_match = db.query(MatchRecord).filter(MatchRecord.candidate_id == candidate_id).delete()
+        del_resume = db.query(ResumeTask).filter(ResumeTask.candidate_id == candidate_id).delete()
+        del_email = db.query(EmailOutreach).filter(EmailOutreach.candidate_id == candidate_id).delete()
+        db.delete(cand)
+        db.commit()
+        print(f"🗑️ 已删除候选人 {name}(ID:{candidate_id}) 及关联数据: outreach={del_outreach}, match={del_match}, resume_task={del_resume}, email={del_email}")
+        return {"ok": True, "message": f"已删除候选人: {name}"}
+    finally:
+        db.close()
+
+
+class ScheduleUpdateRequest(BaseModel):
+    scheduled_contact_date: Optional[str] = None  # "YYYY-MM-DD" or null
+
+
+@app.patch("/api/candidate/{candidate_id}/schedule")
+def api_update_schedule(candidate_id: int, req: ScheduleUpdateRequest):
+    """更新预约沟通日期"""
+    db = SessionLocal()
+    try:
+        cand = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not cand:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        cand.scheduled_contact_date = req.scheduled_contact_date
+        db.commit()
+        return {"ok": True, "scheduled_contact_date": cand.scheduled_contact_date}
+    finally:
+        db.close()
+
+
 # ============ 职位相关 API (供脉脉发布职位使用) ============
+
+class CreateJobRequest(BaseModel):
+    title: str
+    company: str
+    department: Optional[str] = None
+    location: Optional[str] = None
+    seniority_level: Optional[str] = None
+    salary_range: Optional[str] = None
+    hr_contact: Optional[str] = None
+    jd_link: Optional[str] = None
+    exp_years: Optional[str] = None
+    raw_jd_text: str
+    notes: Optional[str] = None
+
+
+@app.post("/api/jobs")
+def create_job(req: CreateJobRequest):
+    """创建新职位（含自动编号 + AI标签）"""
+    import re
+    db = SessionLocal()
+    try:
+        # 1. 生成 job_code
+        def generate_job_code(company_name):
+            map_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'company_prefix_map.json')
+            try:
+                with open(map_file, 'r', encoding='utf-8') as f:
+                    prefix_map = json.load(f)
+            except:
+                prefix_map = {}
+
+            prefix = None
+            for key, val in prefix_map.items():
+                if key.lower() in company_name.lower() or company_name.lower() in key.lower():
+                    prefix = val
+                    break
+
+            if not prefix:
+                english_words = re.findall(r'[A-Za-z]+', company_name.strip())
+                if english_words:
+                    if len(english_words) >= 3:
+                        prefix = ''.join([w[0].upper() for w in english_words[:3]])
+                    elif len(english_words) == 2:
+                        prefix = (english_words[0][0] + english_words[1][:2]).upper()
+                    else:
+                        prefix = english_words[0][:3].upper()
+                else:
+                    try:
+                        import pinyin
+                        py = pinyin.get(company_name.strip(), format="strip", delimiter="")
+                        prefix = ''.join([c[0].upper() for c in py.split() if c][:3])
+                        if len(prefix) < 2:
+                            prefix = py[:3].upper()
+                    except:
+                        prefix = "OTH"
+
+                if len(prefix) < 2:
+                    prefix = "OTH"
+
+                prefix_map[company_name] = prefix
+                try:
+                    with open(map_file, 'w', encoding='utf-8') as f:
+                        json.dump(prefix_map, f, ensure_ascii=False, indent=4)
+                except:
+                    pass
+
+            from sqlalchemy import text
+            max_num = 0
+            for pv in [prefix.upper(), prefix.lower()]:
+                result = db.execute(text(f"SELECT job_code FROM jobs WHERE job_code LIKE '{pv}%' ORDER BY job_code DESC LIMIT 1")).first()
+                if result and result[0]:
+                    match = re.search(r'(\d+)$', result[0])
+                    if match:
+                        num = int(match.group(1))
+                        if num > max_num:
+                            max_num = num
+
+            return f"{prefix.upper()}{max_num + 1:03d}"
+
+        job_code = generate_job_code(req.company) if req.company else None
+
+        # 2. Extract experience years
+        final_exp = None
+        if req.exp_years:
+            num_match = re.search(r'(\d+)', req.exp_years)
+            if num_match:
+                final_exp = int(num_match.group(1))
+        if not final_exp:
+            patterns = [r'(\d+)\s*年[及以]?[上以]?经[验历]', r'(\d+)[+＋]?\s*年']
+            for p in patterns:
+                m = re.search(p, req.raw_jd_text)
+                if m:
+                    final_exp = int(m.group(1))
+                    break
+
+        # 3. Save to DB
+        new_job = Job(
+            title=req.title, company=req.company, job_code=job_code,
+            department=req.department, location=req.location or "",
+            seniority_level=req.seniority_level, salary_range=req.salary_range,
+            hr_contact=req.hr_contact, jd_link=req.jd_link,
+            required_experience_years=final_exp,
+            raw_jd_text=req.raw_jd_text, notes=req.notes,
+        )
+        db.add(new_job)
+        db.commit()
+        db.refresh(new_job)
+
+        # 4. Vector DB
+        try:
+            from ai_service import AIService
+            vector_id = AIService.add_job_to_vector_db(new_job.id, req.raw_jd_text, {"title": req.title, "company": req.company})
+            new_job.vector_id = vector_id
+            db.commit()
+        except:
+            pass
+
+        # 5. Structured tags
+        tags = None
+        try:
+            from extract_tags import extract_tags, JD_PROMPT, TAG_SCHEMA
+            tag_prompt = JD_PROMPT.format(schema=TAG_SCHEMA, title=req.title or '', company=req.company or '', description=(req.raw_jd_text or '')[:2000])
+            tags = extract_tags(tag_prompt)
+            if tags:
+                new_job.structured_tags = json.dumps(tags, ensure_ascii=False)
+                db.commit()
+        except:
+            pass
+
+        return {
+            "success": True,
+            "job_id": new_job.id,
+            "job_code": job_code,
+            "tags": tags,
+            "message": f"职位保存成功！编号: {job_code}"
+        }
+    finally:
+        db.close()
+
 
 @app.get("/api/jobs")
 def list_jobs(company: Optional[str] = None, active_only: bool = True, limit: int = 200, has_description: bool = False, search: Optional[str] = None):
@@ -1607,9 +2830,20 @@ def list_jobs(company: Optional[str] = None, active_only: bool = True, limit: in
         jobs_without_desc = [j for j in all_jobs if not j.raw_jd_text or not j.raw_jd_text.strip()]
         sorted_jobs = (jobs_with_desc + jobs_without_desc)[:limit]
         
+        # 获取全库统计数据 (不受筛选条件影响)
+        from sqlalchemy import func
+        total_count = db.query(func.count(Job.id)).scalar()
+        active_count = db.query(func.count(Job.id)).filter(Job.is_active == 1).scalar()
+        urgent_count = db.query(func.count(Job.id)).filter(Job.urgency >= 2).scalar()
+
         return {
             "success": True,
             "count": len(sorted_jobs),
+            "stats": {
+                "total": total_count,
+                "active": active_count,
+                "urgent": urgent_count
+            },
             "jobs": [
                 {
                     "id": job.id,
@@ -1798,6 +3032,36 @@ def get_maimai_form_data(job_id: int, email: str = ""):
 # 支持渠道: MM=脉脉, LI=LinkedIn, BOSS=Boss直聘
 # 数据格式: [{"channel": "MM", "published_at": "2026-02-07T10:00:00"}, ...]
 
+@app.put("/api/jobs/{job_id}")
+def update_job(job_id: int, body: dict = Body(...)):
+    """更新职位字段"""
+    db = SessionLocal()
+    try:
+        job = db.query(Job).filter(Job.id == job_id).first()
+        if not job:
+            raise HTTPException(status_code=404, detail="职位不存在")
+
+        updatable_fields = [
+            'notes', 'urgency', 'is_active', 'hr_contact', 'headcount',
+            'seniority_level', 'salary_range', 'location', 'department',
+            'job_code', 'jd_link', 'sourcing_notes', 'project_tags',
+        ]
+        updated = []
+        for field in updatable_fields:
+            if field in body:
+                val = body[field]
+                if isinstance(val, str) and val == '' and field not in ('notes', 'sourcing_notes'):
+                    val = None
+                setattr(job, field, val)
+                updated.append(field)
+
+        if updated:
+            db.commit()
+        return {"success": True, "updated_fields": updated}
+    finally:
+        db.close()
+
+
 @app.post("/api/jobs/{job_id}/publish")
 def mark_job_published(job_id: int, channel: str = "MM"):
     """
@@ -1857,40 +3121,7 @@ class CommLogRequest(_BaseModel):
     candidate_position: str = ""
 
 
-MESSAGE_SYSTEM_PROMPT = """你是Lillian的AI助手。Lillian是一位专注AI/高科技领域的猎头。
 
-你的任务：根据候选人背景和职位信息，生成一条个性化的招聘沟通消息。
-
-## 称呼规则
-- 消息开头的称呼已经在下方指定，请直接使用，不要修改
-
-## 内容要求
-1. 自我介绍：我是Lillian，专注AI/互联网/高科技领域的猎头
-2. 提到对方具体的亮点（公司/职位/技术方向/教育背景），要具体不要泛泛而谈。例如"字节跳动6年商业化和搜广推经验"比"工作经历非常丰富"好得多
-3. ⚠️ 准确判断候选人的核心方向：
-   - 以最长/最核心的全职工作经历为主，兼职/合同工/众包经历不要当主要亮点
-   - 准确使用方向词：数据分析师说"数据方向"，商业分析师说"商业分析/数据方向"，后端工程师说"工程方向"，算法工程师说"算法方向"。不要给非算法背景的人说"算法方向"
-   - 不要过度包装：标注员/AI训练师不等于"LLM专家"，助理不等于"管理层"
-4. 关联职位机会时注意：
-   - 如果提供的JD和候选人背景高度相关（同方向同类型），可以提公司+岗位名称+为什么匹配
-   - 🚫 其他情况下，不要提任何具体公司名或岗位名！直接说"我们有一些机会跟您比较匹配"
-   - 🚫🚫 绝对禁止"虽然目前职位与您不完全一致"这类句式！不要提任何"不一致/不匹配"的字眼，只说正面的
-   - 第一次打招呼的目的是建立联系，不是硬推某个JD
-5. 行动呼吁：用"希望能与您加好友，建立链接，未来能进一步交流"
-6. 末尾另起一行附上签名：Lillian 电话/微信 13585841775 GitHub: github.com/lillianliao-ch
-7. 语气：专业但亲切自然，像朋友推荐机会一样，不要过于正式或吹捧
-
-## 格式要求
-- 严格控制在250字以内（给300字限制留余量）
-- 直接输出消息文本，不要加引号或markdown标记
-- ⚠️ 必须分三段，每段之间用空行（两个换行符）分隔，这非常重要：
-  - 第一段：自我介绍 + 对方亮点
-  - 第二段：只写"希望能与您加好友，建立链接，未来能进一步交流。"（不要加"我们有一些机会跟您比较匹配"之类的推销语句，第一次打招呼只建立联系）
-  - 第三段：签名（"Lillian 电话/微信 13585841775 GitHub: github.com/lillianliao-ch"）
-- 三段之间必须有空行！候选人在手机上看消息，不分段会挤在一起很难读
-- 🚫 不要加"期待您的回复""祝好""Best regards"等多余客套
-- 不要用"巨大价值""非常匹配""非常丰富""令人印象深刻"等空洞的吹捧词
-- 🚫 不要单独一行写"您好，"，称呼要和第一句话连在一起"""
 
 
 import re
@@ -1977,6 +3208,48 @@ def _build_candidate_description(profile: dict) -> str:
                 lines.append(f"  · {name}")
                 if desc:
                     lines.append(f"    {desc}")
+
+    # 学术成就/论文（从 Semantic Scholar 等外部数据源获取）
+    awards = profile.get('awards_achievements', profile.get('publications', ''))
+    if awards:
+        lines.append("- 学术成就与论文:")
+        # 如果是字符串，直接添加
+        if isinstance(awards, str):
+            # 限制长度，避免太长
+            awards_text = awards[:1500] if len(awards) > 1500 else awards
+            lines.append(f"  {awards_text}")
+        # 如果是列表，格式化每一条
+        elif isinstance(awards, list):
+            for award in awards[:5]:  # 最多显示5条
+                if isinstance(award, dict):
+                    title = award.get('title', '')
+                    venue = award.get('venue', award.get('conference', ''))
+                    year = award.get('year', '')
+                    if title:
+                        citation = f"{title}"
+                        if venue:
+                            citation += f" - {venue}"
+                        if year:
+                            citation += f" ({year})"
+                        lines.append(f"  · {citation}")
+                elif isinstance(award, str):
+                    lines.append(f"  · {award[:200]}")
+
+    # 个人网站内容（从 personal_website 爬取得内容）
+    website_content = profile.get('websiteContent', profile.get('website_content', ''))
+    personal_website = profile.get('personalWebsite', profile.get('personal_website', ''))
+
+    if website_content and len(website_content.strip()) > 50:
+        lines.append("- 个人网站/GitHub/博客内容:")
+        # 如果有网站URL，先显示URL
+        if personal_website:
+            lines.append(f"  网站: {personal_website}")
+        # 限制内容长度，避免太长
+        content_text = website_content[:2000] if len(website_content) > 2000 else website_content
+        lines.append(f"  {content_text}")
+    elif personal_website:
+        # 只有URL但没有内容
+        lines.append(f"- 个人网站: {personal_website}")
 
     return '\n'.join(lines)
 
@@ -2116,6 +3389,860 @@ def api_generate_message(req: MessageGenerateRequest):
         print(f"❌ LLM消息生成失败: {e}")
         raise HTTPException(status_code=500, detail=f"LLM调用失败: {str(e)}")
 
+
+# ============ LinkedIn 个性化消息生成 API ============
+
+
+
+
+class LinkedInMessageRequest(_BaseModel):
+    candidate_id: int
+    extra_context: Optional[str] = None  # 用户粘贴的网站/论文等补充素材
+
+
+def _linkedin_greeting(name: str) -> str:
+    """LinkedIn 消息称呼"""
+    if not name:
+        return "Hi"
+    name_clean = name.strip()
+    # 中文名
+    if re.search(r'[\u4e00-\u9fff]', name_clean.split('(')[0].split('（')[0]):
+        cn_match = re.match(r'^([\u4e00-\u9fff]{2,4})', name_clean)
+        if cn_match:
+            cn_name = cn_match.group(1)
+            return f"{cn_name}您好" if len(cn_name) == 2 else f"{cn_name[0]}先生"
+        return "您好"
+    else:
+        first = name_clean.split()[0] if name_clean else "there"
+        return f"Hi {first}"
+
+
+@app.post("/api/generate-linkedin-message")
+def api_generate_linkedin_message(req: LinkedInMessageRequest):
+    """为单个候选人生成 LinkedIn Connection Request 消息"""
+    from openai import OpenAI
+
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == req.candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+
+        # 构建候选人上下文
+        lines = [f"候选人信息："]
+        lines.append(f"- 姓名: {candidate.name}")
+        lines.append(f"- 候选人来源: {candidate.source or '未知'}")
+        if candidate.github_url:
+            lines.append(f"- GitHub: {candidate.github_url}")
+        if candidate.current_company:
+            lines.append(f"- 当前公司/机构: {candidate.current_company}")
+        if candidate.current_title:
+            lines.append(f"- 当前职位: {candidate.current_title}")
+        if candidate.talent_tier:
+            lines.append(f"- 人才等级: {candidate.talent_tier}")
+
+        skills = candidate.skills
+        if skills:
+            if isinstance(skills, str):
+                try: skills = json.loads(skills)
+                except: skills = [skills]
+            if isinstance(skills, list) and skills:
+                lines.append(f"- 核心技能: {', '.join(skills[:8])}")
+
+        edu = candidate.education_details
+        if edu:
+            if isinstance(edu, str):
+                try: edu = json.loads(edu)
+                except: edu = None
+            if isinstance(edu, list):
+                edu_parts = []
+                for e in edu[:2]:
+                    if isinstance(e, dict):
+                        s = f"{e.get('school','')} {e.get('degree','')} {e.get('major','')}".strip()
+                        if s: edu_parts.append(s)
+                if edu_parts:
+                    lines.append(f"- 教育: {'; '.join(edu_parts)}")
+
+        work = candidate.work_experiences
+        if work:
+            if isinstance(work, str):
+                try: work = json.loads(work)
+                except: work = None
+            if isinstance(work, list):
+                lines.append("- 工作经历:")
+                for w in work[:3]:
+                    if isinstance(w, dict):
+                        c = w.get('company', '')
+                        t = w.get('title', w.get('position', ''))
+                        p = w.get('time', w.get('period', ''))
+                        if c: lines.append(f"  · {c} - {t} ({p})")
+
+        if candidate.ai_summary:
+            lines.append(f"- AI摘要: {candidate.ai_summary[:200]}")
+
+        profile_text = '\n'.join(lines)
+        greeting = _linkedin_greeting(candidate.name)
+        is_cn = bool(re.search(r'[\u4e00-\u9fff]', candidate.name.split('(')[0].split('（')[0]))
+        char_limit = "300个汉字" if is_cn else "300 characters"  # 提升到300字
+
+        extra_block = ""
+        if req.extra_context and req.extra_context.strip():
+            # 提高截断限制到 6000 字符（保留更多论文/项目细节）
+            extra_block = f"\n\n## 补充素材（来自候选人个人网站/论文等，请结合以下内容让消息更个性化）:\n{req.extra_context.strip()[:6000]}"
+
+        # 如果候选人数据库中有 website_content 且 extra_context 中没有，自动添加
+        if not extra_block and candidate.website_content and len(candidate.website_content.strip()) > 100:
+            extra_block = f"\n\n## 补充素材（来自候选人个人网站/论文等，请结合以下内容让消息更个性化）:\n{candidate.website_content.strip()[:6000]}"
+
+        user_content = f"""{profile_text}{extra_block}
+
+称呼指令：消息必须以"{greeting}"开头。
+
+重要要求：
+1. **消息要详细、具体、有深度**（目标长度：200-300字）
+2. 如果候选人有具体的论文、项目或研究成果，**务必在消息中明确提及2-3项重要成果**。
+3. 🚫🚫 **绝对禁止幻觉 (NO HALLUCINATION)** 🚫🚫：
+   - **核心红线**：只允许使用上方【候选人详细画像】或【补充素材】中确切存在的信息！
+   - **绝不允许** 瞎编乱造具体的论文名字、会议名字（如 ICLR/ACL）或开源项目名字（如 WavLLM）。
+   - 如果资料里没有具体的项目细节，就围绕他的**技术方向**或**公司**进行专业且真实的交流，宁可泛化，也绝对不要捏造具体的名词！
+4. 展示你对候选人研究领域的理解和欣赏，说明为什么这些真实存在的工作有启发性
+5. 避免使用"看到你的工作很感兴趣"这种空泛的说法，要具体到资料中的真实细节
+6. 消息长度控制在{char_limit}以内，尽量接近这个限制以提供足够信息
+7. **排版要求**：必须分 2-3 个短段落！不要把所有的要素都挤成一整块字！比如：称呼和破冰寒暄后换行，再说具体细节，最后目的再换行。
+
+请生成一条个性化、专业、客观且严谨的 LinkedIn Connection Request 邀请消息。"""
+
+        client = OpenAI(
+            api_key=os.getenv('DASHSCOPE_API_KEY'),
+            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+        )
+        model = os.getenv("MODEL_NAME", "qwen-max")
+
+        # 动态选择 Prompt（基于字段，非标签）
+        system_prompt = LINKEDIN_SYSTEM_PROMPT
+        tier = (candidate.talent_tier or '').strip()
+        if tier in ('B', 'C', 'D', ''):
+            system_prompt = LINKEDIN_CONNECT_ONLY_PROMPT
+
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_content}
+            ],
+            temperature=0.7,
+            timeout=30
+        )
+        message = response.choices[0].message.content.strip()
+
+        # 清理引号包裹
+        for q_open, q_close in [('"', '"'), ('「', '」'), ('"', '"'), ("'", "'")]:
+            if message.startswith(q_open) and message.endswith(q_close):
+                message = message[len(q_open):-len(q_close)]
+                break
+
+        # 保存到 greeting_drafts.linkedin（独立字段，不污染 communication_logs）
+        drafts = candidate.greeting_drafts or {}
+        if isinstance(drafts, str):
+            try: drafts = json.loads(drafts)
+            except: drafts = {}
+        drafts['linkedin'] = message
+        candidate.greeting_drafts = drafts
+        # 更新时间，确保列表刷新能看到变化
+        candidate.updated_at = datetime.now()
+        db.commit()
+
+        return {
+            "success": True,
+            "message": message,
+            "char_count": len(message),
+            "candidate_id": candidate.id,
+            "candidate_name": candidate.name,
+            "linkedin_url": candidate.linkedin_url,
+            "github_url": candidate.github_url,
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"❌ LinkedIn消息生成失败: {e}")
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"LLM调用失败: {str(e)}")
+    finally:
+        db.close()
+
+
+# 邮件生成的 Prompt 已提取到 prompts.py
+
+
+def _scrape_website_summary(url: str, max_chars: int = 4000) -> str:
+    """
+    抓取个人网站内容摘要。
+    处理各种异常情况，返回清理后的文本或空字符串。
+    """
+    if not url or not url.strip():
+        return ""
+
+    url = url.strip()
+    # 补全协议
+    if not url.startswith(('http://', 'https://')):
+        url = 'https://' + url
+
+    # 跳过不适合抓取的 URL
+    skip_domains = ['mp.weixin.qq.com', 'zhihu.com', 'twitter.com', 'x.com',
+                    'linkedin.com', 'github.com', 'scholar.google']
+    from urllib.parse import urlparse
+    try:
+        domain = urlparse(url).netloc.lower()
+        if any(skip in domain for skip in skip_domains):
+            return f"[网站链接: {url}，属于社交平台，未抓取内容]"
+    except:
+        pass
+
+    try:
+        import requests as req_lib
+        from bs4 import BeautifulSoup
+
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml',
+            'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+        }
+        resp = req_lib.get(url, timeout=10, headers=headers, allow_redirects=True,
+                          verify=False)
+        resp.raise_for_status()
+
+        content_type = resp.headers.get('Content-Type', '')
+        if 'html' not in content_type.lower() and 'text' not in content_type.lower():
+            return f"[网站链接: {url}，非 HTML 内容]"
+
+        soup = BeautifulSoup(resp.text, 'html.parser')
+
+        for tag in soup(['script', 'style', 'nav', 'footer', 'noscript', 'iframe',
+                         'svg', 'button', 'form', 'input']):
+            tag.decompose()
+
+        main_content = (soup.find('main') or soup.find('article') or
+                       soup.find(class_=re.compile(r'content|post|about|bio', re.I)) or
+                       soup.find('body'))
+
+        if main_content:
+            text = main_content.get_text(separator='\n', strip=True)
+            # If main content is too short but full page is long, use full page (valid for single-page academic sites)
+            full_text = soup.get_text(separator='\n', strip=True)
+            if len(text) < 2000 and len(full_text) > 3000:
+                text = full_text
+        else:
+            text = soup.get_text(separator='\n', strip=True)
+
+        lines = [re.sub(r'\s+', ' ', line).strip() for line in text.split('\n')]
+        lines = [l for l in lines if len(l) > 5]
+        text = '\n'.join(lines)
+
+        if len(text) < 30:
+            return f"[网站链接: {url}，内容过少无法提取]"
+
+        return text[:max_chars]
+
+    except Exception as e:
+        return f"[网站链接: {url}，抓取失败: {type(e).__name__}]"
+
+
+class EmailDraftRequest(BaseModel):
+    candidate_id: int
+    website_content: Optional[str] = None
+
+
+@app.post("/api/generate-email-draft")
+def api_generate_email_draft(req: EmailDraftRequest):
+    """为候选人生成个性化邮件草稿 (Subject + Body)"""
+    from openai import OpenAI
+
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == req.candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        if not candidate.email:
+            raise HTTPException(status_code=400, detail="候选人没有邮箱，无法生成邮件")
+
+        # 1. 抓取网站内容
+        website_text = req.website_content or ""
+        if not website_text and candidate.personal_website:
+            website_text = _scrape_website_summary(candidate.personal_website, max_chars=4000)
+
+        # 2. 构建候选人上下文
+        lines = ["候选人信息："]
+        lines.append(f"- 姓名: {candidate.name}")
+        lines.append(f"- 邮箱: {candidate.email}")
+        if candidate.github_url:
+            lines.append(f"- GitHub: {candidate.github_url}")
+        if candidate.personal_website:
+            lines.append(f"- 个人网站: {candidate.personal_website}")
+        if candidate.current_company:
+            lines.append(f"- 当前公司/机构: {candidate.current_company}")
+        if candidate.current_title:
+            lines.append(f"- 当前职位: {candidate.current_title}")
+        if candidate.talent_tier:
+            lines.append(f"- 人才等级: {candidate.talent_tier}")
+        if candidate.experience_years:
+            lines.append(f"- 工作年限: {candidate.experience_years}年")
+
+        skills = candidate.skills
+        if skills:
+            if isinstance(skills, str):
+                try: skills = json.loads(skills)
+                except: skills = [skills]
+            if isinstance(skills, list) and skills:
+                lines.append(f"- 核心技能: {', '.join(skills[:10])}")
+
+        edu = candidate.education_details
+        if edu:
+            if isinstance(edu, str):
+                try: edu = json.loads(edu)
+                except: edu = None
+            if isinstance(edu, list):
+                edu_parts = []
+                for e in edu[:2]:
+                    if isinstance(e, dict):
+                        s = f"{e.get('school','')} {e.get('degree','')} {e.get('major','')}".strip()
+                        if s: edu_parts.append(s)
+                if edu_parts:
+                    lines.append(f"- 教育: {'; '.join(edu_parts)}")
+
+        work = candidate.work_experiences
+        if work:
+            if isinstance(work, str):
+                try: work = json.loads(work)
+                except: work = None
+            if isinstance(work, list):
+                lines.append("- 工作经历:")
+                for w in work[:3]:
+                    if isinstance(w, dict):
+                        c = w.get('company', '')
+                        t = w.get('title', w.get('position', ''))
+                        p = w.get('time', w.get('period', ''))
+                        desc = w.get('description', '')[:100]
+                        if c:
+                            lines.append(f"  · {c} - {t} ({p})")
+                            if desc:
+                                lines.append(f"    {desc}")
+
+        if candidate.ai_summary:
+            lines.append(f"- AI 评价: {candidate.ai_summary[:300]}")
+
+        profile_text = '\n'.join(lines)
+
+        # 3. 网站内容块
+        website_block = ""
+        if website_text and not website_text.startswith("[网站链接:"):
+            website_block = f"\n\n## 候选人个人网站内容摘要\n以下是从 {candidate.personal_website} 抓取到的内容，请仔细阅读并在邮件中引用具体的项目/研究/博客话题：\n\n{website_text}"
+        elif website_text:
+            website_block = f"\n\n## 候选人网站\n{website_text}"
+
+        # 4. 组装 user prompt
+        user_content = f"""{profile_text}{website_block}
+
+请为这位候选人生成一封个性化邮件（Subject + Body）。"""
+
+        # 5. 调用 LLM
+        client = OpenAI(
+            api_key=os.getenv('DASHSCOPE_API_KEY'),
+            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+        )
+        model = os.getenv("MODEL_NAME", "qwen-max")
+
+        # 动态选择 Prompt（V4: 基于数据可用性，4 分类）
+        website = (candidate.personal_website or '').lower()
+        has_scholar = 'scholar.google' in website or '.edu' in website
+        if not has_scholar and candidate.structured_tags and isinstance(candidate.structured_tags, dict):
+            if candidate.structured_tags.get('google_scholar'):
+                has_scholar = True
+        if has_scholar:
+            system_prompt = EMAIL_PROMPT_ACADEMIC
+        elif candidate.personal_website:
+            system_prompt = EMAIL_PROMPT_HAS_WEBSITE
+        elif candidate.github_url:
+            system_prompt = EMAIL_PROMPT_GITHUB_ONLY
+        else:
+            system_prompt = EMAIL_PROMPT_EMAIL_ONLY
+
+        # 为候选人注入 top_repos 到 user prompt
+        if candidate.structured_tags and isinstance(candidate.structured_tags, dict):
+            top_repos = candidate.structured_tags.get('top_repos', '')
+            if top_repos:
+                user_content += f"\n\n## GitHub Top Repos\n{top_repos}"
+
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_content}
+            ],
+            temperature=0.7,
+            timeout=60
+        )
+        raw_output = response.choices[0].message.content.strip()
+
+        # 6. 解析 Subject 和 Body
+        subject = ""
+        body = raw_output
+        if "SUBJECT:" in raw_output and "BODY:" in raw_output:
+            parts = raw_output.split("BODY:", 1)
+            subject_part = parts[0]
+            body = parts[1].strip() if len(parts) > 1 else ""
+            if "SUBJECT:" in subject_part:
+                subject = subject_part.split("SUBJECT:", 1)[1].strip()
+                subject = subject.split('\n')[0].strip()
+
+        for q_open, q_close in [('「', '」'), ('"', '"'), ('"', '"')]:
+            if subject.startswith(q_open) and subject.endswith(q_close):
+                subject = subject[len(q_open):-len(q_close)]
+                break
+
+        # 7. 保存到 greeting_drafts.email
+        drafts = candidate.greeting_drafts or {}
+        if isinstance(drafts, str):
+            try: drafts = json.loads(drafts)
+            except: drafts = {}
+        drafts['email'] = {"subject": subject, "body": body}
+        candidate.greeting_drafts = drafts
+        candidate.updated_at = datetime.now()
+        db.commit()
+
+        return {
+            "success": True,
+            "subject": subject,
+            "body": body,
+            "char_count": len(body),
+            "candidate_id": candidate.id,
+            "candidate_name": candidate.name,
+            "email": candidate.email,
+            "website_scraped": bool(website_text and not website_text.startswith("[网站链接:")),
+            "website_summary_length": len(website_text) if website_text else 0,
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"❌ Email草稿生成失败: {e}")
+        import traceback
+        traceback.print_exc()
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"LLM调用失败: {str(e)}")
+    finally:
+        db.close()
+
+
+# ============================================================
+# 📧 Email Outreach CRUD — 邮件生命周期管理
+# ============================================================
+
+@app.get("/api/candidate/{candidate_id}/emails")
+def api_get_candidate_emails(candidate_id: int):
+    """获取候选人所有邮件记录（按创建时间倒序）"""
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+
+        emails = db.query(EmailOutreach).filter(
+            EmailOutreach.candidate_id == candidate_id
+        ).order_by(EmailOutreach.created_at.desc()).all()
+
+        return {
+            "success": True,
+            "candidate_id": candidate_id,
+            "candidate_name": candidate.name,
+            "emails": [{
+                "id": e.id,
+                "pipeline_stage": e.pipeline_stage,
+                "subject": e.subject,
+                "body": e.body,
+                "status": e.status,
+                "to_email": e.to_email,
+                "sent_at": str(e.sent_at) if e.sent_at else None,
+                "created_at": str(e.created_at) if e.created_at else None,
+                "updated_at": str(e.updated_at) if e.updated_at else None,
+            } for e in emails]
+        }
+    finally:
+        db.close()
+
+
+class EmailGenerateRequest(BaseModel):
+    pipeline_stage: Optional[str] = None
+    extra_context: Optional[str] = None
+
+
+@app.post("/api/candidate/{candidate_id}/emails/generate")
+def api_generate_candidate_email(candidate_id: int, req: EmailGenerateRequest = EmailGenerateRequest()):
+    """为候选人生成邮件草稿，保存到 email_outreach 表"""
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+        if not candidate.email:
+            raise HTTPException(status_code=400, detail="候选人没有邮箱地址")
+
+        # 1. 构建候选人信息
+        profile_parts = [f"姓名: {candidate.name}"]
+        if candidate.current_company:
+            profile_parts.append(f"当前公司: {candidate.current_company}")
+        if candidate.current_title:
+            profile_parts.append(f"当前职位: {candidate.current_title}")
+        if candidate.experience_years:
+            profile_parts.append(f"经验: {candidate.experience_years}年")
+        if candidate.education_level:
+            profile_parts.append(f"学历: {candidate.education_level}")
+        if candidate.education_details:
+            edu = candidate.education_details
+            if isinstance(edu, str):
+                try: edu = json.loads(edu)
+                except: edu = []
+            if edu:
+                schools = [e.get('school', '') for e in edu if isinstance(e, dict)]
+                if schools:
+                    profile_parts.append(f"学校: {', '.join(schools)}")
+        if candidate.skills:
+            skills = candidate.skills
+            if isinstance(skills, str):
+                try: skills = json.loads(skills)
+                except: skills = []
+            if skills:
+                profile_parts.append(f"技能: {', '.join(skills[:15])}")
+        if candidate.github_url:
+            profile_parts.append(f"GitHub: {candidate.github_url}")
+
+        profile_text = '\n'.join(profile_parts)
+
+        # 2. 抓取个人网站（如有）
+        website_text = ""
+        if candidate.personal_website:
+            website_text = _scrape_website_summary(candidate.personal_website)
+
+        website_block = ""
+        if website_text and not website_text.startswith("[网站链接:"):
+            website_block = f"\n\n--- 个人网站内容摘要 ---\n{website_text}"
+        elif website_text:
+            website_block = f"\n\n{website_text}"
+
+        # 3. 补充素材
+        extra_block = ""
+        if req.extra_context:
+            extra_block = f"\n\n--- 补充素材 ---\n{req.extra_context}"
+
+        # 4. 组装 user prompt
+        user_content = f"""{profile_text}{website_block}{extra_block}
+
+请为这位候选人生成一封个性化邮件（Subject + Body）。"""
+
+        # 5. 调用 LLM
+        from openai import OpenAI
+        client = OpenAI(
+            api_key=os.getenv('DASHSCOPE_API_KEY'),
+            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+        )
+        model = os.getenv("MODEL_NAME", "qwen-max")
+
+        # 动态选择 Prompt（V4: 基于数据可用性，4 分类）
+        website = (candidate.personal_website or '').lower()
+        has_scholar = 'scholar.google' in website or '.edu' in website
+        if not has_scholar and candidate.structured_tags and isinstance(candidate.structured_tags, dict):
+            if candidate.structured_tags.get('google_scholar'):
+                has_scholar = True
+        if has_scholar:
+            system_prompt = EMAIL_PROMPT_ACADEMIC
+        elif candidate.personal_website:
+            system_prompt = EMAIL_PROMPT_HAS_WEBSITE
+        elif candidate.github_url:
+            system_prompt = EMAIL_PROMPT_GITHUB_ONLY
+        else:
+            system_prompt = EMAIL_PROMPT_EMAIL_ONLY
+
+        # 为候选人注入 top_repos 到 user prompt
+        if candidate.structured_tags and isinstance(candidate.structured_tags, dict):
+            top_repos = candidate.structured_tags.get('top_repos', '')
+            if top_repos:
+                user_content += f"\n\n## GitHub Top Repos\n{top_repos}"
+
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_content}
+            ],
+            temperature=0.7,
+            timeout=60
+        )
+        raw_output = response.choices[0].message.content.strip()
+
+        # 6. 解析 Subject 和 Body
+        subject = ""
+        body = raw_output
+        if "SUBJECT:" in raw_output and "BODY:" in raw_output:
+            parts = raw_output.split("BODY:", 1)
+            body = parts[1].strip() if len(parts) > 1 else raw_output
+            subject_part = parts[0].strip()
+            if "SUBJECT:" in subject_part:
+                subject = subject_part.split("SUBJECT:", 1)[1].strip()
+                subject = subject.split('\n')[0].strip()
+
+        for q_open, q_close in [('「', '」'), ('"', '"'), ('"', '"')]:
+            if subject.startswith(q_open) and subject.endswith(q_close):
+                subject = subject[len(q_open):-len(q_close)]
+                break
+
+        # 7. 保存到 email_outreach 表
+        email_record = EmailOutreach(
+            candidate_id=candidate.id,
+            pipeline_stage=req.pipeline_stage or candidate.pipeline_stage or 'new',
+            subject=subject,
+            body=body,
+            status='draft',
+            to_email=candidate.email,
+            created_at=datetime.now(),
+            updated_at=datetime.now(),
+        )
+        db.add(email_record)
+        db.commit()
+        db.refresh(email_record)
+
+        return {
+            "success": True,
+            "email": {
+                "id": email_record.id,
+                "pipeline_stage": email_record.pipeline_stage,
+                "subject": email_record.subject,
+                "body": email_record.body,
+                "status": email_record.status,
+                "to_email": email_record.to_email,
+                "created_at": str(email_record.created_at),
+            }
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"❌ Email生成失败: {e}")
+        import traceback
+        traceback.print_exc()
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"邮件生成失败: {str(e)}")
+    finally:
+        db.close()
+
+
+class EmailUpdateRequest(BaseModel):
+    subject: Optional[str] = None
+    body: Optional[str] = None
+    status: Optional[str] = None  # draft / approved / sent / rejected
+
+
+@app.put("/api/email-outreach/{email_id}")
+def api_update_email_outreach(email_id: int, req: EmailUpdateRequest):
+    """更新邮件状态或内容"""
+    db = SessionLocal()
+    try:
+        record = db.query(EmailOutreach).filter(EmailOutreach.id == email_id).first()
+        if not record:
+            raise HTTPException(status_code=404, detail="邮件记录不存在")
+
+        if req.subject is not None:
+            record.subject = req.subject
+        if req.body is not None:
+            record.body = req.body
+        if req.status is not None:
+            valid_statuses = ['draft', 'approved', 'sent', 'rejected']
+            if req.status not in valid_statuses:
+                raise HTTPException(status_code=400, detail=f"无效状态, 可选: {valid_statuses}")
+            record.status = req.status
+            if req.status == 'sent':
+                record.sent_at = datetime.now()
+
+        record.updated_at = datetime.now()
+        db.commit()
+
+        return {
+            "success": True,
+            "email": {
+                "id": record.id,
+                "candidate_id": record.candidate_id,
+                "subject": record.subject,
+                "body": record.body,
+                "status": record.status,
+                "sent_at": str(record.sent_at) if record.sent_at else None,
+                "updated_at": str(record.updated_at),
+            }
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+@app.post("/api/email-outreach/{email_id}/send")
+def api_send_email_outreach(email_id: int):
+    """通过 Gmail API 发送已批准的邮件"""
+    db = SessionLocal()
+    try:
+        record = db.query(EmailOutreach).filter(EmailOutreach.id == email_id).first()
+        if not record:
+            raise HTTPException(status_code=404, detail="邮件记录不存在")
+
+        if record.status != 'approved':
+            raise HTTPException(status_code=400, detail=f"只能发送已批准的邮件，当前状态: {record.status}")
+
+        if not record.to_email:
+            raise HTTPException(status_code=400, detail="收件人邮箱为空")
+
+        # Gmail API 发送
+        import base64
+        from email.mime.text import MIMEText
+        from email.mime.multipart import MIMEMultipart
+
+        credentials_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'credentials.json')
+        token_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gmail_token.json')
+        SCOPES = ['https://www.googleapis.com/auth/gmail.send']
+
+        try:
+            from google.auth.transport.requests import Request as GRequest
+            from google.oauth2.credentials import Credentials
+            from google_auth_oauthlib.flow import InstalledAppFlow
+            from googleapiclient.discovery import build
+        except ImportError:
+            raise HTTPException(status_code=500,
+                detail="缺少 Google API 依赖，请安装: pip install google-auth-oauthlib google-api-python-client")
+
+        if not os.path.exists(credentials_file):
+            raise HTTPException(status_code=500, detail="未找到 credentials.json")
+
+        creds = None
+        if os.path.exists(token_file):
+            creds = Credentials.from_authorized_user_file(token_file, SCOPES)
+
+        if not creds or not creds.valid:
+            if creds and creds.expired and creds.refresh_token:
+                creds.refresh(GRequest())
+                with open(token_file, 'w') as f:
+                    f.write(creds.to_json())
+            else:
+                raise HTTPException(status_code=401,
+                    detail="Gmail 需要授权，请先运行: python send_approved_emails.py --dry-run 完成首次授权")
+
+        service = build('gmail', 'v1', credentials=creds)
+
+        # 构建邮件
+        message = MIMEMultipart('alternative')
+        message['To'] = record.to_email
+        message['Subject'] = record.subject
+
+        text_part = MIMEText(record.body, 'plain', 'utf-8')
+        message.attach(text_part)
+
+        html_body = record.body.replace('\n\n', '</p><p>').replace('\n', '<br>')
+        html_body = f"""<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; line-height: 1.6; color: #333;">
+<p>{html_body}</p>
+</div>"""
+        html_part = MIMEText(html_body, 'html', 'utf-8')
+        message.attach(html_part)
+
+        raw = base64.urlsafe_b64encode(message.as_bytes()).decode()
+        result = service.users().messages().send(
+            userId='me', body={'raw': raw}
+        ).execute()
+
+        # 更新状态
+        record.status = 'sent'
+        record.sent_at = datetime.now()
+        record.updated_at = datetime.now()
+        db.commit()
+
+        # 记录沟通日志 + 标记 email 渠道
+        candidate = db.query(Candidate).filter(Candidate.id == record.candidate_id).first()
+        if candidate:
+            # 标记已触达
+            channels = candidate.contacted_channels or {}
+            if isinstance(channels, list):
+                channels = {ch: '' for ch in channels}
+            channels['email'] = datetime.now().strftime('%Y-%m-%d %H:%M')
+            candidate.contacted_channels = channels
+
+            # 更新 pipeline
+            if candidate.pipeline_stage in (None, '', 'new'):
+                candidate.pipeline_stage = 'contacted'
+
+            # 添加沟通记录
+            logs = candidate.communication_logs or []
+            if isinstance(logs, str):
+                try: logs = json.loads(logs)
+                except: logs = []
+            logs.append({
+                "channel": "email",
+                "message": f"[Gmail] Subject: {record.subject}",
+                "direction": "我发的",
+                "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M'),
+            })
+            candidate.communication_logs = logs
+            candidate.last_communication_at = datetime.now().strftime('%Y-%m-%d %H:%M')
+            candidate.updated_at = datetime.now()
+
+            # ========== 新系统：创建 outreach_records 记录 ==========
+            try:
+                from outreach_service import OutreachService, OutreachChannel, OutreachType, OutreachStatus
+                outreach_record = OutreachService.create_outreach(
+                    candidate_id=candidate.id,
+                    channel=OutreachChannel.EMAIL,
+                    outreach_type=OutreachType.EMAIL_INITIAL,
+                    content=record.body,
+                    subject=record.subject,
+                    status=OutreachStatus.SENT,
+                    sent_at=datetime.now(),
+                    meta_data={
+                        "email_outreach_id": record.id,
+                        "to_email": record.to_email,
+                        "gmail_message_id": result.get('id', ''),
+                        "source": "gmail_api"
+                    }
+                )
+
+                # 更新 candidates 表的新字段
+                candidate.outreach_count = OutreachService.get_candidate_outreach_count(
+                    candidate.id, count_only=True
+                )
+                candidate.last_outreach_channel = OutreachChannel.EMAIL
+                candidate.last_outreach_date = datetime.now()
+
+                print(f"✅ 已创建outreach记录: record_id={outreach_record.id}, email_id={record.id}")
+            except Exception as e:
+                print(f"⚠️ 创建outreach记录失败（旧系统仍可用）: {e}")
+            # ========== 新系统结束 ==========
+
+            db.commit()
+
+        return {
+            "success": True,
+            "message_id": result.get('id', ''),
+            "email_id": record.id,
+            "to_email": record.to_email,
+            "status": "sent",
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"❌ Gmail发送失败: {e}")
+        import traceback
+        traceback.print_exc()
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"发送失败: {str(e)}")
+    finally:
+        db.close()
 
 
 @app.post("/api/comm-log")
@@ -2269,6 +4396,107 @@ def api_pipeline_update(req: PipelineUpdateRequest):
         db.close()
 
 
+@app.post("/api/candidate/{candidate_id}/mark-contacted")
+def api_mark_contacted(candidate_id: int, channel: str = Body(..., embed=True)):
+    """标记候选人已在某渠道触达（toggle：再次点击取消标记）"""
+    VALID_CHANNELS = {"linkedin", "maimai", "email", "wechat"}
+    if channel not in VALID_CHANNELS:
+        raise HTTPException(status_code=400, detail=f"无效渠道: {channel}，可选: {VALID_CHANNELS}")
+
+    db = SessionLocal()
+    try:
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+
+        channels = candidate.contacted_channels or {}
+        if isinstance(channels, str):
+            try: channels = json.loads(channels)
+            except: channels = {}
+        # Migrate from old array format to dict
+        if isinstance(channels, list):
+            channels = {ch: datetime.now().strftime('%Y-%m-%d %H:%M') for ch in channels}
+
+        is_adding = channel not in channels  # 判断是添加还是删除
+
+        if is_adding:
+            channels[channel] = datetime.now().strftime('%Y-%m-%d %H:%M')  # toggle on
+        else:
+            del channels[channel]  # toggle off
+
+        candidate.contacted_channels = channels
+
+        # ✅ 重要：告诉 SQLAlchemy JSON 字段已修改
+        from sqlalchemy.orm.attributes import flag_modified
+        flag_modified(candidate, "contacted_channels")
+
+        # 自动推进 pipeline: 有渠道 → contacted，清空 → new
+        if channels and candidate.pipeline_stage in (None, 'new'):
+            candidate.pipeline_stage = 'contacted'
+        elif not channels and candidate.pipeline_stage == 'contacted':
+            candidate.pipeline_stage = 'new'
+
+        candidate.updated_at = datetime.now()
+
+        # ========== 新系统：创建 outreach_records 记录（toggle on 时） ==========
+        if is_adding:  # ✅ 修复：只在添加时创建记录
+            try:
+                from outreach_service import OutreachService, OutreachChannel, OutreachType, OutreachStatus
+
+                # 根据渠道确定触达类型
+                outreach_type_map = {
+                    'linkedin': OutreachType.LINKEDIN_CONNECT,
+                    'maimai': OutreachType.MAIMAI_FRIEND_REQUEST,
+                    'email': OutreachType.EMAIL_INITIAL,
+                    'wechat': OutreachType.WECHAT_CONNECT,
+                }
+
+                current_time = datetime.now()
+                outreach_record = OutreachService.create_outreach(
+                    candidate_id=candidate.id,
+                    channel=channel,
+                    outreach_type=outreach_type_map.get(channel, 'contact'),
+                    content=f"通过系统标记为{channel}已触达",
+                    status=OutreachStatus.SENT,
+                    # ✅ 注意：create_outreach 不接受 sent_at 参数，需要单独设置
+                    meta_data={"source": "mark_contacted_api"}
+                )
+
+                # ✅ 单独设置 sent_at 字段
+                outreach_record.sent_at = current_time
+                db.add(outreach_record)
+                db.flush()  # 确保记录被持久化
+
+                # 更新 candidates 表的新字段
+                candidate.outreach_count = OutreachService.get_candidate_outreach_count(
+                    candidate.id, count_only=True
+                )
+                candidate.last_outreach_channel = channel
+                candidate.last_outreach_date = current_time
+
+                print(f"✅ 已创建outreach记录: record_id={outreach_record.id}, channel={channel}, candidate={candidate.name}")
+            except Exception as e:
+                print(f"⚠️ 创建outreach记录失败（旧系统仍可用）: {e}")
+                import traceback
+                traceback.print_exc()
+        # ========== 新系统结束 ==========
+
+        db.commit()
+
+        return {
+            "success": True,
+            "contacted_channels": channels,
+            "pipeline_stage": candidate.pipeline_stage,
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
 @app.get("/api/pipeline/follow-ups")
 def api_follow_ups(date: str = None, include_overdue: bool = True):
     """获取需要跟进的候选人列表"""
@@ -2365,6 +4593,1686 @@ def api_pipeline_stats():
         db.close()
 
 
+
+# ============ 批处理 API (供 React 前端调用) ============
+
+@app.get("/api/batch/stats")
+def batch_stats():
+    """批处理任务统计"""
+    from database import ResumeTask
+    db = SessionLocal()
+    try:
+        pending = db.query(ResumeTask).filter(ResumeTask.status == 'pending').count()
+        processing = db.query(ResumeTask).filter(ResumeTask.status == 'processing').count()
+        done = db.query(ResumeTask).filter(ResumeTask.status == 'done').count()
+        failed = db.query(ResumeTask).filter(ResumeTask.status == 'failed').count()
+        return {"pending": pending, "processing": processing, "done": done, "failed": failed}
+    finally:
+        db.close()
+
+
+@app.get("/api/batch/tasks")
+def batch_tasks(status: str = "all", limit: int = 30):
+    """获取最近任务列表"""
+    from database import ResumeTask
+    db = SessionLocal()
+    try:
+        q = db.query(ResumeTask)
+        if status != "all":
+            q = q.filter(ResumeTask.status == status)
+        tasks = q.order_by(ResumeTask.id.desc()).limit(limit).all()
+
+        results = []
+        for t in tasks:
+            cand_name = None
+            if t.status == 'done' and t.candidate_id:
+                cand = db.query(Candidate).filter(Candidate.id == t.candidate_id).first()
+                if cand:
+                    cand_name = cand.name
+            results.append({
+                "id": t.id,
+                "file_name": t.file_name,
+                "status": t.status,
+                "candidate_id": t.candidate_id,
+                "candidate_name": cand_name,
+                "error_message": t.error_message[:80] if t.error_message else None,
+                "created_at": str(t.created_at) if hasattr(t, 'created_at') and t.created_at else None,
+            })
+        return {"tasks": results}
+    finally:
+        db.close()
+
+
+@app.post("/api/batch/import-folder")
+def batch_import_folder(folder_path: str = ""):
+    """批量导入简历文件夹"""
+    import shutil, uuid, glob
+    from database import ResumeTask
+    if not folder_path or not os.path.isdir(folder_path):
+        raise HTTPException(status_code=400, detail="文件夹路径不存在")
+
+    supported_ext = ['*.pdf', '*.txt', '*.jpg', '*.jpeg', '*.png', '*.webp']
+    files = []
+    for ext in supported_ext:
+        files.extend(glob.glob(os.path.join(folder_path, ext)))
+
+    excluded = ['论文', 'paper', 'arxiv', '1908.', '1909.', '2020.', '2021.']
+    resume_files = [f for f in files if not any(kw.lower() in os.path.basename(f).lower() for kw in excluded)]
+
+    UPLOAD_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "uploads")
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+    db = SessionLocal()
+    try:
+        existing = set(t.file_name for t in db.query(ResumeTask).all() if t.file_name)
+        added = 0
+        skipped = 0
+
+        for filepath in resume_files:
+            filename = os.path.basename(filepath)
+            if filename in existing:
+                skipped += 1
+                continue
+            ext = os.path.splitext(filename)[1].lower().strip('.')
+            unique_name = f"{uuid.uuid4().hex[:8]}_{filename}"
+            dest_path = os.path.join(UPLOAD_DIR, unique_name)
+            try:
+                shutil.copy2(filepath, dest_path)
+                task = ResumeTask(file_path=dest_path, file_name=filename, file_type=ext, status='pending')
+                db.add(task)
+                added += 1
+            except:
+                pass
+
+        db.commit()
+        return {"success": True, "added": added, "skipped": skipped, "total_files": len(resume_files)}
+    finally:
+        db.close()
+
+
+@app.post("/api/batch/retry-failed")
+def batch_retry_failed():
+    """重试失败任务"""
+    from database import ResumeTask
+    db = SessionLocal()
+    try:
+        failed = db.query(ResumeTask).filter(ResumeTask.status == 'failed').all()
+        count = len(failed)
+        for t in failed:
+            t.status = 'pending'
+            t.error_message = None
+            t.started_at = None
+        db.commit()
+        return {"success": True, "retried": count}
+    finally:
+        db.close()
+
+
+@app.post("/api/batch/clear-done")
+def batch_clear_done():
+    """清理已完成任务"""
+    from database import ResumeTask
+    db = SessionLocal()
+    try:
+        count = db.query(ResumeTask).filter(ResumeTask.status == 'done').delete()
+        db.commit()
+        return {"success": True, "cleared": count}
+    finally:
+        db.close()
+
+
+# ============ 数据分析 API (供 React 前端调用) ============
+
+@app.get("/api/analytics/overview")
+def analytics_overview():
+    """数据分析全量数据"""
+    from sqlalchemy import func
+    db = SessionLocal()
+    try:
+        # 1) Overview metrics
+        cand_count = db.query(Candidate).count()
+
+        # 有效触达：与工作台保持一致的计算逻辑
+        from sqlalchemy import or_, and_
+        effective_outreach = db.query(Candidate).filter(
+            or_(
+                Candidate.is_friend == 1,
+                and_(Candidate.phone != None, Candidate.phone != ''),
+                and_(Candidate.wechat_id != None, Candidate.wechat_id != ''),
+                Candidate.pipeline_stage.in_(['contacted', 'replied', 'wechat_connected', 'in_pipeline']),
+                Candidate.last_communication_at != None,
+                and_(
+                    Candidate.communication_logs != None,
+                    Candidate.communication_logs != '[]',
+                    Candidate.communication_logs != 'null'
+                )
+            )
+        ).count()
+
+        # 紧急JD数量（urgency >= 2）
+        urgent_jds_count = db.query(Job).filter(
+            Job.is_active == 1,
+            Job.urgency >= 2
+        ).count()
+
+        job_count = db.query(Job).count()
+        try:
+            from database import MatchRecord
+            match_count = db.query(MatchRecord).count()
+        except:
+            match_count = 0
+
+        # 2) Company distribution (top 20) — 使用标准化公司名分组
+        company_stats = db.query(
+            func.coalesce(Candidate.company_normalized, Candidate.current_company), func.count(Candidate.id)
+        ).filter(
+            Candidate.current_company != None, Candidate.current_company != ''
+        ).group_by(func.coalesce(Candidate.company_normalized, Candidate.current_company)).order_by(func.count(Candidate.id).desc()).all()
+
+        friend_company_stats = db.query(
+            func.coalesce(Candidate.company_normalized, Candidate.current_company), func.count(Candidate.id)
+        ).filter(
+            Candidate.current_company != None, Candidate.current_company != '',
+            Candidate.is_friend == 1
+        ).group_by(func.coalesce(Candidate.company_normalized, Candidate.current_company)).order_by(func.count(Candidate.id).desc()).all()
+
+        # 3) University distribution
+        all_edu_candidates = db.query(Candidate).filter(Candidate.education_details != None).all()
+        school_counter = {}
+        hist_company_counter = {}
+        for cand in all_edu_candidates:
+            if cand.education_details and isinstance(cand.education_details, list):
+                for edu in cand.education_details:
+                    school = edu.get('school', '') or ''
+                    school = school.strip()
+                    if school and school[0] in '·、-':
+                        school = school[1:].strip()
+                    if school and len(school) >= 2:
+                        school_counter[school] = school_counter.get(school, 0) + 1
+            if cand.work_experiences and isinstance(cand.work_experiences, list):
+                for work in cand.work_experiences:
+                    company = work.get('company', '') or ''
+                    company = company.strip()
+                    if company and len(company) >= 2:
+                        hist_company_counter[company] = hist_company_counter.get(company, 0) + 1
+
+        # 4) Channel analysis
+        from collections import defaultdict
+        channel_data = db.query(
+            Candidate.source, Candidate.phone, Candidate.email,
+            Candidate.linkedin_url, Candidate.github_url,
+            Candidate.personal_website, Candidate.is_friend,
+            Candidate.pipeline_stage, Candidate.wechat_id,
+            Candidate.last_communication_at, Candidate.communication_logs
+        ).all()
+
+        channel_stats = defaultdict(lambda: {
+            'total': 0, 'phone': 0, 'email': 0, 'linkedin': 0, 'github': 0, 'website': 0, 'friend': 0, 'reachable': 0,
+            'funnel': {'discovery': 0, 'contacted': 0, 'replied': 0, 'phone': 0, 'effective_outreach': 0}
+        })
+        overall_funnel = {'discovery': 0, 'contacted': 0, 'replied': 0, 'phone': 0, 'effective_outreach': 0}
+
+        for src, phone, email, linkedin, github, website, is_friend, stage, wechat_id, last_comm_at, comm_logs in channel_data:
+            # 仅取第一渠道 (例如 "github, linkedin" -> "github")
+            ch = src.split(',')[0].strip() if src else '未知'
+            channel_stats[ch]['total'] += 1
+            if phone: channel_stats[ch]['phone'] += 1
+            if email: channel_stats[ch]['email'] += 1
+            if linkedin: channel_stats[ch]['linkedin'] += 1
+            if github: channel_stats[ch]['github'] += 1
+            if website: channel_stats[ch]['website'] += 1
+            if is_friend == 1: channel_stats[ch]['friend'] += 1
+
+            # 有效可联: 有邮箱 OR 有LinkedIn OR 有手机 OR 已加好友 (去重)
+            if any([email, linkedin, phone, is_friend == 1]):
+                channel_stats[ch]['reachable'] += 1
+
+            # 触达转化漏斗 (累计)
+            st = (stage or 'new').lower()
+            # 1. 新发现 (Discovery) - 全部进入
+            channel_stats[ch]['funnel']['discovery'] += 1
+            overall_funnel['discovery'] += 1
+
+            # 2. 已触达 (Contacted) - 除了 new 以外的所有阶段
+            if st != 'new':
+                channel_stats[ch]['funnel']['contacted'] += 1
+                overall_funnel['contacted'] += 1
+
+            # 3. 已回复 (Replied) - replied, wechat_connected, in_pipeline, closed
+            if st in ['replied', 'wechat_connected', 'in_pipeline', 'closed']:
+                channel_stats[ch]['funnel']['replied'] += 1
+                overall_funnel['replied'] += 1
+
+            # 4. 已有电话 (Phone) - 有手机号
+            if phone:
+                channel_stats[ch]['funnel']['phone'] += 1
+                overall_funnel['phone'] += 1
+
+            # 5. 有效触达 (Effective Outreach) - 与工作台完全一致的逻辑
+            # 工作台SQL: is_friend=1 OR 有手机 OR 有微信 OR pipeline_stage在特定阶段 OR 有沟通时间 OR 有沟通记录
+            is_effective = (
+                is_friend == 1 or
+                (phone and phone.strip() != '') or
+                (wechat_id and wechat_id.strip() != '') or
+                st in ['contacted', 'replied', 'wechat_connected', 'in_pipeline'] or
+                last_comm_at is not None or
+                (comm_logs and comm_logs.strip() not in ['[]', 'null', '', '{}'])
+            )
+            if is_effective:
+                channel_stats[ch]['funnel']['effective_outreach'] += 1
+                overall_funnel['effective_outreach'] += 1
+
+        sorted_channels = sorted(channel_stats.items(), key=lambda x: x[1]['total'], reverse=True)
+
+        # 5) Talent tier
+        TIER_ORDER = ['S', 'A', 'B+', 'B', 'C']
+        tier_data = db.query(Candidate.source, Candidate.talent_tier).all()
+        overall_tier = {}
+        channel_tier = {}
+        for src, tier in tier_data:
+            # 仅取第一渠道
+            ch = src.split(',')[0].strip() if src else '未知'
+            t = tier if tier and tier in TIER_ORDER else '未评级'
+            overall_tier[t] = overall_tier.get(t, 0) + 1
+            if ch not in channel_tier:
+                channel_tier[ch] = {}
+            channel_tier[ch][t] = channel_tier[ch].get(t, 0) + 1
+
+        # 6) JD analysis
+        all_jobs = db.query(Job).filter(Job.is_active == 1).all()
+        job_company_counter = {}
+        role_counter = {}
+        tech_domain_counter = {}
+        for job in all_jobs:
+            company = job.company or "未知"
+            job_company_counter[company] = job_company_counter.get(company, 0) + 1
+            if job.structured_tags:
+                try:
+                    tags = json.loads(job.structured_tags) if isinstance(job.structured_tags, str) else job.structured_tags
+                    role = tags.get("role_type", "其他")
+                    role_counter[role] = role_counter.get(role, 0) + 1
+                    for d in tags.get("tech_domain", []):
+                        tech_domain_counter[d] = tech_domain_counter.get(d, 0) + 1
+                except:
+                    pass
+
+        return {
+            "success": True,
+            "overview": {"candidates": cand_count, "effective_outreach": effective_outreach, "jobs": job_count, "urgent_jds": urgent_jds_count},
+            "company_top20": [{"company": c, "count": n} for c, n in company_stats[:20]],
+            "friend_company_top20": [{"company": c, "count": n} for c, n in friend_company_stats[:20]],
+            "school_top20": sorted(school_counter.items(), key=lambda x: x[1], reverse=True)[:20],
+            "hist_company_top20": sorted(hist_company_counter.items(), key=lambda x: x[1], reverse=True)[:20],
+            "channels": [{"channel": ch, **stats} for ch, stats in sorted_channels],
+            "overall_tier": overall_tier,
+            "overall_funnel": overall_funnel,
+            "channel_tier": {ch: tiers for ch, tiers in sorted(channel_tier.items(), key=lambda x: sum(x[1].values()), reverse=True)},
+            "jd_companies": sorted(job_company_counter.items(), key=lambda x: x[1], reverse=True)[:20],
+            "jd_roles": sorted(role_counter.items(), key=lambda x: x[1], reverse=True),
+            "jd_tech_domains": sorted(tech_domain_counter.items(), key=lambda x: x[1], reverse=True)[:12],
+        }
+    finally:
+        db.close()
+
+
+# ============ 智能匹配 API (供 React 前端调用) ============
+
+@app.get("/api/match/jobs-list")
+def match_jobs_list(q: str = ""):
+    """获取可匹配的职位列表（有标签的活跃职位）"""
+    db = SessionLocal()
+    try:
+        query = db.query(Job).filter(
+            Job.structured_tags.isnot(None),
+            Job.structured_tags != 'null',
+            Job.is_active == True
+        )
+        jobs = query.order_by(Job.id).all()
+
+        results = []
+        for j in jobs:
+            label = f"{j.job_code or j.id}: {j.title} - {j.company}"
+            if q and q.upper() not in label.upper():
+                continue
+            results.append({"id": j.id, "label": label, "job_code": j.job_code, "title": j.title, "company": j.company})
+
+        return {"jobs": results[:100]}
+    finally:
+        db.close()
+
+
+@app.get("/api/match/candidates-list")
+def match_candidates_list(q: str = ""):
+    """获取可匹配的候选人列表（有标签的）"""
+    db = SessionLocal()
+    try:
+        query = db.query(Candidate).filter(
+            Candidate.structured_tags.isnot(None),
+            Candidate.structured_tags != 'null'
+        ).order_by(Candidate.name)
+        candidates = query.all()
+
+        results = []
+        for c in candidates:
+            label = f"{c.id}: {c.name} - {c.current_title or '无职位'} @{c.current_company or ''}"
+            if q and q.lower() not in label.lower():
+                continue
+            results.append({"id": c.id, "label": label, "name": c.name, "company": c.current_company, "title": c.current_title})
+
+        return {"candidates": results[:200]}
+    finally:
+        db.close()
+
+
+@app.post("/api/match/job-to-candidates")
+def match_job_to_candidates(job_id: int = 0, top_k: int = 20):
+    """为职位匹配候选人 (6维度加权评分)"""
+    import re
+    db = SessionLocal()
+    try:
+        job = db.query(Job).filter(Job.id == job_id).first()
+        if not job or not job.structured_tags:
+            raise HTTPException(status_code=400, detail="职位不存在或无标签")
+
+        job_tags = json.loads(job.structured_tags) if isinstance(job.structured_tags, str) else job.structured_tags
+
+        def clean_tag(s):
+            s = s.split(": ")[-1] if ": " in s else s
+            s = re.sub(r'\s*[\(（][^)）]*[\)）]', '', s)
+            return s.lower().strip()
+
+        SENIORITY_LEVELS = {"初级": 1, "初级(0-3年)": 1, "中级": 2, "中级(3-5年)": 2, "高级": 3, "高级(5-8年)": 3, "专家": 4, "专家(8年+)": 4, "管理层": 5}
+        EDU_LEVELS = {"专科": 1, "大专": 1, "本科": 2, "硕士": 3, "博士": 4}
+        ROLE_POOLS = {"技术": ["算法工程师", "算法专家", "算法研究员", "高级算法工程师"], "管理": ["技术管理"], "产品": ["产品经理", "AI产品专家", "AI产品经理", "运营"], "工程": ["工程开发", "运维/SRE", "数据工程师"], "销售": ["销售专家", "AI销售专家", "解决方案架构师"]}
+
+        def get_role_pool(role):
+            for pool, roles in ROLE_POOLS.items():
+                if role in roles:
+                    return pool
+            return None
+
+        job_domains = set(job_tags.get("tech_domain", []))
+        job_core_specs = {clean_tag(s) for s in job_tags.get("core_specialty", [])}
+        job_tech_skills = {clean_tag(s) for s in job_tags.get("tech_skills", [])}
+        job_role = job_tags.get("role_type", "")
+        job_seniority = job_tags.get("seniority", "")
+        job_edu = job_tags.get("education", {})
+        job_edu_degree = job_edu.get("degree", "") if isinstance(job_edu, dict) else ""
+        job_level = SENIORITY_LEVELS.get(job_seniority, 0)
+        job_edu_level = EDU_LEVELS.get(job_edu_degree, 0)
+        job_pool = get_role_pool(job_role)
+
+        candidates = db.query(Candidate).filter(
+            Candidate.structured_tags.isnot(None),
+            Candidate.structured_tags != 'null'
+        ).all()
+
+        results = []
+        for c in candidates:
+            try:
+                cand_tags = json.loads(c.structured_tags) if isinstance(c.structured_tags, str) else c.structured_tags
+                if not cand_tags:
+                    continue
+
+                cand_domains = set(cand_tags.get("tech_domain", []))
+                cand_core_specs = {clean_tag(s) for s in cand_tags.get("core_specialty", [])}
+                cand_tech_skills = {clean_tag(s) for s in cand_tags.get("tech_skills", [])}
+                cand_role = cand_tags.get("role_type", "")
+                cand_seniority = cand_tags.get("seniority", "")
+                cand_edu = cand_tags.get("education", {})
+                cand_edu_degree = cand_edu.get("degree", "") if isinstance(cand_edu, dict) else ""
+                cand_level = SENIORITY_LEVELS.get(cand_seniority, 0)
+                cand_edu_level = EDU_LEVELS.get(cand_edu_degree, 0)
+                cand_pool = get_role_pool(cand_role)
+
+                match_reasons = []
+                risk_flags = []
+
+                domain_overlap = cand_domains & job_domains
+                tech_score = len(domain_overlap) / max(len(job_domains), 1) * 100 if job_domains else 50
+                if domain_overlap:
+                    match_reasons.append(f"技术方向: {', '.join(list(domain_overlap)[:2])}")
+
+                core_overlap = cand_core_specs & job_core_specs
+                specialty_score = len(core_overlap) / max(len(job_core_specs), 1) * 100 if job_core_specs else 50
+                if core_overlap:
+                    match_reasons.insert(0, f"🎯 核心专长: {', '.join(list(core_overlap)[:2])}")
+
+                skill_overlap = cand_tech_skills & job_tech_skills
+                skill_score = len(skill_overlap) / max(len(job_tech_skills), 1) * 100 if job_tech_skills else 50
+                if skill_overlap and not core_overlap:
+                    match_reasons.append(f"技能: {', '.join(list(skill_overlap)[:2])}")
+
+                if cand_role == job_role and cand_role:
+                    role_score = 100
+                    match_reasons.append(f"岗位匹配: {job_role}")
+                elif cand_pool == job_pool and cand_pool:
+                    role_score = 70
+                elif cand_pool and job_pool:
+                    role_score = 30
+                    risk_flags.append(f"跨池({cand_pool}→{job_pool})")
+                else:
+                    role_score = 50
+
+                if cand_level > 0 and job_level > 0:
+                    level_gap = cand_level - job_level
+                    if level_gap == 0:
+                        seniority_score = 100
+                    elif level_gap == 1:
+                        seniority_score = 85
+                        risk_flags.append("资历略过高(+1级)")
+                    elif level_gap >= 2:
+                        seniority_score = 40
+                        risk_flags.append(f"资历过高(+{level_gap}级)")
+                    elif level_gap == -1:
+                        seniority_score = 85
+                        risk_flags.append("💡资历略不足(-1级)")
+                    elif level_gap == -2:
+                        seniority_score = 40
+                        risk_flags.append(f"⚠️资历不足({level_gap}级)")
+                    else:
+                        seniority_score = 20
+                        risk_flags.append(f"⛔资历不足({level_gap}级)")
+                else:
+                    seniority_score = 50
+
+                if cand_edu_level > 0 and job_edu_level > 0:
+                    edu_gap = cand_edu_level - job_edu_level
+                    edu_score = 100 if edu_gap >= 0 else max(50 + edu_gap * 20, 0)
+                else:
+                    edu_score = 50
+
+                total = tech_score * 0.25 + specialty_score * 0.30 + skill_score * 0.15 + role_score * 0.15 + seniority_score * 0.10 + edu_score * 0.05
+
+                has_severe = any(f for f in risk_flags if "⚠️" in f or "⛔" in f or "过高" in f or "跨池" in f)
+                has_minor = any("资历略过高" in f for f in risk_flags)
+                if has_severe:
+                    total = min(total, 85)
+                elif has_minor:
+                    total = min(total, 92)
+
+                if total >= 90 and not has_severe and not has_minor:
+                    match_tier = "强匹配"
+                elif total >= 75:
+                    match_tier = "可转型"
+                else:
+                    match_tier = "泛化拓展"
+
+                results.append({
+                    "id": c.id, "name": c.name, "company": c.current_company or "", "title": c.current_title or "",
+                    "score": round(total, 1), "reasons": match_reasons, "risk_flags": risk_flags,
+                    "match_tier": match_tier, "is_friend": bool(c.is_friend),
+                    "tech": round(tech_score, 1), "role": round(role_score, 1), "stack": round(skill_score, 1),
+                })
+            except:
+                pass
+
+        results.sort(key=lambda x: x["score"], reverse=True)
+        return {
+            "success": True,
+            "job": {"id": job.id, "title": job.title, "company": job.company, "tags": job_tags},
+            "total_candidates": len(candidates),
+            "results": results[:top_k]
+        }
+    finally:
+        db.close()
+
+
+@app.post("/api/match/candidate-to-jobs")
+def match_candidate_to_jobs_api(candidate_id: int = 0, top_k: int = 20):
+    """为候选人匹配职位"""
+    try:
+        from job_search import match_candidate_to_jobs
+        results = match_candidate_to_jobs(candidate_id, top_k=top_k)
+        
+        db = SessionLocal()
+        try:
+            cand = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+            cand_tags = json.loads(cand.structured_tags) if cand and cand.structured_tags else {}
+            return {
+                "success": True,
+                "candidate": {"id": candidate_id, "name": cand.name if cand else "", "tags": cand_tags},
+                "results": results
+            }
+        finally:
+            db.close()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/match/search-jobs")
+def match_search_jobs(query: str = "", top_k: int = 20):
+    """AI 语义搜索职位"""
+    try:
+        from job_search import search_jobs
+        results = search_jobs(query, top_k=top_k)
+        return {"success": True, "results": results or []}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/match/search-candidates")
+def match_search_candidates(query: str = "", top_k: int = 20):
+    """AI 语义搜索人才"""
+    try:
+        from job_search import search_candidates
+        results = search_candidates(query, top_k=top_k)
+        return {"success": True, "results": results or []}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ============ 沟通跟进 API (供 React 前端调用) ============
+
+@app.get("/api/comm/scheduled-followups")
+def comm_scheduled_followups():
+    """获取所有预约跟进候选人，按时间分组"""
+    db = SessionLocal()
+    try:
+        from datetime import date as _date_type
+        today = _date_type.today()
+        tomorrow = today + timedelta(days=1)
+        week_end = today + timedelta(days=7)
+        next_week_end = today + timedelta(days=14)
+        quarter_end = today + timedelta(days=90)
+
+        candidates = db.query(Candidate).filter(
+            Candidate.scheduled_contact_date.isnot(None),
+            Candidate.scheduled_contact_date != ""
+        ).all()
+
+        groups = {
+            "today": [], "tomorrow": [], "week": [],
+            "next_week": [], "quarter": [], "overdue": [], "completed": []
+        }
+
+        for c in candidates:
+            try:
+                sched_date = datetime.strptime(c.scheduled_contact_date, "%Y-%m-%d").date()
+            except:
+                continue
+
+            # Check if completed
+            is_completed = False
+            if c.last_communication_at:
+                last_comm_date = c.last_communication_at.date() if hasattr(c.last_communication_at, 'date') else c.last_communication_at
+                if last_comm_date >= sched_date:
+                    is_completed = True
+
+            logs = c.communication_logs or []
+            if isinstance(logs, str):
+                try: logs = json.loads(logs)
+                except: logs = []
+
+            item = {
+                "id": c.id, "name": c.name,
+                "company": c.current_company or "", "title": c.current_title or "",
+                "pipeline_stage": c.pipeline_stage,
+                "stage_label": STAGE_LABELS.get(c.pipeline_stage, c.pipeline_stage or ""),
+                "scheduled_date": c.scheduled_contact_date,
+                "wechat_id": c.wechat_id, "phone": c.phone,
+                "last_comm_at": c.last_communication_at.strftime("%m/%d %H:%M") if c.last_communication_at else None,
+                "recent_logs": [
+                    {"time": l.get("time", "")[:10], "content": (l.get("content", "")[:40])}
+                    for l in sorted(logs, key=lambda x: x.get("time", ""), reverse=True)[:2]
+                    if isinstance(l, dict)
+                ],
+            }
+
+            if is_completed:
+                if sched_date >= today - timedelta(days=7):
+                    groups["completed"].append(item)
+            elif sched_date < today:
+                days_overdue = (today - sched_date).days
+                item["days_overdue"] = days_overdue
+                groups["overdue"].append(item)
+            elif sched_date == today:
+                groups["today"].append(item)
+            elif sched_date == tomorrow:
+                groups["tomorrow"].append(item)
+            elif sched_date <= week_end:
+                groups["week"].append(item)
+            elif sched_date <= next_week_end:
+                groups["next_week"].append(item)
+            elif sched_date <= quarter_end:
+                groups["quarter"].append(item)
+
+        return {"success": True, "groups": groups}
+    finally:
+        db.close()
+
+
+class CommMarkDoneRequest(BaseModel):
+    candidate_id: int
+    next_date: Optional[str] = None  # "YYYY-MM-DD" or null
+
+
+@app.post("/api/comm/mark-done")
+def comm_mark_done(req: CommMarkDoneRequest):
+    """标记跟进完成，可选预约下次"""
+    db = SessionLocal()
+    try:
+        cand = db.query(Candidate).filter(Candidate.id == req.candidate_id).first()
+        if not cand:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+
+        now = datetime.now()
+        now_str = now.strftime("%Y-%m-%d %H:%M")
+
+        note = "已完成跟进"
+        if req.next_date:
+            note += f"，预约{req.next_date}继续"
+            cand.scheduled_contact_date = req.next_date
+        # Don't clear scheduled_contact_date if no next_date — it stays for "completed" tracking
+
+        logs = cand.communication_logs or []
+        if isinstance(logs, str):
+            try: logs = json.loads(logs)
+            except: logs = []
+        logs.insert(0, {"time": now_str, "content": note, "direction": "system"})
+        cand.communication_logs = logs
+        cand.last_communication_at = now
+        cand.updated_at = now
+        db.commit()
+
+        return {"success": True, "message": f"已标记 {cand.name} 完成"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+# ============ 每日工作台 API (供 React 前端调用) ============
+
+@app.get("/api/dashboard/context")
+def dashboard_context():
+    """获取每日工作台全部数据（缓存1分钟）"""
+    try:
+        from daily_planner import collect_daily_context
+        context = collect_daily_context()
+        return {"success": True, "data": context}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"数据采集失败: {str(e)}")
+
+
+@app.post("/api/dashboard/ai-plan")
+def dashboard_ai_plan():
+    """调用 LLM 生成今日行动计划"""
+    try:
+        from daily_planner import collect_daily_context, generate_plan_with_llm, save_daily_report
+        context = collect_daily_context()
+        plan = generate_plan_with_llm(context)
+        if plan:
+            save_daily_report(context, plan)
+            return {"success": True, "plan": plan}
+        else:
+            return {"success": False, "message": "AI分析失败，请稍后重试"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"AI分析失败: {str(e)}")
+
+
+@app.get("/api/dashboard/reports")
+def dashboard_reports():
+    """获取历史日报列表"""
+    import glob as _glob
+    reports_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
+    if not os.path.isdir(reports_dir):
+        return {"reports": []}
+
+    report_files = sorted(_glob.glob(os.path.join(reports_dir, "daily_plan_*.md")), reverse=True)
+    reports = []
+    for rf in report_files[:10]:
+        fname = os.path.basename(rf)
+        date_str = fname.replace("daily_plan_", "").replace(".md", "")
+        with open(rf, "r", encoding="utf-8") as f:
+            content = f.read()
+        reports.append({
+            "date": date_str,
+            "preview": content[:500] + ("..." if len(content) > 500 else ""),
+            "full_content": content,
+        })
+    return {"reports": reports}
+
+
+@app.get("/api/dashboard/outreach-analytics")
+def dashboard_outreach_analytics(
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None
+):
+    """获取触达效果分析数据，支持时间范围筛选
+
+    Args:
+        start_date: 开始日期 (YYYY-MM-DD)，默认为本周一
+        end_date: 结束日期 (YYYY-MM-DD)，默认为今天
+    """
+    try:
+        from daily_planner import collect_outreach_analytics
+
+        # 调用带参数的函数
+        analytics = collect_outreach_analytics(start_date=start_date, end_date=end_date)
+        return {"success": True, "data": analytics}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"数据采集失败: {str(e)}")
+
+
+@app.get("/api/dashboard/sourcing-targets")
+def get_sourcing_targets():
+    """获取 Sourcing 目标配置（旧版，用于排期表）"""
+    try:
+        from daily_planner import SOURCING_TARGETS
+        return {"success": True, "data": {"targets": SOURCING_TARGETS}}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取目标失败: {str(e)}")
+
+
+@app.get("/api/dashboard/monthly-sourcing-targets")
+def get_monthly_sourcing_targets():
+    """获取月度 Sourcing 目标配置"""
+    try:
+        from daily_planner import MONTHLY_SOURCING_TARGETS
+        return {"success": True, "data": {"targets": MONTHLY_SOURCING_TARGETS}}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取月度目标失败: {str(e)}")
+
+
+class MonthlySourcingTargetsUpdateRequest(BaseModel):
+    """更新月度 Sourcing 目标请求"""
+    maimai: Optional[int] = None
+    linkedin: Optional[int] = None
+    github: Optional[int] = None
+
+
+@app.post("/api/dashboard/monthly-sourcing-targets")
+def update_monthly_sourcing_targets(request: MonthlySourcingTargetsUpdateRequest):
+    """更新月度 Sourcing 目标配置"""
+    try:
+        # 读取 daily_planner.py 文件
+        import os
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        planner_file = os.path.join(BASE_DIR, 'daily_planner.py')
+
+        with open(planner_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # 构建新的 MONTHLY_SOURCING_TARGETS 字典
+        new_targets = {}
+        target_keys = ['maimai', 'linkedin', 'github']
+
+        # 从现有代码中读取当前值，只更新提供的字段
+        import re
+        pattern = r"MONTHLY_SOURCING_TARGETS\s*=\s*\{([^}]+)\}"
+        match = re.search(pattern, content, re.DOTALL)
+        if match:
+            targets_block = match.group(1)
+            # 解析现有值
+            for key in target_keys:
+                value_pattern = rf"'{key}':\s*(\d+)"
+                value_match = re.search(value_pattern, targets_block)
+                if value_match:
+                    new_targets[key] = int(value_match.group(1))
+
+        # 更新用户提供的字段
+        update_data = request.dict(exclude_unset=True)
+        new_targets.update(update_data)
+
+        # 生成新的 MONTHLY_SOURCING_TARGETS 代码块
+        new_targets_lines = ["MONTHLY_SOURCING_TARGETS = {"]
+        comments = {
+            'maimai': '# 脉脉（打招呼+加友）',
+            'linkedin': '# LinkedIn（导入+Connection Request）',
+            'github': '# GitHub 导入',
+        }
+        for key, value in new_targets.items():
+            new_targets_lines.append(f"    '{key}': {value},           # {comments.get(key, '')}")
+        new_targets_lines.append("}")
+
+        new_targets_code = '\n'.join(new_targets_lines)
+
+        # 替换文件中的 MONTHLY_SOURCING_TARGETS
+        content = re.sub(
+            pattern,
+            new_targets_code,
+            content,
+            flags=re.DOTALL
+        )
+
+        # 写回文件
+        with open(planner_file, 'w', encoding='utf-8') as f:
+            f.write(content)
+
+        return {"success": True, "data": {"targets": new_targets}}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"更新月度目标失败: {str(e)}")
+
+
+class SourcingTargetsUpdateRequest(BaseModel):
+    """更新 Sourcing 目标请求（旧版，用于排期表）"""
+    maimai_greeting: Optional[int] = None
+    maimai_friend: Optional[int] = None
+    linkedin_import: Optional[int] = None
+    linkedin_request: Optional[int] = None
+    github: Optional[int] = None
+    email: Optional[int] = None
+    replies: Optional[int] = None
+    referrals: Optional[int] = None
+
+
+@app.post("/api/dashboard/sourcing-targets")
+def update_sourcing_targets(request: SourcingTargetsUpdateRequest):
+    """更新 Sourcing 目标配置（旧版，用于排期表）"""
+    try:
+        # 读取 daily_planner.py 文件
+        import os
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        planner_file = os.path.join(BASE_DIR, 'daily_planner.py')
+
+        with open(planner_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # 构建新的 SOURCING_TARGETS 字典
+        new_targets = {}
+        target_mappings = {
+            'maimai_greeting': 'maimai_greeting',
+            'maimai_friend': 'maimai_friend',
+            'linkedin_import': 'linkedin_import',
+            'linkedin_request': 'linkedin_request',
+            'github': 'github',
+            'email': 'email',
+            'replies': 'replies',
+            'referrals': 'referrals',
+        }
+
+        # 从现有代码中读取当前值，只更新提供的字段
+        import re
+        pattern = r"SOURCING_TARGETS\s*=\s*\{([^}]+)\}"
+        match = re.search(pattern, content, re.DOTALL)
+        if match:
+            targets_block = match.group(1)
+            # 解析现有值
+            for key in target_mappings.keys():
+                value_pattern = rf"'{key}':\s*(\d+)"
+                value_match = re.search(value_pattern, targets_block)
+                if value_match:
+                    new_targets[key] = int(value_match.group(1))
+
+        # 更新用户提供的字段
+        update_data = request.dict(exclude_unset=True)
+        new_targets.update(update_data)
+
+        # 生成新的 SOURCING_TARGETS 代码块
+        new_targets_lines = ["SOURCING_TARGETS = {"]
+        for key, value in new_targets.items():
+            comments = {
+                'maimai_greeting': '# 脉脉打招呼总目标 (精准)',
+                'maimai_friend': '# 脉脉加好友总目标 (广撒网)',
+                'linkedin_import': '# LinkedIn 导入总目标',
+                'linkedin_request': '# LinkedIn Connection Request 总目标',
+                'github': '# GitHub 导入总目标 (每周~1000)',
+                'email': '# Email 发送总目标',
+                'replies': '# 全渠道回复总目标',
+                'referrals': '# 推荐提交总目标',
+            }
+            new_targets_lines.append(f"    '{key}': {value},     {comments.get(key, '')}")
+        new_targets_lines.append("}")
+
+        new_targets_code = '\n'.join(new_targets_lines)
+
+        # 替换文件中的 SOURCING_TARGETS
+        content = re.sub(
+            pattern,
+            new_targets_code,
+            content,
+            flags=re.DOTALL
+        )
+
+        # 写回文件
+        with open(planner_file, 'w', encoding='utf-8') as f:
+            f.write(content)
+
+        return {"success": True, "data": {"targets": new_targets}}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"更新目标失败: {str(e)}")
+
+
+# ============ 触达记录 API (Phase 2.3 新增) ============
+
+class OutreachCreateRequest(BaseModel):
+    """创建触达记录请求"""
+    candidate_id: int
+    channel: str  # 'linkedin', 'maimai', 'email', 'wechat', 'phone'
+    outreach_type: str  # 具体类型 (connect_request, message, initial_email, etc.)
+    status: str = 'sent'  # 状态，默认为已发送
+    content: str
+    subject: Optional[str] = None  # 仅Email
+    related_job_id: Optional[int] = None
+    prompt_name: Optional[str] = None
+    meta_data: Optional[dict] = None
+    ab_test_group: Optional[str] = None  # 'A', 'B', 'control'
+    ab_test_name: Optional[str] = None
+
+
+class OutreachStatusUpdateRequest(BaseModel):
+    """更新触达状态请求"""
+    status: str  # 'sent', 'accepted', 'replied', 'rejected', etc.
+    responded_at: Optional[str] = None  # ISO format datetime
+    accepted_at: Optional[str] = None  # ISO format datetime
+    response_content: Optional[str] = None
+    response_sentiment: Optional[str] = None  # 'positive', 'neutral', 'negative'
+
+
+class MarkRepliedRequest(BaseModel):
+    """标记候选人回复请求"""
+    channel: str  # 'linkedin', 'maimai', 'email', 'phone'
+    content: Optional[str] = None  # 回复内容描述
+    responded_at: Optional[str] = None  # ISO format datetime, 默认当前时间
+
+
+@app.post("/api/outreach")
+def create_outreach(req: OutreachCreateRequest):
+    """
+    创建触达记录（完整双写：outreach_records + candidates表字段）
+
+    Args:
+        req: 触达记录创建请求
+
+    Returns:
+        创建的记录信息
+    """
+    db = SessionLocal()
+    try:
+        from outreach_service import OutreachService, OutreachStatus
+
+        # 1. 创建 outreach_records 记录
+        record = OutreachService.create_outreach(
+            candidate_id=req.candidate_id,
+            channel=req.channel,
+            outreach_type=req.outreach_type,
+            content=req.content,
+            status=req.status,
+            subject=req.subject,
+            related_job_id=req.related_job_id,
+            prompt_name=req.prompt_name,
+            meta_data=req.meta_data,
+            ab_test_group=req.ab_test_group,
+            ab_test_name=req.ab_test_name,
+        )
+
+        # 2. 更新 candidates 表的字段（双写逻辑）
+        candidate = db.query(Candidate).filter(Candidate.id == req.candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+
+        # 更新 contacted_channels（兼容旧系统）
+        channels = candidate.contacted_channels or {}
+        if isinstance(channels, str):
+            try: channels = json.loads(channels)
+            except: channels = {}
+        if isinstance(channels, list):
+            channels = {ch: '' for ch in channels}
+
+        # 如果是已发送状态，才更新 contacted_channels
+        if req.status == OutreachStatus.SENT:
+            channels[req.channel] = datetime.now().strftime('%Y-%m-%d %H:%M')
+            candidate.contacted_channels = channels
+
+            # 更新 last_outreach_channel 和 last_outreach_date
+            candidate.last_outreach_channel = req.channel
+            candidate.last_outreach_date = datetime.now()
+
+            # 自动推进 pipeline_stage
+            if candidate.pipeline_stage in (None, 'new'):
+                candidate.pipeline_stage = 'contacted'
+
+        # 更新 outreach_count
+        candidate.outreach_count = OutreachService.get_candidate_outreach_count(
+            req.candidate_id, count_only=True
+        )
+
+        candidate.updated_at = datetime.now()
+        db.commit()
+
+        print(f"✅ 创建触达记录并更新candidates表: candidate_id={req.candidate_id}, channel={req.channel}, status={req.status}")
+
+        return {
+            "success": True,
+            "record": {
+                "id": record.id,
+                "candidate_id": record.candidate_id,
+                "channel": record.channel,
+                "outreach_type": record.outreach_type,
+                "status": record.status,
+                "created_at": record.created_at.isoformat() if record.created_at else None,
+            }
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"创建触达记录失败: {str(e)}")
+    finally:
+        db.close()
+
+
+@app.get("/api/outreach/{record_id}")
+def get_outreach_record(record_id: int):
+    """
+    获取触达记录详情
+
+    Args:
+        record_id: 记录ID
+
+    Returns:
+        触达记录详情
+    """
+    try:
+        from outreach_service import OutreachService
+
+        record = OutreachService.get_outreach_by_id(record_id)
+        if not record:
+            raise HTTPException(status_code=404, detail="触达记录不存在")
+
+        return {
+            "success": True,
+            "record": {
+                "id": record.id,
+                "candidate_id": record.candidate_id,
+                "channel": record.channel,
+                "outreach_type": record.outreach_type,
+                "status": record.status,
+                "subject": record.subject,
+                "content": record.content,
+                "sent_at": record.sent_at.isoformat() if record.sent_at else None,
+                "responded_at": record.responded_at.isoformat() if record.responded_at else None,
+                "accepted_at": record.accepted_at.isoformat() if record.accepted_at else None,
+                "response_content": record.response_content,
+                "response_sentiment": record.response_sentiment,
+                "related_job_id": record.related_job_id,
+                "prompt_name": record.prompt_name,
+                "meta_data": json.loads(record.meta_data) if record.meta_data else None,
+                "ab_test_group": record.ab_test_group,
+                "ab_test_name": record.ab_test_name,
+                "created_at": record.created_at.isoformat() if record.created_at else None,
+                "updated_at": record.updated_at.isoformat() if record.updated_at else None,
+            }
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取触达记录失败: {str(e)}")
+
+
+@app.get("/api/candidates/{candidate_id}/outreach")
+def get_candidate_outreach_history(candidate_id: int, channel: Optional[str] = None, limit: int = 50):
+    """
+    获取候选人触达历史记录
+
+    Args:
+        candidate_id: 候选人ID
+        channel: 过滤渠道（可选）
+        limit: 返回记录数限制（默认50）
+
+    Returns:
+        触达历史记录列表（按时间倒序）
+    """
+    try:
+        from outreach_service import OutreachService
+
+        records = OutreachService.get_candidate_outreach_history(
+            candidate_id=candidate_id,
+            channel=channel,
+            limit=limit
+        )
+
+        return {
+            "success": True,
+            "candidate_id": candidate_id,
+            "count": len(records),
+            "records": [
+                {
+                    "id": r.id,
+                    "channel": r.channel,
+                    "outreach_type": r.outreach_type,
+                    "status": r.status,
+                    "subject": r.subject,
+                    "content": r.content[:200] + "..." if r.content and len(r.content) > 200 else r.content,
+                    "sent_at": r.sent_at.isoformat() if r.sent_at else None,
+                    "responded_at": r.responded_at.isoformat() if r.responded_at else None,
+                    "accepted_at": r.accepted_at.isoformat() if r.accepted_at else None,
+                    "related_job_id": r.related_job_id,
+                    "created_at": r.created_at.isoformat() if r.created_at else None,
+                }
+                for r in records
+            ]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取触达历史失败: {str(e)}")
+
+
+@app.put("/api/outreach/{record_id}/status")
+def update_outreach_status(record_id: int, req: OutreachStatusUpdateRequest):
+    """
+    更新触达记录状态
+
+    Args:
+        record_id: 记录ID
+        req: 状态更新请求
+
+    Returns:
+        更新结果
+    """
+    try:
+        from outreach_service import OutreachService
+        from datetime import datetime
+
+        # 转换时间字符串为datetime对象
+        responded_at = None
+        accepted_at = None
+        if req.responded_at:
+            try:
+                responded_at = datetime.fromisoformat(req.responded_at.replace('Z', '+00:00'))
+            except:
+                responded_at = datetime.now()
+        if req.accepted_at:
+            try:
+                accepted_at = datetime.fromisoformat(req.accepted_at.replace('Z', '+00:00'))
+            except:
+                accepted_at = datetime.now()
+
+        success = OutreachService.update_outreach_status(
+            record_id=record_id,
+            status=req.status,
+            responded_at=responded_at,
+            accepted_at=accepted_at,
+            response_content=req.response_content,
+            response_sentiment=req.response_sentiment,
+        )
+
+        if not success:
+            raise HTTPException(status_code=404, detail="触达记录不存在")
+
+        return {"success": True, "message": "状态更新成功"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"更新状态失败: {str(e)}")
+
+
+@app.delete("/api/outreach/{record_id}")
+def delete_outreach_record(record_id: int):
+    """
+    删除触达记录
+
+    Args:
+        record_id: 记录ID
+
+    Returns:
+        删除结果
+    """
+    db = SessionLocal()
+    try:
+        from outreach_service import OutreachService
+
+        # 获取记录
+        record = db.query(OutreachRecord).filter(OutreachRecord.id == record_id).first()
+        if not record:
+            raise HTTPException(status_code=404, detail="触达记录不存在")
+
+        candidate_id = record.candidate_id
+        is_counted = record.is_counted
+
+        # 删除记录
+        db.delete(record)
+        db.commit()
+
+        # 如果删除的是计数记录，需要更新outreach_count
+        if is_counted:
+            candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+            if candidate:
+                candidate.outreach_count = OutreachService.get_candidate_outreach_count(
+                    candidate_id, count_only=True
+                )
+
+                # 如果这是最新触达，需要更新last_outreach字段
+                latest = db.query(OutreachRecord).filter(
+                    OutreachRecord.candidate_id == candidate_id,
+                    OutreachRecord.is_counted == True
+                ).order_by(OutreachRecord.sent_at.desc()).first()
+
+                if latest:
+                    candidate.last_outreach_channel = latest.channel
+                    candidate.last_outreach_date = latest.sent_at
+                else:
+                    candidate.last_outreach_channel = None
+                    candidate.last_outreach_date = None
+
+                db.commit()
+
+        return {"success": True, "message": "删除成功"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"删除失败: {str(e)}")
+    finally:
+        db.close()
+
+
+@app.post("/api/candidates/{candidate_id}/mark-replied")
+def mark_candidate_replied(candidate_id: int, req: MarkRepliedRequest):
+    """
+    标记候选人对某个渠道的回复
+
+    Args:
+        candidate_id: 候选人ID
+        req: 标记回复请求
+
+    Request Body:
+    {
+        "channel": "linkedin",  # linkedin, maimai, email, phone
+        "content": "回复内容描述",  # 可选
+        "responded_at": "2026-02-17T12:30:00"  # 可选，默认当前时间
+    }
+
+    功能:
+    1. 创建 outreach_record (type: replied)
+    2. 更新候选人字段:
+       - linkedin_accepted_at / maimai_accepted_at / email_replied_at / phone_exchanged_at
+    3. pipeline_stage 自动流转为 replied (若当前为 new/contacted)
+
+    Returns:
+        标记结果
+    """
+    db = SessionLocal()
+    try:
+        from datetime import datetime
+        from outreach_service import OutreachService, OutreachChannel, OutreachStatus
+
+        # 验证候选人存在
+        candidate = db.query(Candidate).filter(Candidate.id == candidate_id).first()
+        if not candidate:
+            raise HTTPException(status_code=404, detail="候选人不存在")
+
+        # 验证渠道
+        valid_channels = ['linkedin', 'maimai', 'email', 'phone']
+        if req.channel not in valid_channels:
+            raise HTTPException(
+                status_code=400,
+                detail=f"无效的渠道: {req.channel}。有效值为: {', '.join(valid_channels)}"
+            )
+
+        # 转换时间
+        responded_at = None
+        if req.responded_at:
+            try:
+                responded_at = datetime.fromisoformat(req.responded_at.replace('Z', '+00:00'))
+            except:
+                responded_at = datetime.now()
+        else:
+            responded_at = datetime.now()
+
+        # 1. 创建 outreach_record 记录
+        record = OutreachService.create_outreach(
+            candidate_id=candidate_id,
+            channel=req.channel,
+            outreach_type='reply',
+            content=req.content or f"通过{req.channel}回复",
+            status='accepted' if req.channel in ['linkedin', 'maimai'] else 'replied',
+        )
+
+        # 2. 更新 outreach_record 的时间字段
+        if req.channel in ['linkedin', 'maimai']:
+            record.accepted_at = responded_at
+        else:
+            record.responded_at = responded_at
+        record.status = 'accepted' if req.channel in ['linkedin', 'maimai'] else 'replied'
+
+        # 3. 更新候选人表的回复字段
+        if req.channel == 'linkedin':
+            candidate.linkedin_accepted_at = responded_at
+        elif req.channel == 'maimai':
+            candidate.maimai_accepted_at = responded_at
+        elif req.channel == 'email':
+            candidate.email_replied_at = responded_at
+        elif req.channel == 'phone':
+            candidate.phone_exchanged_at = responded_at
+
+        # 4. 自动更新 pipeline_stage 到 'replied' (如果当前阶段较早)
+        if candidate.pipeline_stage in [None, 'new', 'contacted', 'following_up']:
+            old_stage = candidate.pipeline_stage or 'new'
+            candidate.pipeline_stage = 'replied'
+            
+            # 记录阶段变更日志
+            logs = candidate.communication_logs or []
+            if isinstance(logs, str):
+                try: logs = json.loads(logs)
+                except: logs = []
+            
+            logs.insert(0, {
+                "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
+                "channel": "system",
+                "action": "stage_change",
+                "content": f"自动流转: {old_stage} -> replied (触发源: 标记{req.channel}回复)",
+                "direction": "system",
+            })
+            candidate.communication_logs = logs
+
+        db.commit()
+
+        return {
+            "success": True,
+            "message": f"已标记为{req.channel}回复",
+            "candidate_id": candidate_id,
+            "channel": req.channel,
+            "responded_at": responded_at.isoformat(),
+            "updated_field": f"{req.channel}_accepted_at" if req.channel in ['linkedin', 'maimai'] else f"{req.channel}_replied_at"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"标记回复失败: {str(e)}")
+    finally:
+        db.close()
+
+
+@app.get("/api/outreach/stats")
+def get_outreach_statistics(
+    candidate_id: Optional[int] = None,
+    channel: Optional[str] = None,
+    days: int = 30
+):
+    """
+    获取触达统计信息
+
+    Args:
+        candidate_id: 候选人ID（不指定则统计全部）
+        channel: 渠道过滤
+        days: 统计最近N天（默认30）
+
+    Returns:
+        统计数据
+    """
+    try:
+        from outreach_service import OutreachService
+
+        stats = OutreachService.get_outreach_statistics(
+            candidate_id=candidate_id,
+            channel=channel,
+            days=days
+        )
+
+        return {"success": True, "stats": stats}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取统计信息失败: {str(e)}")
+
+
+# ============ 触达作战中心 (Campaign Workspace) API ============
+
+@app.get("/api/campaigns/linkedin")
+def get_linkedin_campaign_queue():
+    """获取待进行 LinkedIn 触达的优先候选人"""
+    db = SessionLocal()
+    try:
+        from sqlalchemy import text
+        # 筛选条件: pipeline_stage='new', tier在(S, A+, A), has linkedin_url
+        candidates = db.query(Candidate).filter(
+            Candidate.pipeline_stage == 'new',
+            Candidate.linkedin_url.isnot(None),
+            Candidate.linkedin_url != ''
+        ).order_by(
+            # Tier 排序: S > A+ > A > B+ > B > C
+            text(
+                "CASE WHEN talent_tier = 'S' THEN 1 "
+                "WHEN talent_tier = 'A+' THEN 2 "
+                "WHEN talent_tier = 'A' THEN 3 "
+                "WHEN talent_tier = 'B+' THEN 4 "
+                "WHEN talent_tier = 'B' THEN 5 "
+                "ELSE 6 END"
+            )
+        ).all()
+
+        queue = []
+        for c in candidates:
+            # 获取 AI 破冰信 (如果批处理脚本已生成)
+            draft = ""
+            if c.greeting_drafts:
+                if isinstance(c.greeting_drafts, str):
+                    try:
+                        drafts = json.loads(c.greeting_drafts)
+                        draft = drafts.get('linkedin', "")
+                    except:
+                        pass
+                elif isinstance(c.greeting_drafts, dict):
+                    draft = c.greeting_drafts.get('linkedin', "")
+            
+            # extract ai_score if available
+            ai_score = 0
+            if c.structured_tags:
+                try:
+                    if isinstance(c.structured_tags, str):
+                        tags = json.loads(c.structured_tags)
+                    else:
+                        tags = c.structured_tags
+                    ai_score = tags.get('AI_score', 0)
+                except:
+                    pass
+
+            queue.append({
+                "id": c.id,
+                "name": c.name,
+                "company": c.current_company,
+                "title": c.current_title,
+                "tier": c.talent_tier,
+                "linkedin_url": c.linkedin_url,
+                "github_url": c.github_url,
+                "personal_website": c.personal_website,
+                "email": c.email,
+                "ai_score": ai_score,
+                "draft": draft
+            })
+            
+        return {"success": True, "queue": queue}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取 LinkedIn 队列失败: {str(e)}")
+    finally:
+        db.close()
+
+
+@app.get("/api/campaigns/email")
+def get_email_campaign_queue(
+    page: int = 1,
+    page_size: int = 30,
+    tier: Optional[str] = None,
+    category: Optional[str] = None,
+    search: Optional[str] = None,
+):
+    """获取待进行邮件群发的候选人 (双栏布局 + 分页 + 分类筛选)"""
+    db = SessionLocal()
+    try:
+        # 基础筛选: pipeline_stage='new', has email
+        query = db.query(Candidate).filter(
+            Candidate.pipeline_stage == 'new',
+            Candidate.email.isnot(None),
+            Candidate.email != ''
+        )
+
+        # Tier 筛选
+        if tier and tier != 'ALL':
+            tier_list = [t.strip() for t in tier.split(',')]
+            query = query.filter(Candidate.talent_tier.in_(tier_list))
+
+        # 搜索
+        if search and search.strip():
+            search_term = f"%{search.strip()}%"
+            query = query.filter(
+                (Candidate.name.ilike(search_term)) |
+                (Candidate.current_company.ilike(search_term))
+            )
+
+        # 先获取全部符合条件的候选人（分类需要后端计算）
+        all_candidates = query.order_by(Candidate.id.desc()).all()
+
+        # 计算分类
+        def _classify(c):
+            website = (c.personal_website or '').lower()
+            has_scholar = 'scholar.google' in website or '.edu' in website
+            # Also check structured_tags for google_scholar link
+            if not has_scholar and c.structured_tags and isinstance(c.structured_tags, dict):
+                if c.structured_tags.get('google_scholar'):
+                    has_scholar = True
+            if has_scholar:
+                return 'academic'
+            if c.personal_website:
+                return 'has_website'
+            if c.github_url:
+                return 'github_only'
+            return 'email_only'
+
+        classified = [(c, _classify(c)) for c in all_candidates]
+
+        # 分类筛选
+        if category and category != 'ALL':
+            classified = [(c, cat) for c, cat in classified if cat == category]
+
+        total = len(classified)
+
+        # 分类统计（用于前端显示 tab 数量）
+        cat_counts = {'academic': 0, 'has_website': 0, 'github_only': 0, 'email_only': 0}
+        # 从 all_candidates 统计（不受 category 筛选影响）
+        for c in all_candidates:
+            cat = _classify(c)
+            cat_counts[cat] = cat_counts.get(cat, 0) + 1
+
+        # 分页
+        start = (page - 1) * page_size
+        end = start + page_size
+        page_items = classified[start:end]
+
+        queue = []
+        for c, cat in page_items:
+            # 提取邮件草稿
+            draft = ""
+            if c.greeting_drafts:
+                drafts = c.greeting_drafts
+                if isinstance(drafts, str):
+                    try:
+                        drafts = json.loads(drafts)
+                    except:
+                        drafts = {}
+                if isinstance(drafts, dict):
+                    draft = drafts.get('email', "")
+
+            queue.append({
+                "id": c.id,
+                "name": c.name,
+                "email": c.email,
+                "tier": c.talent_tier,
+                "current_company": c.current_company or "",
+                "current_title": c.current_title or "",
+                "github_url": c.github_url or "",
+                "personal_website": c.personal_website or "",
+                "ai_summary": (c.ai_summary or "")[:200],
+                "category": cat,
+                "ai_score": (c.structured_tags or {}).get('github_score', 0) if isinstance(c.structured_tags, dict) else 0,
+                "draft": draft
+            })
+
+        return {
+            "success": True,
+            "total": total,
+            "page": page,
+            "page_size": page_size,
+            "category_counts": cat_counts,
+            "queue": queue
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"获取 Email 队列失败: {str(e)}")
+    finally:
+        db.close()
+
+
+# ============ 每日工作台 API (供 React 前端调用) ============
+
+@app.get("/api/dashboard/context")
+def dashboard_context():
+    """获取每日工作台全部数据（缓存1分钟）"""
+    try:
+        from daily_planner import collect_daily_context
+        import importlib
+        import daily_planner
+        importlib.reload(daily_planner)  # Force reload to pick up changes
+        context = daily_planner.collect_daily_context()
+        print(f"✅ Dashboard context collected with keys: {list(context.keys())}")
+        return {"success": True, "data": context}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"数据采集失败: {str(e)}")
+
+
+@app.post("/api/dashboard/ai-plan")
+def dashboard_ai_plan():
+    """调用 LLM 生成今日行动计划"""
+    try:
+        from daily_planner import collect_daily_context, generate_plan_with_llm, save_daily_report
+        context = collect_daily_context()
+        plan = generate_plan_with_llm(context)
+        if plan:
+            save_daily_report(context, plan)
+            return {"success": True, "plan": plan}
+        else:
+            return {"success": False, "message": "AI分析失败，请稍后重试"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"AI分析失败: {str(e)}")
+
+
+@app.get("/api/dashboard/reports")
+def dashboard_reports():
+    """获取历史日报列表"""
+    import glob as _glob
+    reports_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
+    if not os.path.isdir(reports_dir):
+        return {"reports": []}
+
+    report_files = sorted(_glob.glob(os.path.join(reports_dir, "daily_plan_*.md")), reverse=True)
+    reports = []
+    for rf in report_files[:10]:
+        fname = os.path.basename(rf)
+        date_str = fname.replace("daily_plan_", "").replace(".md", "")
+        with open(rf, "r", encoding="utf-8") as f:
+            content = f.read()
+        reports.append({
+            "date": date_str,
+            "preview": content[:500] + ("..." if len(content) > 500 else ""),
+            "full_content": content,
+        })
+    return {"reports": reports}
+
+
+@app.get("/api/dashboard/outreach-analytics")
+def dashboard_outreach_analytics(
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None
+):
+    """获取触达效果分析数据，支持时间范围筛选
+
+    Args:
+        start_date: 开始日期 (YYYY-MM-DD)，默认为本周一
+        end_date: 结束日期 (YYYY-MM-DD)，默认为今天
+    """
+    try:
+        from daily_planner import collect_outreach_analytics
+
+        # 调用带参数的函数
+        analytics = collect_outreach_analytics(start_date=start_date, end_date=end_date)
+        return {"success": True, "data": analytics}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"数据采集失败: {str(e)}")
+
+
 if __name__ == "__main__":
     port = int(os.getenv("API_PORT", 8502))
     print(f"🚀 启动 AI Headhunter API 服务器 (端口: {port})")
@@ -2375,5 +6283,10 @@ if __name__ == "__main__":
     print(f"  POST /api/pipeline/update      — 管道阶段流转")
     print(f"  GET  /api/pipeline/follow-ups  — 今日需跟进列表")
     print(f"  GET  /api/pipeline/stats       — 管道统计")
+    print(f"  POST /api/outreach            — 创建触达记录")
+    print(f"  GET  /api/outreach/{{id}}      — 获取触达记录详情")
+    print(f"  GET  /api/candidates/{{id}}/outreach  — 获取候选人触达历史")
+    print(f"  PUT  /api/outreach/{{id}}/status — 更新触达状态")
+    print(f"  GET  /api/outreach/stats       — 获取触达统计")
     uvicorn.run(app, host="0.0.0.0", port=port)
 
