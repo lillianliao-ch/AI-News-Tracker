@@ -21,3 +21,6 @@ personal-ai-headhunter/data/uploads/
 .DS_Store
 
 user_interaction.md
+# 子项目（独立 Git 仓库）
+personal-ai-headhunter/
+personal-ai-headhunter-prod/
