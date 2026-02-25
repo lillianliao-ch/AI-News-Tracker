@@ -246,29 +246,119 @@ else
     step_done "tier"
 fi
 
-# ======================== 验证 ========================
-log ""; log "=============================="; log "🔍 最终验证"; log "=============================="
-bash -c "cd '${HEADHUNTER_DIR}' && python3 -c \"
-from database import SessionLocal, Candidate
-from collections import Counter
-session = SessionLocal()
-all_gh = session.query(Candidate).filter(Candidate.source == 'github').all()
-tier_dist = Counter(c.talent_tier for c in all_gh)
-untiered = tier_dist.get(None, 0)
-print(f'GitHub 候选人总数: {len(all_gh)}')
-for tier in ['S', 'A', 'B', 'C']:
-    print(f'  {tier}: {tier_dist.get(tier, 0)} 人')
-if untiered > 0:
-    print(f'  ⚠️  未分级: {untiered} 人（需重新运行分级步骤）')
-else:
-    print('✅ 全部已分级')
-session.close()
-\""
+# ======================== 验证 + 批次报告 ========================
+log ""; log "=============================="; log "🔍 最终验证 + 批次报告"; log "=============================="
+
+REPORT_FILE="${BATCH_DIR}/batch_report.json"
+COMPLETED_AT="$(date '+%Y-%m-%d %H:%M:%S')"
+
+python3 -c "
+import json, os, sys
+sys.path.insert(0, '${HEADHUNTER_DIR}')
+os.chdir('${HEADHUNTER_DIR}')
+
+report = {
+    'batch_id': '${BATCH_NAME}',
+    'started_at': '$(head -n 5 ${LOG_FILE} | grep -oP '\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}' | head -1 2>/dev/null || echo 'unknown')',
+    'completed_at': '${COMPLETED_AT}',
+    'source': 'new_seed_pipeline',
+    'seed_user': '${BATCH_NAME}',
+    'phases': {}
+}
+
+data_dir = '${DATA_DIR}'
+
+# Phase 1
+p1f = os.path.join(data_dir, 'phase1_seed_users.json')
+if os.path.exists(p1f):
+    p1 = json.load(open(p1f))
+    report['phases']['phase1'] = {'total': len(p1)}
+    print(f'  Phase 1: {len(p1)} 人')
+
+# Phase 2 V3
+p2f = os.path.join(data_dir, 'phase2_v3_enriched.json')
+if os.path.exists(p2f):
+    p2 = json.load(open(p2f))
+    has_email = sum(1 for u in p2 if u.get('all_emails'))
+    has_py = sum(1 for u in p2 if u.get('has_python'))
+    has_scholar = sum(1 for u in p2 if u.get('has_scholar'))
+    has_website = sum(1 for u in p2 if u.get('website_status') == 'active')
+    report['phases']['phase2_v3'] = {
+        'total': len(p2),
+        'has_email': has_email,
+        'has_python': has_py,
+        'has_scholar': has_scholar,
+        'has_active_website': has_website,
+    }
+    print(f'  Phase 2 V3: {len(p2)} 人, Email={has_email}, Python={has_py}, Scholar={has_scholar}')
+
+# Phase 3 V3
+p3f = os.path.join(data_dir, 'phase3_v3_ai_candidates.json')
+p3rf = os.path.join(data_dir, 'phase3_v3_rejected.json')
+if os.path.exists(p3f):
+    p3 = json.load(open(p3f))
+    p3r = json.load(open(p3rf)) if os.path.exists(p3rf) else []
+    total = len(p3) + len(p3r)
+    report['phases']['phase3_v3'] = {
+        'ai_candidates': len(p3),
+        'rejected': len(p3r),
+        'ai_rate': f'{len(p3)*100//max(total,1)}%',
+    }
+    print(f'  Phase 3 V3: AI={len(p3)} ({len(p3)*100//max(total,1)}%), 非AI={len(p3r)}')
+
+# Phase 3.5
+p35f = os.path.join(data_dir, 'phase3_5_enriched.json')
+if os.path.exists(p35f):
+    p35 = json.load(open(p35f))
+    scraped = sum(1 for u in p35 if u.get('homepage_scraped'))
+    has_li = sum(1 for u in p35 if u.get('linkedin_url'))
+    has_work = sum(1 for u in p35 if u.get('work_experience'))
+    report['phases']['phase3_5'] = {
+        'total': len(p35),
+        'homepage_success': scraped,
+        'linkedin_found': has_li,
+        'work_experience': has_work,
+    }
+    print(f'  Phase 3.5: {len(p35)} 人, 主页={scraped}, LinkedIn={has_li}')
+
+# 数据库快照
+try:
+    from database import SessionLocal, Candidate
+    from collections import Counter
+    session = SessionLocal()
+    all_gh = session.query(Candidate).filter(Candidate.source == 'github').all()
+    tier_dist = Counter(c.talent_tier for c in all_gh)
+    has_li_db = sum(1 for c in all_gh if c.linkedin_url)
+    untiered = tier_dist.get(None, 0)
+
+    report['phases']['tier'] = {t: tier_dist.get(t, 0) for t in ['S', 'A', 'A+', 'B', 'B+', 'C', 'D'] if tier_dist.get(t, 0) > 0}
+    report['db_snapshot'] = {
+        'total_github': len(all_gh),
+        'total_linkedin': has_li_db,
+        'untiered': untiered,
+    }
+
+    print(f'  DB: {len(all_gh)} GitHub候选人, {has_li_db} 有LinkedIn')
+    for t in ['S', 'A', 'B', 'C']:
+        print(f'    {t}: {tier_dist.get(t, 0)} 人')
+    if untiered > 0:
+        print(f'    ⚠️  未分级: {untiered} 人')
+    else:
+        print('  ✅ 全部已分级')
+    session.close()
+except Exception as e:
+    print(f'  ⚠️  数据库查询失败: {e}')
+
+json.dump(report, open('${REPORT_FILE}', 'w'), indent=2, ensure_ascii=False)
+print(f'  📄 批次报告已保存: ${REPORT_FILE}')
+"
 
 log ""
 log "============================================================"
 log "🎉 Pipeline [${BATCH_NAME}] 执行完毕！"
+log "   📄 批次报告: ${REPORT_FILE}"
 log "   批次数据存档: ${BATCH_DIR}"
 log "   下一步: 针对新入库 S/A 候选人启动触达"
 log "   命令: cd personal-ai-headhunter && python3 scripts/batch_ai_outreach.py --tiers S,A"
 log "============================================================"
+

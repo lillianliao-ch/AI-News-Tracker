@@ -881,11 +881,53 @@ cat github_mining/scripts/github_mining/pipeline_state.json
 
 | 文件 | 说明 |
 |:---|:---|
-| `phase3_from_phase4.json` | Phase 3 补强输出（892人 + repos/stars/languages/emails） |
-| `phase4_final_enriched.json` | 最终完整数据（892人 + repos + LinkedIn + 经历 + 论文） |
-| `pipeline_state.json` | 流水线状态（断点续传用，全部完成后可删除） |
+| `phase3_from_phase4.json` | Phase 3 补强输出（repos/stars/languages/emails） |
+| `phase4_final_enriched.json` | 最终完整数据（repos + LinkedIn + 经历 + 论文） |
+| `pipeline_state.json` | enrichment 流水线状态（断点续传用） |
+| `pipeline_state_phase4.json` | 全链路流水线状态（包含 Phase 4 爬取步骤） |
+| `batch_report_phase4_{timestamp}.json` | **批次报告**（每阶段关键指标，用于数据源质量比对） |
 
 > ✅ **入库+分级已集成到流水线中**，`run_phase4_enrichment.py` 会在 Phase 3.5 验证通过后自动执行入库（`import_github_candidates.py`）和分级（`batch_update_tiers.py`），无需手动操作。
+
+#### 批次报告（Batch Report）
+
+每次 Pipeline 运行完成后，会自动生成一份 JSON 格式的批次报告，记录每个阶段的关键数据指标。
+
+**文件位置**：
+- 新 Seed Pipeline: `batches/{batch_name}/batch_report.json`
+- Phase 4 Pipeline: `batch_report_phase4_{timestamp}.json`
+
+**报告字段**：
+
+| 字段 | 说明 |
+|:---|:---|
+| `batch_id` | 批次标识 |
+| `started_at` / `completed_at` | 运行时间窗口 |
+| `source` | 数据来源（`new_seed_pipeline` / `phase4_social_expansion`） |
+| `phases.phase1` | 种子采集人数 |
+| `phases.phase2_v3` | 富化数据（邮箱、Python、Scholar、主页覆盖率） |
+| `phases.phase3_v3` | AI 判定结果（通过率、排除人数） |
+| `phases.phase3_5` | 深度爬取结果（主页成功数、LinkedIn 数） |
+| `phases.tier` | 各 Tier 级别人数分布 |
+| `db_snapshot` | 入库后数据库全局快照 |
+
+> 📌 **用途**：未来可将这些报告导入 personal-ai-headhunter 系统，用于不同数据源（GitHub / 脉脉 / LinkedIn）的质量比对分析。
+
+#### 状态隔离规则
+
+> [!WARNING]
+> `run_phase4_enrichment.py` 使用全局共享的 `pipeline_state.json` 记录富化进度。
+> **每次新批次数据到来时，必须重置该文件**，否则旧批次的 "all done" 状态会导致新数据被跳过。
+
+**自动防护机制**（已内置于 `run_phase4_full_pipeline.sh`）：
+1. Phase 4 爬取完成后，自动备份并重置 `pipeline_state.json`
+2. 同时清理旧的中间产出文件（`phase3_from_phase4.json` 等）
+3. 旧状态和文件备份为 `*.bak_{timestamp}`，可追溯
+
+**手动重置方法**（如需单独重跑 enrichment）：
+```bash
+rm github_mining/scripts/github_mining/pipeline_state.json
+```
 
 ---
 
