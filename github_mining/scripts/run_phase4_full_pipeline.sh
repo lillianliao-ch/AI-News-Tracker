@@ -255,98 +255,132 @@ run_with_retry "Phase 4 富化→入库→分级全流程" \
 
 step_done "enrichment_done"
 
-# ==================== 收集各阶段关键数据 ====================
+# ==================== 批次级统计 + 入库 ====================
 log ""
 log "=============================="
-log "📊 收集各阶段关键数据"
+log "📊 批次级数据统计 + 入库"
 log "=============================="
 
 python3 -c "
 import json, os, sys
+from datetime import datetime
+from collections import Counter
+
 sys.path.insert(0, '${HEADHUNTER_DIR}')
 os.chdir('${HEADHUNTER_DIR}')
 
 report_f = '${REPORT_FILE}'
 report = json.load(open(report_f))
 data_dir = '${DATA_DIR}'
+batch_id = '${BATCH_ID}'
 
-# Phase 3 数据
+# ===== 1. 收集 Phase 中间数据 =====
 p3f = os.path.join(data_dir, 'phase3_from_phase4.json')
 if os.path.exists(p3f):
     p3 = json.load(open(p3f))
-    has_stars = sum(1 for u in p3 if u.get('total_stars') is not None)
-    has_email = sum(1 for u in p3 if u.get('all_emails'))
-    has_langs = sum(1 for u in p3 if u.get('primary_languages'))
     report['phases']['phase3_enrich'] = {
         'total': len(p3),
-        'stars_coverage': f'{has_stars*100//max(len(p3),1)}%',
-        'email_coverage': f'{has_email*100//max(len(p3),1)}%',
-        'language_coverage': f'{has_langs*100//max(len(p3),1)}%',
+        'has_stars': sum(1 for u in p3 if u.get('total_stars') is not None),
+        'has_email': sum(1 for u in p3 if u.get('all_emails')),
     }
-    print(f'  Phase 3: {len(p3)} 人, Stars={has_stars}, Email={has_email}')
 
-# Phase 3.5 / Final 数据
-for fname, label in [('phase4_final_enriched.json', 'phase3_5'), ('phase3_5_enriched.json', 'phase3_5')]:
+for fname in ['phase4_final_enriched.json', 'phase3_5_enriched.json']:
     ff = os.path.join(data_dir, fname)
     if os.path.exists(ff):
         d = json.load(open(ff))
-        scraped = sum(1 for u in d if u.get('homepage_scraped'))
-        has_li = sum(1 for u in d if u.get('linkedin_url'))
-        has_work = sum(1 for u in d if u.get('work_experience'))
-        has_edu = sum(1 for u in d if u.get('education'))
         report['phases']['phase3_5_scrape'] = {
             'total': len(d),
-            'homepage_success': scraped,
-            'linkedin_found': has_li,
-            'work_experience': has_work,
-            'education': has_edu,
+            'homepage_success': sum(1 for u in d if u.get('homepage_scraped')),
+            'linkedin_found': sum(1 for u in d if u.get('linkedin_url')),
         }
-        print(f'  Phase 3.5: {len(d)} 人, 主页={scraped}, LinkedIn={has_li}')
         break
 
-# 数据库快照
-try:
-    from database import SessionLocal, Candidate
-    from collections import Counter
-    session = SessionLocal()
-    all_gh = session.query(Candidate).filter(Candidate.source == 'github').all()
-    tier_dist = Counter(c.talent_tier for c in all_gh)
-    has_li_db = sum(1 for c in all_gh if c.linkedin_url)
-    report['phases']['tier'] = {t: tier_dist.get(t, 0) for t in ['S', 'A', 'A+', 'B', 'B+', 'C', 'D'] if tier_dist.get(t, 0) > 0}
-    report['db_snapshot'] = {
-        'total_github': len(all_gh),
-        'total_linkedin': has_li_db,
-    }
-    print(f'  DB: {len(all_gh)} GitHub候选人, {has_li_db} 有LinkedIn')
-    session.close()
-except Exception as e:
-    print(f'  ⚠️  数据库查询失败: {e}')
+# ===== 2. 查询本批次入库的候选人（今日新增的 GitHub 源）=====
+from database import SessionLocal, Candidate, BatchRun, Base, engine
+Base.metadata.create_all(bind=engine)
 
-from datetime import datetime
-report['completed_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-json.dump(report, open(report_f, 'w'), indent=2, ensure_ascii=False)
-print(f'  📄 报告已保存: {report_f}')
-"
-
-# ==================== 最终汇报 ====================
-log ""
-log "=============================="
-log "🔍 最终数据库验证"
-log "=============================="
-bash -c "cd '${HEADHUNTER_DIR}' && python3 -c \"
-from database import SessionLocal, Candidate
-from collections import Counter
 session = SessionLocal()
-all_gh = session.query(Candidate).filter(Candidate.source == 'github').all()
-tier_dist = Counter(c.talent_tier for c in all_gh)
-has_li = sum(1 for c in all_gh if c.linkedin_url)
-print(f'GitHub 候选人总数: {len(all_gh)}')
-for t in ['S', 'A', 'B', 'C']:
-    print(f'  {t}: {tier_dist.get(t, 0)} 人')
-print(f'有 LinkedIn: {has_li} 人')
+today = datetime.now().strftime('%Y-%m-%d')
+batch_candidates = session.query(Candidate).filter(
+    Candidate.source == 'github',
+    Candidate.created_at >= today
+).all()
+
+total_input = report.get('phases', {}).get('phase4_crawl', {}).get('total', 0)
+total_imported = len(batch_candidates)
+
+# 评级分布（本批次）
+tier_dist = Counter(c.talent_tier for c in batch_candidates)
+
+# 可联系信息（本批次）
+has_email = sum(1 for c in batch_candidates if c.email)
+has_linkedin = sum(1 for c in batch_candidates if c.linkedin_url)
+has_github = sum(1 for c in batch_candidates if c.github_url)
+has_phone = sum(1 for c in batch_candidates if c.phone)
+has_website = sum(1 for c in batch_candidates if c.personal_website)
+
+# 全局 DB 快照
+all_count = session.query(Candidate).count()
+gh_count = session.query(Candidate).filter(Candidate.source == 'github').count()
+li_count = session.query(Candidate).filter(Candidate.linkedin_url != None).count()
+
+# ===== 3. 更新 JSON 报告 =====
+report['completed_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+report['batch_stats'] = {
+    'total_input': total_input,
+    'total_imported': total_imported,
+    'import_rate': f'{total_imported*100//max(total_input,1)}%',
+    'tier': {t: tier_dist.get(t, 0) for t in ['S','A+','A','B+','B','C','D'] if tier_dist.get(t, 0)>0},
+    'contact': {'email': has_email, 'linkedin': has_linkedin, 'github': has_github, 'phone': has_phone, 'website': has_website},
+}
+report['db_snapshot'] = {'total': all_count, 'github': gh_count, 'linkedin': li_count}
+json.dump(report, open(report_f, 'w'), indent=2, ensure_ascii=False)
+
+# ===== 4. 写入 batch_runs 表 =====
+existing = session.query(BatchRun).filter(BatchRun.batch_id == batch_id).first()
+if not existing:
+    run = BatchRun(
+        batch_id=batch_id,
+        source=report.get('source', 'phase4_social_expansion'),
+        started_at=datetime.strptime(report['started_at'], '%Y-%m-%d %H:%M:%S') if report.get('started_at') else None,
+        completed_at=datetime.now(),
+        seed_config=report.get('seed_config'),
+        phase_data=report.get('phases'),
+        total_input=total_input,
+        total_imported=total_imported,
+        tier_s=tier_dist.get('S', 0),
+        tier_a_plus=tier_dist.get('A+', 0),
+        tier_a=tier_dist.get('A', 0),
+        tier_b_plus=tier_dist.get('B+', 0),
+        tier_b=tier_dist.get('B', 0),
+        tier_c=tier_dist.get('C', 0),
+        tier_d=tier_dist.get('D', 0),
+        has_email=has_email,
+        has_linkedin=has_linkedin,
+        has_github=has_github,
+        has_phone=has_phone,
+        has_website=has_website,
+        db_total_candidates=all_count,
+        db_total_github=gh_count,
+        db_total_linkedin=li_count,
+    )
+    session.add(run)
+    session.commit()
+    print(f'  ✅ 已写入 batch_runs 表 (id={run.id})')
+else:
+    print(f'  ⚠️ 批次 {batch_id} 已存在，跳过写入')
+
+# ===== 5. 打印汇总 =====
+print(f'')
+print(f'  📊 批次 [{batch_id}] 数据报告')
+print(f'  输入: {total_input} 人 → 入库: {total_imported} 人 ({total_imported*100//max(total_input,1)}%)')
+print(f'  评级: S={tier_dist.get(\"S\",0)} A={tier_dist.get(\"A\",0)} B+={tier_dist.get(\"B+\",0)} B={tier_dist.get(\"B\",0)} C={tier_dist.get(\"C\",0)}')
+print(f'  联系: Email={has_email} LinkedIn={has_linkedin} Website={has_website} Phone={has_phone}')
+print(f'  DB全局: {all_count} 总候选人, {gh_count} GitHub, {li_count} LinkedIn')
+print(f'  📄 JSON报告: {report_f}')
+
 session.close()
-\""
+"
 
 log ""
 log "============================================================"
@@ -355,3 +389,4 @@ log "   📄 批次报告: ${REPORT_FILE}"
 log "   建议下一步: 针对新增 S/A 候选人启动触达"
 log "   命令: cd personal-ai-headhunter && python3 scripts/batch_ai_outreach.py --tiers S,A"
 log "============================================================"
+

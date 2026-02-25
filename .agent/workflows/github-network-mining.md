@@ -929,6 +929,44 @@ cat github_mining/scripts/github_mining/pipeline_state.json
 rm github_mining/scripts/github_mining/pipeline_state.json
 ```
 
+#### 批次数据入库 (batch_runs 表)
+
+Pipeline 完成后自动将**本批次维度**的统计数据写入 `batch_runs` 表，用于不同数据源质量比对。
+
+**自动入库（Pipeline 内置）**：
+- `run_phase4_full_pipeline.sh`：完成后自动统计本批次入库人数的评级分布+可联系信息，写入 DB
+
+**手动入库**：
+```bash
+cd personal-ai-headhunter
+
+# 按来源生成快照
+python3 import_batch_report.py --source github --batch-id "github_20260225"
+python3 import_batch_report.py --source 脉脉 --batch-id "maimai_20260225"
+
+# 导入 JSON 报告
+python3 import_batch_report.py path/to/batch_report.json
+
+# 查看所有批次
+python3 import_batch_report.py --list
+```
+
+**记录字段**：评级分布(S/A+/A/B+/B/C/D)、可联系信息(Email/LinkedIn/GitHub/Phone/Website)、DB全局快照
+
+#### 评级逻辑 (2026-02-25 更新)
+
+| Tier | 条件 |
+|------|------|
+| S | AI领域 + Followers>5000/Stars>5000/H-index>30 |
+| A+ | 3+顶会论文 |
+| A | 顶尖Lab / **tier1 + 985 Top20** |
+| B+ | tier1 + 985(全部) |
+| B | tier1 or 985 / tier2 / Followers>500 |
+| C | 默认 |
+
+配置文件: `personal-ai-headhunter/data/company_tier_config.json`
+评级 Skill: `.agent/skills/tier-evaluation/SKILL.md`
+
 ---
 
 ### 步骤 5/5: （可选）迭代扩展
