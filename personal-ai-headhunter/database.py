@@ -53,6 +53,8 @@ class Candidate(Base):
     github_url = Column(String(500))
     twitter_url = Column(String(500))
     personal_website = Column(String(500))  # 个人主页/博客
+    website_content = Column(Text) # 个人网站爬取得内容
+    greeting_drafts = Column(JSON)  # {"linkedin": "...", "maimai": "...", "email": "..."} 按渠道存储打招呼草稿
     notes = Column(Text)
     
     # 好友标记
@@ -67,6 +69,7 @@ class Candidate(Base):
     
     # 运营管道
     pipeline_stage = Column(String(50), default='new')  # new/contacted/following_up/replied/wechat_connected/in_pipeline/closed
+    contacted_channels = Column(JSON)  # ["linkedin", "maimai", "email"] 已触达的渠道
     follow_up_date = Column(String(20))  # 下次跟进日期 (YYYY-MM-DD)
     wechat_id = Column(String(100))  # 微信号
 
@@ -84,7 +87,38 @@ class Candidate(Base):
     
     # 人才分级
     talent_tier = Column(String(10))  # S=顶尖大牛, A=优秀, B=不错, C=一般关注
+    tier_updated_at = Column(DateTime)  # 评级时间戳，用于追踪重新评级
     
+    # 人工运营标签（不被"重新打标签"覆盖）
+    talent_labels = Column(JSON, default=[])  # ["高潜", "重点关注", ...]
+    
+    # 长期培育 (Nurturing) 状态
+    # pending -> stage1_sent -> stage1_accepted -> stage2_sent -> stage3_sent -> long_term_pool
+    nurture_status = Column(String(50), default='pending')
+    nurture_due_date = Column(DateTime) # 下一步行动的截止日期/触发日期
+
+    # ==================== Phase 1.2 新增字段 ====================
+    # Stop Rule计数
+    outreach_count = Column(Integer, default=0)
+
+    # 最后触达信息
+    last_outreach_channel = Column(String(20))  # 'linkedin', 'maimai', 'email', 'wechat', 'phone'
+    last_outreach_date = Column(DateTime)
+
+    # 触达里程碑
+    linkedin_accepted_at = Column(DateTime)
+    maimai_accepted_at = Column(DateTime)
+    email_replied_at = Column(DateTime)
+    phone_exchanged_at = Column(DateTime)
+
+    # A/B测试
+    ab_test_group = Column(String(10))
+
+    # 拒绝原因
+    rejection_reason = Column(String(50))
+    rejection_details = Column(Text)
+    # ==================== Phase 1.2 新增字段 ====================
+
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
@@ -107,8 +141,88 @@ class Candidate(Base):
             "github_url": self.github_url,
             "twitter_url": self.twitter_url,
             "personal_website": self.personal_website,
+            "website_content": self.website_content,
             "talent_tier": self.talent_tier,
         }
+
+class EmailOutreach(Base):
+    """每封系统生成的邮件的完整生命周期记录"""
+    __tablename__ = 'email_outreach'
+
+    id = Column(Integer, primary_key=True)
+    candidate_id = Column(Integer, nullable=False, index=True)
+    pipeline_stage = Column(String(50))       # 邮件对应的 pipeline 阶段 (new/contacted/following_up/...)
+    subject = Column(Text)                    # 邮件主题
+    body = Column(Text)                       # 邮件正文
+    status = Column(String(20), default='draft')  # draft / approved / sent / rejected
+    to_email = Column(String(200))            # 收件人邮箱
+    sent_at = Column(DateTime)               # 实际发送时间
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+
+
+class OutreachRecord(Base):
+    """统一的多渠道触达记录表"""
+    __tablename__ = 'outreach_records'
+
+    id = Column(Integer, primary_key=True)
+
+    # 关联
+    candidate_id = Column(Integer, ForeignKey('candidates.id'), nullable=False, index=True)
+    related_job_id = Column(Integer, ForeignKey('jobs.id'))
+
+    # 渠道和类型
+    channel = Column(String(20), nullable=False, index=True)  # 'linkedin', 'maimai', 'email', 'wechat', 'phone'
+    outreach_type = Column(String(50), nullable=False, index=True)  # 具体类型
+    status = Column(String(20), nullable=False, index=True)  # 'draft', 'sent', 'accepted', 'replied', 'rejected', 'no_response'
+
+    # 内容
+    subject = Column(String(500))  # 仅Email
+    content = Column(Text, nullable=False)
+    prompt_name = Column(String(100))
+
+    # 响应数据
+    response_content = Column(Text)
+    response_sentiment = Column(String(20))  # 'positive', 'neutral', 'negative'
+
+    # 时间戳
+    sent_at = Column(DateTime, index=True)
+    responded_at = Column(DateTime)
+    accepted_at = Column(DateTime)  # 接受时间 (LinkedIn/脉脉Connect)
+
+    # Stop Rule计数
+    is_counted = Column(Boolean, default=True)  # 所有触达都计数（草稿除外）
+
+    # 元数据（JSON，SQLite TEXT存储）
+    # 注意: 不能使用metadata（SQLAlchemy保留字）
+    meta_data = Column(Text)  # {"profile_url": "...", "alumni_status": "LAMDA", "to_email": "..."}
+
+    # A/B测试
+    ab_test_group = Column(String(10))  # 'A', 'B', 'control'
+    ab_test_name = Column(String(50))
+
+    # 效果评估
+    effectiveness_score = Column(Integer)  # 1-5分，人工评分
+    quality_tag = Column(String(20))  # 'high_quality', 'spam_complaint', 'no_response'
+
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+
+    def to_dict(self):
+        """转换为字典格式"""
+        return {
+            "id": self.id,
+            "candidate_id": self.candidate_id,
+            "channel": self.channel,
+            "outreach_type": self.outreach_type,
+            "status": self.status,
+            "subject": self.subject,
+            "content": self.content[:100] + "..." if self.content and len(self.content) > 100 else self.content,
+            "sent_at": self.sent_at.isoformat() if self.sent_at else None,
+            "responded_at": self.responded_at.isoformat() if self.responded_at else None,
+            "related_job_id": self.related_job_id,
+        }
+
 
 class Job(Base):
     __tablename__ = 'jobs'
@@ -232,6 +346,55 @@ class JobImportTask(Base):
     started_at = Column(DateTime, nullable=True)  # 开始处理时间
     finished_at = Column(DateTime, nullable=True)  # 完成时间
 
+
+class BatchRun(Base):
+    """Pipeline 批次运行记录 — 用于不同数据源的质量比对"""
+    __tablename__ = 'batch_runs'
+
+    id = Column(Integer, primary_key=True)
+    batch_id = Column(String(100), nullable=False, unique=True)  # e.g. "phase4_20260225_094524"
+    source = Column(String(100), nullable=False)  # "phase4_social_expansion", "new_seed_pipeline", "脉脉"
+
+    # 时间
+    started_at = Column(DateTime)
+    completed_at = Column(DateTime)
+
+    # 种子/输入配置
+    seed_config = Column(JSON)  # {"tier": "S,A+,A", "count": 431, "min_cooccurrence": 3}
+
+    # 各阶段数据（JSON 存储完整 phases 对象）
+    phase_data = Column(JSON)  # { "phase4_crawl": {...}, "phase3_enrich": {...}, ... }
+
+    # ========== 关键汇总指标（独立列，便于直接查询比对）==========
+    # 人数
+    total_input = Column(Integer)         # 输入总人数
+    total_imported = Column(Integer)      # 新入库人数
+    duplicates_skipped = Column(Integer)  # 去重跳过
+
+    # 评级分布
+    tier_s = Column(Integer, default=0)
+    tier_a_plus = Column(Integer, default=0)
+    tier_a = Column(Integer, default=0)
+    tier_b_plus = Column(Integer, default=0)
+    tier_b = Column(Integer, default=0)
+    tier_c = Column(Integer, default=0)
+    tier_d = Column(Integer, default=0)
+
+    # 可联系信息覆盖率
+    has_email = Column(Integer, default=0)       # 有邮箱
+    has_linkedin = Column(Integer, default=0)    # 有 LinkedIn
+    has_github = Column(Integer, default=0)      # 有 GitHub
+    has_phone = Column(Integer, default=0)       # 有电话
+    has_website = Column(Integer, default=0)     # 有个人网站
+
+    # 数据库全局快照
+    db_total_candidates = Column(Integer)
+    db_total_github = Column(Integer)
+    db_total_linkedin = Column(Integer)
+
+    created_at = Column(DateTime, default=datetime.now)
+
+
 # Database Initialization
 # 优先从 DATABASE_URL 环境变量读取（Railway 标准）
 DATABASE_URL = os.getenv("DATABASE_URL")
@@ -279,11 +442,24 @@ def _ensure_legacy_schema_compatibility():
             "urgency": "ALTER TABLE jobs ADD COLUMN urgency INTEGER DEFAULT 0",
             "sourcing_notes": "ALTER TABLE jobs ADD COLUMN sourcing_notes TEXT",
         }
+        
+        cand_cols = {c["name"] for c in inspector.get_columns("candidates")}
+        cand_migrations = {
+            "nurture_status": "ALTER TABLE candidates ADD COLUMN nurture_status VARCHAR(50) DEFAULT 'pending'",
+            "nurture_due_date": "ALTER TABLE candidates ADD COLUMN nurture_due_date TIMESTAMP",
+        }
+        
         for col, sql in migrations.items():
             if col not in job_cols:
                 with engine.begin() as conn:
                     conn.execute(text(sql))
                 print(f"🔧 Auto-migrated: added jobs.{col}")
+                
+        for col, sql in cand_migrations.items():
+            if col not in cand_cols:
+                with engine.begin() as conn:
+                    conn.execute(text(sql))
+                print(f"🔧 Auto-migrated: added candidates.{col}")
     except Exception as e:
         print(f"⚠️ Legacy schema compatibility check failed: {e}")
 
@@ -312,6 +488,21 @@ def init_db():
         conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_is_friend ON candidates(is_friend)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_created_at ON candidates(created_at DESC)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_last_comm ON candidates(last_communication_at DESC)"))
+
+        # OutreachRecord indexes - Phase 1 新增
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_outreach_id ON outreach_records(id)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_outreach_candidate ON outreach_records(candidate_id, sent_at DESC)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_outreach_channel_type ON outreach_records(channel, outreach_type)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_outreach_status ON outreach_records(status)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_outreach_counted ON outreach_records(is_counted)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_outreach_sent_at ON outreach_records(sent_at DESC)"))
+
+        # Candidate Phase 1.2 新增字段索引
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_outreach_count ON candidates(outreach_count)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_linkedin_accepted ON candidates(linkedin_accepted_at)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_phone_exchanged ON candidates(phone_exchanged_at)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_last_outreach ON candidates(last_outreach_date)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS idx_candidates_ab_test ON candidates(ab_test_group)"))
 
     
     # 初始化默认 Prompt

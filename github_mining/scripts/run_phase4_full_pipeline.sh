@@ -194,6 +194,11 @@ if [[ "${SKIP_PHASE4}" == "1" ]]; then
     record_phase "phase4_crawl" "status=skipped total=${PHASE4_COUNT}"
 elif [[ "$(step_is_done phase4_crawl)" == "true" ]]; then
     log "⏭️  [跳过] Phase 4 爬取（State 已记录完成）"
+    # 确保变量有值（断点续传场景）
+    if [[ -f "${PHASE4_OUTPUT}" ]]; then
+        PHASE4_COUNT=$(python3 -c "import json; print(len(json.load(open('${PHASE4_OUTPUT}'))))")
+        log "   已有 Phase 4 数据: ${PHASE4_COUNT} 人"
+    fi
 else
     log ""
     log "=============================="
@@ -215,29 +220,27 @@ else
     PHASE4_COUNT=$(python3 -c "import json; print(len(json.load(open('${PHASE4_OUTPUT}'))))")
     log "📊 Phase 4 扩展发现: ${PHASE4_COUNT} 人 → ${PHASE4_OUTPUT}"
     record_phase "phase4_crawl" "total=${PHASE4_COUNT}"
-fi
 
-# ==================== 关键：重置 enrichment 状态 ====================
-# 根因修复：每次新的 Phase 4 数据到来时，必须重置 enrichment 脚本的状态文件
-# 否则旧批次的 "all done" 状态会导致新数据被跳过
-if [[ -f "${ENRICHMENT_STATE}" ]]; then
-    log ""
-    log "🔄 检测到旧的 enrichment 状态文件，自动重置..."
-    log "   旧状态: $(cat ${ENRICHMENT_STATE})"
-    # 备份旧状态
-    cp "${ENRICHMENT_STATE}" "${ENRICHMENT_STATE}.bak_${BATCH_TS}"
-    # 重置为全新状态
-    echo '{"phase3_done": false, "phase3_verified": false, "phase3_5_done": false, "phase3_5_verified": false, "import_done": false, "tier_done": false}' > "${ENRICHMENT_STATE}"
-    log "   ✅ 已重置 enrichment 状态（旧状态已备份为 pipeline_state.json.bak_${BATCH_TS}）"
-fi
-
-# 同时清理旧的中间产出文件，避免新旧数据混淆
-for old_file in "phase3_from_phase4.json" "phase4_final_enriched.json"; do
-    if [[ -f "${DATA_DIR}/${old_file}" ]]; then
-        mv "${DATA_DIR}/${old_file}" "${DATA_DIR}/${old_file}.bak_${BATCH_TS}"
-        log "   🔄 已备份旧中间文件: ${old_file}"
+    # ==================== 关键：重置 enrichment 状态 ====================
+    # 新的 Phase 4 数据到来时，必须重置 enrichment 的状态文件
+    # 否则旧批次的 "all done" 状态会导致新数据被跳过
+    if [[ -f "${ENRICHMENT_STATE}" ]]; then
+        log ""
+        log "🔄 检测到旧的 enrichment 状态文件，自动重置..."
+        log "   旧状态: $(cat ${ENRICHMENT_STATE})"
+        cp "${ENRICHMENT_STATE}" "${ENRICHMENT_STATE}.bak_${BATCH_TS}"
+        echo '{"phase3_done": false, "phase3_verified": false, "phase3_5_done": false, "phase3_5_verified": false, "import_done": false, "tier_done": false}' > "${ENRICHMENT_STATE}"
+        log "   ✅ 已重置 enrichment 状态"
     fi
-done
+
+    # 清理旧的中间产出文件，避免新旧数据混淆
+    for old_file in "phase3_from_phase4.json" "phase4_final_enriched.json"; do
+        if [[ -f "${DATA_DIR}/${old_file}" ]]; then
+            mv "${DATA_DIR}/${old_file}" "${DATA_DIR}/${old_file}.bak_${BATCH_TS}"
+            log "   🔄 已备份旧中间文件: ${old_file}"
+        fi
+    done
+fi
 
 # ==================== Step 2+: 富化 → 入库 → 分级 ====================
 log ""
