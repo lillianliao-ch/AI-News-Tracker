@@ -132,8 +132,11 @@ class AssistantPanel {
         <div class="panel-section message-result-section" id="messageResultSection" style="display: none; background: linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%); border-radius: 8px; padding: 10px; border: 1px solid #e0e6ff;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
             <span style="font-size: 11px; font-weight: 600; color: #333;">📨 AI 消息</span>
-            <div>
-              <button class="copy-btn" id="copyMsgBtn" style="font-size: 10px; padding: 2px 6px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; margin-right: 4px;">📋 复制</button>
+            <div style="display: flex; align-items: center; gap: 4px;">
+              <button class="copy-btn" id="copyMsgBtn" style="font-size: 10px; padding: 2px 6px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer;">📋 复制</button>
+              <label style="font-size: 10px; color: #667eea; cursor: pointer; display: flex; align-items: center; gap: 2px; white-space: nowrap;">
+                <input type="checkbox" id="sendRequestCb" checked style="margin: 0; accent-color: #667eea;"> 发申请
+              </label>
               <button class="copy-btn" id="fillMsgBtn" style="font-size: 10px; padding: 2px 6px; border: 1px solid #667eea; border-radius: 4px; background: #667eea; color: white; cursor: pointer;">📝 填入对话框</button>
             </div>
           </div>
@@ -674,9 +677,44 @@ class AssistantPanel {
             navigator.clipboard.writeText(msgEl.textContent).then(() => {
                 MaimaiUtils.showNotification('消息已复制到剪贴板', 'success');
                 this._recordCommLog();
+
+                // 如果勾选了"发申请"，同时记录触达
+                const sendRequestCb = this.panel.querySelector('#sendRequestCb');
+                if (sendRequestCb && sendRequestCb.checked) {
+                    this._recordOutreach();
+                }
             }).catch(() => {
                 MaimaiUtils.showNotification('复制失败', 'error');
             });
+        }
+    }
+
+    // 记录触达(发申请)到后端 outreach_records
+    async _recordOutreach() {
+        if (!this.lastCandidate) return;
+
+        const jobSelect = this.panel.querySelector('#jobSelect');
+        const jobId = jobSelect?.value !== 'auto' ? parseInt(jobSelect.value) : null;
+
+        try {
+            const apiUrl = `${MaimaiConfig.api.baseUrl}/api/comm-log`;
+            await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    candidate_name: this.lastCandidate.name,
+                    message: this.lastGeneratedMessage,
+                    channel: 'maimai_direct',
+                    job_id: jobId,
+                    candidate_company: this.lastCandidate.currentCompany || '',
+                    candidate_position: this.lastCandidate.currentPosition || '',
+                    create_outreach: true,
+                    outreach_type: 'friend_request',
+                })
+            });
+            console.log('📨 触达记录(发申请)已记录');
+        } catch (e) {
+            console.warn('记录触达失败:', e);
         }
     }
 
