@@ -17,6 +17,7 @@
             "matches": [
                 "https://maimai.cn/ent/v41/recruit/*",
                 "https://maimai.cn/ent/v41/groups*",
+                "https://maimai.cn/ent/v41/im*",
                 "https://maimai.cn/web/search_center*",
                 "https://maimai.cn/profile/detail*",
                 "https://maimai.cn/contact/*",
