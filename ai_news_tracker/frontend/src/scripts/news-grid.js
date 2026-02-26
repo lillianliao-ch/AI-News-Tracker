@@ -1,0 +1,136 @@
+// 监听资讯更新事件
+window.addEventListener('news-updated', (event) => {
+    const newsGrid = document.getElementById('newsGrid');
+    if (newsGrid && event.detail) {
+        // 清空现有内容
+        newsGrid.innerHTML = '';
+
+        // 动态创建资讯卡片
+        event.detail.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'news-card';
+            card.style.cssText = `
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s ease;
+      `;
+
+            const title = document.createElement('h3');
+            title.textContent = item.title;
+            title.style.cssText = `
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 12px 0;
+        color: #1a1a1a;
+        line-height: 1.4;
+      `;
+
+            const summary = document.createElement('p');
+            summary.textContent = item.summary?.substring(0, 150) + '...' || '';
+            summary.style.cssText = `
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+      `;
+
+            const meta = document.createElement('div');
+            meta.style.cssText = `
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 16px;
+        font-size: 12px;
+        color: #999;
+      `;
+
+            const source = document.createElement('span');
+            source.textContent = item.source || '';
+
+            const category = document.createElement('span');
+            category.textContent = item.category || '';
+            category.style.cssText = `
+        background: #f0f0f0;
+        padding: 4px 12px;
+        border-radius: 12px;
+      `;
+
+            meta.appendChild(source);
+            meta.appendChild(category);
+            card.appendChild(title);
+            card.appendChild(summary);
+            card.appendChild(meta);
+
+            newsGrid.appendChild(card);
+        });
+    }
+});
+
+// 监听资讯追加事件（加载更多）
+window.addEventListener('news-appended', (event) => {
+    const newsGrid = document.getElementById('newsGrid');
+    if (newsGrid && event.detail) {
+        // 追加新资讯
+        event.detail.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'news-card';
+            card.style.cssText = `
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s ease;
+      `;
+
+            const title = document.createElement('h3');
+            title.textContent = item.title;
+            title.style.cssText = `
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 12px 0;
+        color: #1a1a1a;
+        line-height: 1.4;
+      `;
+
+            const summary = document.createElement('p');
+            summary.textContent = item.summary?.substring(0, 150) + '...' || '';
+            summary.style.cssText = `
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+      `;
+
+            const meta = document.createElement('div');
+            meta.style.cssText = `
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 16px;
+        font-size: 12px;
+        color: #999;
+      `;
+
+            const source = document.createElement('span');
+            source.textContent = item.source || '';
+
+            const category = document.createElement('span');
+            category.textContent = item.category || '';
+            category.style.cssText = `
+        background: #f0f0f0;
+        padding: 4px 12px;
+        border-radius: 12px;
+      `;
+
+            meta.appendChild(source);
+            meta.appendChild(category);
+            card.appendChild(title);
+            card.appendChild(summary);
+            card.appendChild(meta);
+
+            newsGrid.appendChild(card);
+        });
+    }
+});

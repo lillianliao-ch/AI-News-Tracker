@@ -165,21 +165,47 @@ class DeepStudentScraper:
                     info['name'] = h1.get_text().strip()
 
         # 2. 提取导师信息
-        advisor_patterns = [
-            r'(?:Advisor|Supervisor|Ph\.?D\.?\s*(?:Advisor|Supervisor))?\s*[:：]\s*([A-Za-z\u4e00-\u9fa5]+\s+[A-Za-z\u4e00-\u9fa5]+)',
-            r'(?:导师|指导老师)\s*[:：]?\s*([A-Za-z\u4e00-\u9fa5]+)',
-            r'(?:Ph\.?D\.?\s*(?:Student|Candidate))(?:\s+under?\s+(?:the\s+)?supervision\s+(?:of|by)\s+)([A-Za-z\u4e00-\u9fa5\s]+)',
-        ]
+        # 方法1: 查找明确的 "Supervisor:" 或 "Advisor:" 格式
+        advisor_found = False
 
-        for pattern in advisor_patterns:
-            matches = re.finditer(pattern, text, re.IGNORECASE)
-            for match in matches:
-                advisor = match.group(1).strip()
-                if len(advisor) < 100:  # 避免匹配过长文本
-                    info['advisor'] = advisor
-                    break
-            if info['advisor']:
-                break
+        # 从 HTML 中查找包含 Supervisor/Advisor 的元素
+        for p in soup.find_all('p'):
+            p_text = p.get_text(' ', strip=True)
+            # 检查是否以 "Supervisor:" 开头或包含 "Supervisor:"
+            if re.search(r'\bSupervisor\s*:', p_text, re.IGNORECASE):
+                # 提取导师名字（通常格式：Supervisor: Prof. Name 或 Supervisor: Name）
+                match = re.search(r'Supervisor\s*:\s*(?:Prof\.?\s+)?([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,2})(?=\s*(?:,|\.|Email|电话|$))', p_text)
+
+                if not match:
+                    # 回退：匹配单个名字单词
+                    match = re.search(r'Supervisor\s*:\s*(?:Prof\.?\s+)?([A-Z][a-zA-Z一-龥]+)', p_text)
+                if match:
+                    advisor = match.group(1).strip()
+                    if 2 < len(advisor) < 50:
+                        info['advisor'] = advisor
+                        advisor_found = True
+                        break
+
+        # 方法2: 如果方法1失败，尝试从文本中提取 "under the supervision of"
+        if not advisor_found:
+            # 查找最近的导师信息（优先级：Ph.D. supervisor > Master supervisor）
+            patterns = [
+                r'Ph\.?D\.?\s*(?:degree|student).+?(?:under\s+the\s+)?supervision\s+(?:of|by)\s+(?:Prof\.?\s+)?([A-Z][a-z]+\s+[A-Z][a-z]+)',
+                r'supervised\s+by\s+(?:Prof\.?\s+)?([A-Z][a-z]+\s+[A-Z][a-z]+)',
+                r'导师\s*[:：]?\s*([A-Za-z\u4e00-\u9fa5]+)',
+            ]
+
+            for pattern in patterns:
+                match = re.search(pattern, text, re.IGNORECASE)
+
+                if not match:
+                    # 回退：匹配单个名字单词
+                    match = re.search(r'Supervisor\s*:\s*(?:Prof\.?\s+)?([A-Z][a-zA-Z一-龥]+)', p_text)
+                if match:
+                    advisor = match.group(1).strip()
+                    if 2 < len(advisor) < 50:
+                        info['advisor'] = advisor
+                        break
 
         # 3. 提取学位信息
         degree_patterns = [

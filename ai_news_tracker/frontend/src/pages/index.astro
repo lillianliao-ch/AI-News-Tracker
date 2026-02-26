@@ -8,10 +8,18 @@ import RefreshButton from '../components/RefreshButton.astro';
 // 从 API 获取资讯
 let allNews = [];
 try {
-  const response = await fetch('http://localhost:8000/api/news?limit=50');
-  allNews = await response.json();
+  // SSR uses internal docker/host network
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8002/api';
+  console.log(`[SSR] Fetching news from ${API_BASE}...`);
+  const response = await fetch(`${API_BASE}/news?limit=50`);
+  const data = await response.json();
+  if (Array.isArray(data)) {
+    allNews = data;
+  } else {
+    console.error('[SSR] API returned non-array:', data);
+  }
 } catch (error) {
-  console.error('获取资讯失败:', error);
+  console.error('[SSR] 获取资讯失败:', error);
 }
 
 // 分类
@@ -31,12 +39,12 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
   <body>
     <div class="container">
       <!-- 侧边栏 -->
-      <Sidebar client:load />
+      <Sidebar />
 
       <!-- 主内容区 -->
       <main class="main-content">
         <!-- 头部 -->
-        <Header client:load />
+        <Header />
 
         <!-- 操作栏 -->
         <div class="action-bar">
@@ -48,11 +56,11 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
             ))}
           </div>
 
-          <RefreshButton client:load />
+          <RefreshButton />
         </div>
 
         <!-- 资讯网格 -->
-        <NewsGrid news={allNews} client:load />
+        <NewsGrid news={allNews} />
 
         <!-- 加载更多 -->
         <div class="load-more">
@@ -60,6 +68,11 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
         </div>
       </main>
     </div>
+
+    <!-- Pass PUBLIC_API_URL to client via data attribute on a script or meta -->
+    <script define:vars={{ PUBLIC_API_URL: import.meta.env.PUBLIC_API_URL || 'http://localhost:8002' }}>
+        window.PUBLIC_API_URL = PUBLIC_API_URL;
+    </script>
 
     <script is:inline>
       // ✨ AI分类映射（将前端标签映射到AI分类）
@@ -71,10 +84,21 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
         '观点': 'view'
       };
 
+      // Helper to get API URL
+      const getApiUrl = (path) => {
+        const baseUrl = window.PUBLIC_API_URL || 'http://localhost:8002';
+        // Remove trailing slash from base if present
+        const cleanBase = baseUrl.replace(/\/$/, '');
+        // Ensure path starts with /api if not present in base (logic depends on how we set env var)
+        // In deploy script: PUBLIC_API_URL="http://$SERVER_IP:8002" (root)
+        // So we append /api
+        return `${cleanBase}/api${path}`;
+      };
+
       // 加载统计信息并更新分类按钮
       async function loadStatsAndUpdateCategories() {
         try {
-          const response = await fetch('http://localhost:8000/api/stats');
+          const response = await fetch(getApiUrl('/stats'));
           const stats = await response.json();
 
           // ✨ 使用AI分类统计
@@ -109,9 +133,11 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
 
           // ✨ 使用AI分类筛选
           const aiCategory = AI_CATEGORY_MAP[category];
-          const url = aiCategory
-            ? `http://localhost:8000/api/news?ai_category=${aiCategory}&limit=50`
-            : 'http://localhost:8000/api/news?limit=50';
+          
+          let url = getApiUrl('/news?limit=50');
+          if (aiCategory) {
+             url = getApiUrl(`/news?ai_category=${aiCategory}&limit=50`);
+          }
 
           const response = await fetch(url);
           const news = await response.json();
@@ -124,7 +150,7 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
       // 加载更多
       document.getElementById('loadMoreBtn')?.addEventListener('click', async () => {
         const currentCount = document.querySelectorAll('.news-card').length;
-        const response = await fetch(`http://localhost:8000/api/news?offset=${currentCount}&limit=20`);
+        const response = await fetch(getApiUrl(`/news?offset=${currentCount}&limit=20`));
         const news = await response.json();
 
         // 触发更新事件

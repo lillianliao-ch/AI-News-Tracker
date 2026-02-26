@@ -145,22 +145,5 @@
 </style>
 
 <script>
-  // 加载统计信息
-  async function loadStats() {
-    try {
-      const response = await fetch('http://localhost:8000/api/stats');
-      const stats = await response.json();
-
-      document.getElementById('totalNews').textContent = stats.total_news || 0;
-      document.getElementById('todayNews').textContent = stats.today_news || 0;
-    } catch (error) {
-      console.error('加载统计失败:', error);
-    }
-  }
-
-  // 页面加载时获取统计
-  loadStats();
-
-  // 每30秒更新一次
-  setInterval(loadStats, 30000);
+  import './sidebar.js';
 </script>

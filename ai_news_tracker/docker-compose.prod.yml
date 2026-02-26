@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ainews-backend
+    restart: always
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///data/ai_news.db
+      - LOG_LEVEL=INFO
+      - PORT=8000
+      # API Keys will be populated from .env file on server
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      # Models
+      - CLASSIFY_MODEL=${CLASSIFY_MODEL:-qwen-max}
+      - SUMMARY_MODEL=${SUMMARY_MODEL:-qwen-plus}
+      - GENERATE_MODEL=${GENERATE_MODEL:-qwen-max}
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "8000:8000"
+    networks:
+      - ainews-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ainews-frontend
+    restart: always
+    environment:
+      - VITE_API_BASE_URL=http://backend:8000/api
+      - PORT=4321
+      - HOST=0.0.0.0
+    ports:
+      - "4321:4321"
+    depends_on:
+      - backend
+    networks:
+      - ainews-net
+
+networks:
+  ainews-net:
+    driver: bridge

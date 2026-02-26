@@ -22,7 +22,10 @@
 #   3. 自定义种子和参数:
 #      SEED_TOP=500 MIN_CO=2 bash github_mining/scripts/run_phase4_full_pipeline.sh
 #
-#   4. 按 Tier 选种子（从数据库选 S/A 级别）:
+#   4. 按文件使用种子（JSON array of usernames）:
+#      SEED_FILE=seed_today_sa.json bash github_mining/scripts/run_phase4_full_pipeline.sh
+#
+#   5. 按 Tier 选种子（从数据库选 S/A 级别）:
 #      SEED_TIER=S,A bash github_mining/scripts/run_phase4_full_pipeline.sh
 #
 #   5. 跳过 Phase 4 爬取（已有 phase4_expanded.json 时）:
@@ -68,6 +71,7 @@ REPORT_FILE="${DATA_DIR}/batch_report_${BATCH_ID}.json"
 SEED_TOP="${SEED_TOP:-300}"
 MIN_CO="${MIN_CO:-3}"
 SEED_TIER="${SEED_TIER:-}"
+SEED_FILE="${SEED_FILE:-}"
 SKIP_PHASE4="${SKIP_PHASE4:-0}"
 
 # 流程开始时间
@@ -162,8 +166,9 @@ report = {
     'started_at': '${STARTED_AT}',
     'source': 'phase4_social_expansion',
     'seed_config': {
-        'tier': '${SEED_TIER:-file_top}',
+        'tier': '${SEED_TIER:-}',
         'seed_top': ${SEED_TOP},
+        'seed_file': '${SEED_FILE:-}',
         'min_cooccurrence': ${MIN_CO}
     },
     'phases': {}
@@ -178,7 +183,8 @@ log "   BATCH_ID:   ${BATCH_ID}"
 log "   NOTION_RAG: ${NOTION_RAG_DIR}"
 log "   SEED_TOP:   ${SEED_TOP}"
 log "   MIN_CO:     ${MIN_CO}"
-log "   SEED_TIER:  ${SEED_TIER:-（从文件取 Top ${SEED_TOP}）}"
+log "   SEED_FILE:  ${SEED_FILE:-（未使用）}"
+log "   SEED_TIER:  ${SEED_TIER:-（未使用）}"
 log "   SKIP_P4:    ${SKIP_PHASE4}"
 log "   REPORT:     ${REPORT_FILE}"
 log "============================================================"
@@ -206,7 +212,9 @@ else
     log "=============================="
 
     P4_CMD="python3 ${MINING_SCRIPTS}/github_network_miner.py phase4 --seed-top ${SEED_TOP} --min-cooccurrence ${MIN_CO}"
-    if [[ -n "${SEED_TIER}" ]]; then
+    if [[ -n "${SEED_FILE}" ]]; then
+        P4_CMD="${P4_CMD} --seeds-file ${SEED_FILE}"
+    elif [[ -n "${SEED_TIER}" ]]; then
         P4_CMD="${P4_CMD} --seed-tier ${SEED_TIER}"
     fi
 

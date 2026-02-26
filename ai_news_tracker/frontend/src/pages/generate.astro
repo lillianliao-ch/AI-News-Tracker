@@ -5,7 +5,7 @@ import Header from '../components/Header.astro';
 // 从 API 获取资讯
 let allNews = [];
 try {
-  const response = await fetch('http://localhost:8000/api/news?limit=20');
+  const response = await fetch('http://localhost:8502/api/news?limit=20');
   allNews = await response.json();
 } catch (error) {
   console.error('获取资讯失败:', error);
@@ -320,7 +320,7 @@ try {
         }
 
         try {
-          const response = await fetch('http://localhost:8000/api/generate', {
+          const response = await fetch('http://localhost:8502/api/generate', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

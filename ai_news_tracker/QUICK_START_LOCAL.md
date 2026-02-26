@@ -66,6 +66,24 @@ start_local.bat
 - ✅ 自动运行数据库迁移
 - ✅ 自动启动服务器
 
+### 稳定模式（推荐）
+提供健康检查 + 自动重启：
+
+```bash
+cd /Users/lillianliao/notion_rag/ai_news_tracker
+./stable_start.sh
+```
+
+停止稳定模式：
+
+```bash
+cd /Users/lillianliao/notion_rag/ai_news_tracker
+./stable_stop.sh
+```
+
+日志目录：
+`/Users/lillianliao/notion_rag/ai_news_tracker/.runtime/logs`
+
 ---
 
 ## 📊 当前数据源

@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+
+# Logs
+*.log
+
+# Screenshots
+github_mining/screenshots/
+
+# Verification reports
+github_mining/verification/
+
+# But keep example/reference data
+!github_mining/*example*.json
+!github_mining/*reference*.json
+# Data files
+*.json
+*.csv
+*.log
+scripts/github_hunter_config.py
+gmail-resume-parser.zip

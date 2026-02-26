@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1371",
+    "name": "王晋东 (Jindong Wang)",
+    "github_username": "jindongwang",
+    "github_url": "https://github.com/jindongwang",
+    "talent_tier": "S",
+    "company": "威廉与玛丽学院",
+    "title": "威廉与玛丽学院 助理教授",
+    "email": "jindongwang@outlook.com",
+    "phone": ""
+  },
+  {
+    "id": "1372",
+    "name": "王鑫滔 (Xintao)",
+    "github_username": "xinntao",
+    "github_url": "https://github.com/xinntao",
+    "talent_tier": "S",
+    "company": "快手",
+    "title": "快手可灵团队 资深研究员",
+    "email": "xintao.alpha@gmail.com",
+    "phone": ""
+  },
+  {
+    "id": "1385",
+    "name": "Yang Yu",
+    "github_username": "eyounx",
+    "github_url": "https://github.com/eyounx",
+    "talent_tier": "S",
+    "company": "Nanjing University",
+    "title": "Professor of School of Artificial Intelligence",
+    "email": "yuy@nju.edu.cn",
+    "phone": ""
+  },
+  {
+    "id": "1390",
+    "name": "Chenfei Wu",
+    "github_username": "chenfei-wu",
+    "github_url": "https://github.com/chenfei-wu",
+    "talent_tier": "S",
+    "company": "Tongyi Lab, Alibaba",
+    "title": "Qwen's Painter now",
+    "email": "cqwuchenfei@163.com",
+    "phone": ""
+  },
+  {
+    "id": "1401",
+    "name": "稚晖",
+    "github_username": "peng-zhihui",
+    "github_url": "https://github.com/peng-zhihui",
+    "talent_tier": "S",
+    "company": "HUAWEI Research",
+    "title": "野生钢铁侠本侠。",
+    "email": "prime_zhihui@foxmail.com",
+    "phone": ""
+  }
+]
