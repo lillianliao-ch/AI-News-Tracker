@@ -601,7 +601,95 @@ class TalentPanelExtractor {
                     MaimaiUtils.showNotification(`${result.message || '同步完成'}`, 'success');
             }
         }
+
+        // 5. 自动下载附件简历
+        try {
+            await this.downloadResumeAttachment(candidateData.name);
+        } catch (e) {
+            console.warn(`⚠️ 附件简历下载失败:`, e.message);
+        }
+
         return result;
+    }
+
+    // 自动下载附件简历
+    async downloadResumeAttachment(candidateName = '') {
+        const container = this.panelContainer || document.body;
+
+        // 查找「附件简历」区域
+        const facets = container.querySelectorAll('.facet___2Ak8o, [class*="facet"], section, div');
+        let resumeSection = null;
+
+        for (const el of facets) {
+            const titleEl = el.querySelector('.font_title___1dWcC, h3, h4');
+            if (titleEl && titleEl.textContent.includes('附件简历')) {
+                resumeSection = el;
+                break;
+            }
+        }
+
+        // 方法2: 在整个面板中查找包含「附件简历」标题的区域
+        if (!resumeSection) {
+            const allHeaders = container.querySelectorAll('*');
+            for (const h of allHeaders) {
+                if (h.textContent?.trim() === '附件简历' && h.children.length === 0) {
+                    // 找到标题后，往上找最近的容器
+                    resumeSection = h.closest('[class*="facet"], section, .ant-card') || h.parentElement?.parentElement;
+                    break;
+                }
+            }
+        }
+
+        if (!resumeSection) {
+            console.log(`📎 ${candidateName}: 未找到附件简历区域，跳过`);
+            return false;
+        }
+
+        // 在附件简历区域内查找「下载」链接
+        let downloadBtn = null;
+        const allElements = resumeSection.querySelectorAll('a, span, button, div');
+        for (const el of allElements) {
+            const text = el.textContent?.trim();
+            if (text === '下载') {
+                const rect = el.getBoundingClientRect();
+                if (rect.width > 0 && rect.height > 0) {
+                    downloadBtn = el;
+                    break;
+                }
+            }
+        }
+
+        // 方法2: 更广泛的搜索 — 在面板中找「附件简历」附近的「下载」
+        if (!downloadBtn) {
+            const spans = container.querySelectorAll('a, span');
+            let foundResume = false;
+            for (const span of spans) {
+                if (span.textContent?.includes('附件简历')) {
+                    foundResume = true;
+                    continue;
+                }
+                if (foundResume && span.textContent?.trim() === '下载') {
+                    const rect = span.getBoundingClientRect();
+                    if (rect.width > 0 && rect.height > 0) {
+                        downloadBtn = span;
+                        break;
+                    }
+                }
+                // 搜索范围不要太远
+                if (foundResume && span.textContent?.includes('工作经历')) break;
+            }
+        }
+
+        if (!downloadBtn) {
+            console.log(`📎 ${candidateName}: 有附件简历区域但未找到下载按钮`);
+            return false;
+        }
+
+        console.log(`📥 ${candidateName}: 点击下载附件简历...`);
+        downloadBtn.click();
+        await MaimaiUtils.delay(1000);
+        console.log(`📥 ${candidateName}: 附件简历下载已触发`);
+        return true;
     }
 }
 
