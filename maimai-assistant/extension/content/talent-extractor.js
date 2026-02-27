@@ -559,15 +559,15 @@ class TalentPanelExtractor {
     }
 
     // 一键导入或更新候选人
-    async importOrView() {
-        console.log('🚀 [TalentPanel] 开始一键导入/更新...');
+    async importOrView(silent = false) {
+        if (!silent) console.log('🚀 [TalentPanel] 开始一键导入/更新...');
 
         // 1. 提取数据
         const candidateData = this.extractFromTalentPanel();
 
         if (!candidateData || !candidateData.name) {
-            MaimaiUtils.showNotification('未能提取到候选人信息，请先打开候选人详情', 'warning');
-            return;
+            if (!silent) MaimaiUtils.showNotification('未能提取到候选人信息，请先打开候选人详情', 'warning');
+            return { success: false, error: '未能提取信息' };
         }
 
         // 2. 补充 source 信息
@@ -576,29 +576,32 @@ class TalentPanelExtractor {
         candidateData.extractedAt = new Date().toISOString();
 
         // 3. 调用 sync 端点（自动判断新建/更新）
-        MaimaiUtils.showNotification(`正在同步 ${candidateData.name}...`, 'info');
+        if (!silent) MaimaiUtils.showNotification(`正在同步 ${candidateData.name}...`, 'info');
         const result = await this.syncCandidate(candidateData);
 
         if (!result.success) {
-            MaimaiUtils.showNotification(`同步失败: ${result.error}`, 'error');
-            return;
+            if (!silent) MaimaiUtils.showNotification(`同步失败: ${result.error}`, 'error');
+            return result;
         }
 
         // 4. 根据 action 显示不同通知
-        switch (result.action) {
-            case 'created':
-                MaimaiUtils.showNotification(`✅ ${candidateData.name} 导入成功！(ID: ${result.candidateId})`, 'success');
-                break;
-            case 'updated':
-                const fields = result.updatedFields || [];
-                MaimaiUtils.showNotification(`🔄 ${candidateData.name} 已更新 ${fields.length} 个字段 (ID: ${result.candidateId})`, 'success');
-                break;
-            case 'unchanged':
-                MaimaiUtils.showNotification(`📋 ${candidateData.name} 已在库中，无新数据 (ID: ${result.candidateId})`, 'info');
-                break;
-            default:
-                MaimaiUtils.showNotification(`${result.message || '同步完成'}`, 'success');
+        if (!silent) {
+            switch (result.action) {
+                case 'created':
+                    MaimaiUtils.showNotification(`✅ ${candidateData.name} 导入成功！(ID: ${result.candidateId})`, 'success');
+                    break;
+                case 'updated':
+                    const fields = result.updatedFields || [];
+                    MaimaiUtils.showNotification(`🔄 ${candidateData.name} 已更新 ${fields.length} 个字段 (ID: ${result.candidateId})`, 'success');
+                    break;
+                case 'unchanged':
+                    MaimaiUtils.showNotification(`📋 ${candidateData.name} 已在库中，无新数据 (ID: ${result.candidateId})`, 'info');
+                    break;
+                default:
+                    MaimaiUtils.showNotification(`${result.message || '同步完成'}`, 'success');
+            }
         }
+        return result;
     }
 }
 

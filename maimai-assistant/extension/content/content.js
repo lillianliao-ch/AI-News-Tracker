@@ -294,10 +294,94 @@ class MaimaiAssistant {
         return candidates;
     }
 
+    // 批量导入候选人到人才库
+    async batchImportTalents(count = 10) {
+        const cards = this.extractor.findCandidateCards();
+        if (cards.length === 0) {
+            MaimaiUtils.showNotification('未检测到候选人', 'warning');
+            return;
+        }
+
+        const targetCards = cards.slice(0, count);
+
+        this.batchState = {
+            isRunning: true,
+            currentIndex: 0,
+            total: targetCards.length,
+            successful: 0,
+            failed: 0
+        };
+
+        console.log(`📚 开始批量导入人才，共 ${targetCards.length} 人`);
+        MaimaiUtils.showNotification(`开始批量导入 ${targetCards.length} 人到系统`, 'info');
+        this.panel.updateProgress(this.batchState);
+
+        for (let i = 0; i < targetCards.length; i++) {
+            if (!this.batchState.isRunning) break;
+
+            this.batchState.currentIndex = i + 1;
+            this.panel.updateProgress(this.batchState);
+
+            try {
+                await this.importTalentFromCard(targetCards[i], i);
+                this.batchState.successful++;
+                console.log(`✅ 第 ${i + 1}/${targetCards.length} 个导入成功`);
+            } catch (error) {
+                this.batchState.failed++;
+                console.error(`❌ 第 ${i + 1}/${targetCards.length} 个导入失败:`, error.message);
+            }
+
+            if (i < targetCards.length - 1 && this.batchState.isRunning) {
+                const delay = 3000 + Math.random() * 2000;
+                await MaimaiUtils.delay(delay);
+            }
+        }
+
+        this.batchState.isRunning = false;
+        this.panel.updateProgress(this.batchState);
+        MaimaiUtils.showNotification(
+            `批量导入完成！成功: ${this.batchState.successful}, 失败: ${this.batchState.failed}`,
+            this.batchState.failed > 0 ? 'warning' : 'success'
+        );
+    }
+
+    // 从候选人卡片导入信息
+    async importTalentFromCard(card, index) {
+        console.log(`==========================================`);
+        console.log(`🔍 [${index + 1}] 开始从卡片提取并导入...`);
+
+        // 1. 滚动到卡片并点击使其在右侧加载详情
+        card.scrollIntoView({ behavior: 'instant', block: 'center' });
+        await MaimaiUtils.delay(500);
+
+        // 尝试点击卡片的空白区域或名称以触发右侧面板加载
+        console.log(`🖱️  点击卡片加载详情...`);
+        const clickableArea = card.querySelector('.name, [class*="name"]') || card;
+        clickableArea.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+
+        // 2. 等待右侧面板数据加载完成
+        const waitTime = window.TalentPanelExtractor ? 3000 : 2000;
+        console.log(`⏳ 等待 ${waitTime}ms 加载右侧面板...`);
+        await MaimaiUtils.delay(waitTime);
+
+        // 3. 执行提取与同步
+        if (window.TalentPanelExtractor) {
+            const extractor = new TalentPanelExtractor();
+            const result = await extractor.importOrView(true); // silent = true
+
+            if (!result || !result.success) {
+                throw new Error(result?.error || '提取失败');
+            }
+        } else {
+            throw new Error('TalentPanelExtractor 未加载');
+        }
+    }
+
     // 停止批量操作
     stopBatchOperation() {
         this.batchState.isRunning = false;
-        MaimaiUtils.showNotification('批量操作已停止', 'info');
+        this.panel.updateProgress(this.batchState);
+        MaimaiUtils.showNotification('批量操作已主动停止', 'info');
     }
 
     // 监听页面变化
