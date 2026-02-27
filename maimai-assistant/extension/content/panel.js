@@ -104,7 +104,10 @@ class AssistantPanel {
               📥 好友页导入
             </button>
             <button class="action-btn" id="importTalentBtn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 4px;">
-              📥 人才库导入
+              📥 人才库单行导入
+            </button>
+            <button class="action-btn" id="batchImportTalentBtn" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              📚 批量导入当前页
             </button>
             <button class="refresh-btn" id="refreshBtn" title="刷新检测" style="flex-shrink: 0;">🔄</button>
           </div>
@@ -352,6 +355,13 @@ class AssistantPanel {
             } else {
                 MaimaiUtils.showNotification('人才库提取器未加载', 'error');
             }
+        });
+
+        // 批量导入当前页
+        this.panel.querySelector('#batchImportTalentBtn')?.addEventListener('click', () => {
+            const count = this.getBatchCount();
+            this.showProgress();
+            this.assistant?.batchImportTalents(count);
         });
 
         // 批量加好友
