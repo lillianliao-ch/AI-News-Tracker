@@ -602,9 +602,9 @@ class TalentPanelExtractor {
             }
         }
 
-        // 5. 自动下载附件简历
+        // 5. 自动下载附件简历并上传到后端
         try {
-            await this.downloadResumeAttachment(candidateData.name);
+            await this.downloadResumeAttachment(candidateData.name, result.candidateId);
         } catch (e) {
             console.warn(`⚠️ 附件简历下载失败:`, e.message);
         }
@@ -612,14 +612,16 @@ class TalentPanelExtractor {
         return result;
     }
 
-    // 自动下载附件简历
-    async downloadResumeAttachment(candidateName = '') {
+    // 自动下载附件简历并上传到后端关联
+    async downloadResumeAttachment(candidateName = '', candidateId = null) {
         const container = this.panelContainer || document.body;
         console.log(`📎 [${candidateName}] 开始查找附件简历...`);
 
-        // 策略1: 在整个面板中，按 DOM 顺序扫描所有元素
-        // 先找到「附件简历」文字，然后找它之后最近的「下载」
+        // ① 查找「附件简历」区域和「下载」按钮
         let downloadBtn = null;
+        let downloadUrl = null;
+
+        // 策略1: TreeWalker 按 DOM 顺序扫描
         const walker = document.createTreeWalker(
             container,
             NodeFilter.SHOW_TEXT,
@@ -628,13 +630,11 @@ class TalentPanelExtractor {
         );
 
         let foundResumeSection = false;
-        let resumeTextNode = null;
 
         while (walker.nextNode()) {
             const text = walker.currentNode.textContent?.trim();
             if (text === '附件简历') {
                 foundResumeSection = true;
-                resumeTextNode = walker.currentNode;
                 console.log(`  📎 找到「附件简历」文字节点`);
                 continue;
             }
@@ -644,41 +644,41 @@ class TalentPanelExtractor {
                     const rect = parentEl.getBoundingClientRect();
                     if (rect.width > 0 && rect.height > 0) {
                         downloadBtn = parentEl;
-                        console.log(`  ✅ 找到「下载」按钮: <${parentEl.tagName}> class="${parentEl.className}"`);
+                        // 尝试获取下载链接
+                        const linkEl = parentEl.tagName === 'A' ? parentEl : parentEl.closest('a');
+                        if (linkEl && linkEl.href) {
+                            downloadUrl = linkEl.href;
+                        }
+                        console.log(`  ✅ 找到「下载」: <${parentEl.tagName}> url=${downloadUrl || '无直接链接'}`);
                         break;
                     }
                 }
             }
-            // 如果已过了附件简历区域进入了工作经历/期望偏好，停止搜索
             if (foundResumeSection && (text === '工作经历' || text === '期望偏好' || text === '教育经历')) {
-                console.log(`  ⚠️ 搜索到「${text}」区域，停止查找`);
                 break;
             }
         }
 
-        // 策略2: 直接遍历所有可点击元素，找「附件简历」附近的「下载」
+        // 策略2: 遍历可点击元素
         if (!downloadBtn) {
-            console.log('  📎 策略1未命中，尝试策略2: 遍历所有可点击元素...');
             const allClickable = container.querySelectorAll('a, span, div, button');
             let seenResume = false;
             for (const el of allClickable) {
-                // 只看叶子节点或少量子元素的节点
                 if (el.children.length > 5) continue;
                 const text = el.textContent?.trim();
                 if (!seenResume && text?.includes('附件简历') && text.length < 20) {
                     seenResume = true;
-                    console.log(`  📎 策略2: 找到附件简历标记`);
                     continue;
                 }
                 if (seenResume && text === '下载') {
                     const rect = el.getBoundingClientRect();
                     if (rect.width > 0 && rect.height > 0) {
                         downloadBtn = el;
-                        console.log(`  ✅ 策略2命中: <${el.tagName}> class="${el.className}"`);
+                        const linkEl = el.tagName === 'A' ? el : el.closest('a');
+                        if (linkEl && linkEl.href) downloadUrl = linkEl.href;
                         break;
                     }
                 }
-                // 越过当前区域就停止
                 if (seenResume && text && (text.includes('工作经历') || text.includes('期望偏好'))) break;
             }
         }
@@ -692,12 +692,54 @@ class TalentPanelExtractor {
             return false;
         }
 
-        console.log(`📥 ${candidateName}: 点击下载附件简历...`);
+        // ② 尝试获取文件名（从附件简历区域的 PDF 文件名）
+        let fileName = `${candidateName || 'resume'}_附件简历.pdf`;
+        // 在附件简历区域找 .pdf 文件名
+        const resumeArea = downloadBtn.closest('[class*="facet"], section, div') || downloadBtn.parentElement?.parentElement;
+        if (resumeArea) {
+            const allText = resumeArea.textContent || '';
+            const pdfMatch = allText.match(/([^\s]+\.(?:pdf|doc|docx))/i);
+            if (pdfMatch) {
+                fileName = pdfMatch[1];
+                console.log(`  📄 文件名: ${fileName}`);
+            }
+        }
+
+        // ③ 如果有下载链接且有 candidateId → 直接 fetch 文件并上传到后端
+        if (downloadUrl && candidateId) {
+            console.log(`📥 ${candidateName}: 获取附件文件并上传到后端...`);
+            try {
+                // fetch 文件内容
+                const fileResp = await fetch(downloadUrl);
+                if (!fileResp.ok) throw new Error(`下载失败: HTTP ${fileResp.status}`);
+                const blob = await fileResp.blob();
+
+                // 上传到后端 API
+                const formData = new FormData();
+                formData.append('file', blob, fileName);
+                const uploadResp = await fetch(`${this.API_BASE}/api/candidate/${candidateId}/resume-attachment`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const uploadResult = await uploadResp.json();
+                if (uploadResult.success) {
+                    console.log(`📥 ${candidateName}: 附件简历已上传到后端 ✅ (${(blob.size / 1024).toFixed(0)}KB)`);
+                    return true;
+                } else {
+                    console.warn(`📥 ${candidateName}: 上传失败:`, uploadResult);
+                }
+            } catch (fetchErr) {
+                console.warn(`📥 ${candidateName}: fetch上传方式失败: ${fetchErr.message}，改用点击下载`);
+            }
+        }
+
+        // ④ 兜底：没有直接链接 或 upload 失败 → 还是点击下载（至少文件会保存到本地）
+        console.log(`📥 ${candidateName}: 点击下载附件简历（本地下载）...`);
         downloadBtn.scrollIntoView({ behavior: 'instant', block: 'center' });
         await MaimaiUtils.delay(300);
         downloadBtn.click();
         await MaimaiUtils.delay(1500);
-        console.log(`📥 ${candidateName}: 附件简历下载已触发 ✅`);
+        console.log(`📥 ${candidateName}: 附件简历已触发本地下载`);
         return true;
     }
 }
