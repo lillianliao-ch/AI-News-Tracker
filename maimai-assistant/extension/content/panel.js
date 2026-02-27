@@ -161,14 +161,14 @@ class AssistantPanel {
           <div style="margin-top: 8px;">
             <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
               <label style="font-size: 11px; color: #666; white-space: nowrap;">数量:</label>
-              <input type="number" id="batchCount" class="batch-input" value="10" min="1" max="100" style="width: 60px;" />
+              <input type="number" id="batchCount" class="batch-input" value="30" min="1" max="100" style="width: 60px;" />
               <span style="font-size: 11px; color: #999;">条</span>
             </div>
             <button class="action-btn primary" id="batchAddFriendsBtn" style="margin-bottom: 6px;">
               <span class="btn-icon">🤝</span> 批量加好友
             </button>
             <button class="action-btn warning" id="batchSendMsgBtn" style="margin-bottom: 6px;">
-              <span class="btn-icon">💬</span> 批量发消息
+              <span class="btn-icon">💬</span> 批量立即沟通 (AI消息)
             </button>
             <div style="display: flex; gap: 6px; margin-bottom: 6px;">
               <button class="action-btn" id="extractBtn" style="flex: 1;">
@@ -371,16 +371,11 @@ class AssistantPanel {
             this.assistant?.batchAddFriends(count);
         });
 
-        // 批量发消息
+        // 批量立即沟通（AI个性化消息）
         this.panel.querySelector('#batchSendMsgBtn')?.addEventListener('click', () => {
-            const template = this.panel.querySelector('#messageTemplate')?.value;
-            if (!template) {
-                MaimaiUtils.showNotification('请先输入消息模板', 'warning');
-                return;
-            }
             const count = this.getBatchCount();
             this.showProgress();
-            this.assistant?.batchSendMessages(template, count);
+            this.assistant?.batchDirectChat(count);
         });
 
         // 提取信息
@@ -636,6 +631,7 @@ class AssistantPanel {
                     job_id: jobId,
                     candidate_company: this.lastCandidate.currentCompany || '',
                     candidate_position: this.lastCandidate.currentPosition || '',
+                    candidate_profile: this.lastCandidate // 用于后端自动建档
                 })
             });
             console.log('📝 沟通日志已记录');
@@ -720,6 +716,7 @@ class AssistantPanel {
                     candidate_position: this.lastCandidate.currentPosition || '',
                     create_outreach: true,
                     outreach_type: 'friend_request',
+                    candidate_profile: this.lastCandidate // 用于后端自动建档
                 })
             });
             console.log('📨 触达记录(发申请)已记录');
@@ -761,6 +758,12 @@ class AssistantPanel {
         if (countEl) {
             countEl.textContent = `${this.detectedCount}`;
             countEl.style.color = this.detectedCount > 0 ? '#667eea' : '#999';
+        }
+
+        // 自动同步批量操作数量为检测到的候选人数
+        const batchInput = this.panel?.querySelector('#batchCount');
+        if (batchInput && this.detectedCount > 0) {
+            batchInput.value = this.detectedCount;
         }
 
         console.log(`📊 检测到 ${this.detectedCount} 个候选人卡片`);
