@@ -67,9 +67,86 @@ class BackgroundService {
                     this.clearData().then(result => sendResponse(result));
                     return true;
 
+                case 'INTERCEPT_RESUME_DOWNLOAD':
+                    this.interceptResumeDownload(message.candidateId, message.candidateName, message.apiBase)
+                        .then(result => sendResponse(result));
+                    return true;
+
                 default:
                     sendResponse({ success: false, error: '未知消息类型' });
             }
+        });
+    }
+
+    // 拦截简历下载并上传到后端
+    async interceptResumeDownload(candidateId, candidateName, apiBase) {
+        console.log(`📎 Background: 开始监听下载 (候选人: ${candidateName}, ID: ${candidateId})`);
+
+        return new Promise((resolve) => {
+            const timeout = setTimeout(() => {
+                chrome.downloads.onChanged.removeListener(onChanged);
+                console.log(`⏰ Background: 下载监听超时 (${candidateName})`);
+                resolve({ success: false, error: '下载监听超时' });
+            }, 30000); // 30 秒超时
+
+            const onChanged = async (delta) => {
+                // 只关心下载完成的事件
+                if (!delta.state || delta.state.current !== 'complete') return;
+
+                try {
+                    // 获取下载项详情
+                    const [item] = await chrome.downloads.search({ id: delta.id });
+                    if (!item) return;
+
+                    console.log(`📥 Background: 下载完成 - ${item.filename}`);
+
+                    // 检查是否是简历文件（PDF/DOC）
+                    const fileName = item.filename.split('/').pop() || item.filename.split('\\').pop();
+                    const isResumeFile = /\.(pdf|doc|docx)$/i.test(fileName);
+                    if (!isResumeFile) {
+                        console.log(`  ⏭️ 非简历文件，跳过: ${fileName}`);
+                        return;
+                    }
+
+                    // 清理监听器
+                    clearTimeout(timeout);
+                    chrome.downloads.onChanged.removeListener(onChanged);
+
+                    // 获取文件内容：通过 file:// URL 读取
+                    const fileUrl = item.url || `file://${item.filename}`;
+                    console.log(`📤 Background: 上传附件到后端... (${fileName})`);
+
+                    try {
+                        // 用 fetch 获取下载的文件
+                        const response = await fetch(fileUrl);
+                        const blob = await response.blob();
+
+                        // 上传到后端
+                        const formData = new FormData();
+                        formData.append('file', blob, fileName);
+                        const uploadResp = await fetch(`${apiBase}/api/candidate/${candidateId}/resume-attachment`, {
+                            method: 'POST',
+                            body: formData
+                        });
+                        const result = await uploadResp.json();
+
+                        if (result.success) {
+                            console.log(`✅ Background: 附件已上传 (${candidateName}) - ${fileName}`);
+                            resolve({ success: true, fileName });
+                        } else {
+                            console.warn(`❌ Background: 上传失败:`, result);
+                            resolve({ success: false, error: result.detail || '上传失败' });
+                        }
+                    } catch (uploadErr) {
+                        console.error(`❌ Background: 上传异常:`, uploadErr);
+                        resolve({ success: false, error: uploadErr.message });
+                    }
+                } catch (err) {
+                    console.error(`❌ Background: 处理下载事件异常:`, err);
+                }
+            };
+
+            chrome.downloads.onChanged.addListener(onChanged);
         });
     }
 

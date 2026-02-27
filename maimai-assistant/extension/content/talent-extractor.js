@@ -709,12 +709,10 @@ class TalentPanelExtractor {
         if (downloadUrl && candidateId) {
             console.log(`📥 ${candidateName}: 获取附件文件并上传到后端...`);
             try {
-                // fetch 文件内容
                 const fileResp = await fetch(downloadUrl);
                 if (!fileResp.ok) throw new Error(`下载失败: HTTP ${fileResp.status}`);
                 const blob = await fileResp.blob();
 
-                // 上传到后端 API
                 const formData = new FormData();
                 formData.append('file', blob, fileName);
                 const uploadResp = await fetch(`${this.API_BASE}/api/candidate/${candidateId}/resume-attachment`, {
@@ -729,12 +727,43 @@ class TalentPanelExtractor {
                     console.warn(`📥 ${candidateName}: 上传失败:`, uploadResult);
                 }
             } catch (fetchErr) {
-                console.warn(`📥 ${candidateName}: fetch上传方式失败: ${fetchErr.message}，改用点击下载`);
+                console.warn(`📥 ${candidateName}: fetch方式失败: ${fetchErr.message}`);
             }
         }
 
-        // ④ 兜底：没有直接链接 或 upload 失败 → 还是点击下载（至少文件会保存到本地）
-        console.log(`📥 ${candidateName}: 点击下载附件简历（本地下载）...`);
+        // ④ 无直接链接 → 通过 Background Script 拦截下载并上传
+        if (candidateId) {
+            console.log(`📥 ${candidateName}: 通过后台拦截下载方式上传...`);
+            try {
+                // 先通知 Background 开始监听下载
+                chrome.runtime.sendMessage({
+                    type: 'INTERCEPT_RESUME_DOWNLOAD',
+                    candidateId: candidateId,
+                    candidateName: candidateName,
+                    apiBase: this.API_BASE
+                }, (response) => {
+                    if (response?.success) {
+                        console.log(`✅ ${candidateName}: 附件简历后台上传成功 - ${response.fileName}`);
+                    } else {
+                        console.warn(`⚠️ ${candidateName}: 后台上传结果:`, response?.error || '未知');
+                    }
+                });
+
+                // 等待一小段时间让 listener 就绪，然后点击下载
+                await MaimaiUtils.delay(500);
+                downloadBtn.scrollIntoView({ behavior: 'instant', block: 'center' });
+                await MaimaiUtils.delay(300);
+                downloadBtn.click();
+                console.log(`📥 ${candidateName}: 已点击下载，等待后台拦截并上传...`);
+                await MaimaiUtils.delay(2000);
+                return true;
+            } catch (bgErr) {
+                console.warn(`⚠️ ${candidateName}: 后台拦截方式失败: ${bgErr.message}`);
+            }
+        }
+
+        // ⑤ 终极兜底：纯本地下载
+        console.log(`📥 ${candidateName}: 点击下载附件简历（仅本地下载）...`);
         downloadBtn.scrollIntoView({ behavior: 'instant', block: 'center' });
         await MaimaiUtils.delay(300);
         downloadBtn.click();
