@@ -721,26 +721,56 @@ class MaimaiAssistant {
     async clickNextPage() {
         console.log('📄 正在查找翻页按钮...');
 
-        // 方法1: 精确匹配文字 "跳转至下一页"
+        // ① 先找到左侧候选人列表的滚动容器，并滚到最底部
+        const listContainer = document.querySelector('.talent-list___2-FtB')
+            || document.querySelector('[class*="talent-list"]')
+            || document.querySelector('[class*="card-list"]');
+
+        if (listContainer) {
+            console.log('📜 找到列表容器，滚动到底部以显示翻页按钮...');
+            listContainer.scrollTop = listContainer.scrollHeight;
+            await MaimaiUtils.delay(1000);
+        } else {
+            console.log('⚠️ 未找到列表容器，尝试直接查找翻页按钮...');
+        }
+
+        // ② 查找翻页按钮 — 多种策略
         let nextPageBtn = null;
-        const allElements = document.querySelectorAll('a, button, div, span');
-        for (const el of allElements) {
-            const text = el.textContent?.trim();
-            if (text && (text === '跳转至下一页' || text === '下一页')) {
-                const rect = el.getBoundingClientRect();
-                if (rect.width > 0 && rect.height > 0 && !el.closest('#maimai-assistant-panel')) {
+
+        // 策略1: 精确定位 — 蓝色背景的翻页 div（bg-[#E5EEFF]）
+        const blueBtn = document.querySelector('[class*="bg-[#E5EEFF]"], [class*="bg-\\[\\#E5EEFF\\]"]');
+        if (blueBtn && blueBtn.textContent?.includes('下一页')) {
+            nextPageBtn = blueBtn;
+            console.log('  ✅ 策略1匹配: 蓝色背景按钮');
+        }
+
+        // 策略2: 在列表容器内查找文本匹配
+        if (!nextPageBtn && listContainer) {
+            const children = listContainer.querySelectorAll('div');
+            for (const el of children) {
+                const text = el.textContent?.trim();
+                if (text === '跳转至下一页' || text === '下一页') {
                     nextPageBtn = el;
+                    console.log('  ✅ 策略2匹配: 列表容器内文本');
                     break;
                 }
             }
         }
 
-        // 方法2: 查找分页组件中的 next 按钮
+        // 策略3: 全局文本匹配（最后兜底）
         if (!nextPageBtn) {
-            nextPageBtn = document.querySelector('[class*="next"]:not([class*="disabled"]), [class*="pagination"] [class*="next"]');
-            if (nextPageBtn) {
-                const rect = nextPageBtn.getBoundingClientRect();
-                if (rect.width === 0 || rect.height === 0) nextPageBtn = null;
+            const allDivs = document.querySelectorAll('div');
+            for (const el of allDivs) {
+                const text = el.textContent?.trim();
+                // 精确匹配：只匹配叶子节点（没有太多子元素的才匹配）
+                if ((text === '跳转至下一页' || text === '下一页') && el.children.length === 0) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.width > 0 && rect.height > 0 && !el.closest('#maimai-assistant-panel')) {
+                        nextPageBtn = el;
+                        console.log('  ✅ 策略3匹配: 全局叶子节点文本');
+                        break;
+                    }
+                }
             }
         }
 
@@ -749,29 +779,31 @@ class MaimaiAssistant {
             return false;
         }
 
+        // ③ 滚动到按钮位置并点击
         console.log(`🖱️ 点击翻页按钮: "${nextPageBtn.textContent?.trim()}"`);
         nextPageBtn.scrollIntoView({ behavior: 'instant', block: 'center' });
         await MaimaiUtils.delay(500);
         nextPageBtn.click();
 
-        // 等待页面加载新内容
+        // ④ 等待页面加载新内容
         console.log('⏳ 等待新页面加载...');
         await MaimaiUtils.delay(3000);
 
-        // 验证：检查候选人卡片已刷新
+        // ⑤ 验证：检查候选人卡片已刷新
         const newCards = this.extractor.findCandidateCards();
         if (newCards.length > 0) {
             console.log(`✅ 翻页成功，新页面检测到 ${newCards.length} 个候选人`);
-            // 更新面板检测数
             this.panel?.detectCandidates();
+            // 翻页后滚动列表回到顶部，方便处理新一页
+            if (listContainer) listContainer.scrollTop = 0;
             return true;
         } else {
-            // 可能加载较慢，再等一会
             await MaimaiUtils.delay(2000);
             const retryCards = this.extractor.findCandidateCards();
             if (retryCards.length > 0) {
                 console.log(`✅ 翻页成功（延迟），检测到 ${retryCards.length} 个候选人`);
                 this.panel?.detectCandidates();
+                if (listContainer) listContainer.scrollTop = 0;
                 return true;
             }
             console.log('⚠️ 翻页后未检测到候选人');
