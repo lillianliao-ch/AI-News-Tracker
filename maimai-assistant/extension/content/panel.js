@@ -161,8 +161,11 @@ class AssistantPanel {
           <div style="margin-top: 8px;">
             <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
               <label style="font-size: 11px; color: #666; white-space: nowrap;">数量:</label>
-              <input type="number" id="batchCount" class="batch-input" value="30" min="1" max="100" style="width: 60px;" />
+              <input type="number" id="batchCount" class="batch-input" value="30" min="1" max="100" style="width: 50px;" />
               <span style="font-size: 11px; color: #999;">条</span>
+              <label style="font-size: 11px; color: #666; white-space: nowrap; margin-left: 6px;">页数:</label>
+              <input type="number" id="batchPages" class="batch-input" value="1" min="1" max="50" style="width: 45px;" />
+              <span style="font-size: 11px; color: #999;">页</span>
             </div>
             <button class="action-btn primary" id="batchAddFriendsBtn" style="margin-bottom: 6px;">
               <span class="btn-icon">🤝</span> 批量加好友
@@ -360,22 +363,25 @@ class AssistantPanel {
         // 批量导入当前页
         this.panel.querySelector('#batchImportTalentBtn')?.addEventListener('click', () => {
             const count = this.getBatchCount();
+            const pages = this.getBatchPages();
             this.showProgress();
-            this.assistant?.batchImportTalents(count);
+            this.assistant?.batchImportTalents(count, pages);
         });
 
         // 批量加好友
         this.panel.querySelector('#batchAddFriendsBtn')?.addEventListener('click', () => {
             const count = this.getBatchCount();
+            const pages = this.getBatchPages();
             this.showProgress();
-            this.assistant?.batchAddFriends(count);
+            this.assistant?.batchAddFriends(count, pages);
         });
 
         // 批量立即沟通（AI个性化消息）
         this.panel.querySelector('#batchSendMsgBtn')?.addEventListener('click', () => {
             const count = this.getBatchCount();
+            const pages = this.getBatchPages();
             this.showProgress();
-            this.assistant?.batchDirectChat(count);
+            this.assistant?.batchDirectChat(count, pages);
         });
 
         // 提取信息
@@ -732,6 +738,12 @@ class AssistantPanel {
         return Math.min(count, this.detectedCount || 100);
     }
 
+    // 获取批量处理页数
+    getBatchPages() {
+        const input = this.panel?.querySelector('#batchPages');
+        return parseInt(input?.value) || 1;
+    }
+
     // 自动检测候选人
     startAutoDetection() {
         // 初始检测
@@ -897,7 +909,10 @@ class AssistantPanel {
         if (fill) fill.style.width = `${percent}%`;
 
         const text = this.panel?.querySelector('#progressText');
-        if (text) text.textContent = `${currentIndex}/${total}`;
+        if (text) {
+            const pageInfo = (state.totalPages && state.totalPages > 1) ? ` (第${state.currentPage}/${state.totalPages}页)` : '';
+            text.textContent = `${currentIndex}/${total}${pageInfo}`;
+        }
 
         const percentEl = this.panel?.querySelector('#progressPercent');
         if (percentEl) percentEl.textContent = `${percent}%`;

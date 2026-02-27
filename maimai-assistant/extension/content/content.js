@@ -43,53 +43,70 @@ class MaimaiAssistant {
         });
     }
 
-    // 批量添加好友
-    async batchAddFriends(count = 10) {
-        const cards = this.extractor.findCandidateCards();
-        if (cards.length === 0) {
-            MaimaiUtils.showNotification('未检测到候选人', 'warning');
-            return;
-        }
-
-        const targetCards = cards.slice(0, count);
-
+    // 批量添加好友（支持多页）
+    async batchAddFriends(count = 10, pages = 1) {
         this.batchState = {
             isRunning: true,
             currentIndex: 0,
-            total: targetCards.length,
+            total: 0,
             successful: 0,
-            failed: 0
+            failed: 0,
+            currentPage: 1,
+            totalPages: pages
         };
 
-        console.log(`🤝 开始批量添加好友，共 ${targetCards.length} 人`);
-        MaimaiUtils.showNotification(`开始批量添加 ${targetCards.length} 人`, 'info');
-        this.panel.updateProgress(this.batchState);
-
-        for (let i = 0; i < targetCards.length; i++) {
+        for (let page = 1; page <= pages; page++) {
             if (!this.batchState.isRunning) break;
 
-            this.batchState.currentIndex = i + 1;
-            this.panel.updateProgress(this.batchState);
+            this.batchState.currentPage = page;
+            console.log(`\n📄 ========== 第 ${page}/${pages} 页 ==========`);
+            MaimaiUtils.showNotification(`第 ${page}/${pages} 页 - 开始批量加好友`, 'info');
 
-            try {
-                await this.addFriendForCard(targetCards[i]);
-                this.batchState.successful++;
-                console.log(`✅ 第 ${i + 1}/${targetCards.length} 个添加成功`);
-            } catch (error) {
-                this.batchState.failed++;
-                console.error(`❌ 第 ${i + 1}/${targetCards.length} 个添加失败:`, error.message);
+            // 重新检测当前页候选人
+            const cards = this.extractor.findCandidateCards();
+            if (cards.length === 0) {
+                MaimaiUtils.showNotification(`第 ${page} 页未检测到候选人`, 'warning');
+                break;
             }
 
-            if (i < targetCards.length - 1 && this.batchState.isRunning) {
-                const delay = 5000 + Math.random() * 5000;
-                await MaimaiUtils.delay(delay);
+            const targetCards = cards.slice(0, count);
+            this.batchState.total += targetCards.length;
+            this.panel.updateProgress(this.batchState);
+
+            for (let i = 0; i < targetCards.length; i++) {
+                if (!this.batchState.isRunning) break;
+
+                this.batchState.currentIndex++;
+                this.panel.updateProgress(this.batchState);
+
+                try {
+                    await this.addFriendForCard(targetCards[i], i);
+                    this.batchState.successful++;
+                } catch (error) {
+                    this.batchState.failed++;
+                    console.error(`❌ 第 ${this.batchState.currentIndex} 个添加失败:`, error.message);
+                }
+
+                if (i < targetCards.length - 1 && this.batchState.isRunning) {
+                    const delay = 5000 + Math.random() * 5000;
+                    await MaimaiUtils.delay(delay);
+                }
+            }
+
+            // 如果还有下一页，点击翻页
+            if (page < pages && this.batchState.isRunning) {
+                const navigated = await this.clickNextPage();
+                if (!navigated) {
+                    MaimaiUtils.showNotification(`已到最后一页，翻页结束`, 'info');
+                    break;
+                }
             }
         }
 
         this.batchState.isRunning = false;
         this.panel.updateProgress(this.batchState);
         MaimaiUtils.showNotification(
-            `批量添加完成！成功: ${this.batchState.successful}, 失败: ${this.batchState.failed}`,
+            `批量加好友完成！成功: ${this.batchState.successful}, 失败: ${this.batchState.failed} (共${this.batchState.currentPage}页)`,
             this.batchState.failed > 0 ? 'warning' : 'success'
         );
     }
@@ -243,22 +260,16 @@ class MaimaiAssistant {
         console.log('✅ 添加好友完成');
     }
 
-    // 批量立即沟通（新版人才库面板布局）
-    async batchDirectChat(count = 10) {
-        const cards = this.extractor.findCandidateCards();
-        if (cards.length === 0) {
-            MaimaiUtils.showNotification('未检测到候选人', 'warning');
-            return;
-        }
-
-        const targetCards = cards.slice(0, count);
-
+    // 批量立即沟通（支持多页）
+    async batchDirectChat(count = 10, pages = 1) {
         this.batchState = {
             isRunning: true,
             currentIndex: 0,
-            total: targetCards.length,
+            total: 0,
             successful: 0,
-            failed: 0
+            failed: 0,
+            currentPage: 1,
+            totalPages: pages
         };
 
         // 获取选中的JD
@@ -266,39 +277,61 @@ class MaimaiAssistant {
         const selectedValue = jobSelect?.value;
         const jobId = (selectedValue && selectedValue !== 'auto') ? parseInt(selectedValue) : null;
 
-        console.log(`💬 开始批量立即沟通，共 ${targetCards.length} 人`);
-        MaimaiUtils.showNotification(`开始批量立即沟通 ${targetCards.length} 人`, 'info');
-        this.panel.updateProgress(this.batchState);
-
-        let lastCandidateName = null; // 追踪上一个候选人名字，用于验证面板切换
-
-        for (let i = 0; i < targetCards.length; i++) {
+        for (let page = 1; page <= pages; page++) {
             if (!this.batchState.isRunning) break;
 
-            this.batchState.currentIndex = i + 1;
-            this.panel.updateProgress(this.batchState);
+            this.batchState.currentPage = page;
+            console.log(`\n📄 ========== 第 ${page}/${pages} 页 ==========`);
+            MaimaiUtils.showNotification(`第 ${page}/${pages} 页 - 开始批量立即沟通`, 'info');
 
-            try {
-                lastCandidateName = await this.directChatForCard(targetCards[i], i, jobId, lastCandidateName);
-                this.batchState.successful++;
-                console.log(`✅ 第 ${i + 1}/${targetCards.length} 个沟通成功`);
-            } catch (error) {
-                this.batchState.failed++;
-                console.error(`❌ 第 ${i + 1}/${targetCards.length} 个沟通失败:`, error.message);
-                MaimaiUtils.showNotification(`第 ${i + 1} 个失败: ${error.message}`, 'warning');
+            const cards = this.extractor.findCandidateCards();
+            if (cards.length === 0) {
+                MaimaiUtils.showNotification(`第 ${page} 页未检测到候选人`, 'warning');
+                break;
             }
 
-            if (i < targetCards.length - 1 && this.batchState.isRunning) {
-                const delay = 5000 + Math.random() * 5000;
-                console.log(`⏳ 等待 ${Math.round(delay / 1000)}s 再处理下一个...`);
-                await MaimaiUtils.delay(delay);
+            const targetCards = cards.slice(0, count);
+            this.batchState.total += targetCards.length;
+            this.panel.updateProgress(this.batchState);
+
+            let lastCandidateName = null;
+
+            for (let i = 0; i < targetCards.length; i++) {
+                if (!this.batchState.isRunning) break;
+
+                this.batchState.currentIndex++;
+                this.panel.updateProgress(this.batchState);
+
+                try {
+                    lastCandidateName = await this.directChatForCard(targetCards[i], i, jobId, lastCandidateName);
+                    this.batchState.successful++;
+                } catch (error) {
+                    this.batchState.failed++;
+                    console.error(`❌ 第 ${this.batchState.currentIndex} 个沟通失败:`, error.message);
+                    MaimaiUtils.showNotification(`第 ${this.batchState.currentIndex} 个失败: ${error.message}`, 'warning');
+                }
+
+                if (i < targetCards.length - 1 && this.batchState.isRunning) {
+                    const delay = 5000 + Math.random() * 5000;
+                    console.log(`⏳ 等待 ${Math.round(delay / 1000)}s 再处理下一个...`);
+                    await MaimaiUtils.delay(delay);
+                }
+            }
+
+            // 如果还有下一页，点击翻页
+            if (page < pages && this.batchState.isRunning) {
+                const navigated = await this.clickNextPage();
+                if (!navigated) {
+                    MaimaiUtils.showNotification(`已到最后一页，翻页结束`, 'info');
+                    break;
+                }
             }
         }
 
         this.batchState.isRunning = false;
         this.panel.updateProgress(this.batchState);
         MaimaiUtils.showNotification(
-            `批量沟通完成！成功: ${this.batchState.successful}, 失败: ${this.batchState.failed}`,
+            `批量沟通完成！成功: ${this.batchState.successful}, 失败: ${this.batchState.failed} (共${this.batchState.currentPage}页)`,
             this.batchState.failed > 0 ? 'warning' : 'success'
         );
     }
@@ -563,53 +596,69 @@ class MaimaiAssistant {
         return candidates;
     }
 
-    // 批量导入候选人到人才库
-    async batchImportTalents(count = 10) {
-        const cards = this.extractor.findCandidateCards();
-        if (cards.length === 0) {
-            MaimaiUtils.showNotification('未检测到候选人', 'warning');
-            return;
-        }
-
-        const targetCards = cards.slice(0, count);
-
+    // 批量导入候选人到人才库（支持多页）
+    async batchImportTalents(count = 10, pages = 1) {
         this.batchState = {
             isRunning: true,
             currentIndex: 0,
-            total: targetCards.length,
+            total: 0,
             successful: 0,
-            failed: 0
+            failed: 0,
+            currentPage: 1,
+            totalPages: pages
         };
 
-        console.log(`📚 开始批量导入人才，共 ${targetCards.length} 人`);
-        MaimaiUtils.showNotification(`开始批量导入 ${targetCards.length} 人到系统`, 'info');
-        this.panel.updateProgress(this.batchState);
-
-        for (let i = 0; i < targetCards.length; i++) {
+        for (let page = 1; page <= pages; page++) {
             if (!this.batchState.isRunning) break;
 
-            this.batchState.currentIndex = i + 1;
-            this.panel.updateProgress(this.batchState);
+            this.batchState.currentPage = page;
+            console.log(`\n📄 ========== 第 ${page}/${pages} 页 ==========`);
+            MaimaiUtils.showNotification(`第 ${page}/${pages} 页 - 开始批量导入`, 'info');
 
-            try {
-                await this.importTalentFromCard(targetCards[i], i);
-                this.batchState.successful++;
-                console.log(`✅ 第 ${i + 1}/${targetCards.length} 个导入成功`);
-            } catch (error) {
-                this.batchState.failed++;
-                console.error(`❌ 第 ${i + 1}/${targetCards.length} 个导入失败:`, error.message);
+            const cards = this.extractor.findCandidateCards();
+            if (cards.length === 0) {
+                MaimaiUtils.showNotification(`第 ${page} 页未检测到候选人`, 'warning');
+                break;
             }
 
-            if (i < targetCards.length - 1 && this.batchState.isRunning) {
-                const delay = 3000 + Math.random() * 2000;
-                await MaimaiUtils.delay(delay);
+            const targetCards = cards.slice(0, count);
+            this.batchState.total += targetCards.length;
+            this.panel.updateProgress(this.batchState);
+
+            for (let i = 0; i < targetCards.length; i++) {
+                if (!this.batchState.isRunning) break;
+
+                this.batchState.currentIndex++;
+                this.panel.updateProgress(this.batchState);
+
+                try {
+                    await this.importTalentFromCard(targetCards[i], i);
+                    this.batchState.successful++;
+                } catch (error) {
+                    this.batchState.failed++;
+                    console.error(`❌ 第 ${this.batchState.currentIndex} 个导入失败:`, error.message);
+                }
+
+                if (i < targetCards.length - 1 && this.batchState.isRunning) {
+                    const delay = 3000 + Math.random() * 2000;
+                    await MaimaiUtils.delay(delay);
+                }
+            }
+
+            // 如果还有下一页，点击翻页
+            if (page < pages && this.batchState.isRunning) {
+                const navigated = await this.clickNextPage();
+                if (!navigated) {
+                    MaimaiUtils.showNotification(`已到最后一页，翻页结束`, 'info');
+                    break;
+                }
             }
         }
 
         this.batchState.isRunning = false;
         this.panel.updateProgress(this.batchState);
         MaimaiUtils.showNotification(
-            `批量导入完成！成功: ${this.batchState.successful}, 失败: ${this.batchState.failed}`,
+            `批量导入完成！成功: ${this.batchState.successful}, 失败: ${this.batchState.failed} (共${this.batchState.currentPage}页)`,
             this.batchState.failed > 0 ? 'warning' : 'success'
         );
     }
@@ -665,6 +714,68 @@ class MaimaiAssistant {
             }
         } else {
             throw new Error('TalentPanelExtractor 未加载');
+        }
+    }
+
+    // 翻页：点击「跳转至下一页」按钮
+    async clickNextPage() {
+        console.log('📄 正在查找翻页按钮...');
+
+        // 方法1: 精确匹配文字 "跳转至下一页"
+        let nextPageBtn = null;
+        const allElements = document.querySelectorAll('a, button, div, span');
+        for (const el of allElements) {
+            const text = el.textContent?.trim();
+            if (text && (text === '跳转至下一页' || text === '下一页')) {
+                const rect = el.getBoundingClientRect();
+                if (rect.width > 0 && rect.height > 0 && !el.closest('#maimai-assistant-panel')) {
+                    nextPageBtn = el;
+                    break;
+                }
+            }
+        }
+
+        // 方法2: 查找分页组件中的 next 按钮
+        if (!nextPageBtn) {
+            nextPageBtn = document.querySelector('[class*="next"]:not([class*="disabled"]), [class*="pagination"] [class*="next"]');
+            if (nextPageBtn) {
+                const rect = nextPageBtn.getBoundingClientRect();
+                if (rect.width === 0 || rect.height === 0) nextPageBtn = null;
+            }
+        }
+
+        if (!nextPageBtn) {
+            console.log('⚠️ 未找到翻页按钮，可能已是最后一页');
+            return false;
+        }
+
+        console.log(`🖱️ 点击翻页按钮: "${nextPageBtn.textContent?.trim()}"`);
+        nextPageBtn.scrollIntoView({ behavior: 'instant', block: 'center' });
+        await MaimaiUtils.delay(500);
+        nextPageBtn.click();
+
+        // 等待页面加载新内容
+        console.log('⏳ 等待新页面加载...');
+        await MaimaiUtils.delay(3000);
+
+        // 验证：检查候选人卡片已刷新
+        const newCards = this.extractor.findCandidateCards();
+        if (newCards.length > 0) {
+            console.log(`✅ 翻页成功，新页面检测到 ${newCards.length} 个候选人`);
+            // 更新面板检测数
+            this.panel?.detectCandidates();
+            return true;
+        } else {
+            // 可能加载较慢，再等一会
+            await MaimaiUtils.delay(2000);
+            const retryCards = this.extractor.findCandidateCards();
+            if (retryCards.length > 0) {
+                console.log(`✅ 翻页成功（延迟），检测到 ${retryCards.length} 个候选人`);
+                this.panel?.detectCandidates();
+                return true;
+            }
+            console.log('⚠️ 翻页后未检测到候选人');
+            return false;
         }
     }
 
