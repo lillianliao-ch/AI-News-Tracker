@@ -615,80 +615,89 @@ class TalentPanelExtractor {
     // 自动下载附件简历
     async downloadResumeAttachment(candidateName = '') {
         const container = this.panelContainer || document.body;
+        console.log(`📎 [${candidateName}] 开始查找附件简历...`);
 
-        // 查找「附件简历」区域
-        const facets = container.querySelectorAll('.facet___2Ak8o, [class*="facet"], section, div');
-        let resumeSection = null;
+        // 策略1: 在整个面板中，按 DOM 顺序扫描所有元素
+        // 先找到「附件简历」文字，然后找它之后最近的「下载」
+        let downloadBtn = null;
+        const walker = document.createTreeWalker(
+            container,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+        );
 
-        for (const el of facets) {
-            const titleEl = el.querySelector('.font_title___1dWcC, h3, h4');
-            if (titleEl && titleEl.textContent.includes('附件简历')) {
-                resumeSection = el;
+        let foundResumeSection = false;
+        let resumeTextNode = null;
+
+        while (walker.nextNode()) {
+            const text = walker.currentNode.textContent?.trim();
+            if (text === '附件简历') {
+                foundResumeSection = true;
+                resumeTextNode = walker.currentNode;
+                console.log(`  📎 找到「附件简历」文字节点`);
+                continue;
+            }
+            if (foundResumeSection && text === '下载') {
+                const parentEl = walker.currentNode.parentElement;
+                if (parentEl) {
+                    const rect = parentEl.getBoundingClientRect();
+                    if (rect.width > 0 && rect.height > 0) {
+                        downloadBtn = parentEl;
+                        console.log(`  ✅ 找到「下载」按钮: <${parentEl.tagName}> class="${parentEl.className}"`);
+                        break;
+                    }
+                }
+            }
+            // 如果已过了附件简历区域进入了工作经历/期望偏好，停止搜索
+            if (foundResumeSection && (text === '工作经历' || text === '期望偏好' || text === '教育经历')) {
+                console.log(`  ⚠️ 搜索到「${text}」区域，停止查找`);
                 break;
             }
         }
 
-        // 方法2: 在整个面板中查找包含「附件简历」标题的区域
-        if (!resumeSection) {
-            const allHeaders = container.querySelectorAll('*');
-            for (const h of allHeaders) {
-                if (h.textContent?.trim() === '附件简历' && h.children.length === 0) {
-                    // 找到标题后，往上找最近的容器
-                    resumeSection = h.closest('[class*="facet"], section, .ant-card') || h.parentElement?.parentElement;
-                    break;
-                }
-            }
-        }
-
-        if (!resumeSection) {
-            console.log(`📎 ${candidateName}: 未找到附件简历区域，跳过`);
-            return false;
-        }
-
-        // 在附件简历区域内查找「下载」链接
-        let downloadBtn = null;
-        const allElements = resumeSection.querySelectorAll('a, span, button, div');
-        for (const el of allElements) {
-            const text = el.textContent?.trim();
-            if (text === '下载') {
-                const rect = el.getBoundingClientRect();
-                if (rect.width > 0 && rect.height > 0) {
-                    downloadBtn = el;
-                    break;
-                }
-            }
-        }
-
-        // 方法2: 更广泛的搜索 — 在面板中找「附件简历」附近的「下载」
+        // 策略2: 直接遍历所有可点击元素，找「附件简历」附近的「下载」
         if (!downloadBtn) {
-            const spans = container.querySelectorAll('a, span');
-            let foundResume = false;
-            for (const span of spans) {
-                if (span.textContent?.includes('附件简历')) {
-                    foundResume = true;
+            console.log('  📎 策略1未命中，尝试策略2: 遍历所有可点击元素...');
+            const allClickable = container.querySelectorAll('a, span, div, button');
+            let seenResume = false;
+            for (const el of allClickable) {
+                // 只看叶子节点或少量子元素的节点
+                if (el.children.length > 5) continue;
+                const text = el.textContent?.trim();
+                if (!seenResume && text?.includes('附件简历') && text.length < 20) {
+                    seenResume = true;
+                    console.log(`  📎 策略2: 找到附件简历标记`);
                     continue;
                 }
-                if (foundResume && span.textContent?.trim() === '下载') {
-                    const rect = span.getBoundingClientRect();
+                if (seenResume && text === '下载') {
+                    const rect = el.getBoundingClientRect();
                     if (rect.width > 0 && rect.height > 0) {
-                        downloadBtn = span;
+                        downloadBtn = el;
+                        console.log(`  ✅ 策略2命中: <${el.tagName}> class="${el.className}"`);
                         break;
                     }
                 }
-                // 搜索范围不要太远
-                if (foundResume && span.textContent?.includes('工作经历')) break;
+                // 越过当前区域就停止
+                if (seenResume && text && (text.includes('工作经历') || text.includes('期望偏好'))) break;
             }
         }
 
         if (!downloadBtn) {
-            console.log(`📎 ${candidateName}: 有附件简历区域但未找到下载按钮`);
+            if (!foundResumeSection) {
+                console.log(`📎 ${candidateName}: 该候选人没有附件简历，跳过`);
+            } else {
+                console.log(`📎 ${candidateName}: 找到附件简历区域但未定位到下载按钮`);
+            }
             return false;
         }
 
         console.log(`📥 ${candidateName}: 点击下载附件简历...`);
+        downloadBtn.scrollIntoView({ behavior: 'instant', block: 'center' });
+        await MaimaiUtils.delay(300);
         downloadBtn.click();
-        await MaimaiUtils.delay(1000);
-        console.log(`📥 ${candidateName}: 附件简历下载已触发`);
+        await MaimaiUtils.delay(1500);
+        console.log(`📥 ${candidateName}: 附件简历下载已触发 ✅`);
         return true;
     }
 }
