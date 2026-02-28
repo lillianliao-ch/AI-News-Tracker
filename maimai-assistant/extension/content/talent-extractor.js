@@ -742,20 +742,24 @@ class TalentPanelExtractor {
                     candidateName: candidateName,
                     apiBase: this.API_BASE
                 }, (response) => {
+                    if (chrome.runtime.lastError) {
+                        console.warn(`⚠️ ${candidateName}: sendMessage错误:`, chrome.runtime.lastError.message);
+                        return;
+                    }
                     if (response?.success) {
                         console.log(`✅ ${candidateName}: 附件简历后台上传成功 - ${response.fileName}`);
                     } else {
-                        console.warn(`⚠️ ${candidateName}: 后台上传结果:`, response?.error || '未知');
+                        console.warn(`⚠️ ${candidateName}: 后台上传结果:`, JSON.stringify(response));
                     }
                 });
 
-                // 等待一小段时间让 listener 就绪，然后点击下载
+                // 等待 listener 就绪，然后点击下载
                 await MaimaiUtils.delay(500);
                 downloadBtn.scrollIntoView({ behavior: 'instant', block: 'center' });
                 await MaimaiUtils.delay(300);
                 downloadBtn.click();
                 console.log(`📥 ${candidateName}: 已点击下载，等待后台拦截并上传...`);
-                await MaimaiUtils.delay(2000);
+                await MaimaiUtils.delay(3000);
                 return true;
             } catch (bgErr) {
                 console.warn(`⚠️ ${candidateName}: 后台拦截方式失败: ${bgErr.message}`);

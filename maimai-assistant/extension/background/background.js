@@ -83,75 +83,124 @@ class BackgroundService {
         console.log(`📎 Background: 开始监听下载 (候选人: ${candidateName}, ID: ${candidateId})`);
 
         return new Promise((resolve) => {
-            const timeout = setTimeout(() => {
+            let resolved = false;
+            const done = (result) => {
+                if (resolved) return;
+                resolved = true;
+                cleanup();
+                resolve(result);
+            };
+
+            const cleanup = () => {
+                clearTimeout(timer);
                 chrome.downloads.onCreated.removeListener(onCreated);
+                chrome.downloads.onChanged.removeListener(onChanged);
+            };
+
+            const timer = setTimeout(() => {
                 console.log(`⏰ Background: 下载监听超时 (${candidateName})`);
-                resolve({ success: false, error: '下载监听超时' });
+                done({ success: false, error: '下载监听超时(30s)' });
             }, 30000);
 
-            const onCreated = async (downloadItem) => {
+            // 记录哪个 downloadId 是我们捕获到的
+            let capturedDownloadId = null;
+            let capturedUrl = null;
+
+            // 策略1: onCreated 拦截下载 URL，立即 fetch
+            const onCreated = async (item) => {
+                // 接受在监听窗口中发生的第一个下载（我们刚click了下载按钮）
+                capturedDownloadId = item.id;
+                capturedUrl = item.url;
+                const urlForName = (item.url || '').split('/').pop().split('?')[0];
+                const safeName = urlForName || `${candidateName}_resume.pdf`;
+                console.log(`📥 Background: 捕获下载 #${item.id} - url=${(item.url || '').substring(0, 100)} mime=${item.mime} filename=${item.filename}`);
+
+                // 移除 onCreated（只需要第一个）
+                chrome.downloads.onCreated.removeListener(onCreated);
+
+                // 如果 URL 是 blob: 或 data:，无法直接 fetch，需等下载完成后走 onChanged 路径
+                if (!item.url || item.url.startsWith('blob:') || item.url.startsWith('data:')) {
+                    console.log(`📎 Background: URL 类型为 ${item.url?.substring(0, 10)}，等待下载完成后处理...`);
+                    return; // onChanged 会处理
+                }
+
+                // 直接 fetch 原始 URL
                 try {
-                    const fileName = (downloadItem.filename || downloadItem.url || '').split('/').pop().split('?')[0];
-                    const isResumeFile = /\.(pdf|doc|docx)/i.test(fileName || downloadItem.mime || '');
-                    const isPdfMime = (downloadItem.mime || '').includes('pdf') || (downloadItem.mime || '').includes('document');
+                    console.log(`📤 Background: 从原始URL获取文件...`);
+                    const resp = await fetch(item.url);
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    const blob = await resp.blob();
+                    console.log(`📦 Background: 文件大小 ${(blob.size / 1024).toFixed(0)}KB`);
 
-                    if (!isResumeFile && !isPdfMime) {
-                        console.log(`  ⏭️ 非简历文件，跳过: ${fileName} (mime: ${downloadItem.mime})`);
-                        return;
-                    }
-
-                    // 清理监听器
-                    clearTimeout(timeout);
-                    chrome.downloads.onCreated.removeListener(onCreated);
-
-                    const downloadUrl = downloadItem.url;
-                    const safeName = fileName || `${candidateName}_resume.pdf`;
-                    console.log(`📥 Background: 检测到下载 - ${safeName} (url: ${downloadUrl?.substring(0, 80)}...)`);
-
-                    if (!downloadUrl || downloadUrl.startsWith('blob:') || downloadUrl.startsWith('data:')) {
-                        console.warn(`❌ Background: 不可用的下载 URL 类型`);
-                        resolve({ success: false, error: '下载URL不可直接获取' });
-                        return;
-                    }
-
-                    // 立即 fetch 原始下载 URL（此时 URL 仍然有效）
-                    console.log(`📤 Background: 获取文件并上传到后端... (${safeName})`);
-                    try {
-                        const response = await fetch(downloadUrl);
-                        if (!response.ok) {
-                            throw new Error(`获取文件失败: HTTP ${response.status}`);
-                        }
-                        const blob = await response.blob();
-                        console.log(`📦 Background: 文件大小 ${(blob.size / 1024).toFixed(0)}KB`);
-
-                        // 上传到后端
-                        const formData = new FormData();
-                        formData.append('file', blob, safeName);
-                        const uploadResp = await fetch(`${apiBase}/api/candidate/${candidateId}/resume-attachment`, {
-                            method: 'POST',
-                            body: formData
-                        });
-                        const result = await uploadResp.json();
-
-                        if (result.success) {
-                            console.log(`✅ Background: 附件已上传 (${candidateName}) - ${safeName}`);
-                            resolve({ success: true, fileName: safeName });
-                        } else {
-                            console.warn(`❌ Background: 上传失败:`, result);
-                            resolve({ success: false, error: result.detail || '上传失败' });
-                        }
-                    } catch (fetchErr) {
-                        console.error(`❌ Background: fetch/上传异常:`, fetchErr);
-                        resolve({ success: false, error: fetchErr.message });
-                    }
+                    await this.uploadToBackend(blob, safeName, candidateId, candidateName, apiBase, done);
                 } catch (err) {
-                    console.error(`❌ Background: 处理下载事件异常:`, err);
-                    resolve({ success: false, error: err.message });
+                    console.warn(`⚠️ Background: 从URL获取失败: ${err.message}, 等待下载完成后重试...`);
+                    // 不 resolve，让 onChanged 继续尝试
+                }
+            };
+
+            // 策略2: onChanged 等下载完成后，用原始 URL 重新获取
+            const onChanged = async (delta) => {
+                if (resolved) return;
+                if (delta.state?.current !== 'complete') return;
+
+                // 只处理我们捕获的下载，或者如果没捕获到就处理任何完成的下载
+                if (capturedDownloadId && delta.id !== capturedDownloadId) return;
+
+                try {
+                    const [item] = await chrome.downloads.search({ id: delta.id });
+                    if (!item) return;
+
+                    const fileName = (item.filename || '').split('/').pop() || `${candidateName}_resume.pdf`;
+                    console.log(`📥 Background: 下载完成 #${item.id} - ${fileName}`);
+
+                    // 用原始下载 URL 重新获取 (service worker 不能读 file://)
+                    const fetchUrl = capturedUrl || item.url;
+                    if (!fetchUrl || fetchUrl.startsWith('blob:') || fetchUrl.startsWith('file:')) {
+                        console.warn(`❌ Background: 无可用URL，无法上传`);
+                        done({ success: false, error: '无可用下载URL' });
+                        return;
+                    }
+
+                    const resp = await fetch(fetchUrl);
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    const blob = await resp.blob();
+                    console.log(`📦 Background: (onChanged) 文件大小 ${(blob.size / 1024).toFixed(0)}KB`);
+
+                    await this.uploadToBackend(blob, fileName, candidateId, candidateName, apiBase, done);
+                } catch (err) {
+                    console.error(`❌ Background: onChanged处理异常:`, err);
+                    done({ success: false, error: err.message });
                 }
             };
 
             chrome.downloads.onCreated.addListener(onCreated);
+            chrome.downloads.onChanged.addListener(onChanged);
         });
+    }
+
+    // 上传文件到后端
+    async uploadToBackend(blob, fileName, candidateId, candidateName, apiBase, done) {
+        try {
+            const formData = new FormData();
+            formData.append('file', blob, fileName);
+            const uploadResp = await fetch(`${apiBase}/api/candidate/${candidateId}/resume-attachment`, {
+                method: 'POST',
+                body: formData
+            });
+            const result = await uploadResp.json();
+
+            if (result.success) {
+                console.log(`✅ Background: 附件已上传 (${candidateName}) - ${fileName}`);
+                done({ success: true, fileName });
+            } else {
+                console.warn(`❌ Background: 后端返回失败:`, result);
+                done({ success: false, error: result.detail || '后端上传失败' });
+            }
+        } catch (err) {
+            console.error(`❌ Background: 上传异常:`, err);
+            done({ success: false, error: err.message });
+        }
     }
 
     // 保存数据
