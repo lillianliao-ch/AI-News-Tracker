@@ -8,10 +8,10 @@ class MaimaiExtractor {
     findCandidateCards() {
         console.log('🔍 查找候选人卡片...');
 
-        // 方法1: 通过"立即沟通"按钮定位
+        // 方法1: 通过沟通类按钮定位（覆盖更多场景）
         let cards = this.findCardsByContactButton();
         if (cards.length > 0) {
-            console.log(`✅ 方法1(立即沟通按钮): 找到 ${cards.length} 个卡片`);
+            console.log(`✅ 方法1(沟通按钮): 找到 ${cards.length} 个卡片`);
             return cards;
         }
 
@@ -26,27 +26,47 @@ class MaimaiExtractor {
         return [];
     }
 
-    // 通过"立即沟通"按钮定位卡片
+    // 通过沟通类按钮定位卡片（精确匹配 + DOM 顺序排序）
     findCardsByContactButton() {
         const cards = [];
+        const seenElements = new Set();
 
-        const contactBtns = Array.from(document.querySelectorAll('button, span, div')).filter(el =>
-            el.textContent?.trim() === '立即沟通'
-        );
+        // 查找所有包含「立即沟通」文字的按钮（使用 includes 避免嵌套元素导致精确匹配失败）
+        const allBtns = document.querySelectorAll('button, span, div, a');
+        const contactBtns = [];
+        for (const el of allBtns) {
+            const text = el.textContent?.trim();
+            // 精确文字为「立即沟通」，但 DOM 中可能有图标子元素导致 textContent 含其他内容
+            // 只取叶子节点或直接文字节点包含「立即沟通」的元素
+            if (text && text.includes('立即沟通') && text.length < 20) {
+                // 避免重复（父子关系）
+                let dominated = false;
+                for (const existing of contactBtns) {
+                    if (existing.contains(el) || el.contains(existing)) {
+                        dominated = true;
+                        break;
+                    }
+                }
+                if (!dominated) {
+                    contactBtns.push(el);
+                }
+            }
+        }
 
-        console.log(`🔍 找到 ${contactBtns.length} 个"立即沟通"按钮`);
+        console.log(`🔍 找到 ${contactBtns.length} 个「立即沟通」按钮`);
 
         contactBtns.forEach(btn => {
             let parent = btn.parentElement;
             for (let i = 0; i < 15 && parent; i++) {
                 const textLength = parent.textContent?.length || 0;
-                const hasMoreBtn = parent.querySelector('[class*="more___"]') !== null;
                 const hasInfo = parent.textContent?.match(/\d+年|\d+岁|本科|硕士|博士/);
 
-                if (textLength > 100 && hasMoreBtn && hasInfo) {
-                    if (!cards.includes(parent)) {
+                // 卡片特征：文本足够长 + 包含个人信息
+                if (textLength > 80 && hasInfo) {
+                    // 使用 Set 去重（避免 includes 检查对大列表性能差）
+                    if (!seenElements.has(parent)) {
+                        seenElements.add(parent);
                         cards.push(parent);
-                        console.log(`✅ 找到卡片 #${cards.length}, 包含 more___ 按钮`);
                     }
                     break;
                 }
@@ -54,7 +74,47 @@ class MaimaiExtractor {
             }
         });
 
-        return cards;
+        // 按 DOM 位置从上到下排序，确保处理顺序与页面显示一致
+        cards.sort((a, b) => {
+            const rectA = a.getBoundingClientRect();
+            const rectB = b.getBoundingClientRect();
+            return rectA.top - rectB.top;
+        });
+
+        // 再做一次去重：移除互相包含的元素（保留较小的子元素）
+        // 以及位置重叠的元素（同一个候选人的不同区域被识别为不同卡片）
+        const uniqueCards = [];
+        for (const card of cards) {
+            let dominated = false;
+            const cardRect = card.getBoundingClientRect();
+            for (let j = 0; j < uniqueCards.length; j++) {
+                const existing = uniqueCards[j];
+                // DOM 包含关系去重
+                if (existing.contains(card) || card.contains(existing)) {
+                    dominated = true;
+                    // 如果 card 更小（更精确），替换
+                    if (card.contains(existing)) {
+                        // existing 是 card 的子元素，保留 existing
+                    } else {
+                        // card 是 existing 的子元素，用 card 替换
+                        uniqueCards[j] = card;
+                    }
+                    break;
+                }
+                // 位置重叠去重（Y 坐标相差 < 20px 视为同一候选人）
+                const existingRect = existing.getBoundingClientRect();
+                if (Math.abs(cardRect.top - existingRect.top) < 20) {
+                    dominated = true;
+                    break;
+                }
+            }
+            if (!dominated) {
+                uniqueCards.push(card);
+            }
+        }
+
+        console.log(`✅ 去重后共 ${uniqueCards.length} 个卡片（原始: ${cards.length}）`);
+        return uniqueCards;
     }
 
     // 在卡片中查找"..."更多按钮

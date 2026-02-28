@@ -8,6 +8,8 @@
 // {education} - 学历
 // {skills} - 技能标签 (最多3个)
 
+const DEFAULT_API_BASE = 'http://localhost:8502';
+
 const MaimaiConfig = {
     // 默认消息模板
     messageTemplates: {
@@ -29,7 +31,7 @@ const MaimaiConfig = {
 
     // API设置
     api: {
-        baseUrl: 'http://localhost:8502',
+        baseUrl: DEFAULT_API_BASE,
         timeout: 60000
     },
 
@@ -42,9 +44,55 @@ const MaimaiConfig = {
     }
 };
 
+/**
+ * 从 chrome.storage.sync 获取用户配置的 API 服务器地址。
+ * 如果未配置，返回默认值 http://localhost:8502
+ */
+async function getApiBase() {
+    try {
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
+            const result = await chrome.storage.sync.get(['apiBaseUrl']);
+            if (result.apiBaseUrl) {
+                return result.apiBaseUrl.replace(/\/+$/, '');  // 去掉尾部斜杠
+            }
+        }
+    } catch (e) {
+        console.warn('读取 API 设置失败:', e);
+    }
+    return DEFAULT_API_BASE;
+}
+
+/**
+ * 保存 API 服务器地址到 chrome.storage.sync
+ */
+async function setApiBase(url) {
+    try {
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
+            await chrome.storage.sync.set({ apiBaseUrl: url.replace(/\/+$/, '') });
+            MaimaiConfig.api.baseUrl = url.replace(/\/+$/, '');
+            return true;
+        }
+    } catch (e) {
+        console.warn('保存 API 设置失败:', e);
+    }
+    return false;
+}
+
+// 启动时加载配置
+(async () => {
+    const apiBase = await getApiBase();
+    MaimaiConfig.api.baseUrl = apiBase;
+    if (apiBase !== DEFAULT_API_BASE) {
+        console.log(`🔧 API 服务器: ${apiBase} (自定义)`);
+    }
+})();
+
 // 导出到全局
 if (typeof window !== 'undefined') {
     window.MaimaiConfig = MaimaiConfig;
+    window.getApiBase = getApiBase;
+    window.setApiBase = setApiBase;
 }
 
 console.log('✅ Maimai Config 加载完成');
+

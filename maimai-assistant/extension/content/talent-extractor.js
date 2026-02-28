@@ -3,8 +3,15 @@
 
 class TalentPanelExtractor {
     constructor() {
-        this.API_BASE = 'http://localhost:8502';
+        this.API_BASE = 'http://localhost:8502';  // 默认值，会被 init() 覆盖
         this.panelContainer = null;
+        this._initApiBase();
+    }
+
+    async _initApiBase() {
+        if (typeof getApiBase === 'function') {
+            this.API_BASE = await getApiBase();
+        }
     }
 
     // 查找人才详情面板容器

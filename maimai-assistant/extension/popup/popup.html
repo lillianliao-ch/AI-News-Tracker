@@ -54,6 +54,23 @@
                     <li>勾选候选人后点击操作按钮</li>
                 </ol>
             </section>
+
+            <section class="settings-section" style="margin-top: 16px; padding: 12px 0 0; border-top: 1px solid #eee;">
+                <h3 style="font-size: 13px; margin: 0 0 10px; color: #555;">⛙️ 服务器设置</h3>
+                <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                    <input
+                        id="apiBaseInput"
+                        type="text"
+                        placeholder="http://192.168.1.100:8502"
+                        style="flex: 1; padding: 6px 10px; font-size: 12px; border: 1px solid #ddd; border-radius: 6px; outline: none;"
+                    />
+                    <button id="saveApiBtn"
+                        style="padding: 6px 12px; font-size: 12px; background: #4a90d9; color: white; border: none; border-radius: 6px; cursor: pointer; white-space: nowrap;">
+                        保存
+                    </button>
+                </div>
+                <div id="apiStatus" style="font-size: 11px; color: #999; min-height: 16px;"></div>
+            </section>
         </main>
 
         <footer class="popup-footer">

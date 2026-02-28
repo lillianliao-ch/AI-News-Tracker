@@ -10,7 +10,8 @@
     ],
     "host_permissions": [
         "https://maimai.cn/*",
-        "http://localhost/*"
+        "http://localhost/*",
+        "http://*/*"
     ],
     "content_scripts": [
         {
