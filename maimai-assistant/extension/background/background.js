@@ -1,7 +1,68 @@
 // Maimai Assistant - Background Service Worker
 console.log('🚀 Maimai Assistant Background Service 启动...');
 
-// ========== 独立函数（不依赖 class this） ==========
+// ========== 状态 ==========
+let candidates = [];
+let stats = { today: 0, total: 0 };
+
+// ========== 必须在顶层同步注册事件监听器（MV3 要求） ==========
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log('📨 Background 收到消息:', message.type);
+
+    switch (message.type) {
+        case 'SAVE_DATA':
+            _saveData(message.data).then(result => sendResponse(result));
+            return true;
+
+        case 'GET_DATA':
+            sendResponse({ success: true, data: candidates });
+            break;
+
+        case 'GET_STATS':
+            sendResponse({ success: true, stats: stats });
+            break;
+
+        case 'EXPORT_DATA':
+            _exportData(message.options).then(result => sendResponse(result));
+            return true;
+
+        case 'CLEAR_DATA':
+            _clearData().then(result => sendResponse(result));
+            return true;
+
+        case 'INTERCEPT_RESUME_DOWNLOAD':
+            _interceptResumeDownload(message.candidateId, message.candidateName, message.apiBase)
+                .then(result => sendResponse(result));
+            return true;
+
+        default:
+            sendResponse({ success: false, error: '未知消息类型' });
+    }
+});
+
+chrome.runtime.onInstalled.addListener(() => {
+    console.log('📦 扩展已安装/更新');
+    _loadStorageData();
+});
+
+// ========== 初始化：加载存储数据 ==========
+
+async function _loadStorageData() {
+    try {
+        const result = await chrome.storage.local.get(['maimai_candidates', 'maimai_stats']);
+        if (result.maimai_candidates) candidates = result.maimai_candidates;
+        if (result.maimai_stats) stats = result.maimai_stats;
+        console.log(`📊 加载数据: ${candidates.length} 个候选人`);
+    } catch (error) {
+        console.error('❌ 加载存储数据失败:', error);
+    }
+}
+
+// 启动时加载
+_loadStorageData();
+
+// ========== 简历下载拦截 ==========
 
 async function _uploadToBackend(blob, fileName, candidateId, candidateName, apiBase) {
     const formData = new FormData();
@@ -113,155 +174,81 @@ async function _interceptResumeDownload(candidateId, candidateName, apiBase) {
     });
 }
 
-// ========== BackgroundService 类 ==========
+// ========== 数据管理 ==========
 
-class BackgroundService {
-    constructor() {
-        this.candidates = [];
-        this.stats = { today: 0, total: 0 };
-    }
-
-    async init() {
-        console.log('📦 初始化 Background Service...');
-        await this.loadStorageData();
-        this.setupMessageListeners();
-        console.log('✅ Background Service 初始化完成');
-    }
-
-    async loadStorageData() {
-        try {
-            const result = await chrome.storage.local.get(['maimai_candidates', 'maimai_stats']);
-            if (result.maimai_candidates) this.candidates = result.maimai_candidates;
-            if (result.maimai_stats) this.stats = result.maimai_stats;
-            console.log(`📊 加载数据: ${this.candidates.length} 个候选人`);
-        } catch (error) {
-            console.error('❌ 加载存储数据失败:', error);
-        }
-    }
-
-    setupMessageListeners() {
-        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-            console.log('📨 Background 收到消息:', message.type);
-
-            switch (message.type) {
-                case 'SAVE_DATA':
-                    this.saveData(message.data).then(result => sendResponse(result));
-                    return true;
-
-                case 'GET_DATA':
-                    sendResponse({ success: true, data: this.candidates });
-                    break;
-
-                case 'GET_STATS':
-                    sendResponse({ success: true, stats: this.stats });
-                    break;
-
-                case 'EXPORT_DATA':
-                    this.exportData(message.options).then(result => sendResponse(result));
-                    return true;
-
-                case 'CLEAR_DATA':
-                    this.clearData().then(result => sendResponse(result));
-                    return true;
-
-                case 'INTERCEPT_RESUME_DOWNLOAD':
-                    _interceptResumeDownload(message.candidateId, message.candidateName, message.apiBase)
-                        .then(result => sendResponse(result));
-                    return true;
-
-                default:
-                    sendResponse({ success: false, error: '未知消息类型' });
-            }
+async function _saveData(newCandidates) {
+    try {
+        const existingIds = new Set(candidates.map(c => c.id));
+        const uniqueNew = newCandidates.filter(c => !existingIds.has(c.id));
+        candidates = [...candidates, ...uniqueNew];
+        stats.total = candidates.length;
+        stats.today += uniqueNew.length;
+        await chrome.storage.local.set({
+            maimai_candidates: candidates,
+            maimai_stats: stats
         });
-    }
-
-    async saveData(newCandidates) {
-        try {
-            const existingIds = new Set(this.candidates.map(c => c.id));
-            const uniqueNew = newCandidates.filter(c => !existingIds.has(c.id));
-            this.candidates = [...this.candidates, ...uniqueNew];
-            this.stats.total = this.candidates.length;
-            this.stats.today += uniqueNew.length;
-            await chrome.storage.local.set({
-                maimai_candidates: this.candidates,
-                maimai_stats: this.stats
-            });
-            console.log(`✅ 保存成功，新增 ${uniqueNew.length}，总计 ${this.candidates.length}`);
-            return { success: true, added: uniqueNew.length, total: this.candidates.length };
-        } catch (error) {
-            console.error('❌ 保存失败:', error);
-            return { success: false, error: error.message };
-        }
-    }
-
-    async exportData(options = {}) {
-        const { format = 'csv' } = options;
-        try {
-            if (this.candidates.length === 0) {
-                return { success: false, error: '没有数据可导出' };
-            }
-            const filename = `maimai_candidates_${new Date().toISOString().split('T')[0]}`;
-            let data, mimeType, extension;
-            if (format === 'json') {
-                data = JSON.stringify(this.candidates, null, 2);
-                mimeType = 'application/json';
-                extension = 'json';
-            } else {
-                data = this.convertToCSV(this.candidates);
-                mimeType = 'text/csv;charset=utf-8';
-                extension = 'csv';
-            }
-            const blob = new Blob([data], { type: mimeType });
-            const url = URL.createObjectURL(blob);
-            await chrome.downloads.download({ url, filename: `${filename}.${extension}`, saveAs: true });
-            return { success: true, count: this.candidates.length };
-        } catch (error) {
-            console.error('❌ 导出失败:', error);
-            return { success: false, error: error.message };
-        }
-    }
-
-    convertToCSV(data) {
-        const headers = ['ID', '姓名', '状态', '年龄', '工作年限', '学历', '所在地', '期望薪资', '期望城市', '期望职位', '标签', '提取时间'];
-        const rows = data.map(item => [
-            item.id || '', item.name || '', item.status || '', item.age || '',
-            item.experience || '', item.education || '', item.location || '',
-            item.expectedSalary || '', item.expectedLocation || '', item.expectedPosition || '',
-            (item.tags || []).join('|'), item.extractedAt || ''
-        ]);
-        const BOM = '\uFEFF';
-        const csvContent = [
-            headers.join(','),
-            ...rows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
-        ].join('\n');
-        return BOM + csvContent;
-    }
-
-    async clearData() {
-        try {
-            this.candidates = [];
-            this.stats = { today: 0, total: 0 };
-            await chrome.storage.local.remove(['maimai_candidates', 'maimai_stats']);
-            console.log('✅ 数据已清除');
-            return { success: true };
-        } catch (error) {
-            console.error('❌ 清除失败:', error);
-            return { success: false, error: error.message };
-        }
+        console.log(`✅ 保存成功，新增 ${uniqueNew.length}，总计 ${candidates.length}`);
+        return { success: true, added: uniqueNew.length, total: candidates.length };
+    } catch (error) {
+        console.error('❌ 保存失败:', error);
+        return { success: false, error: error.message };
     }
 }
 
-// ========== 启动 ==========
+async function _exportData(options = {}) {
+    const { format = 'csv' } = options;
+    try {
+        if (candidates.length === 0) {
+            return { success: false, error: '没有数据可导出' };
+        }
+        const filename = `maimai_candidates_${new Date().toISOString().split('T')[0]}`;
+        let data, mimeType, extension;
+        if (format === 'json') {
+            data = JSON.stringify(candidates, null, 2);
+            mimeType = 'application/json';
+            extension = 'json';
+        } else {
+            data = _convertToCSV(candidates);
+            mimeType = 'text/csv;charset=utf-8';
+            extension = 'csv';
+        }
+        const blob = new Blob([data], { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        await chrome.downloads.download({ url, filename: `${filename}.${extension}`, saveAs: true });
+        return { success: true, count: candidates.length };
+    } catch (error) {
+        console.error('❌ 导出失败:', error);
+        return { success: false, error: error.message };
+    }
+}
 
-const backgroundService = new BackgroundService();
+function _convertToCSV(data) {
+    const headers = ['ID', '姓名', '状态', '年龄', '工作年限', '学历', '所在地', '期望薪资', '期望城市', '期望职位', '标签', '提取时间'];
+    const rows = data.map(item => [
+        item.id || '', item.name || '', item.status || '', item.age || '',
+        item.experience || '', item.education || '', item.location || '',
+        item.expectedSalary || '', item.expectedLocation || '', item.expectedPosition || '',
+        (item.tags || []).join('|'), item.extractedAt || ''
+    ]);
+    const BOM = '\uFEFF';
+    const csvContent = [
+        headers.join(','),
+        ...rows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+    ].join('\n');
+    return BOM + csvContent;
+}
 
-chrome.runtime.onInstalled.addListener(async () => {
-    console.log('📦 扩展已安装/更新');
-    await backgroundService.init();
-});
-
-backgroundService.init().catch(error => {
-    console.error('❌ Background Service 初始化失败:', error);
-});
+async function _clearData() {
+    try {
+        candidates = [];
+        stats = { today: 0, total: 0 };
+        await chrome.storage.local.remove(['maimai_candidates', 'maimai_stats']);
+        console.log('✅ 数据已清除');
+        return { success: true };
+    } catch (error) {
+        console.error('❌ 清除失败:', error);
+        return { success: false, error: error.message };
+    }
+}
 
 console.log('✅ Background Service 脚本加载完成');
