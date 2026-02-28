@@ -30,7 +30,7 @@ const MaimaiConfig = {
     // API设置
     api: {
         baseUrl: 'http://localhost:8502',
-        timeout: 30000
+        timeout: 60000
     },
 
     // 批量操作设置

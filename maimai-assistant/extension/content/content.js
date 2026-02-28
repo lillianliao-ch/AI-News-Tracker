@@ -380,8 +380,15 @@ class MaimaiAssistant {
         let candidateData = null;
         let panelReady = false;
 
-        for (let attempt = 0; attempt < 6; attempt++) {
-            await MaimaiUtils.delay(1500);
+        for (let attempt = 0; attempt < 10; attempt++) {
+            await MaimaiUtils.delay(2000);
+
+            // 第4次尝试时重新点击卡片（可能第一次点击没生效）
+            if (attempt === 4) {
+                console.log(`🔄 面板仍未切换，重新点击卡片...`);
+                clickTarget.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+            }
+
             if (window.TalentPanelExtractor) {
                 const extractor = new TalentPanelExtractor();
                 candidateData = extractor.extractFromTalentPanel();
@@ -392,7 +399,7 @@ class MaimaiAssistant {
                         panelReady = true;
                         break;
                     } else {
-                        console.log(`⚠️ 面板仍显示上一个候选人 ${lastCandidateName}，等待切换... (${attempt + 1}/6)`);
+                        console.log(`⚠️ 面板仍显示上一个候选人 ${lastCandidateName}，等待切换... (${attempt + 1}/10)`);
                     }
                 }
             }
