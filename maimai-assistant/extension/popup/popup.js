@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 加载已保存的 URL
     try {
-        const settings = await chrome.storage.sync.get(['apiBaseUrl']);
+        const settings = await chrome.storage.local.get(['apiBaseUrl']);
         if (settings.apiBaseUrl) {
             apiInput.value = settings.apiBaseUrl;
             statusEl.textContent = `当前: ${settings.apiBaseUrl}`;
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const url = apiInput.value.trim();
         if (!url) {
             // 清除自定义设置，恢复默认
-            await chrome.storage.sync.remove(['apiBaseUrl']);
+            await chrome.storage.local.remove(['apiBaseUrl']);
             statusEl.textContent = '✅ 已恢复默认 localhost:8502';
             statusEl.style.color = '#4caf50';
             return;
@@ -60,20 +60,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             const cleanUrl = url.replace(/\/+$/, '');
             const resp = await fetch(`${cleanUrl}/health`, { signal: AbortSignal.timeout(5000) });
             if (resp.ok) {
-                await chrome.storage.sync.set({ apiBaseUrl: cleanUrl });
+                await chrome.storage.local.set({ apiBaseUrl: cleanUrl });
                 statusEl.textContent = `✅ 连接成功，已保存`;
                 statusEl.style.color = '#4caf50';
             } else {
                 statusEl.textContent = `⚠️ 服务器返回 ${resp.status}，已保存`;
                 statusEl.style.color = '#ff9800';
-                await chrome.storage.sync.set({ apiBaseUrl: cleanUrl });
+                await chrome.storage.local.set({ apiBaseUrl: cleanUrl });
             }
         } catch (e) {
             statusEl.textContent = `❌ 无法连接: ${e.message}`;
             statusEl.style.color = '#e53935';
             // 仍然保存，因为可能服务器暂时离线
             const cleanUrl = url.replace(/\/+$/, '');
-            await chrome.storage.sync.set({ apiBaseUrl: cleanUrl });
+            await chrome.storage.local.set({ apiBaseUrl: cleanUrl });
             statusEl.textContent += ' (已保存，待服务器启动后生效)';
         }
     });

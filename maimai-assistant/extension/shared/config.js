@@ -45,13 +45,13 @@ const MaimaiConfig = {
 };
 
 /**
- * 从 chrome.storage.sync 获取用户配置的 API 服务器地址。
+ * 从 chrome.storage.local 获取用户配置的 API 服务器地址。
  * 如果未配置，返回默认值 http://localhost:8502
  */
 async function getApiBase() {
     try {
-        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
-            const result = await chrome.storage.sync.get(['apiBaseUrl']);
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
             if (result.apiBaseUrl) {
                 return result.apiBaseUrl.replace(/\/+$/, '');  // 去掉尾部斜杠
             }
@@ -63,12 +63,12 @@ async function getApiBase() {
 }
 
 /**
- * 保存 API 服务器地址到 chrome.storage.sync
+ * 保存 API 服务器地址到 chrome.storage.local
  */
 async function setApiBase(url) {
     try {
-        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
-            await chrome.storage.sync.set({ apiBaseUrl: url.replace(/\/+$/, '') });
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+            await chrome.storage.local.set({ apiBaseUrl: url.replace(/\/+$/, '') });
             MaimaiConfig.api.baseUrl = url.replace(/\/+$/, '');
             return true;
         }
