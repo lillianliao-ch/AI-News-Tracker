@@ -144,7 +144,23 @@ class MaimaiAssistant {
 
         if (candidateData && candidateData.name) {
             console.log(`✅ 已提取候选人: ${candidateData.name}，同步记录中...`);
-            // 记录触达日志（这会触发后端自动建档）
+
+            // 同步候选人到后端并下载附件简历
+            try {
+                if (window.TalentPanelExtractor) {
+                    const syncExtractor = new TalentPanelExtractor();
+                    const syncResult = await syncExtractor.importOrView(true); // silent mode
+                    if (syncResult?.success) {
+                        console.log(`📥 ${candidateData.name}: 已同步到后端 (ID: ${syncResult.candidateId}, action: ${syncResult.action})`);
+                    } else {
+                        console.warn(`⚠️ ${candidateData.name}: 后端同步失败: ${syncResult?.error || '未知'}`);
+                    }
+                }
+            } catch (syncErr) {
+                console.warn(`⚠️ ${candidateData.name}: 同步/附件下载异常: ${syncErr.message}`);
+            }
+
+            // 记录触达日志
             try {
                 await fetch(`${MaimaiConfig.api.baseUrl}/api/comm-log`, {
                     method: 'POST',
@@ -157,7 +173,7 @@ class MaimaiAssistant {
                         candidate_position: candidateData.currentPosition || '',
                         create_outreach: true,
                         outreach_type: 'friend_request',
-                        candidate_profile: candidateData // 关键：传回完整信息用于建档
+                        candidate_profile: candidateData
                     })
                 });
             } catch (e) {
