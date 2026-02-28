@@ -387,6 +387,21 @@ class MaimaiAssistant {
         }
         console.log(`✅ 面板已切换到: ${candidateData.name}`);
 
+        // ②.5 同步候选人到后端并下载附件简历
+        try {
+            if (window.TalentPanelExtractor) {
+                const syncExtractor = new TalentPanelExtractor();
+                const syncResult = await syncExtractor.importOrView(true); // silent mode
+                if (syncResult?.success) {
+                    console.log(`📥 ${candidateData.name}: 已同步到后端 (ID: ${syncResult.candidateId}, action: ${syncResult.action})`);
+                } else {
+                    console.warn(`⚠️ ${candidateData.name}: 后端同步失败: ${syncResult?.error || '未知'}`);
+                }
+            }
+        } catch (syncErr) {
+            console.warn(`⚠️ ${candidateData.name}: 同步/附件下载异常: ${syncErr.message}`);
+        }
+
         // ③ 调用 AI 生成个性化消息
         console.log(`🤖 为 ${candidateData.name} 生成AI消息...`);
         const apiUrl = `${MaimaiConfig.api.baseUrl}/api/generate-message`;
