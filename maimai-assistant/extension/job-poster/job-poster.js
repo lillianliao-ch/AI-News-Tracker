@@ -35,9 +35,21 @@ class MaimaiJobPoster {
 
     async loadConfig() {
         try {
+            // 优先从 chrome.storage.sync 读取（与 popup 设置一致）
+            if (chrome.storage && chrome.storage.sync) {
+                const syncResult = await chrome.storage.sync.get(['apiBaseUrl']);
+                if (syncResult.apiBaseUrl) {
+                    this.config.apiBaseUrl = syncResult.apiBaseUrl.replace(/\/+$/, '');
+                }
+            }
+            // 再读 local 配置（邮箱等）
             const result = await chrome.storage.local.get(['mjp_config']);
             if (result.mjp_config) {
-                this.config = { ...this.config, ...result.mjp_config };
+                const localConfig = result.mjp_config;
+                // 邮箱从 local 读取，API URL 以 sync 为准
+                if (localConfig.receiveEmail) {
+                    this.config.receiveEmail = localConfig.receiveEmail;
+                }
             }
         } catch (e) {
             console.log('⚠️ 加载配置失败，使用默认配置');

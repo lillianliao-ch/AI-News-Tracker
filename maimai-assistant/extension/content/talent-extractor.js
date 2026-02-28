@@ -5,12 +5,19 @@ class TalentPanelExtractor {
     constructor() {
         this.API_BASE = 'http://localhost:8502';  // 默认值，会被 init() 覆盖
         this.panelContainer = null;
-        this._initApiBase();
+        this._apiBasePromise = this._initApiBase();
     }
 
     async _initApiBase() {
         if (typeof getApiBase === 'function') {
             this.API_BASE = await getApiBase();
+        }
+    }
+
+    async _ensureApiBase() {
+        if (this._apiBasePromise) {
+            await this._apiBasePromise;
+            this._apiBasePromise = null;
         }
     }
 
@@ -549,6 +556,7 @@ class TalentPanelExtractor {
     // 同步候选人到系统（新建或更新）
     async syncCandidate(candidateData) {
         try {
+            await this._ensureApiBase();
             const response = await fetch(`${this.API_BASE}/api/candidate/maimai-sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -722,6 +730,7 @@ class TalentPanelExtractor {
 
                 const formData = new FormData();
                 formData.append('file', blob, fileName);
+                await this._ensureApiBase();
                 const uploadResp = await fetch(`${this.API_BASE}/api/candidate/${candidateId}/resume-attachment`, {
                     method: 'POST',
                     body: formData
