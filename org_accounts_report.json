@@ -1,0 +1,177 @@
+{
+  "scan_date": "2026-03-01T16:31:23.265755",
+  "total_scanned": 16219,
+  "org_accounts_found": 24,
+  "suspicious_accounts": 0,
+  "accounts_marked": 24,
+  "org_list": [
+    {
+      "id": 6915,
+      "name": "OpenMMLab",
+      "github_url": "https://github.com/open-mmlab",
+      "old_tier": "B",
+      "reason": "匹配黑名单: open-mmlab"
+    },
+    {
+      "id": 7011,
+      "name": "tencent-ailab",
+      "github_url": "https://github.com/tencent-ailab",
+      "old_tier": "B",
+      "reason": "Notes包含官方词汇: 【来源】GitHub Mining | Score: 60.8\n【Bio】Research repo"
+    },
+    {
+      "id": 7102,
+      "name": "Hugging Face",
+      "github_url": "https://github.com/huggingface",
+      "old_tier": "S",
+      "reason": "匹配黑名单: huggingface"
+    },
+    {
+      "id": 7208,
+      "name": "X (fka Twitter)",
+      "github_url": "https://github.com/twitter",
+      "old_tier": "B",
+      "reason": "匹配黑名单: twitter"
+    },
+    {
+      "id": 7381,
+      "name": "The Apache Software Foundation",
+      "github_url": "https://github.com/apache",
+      "old_tier": "B",
+      "reason": "匹配黑名单: apache"
+    },
+    {
+      "id": 8175,
+      "name": "Tongyi Lab, Alibaba Group",
+      "github_url": "https://github.com/Alibaba-NLP",
+      "old_tier": "A",
+      "reason": "Notes包含官方词汇: 【来源】GitHub Mining | Score: 81.6\n【Bio】Our team at T"
+    },
+    {
+      "id": 8264,
+      "name": "pytorch",
+      "github_url": "https://github.com/pytorch",
+      "old_tier": "B",
+      "reason": "匹配黑名单: pytorch"
+    },
+    {
+      "id": 9167,
+      "name": "NVIDIA Spatial Intelligence Lab (SIL)",
+      "github_url": "https://github.com/nv-tlabs",
+      "old_tier": "S",
+      "reason": "匹配黑名单: nv-tlabs"
+    },
+    {
+      "id": 9217,
+      "name": "tensorflow",
+      "github_url": "https://github.com/tensorflow",
+      "old_tier": "B",
+      "reason": "匹配黑名单: tensorflow"
+    },
+    {
+      "id": 9416,
+      "name": "Meta PyTorch",
+      "github_url": "https://github.com/meta-pytorch",
+      "old_tier": "B",
+      "reason": "匹配黑名单: meta-pytorch"
+    },
+    {
+      "id": 9796,
+      "name": "Google Research Datasets",
+      "github_url": "https://github.com/google-research-datasets",
+      "old_tier": "A",
+      "reason": "匹配黑名单: google-research-datasets"
+    },
+    {
+      "id": 10073,
+      "name": "Meta",
+      "github_url": "https://github.com/facebook",
+      "old_tier": "B",
+      "reason": "匹配黑名单: facebook"
+    },
+    {
+      "id": 10333,
+      "name": "Tencent AI Lab Healthcare",
+      "github_url": "https://github.com/TencentAILabHealthcare",
+      "old_tier": "B",
+      "reason": "Notes包含官方词汇: 【来源】GitHub Mining | Score: 41.2\n【Bio】This is the c"
+    },
+    {
+      "id": 10715,
+      "name": "Copilot",
+      "github_url": "https://github.com/MicrosoftCopilot",
+      "old_tier": "B",
+      "reason": "Notes包含官方词汇: 【来源】GitHub Mining | Score: 33.7\n【Bio】This organiza"
+    },
+    {
+      "id": 12788,
+      "name": "Netflix, Inc.",
+      "github_url": "https://github.com/Netflix",
+      "old_tier": "B",
+      "reason": "匹配黑名单: netflix"
+    },
+    {
+      "id": 13759,
+      "name": "Spotify",
+      "github_url": "https://github.com/spotify",
+      "old_tier": "B",
+      "reason": "匹配黑名单: spotify"
+    },
+    {
+      "id": 14805,
+      "name": "Vue",
+      "github_url": "https://github.com/vuejs",
+      "old_tier": "B",
+      "reason": "匹配黑名单: vuejs"
+    },
+    {
+      "id": 15193,
+      "name": "Kubernetes",
+      "github_url": "https://github.com/kubernetes",
+      "old_tier": "S",
+      "reason": "匹配黑名单: kubernetes"
+    },
+    {
+      "id": 15885,
+      "name": "Cursor",
+      "github_url": "https://github.com/cursor",
+      "old_tier": "S",
+      "reason": "匹配黑名单: cursor"
+    },
+    {
+      "id": 16046,
+      "name": "The Rust Programming Language",
+      "github_url": "https://github.com/rust-lang",
+      "old_tier": "B",
+      "reason": "匹配黑名单: rust-lang"
+    },
+    {
+      "id": 16184,
+      "name": "Google Project Zero",
+      "github_url": "https://github.com/googleprojectzero",
+      "old_tier": "B",
+      "reason": "Notes包含官方词汇: 【来源】GitHub Mining | Score: 45.2\n【Bio】Projects by G"
+    },
+    {
+      "id": 16422,
+      "name": "Go",
+      "github_url": "https://github.com/golang",
+      "old_tier": "B",
+      "reason": "匹配黑名单: golang"
+    },
+    {
+      "id": 17746,
+      "name": "Amazon FAR",
+      "github_url": "https://github.com/amazon-far",
+      "old_tier": "B",
+      "reason": "Notes包含官方词汇: 【来源】GitHub Mining | Score: 38.0\n【Bio】Amazon's Fron"
+    },
+    {
+      "id": 18674,
+      "name": "Kubernetes SIGs",
+      "github_url": "https://github.com/kubernetes-sigs",
+      "old_tier": "B",
+      "reason": "Notes包含官方词汇: 【来源】GitHub Mining | Score: 33.8\n【Bio】Org for Kuber"
+    }
+  ]
+}

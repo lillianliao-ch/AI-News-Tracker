@@ -1,0 +1,2609 @@
+{
+  "scan_date": "2026-03-01T16:32:11.883645",
+  "total_scanned": 11141,
+  "candidates_found": 371,
+  "candidates_upgraded": 371,
+  "upgrades_by_target": {
+    "S": 298,
+    "A+": 73
+  },
+  "upgrade_list": [
+    {
+      "id": 1481,
+      "name": "Long Zhou",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1538,
+      "name": "Hangbo Bao",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1554,
+      "name": "Yang Song",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1724,
+      "name": "Ziyue Yang",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1772,
+      "name": "Xiao Liu",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1785,
+      "name": "Bowen Cheng",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1788,
+      "name": "Evan Hubinger",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1813,
+      "name": "Baotong Lu",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1852,
+      "name": "Li Dong",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1902,
+      "name": "Yupan Huang",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 1909,
+      "name": "Ke Yan",
+      "company": "Senior Algorithm Expert, Alibaba DAMO Academy",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 2029,
+      "name": "Yu Wu (吴俣)",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 2059,
+      "name": "杨海宏",
+      "company": "MIT, The Alibaba DAMO Academy",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 2074,
+      "name": "yong xu @ seattle",
+      "company": "Tencent AI lab",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 2132,
+      "name": "Shaohan Huang",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 2161,
+      "name": "Steven Heidel",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 2200,
+      "name": "Yi Zhu",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 2700,
+      "name": "Tengchao Lv",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 2791,
+      "name": "Tianyu He",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 2800,
+      "name": "Wenlin Yao",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 2806,
+      "name": "Houwen Peng",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 2940,
+      "name": "Gabriel Peal",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 3203,
+      "name": "Li Lyna Zhang",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 3337,
+      "name": "梁添",
+      "company": "Researcher at Tencent AI Lab",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 3366,
+      "name": "Lei Shu",
+      "company": "Google Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 3370,
+      "name": "CEN Jun",
+      "company": "Alibaba DAMO Academy; HKUST;",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 3397,
+      "name": "Xingxing Zhang",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 3466,
+      "name": "Zeqi Lin",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 3583,
+      "name": "Kaixin WANG",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 3742,
+      "name": "Bei Liu",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 3806,
+      "name": "Biao Gong ",
+      "company": "Ant Group & Alibaba DAMO Academy",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 3938,
+      "name": "Xinjing Cheng",
+      "company": "RAL@Baidu Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 4392,
+      "name": "Shuming Ma",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 4525,
+      "name": "Happy",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 4626,
+      "name": "Yuting Jiang",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 4902,
+      "name": "tangduyu",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6686,
+      "name": "Cheng Lu",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6694,
+      "name": "Hirofumi Inaguma",
+      "company": "FAIR",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6699,
+      "name": "Chen Liang",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6733,
+      "name": "Rongjiehuang",
+      "company": "Facebook AI Research (FAIR)",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6740,
+      "name": "Hongwei Wang",
+      "company": "Tencent AI Lab Seattle",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 6773,
+      "name": "Yan Wang",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 6780,
+      "name": "WANG Yue",
+      "company": "Salesforce Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 6797,
+      "name": "Kelvin C.K. Chan",
+      "company": "Google Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6806,
+      "name": "Danijar Hafner",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6823,
+      "name": "Tsung-Yi Lin",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6845,
+      "name": "Aleksa Gordić",
+      "company": "ex-DeepMind, ex-Microsoft",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6864,
+      "name": "Rong YE",
+      "company": "ByteDance AI Lab",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 6870,
+      "name": "Lingxiao Ma",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6873,
+      "name": "Winnie Xu",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6890,
+      "name": "Wang, Yue",
+      "company": "Nvidia Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 6896,
+      "name": "Alex Nichol",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6933,
+      "name": "Antoni Baum",
+      "company": "Member of Technical Staff @openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 6966,
+      "name": "Cody Yu",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7004,
+      "name": "Zhiliang Peng",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7011,
+      "name": "tencent-ailab",
+      "company": "Tencent AI Lab",
+      "old_tier": "D",
+      "new_tier": "A+"
+    },
+    {
+      "id": 7046,
+      "name": "James Betker",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7166,
+      "name": "Bill Peebles",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7191,
+      "name": "Shijie Wu",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7197,
+      "name": "gujiuxiang",
+      "company": "Adobe Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 7304,
+      "name": "Philippe Tillet",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7414,
+      "name": "Li Jing",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7457,
+      "name": "Junsong Chen",
+      "company": "NVIDIA Research, HKU",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 7521,
+      "name": "Sang Choe",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7589,
+      "name": "Shenyuan Gao",
+      "company": "NVIDIA Research · HKUST",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 7614,
+      "name": "Tianyu Wang",
+      "company": "Adobe Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 7620,
+      "name": "Donny Xia",
+      "company": "anthropics",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7623,
+      "name": "zclzc",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7624,
+      "name": "Edward Hu",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7656,
+      "name": "Kunhao ZHENG",
+      "company": "Meta FAIR",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7669,
+      "name": "Dickson Tsai",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7711,
+      "name": "Xu Yang",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7817,
+      "name": "Lewei Lu",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7848,
+      "name": "Tony CW Liu",
+      "company": "anthropics",
+      "old_tier": "C",
+      "new_tier": "S"
+    },
+    {
+      "id": 7857,
+      "name": "Yu Hua Cheng",
+      "company": "anthropic @twitter @block @tidal",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 7986,
+      "name": "Haozhun Jin",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8011,
+      "name": "Shaoyi Zhang",
+      "company": "anthropics",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8170,
+      "name": "Jie Lei 雷杰",
+      "company": "FAIR @ Meta",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8196,
+      "name": "Junhyuk Oh",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8207,
+      "name": "Allan Jie",
+      "company": "Salesforce Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 8219,
+      "name": "Yannis Assael",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8221,
+      "name": "Lucas Beyer",
+      "company": "MSL Zürich (Ex: @openai @google Brain/DeepMind)",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8245,
+      "name": "Robert Brennan",
+      "company": "Fairwinds",
+      "old_tier": "B",
+      "new_tier": "S"
+    },
+    {
+      "id": 8253,
+      "name": "Paul Michel",
+      "company": "Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8261,
+      "name": "huckiyang",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 8288,
+      "name": "Mathieu Blondel",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8289,
+      "name": "Jong Wook Kim",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8290,
+      "name": "Dustin Tran",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8319,
+      "name": "Zhiqing Sun",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8348,
+      "name": "Rulin Shao",
+      "company": "University of Washington, Meta AI",
+      "old_tier": "B",
+      "new_tier": "S"
+    },
+    {
+      "id": 8350,
+      "name": "Chenxi Liu",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8373,
+      "name": "Ludwig Schmidt",
+      "company": "Stanford University, Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8388,
+      "name": "Sheng Zhang",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8398,
+      "name": "Andrew Tulloch",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8409,
+      "name": "Tom B Brown",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8410,
+      "name": "Roy Frostig",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8466,
+      "name": "Vitchyr Pong",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8482,
+      "name": "Xinyang (Young) Geng",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8490,
+      "name": "Neel Nanda",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8560,
+      "name": "Lukasz Kaiser",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8568,
+      "name": "Agustinus Kristiadi",
+      "company": "Western University & Vector Institute",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 8572,
+      "name": "Linghao Zhang",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8586,
+      "name": "Yossi Adi",
+      "company": "HUJI & FAIR",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8601,
+      "name": "Scott Gray",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8611,
+      "name": "Jeff Johnson",
+      "company": "Meta Fundamental AI Research (FAIR)",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8661,
+      "name": "Claude",
+      "company": "anthropics",
+      "old_tier": "B",
+      "new_tier": "S"
+    },
+    {
+      "id": 8779,
+      "name": "Nathan Lambert",
+      "company": "Ai2 // Interconnects.ai",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 8788,
+      "name": "Zhaocheng Zhu",
+      "company": "NVIDIA @mila-udem @DeepGraphLearning",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 8974,
+      "name": "Chen-Hsuan Lin",
+      "company": "NVIDIA Research",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 8981,
+      "name": "Rundi Wu",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 8987,
+      "name": "Songyou Peng",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9009,
+      "name": "Chawin Sitawarin",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9018,
+      "name": "Petar Veličković",
+      "company": "Google DeepMind / University of Cambridge",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9024,
+      "name": "vb",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9025,
+      "name": "Pedro Rodriguez",
+      "company": "facebookresearch, FAIR Labs",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9039,
+      "name": "Antoine Yang",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9048,
+      "name": "Jiefeng Li",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9060,
+      "name": "Conglong Li",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9076,
+      "name": "Xingdi (Eric) Yuan",
+      "company": "Microsoft Research, Montréal",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9079,
+      "name": "William Moses",
+      "company": "UIUC/Google Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9102,
+      "name": "Wuwei Lin",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9107,
+      "name": "Fangyu Liu",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9110,
+      "name": "Wouter Van Gansbeke",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9116,
+      "name": "Eugene Yan",
+      "company": "anthropics",
+      "old_tier": "B",
+      "new_tier": "S"
+    },
+    {
+      "id": 9117,
+      "name": "Sergi Caelles",
+      "company": "Research Scientist @ Google Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9120,
+      "name": "Fabian Pedregosa",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9144,
+      "name": "Chao Sun",
+      "company": "openai @apache",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9148,
+      "name": "Ayaan Haque",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9151,
+      "name": "Paige Bailey",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9177,
+      "name": "Jiaming Shen",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9218,
+      "name": "manoj kumar",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9229,
+      "name": "Yuming Jiang",
+      "company": "Alibaba DAMO Academy",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9233,
+      "name": "Tianwei Ni",
+      "company": "mila-iqia",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9256,
+      "name": "Haisong Zhang",
+      "company": "Tencent AI Lab",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9287,
+      "name": "Logan Kilpatrick ",
+      "company": "Google Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9289,
+      "name": "Shiyi Lan",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9313,
+      "name": "Rithesh Kumar",
+      "company": "adobe-research @mila-iqia",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9356,
+      "name": "Jascha Sohl-Dickstein",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9361,
+      "name": "Shantanu",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9384,
+      "name": "Zhiding Yu",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9389,
+      "name": "Leland Richardson",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9425,
+      "name": "xingyousong",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9438,
+      "name": "Andy Jones",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9439,
+      "name": "Yi Yang",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9447,
+      "name": "Emanuele Bugliarello",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9462,
+      "name": "Xiangming (Brian) Gu",
+      "company": "Google Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9497,
+      "name": "Clive Chan",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9554,
+      "name": "Bogo Giertler",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9587,
+      "name": "Anirudh Goyal",
+      "company": "MILA, Université de MontréalWebsiteDirections",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9599,
+      "name": "Yann N. Dauphin",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9653,
+      "name": "David Belanger",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9674,
+      "name": "Jacob Kahn",
+      "company": "FAIR, Meta AI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9700,
+      "name": "Song Jiang",
+      "company": "FAIR, Meta",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9702,
+      "name": "Robert Ma",
+      "company": "faire",
+      "old_tier": "C",
+      "new_tier": "S"
+    },
+    {
+      "id": 9859,
+      "name": "Kazuma Hashimoto",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9862,
+      "name": "Szymon Sidor",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 9882,
+      "name": "Lemao",
+      "company": "Tencent AI Lab",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9883,
+      "name": "Ankesh Anand",
+      "company": "mila-iqia",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 9930,
+      "name": "Irene Zhang",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10134,
+      "name": "Xiaomeng Yang",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10216,
+      "name": "Yicong Hong (Neo Orion)",
+      "company": "Adobe Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 10290,
+      "name": "Yuchen Lu",
+      "company": "MILA",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 10398,
+      "name": "Xingbo Wu",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10424,
+      "name": "Bobak Shahriari",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10438,
+      "name": "Jonathan Raiman",
+      "company": "nvidia (ex @openai, @baidu-research)",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10478,
+      "name": "Shuyang (Kevin) Sun",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10479,
+      "name": "Max W. Y. Lam",
+      "company": "Tencent AI Lab",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 10499,
+      "name": "Séb Arnold",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10522,
+      "name": "Cris Cecka",
+      "company": "NVIDIA Research, Stanford University",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 10582,
+      "name": "Dougal Maclaurin",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10594,
+      "name": "John Allard",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10612,
+      "name": "Conor Durkan",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10642,
+      "name": "Adrien Ecoffet",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10692,
+      "name": "vdumoulin",
+      "company": "google-deepmind ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10770,
+      "name": "Alexander Wei",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10797,
+      "name": "Shangbang Long",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10801,
+      "name": "Jason Ren",
+      "company": "Ai2/UW",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 10815,
+      "name": "Chence Shi",
+      "company": "Montreal Institute for Learning Algorithms (Mila)",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 10869,
+      "name": "Daniel Zügner",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10917,
+      "name": "Da Yan",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 10964,
+      "name": "Hervé",
+      "company": "Meta / FAIR",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12575,
+      "name": "Kalpesh Krishna",
+      "company": "Staff Research Scientist, Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12593,
+      "name": "Shengyi Qian",
+      "company": "Meta FAIR",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12613,
+      "name": "Sohee Yang",
+      "company": "UCL/DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12645,
+      "name": "Daniel Geng",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12646,
+      "name": "Ben Bartlett",
+      "company": "openai ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12647,
+      "name": "Kan Ren",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12662,
+      "name": "Shishir Patil",
+      "company": "UC Berkeley, Microsoft Research ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12665,
+      "name": "Xian Liu",
+      "company": "xAI; NVIDIA Research; CUHK MMLab; Zhejiang University",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 12669,
+      "name": "Edouard Leurent",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12670,
+      "name": "Wenxuan Zhou",
+      "company": "Google Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12681,
+      "name": "Luming Tang",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12686,
+      "name": "Harsh Trivedi",
+      "company": "Research Scientist @ Allen Institute for AI",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 12691,
+      "name": "Dan Garrette",
+      "company": "Google Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12693,
+      "name": "BK Lee",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 12712,
+      "name": "Diego Antognini",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12738,
+      "name": "Tom Le Paine",
+      "company": "deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12740,
+      "name": "Justin Uberti",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12741,
+      "name": "Nicola De Cao",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12750,
+      "name": "Shariq Iqbal",
+      "company": "Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12757,
+      "name": "Vikas Raunak",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12761,
+      "name": "Jean Kossaifi",
+      "company": "NVIDIA AI",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 12765,
+      "name": "Jarvis",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12770,
+      "name": "Jeya Maria Jose",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12790,
+      "name": "Marianne Monteiro",
+      "company": "deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12799,
+      "name": "Long Zhao",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12815,
+      "name": "Krishna Murthy",
+      "company": "facebookresearch  @mila-udem @montrealrobotics @NVIDIAGameWorks  @CSAILVision  @robotics-research-center ",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 12832,
+      "name": "Koustuv Sinha",
+      "company": "Meta AI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12838,
+      "name": "Guan-Horng Liu",
+      "company": "FAIR, Meta AI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12854,
+      "name": "Dave",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12912,
+      "name": "Siddharth Mishra-Sharma",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12913,
+      "name": "John Hewitt",
+      "company": "DeepMind / Columbia University",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12965,
+      "name": "Machel Reid",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 12990,
+      "name": "Chengxi Ye",
+      "company": "Google Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13027,
+      "name": "Siddharth Verma",
+      "company": "Google Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13031,
+      "name": "Jay Wang",
+      "company": "openai ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13072,
+      "name": "Ted Xiao",
+      "company": "Google DeepMind, UC Berkeley, @mlberkeley ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13128,
+      "name": "Patrick Chao",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13131,
+      "name": "Zuobai Zhang",
+      "company": "Mila @mila-udem @DeepGraphLearning",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 13145,
+      "name": "Daniel Smilkov",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13155,
+      "name": "Arthur Douillard",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13181,
+      "name": "Xidong Feng",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13210,
+      "name": "Been Kim",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13234,
+      "name": "Avi Singh",
+      "company": "Google Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13235,
+      "name": "Lirui (Leroy) Wang",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13340,
+      "name": "Harkirat Behl",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13351,
+      "name": "Zinan Lin",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13376,
+      "name": "XiaoSun",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13391,
+      "name": "Frederik Kratzert",
+      "company": "Google Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13393,
+      "name": "Martin Li",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13396,
+      "name": "Shoukang Hu",
+      "company": "Microsoft Research Asia",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13413,
+      "name": "Alex Gaynor",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13418,
+      "name": "Chao-Yuan Wu",
+      "company": "Research Scientist at FAIR",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13427,
+      "name": "Adam R. Kosiorek",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13441,
+      "name": "Lydia Hallie",
+      "company": "anthropics",
+      "old_tier": "B",
+      "new_tier": "S"
+    },
+    {
+      "id": 13459,
+      "name": "Arsha",
+      "company": "Google Research ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13470,
+      "name": "Jaume Sanchez",
+      "company": "google-deepmind ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13529,
+      "name": "Michael Laskin",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13565,
+      "name": "weipingpku",
+      "company": "Peking University & Mila",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 13589,
+      "name": "Max Bolingbroke",
+      "company": "Anthropic PBC",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13605,
+      "name": "Caelan Garrett",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 13630,
+      "name": "Hadi Salman",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13632,
+      "name": "Kazuhiro Sera",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13649,
+      "name": "Chi Wang",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13709,
+      "name": "Wenyue Hua",
+      "company": "Microsoft Research, AI Frontier",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13732,
+      "name": "Jerry Zhao",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13749,
+      "name": "Jelle Zijlstra",
+      "company": "openai ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13756,
+      "name": "Elias Frantar",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13774,
+      "name": "Jiaxian Guo",
+      "company": "Google Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13814,
+      "name": "Dan Dascalescu",
+      "company": "anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13825,
+      "name": "Minseon Kim",
+      "company": "Microsoft Research Montreal",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13879,
+      "name": "Felix Rieseberg",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13882,
+      "name": "Max Braun",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13902,
+      "name": "Saran Tunyasuvunakool",
+      "company": "google-deepmind ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13910,
+      "name": "Tianxiao Shen",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13938,
+      "name": "Olivier Chafik",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13955,
+      "name": "Mohit Shridhar",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 13991,
+      "name": "David Bieber",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14078,
+      "name": "Albhox",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14102,
+      "name": "Mikayel Samvelyan",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14103,
+      "name": "Joseph K J",
+      "company": "Adobe Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 14116,
+      "name": "Jonas Jongejan",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14189,
+      "name": "Kristian Georgiev",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14216,
+      "name": "Gavin Nelson",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14249,
+      "name": "Zixian Cai",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14256,
+      "name": "Julian Schrittwieser",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14264,
+      "name": "YaGuang",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14381,
+      "name": "Matthias Minderer",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14438,
+      "name": "Kory Mathewson",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14469,
+      "name": "Surya Bhupatiraju",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14474,
+      "name": "Ruibo Liu",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14540,
+      "name": "Tianfan Xue",
+      "company": "Google Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14574,
+      "name": "Andy Zhao",
+      "company": "Quebec AI Institute (Mila)",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 14615,
+      "name": "Wang Ling",
+      "company": "Google Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14646,
+      "name": "Behnam Neyshabur",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14703,
+      "name": "Ethan Caballero",
+      "company": "mila-iqia",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 14785,
+      "name": "Harry Marr",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14869,
+      "name": "Fanyi Xiao",
+      "company": "Research Scientist at Meta FAIR",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14884,
+      "name": "Mirco Ravanelli",
+      "company": "Concordia University/Mila",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 14909,
+      "name": "Ruizhe Zhao",
+      "company": "deepmind ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 14951,
+      "name": "Max Zhaoshuo Li 李赵硕",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 14968,
+      "name": "Dmitriy Serdyuk",
+      "company": "mila-iqia ",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 14983,
+      "name": "John Aslanides",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15160,
+      "name": "Tom Dupré la Tour",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15176,
+      "name": "Dalton Hubble",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15279,
+      "name": "gortizji",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15289,
+      "name": "Jeremy Nixon",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15309,
+      "name": "Valentin Gabeur",
+      "company": "Google Deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15387,
+      "name": "Samuel Attard",
+      "company": "anthropics",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15423,
+      "name": "Jonathan Mace",
+      "company": "Microsoft Research & Max Planck Institute for Software Systems",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15427,
+      "name": "Jamie Townsend",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15453,
+      "name": "Jesse Farebrother",
+      "company": "mila-iqia",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 15517,
+      "name": "Sebastian Bodenstein",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15539,
+      "name": "Dumitru Erhan",
+      "company": "Google Brain",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15563,
+      "name": "Matthew Peters",
+      "company": "AI2",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 15569,
+      "name": "Hyeonwoo Noh",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15633,
+      "name": "Nicholas J. Bryan",
+      "company": "Adobe Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 15692,
+      "name": "Feryal Behbahani",
+      "company": "deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15707,
+      "name": "Simon Kornblith",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15776,
+      "name": "Hongyang Zhang",
+      "company": "UWaterloo & Vector Institute",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 15778,
+      "name": "Sergei Lebedev",
+      "company": "Software Engineer at @deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15801,
+      "name": "Bas Veeling",
+      "company": "AI4Science @ Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15804,
+      "name": "Arthur Brussee",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15812,
+      "name": "Kenneth Tran",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15871,
+      "name": "Boris Cherny",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15917,
+      "name": "Tom Hennigan",
+      "company": "google-deepmind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 15962,
+      "name": "fofr",
+      "company": "google-deepmind ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16124,
+      "name": "Julian Salazar",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16132,
+      "name": "Mike Roberts",
+      "company": "Adobe Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 16233,
+      "name": "Xavier Puig",
+      "company": "FAIR",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16318,
+      "name": "Andreea Deac",
+      "company": "Mila",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 16350,
+      "name": "Taihong Xiao",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16451,
+      "name": "Keyan Zhang",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16499,
+      "name": "Angelos Filos",
+      "company": "deepmind, @oatml",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16545,
+      "name": "Romain Huet",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16593,
+      "name": "Tao Chen",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16723,
+      "name": "Felix Becker",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16736,
+      "name": "Maciej Kula",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16749,
+      "name": "Kyle Gorman",
+      "company": "Graduate Center, City University of New York; @Google AI",
+      "old_tier": "B",
+      "new_tier": "S"
+    },
+    {
+      "id": 16753,
+      "name": "Meng Qu",
+      "company": "Mila",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 16799,
+      "name": "Christopher Berner",
+      "company": "openai ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16837,
+      "name": "Chelsea Sierra Voss",
+      "company": "openai",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16851,
+      "name": "Karen Ullrich",
+      "company": "RS FAIR NY",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16948,
+      "name": "Rohan Taori",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 16995,
+      "name": "Johannes Gasteiger, né Klicpera",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17046,
+      "name": "Ilan Bigio",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17091,
+      "name": "Mehdi Mirza",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17205,
+      "name": "Wentao Yuan",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17236,
+      "name": "David Schnurr",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17240,
+      "name": "Mandar Joshi",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17450,
+      "name": "Nikolaj Bjorner",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17568,
+      "name": "Hayley LeBlanc",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17713,
+      "name": "Chris Lloyd",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17807,
+      "name": "Mike Bauer",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 17935,
+      "name": "Mario Lezcano Casado",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 17948,
+      "name": "Kihwan Kim",
+      "company": "Samsung Electronics/NVIDIA Research",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 18063,
+      "name": "Pratul Srinivasan",
+      "company": "Google Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 18247,
+      "name": "Igor Canadi",
+      "company": "openai ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 18257,
+      "name": "Tom Schaul",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 18296,
+      "name": "Christopher Hesse",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 18310,
+      "name": "Francois Belletti",
+      "company": "Google Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 18362,
+      "name": "Xinghai Sun",
+      "company": "Tencent AI Lab",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 18399,
+      "name": "David Alvarez-Melis",
+      "company": "Microsoft Research, New England Lab",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 18538,
+      "name": "Ray Luo",
+      "company": "mila-iqia",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 18583,
+      "name": "Katia Gil Guzman",
+      "company": "openai ",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 18622,
+      "name": "Shawn M Moore",
+      "company": "Anthropic",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 18999,
+      "name": "Yaoming",
+      "company": "ByteDance AI Lab",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 19030,
+      "name": "Zhengyan Shi",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19076,
+      "name": "Tim Zaman",
+      "company": "OpenAI (prev Google DeepMind, Tesla, X, NVIDIA)",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19098,
+      "name": "Arlie Coles",
+      "company": "mila-iqia",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 19357,
+      "name": "Soroush Mehri",
+      "company": "Microsoft Research (prev. Maluuba and MILA-UdeM)",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19363,
+      "name": "Ted Sanders",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19391,
+      "name": "Thijs Vogels",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19395,
+      "name": "Christos Tsirigotis",
+      "company": "mila-iqia ",
+      "old_tier": "C",
+      "new_tier": "A+"
+    },
+    {
+      "id": 19411,
+      "name": "Andreas Fidjeland",
+      "company": "Google DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19582,
+      "name": "Sirui Lu",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19621,
+      "name": "Aaron Schlesinger",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19649,
+      "name": "Justin Salamon",
+      "company": "Adobe Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 19657,
+      "name": "Hamid Palangi",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19736,
+      "name": "Rianne van den Berg",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19862,
+      "name": "Lasse Espeholt",
+      "company": "Google Brain Amsterdam",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 19920,
+      "name": "Siddharth Gururani",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 20005,
+      "name": "Yuval Tassa",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 20006,
+      "name": "Shikai Li",
+      "company": "Alibaba DAMO Academy",
+      "old_tier": "A",
+      "new_tier": "A+"
+    },
+    {
+      "id": 20025,
+      "name": "Xiaojie Xu",
+      "company": "Tencent AI Lab",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 20062,
+      "name": "Nando de Freitas",
+      "company": "Google DeepMind & Oxford University",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 20176,
+      "name": "Roman Novak",
+      "company": "OpenAI",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 20208,
+      "name": "Xiaodong Yang",
+      "company": "NVIDIA Research",
+      "old_tier": "B",
+      "new_tier": "A+"
+    },
+    {
+      "id": 20237,
+      "name": "akikoe",
+      "company": "Microsoft Research",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 20280,
+      "name": "Michael MATHIEU",
+      "company": "DeepMind",
+      "old_tier": "A",
+      "new_tier": "S"
+    },
+    {
+      "id": 20385,
+      "name": "Lu Li",
+      "company": "mila-iqia",
+      "old_tier": "C",
+      "new_tier": "A+"
+    }
+  ]
+}
