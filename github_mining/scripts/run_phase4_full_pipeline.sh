@@ -69,7 +69,7 @@ REPORT_FILE="${DATA_DIR}/batch_report_${BATCH_ID}.json"
 
 # Phase 4 爬取参数
 SEED_TOP="${SEED_TOP:-300}"
-MIN_CO="${MIN_CO:-3}"
+MIN_CO="${MIN_CO:-2}"
 SEED_TIER="${SEED_TIER:-}"
 SEED_FILE="${SEED_FILE:-}"
 SKIP_PHASE4="${SKIP_PHASE4:-0}"

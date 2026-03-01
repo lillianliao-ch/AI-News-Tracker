@@ -523,3 +523,161 @@ tail -f github_mining/auto_restart.log
 4. **重启延迟**: 默认 30 秒，给 GitHub API 恢复时间
 5. **不保证成功率**: 如果是代码逻辑错误，自动重启也会失败
 
+---
+
+## 12. 已知问题与解决方案
+
+> 📋 **记录**: 大规模爬取中发现的问题和解决方案，避免重复踩坑
+
+### 12.1 问题: 组织账号混入 (🔴 P0 - 严重)
+
+**发现时间**: 2026-02-28
+
+**问题描述**:
+- 95个组织账号被误认为个人导入人才库
+- 典型案例: `tensorflow`, `kubernetes`, `cursor`, `meta-pytorch`, `google-research-datasets`
+- 影响: 污染人才库，浪费触达资源
+
+**根本原因**:
+```python
+# 爬虫未检查 GitHub API 的 type 字段
+# 应该在 Phase 1 和 Phase 2 V3 中添加过滤
+```
+
+**解决方案**:
+```python
+# 在获取用户信息时添加
+KNOWN_ORGS = ['tensorflow', 'kubernetes', 'pytorch', 'cursor', ...]
+
+if profile.get("type") == "Organization":
+    continue  # 跳过组织账号
+
+# 额外检查已知组织黑名单
+if username in KNOWN_ORGS:
+    continue
+```
+
+**修复位置**:
+- 文件: `github_mining/scripts/github_network_miner.py`
+- 位置: Phase 1 (line 314-331) 和 Phase 2 V3
+
+**清理脚本**:
+```bash
+# 识别并标记现有组织账号
+python3 scripts/clean_org_accounts.py
+```
+
+---
+
+### 12.2 问题: 顶级公司人才分级偏低 (⚠️ P0 - 中等)
+
+**发现时间**: 2026-02-28
+
+**问题描述**:
+- Google DeepMind/OpenAI 员工只评为 A 级，应为 S 级
+- 案例:
+  - Rundi Wu (Google DeepMind) - Tier: A → 应该是 S
+  - vb (openai) - Tier: A → 应该是 S
+  - Petar Veličković (Google DeepMind) - Tier: A → 应该是 S
+
+**解决方案**:
+```python
+# 在 batch_update_tiers.py 中添加顶级公司白名单
+TOP_TIER_COMPANIES = [
+    'Google DeepMind', 'DeepMind',
+    'OpenAI', 'Open AI',
+    'Meta AI', 'Meta AI Research',
+    'Google Brain', 'Google Research',
+    'Anthropic',
+    'Microsoft Research',
+]
+
+# 自动升级逻辑
+if company in TOP_TIER_COMPANIES:
+    if tier == 'A':
+        tier = 'S'  # 自动升级到 S 级
+```
+
+**修复位置**:
+- 文件: `personal-ai-headhunter/batch_update_tiers.py`
+- 配置: `data/company_tier_config.json`
+
+---
+
+### 12.3 问题: AI 评价完全缺失 (🔴 P0 - 严重)
+
+**发现时间**: 2026-02-28
+
+**问题描述**:
+- 10,061 人中 0 人有 `ai_summary`
+- 影响: 无法快速了解候选人背景，人工审核成本增加
+
+**根本原因**:
+- Phase 3.5 主页爬取未执行
+- AI 总结功能未启用
+
+**解决方案**:
+```bash
+# 1. 运行 Phase 3.5 主页爬取
+python3 github_mining/scripts/github_network_miner.py phase3_5 --top 500 --resume
+
+# 2. 启用 AI 总结（需要配置 API）
+# 在 phase3_5 爬取中调用 AI API 生成 summary
+```
+
+**目标覆盖率**: 80%+
+
+---
+
+### 12.4 问题: LinkedIn 覆盖率低 (⚠️ P1 - 中等)
+
+**发现时间**: 2026-02-28
+
+**问题描述**:
+- 覆盖率仅 24% (2,415/10,061)
+- 影响: 无法交叉验证工作经历，降低可联系性
+
+**解决方案**:
+```python
+# 1. 从 GitHub 主页提取 LinkedIn 链接
+# 2. 增加 Phase 3.5 爬取深度
+# 3. 优化爬虫解析逻辑
+```
+
+**目标覆盖率**: 50%+
+
+---
+
+## 13. 质量评估基线
+
+### 13.1 2026-02-28 大规模爬取质量评估
+
+**评估方法**: 分层抽样 454 人
+**总体评分**: C+ (65/100)
+
+| 维度 | 得分 | 满分 | 评级 |
+|:---|:---|:---|:---:|
+| 数据量 | 10 | 10 | ✅ 优秀 |
+| 分级准确性 | 15 | 25 | ⚠️ 需改进 |
+| 数据完整性 | 15 | 25 | ⚠️ 需改进 |
+| 组织过滤 | 0 | 10 | ❌ 失败 |
+| 可验证性 | 10 | 15 | ⚠️ 需改进 |
+| 可联系性 | 15 | 15 | ✅ 良好 |
+| **总分** | **65** | **100** | **C+** |
+
+**分级准确性估算**:
+- S 级: 60% (混入组织账号)
+- A 级: 75% (部分应升级到 S)
+- B 级: 80% (相对准确)
+- C 级: 85% (相对准确)
+
+### 13.2 数据完整性目标
+
+| 字段 | 当前覆盖率 | 目标覆盖率 | 优先级 |
+|:---|:---|:---|:---|
+| LinkedIn | 24% | 50% | P1 |
+| 邮箱 | 64% | 80% | P0 |
+| 工作经历 | 66% | 70% | P1 |
+| 教育背景 | - | 50% | P2 |
+| AI 评价 | 0% | 80% | P0 |
+

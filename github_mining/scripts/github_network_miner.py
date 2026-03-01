@@ -22,10 +22,18 @@ import random
 import sys
 import os
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import List, Dict, Optional, Set, Tuple
 from collections import Counter
+
+# 导入缓存管理器
+try:
+    from github_cache_manager import GitHubCacheManager
+    CACHE_AVAILABLE = True
+except ImportError:
+    CACHE_AVAILABLE = False
+    print("⚠️  缓存管理器未找到，将不使用缓存功能")
 
 # 强制刷新输出（nohup 模式下需要）
 import functools
@@ -163,15 +171,15 @@ AI_SCHOOLS = [
 class GitHubNetworkMiner:
     """GitHub 社交网络挖掘器 (支持多 Token 池轮询)"""
 
-    def __init__(self, token: str = None):
+    def __init__(self, token: str = None, cache_days: int = 30, use_cache: bool = True):
         self.tokens = []
         self.current_token_idx = 0
         self.session = requests.Session()
-        
+
         if token:
             # 支持传入单个 token 或多个 token (逗号分隔)，并严格清理空白符
             self.tokens = [t.strip().replace('\n', '').replace('\r', '') for t in token.split(",") if t.strip()]
-            
+
         if self.tokens:
             new_token = self.tokens[self.current_token_idx]
             self.session.headers["Authorization"] = f"token {new_token}"
@@ -182,8 +190,20 @@ class GitHubNetworkMiner:
                 "Accept": "application/vnd.github.v3+json",
             })
             print("⚠️ 未加载任何 Token，将受到严格的未授权速率限制")
-            
+
         self.request_count = 0
+
+        # 初始化缓存管理器
+        self.use_cache = use_cache and CACHE_AVAILABLE
+        if self.use_cache:
+            self.cache = GitHubCacheManager(cache_days=cache_days, verbose=True)
+            print(f"💾 缓存管理器已启用 (缓存期: {cache_days} 天)")
+        else:
+            self.cache = None
+            if CACHE_AVAILABLE and not use_cache:
+                print("⚠️  缓存功能已手动禁用")
+            elif not CACHE_AVAILABLE:
+                print("⚠️  缓存管理器不可用")
 
     def _rotate_token(self):
         """切换到下一个 token"""
@@ -1360,7 +1380,7 @@ class GitHubNetworkMiner:
         seed_top: int = 300,
         seeds_file: str = None,
         seed_tier: str = None,
-        min_cooccurrence: int = 3
+        min_cooccurrence: int = 2
     ):
         """从种子用户的 following 中发现新人才
 
@@ -1675,6 +1695,28 @@ class GitHubNetworkMiner:
                 skipped += 1
                 continue
 
+            # 检查数据库缓存
+            if self.cache and self.cache.is_cached(username):
+                cached_data = self.cache.get_cached_data(username)
+                if cached_data:
+                    # 使用缓存的数据构建 enriched_user
+                    enriched_user = {
+                        **user,
+                        "primary_languages": "",  # 缓存中没有此信息，留空
+                        "total_stars": 0,
+                        "ai_repo_count": 0,
+                        "top_repos": "",
+                        "all_emails": cached_data.get("email", "") or user.get("email", ""),
+                        "website_status": "active" if cached_data.get("personal_website") else "none",
+                        "has_scholar": False,
+                        "has_python": False,
+                        "_from_cache": True,  # 标记来自缓存
+                    }
+                    enriched.append(enriched_user)
+                    processed[username] = enriched_user
+                    continue
+                # 如果缓存检查失败，继续正常爬取
+
             if (i - skipped) % 50 == 0 and (i - skipped) > 0:
                 print(f"  进度: {i}/{len(users)} ({i*100//len(users)}%)")
 
@@ -1757,8 +1799,13 @@ class GitHubNetworkMiner:
                 "website_status": website_status,
                 "has_scholar": has_scholar,
                 "has_python": has_python,
+                "_from_cache": False,  # 标记新爬取的数据
             }
             enriched.append(enriched_user)
+
+            # 标记为已爬取（用于缓存统计）
+            if self.cache:
+                self.cache.mark_as_crawled(username)
 
             time.sleep(0.5 + random.uniform(0, 0.3))
 
@@ -1777,14 +1824,23 @@ class GitHubNetworkMiner:
         with_website = sum(1 for e in enriched if e.get("website_status") == "active")
         with_python = sum(1 for e in enriched if e.get("has_python"))
         with_ai_repo = sum(1 for e in enriched if e.get("ai_repo_count", 0) > 0)
+        from_cache = sum(1 for e in enriched if e.get("_from_cache"))
 
         print(f"\n✅ Phase 2 V3 轻富化完成!")
         print(f"   总人数: {len(enriched)}")
+        print(f"   从缓存读取: {from_cache} ({from_cache*100//max(len(enriched),1)}%)")
         print(f"   有邮箱: {with_email} ({with_email*100//max(len(enriched),1)}%)")
         print(f"   有 Scholar: {with_scholar}")
         print(f"   有活跃网站: {with_website}")
         print(f"   有 Python 项目: {with_python}")
         print(f"   有 AI Repo: {with_ai_repo}")
+
+        # 打印缓存统计
+        if self.cache:
+            self.cache.print_stats()
+            # 保存缓存统计到文件
+            cache_stats_path = BASE_DIR / "phase2_cache_stats.json"
+            self.cache.save_stats(str(cache_stats_path))
 
     # ============================================================
     # V3 Pipeline: Phase 3 统一 AI 判定 (用富化后数据)

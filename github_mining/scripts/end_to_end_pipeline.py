@@ -68,7 +68,7 @@ def run_phase4():
     try:
         miner.phase4_expand(
             seed_tier="S,A+,A",
-            min_cooccurrence=3
+            min_cooccurrence=2
         )
         return True
     except Exception as e:
