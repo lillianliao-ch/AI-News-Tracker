@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(./:*)"
+      "Bash(./:*)",
+      "Bash(/tmp/nationality_filter_report.md:*)",
+      "Bash(npx tsc --noEmit src/components/FilterBar.tsx)",
+      "Read(//Users/lillianliao/notion_rag/personal-ai-headhunter/frontend/**)",
+      "Bash(echo $AUTO_MEMORY_DIR)"
+    ],
+    "additionalDirectories": [
+      "/Users/lillianliao/.claude/projects/-Users-lillianliao-notion-rag"
     ]
   }
 }

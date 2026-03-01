@@ -1,0 +1,712 @@
+{
+  "update_date": "2026-03-01T20:21:58.995864",
+  "total_updated": 20567,
+  "statistics": {
+    "chinese": 10109,
+    "foreign": 5074,
+    "unknown": 5384,
+    "total": 20567
+  },
+  "sample_updates": [
+    {
+      "id": 1,
+      "name": "柏杨",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 2,
+      "name": "王牌喵喵驾驶员",
+      "company": "(OD)华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 3,
+      "name": "谢奕",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 4,
+      "name": "郑凯",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 5,
+      "name": "萧陆",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 6,
+      "name": "郭益君",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 7,
+      "name": "冯聪",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 8,
+      "name": "陆地寻",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 9,
+      "name": "刘槟源",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 10,
+      "name": "苏宝星",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 11,
+      "name": "余大伟",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 12,
+      "name": "章征海",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 13,
+      "name": "无人问津",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 14,
+      "name": "唐朋成",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 15,
+      "name": "ez",
+      "company": "华为",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 16,
+      "name": "白立勋",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 17,
+      "name": "张晓",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 18,
+      "name": "那柏林",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 19,
+      "name": "柯尊伟",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 20,
+      "name": "王小龙",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 21,
+      "name": "王楠",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 22,
+      "name": "Greta谢",
+      "company": "2022.1-",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 23,
+      "name": "王瑞心",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 24,
+      "name": "陈强",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 25,
+      "name": "芦宇",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 26,
+      "name": "陈佳静",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 27,
+      "name": "刘毅",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 28,
+      "name": "李照洋",
+      "company": "B华为技术有限公司",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 29,
+      "name": "Dr. Li",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 30,
+      "name": "zac",
+      "company": "华为",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 31,
+      "name": "戴正晨",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 32,
+      "name": "李树阳",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 33,
+      "name": "追风少年",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 34,
+      "name": "朱正",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 35,
+      "name": "赵昱植",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 36,
+      "name": "张树本",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 37,
+      "name": "陈义",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 38,
+      "name": "金阳坤",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 39,
+      "name": "方守佳",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 40,
+      "name": "陈文忠",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 41,
+      "name": "魏俊旭",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 42,
+      "name": "hello",
+      "company": "华为",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 43,
+      "name": "胡牛",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 44,
+      "name": "宋楠",
+      "company": "华为杭州研究所",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 45,
+      "name": "从德春",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 46,
+      "name": "陈大鹏",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 47,
+      "name": "陈官富",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 48,
+      "name": "吴xx",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 49,
+      "name": "汪群祥",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 50,
+      "name": "余松元",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 51,
+      "name": "王金旺",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 52,
+      "name": "郭广旭",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 53,
+      "name": "孙世华",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 54,
+      "name": "王顺波",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 55,
+      "name": "王博",
+      "company": "华为",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 56,
+      "name": "小破孩儿",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 57,
+      "name": "秦斌",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 58,
+      "name": "刘伟",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 59,
+      "name": "歇斯底里",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 60,
+      "name": "董先生",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 61,
+      "name": "李轩辕",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 62,
+      "name": "水手",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 63,
+      "name": "lk",
+      "company": "小米",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 64,
+      "name": "罗涛",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 65,
+      "name": "唐靖华",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 66,
+      "name": "王家俊",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 67,
+      "name": "饶丰",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 68,
+      "name": "雪飞密",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 69,
+      "name": "Jimmy",
+      "company": "小米",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 70,
+      "name": "唐银",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 71,
+      "name": "侯大帅",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 72,
+      "name": "archie",
+      "company": "小米",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 73,
+      "name": "宋永福",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 74,
+      "name": "沈彬彬",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 75,
+      "name": "在后山上悠闲的胡萝卜",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 76,
+      "name": "王龙龙",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 77,
+      "name": "吃瓜群众",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 78,
+      "name": "仲奇奇",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 79,
+      "name": "石选阳",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 80,
+      "name": "谢岩",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 81,
+      "name": "杨佳辉",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 82,
+      "name": "山西老陈醋",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 83,
+      "name": "孙晓川",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 84,
+      "name": "张经纬",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 85,
+      "name": "郝孝帅",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 86,
+      "name": "童政",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 87,
+      "name": "冯先生",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 88,
+      "name": "方圳河",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 89,
+      "name": "陈明",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 90,
+      "name": "张鑫",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 91,
+      "name": "关涛",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 92,
+      "name": "付斌",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 93,
+      "name": "吴诚博",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 94,
+      "name": "pp",
+      "company": "小米",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 95,
+      "name": "Hay",
+      "company": "小米",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 96,
+      "name": "罗鸿城 猎头勿扰",
+      "company": "小米",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 97,
+      "name": "Kevin",
+      "company": "小米",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 98,
+      "name": "潘朵拉",
+      "company": "小米汽车有限公司",
+      "nationality": "chinese",
+      "confidence": "high"
+    },
+    {
+      "id": 99,
+      "name": "Iyniq",
+      "company": "小米汽车有限公司",
+      "nationality": "unknown",
+      "confidence": "low"
+    },
+    {
+      "id": 100,
+      "name": "zhiqiangxia",
+      "company": "小米",
+      "nationality": "unknown",
+      "confidence": "low"
+    }
+  ]
+}

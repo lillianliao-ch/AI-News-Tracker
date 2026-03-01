@@ -59,6 +59,7 @@ def load_state() -> dict:
             return json.load(f)
     return {"phase3_done": False, "phase3_verified": False,
             "phase3_5_done": False, "phase3_5_verified": False,
+            "nationality_done": False, "nationality_verified": False,
             "import_done": False, "tier_done": False}
 
 def save_state(state: dict):
@@ -238,7 +239,7 @@ def run_import():
 
 def run_tier_update():
     """执行分级：对入库候选人自动打 Tier 标签"""
-    log("========== Step 4: 自动分级 ==========")
+    log("========== Step 5: 自动分级 ==========")
 
     cmd = [sys.executable, str(HEADHUNTER_DIR / "batch_update_tiers.py")]
     log(f"执行: {' '.join(cmd)}")
@@ -247,6 +248,130 @@ def run_tier_update():
         log(f"ERROR: 分级失败 (exit code {result.returncode})")
         sys.exit(1)
     log("分级完成")
+
+def run_nationality_detection():
+    """执行国籍检测：为候选人添加 nationality 字段"""
+    log("========== Step 4: 国籍检测 ==========")
+
+    # 读取富化后的数据
+    final = FINAL_OUTPUT if FINAL_OUTPUT.exists() else PHASE3_5_OUTPUT
+    if not final.exists():
+        log(f"ERROR: 找不到富化输出文件")
+        sys.exit(1)
+
+    log(f"读取文件: {final}")
+    with open(final) as f:
+        users = json.load(f)
+
+    log(f"候选人数量: {len(users)}")
+
+    # 导入国籍检测函数
+    sys.path.insert(0, str(HEADHUNTER_DIR / "scripts"))
+    from add_nationality_tags import detect_nationality, CHINESE_SURNAMES, CHINESE_COMPANIES
+
+    log(f"姓氏列表大小: {len(CHINESE_SURNAMES)}")
+    log(f"中国公司/机构: {len(CHINESE_COMPANIES)}")
+
+    # 统计
+    stats = {"chinese": 0, "foreign": 0, "unknown": 0, "total": 0}
+
+    # 为每个候选人添加国籍
+    for i, user in enumerate(users, 1):
+        name = user.get("name", "")
+        company = user.get("company", "")
+        if company and company.startswith("@"):
+            company = company[1:]
+
+        location = user.get("location", "")
+        bio = user.get("bio", "")
+
+        # 基础检测
+        nationality, confidence = detect_nationality(name, company)
+
+        # Phase 4 增强检测
+        if nationality == "unknown":
+            # 利用 location
+            if location and "China" in location:
+                nationality = "chinese"
+                confidence = "medium"
+            # 利用 bio 中的中文
+            elif bio and any("\u4e00" <= c <= "\u9fff" for c in bio):
+                nationality = "chinese"
+                confidence = "high"
+
+        # 添加字段
+        user["nationality"] = nationality
+        user["nationality_confidence"] = confidence
+
+        stats[nationality] += 1
+        stats["total"] += 1
+
+        # 每100人输出一次进度
+        if i % 100 == 0:
+            log(f"处理进度: {i}/{len(users)}")
+
+    # 保存回文件
+    backup_file = str(final).replace(".json", "_before_nationality.json")
+    log(f"备份原文件到: {backup_file}")
+    shutil.copy2(final, backup_file)
+
+    log(f"保存国籍检测结果到: {final}")
+    with open(final, "w") as f:
+        json.dump(users, f, ensure_ascii=False, indent=2)
+
+    # 输出统计
+    log("国籍分布统计:")
+    log(f"  中国人:     {stats['chinese']:5,} ({stats['chinese']/stats['total']*100:.1f}%)")
+    log(f"  外国人:     {stats['foreign']:5,} ({stats['foreign']/stats['total']*100:.1f}%)")
+    log(f"  无法判断:   {stats['unknown']:5,} ({stats['unknown']/stats['total']*100:.1f}%)")
+    log(f"  总计:       {stats['total']:5,}")
+
+    # 显示示例
+    log("\n示例（每类前5个）:")
+    for category in ["chinese", "foreign", "unknown"]:
+        examples = [u for u in users if u.get("nationality") == category][:5]
+        log(f"\n{category.upper()}:")
+        for ex in examples:
+            name = ex.get("name", "")[:30]
+            company = ex.get("company", "")[:30]
+            log(f"  • {name:30} | {company}")
+
+    log("国籍检测完成")
+
+def verify_nationality_detection() -> bool:
+    """验证国籍检测结果"""
+    log("--- 国籍检测验证开始 ---")
+
+    final = FINAL_OUTPUT if FINAL_OUTPUT.exists() else PHASE3_5_OUTPUT
+    if not final.exists():
+        log("FAIL: 输出文件不存在")
+        return False
+
+    with open(final) as f:
+        users = json.load(f)
+
+    total = len(users)
+    log(f"总人数: {total}")
+
+    # 检查 nationality 字段
+    has_nationality = sum(1 for u in users if u.get("nationality"))
+    has_confidence = sum(1 for u in users if u.get("nationality_confidence"))
+
+    log(f"nationality 字段覆盖率: {has_nationality}/{total} ({has_nationality/total*100:.0f}%)")
+    log(f"confidence 字段覆盖率: {has_confidence}/{total} ({has_confidence/total*100:.0f}%)")
+
+    # 统计分布
+    from collections import Counter
+    nat_dist = Counter(u.get("nationality") for u in users)
+    log(f"国籍分布: {dict(nat_dist)}")
+
+    # 所有记录必须有 nationality 字段
+    if has_nationality < total:
+        log(f"FAIL: nationality 字段覆盖率不足 ({has_nationality}/{total})")
+        return False
+
+    log("--- 国籍检测验证通过 ---")
+    return True
 
 def verify_import_and_tier() -> bool:
     """验证入库+分级结果"""
@@ -366,7 +491,29 @@ def main():
 
     time.sleep(2)
 
-    # ---- Step 3: 入库 ----
+    # ---- Step 3: 国籍检测 ----
+    if not state.get("nationality_verified"):
+        if not state.get("nationality_done"):
+            run_nationality_detection()
+            state["nationality_done"] = True
+            save_state(state)
+
+        # 验证
+        if verify_nationality_detection():
+            state["nationality_verified"] = True
+            save_state(state)
+            log("国籍检测验证通过")
+        else:
+            log("国籍检测验证失败，退出（等待 auto_restart_wrapper 重试）")
+            state["nationality_done"] = False
+            save_state(state)
+            sys.exit(1)
+    else:
+        log("国籍检测已完成且已验证，跳过")
+
+    time.sleep(2)
+
+    # ---- Step 4: 入库 ----
     if not state.get("import_done"):
         run_import()
         state["import_done"] = True
@@ -376,7 +523,7 @@ def main():
 
     time.sleep(2)
 
-    # ---- Step 4: 分级 ----
+    # ---- Step 5: 分级 ----
     if not state.get("tier_done"):
         run_tier_update()
         if verify_import_and_tier():
@@ -390,7 +537,7 @@ def main():
 
     # ---- 完成 ----
     log("=" * 60)
-    log("全部完成! (富化 → 入库 → 分级)")
+    log("全部完成! (富化 → 国籍检测 → 入库 → 分级)")
     final = FINAL_OUTPUT if FINAL_OUTPUT.exists() else PHASE3_5_OUTPUT
     if final.exists():
         data = json.load(open(final))
