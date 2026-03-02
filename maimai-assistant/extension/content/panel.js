@@ -488,10 +488,10 @@ class AssistantPanel {
                 throw new Error(err.detail || `API错误: ${response.status}`);
             }
 
-            const result = await response.json();
+            const aiResult = await response.json();
 
-            if (result.success) {
-                this.lastGeneratedMessage = result.message;
+            if (aiResult.success) {
+                this.lastGeneratedMessage = aiResult.message;
                 this.lastCandidate = candidateData;
 
                 // 显示生成的消息
@@ -503,25 +503,25 @@ class AssistantPanel {
 
                 if (msgSection && msgEl) {
                     msgSection.style.display = 'block';
-                    msgEl.textContent = result.message;
+                    msgEl.textContent = aiResult.message;
                 }
                 if (nameEl) {
                     nameEl.textContent = `${candidateData.name} - ${candidateData.currentCompany || ''} ${candidateData.currentPosition || ''}`;
                 }
                 if (charCountEl) {
-                    charCountEl.textContent = `${result.char_count || result.message.length}/300`;
-                    charCountEl.style.color = (result.char_count || result.message.length) > 300 ? '#ff4d4f' : '#52c41a';
+                    charCountEl.textContent = `${aiResult.char_count || aiResult.message.length}/300`;
+                    charCountEl.style.color = (aiResult.char_count || aiResult.message.length) > 300 ? '#ff4d4f' : '#52c41a';
                 }
-                if (jobUsedEl && result.job_used) {
-                    jobUsedEl.textContent = `📌 ${result.job_used.company} · ${result.job_used.title}`;
+                if (jobUsedEl && aiResult.job_used) {
+                    jobUsedEl.textContent = `📌 ${aiResult.job_used.company} · ${aiResult.job_used.title}`;
                 }
 
                 MaimaiUtils.showNotification(`✨ 已为 ${candidateData.name} 生成AI个性化消息`, 'success');
                 console.log('  候选人:', candidateData);
-                console.log('  消息:', result.message);
-                console.log('  关联JD:', result.job_used);
+                console.log('  消息:', aiResult.message);
+                console.log('  关联JD:', aiResult.job_used);
             } else {
-                throw new Error(result.error || '生成失败');
+                throw new Error(aiResult.error || '生成失败');
             }
         } catch (error) {
             console.error('❌ AI消息生成失败:', error);
@@ -653,8 +653,8 @@ class AssistantPanel {
     // 加载活跃JD列表
     async loadActiveJobs() {
         try {
-            const result = await chrome.storage.local.get(['apiBaseUrl']);
-            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
+            const storageResult = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = storageResult.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/jobs/active?limit=30`;
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error(`API错误: ${response.status}`);
