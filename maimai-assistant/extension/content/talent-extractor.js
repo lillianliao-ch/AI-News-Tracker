@@ -6,14 +6,6 @@ class TalentPanelExtractor {
         this.panelContainer = null;
     }
 
-    // 动态获取 API 地址（每次使用时获取最新配置）
-    async _getApiBase() {
-        if (typeof getApiBase === 'function') {
-            return await getApiBase();
-        }
-        return 'http://localhost:8502';
-    }
-
     // 查找人才详情面板容器
     findTalentPanel() {
         // 人才库面板通常是一个 drawer 或 modal
@@ -549,7 +541,8 @@ class TalentPanelExtractor {
     // 同步候选人到系统（新建或更新）
     async syncCandidate(candidateData) {
         try {
-            const apiBase = await this._getApiBase();
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const response = await fetch(`${apiBase}/api/candidate/maimai-sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -723,7 +716,8 @@ class TalentPanelExtractor {
 
                 const formData = new FormData();
                 formData.append('file', blob, fileName);
-                const apiBase = await this._getApiBase();
+                const result = await chrome.storage.local.get(['apiBaseUrl']);
+                const apiBase = result.apiBaseUrl || 'http://localhost:8502';
                 const uploadResp = await fetch(`${apiBase}/api/candidate/${candidateId}/resume-attachment`, {
                     method: 'POST',
                     body: formData

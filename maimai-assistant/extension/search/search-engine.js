@@ -464,7 +464,8 @@ class SearchEngine {
     async exportToAPI() {
         if (this.state.results.length === 0) return { success: 0, failed: 0 };
 
-        const apiBase = await getApiBase();
+        const result = await chrome.storage.local.get(['apiBaseUrl']);
+        const apiBase = result.apiBaseUrl || 'http://localhost:8502';
         const apiUrl = `${apiBase}/api/candidate/import`;
         let success = 0, failed = 0;
 

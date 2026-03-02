@@ -162,7 +162,8 @@ class MaimaiAssistant {
 
             // 记录触达日志
             try {
-                const apiBase = await getApiBase();
+                const result = await chrome.storage.local.get(['apiBaseUrl']);
+                const apiBase = result.apiBaseUrl || 'http://localhost:8502';
                 await fetch(`${apiBase}/api/comm-log`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -428,7 +429,8 @@ class MaimaiAssistant {
 
         // ③ 调用 AI 生成个性化消息
         console.log(`🤖 为 ${candidateData.name} 生成AI消息...`);
-        const apiBase = await getApiBase();
+        const result = await chrome.storage.local.get(['apiBaseUrl']);
+        const apiBase = result.apiBaseUrl || 'http://localhost:8502';
         const apiUrl = `${apiBase}/api/generate-message`;
         const response = await fetch(apiUrl, {
             method: 'POST',

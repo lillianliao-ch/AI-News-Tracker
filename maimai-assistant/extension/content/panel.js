@@ -470,7 +470,8 @@ class AssistantPanel {
         }
 
         try {
-            const apiBase = await getApiBase();
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/generate-message`;
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -627,7 +628,8 @@ class AssistantPanel {
         const jobId = jobSelect?.value !== 'auto' ? parseInt(jobSelect.value) : null;
 
         try {
-            const apiBase = await getApiBase();
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/comm-log`;
             await fetch(apiUrl, {
                 method: 'POST',
@@ -651,7 +653,8 @@ class AssistantPanel {
     // 加载活跃JD列表
     async loadActiveJobs() {
         try {
-            const apiBase = await getApiBase();
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/jobs/active?limit=30`;
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error(`API错误: ${response.status}`);
@@ -712,7 +715,8 @@ class AssistantPanel {
         const jobId = jobSelect?.value !== 'auto' ? parseInt(jobSelect.value) : null;
 
         try {
-            const apiBase = await getApiBase();
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/comm-log`;
             await fetch(apiUrl, {
                 method: 'POST',

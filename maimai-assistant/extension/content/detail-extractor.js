@@ -6,14 +6,6 @@ class DetailPanelExtractor {
         this.STREAMLIT_BASE = 'http://localhost:8501';  // Streamlit 应用
     }
 
-    // 动态获取 API 地址（每次使用时获取最新配置）
-    async _getApiBase() {
-        if (typeof getApiBase === 'function') {
-            return await getApiBase();
-        }
-        return 'http://localhost:8502';
-    }
-
     // 检测详情面板是否已打开
     isDetailPanelOpen() {
         // 方法1: 查找包含"工作经历"的容器
@@ -654,7 +646,8 @@ class DetailPanelExtractor {
     // 检查候选人是否已存在于系统
     async checkCandidateExists(candidateData) {
         try {
-            const apiBase = await this._getApiBase();
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const response = await fetch(`${apiBase}/api/candidate/check`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -680,7 +673,8 @@ class DetailPanelExtractor {
     // 导入候选人到系统
     async importCandidate(candidateData) {
         try {
-            const apiBase = await this._getApiBase();
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const response = await fetch(`${apiBase}/api/candidate/import`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
