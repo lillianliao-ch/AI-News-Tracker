@@ -3,22 +3,15 @@
 
 class DetailPanelExtractor {
     constructor() {
-        this.API_BASE = 'http://localhost:8502';  // 默认值，会被 init() 覆盖
         this.STREAMLIT_BASE = 'http://localhost:8501';  // Streamlit 应用
-        this._apiBasePromise = this._initApiBase();
     }
 
-    async _initApiBase() {
+    // 动态获取 API 地址（每次使用时获取最新配置）
+    async _getApiBase() {
         if (typeof getApiBase === 'function') {
-            this.API_BASE = await getApiBase();
+            return await getApiBase();
         }
-    }
-
-    async _ensureApiBase() {
-        if (this._apiBasePromise) {
-            await this._apiBasePromise;
-            this._apiBasePromise = null;
-        }
+        return 'http://localhost:8502';
     }
 
     // 检测详情面板是否已打开
@@ -661,8 +654,8 @@ class DetailPanelExtractor {
     // 检查候选人是否已存在于系统
     async checkCandidateExists(candidateData) {
         try {
-            await this._ensureApiBase();
-            const response = await fetch(`${this.API_BASE}/api/candidate/check`, {
+            const apiBase = await this._getApiBase();
+            const response = await fetch(`${apiBase}/api/candidate/check`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -687,8 +680,8 @@ class DetailPanelExtractor {
     // 导入候选人到系统
     async importCandidate(candidateData) {
         try {
-            await this._ensureApiBase();
-            const response = await fetch(`${this.API_BASE}/api/candidate/import`, {
+            const apiBase = await this._getApiBase();
+            const response = await fetch(`${apiBase}/api/candidate/import`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(candidateData)
