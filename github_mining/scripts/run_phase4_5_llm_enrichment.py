@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Phase 4.5: LLM 深度富化 - 候选人网站内容智能提取
+Phase 4.5: LLM 深度富化 + 国籍检测
 
 功能:
   1. 从 Phase 3.5 输出读取有个人网站的候选人
@@ -10,7 +10,8 @@ Phase 4.5: LLM 深度富化 - 候选人网站内容智能提取
      - 技能列表 (技术栈)
      - 外联谈话点 (个性化生成)
   3. 计算质量分数并过滤
-  4. 输出完整的 JSON 用于数据库导入
+  4. 自动检测国籍 (基于姓名/公司/Location/LLM提取履历)
+  5. 输出完整的 JSON 用于数据库导入
 
 插入位置: Phase 3.5 之后，数据库导入之前
 
@@ -29,11 +30,13 @@ import time
 import requests
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 # 路径配置
 SCRIPT_DIR = Path(__file__).parent
 BASE_DIR = SCRIPT_DIR / "github_mining"
+ROOT_DIR = SCRIPT_DIR.parent.parent
+HEADHUNTER_DIR = ROOT_DIR / "personal-ai-headhunter"
 INPUT_FILE = BASE_DIR / "phase3_5_enriched.json"
 OUTPUT_FILE = BASE_DIR / "phase4_5_llm_enriched.json"
 PROGRESS_FILE = BASE_DIR / "phase4_5_progress.json"
@@ -41,6 +44,76 @@ PROGRESS_FILE = BASE_DIR / "phase4_5_progress.json"
 # API 配置
 API_BASE = "http://localhost:8502"
 AUTH_TOKEN = os.environ.get("HEADHUNTER_AUTH_TOKEN")
+
+# 国籍检测配置
+sys.path.insert(0, str(HEADHUNTER_DIR / "scripts"))
+try:
+    from add_nationality_tags import detect_nationality
+    NATIONALITY_AVAILABLE = True
+except ImportError:
+    NATIONALITY_AVAILABLE = False
+    log("⚠️  无法导入国籍检测模块，将跳过国籍检测")
+
+
+# ============================================================================
+# 国籍检测函数
+# ============================================================================
+
+def add_nationality_to_candidate(candidate: Dict) -> Tuple[str, str]:
+    """
+    为候选人添加国籍检测
+
+    Returns:
+        (nationality, confidence)
+        - nationality: 'chinese', 'foreign', 'unknown'
+        - confidence: 'high', 'medium', 'low'
+    """
+    if not NATIONALITY_AVAILABLE:
+        return 'unknown', 'low'
+
+    name = candidate.get('name', '')
+    company = candidate.get('company', '')
+
+    # 去掉 @ 前缀
+    if company and company.startswith('@'):
+        company = company[1:]
+
+    # 基础检测
+    nationality, confidence = detect_nationality(name, company)
+
+    # Phase 4.5 增强检测
+    if nationality == "unknown":
+        # 利用 location
+        location = candidate.get('location', '')
+        if location and "China" in location:
+            nationality = "chinese"
+            confidence = "medium"
+        else:
+            # 利用 bio 中的中文
+            bio = candidate.get('bio', '')
+            if bio and any('\u4e00' <= c <= '\u9fff' for c in bio):
+                nationality = "chinese"
+                confidence = "high"
+
+        # 利用 LLM 提取的工作履历
+        work_history_json = candidate.get('extracted_work_history', '[]')
+        try:
+            work_history = json.loads(work_history_json) if isinstance(work_history_json, str) else work_history_json
+            for job in work_history:
+                job_company = job.get('company', '')
+                # 检查是否在中国公司工作过
+                for keyword in ['字节', 'ByteDance', '阿里巴巴', 'Alibaba', '腾讯', 'Tencent',
+                               '百度', 'Baidu', '华为', 'Huawei', '清华', 'Tsinghua', '北大', 'Peking']:
+                    if keyword.lower() in job_company.lower():
+                        nationality = "chinese"
+                        confidence = "medium"
+                        break
+                if nationality != "unknown":
+                    break
+        except:
+            pass
+
+    return nationality, confidence
 
 # LLM 提取 Prompt
 EXTRACTION_PROMPT = """你是一个专业的数据提取专家。请从以下个人网站内容中提取结构化信息。
@@ -222,6 +295,11 @@ def merge_candidate_data(original: Dict, extracted: Dict) -> Dict:
 
     result['website_quality_score'] = extracted.get("quality_score", 0)
 
+    # 添加国籍检测
+    nationality, confidence = add_nationality_to_candidate(result)
+    result['nationality'] = nationality
+    result['nationality_confidence'] = confidence
+
     # 添加来源标记
     result['data_source'] = original.get('data_source', '') + ',llm_enriched'
 
@@ -347,6 +425,15 @@ def main():
     # 统计质量分数
     high_quality = sum(1 for r in results if r.get('website_quality_score', 0) >= 90)
     log(f"高质量(90+): {high_quality} 人")
+
+    # 统计国籍分布
+    if NATIONALITY_AVAILABLE:
+        from collections import Counter
+        nat_dist = Counter(r.get('nationality', 'unknown') for r in results)
+        log(f"\n📊 国籍分布:")
+        log(f"  中国人:     {nat_dist.get('chinese', 0):5,} ({nat_dist.get('chinese', 0)/len(results)*100:.1f}%)")
+        log(f"  外国人:     {nat_dist.get('foreign', 0):5,} ({nat_dist.get('foreign', 0)/len(results)*100:.1f}%)")
+        log(f"  无法判断:   {nat_dist.get('unknown', 0):5,} ({nat_dist.get('unknown', 0)/len(results)*100:.1f}%)")
 
     # 清理进度文件
     if PROGRESS_FILE.exists():
