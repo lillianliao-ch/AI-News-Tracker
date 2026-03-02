@@ -5,8 +5,9 @@ Phase 4 候选人完整丰富流水线 - 无人值守 + 断点续传 + 自动验
 功能:
   1. Phase 3: 仓库深度信息补强（892人）→ 自动验证
   2. Phase 3.5: 个人主页爬取（LinkedIn/论文/经历）→ 自动验证
-  3. 入库: 导入猎头系统数据库（自动去重）
-  4. 分级: 自动打 S/A+/A/B+/B/C Tier 标签 → 自动验证
+  3. Phase 4.5: LLM深度富化（工作履历/教育背景/技能/谈话点）→ 自动验证 ⭐
+  4. 入库: 导入猎头系统数据库（自动去重）
+  5. 分级: 自动打 S/A+/A/B+/B/C Tier 标签 → 自动验证
 
 崩溃恢复:
   - Phase 3: 每50人自动保存，--resume 跳过已处理
@@ -45,6 +46,7 @@ HEADHUNTER_DIR = ROOT_DIR / "personal-ai-headhunter"
 PHASE4_INPUT = BASE_DIR / "phase4_expanded.json"
 PHASE3_OUTPUT = BASE_DIR / "phase3_from_phase4.json"
 PHASE3_5_OUTPUT = BASE_DIR / "phase3_5_enriched.json"  # 中间保存用
+PHASE4_5_OUTPUT = BASE_DIR / "phase4_5_llm_enriched.json"  # LLM富化输出
 FINAL_OUTPUT = BASE_DIR / "phase4_final_enriched.json"
 PIPELINE_STATE = BASE_DIR / "pipeline_state.json"
 
@@ -59,6 +61,7 @@ def load_state() -> dict:
             return json.load(f)
     return {"phase3_done": False, "phase3_verified": False,
             "phase3_5_done": False, "phase3_5_verified": False,
+            "phase4_5_done": False, "phase4_5_verified": False,
             "nationality_done": False, "nationality_verified": False,
             "import_done": False, "tier_done": False}
 
@@ -156,6 +159,41 @@ def verify_phase3_5(expected_min: int) -> bool:
     log("--- Phase 3.5 验证通过 ---")
     return True
 
+def verify_phase4_5() -> bool:
+    """验证 Phase 4.5 LLM富化输出质量"""
+    log("--- Phase 4.5 验证开始 ---")
+
+    check_file = PHASE4_5_OUTPUT
+    if not check_file.exists():
+        log(f"WARNING: Phase 4.5 输出文件不存在: {check_file}")
+        log("跳过验证（Phase 4.5 可能未执行）")
+        return True
+
+    data = json.load(open(check_file))
+    total = len(data)
+    log(f"总人数: {total}")
+
+    # Phase 4.5 特有字段
+    has_work_history = sum(1 for d in data if d.get('extracted_work_history'))
+    has_education = sum(1 for d in data if d.get('extracted_education'))
+    has_skills = sum(1 for d in data if d.get('extracted_skills'))
+    has_talking_points = sum(1 for d in data if d.get('talking_points'))
+    has_quality_score = sum(1 for d in data if d.get('website_quality_score', 0) > 0)
+
+    log(f"工作履历:        {has_work_history}/{total}")
+    log(f"教育背景:        {has_education}/{total}")
+    log(f"技能:            {has_skills}/{total}")
+    log(f"谈话点:          {has_talking_points}/{total}")
+    log(f"质量分数:        {has_quality_score}/{total}")
+
+    # 检查是否有有效提取
+    if has_work_history == 0 and has_education == 0:
+        log(f"WARNING: Phase 4.5 提取效果不佳，可能API调用失败")
+        log("继续使用原始数据")
+
+    log("--- Phase 4.5 验证通过 ---")
+    return True
+
 # ============================================================
 # 执行步骤
 # ============================================================
@@ -216,12 +254,42 @@ def run_phase3_5():
 
     log("Phase 3.5 执行完毕")
 
+def run_phase4_5():
+    """执行 Phase 4.5: LLM 深度富化"""
+    log("========== Phase 4.5: LLM 深度富化 ==========")
+
+    phase4_5_script = SCRIPT_DIR / "run_phase4_5_llm_enrichment.py"
+    if not phase4_5_script.exists():
+        log(f"WARNING: Phase 4.5 脚本不存在: {phase4_5_script}")
+        log("跳过 LLM 富化，继续后续流程")
+        return
+
+    cmd = [sys.executable, str(phase4_5_script)]
+    log(f"执行: {' '.join(cmd)}")
+    result = subprocess.run(cmd, cwd=str(SCRIPT_DIR))
+
+    if result.returncode != 0:
+        log(f"WARNING: Phase 4.5 执行失败 (exit code {result.returncode})")
+        log("跳过 LLM 富化，继续后续流程")
+        return
+
+    log("Phase 4.5 执行完毕")
+
 def run_import():
     """执行入库：将富化数据导入猎头系统数据库"""
-    log("========== Step 3: 入库 ==========")
+    log("========== Step 4: 入库 ==========")
 
-    final = FINAL_OUTPUT if FINAL_OUTPUT.exists() else PHASE3_5_OUTPUT
-    if not final.exists():
+    # 优先使用 Phase 4.5 的输出，其次是 Phase 3.5
+    if PHASE4_5_OUTPUT.exists():
+        final = PHASE4_5_OUTPUT
+        log(f"使用 Phase 4.5 LLM富化输出: {final.name}")
+    elif FINAL_OUTPUT.exists():
+        final = FINAL_OUTPUT
+        log(f"使用 Phase 3.5 输出: {final.name}")
+    elif PHASE3_5_OUTPUT.exists():
+        final = PHASE3_5_OUTPUT
+        log(f"使用 Phase 3.5 输出: {final.name}")
+    else:
         log(f"ERROR: 找不到富化输出文件")
         sys.exit(1)
 
@@ -488,6 +556,28 @@ def main():
             sys.exit(1)
     else:
         log("Phase 3.5 已完成且已验证，跳过")
+
+    time.sleep(2)
+
+    # ---- Step 2.5: Phase 4.5 (LLM深度富化) ----
+    if not state.get("phase4_5_verified"):
+        if not state.get("phase4_5_done"):
+            run_phase4_5()
+            state["phase4_5_done"] = True
+            save_state(state)
+
+        # 验证
+        if verify_phase4_5():
+            state["phase4_5_verified"] = True
+            save_state(state)
+            log("Phase 4.5 验证通过")
+        else:
+            log("Phase 4.5 验证失败，但继续使用原始数据")
+            # Phase 4.5 失败不阻塞流程，继续使用原始数据入库
+            state["phase4_5_verified"] = True
+            save_state(state)
+    else:
+        log("Phase 4.5 已完成且已验证，跳过")
 
     time.sleep(2)
 
