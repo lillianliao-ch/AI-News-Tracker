@@ -678,7 +678,8 @@ class MaimaiAssistant {
                 }
 
                 if (i < targetCards.length - 1 && this.batchState.isRunning) {
-                    const delay = 3000 + Math.random() * 2000;
+                    const delay = 5000 + Math.random() * 5000;
+                    console.log(`⏳ 等待 ${Math.round(delay / 1000)}s 再处理下一个...`);
                     await MaimaiUtils.delay(delay);
                 }
             }
@@ -823,9 +824,10 @@ class MaimaiAssistant {
         await MaimaiUtils.delay(500);
         nextPageBtn.click();
 
-        // ④ 等待页面加载新内容
-        console.log('⏳ 等待新页面加载...');
-        await MaimaiUtils.delay(3000);
+        // ④ 等待页面加载新内容（随机等待，模拟人类行为）
+        const pageLoadDelay = 3000 + Math.random() * 4000;
+        console.log(`⏳ 等待新页面加载... (${Math.round(pageLoadDelay / 1000)}s)`);
+        await MaimaiUtils.delay(pageLoadDelay);
 
         // ⑤ 验证：检查候选人卡片已刷新
         const newCards = this.extractor.findCandidateCards();
