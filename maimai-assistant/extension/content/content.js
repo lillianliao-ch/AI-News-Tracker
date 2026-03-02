@@ -162,7 +162,8 @@ class MaimaiAssistant {
 
             // 记录触达日志
             try {
-                await fetch(`${MaimaiConfig.api.baseUrl}/api/comm-log`, {
+                const apiBase = await getApiBase();
+                await fetch(`${apiBase}/api/comm-log`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -427,7 +428,8 @@ class MaimaiAssistant {
 
         // ③ 调用 AI 生成个性化消息
         console.log(`🤖 为 ${candidateData.name} 生成AI消息...`);
-        const apiUrl = `${MaimaiConfig.api.baseUrl}/api/generate-message`;
+        const apiBase = await getApiBase();
+        const apiUrl = `${apiBase}/api/generate-message`;
         const response = await fetch(apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

@@ -470,7 +470,8 @@ class AssistantPanel {
         }
 
         try {
-            const apiUrl = `${MaimaiConfig.api.baseUrl}/api/generate-message`;
+            const apiBase = await getApiBase();
+            const apiUrl = `${apiBase}/api/generate-message`;
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -626,7 +627,8 @@ class AssistantPanel {
         const jobId = jobSelect?.value !== 'auto' ? parseInt(jobSelect.value) : null;
 
         try {
-            const apiUrl = `${MaimaiConfig.api.baseUrl}/api/comm-log`;
+            const apiBase = await getApiBase();
+            const apiUrl = `${apiBase}/api/comm-log`;
             await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -649,7 +651,8 @@ class AssistantPanel {
     // 加载活跃JD列表
     async loadActiveJobs() {
         try {
-            const apiUrl = `${MaimaiConfig.api.baseUrl}/api/jobs/active?limit=30`;
+            const apiBase = await getApiBase();
+            const apiUrl = `${apiBase}/api/jobs/active?limit=30`;
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error(`API错误: ${response.status}`);
 
@@ -709,7 +712,8 @@ class AssistantPanel {
         const jobId = jobSelect?.value !== 'auto' ? parseInt(jobSelect.value) : null;
 
         try {
-            const apiUrl = `${MaimaiConfig.api.baseUrl}/api/comm-log`;
+            const apiBase = await getApiBase();
+            const apiUrl = `${apiBase}/api/comm-log`;
             await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

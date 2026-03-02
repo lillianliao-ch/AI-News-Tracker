@@ -464,7 +464,8 @@ class SearchEngine {
     async exportToAPI() {
         if (this.state.results.length === 0) return { success: 0, failed: 0 };
 
-        const apiUrl = `${MaimaiConfig.api.baseUrl}/api/candidate/import`;
+        const apiBase = await getApiBase();
+        const apiUrl = `${apiBase}/api/candidate/import`;
         let success = 0, failed = 0;
 
         for (const r of this.state.results) {
