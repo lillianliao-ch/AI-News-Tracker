@@ -739,11 +739,13 @@ class TalentPanelExtractor {
             console.log(`📥 ${candidateName}: 通过后台拦截下载方式上传...`);
             try {
                 // 先通知 Background 开始监听下载
+                const storageResult = await chrome.storage.local.get(['apiBaseUrl']);
+                const apiBase = storageResult.apiBaseUrl || 'http://localhost:8502';
                 chrome.runtime.sendMessage({
                     type: 'INTERCEPT_RESUME_DOWNLOAD',
                     candidateId: candidateId,
                     candidateName: candidateName,
-                    apiBase: this.API_BASE
+                    apiBase: apiBase
                 }, (response) => {
                     if (chrome.runtime.lastError) {
                         console.warn(`⚠️ ${candidateName}: sendMessage错误:`, chrome.runtime.lastError.message);
