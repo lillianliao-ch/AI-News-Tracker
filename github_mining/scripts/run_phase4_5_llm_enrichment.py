@@ -28,14 +28,19 @@ import sys
 import json
 import time
 import requests
+import urllib3
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+from bs4 import BeautifulSoup
+
+# 禁用 SSL 警告
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # 路径配置
 SCRIPT_DIR = Path(__file__).parent
-BASE_DIR = SCRIPT_DIR / "github_mining"
-ROOT_DIR = SCRIPT_DIR.parent.parent
+BASE_DIR = SCRIPT_DIR.parent  # github_mining 目录
+ROOT_DIR = BASE_DIR.parent  # notion_rag 目录
 HEADHUNTER_DIR = ROOT_DIR / "personal-ai-headhunter"
 INPUT_FILE = BASE_DIR / "phase3_5_enriched.json"
 OUTPUT_FILE = BASE_DIR / "phase4_5_llm_enriched.json"
@@ -44,6 +49,9 @@ PROGRESS_FILE = BASE_DIR / "phase4_5_progress.json"
 # API 配置
 API_BASE = "http://localhost:8502"
 AUTH_TOKEN = os.environ.get("HEADHUNTER_AUTH_TOKEN")
+
+# LLM API 配置（直接调用）
+DASHSCOPE_API_KEY = os.environ.get("DASHSCOPE_API_KEY")
 
 # 国籍检测配置
 sys.path.insert(0, str(HEADHUNTER_DIR / "scripts"))
@@ -204,11 +212,54 @@ def filter_with_websites(candidates: List[Dict]) -> List[Dict]:
     """筛选有个人网站的候选人"""
     filtered = [
         c for c in candidates
-        if c.get('personal_website') and c.get('homepage_text')
+        if c.get('homepage_scraped') and c.get('homepage_url')
     ]
 
     log(f"🌐 有个人网站的候选人: {len(filtered)}/{len(candidates)}")
     return filtered
+
+
+def scrape_website_content(url: str) -> Optional[str]:
+    """
+    爬取网站内容
+
+    Args:
+        url: 网站 URL
+
+    Returns:
+        网站文本内容，失败返回 None
+    """
+    try:
+        # 规范化 URL
+        if not url.startswith(('http://', 'https://')):
+            url = 'https://' + url
+
+        # 跳过某些域名
+        skip_domains = ['github.com/', 'twitter.com/', 'x.com/', 'linkedin.com/',
+                       'zhihu.com/', 'weibo.com/', 'bilibili.com/', 'medium.com/']
+        if any(d in url.lower() for d in skip_domains):
+            return None
+
+        # 发送请求
+        resp = requests.get(url, timeout=10, verify=False,
+                           headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'})
+        resp.encoding = resp.apparent_encoding or 'utf-8'
+
+        if resp.status_code == 200:
+            # 提取文本内容
+            soup = BeautifulSoup(resp.text, 'html.parser')
+            text_content = soup.get_text(separator='\n', strip=True)
+
+            # 限制长度
+            if len(text_content) > 10000:
+                text_content = text_content[:10000] + '...[truncated]'
+
+            return text_content
+        else:
+            return None
+
+    except Exception as e:
+        return None
 
 
 def get_auth_token() -> Optional[str]:
@@ -231,11 +282,30 @@ def get_auth_token() -> Optional[str]:
         return None
 
 
-def extract_with_llm(candidate: Dict, auth_token: str) -> Optional[Dict]:
-    """使用 LLM 提取候选人信息"""
+def extract_with_llm(candidate: Dict, auth_token: str = None) -> Optional[Dict]:
+    """使用 LLM 提取候选人信息（直接调用 LLM API）"""
     name = candidate.get('name', 'Unknown')
-    website = candidate.get('personal_website', 'Unknown')
-    content = candidate.get('homepage_text', '')[:10000]  # 限制长度
+
+    # 获取网站内容
+    # 优先使用已有的 homepage_text，如果没有则重新爬取
+    content = candidate.get('homepage_text', '')
+    website = candidate.get('homepage_url', candidate.get('personal_website', 'Unknown'))
+
+    if not content or len(content) < 100:
+        # 重新爬取网站内容
+        content = scrape_website_content(website)
+        if content:
+            log(f"  📥 重新爬取网站内容成功 ({len(content)} 字符)")
+            # 保存到候选数据中（确保不重复爬取）
+            candidate['homepage_text'] = content
+        else:
+            log(f"  ⚠️  无法获取网站内容")
+            return None
+    else:
+        log(f"  📄 使用已有网站内容 ({len(content)} 字符)")
+
+    # 限制长度
+    content = content[:10000]
 
     prompt = EXTRACTION_PROMPT.format(
         name=name,
@@ -244,26 +314,28 @@ def extract_with_llm(candidate: Dict, auth_token: str) -> Optional[Dict]:
     )
 
     try:
-        headers = {"Authorization": f"Bearer {auth_token}"}
-        response = requests.post(
-            f"{API_BASE}/api/generate-website-based-message",
-            json={
-                "candidate_id": candidate.get('id', 0),
-                "prompt": prompt,
-                "channel": "linkedin",
-                "message_type": "extraction",
-            },
-            headers=headers,
-            timeout=120
-        )
-        response.raise_for_status()
-        data = response.json()
+        # 直接调用通义千问 API
+        from openai import OpenAI
 
-        if not data.get("success"):
-            log(f"  ❌ API返回失败: {data.get('detail', 'Unknown')}")
+        if not DASHSCOPE_API_KEY:
+            log(f"  ❌ 未设置 DASHSCOPE_API_KEY 环境变量")
             return None
 
-        llm_response = data.get("message", {}).get("body", "")
+        client = OpenAI(
+            api_key=DASHSCOPE_API_KEY,
+            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+        )
+
+        response = client.chat.completions.create(
+            model="qwen-plus",  # 或 qwen-max
+            messages=[
+                {"role": "system", "content": "你是一位专业的数据提取专家，擅长从网页内容中提取结构化信息。"},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,  # 降低温度以获得更确定的输出
+        )
+
+        llm_response = response.choices[0].message.content.strip()
 
         # 提取 JSON
         import re
@@ -272,6 +344,7 @@ def extract_with_llm(candidate: Dict, auth_token: str) -> Optional[Dict]:
             extracted = json.loads(json_match.group(0))
             return extracted
         else:
+            log(f"  ⚠️  LLM未返回有效JSON")
             return None
 
     except Exception as e:

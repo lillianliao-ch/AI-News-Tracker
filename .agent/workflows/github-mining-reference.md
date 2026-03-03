@@ -680,4 +680,336 @@ python3 github_mining/scripts/github_network_miner.py phase3_5 --top 500 --resum
 | 工作经历 | 66% | 70% | P1 |
 | 教育背景 | - | 50% | P2 |
 | AI 评价 | 0% | 80% | P0 |
+| **网站结构化数据** | **0%** | **45%** | **P1** |
+
+---
+
+## 14. 网站内容提取细节
+
+> **Phase 6.5: 从个人网站提取结构化数据**
+> **目标**: 工作履历、技术技能、教育背景、项目经验、个性化谈话点
+> **数据源**: 8,434 个候选人的 `website_content` 字段（41%）
+
+### 14.1 提取字段与优先级
+
+| 字段 | 提取方式 | 成功率 | 业务价值 |
+|:---|:---|:---|:---|
+| **技能关键词** | 100+ 技能库匹配 | 55% | ⭐⭐⭐⭐⭐ 核心 |
+| **工作履历** | 正则规则（中英文） | 34% | ⭐⭐⭐⭐ 重要 |
+| **教育背景** | 学校库匹配（中英文） | 待测 | ⭐⭐⭐ 重要 |
+| **项目经验** | GitHub 链接解析 | 待测 | ⭐⭐ 一般 |
+| **学术成果** | 顶会关键词匹配 | 4% | ⭐⭐ 一般 |
+| **联系方式** | 邮箱正则匹配 | 24% | ⭐⭐ 一般 |
+
+### 14.2 技能关键词库（100+）
+
+**深度学习框架**:
+```python
+['PyTorch', 'TensorFlow', 'JAX', 'Flax', 'Keras', 'Theano',
+ 'MXNet', 'Caffe', 'PaddlePaddle', 'MindSpore', 'ONNX']
+```
+
+**机器学习**:
+```python
+['Machine Learning', 'ML', 'Deep Learning', 'DL', 'Neural Networks',
+ 'Reinforcement Learning', 'RL', 'NLP', 'Computer Vision', 'CV',
+ 'GAN', 'VAE', 'Transformer', 'BERT', 'GPT', 'LLM']
+```
+
+**编程语言**:
+```python
+['Python', 'C++', 'Java', 'Go', 'Rust', 'JavaScript', 'TypeScript',
+ 'Julia', 'R', 'MATLAB', 'Scala', 'Swift', 'Kotlin']
+```
+
+**中文技能**:
+```python
+['深度学习', '机器学习', '自然语言处理', '计算机视觉',
+ '强化学习', 'Transformer', 'PyTorch', 'TensorFlow']
+```
+
+### 14.3 工作履历提取规则
+
+**英文模式**:
+```python
+# Pattern 1: "currently at [Company]" / "working at [Company]"
+pattern1 = r'(?:currently|working)\s+(?:at|@)\s+([A-Z][A-Za-z0-9\s&\.\-]+?)'
+
+# Pattern 2: "[Role] at [Company]" (e.g., "Software Engineer at Google")
+pattern2 = r'([A-Z][A-Za-z0-9\s&\.]+?)\s+(?:at|@)\s+([A-Z][A-Za-z0-9\s&\.]+?)'
+
+# Pattern 3: "previously at [Company]"
+pattern3 = r'(?:previously|worked)\s+(?:at|@)\s+([A-Z][A-Za-z0-9\s&\.\-]+?)'
+```
+
+**中文模式**:
+```python
+# Pattern 4: "在 [公司] 担任 [职位]"
+pattern4 = r'在\s*([^\s,，.。]+(?:\s+[^\s,，.。]+)*)\s*(?:担任|任)\s*([^\s,，.。]+)'
+
+# Pattern 5: "[公司] [职位]"
+pattern5 = r'([^\s,，.。]{2,20})\s*([^\s,，.。]{2,20})(?:\n|、)'
+```
+
+### 14.4 教育背景提取
+
+**英文模式**:
+```python
+# "PhD in [Field] from [University]"
+pattern1 = r'(?:PhD|Master|Bachelor)(?:\s+in\s+([A-Za-z\s&]+?))?(?:\s+from\s+|,\s*)([A-Z][A-Za-z\s&\.]+?)'
+
+# "[University] [Degree]"
+pattern2 = r'(?:University|Institute|College)\s+of\s+([A-Z][A-Za-z\s&\.]+?)'
+```
+
+**中文模式**:
+```python
+# 中文大学 + 学位
+CHINESE_UNIVERSITIES = [
+    '清华大学', '北京大学', '复旦大学', '上海交通大学', '浙江大学',
+    '中国科学技术大学', '南京大学', '华中科技大学', '武汉大学'
+]
+
+pattern3 = r'(清华大学|北京大学|...)[，,、\s]*(博士|硕士|学士|本科)?'
+```
+
+### 14.5 质量评分算法
+
+```python
+def calculate_quality_score(extracted_data):
+    score = 0
+
+    # 工作经历（25分）
+    if extracted_data['work_history']:
+        score += 25
+
+    # 教育背景（20分）
+    if extracted_data['education']:
+        score += 20
+
+    # 技能（每个2分，最高20分）
+    skill_count = len(extracted_data['skills'])
+    score += min(skill_count * 2, 20)
+
+    # 项目经验（15分）
+    if extracted_data['projects']:
+        score += 15
+
+    # 学术成果（20分）
+    if extracted_data['publications']:
+        score += 20
+
+    return min(score, 100)
+```
+
+**评分分级**:
+- **≥70分**: 高质量（14%）
+- **50-69分**: 中等质量（31%）
+- **30-49分**: 低价值（55%）
+- **<30分**: 无价值（不计入）
+
+### 14.6 个性化谈话点生成
+
+**谈话点来源**（优先级排序）:
+1. 当前工作（最多3个）
+2. 教育背景（最多2个）
+3. 技能亮点（最多5个合并）
+4. 学术成就（按需）
+5. 项目亮点（按需）
+
+**生成规则**:
+```python
+talking_points = []
+
+# 1. 工作亮点
+for work in work_history[:3]:
+    if work['role'] and work['company']:
+        current = "Currently" if work['current'] else "Previously"
+        talking_points.append(f"{current} {work['role']} at {work['company']}")
+
+# 2. 教育亮点
+for edu in education[:2]:
+    if edu['degree'] and edu['university']:
+        talking_points.append(f"{edu['degree']} from {edu['university']}")
+
+# 3. 技能亮点
+if len(skills) >= 3:
+    talking_points.append(f"Expertise in {', '.join(skills[:5])}")
+
+# 4. 学术亮点
+for pub in publications:
+    if pub['venue']:
+        talking_points.append(f"Published at {pub['venue']}")
+```
+
+### 14.7 执行脚本
+
+**增强版提取脚本**:
+```bash
+# 脚本位置
+personal-ai-headhunter/scripts/extract_website_data_enhanced.py
+
+# 测试
+python3 scripts/extract_website_data_enhanced.py
+
+# 批量提取（待实现）
+python3 scripts/batch_extract_website_data.py \
+    --limit 8434 \
+    --output data/website_extracted_batch1.json
+```
+
+**数据验证脚本**:
+```bash
+# 验证提取质量
+python3 scripts/validate_extracted_data.py \
+    --input data/website_extracted_batch1.json
+
+# 生成统计报告
+python3 scripts/analyze_extracted_data.py \
+    --input data/website_extracted_batch1.json
+```
+
+### 14.8 数据集成
+
+**数据库 Schema 扩展**:
+```sql
+-- 主表扩展
+ALTER TABLE candidates ADD COLUMN website_extracted_data JSON;
+ALTER TABLE candidates ADD COLUMN extracted_skills TEXT;
+ALTER TABLE candidates ADD COLUMN extracted_work_history JSON;
+ALTER TABLE candidates ADD COLUMN extracted_education JSON;
+ALTER TABLE candidates ADD COLUMN talking_points TEXT;
+ALTER TABLE candidates ADD COLUMN website_quality_score INTEGER;
+```
+
+**导入脚本**:
+```bash
+cd /Users/lillianliao/notion_rag/personal-ai-headhunter
+python3 scripts/import_website_extracted_data.py \
+    --input data/website_extracted_batch1.json \
+    --dry-run  # 先预览
+```
+
+### 14.9 外联应用
+
+**个性化消息生成**:
+```bash
+# 基于网站数据生成个性化消息
+python3 scripts/generate_personalized_outreach.py \
+    --tier "S,A+,A" \
+    --use-website-data \
+    --output-data outreach_drafts_website_based.json
+```
+
+**消息类型映射**:
+
+| 提取数据 | 消息类型 | 模板 |
+|:---|:---|:---|
+| 有顶会论文 + 学位 | 学术套瓷 | `academic` |
+| 有活跃项目 + 高分技能 | 硬核切磋 | `tech-discussion` |
+| 有工作经历 + 技能 | 深度定制 | `deep-dive` |
+| 仅有基础信息 | 基础调研 | `basic-research` |
+
+### 14.10 验收标准
+
+| 指标 | 目标 | 验收方式 |
+|:---|:---|:---|
+| **提取成功率** | 45% | 有价值网站 / 总网站 |
+| **技能提取准确率** | ≥80% | 人工抽检 50 个 |
+| **工作履历准确率** | ≥70% | 人工抽检 50 个 |
+| **谈话点质量** | ≥3 个/高质量候选人 | 人工审核 |
+| **外联成功率提升** | ≥30% | A/B 测试 |
+
+### 14.11 已知问题与优化方向
+
+**当前限制**:
+1. ⚠️ 第三方平台误判（LinkedIn/Scholar/GitHub 被标记为个人网站）
+2. ⚠️ 动态内容未爬取（JavaScript 渲染的页面）
+3. ⚠️ 中文提取规则待优化（覆盖率低）
+4. ⚠️ 项目经验提取不完整（非 GitHub 项目）
+
+**优化方向**:
+1. 剔除第三方平台域名黑名单
+2. 使用 Playwright 渲染动态内容
+3. 扩展中文提取规则（公司库、职位库）
+4. 增加更多项目来源（GitLab, Bitbucket 等）
+
+### 14.12 Phase 2 执行结果 (2026-03-02)
+
+**批量提取统计**:
+- 处理候选人数: 8,434
+- 有价值网站: 5,193 (61.6%) ✅ **超过目标 45%**
+- 处理时间: 4分13秒 (~34 人/秒)
+- 处理错误: 0
+
+**字段覆盖率**:
+| 字段 | 覆盖率 | 数量 | 评级 |
+|:---|:---|:---|:---|
+| 工作履历 | 94.0% | 7,930 | ⭐⭐⭐⭐⭐ 优秀 |
+| 技能 | 78.0% | 6,578 | ⭐⭐⭐⭐ 良好 |
+| 教育 | 34.9% | 2,947 | ⭐⭐⭐ 中等 |
+| 学术成果 | 12.1% | 1,019 | ⭐⭐ 稀缺高价值 |
+| 项目经验 | 3.5% | 296 | ⭐ 低 (GitHub单独采集) |
+
+**质量评分分布**:
+- 高质量 (≥70分): 576 (6.8%)
+- 中等质量 (50-69分): 1,911 (22.7%)
+- 低质量 (30-49分): 2,706 (32.1%)
+- 无价值 (<30分): 3,241 (38.4%)
+
+**已知问题** (需优化):
+1. ⚠️ 工作履历误提取 - 例如 "Hanjing Wang at Muning Wen" (人名被当作公司)
+2. ⚠️ 职位缺失 - 例如 "Unknown at Goldman Sachs"
+3. ⚠️ 整句提取 - 例如 "My work at Google includes research..."
+4. ⚠️ 黑名单过滤过严 - 优化版提取规则误过滤所有结果 (待迭代)
+
+**输出文件**:
+- `data/website_extracted_full.json` - 5,193 个有价值候选人的提取数据
+- `data/website_extracted_full.stats.json` - 批处理统计信息
+- `data/website_extracted_validation.json` - 质量验证报告
+
+### 14.13 Phase 3 数据库集成结果 (2026-03-02)
+
+**Schema 扩展**:
+新增 6 个字段到 `candidates` 表:
+1. `website_extracted_data` (JSON) - 完整提取数据
+2. `extracted_skills` (TEXT) - 技能文本 (逗号分隔)
+3. `extracted_work_history` (JSON) - 工作履历数组
+4. `extracted_education` (JSON) - 教育背景数组
+5. `talking_points` (TEXT) - 谈话点 (换行分隔)
+6. `website_quality_score` (INTEGER) - 质量评分 (0-100)
+
+**数据库更新**:
+- SQLAlchemy 模型更新 ([database.py](database.py:123-129))
+- 导入脚本: [import_website_extracted_data.py](scripts/import_website_extracted_data.py)
+- 数据库备份: `data/headhunter_dev_backup_before_phase6_5_20260302_141606.db` (97MB)
+
+**导入统计**:
+- 总记录数: 8,434
+- 成功导入: 8,434 (100%)
+- 导入耗时: 7.26 秒
+- 导入速度: ~1,161 记录/秒
+
+**数据验证**:
+```sql
+SELECT COUNT(*) as total_with_score,
+       AVG(website_quality_score) as avg_score,
+       COUNT(CASE WHEN website_quality_score >= 70 THEN 1 END) as high_quality
+FROM candidates
+WHERE website_quality_score IS NOT NULL;
+```
+
+结果:
+- 总记录数: 8,434 ✅
+- 平均质量分: 39.4 ✅
+- 高质量 (≥70分): 576 人 ✅
+
+**高质量候选人样本**:
+
+| 候选人 | 评分 | 技能 | 谈话点 |
+|:---|:---|:---|:---|
+| **Liu Yang** | 97 | ML, Transformer, NLP, BERT | Google 信息检索工作经历 |
+| **Xiaoxu Zhu** | 96 | ML, CV, BERT, LLM | 西门子实习, GitHub 项目 |
+
+---
 

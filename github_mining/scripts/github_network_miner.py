@@ -167,6 +167,59 @@ AI_SCHOOLS = [
     "cvlab", "mllab", "deep learning lab",
 ]
 
+# 组织账号黑名单（避免爬取组织账号）
+KNOWN_ORG_BLACKLIST = [
+    # 官方组织
+    'tensorflow', 'keras', 'pytorch', 'kubernetes', 'cursor',
+    'meta-pytorch', 'google-research-datasets', 'huggingface',
+    'microsoft', 'google', 'facebook', 'amazonaws', 'alibaba',
+    'apache', 'elastic', 'nv-tlabs', 'tensorflow', 'pytorch',
+    'open-mmlab', 'rust-lang', 'golang', 'nodejs', 'vuejs',
+    'react', 'angular', 'facebookincubator', 'uber', 'netflix',
+    'airbnb', 'spotify', 'twitter', 'instagram', 'linkedin',
+    'xai-org', 'openai', 'anthropic',
+    # 添加更多已知的组织账号
+    'kubernetes-sigs', 'kubernetes-sigs', 'googleprojectzero',
+    'MicrosoftCopilot', 'Netflix', 'spotify', 'vuejs', 'rust-lang',
+    'golang', 'Amazon-FAR', 'Alibaba-NLP', 'TencentAILabHealthcare'
+]
+
+
+def is_organization_account(user: Dict) -> bool:
+    """
+    检查是否为组织账号
+
+    Args:
+        user: GitHub 用户信息字典
+
+    Returns:
+        True 如果是组织账号，False 否则
+    """
+    username = user.get('login', '').lower()
+    name = (user.get('name') or '').lower()
+    bio = (user.get('bio') or '').lower()
+    user_type = user.get('type', '')
+
+    # 检查1: GitHub API 返回的 type 字段
+    if user_type == 'Organization':
+        return True
+
+    # 检查2: 在已知黑名单中
+    if username in KNOWN_ORG_BLACKLIST:
+        return True
+
+    # 检查3: 可疑组织特征
+    # 特征A: name 等于 username
+    if name and name == username:
+        # 特征B: 无 bio 或 bio 很短
+        if not bio or len(bio) < 20:
+            # 特征C: 官方词汇
+            official_keywords = ['official', 'repo', 'repository', 'project', 'team', 'org', 'organization']
+            if any(kw in bio for kw in official_keywords):
+                return True
+
+    return False
+
 
 class GitHubNetworkMiner:
     """GitHub 社交网络挖掘器 (支持多 Token 池轮询)"""
@@ -535,8 +588,15 @@ class GitHubNetworkMiner:
         tier_b = []  # 中 AI 信号
         tier_c = []  # 弱 AI 信号
         rejected = []  # 非 AI
+        org_accounts = []  # 组织账号（新增）
 
         for user in users:
+            # 过滤组织账号（在最前面检查）
+            if is_organization_account(user):
+                user["skip_reason"] = "组织账号"
+                org_accounts.append(user)
+                continue
+
             score, signals = self._calculate_ai_score(user)
             user["ai_score"] = score
             user["ai_signals"] = signals
@@ -570,12 +630,24 @@ class GitHubNetworkMiner:
         print(f"  🥈 Tier B (中 AI 信号): {len(tier_b)}")
         print(f"  🥉 Tier C (弱 AI 信号): {len(tier_c)}")
         print(f"  ❌ 非 AI 相关:         {len(rejected)}")
-        print(f"  📈 AI 人才总计:        {len(ai_candidates)} / {len(users)}")
+        print(f"  🏢 组织账号已过滤:     {len(org_accounts)}")
+        print(f"  📈 AI 人才总计:        {len(ai_candidates)} / {len(users) - len(org_accounts)}")
+
+        # 如果有组织账号被过滤，显示前几个
+        if org_accounts:
+            print(f"\n🚫 已过滤的组织账号（前10个）:")
+            for org in org_accounts[:10]:
+                username = org.get('login', 'Unknown')
+                reason = org.get('skip_reason', '组织账号')
+                print(f"  • {username} ({reason})")
+            if len(org_accounts) > 10:
+                print(f"  ... 还有 {len(org_accounts) - 10} 个")
 
         # 保存
         self._save_json(ai_candidates, BASE_DIR / "phase2_ai_filtered.json")
         self._save_csv(ai_candidates, BASE_DIR / "phase2_ai_filtered.csv")
         self._save_json(rejected, BASE_DIR / "phase2_rejected.json")
+        self._save_json(org_accounts, BASE_DIR / "phase2_org_accounts_filtered.json")  # 保存被过滤的组织账号
 
         # 保存分层文件
         self._save_json(tier_a, BASE_DIR / "phase2_tier_a.json")

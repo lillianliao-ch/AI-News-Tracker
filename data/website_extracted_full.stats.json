@@ -1,0 +1,11 @@
+{
+  "total": 0,
+  "processed": 0,
+  "has_value": 0,
+  "no_content": 0,
+  "errors": 0,
+  "start_time": "2026-03-02T13:59:35.481834",
+  "end_time": "2026-03-02T13:59:35.482519",
+  "output_file": "data/website_extracted_full.json",
+  "has_value_rate": 0
+}
