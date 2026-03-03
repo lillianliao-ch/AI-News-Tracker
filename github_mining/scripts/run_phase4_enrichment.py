@@ -164,9 +164,9 @@ def verify_phase4_5() -> bool:
 
     check_file = PHASE4_5_OUTPUT
     if not check_file.exists():
-        log(f"WARNING: Phase 4.5 输出文件不存在: {check_file}")
-        log("跳过验证（Phase 4.5 可能未执行）")
-        return True
+        log(f"FAIL: Phase 4.5 输出文件不存在: {check_file}")
+        log("Phase 4.5 未执行或执行失败")
+        return False
 
     data = json.load(open(check_file))
     total = len(data)
