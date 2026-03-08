@@ -165,3 +165,7 @@ Phase 1 (W1-5)     Phase 2 (W6-9)      Phase 3 (W10-12+)
 |:---|:---|:---|
 | Sourcing 推进记录 | `personal-ai-headhunter/data/sourcing_推进.md` | 脉脉打招呼/加好友每日执行日志 |
 
+
+
+- [技术债与底层优化清单](TECH_DEBT_BACKLOG.md)
+- [文档体系与知识库索引](docs/INDEX.md)

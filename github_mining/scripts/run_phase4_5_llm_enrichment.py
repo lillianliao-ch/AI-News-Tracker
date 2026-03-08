@@ -42,7 +42,8 @@ SCRIPT_DIR = Path(__file__).parent
 BASE_DIR = SCRIPT_DIR.parent  # github_mining 目录
 ROOT_DIR = BASE_DIR.parent  # notion_rag 目录
 HEADHUNTER_DIR = ROOT_DIR / "personal-ai-headhunter"
-INPUT_FILE = BASE_DIR / "phase3_5_enriched.json"
+# ✅ 使用 Phase 4 的最新输出 (11,976 人)，而不是旧的 phase3_5_enriched.json (3,723 人)
+INPUT_FILE = SCRIPT_DIR / "github_mining" / "phase4_final_enriched.json"
 OUTPUT_FILE = BASE_DIR / "phase4_5_llm_enriched.json"
 PROGRESS_FILE = BASE_DIR / "phase4_5_progress.json"
 
@@ -52,6 +53,23 @@ AUTH_TOKEN = os.environ.get("HEADHUNTER_AUTH_TOKEN")
 
 # LLM API 配置（直接调用）
 DASHSCOPE_API_KEY = os.environ.get("DASHSCOPE_API_KEY")
+print(f"Debug: 初始 DASHSCOPE_API_KEY = {repr(DASHSCOPE_API_KEY)}")
+
+# 从配置文件读取 API Key（如果环境变量未设置）
+if not DASHSCOPE_API_KEY:
+    print(f"Debug: 尝试从配置文件读取...")
+    try:
+        import importlib.util
+        config_path = SCRIPT_DIR / "github_hunter_config.py"
+        spec = importlib.util.spec_from_file_location("github_hunter_config", config_path)
+        config_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(config_module)
+        DASHSCOPE_API_KEY = getattr(config_module, 'DASHSCOPE_API_KEY', None)
+        print(f"Debug: 读取到的 API Key: {DASHSCOPE_API_KEY}")
+        if DASHSCOPE_API_KEY:
+            print(f"🔑 从配置文件读取到 DashScope API Key")
+    except Exception as e:
+        pass
 
 # 国籍检测配置
 sys.path.insert(0, str(HEADHUNTER_DIR / "scripts"))
