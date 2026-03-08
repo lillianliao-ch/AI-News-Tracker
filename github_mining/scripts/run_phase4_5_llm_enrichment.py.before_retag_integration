@@ -80,17 +80,6 @@ except ImportError:
     NATIONALITY_AVAILABLE = False
     log("⚠️  无法导入国籍检测模块，将跳过国籍检测")
 
-# 导入标签体系（用于structured_tags提取）
-try:
-    sys.path.insert(0, str(HEADHUNTER_DIR.parent))
-    from extract_tags import TAG_SCHEMA
-    TAGS_AVAILABLE = True
-except ImportError:
-    TAG_SCHEMA = ""
-    TAGS_AVAILABLE = False
-    print("⚠️  无法导入 TAG_SCHEMA，将跳过 structured_tags 提取")
-
-
 
 # ============================================================================
 # 国籍检测函数
@@ -168,43 +157,37 @@ EXTRACTION_PROMPT = """你是一个专业的数据提取专家。请从以下个
 
 请提取以下信息，并以 JSON 格式返回：
 
-## A. 基础信息提取
-
-### 1. 工作履历 (work_history)
+## 1. 工作履历 (work_history)
 提取当前和过往工作经历，格式：
 ```json
 [{{"company": "公司名", "role": "职位", "current": true/false, "source": "website"}}]
 ```
 
-### 2. 教育背景 (education)
+## 2. 教育背景 (education)
 提取学历信息，格式：
 ```json
 [{{"degree": "学位", "field": "专业", "university": "学校", "source": "website"}}]
 ```
 
-### 3. 技能 (skills)
+## 3. 技能 (skills)
 提取技术技能，格式：
 ```json
 ["Python", "Machine Learning", "PyTorch", ...]
 ```
 
-### 4. 谈话点 (talking_points)
+## 4. 谈话点 (talking_points)
 基于提取的信息，生成3-5个外联谈话点，格式：
 ```json
 ["看到你在Google做过ML Engineer...", "你的研究重点是..."]
 ```
 
-### 5. 质量评分 (quality_score)
+## 5. 质量评分 (quality_score)
 根据提取信息的完整性和质量打分（0-100）：
 - 有工作履历: +25分
 - 有教育背景: +20分
 - 每个技能: +2分
 - 有项目: +15分
 - 有论文: +20分
-
-## B. 结构化标签提取 (10个维度) ⭐ 新增
-
-{tag_schema}
 
 # 返回格式
 
@@ -215,19 +198,7 @@ EXTRACTION_PROMPT = """你是一个专业的数据提取专家。请从以下个
   "education": [...],
   "skills": [...],
   "talking_points": [...],
-  "quality_score": 85,
-  "structured_tags": {{
-    "tech_domain": ["技术方向"],
-    "core_specialty": ["核心专长"],
-    "tech_skills": ["技术技能"],
-    "role_type": "岗位类型",
-    "role_orientation": ["角色定位"],
-    "tech_stack": ["技术栈"],
-    "industry_exp": ["行业背景"],
-    "seniority": "职级层次",
-    "education": {{"degree": "学历", "school_tier": "学校层次"}},
-    "academic_highlight": ["学术亮点"]
-  }}
+  "quality_score": 85
 }}
 ```
 """
@@ -357,8 +328,7 @@ def extract_with_llm(candidate: Dict, auth_token: str = None) -> Optional[Dict]:
     prompt = EXTRACTION_PROMPT.format(
         name=name,
         website=website,
-        content=content,
-        tag_schema=TAG_SCHEMA if TAGS_AVAILABLE else "\n# 结构化标签提取功能未启用\n"
+        content=content
     )
 
     try:

@@ -82,7 +82,7 @@ except ImportError:
 
 # 导入标签体系（用于structured_tags提取）
 try:
-    sys.path.insert(0, str(HEADHUNTER_DIR.parent))
+    sys.path.insert(0, str(HEADHUNTER_DIR))
     from extract_tags import TAG_SCHEMA
     TAGS_AVAILABLE = True
 except ImportError:
