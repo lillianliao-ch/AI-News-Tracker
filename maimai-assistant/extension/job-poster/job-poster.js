@@ -295,12 +295,14 @@ class MaimaiJobPoster {
     filterJobs(query) {
         const container = this.panel.querySelector('#mjp-jobs-container');
         const cards = container.querySelectorAll('.mjp-job-card');
+
         if (!query) {
             cards.forEach(card => card.style.display = '');
             return;
         }
+
+        // 先在本地过滤已加载的职位
         const q = query.toLowerCase();
-        let hasVisible = false;
         cards.forEach(card => {
             const jobId = card.dataset.jobId;
             const jobCode = (card.dataset.jobCode || '').toLowerCase();
@@ -308,11 +310,10 @@ class MaimaiJobPoster {
             const company = card.querySelector('.mjp-job-tag')?.textContent?.toLowerCase() || '';
             const match = jobId.includes(q) || jobCode.includes(q) || title.includes(q) || company.includes(q);
             card.style.display = match ? '' : 'none';
-            if (match) hasVisible = true;
         });
 
-        // 如果本地没找到，发起服务端搜索
-        if (!hasVisible && query.length >= 2) {
+        // 只要用户输入超过 2 个字符，始终发起服务端搜索（获取更多结果）
+        if (query.length >= 2) {
             this.searchJobsFromAPI(query);
         }
     }
