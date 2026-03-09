@@ -100,7 +100,8 @@ class DetailPanelExtractor {
         const data = {
             extractedAt: new Date().toISOString(),
             source: 'maimai',
-            sourceUrl: window.location.href
+            sourceUrl: window.location.href,
+            isFriend: true // 标记从好友详情页提取，后端会自动打上"好友"标签并记录触达(replied)
         };
 
         // 1. 提取姓名 - 从面板容器中查找
