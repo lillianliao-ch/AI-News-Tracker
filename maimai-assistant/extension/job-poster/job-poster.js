@@ -275,12 +275,20 @@ class MaimaiJobPoster {
                 ? `<span class="mjp-job-tag desc" style="background:#10b981;color:white;">✅ ${job.description_length}字</span>`
                 : `<span class="mjp-job-tag desc" style="background:#ef4444;color:white;">❌ 无描述</span>`;
 
+            const channels = Array.isArray(job.published_channels) ? job.published_channels : [];
+            // published_channels 可能是字符串数组 ['MM'] 或对象数组 [{channel:'MM', published_at:'...'}]
+            const isPublishedMM = channels.some(c => c === 'MM' || (c && c.channel === 'MM'));
+            const publishedBadge = isPublishedMM
+                ? `<span class="mjp-job-tag" style="background:#8b5cf6;color:white;font-weight:600;">✅ 已发布</span>`
+                : '';
+
             return `
-            <div class="mjp-job-card ${hasDesc ? '' : 'no-desc'}" data-job-id="${job.id}" data-job-code="${job.job_code || ''}">
+            <div class="mjp-job-card ${hasDesc ? '' : 'no-desc'} ${isPublishedMM ? 'mjp-published' : ''}" data-job-id="${job.id}" data-job-code="${job.job_code || ''}">
                 <div class="mjp-job-title">${job.job_code ? `<span class="mjp-job-code">${this.escapeHtml(job.job_code)}</span>` : ''}${this.escapeHtml(job.title)}</div>
                 <div class="mjp-job-meta">
                     <span class="mjp-job-tag">${job.company || '未知公司'}</span>
                     ${descBadge}
+                    ${publishedBadge}
                     ${job.location ? `<span class="mjp-job-tag location">📍 ${job.location}</span>` : ''}
                 </div>
             </div>
@@ -536,8 +544,34 @@ class MaimaiJobPoster {
             }
             const data = await response.json();
             if (data.success) {
-                // 成功：按钮变为完成态，不可再次点击
-                btn.textContent = '✅ 已标记脉脉';
+                // 在内存中更新 published_channels，保持和后端一致的对象格式
+                const jobInList = this.jobs.find(j => j.id === this.selectedJob.id);
+                if (jobInList) {
+                    if (!Array.isArray(jobInList.published_channels)) jobInList.published_channels = [];
+                    const alreadyHasMM = jobInList.published_channels.some(c => c === 'MM' || (c && c.channel === 'MM'));
+                    if (!alreadyHasMM) {
+                        jobInList.published_channels.push({ channel: 'MM', published_at: new Date().toISOString() });
+                    }
+                }
+                // 更新当前卡片的 badge（无需重新渲染整个列表）
+                const card = this.panel.querySelector(`.mjp-job-card[data-job-id="${this.selectedJob.id}"]`);
+                if (card) {
+                    card.classList.add('mjp-published');
+                    const meta = card.querySelector('.mjp-job-meta');
+                    if (meta && !meta.querySelector('.mjp-published-badge')) {
+                        const badge = document.createElement('span');
+                        badge.className = 'mjp-job-tag mjp-published-badge';
+                        badge.style.cssText = 'background:#8b5cf6;color:white;font-weight:600;';
+                        badge.textContent = '✅ 已发布';
+                        // 插入在描述字数 badge 后面
+                        const descBadge = meta.querySelector('.desc');
+                        if (descBadge) descBadge.insertAdjacentElement('afterend', badge);
+                        else meta.prepend(badge);
+                    }
+                }
+                // 按钮恢复可点击（允许重新发布），但文本提示已发布
+                btn.textContent = '♻️ 重新发布';
+                btn.disabled = false;
                 btn.classList.add('mjp-btn-done');
                 this.showToast(`${this.selectedJob.job_code || this.selectedJob.title} 已标记发布到脉脉`, 'success');
                 console.log('✅ 已标记发布:', data.message);
