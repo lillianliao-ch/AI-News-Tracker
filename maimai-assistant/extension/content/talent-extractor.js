@@ -47,6 +47,7 @@ class TalentPanelExtractor {
 
         const data = {
             name: this.extractName(),
+            phone: this.extractPhone(),
             location: this.extractLocation(),
             experienceYears: this.extractExperienceYears(),
             education: this.extractEducation(),
@@ -135,6 +136,34 @@ class TalentPanelExtractor {
             if (text.includes('男')) return '男';
             if (text.includes('女')) return '女';
         }
+        return '';
+    }
+
+    // 提取电话号码（人才投递后右侧会出现电话按钮，class含 w-136）
+    extractPhone() {
+        const container = this.panelContainer || document.body;
+
+        // 策略1：脉脉电话按钮 — class 含 w-136, 内含手机号文本
+        const phoneBtns = container.querySelectorAll('.w-136, [class*="w-136"]');
+        for (const btn of phoneBtns) {
+            const text = btn.textContent.replace(/\s+/g, '').trim();
+            const match = text.match(/1[3-9]\d{9}/);
+            if (match) {
+                console.log('  📱 提取到电话号码(w-136):', match[0]);
+                return match[0];
+            }
+        }
+
+        // 策略2：扫描整个面板，找到纯手机号文本节点
+        const allText = container.textContent || '';
+        const phoneMatch = allText.match(/(?<![\d])(1[3-9]\d{9})(?![\d])/);
+        if (phoneMatch) {
+            // 排除明显非电话的数字串（如年份、ID等）
+            const num = phoneMatch[1];
+            console.log('  📱 提取到电话号码(全文):', num);
+            return num;
+        }
+
         return '';
     }
 
