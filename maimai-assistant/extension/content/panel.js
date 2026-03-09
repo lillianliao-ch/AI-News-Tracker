@@ -109,7 +109,12 @@ class AssistantPanel {
             <button class="action-btn" id="batchImportTalentBtn" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
               📚 批量导入当前页
             </button>
-            <button class="refresh-btn" id="refreshBtn" title="刷新检测" style="flex-shrink: 0;">🔄</button>
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 6px;">
+            <button class="action-btn" id="updatePhoneBtn" style="background: linear-gradient(135deg, #20bf55 0%, #01baef 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 4px;">
+              📞 从剪贴板更新电话
+            </button>
+            <button class="refresh-btn" id="refreshBtn" title="刷新检测" style="flex-shrink: 0; width: 26px;">🔄</button>
           </div>
           <div style="font-size: 10px; color: #888; text-align: center;">
             检测到 <span class="detection-count" id="detectedCount" style="color: #667eea; font-weight: 600;">0</span> 位候选人
@@ -358,6 +363,11 @@ class AssistantPanel {
             } else {
                 MaimaiUtils.showNotification('人才库提取器未加载', 'error');
             }
+        });
+
+        // 从剪贴板更新电话
+        this.panel.querySelector('#updatePhoneBtn')?.addEventListener('click', async () => {
+            this.handleUpdatePhoneFromClipboard();
         });
 
         // 批量导入当前页
@@ -617,6 +627,78 @@ class AssistantPanel {
                 MaimaiUtils.showNotification('未找到对话框，已复制到剪贴板', 'warning');
                 this._recordCommLog();
             });
+        }
+    }
+
+    // 从剪贴板读取电话并更新当前候选人
+    async handleUpdatePhoneFromClipboard() {
+        try {
+            // 1. 读取剪贴板
+            const text = await navigator.clipboard.readText();
+            if (!text) {
+                MaimaiUtils.showNotification('剪贴板为空，请先复制电话号码', 'warning');
+                return;
+            }
+
+            // 2. 提取连续的11位数字 (以1开头)
+            const cleanText = text.replace(/[\s-]/g, '');
+            const match = cleanText.match(/1[3-9]\d{9}/);
+            if (!match) {
+                MaimaiUtils.showNotification('剪贴板中未检测到有效的手机号码', 'warning');
+                return;
+            }
+            const phoneStr = match[0];
+
+            // 3. 提取当前面板上的候选人信息
+            let candidateData = null;
+            if (window.TalentPanelExtractor) {
+                const extractor = new TalentPanelExtractor();
+                // 设置一个标志位告诉 extractor 不要再强行抓电话，只取名字和公司
+                candidateData = extractor.extractFromTalentPanel();
+            } else if (window.DetailPanelExtractor) {
+                const extractor = new DetailPanelExtractor();
+                candidateData = extractor.extractFromDetailPanel();
+            }
+
+            if (!candidateData || !candidateData.name) {
+                MaimaiUtils.showNotification('请先在脉脉打开要更新的候选人详情面板', 'warning');
+                return;
+            }
+
+            // 4. 发送给后端更新
+            candidateData.phone = phoneStr; // 强制覆盖
+            console.log(`📞 准备更新 ${candidateData.name} 的电话为: ${phoneStr}`);
+
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
+
+            // 使用复用的 maimai-sync 接口
+            const response = await fetch(`${apiBase}/api/candidate/maimai-sync`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(candidateData)
+            });
+
+            if (response.ok) {
+                const resJson = await response.json();
+                if (resJson.success) {
+                    MaimaiUtils.showNotification(`✅ 成功更新 ${candidateData.name} 的电话: ${phoneStr}`, 'success');
+                    console.log('✅ 电话更新结果:', resJson);
+                } else {
+                    throw new Error(resJson.error || '后端返回操作失败');
+                }
+            } else {
+                throw new Error(`请求失败状态码: ${response.status}`);
+            }
+
+        } catch (error) {
+            console.error('❌ 更新电话失败:', error);
+            // 提示用户必须授权剪贴板读取或者其他错误
+            if (error.name === 'NotAllowedError') {
+                MaimaiUtils.showNotification('请允许网页读取剪贴板权限，或手动输入', 'error');
+            } else {
+                MaimaiUtils.showNotification(`更新失败: ${error.message}`, 'error');
+            }
         }
     }
 
