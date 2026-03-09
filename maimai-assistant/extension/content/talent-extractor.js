@@ -47,7 +47,6 @@ class TalentPanelExtractor {
 
         const data = {
             name: this.extractName(),
-            phone: this.extractPhone(),
             location: this.extractLocation(),
             experienceYears: this.extractExperienceYears(),
             education: this.extractEducation(),
@@ -136,51 +135,6 @@ class TalentPanelExtractor {
             if (text.includes('男')) return '男';
             if (text.includes('女')) return '女';
         }
-        return '';
-    }
-
-    // 提取电话号码（人才投递后右侧会出现电话按钮，class含 w-136）
-    extractPhone() {
-        const container = this.panelContainer || document.body;
-
-        const findPhoneInContainer = (root) => {
-            // 策略1：脉脉电话按钮 — class 含 w-136, 内含手机号文本
-            const phoneBtns = root.querySelectorAll('.w-136, [class*="w-136"]');
-            for (const btn of phoneBtns) {
-                const text = btn.textContent.replace(/\s+/g, '').trim();
-                const match = text.match(/1[3-9]\d{9}/);
-                if (match) {
-                    console.log('  📱 提取到电话号码(w-136):', match[0]);
-                    return match[0];
-                }
-            }
-
-            // 策略2：扫描整个面板，找到纯手机号文本节点
-            const allText = root.textContent || '';
-            const phoneMatch = allText.match(/(?<![\d])(1[3-9]\d{9})(?![\d])/);
-            if (phoneMatch) {
-                // 排除明显非电话的数字串（如年份、ID等）
-                const num = phoneMatch[1];
-                console.log('  📱 提取到电话号码(全文):', num);
-                return num;
-            }
-
-            return null;
-        };
-
-        // 优先在当前容器内查找
-        let phone = findPhoneInContainer(container);
-        if (phone) return phone;
-
-        // 【关键修复对于人才库单行导入】：
-        // 如果容器是 .ant-drawer-body，但脉脉把电话按钮渲染在 drawer 头部或外部绝对定位的 div 中
-        // 那么在 container 内部是找不到的，此时回退到在整个 body 中查找
-        if (container !== document.body) {
-            console.log('  ⚠️ 容器内未找到电话，回退到全局查找...');
-            phone = findPhoneInContainer(document.body);
-            if (phone) return phone;
-        }
-
         return '';
     }
 

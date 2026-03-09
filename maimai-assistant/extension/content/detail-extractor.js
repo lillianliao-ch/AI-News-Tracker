@@ -250,28 +250,6 @@ class DetailPanelExtractor {
         return '';
     }
 
-    // 提取电话号码
-    extractPhone() {
-        const container = this.panelContainer || document.body;
-
-        // 精确选择器
-        const phoneEl = container.querySelector('.icon_phone_gray');
-        if (phoneEl) {
-            return phoneEl.textContent.trim();
-        }
-
-        // 备用 - 正则匹配
-        const allElements = container.querySelectorAll('span, dd');
-        for (const el of allElements) {
-            const text = el.textContent.trim();
-            if (/^1[3-9]\d{9}$/.test(text)) {
-                return text;
-            }
-        }
-        return '';
-    }
-
-
     // 提取工作经历
     extractWorkExperiences() {
         const experiences = [];
