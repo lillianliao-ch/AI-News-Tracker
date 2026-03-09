@@ -671,9 +671,9 @@ class DetailPanelExtractor {
         }
     }
 
-    // 一键导入或查看候选人
+    // 一键同步或查看候选人 (使用 upsert 逻辑以支持好友更新)
     async importOrView() {
-        console.log('🚀 开始一键导入/查看...');
+        console.log('🚀 开始一键同步/查看...');
 
         // 1. 检查详情面板是否打开
         if (!this.isDetailPanelOpen()) {
@@ -689,23 +689,34 @@ class DetailPanelExtractor {
             return;
         }
 
-        // 3. 检查是否已存在
-        MaimaiUtils.showNotification(`正在检查 ${candidateData.name}...`, 'info');
-        const checkResult = await this.checkCandidateExists(candidateData);
+        MaimaiUtils.showNotification(`正在同步 ${candidateData.name}...`, 'info');
 
-        if (checkResult.exists) {
-            // 已存在 - 显示提示
-            MaimaiUtils.showNotification(`${candidateData.name} 已在系统中 (ID: ${checkResult.candidateId})`, 'success');
-        } else {
-            // 不存在 - 导入
-            MaimaiUtils.showNotification(`正在导入 ${candidateData.name}...`, 'info');
-            const importResult = await this.importCandidate(candidateData);
+        // 3. 直接调用 maimai-sync 接口进行 upsert (新建或更新)，这样可以触发后端的 isFriend 处理逻辑
+        try {
+            const result = await chrome.storage.local.get(['apiBaseUrl']);
+            const apiBase = result.apiBaseUrl || 'http://localhost:8502';
 
-            if (importResult.success) {
-                MaimaiUtils.showNotification(`✅ ${candidateData.name} 导入成功！(ID: ${importResult.candidateId})`, 'success');
-            } else {
-                MaimaiUtils.showNotification(`导入失败: ${importResult.error}`, 'error');
+            const response = await fetch(`${apiBase}/api/candidate/maimai-sync`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(candidateData)
+            });
+
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status}`);
             }
+
+            const syncResult = await response.json();
+
+            if (syncResult.success) {
+                const actionText = syncResult.action === 'created' ? '导入成功' : '更新成功';
+                MaimaiUtils.showNotification(`✅ ${candidateData.name} ${actionText}！(ID: ${syncResult.candidateId})`, 'success');
+            } else {
+                MaimaiUtils.showNotification(`同步失败: 未知错误`, 'error');
+            }
+        } catch (error) {
+            console.error('同步候选人失败:', error);
+            MaimaiUtils.showNotification(`同步失败: ${error.message}`, 'error');
         }
     }
 }
