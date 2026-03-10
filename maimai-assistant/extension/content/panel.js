@@ -116,6 +116,12 @@ class AssistantPanel {
             </button>
             <button class="refresh-btn" id="refreshBtn" title="刷新检测" style="flex-shrink: 0; width: 26px;">🔄</button>
           </div>
+          <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 4px; padding: 0 4px;">
+            <input type="checkbox" id="forceCreateCheckbox" style="width: 14px; height: 14px; margin: 0; cursor: pointer;">
+            <label for="forceCreateCheckbox" style="font-size: 9px; color: #f5576c; cursor: pointer; flex: 1;">
+              ⚠️ 强制新建（忽略重复，仅当确认是不同人时使用）
+            </label>
+          </div>
           <div style="font-size: 10px; color: #888; text-align: center;">
             检测到 <span class="detection-count" id="detectedCount" style="color: #667eea; font-weight: 600;">0</span> 位候选人
           </div>

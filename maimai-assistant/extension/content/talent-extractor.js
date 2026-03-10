@@ -543,6 +543,17 @@ class TalentPanelExtractor {
         try {
             const result = await chrome.storage.local.get(['apiBaseUrl']);
             const apiBase = result.apiBaseUrl || 'http://localhost:8502';
+            
+            // 检查是否勾选了"强制新建"复选框
+            const forceCreateCheckbox = document.getElementById('forceCreateCheckbox');
+            const forceCreate = forceCreateCheckbox ? forceCreateCheckbox.checked : false;
+            
+            // 如果强制新建，添加标志
+            if (forceCreate) {
+                candidateData.forceCreate = true;
+                console.log('⚠️ 用户选择了强制新建模式（忽略重复检查）');
+            }
+            
             const response = await fetch(`${apiBase}/api/candidate/maimai-sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
