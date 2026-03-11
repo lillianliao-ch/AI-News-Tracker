@@ -13,6 +13,10 @@
 当前配置散落在 `github_hunter_config.py` 和各个脚本的开头（如 API Key 读取）。
 - **行动**：建立单一的 `config.yaml` 或正式的 `.env` 方案。
 - **价值**：避免测试环境和生产环境 Token 混用，防止密钥泄露至代码仓库。
+- **验收标准**：
+  - ✅ 所有 Token 从 `config.yaml`读取
+  - ✅ 无硬编码的 API Key
+  - ✅ 支持 dev/prod 环境切换
 
 ### 2. 构建核心网络中间件 (API Resiliency)
 目前的 GitHub API 和 DashScope (LLM) 调用散乱，且对 HTTP Error (如 403, 429) 抵抗力弱。
@@ -21,12 +25,20 @@
   - 封装 Requests Session (连接池)，极大提升并发请求速度。
   - 使用 `@retry` 装饰器统一处理限流（如 `urllib3.util.retry.Retry` 的指数退避策略）。
 - **价值**：在跑大批次（如 10,000+）时，不会因为某几秒的 GitHub 抽风导致进程异常终止。
+- **验收标准**：
+  - ✅ 429 错误自动重试 3 次
+  - ✅ 连接池提升并发 50%+
+  - ✅ 所有 API 调用统一走 `api_client`
 
 ### 3. 公共基础组件下沉 (Commons Extraction)
 - **行动**：剥离 `github_network_miner.py` 中的大量非核心业务代码。
 - **拆分目标**：
   - `data_io.py`: 专门负责读写 JSON（支持海量数据流式处理如 `ijson`）。
   - `logger.py`: 统一格式化输出带时间戳、级别的前缀日志，取代当前遍地开花的 `print()` / `log()` 混用。
+- **验收标准**：
+  - ✅ 所有 `print()` 替换为 `logger`
+  - ✅ 所有 JSON 读写走 `data_io`
+  - ✅ 代码行数减少 30%+
 
 ---
 
