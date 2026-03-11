@@ -49,8 +49,56 @@
 当前强依赖人工跑脚本或者肉眼看命令行梳理。
 - **行动**：引入结构化数据断言类（类似于小型的 Pydantic Schemas）。
 - **具体实施**：
-  - 在每个 Phase 结束写入 JSON 之前，跑一遍数据校验（如：`email` 的覆盖率是否低于历史平均？`website_quality_score` 格式是否错乱？）
   - 拦截可能污染数据库的脏数据。
+- **具体规则与实现示例 (P1 优先级)**：
+  建议将验证逻辑下沉至专用的 `lib/data_quality.py` 模块：
+
+  ```python
+  from typing import List, Dict
+  from dataclasses import dataclass
+
+  @dataclass
+  class QualityRule:
+      name: str
+      check: callable
+      threshold: float
+      error_message: str
+
+  class PhaseValidator:
+      def __init__(self, phase: str):
+          self.phase = phase
+          self.rules = self._load_rules()
+
+      def validate(self, data: List[Dict]) -> List[str]:
+          violations = []
+          for rule in self.rules:
+              if not rule.check(data):
+                  violations.append(rule.error_message)
+          return violations
+
+  # 具体规则示例 (Phase 3)
+  PHASE3_RULES = [
+      QualityRule(
+          name="email_coverage",
+          check=lambda data: sum(1 for u in data if u.get('email')) / len(data) >= 0.5,
+          threshold=0.5,
+          error_message="邮箱覆盖率低于 50%"
+      ),
+      QualityRule(
+          name="no_org_accounts",
+          check=lambda data: all(u.get('type') != 'Organization' for u in data),
+          threshold=1.0,
+          error_message="检测到组织账号混入"
+      ),
+  ]
+
+  # 在写入 JSON 前拦截
+  validator = PhaseValidator("phase3")
+  violations = validator.validate(phase3_output)
+  if violations:
+      logger.error(f"Phase 3 质量检查失败: {violations}")
+      raise DataQualityError(violations)
+  ```
 
 ### 2. 核心过滤逻辑的单元测试 (Unit Testing the Filters)
 - **行动**：对判定核心（如判别是否为 AI 人才、判别组织账号等）引入 `pytest`。
