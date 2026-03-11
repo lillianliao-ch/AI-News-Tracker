@@ -795,7 +795,7 @@ class GitHubNetworkMiner:
     # ============================================================
     # Phase 3: 深度信息提取 + 评分
     # ============================================================
-    def phase3_enrich(self, max_users: int = None, resume: bool = False, input_file: str = None):
+    def phase3_enrich(self, max_users: int = None, resume: bool = False, input_file: str = None, output_file: str = None):
         """深度信息提取和评分
 
         Args:
@@ -827,7 +827,13 @@ class GitHubNetworkMiner:
             candidates = candidates[:max_users]
 
         # 确定输出文件名
-        if input_file:
+        if output_file:
+            # batch_runner.py 明确指定输出路径 → 最安全模式
+            output_json = Path(output_file)
+            output_json.parent.mkdir(parents=True, exist_ok=True)
+            output_csv = output_json.with_suffix(".csv")
+            print(f"📂 输出路径(batch模式): {output_json}")
+        elif input_file:
             if "phase4_expanded" in input_file:
                 output_json = BASE_DIR / "phase3_from_phase4.json"
                 output_csv = BASE_DIR / "phase3_from_phase4.csv"
@@ -935,8 +941,8 @@ class GitHubNetworkMiner:
         # 排序
         enriched.sort(key=lambda x: x["final_score"], reverse=True)
 
-        # 最终保存
-        self._save_json(enriched, output_json)
+        # 最终保存（使用 safe 版本，备份一次旧文件）
+        self._save_json_safe(enriched, output_json)
         self._save_csv(enriched, output_csv)
 
         print(f"\n✅ Phase 3 完成!")
@@ -1062,7 +1068,7 @@ class GitHubNetworkMiner:
     # ============================================================
     # Phase 3.5: 个人主页深度数据提取
     # ============================================================
-    def phase3_5_enrich(self, top: int = None, resume: bool = False, input_file: str = None):
+    def phase3_5_enrich(self, top: int = None, resume: bool = False, input_file: str = None, output_file: str = None):
         """爬取个人主页，提取结构化信息（职位、经历、论文、邮箱等）
 
         Args:
@@ -1097,8 +1103,14 @@ class GitHubNetworkMiner:
             users_to_process = users
             print(f"\n📡 准备处理全部 {len(users)} 候选人的个人主页...")
 
-        # 根据输入文件确定输出路径（提前确定，保证断点续传一致性）
-        if input_file and ("phase4_expanded" in input_file or "phase3_from_phase4" in input_file):
+        # 确定输出路径
+        if output_file:
+            # batch_runner.py 明确指定输出路径
+            output_path = Path(output_file)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_csv = output_path.with_suffix(".csv")
+            print(f"📂 输出路径(batch模式): {output_path}")
+        elif input_file and ("phase4_expanded" in input_file or "phase3_from_phase4" in input_file):
             output_path = BASE_DIR / "phase4_final_enriched.json"
             output_csv = BASE_DIR / "phase4_final_enriched.csv"
         else:
@@ -1705,6 +1717,18 @@ class GitHubNetworkMiner:
     # 工具方法
     # ============================================================
     def _save_json(self, data, path: Path):
+        """JSON 保存（中间保存用，高频调用，不备份）"""
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def _save_json_safe(self, data, path: Path):
+        """JSON 安全保存（最终输出用，写入前备份已有文件）"""
+        if path.exists():
+            import shutil as _shutil
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+            bak = path.with_name(f"{path.stem}.bak_{ts}{path.suffix}")
+            _shutil.copy2(path, bak)
+            print(f"  💾 备份旧文件: {bak.name}")
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
@@ -2060,6 +2084,7 @@ def main():
     parser.add_argument("--resume", action="store_true", help="Phase 3.5/Phase2 V3 断点续传")
     parser.add_argument("--max-users", type=int, default=None, help="Phase 3 最大处理人数")
     parser.add_argument("--input", type=str, default=None, help="Phase 3/Phase 3.5 输入文件路径 (支持Phase 4输出)")
+    parser.add_argument("--output", type=str, default=None, help="Phase 3 输出文件路径（指定后直接写到该路径，适合 batch_runner.py 调用）")
 
     args = parser.parse_args()
 
@@ -2091,11 +2116,11 @@ def main():
     elif args.command == "verify2":
         miner.verify2()
     elif args.command == "phase3":
-        miner.phase3_enrich(max_users=args.max_users, resume=args.resume, input_file=args.input)
+        miner.phase3_enrich(max_users=args.max_users, resume=args.resume, input_file=args.input, output_file=getattr(args, 'output', None))
     elif args.command == "verify3":
         miner.verify3()
     elif args.command == "phase3_5":
-        miner.phase3_5_enrich(top=args.top, resume=args.resume, input_file=args.input)
+        miner.phase3_5_enrich(top=args.top, resume=args.resume, input_file=args.input, output_file=getattr(args, 'output', None))
     elif args.command == "phase4":
         miner.phase4_expand(
             seed_top=args.seed_top,

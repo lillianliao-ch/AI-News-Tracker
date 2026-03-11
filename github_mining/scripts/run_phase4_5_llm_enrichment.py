@@ -78,7 +78,7 @@ try:
     NATIONALITY_AVAILABLE = True
 except ImportError:
     NATIONALITY_AVAILABLE = False
-    log("⚠️  无法导入国籍检测模块，将跳过国籍检测")
+    print("⚠️  无法导入国籍检测模块，将跳过国籍检测")
 
 # 导入标签体系（用于structured_tags提取）
 try:
@@ -442,7 +442,22 @@ def save_progress(progress: Dict):
         json.dump(progress, f, indent=2)
 
 
+import argparse
+
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input", type=str, help="Input JSON file path")
+    parser.add_argument("--output", type=str, help="Output JSON file path")
+    args = parser.parse_args()
+
+    global INPUT_FILE, OUTPUT_FILE, PROGRESS_FILE
+    if args.input:
+        INPUT_FILE = Path(args.input)
+    if args.output:
+        OUTPUT_FILE = Path(args.output)
+        # 将进度缓存文件隔离开，存入对应的批次目录避免全局污染
+        PROGRESS_FILE = OUTPUT_FILE.parent / "phase4_5_progress.json"
+
     log("=" * 70)
     log("🚀 Phase 4.5: LLM 深度富化")
     log("=" * 70)

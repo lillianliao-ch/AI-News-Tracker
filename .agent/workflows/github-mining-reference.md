@@ -506,6 +506,28 @@ INPUT_FILE = SCRIPT_DIR / "github_mining" / "phase4_final_enriched.json"
 
 ---
 
+### 2026-03-10 (Phase 5: 多轮社交网络扩展 - 无人值守端到端)
+
+**任务类型**: 深度社交网络扩展与端到端富化入库
+
+**背景**: 基于前期的高质量用户（S-B级）作为种子，进一步挖掘出更多隐藏的AI人才，并通过无人值守脚本（`run_phase5_end_to_end.sh`）直接完成富化与入库全流程。
+
+**当前状态**: **进行中 (后台运行)**
+
+**流程步骤**:
+1. **源数据**: `phase5_expanded_latest.json` (共发现 **28,242** 人)
+2. **Step 1 (正在执行)**: Phase 3 富化 (提取 Repos 详情) -> `phase3_from_phase5.json`
+3. **Step 2 (待执行)**: Phase 3.5 爬取个人网站 -> `phase35_from_phase5.json`
+4. **Step 3 (待执行)**: Phase 4.5 LLM 深度富化 -> `phase45_phase5_final.json`
+5. **Step 4 (待执行)**: `import_github_candidates.py` 导入数据库
+
+**脚本文件**:
+- `github_mining/scripts/run_phase5_expansion.py` - 生成扩展网络用户
+- `github_mining/run_phase5_end_to_end.sh` - 无人值守端到端执行脚本
+- `github_mining/phase5_e2e_full.log` - 实时运行日志
+
+---
+
 **新增高质量候选人示例**:
 1. Tom Schaul - Staff Research Scientist at DeepMind
 2. Yanpei Cao - Senior Research Engineer at Y-tech
