@@ -2,13 +2,26 @@
 // src/pages/generate.astro - 内容生成页面
 import Header from '../components/Header.astro';
 
+// 获取 URL 参数
+const { url } = Astro;
+const selectedNewsId = url.searchParams.get('news_id');
+
+// 如果有 news_id 参数，解码它
+const decodedNewsId = selectedNewsId ? decodeURIComponent(selectedNewsId) : null;
+
 // 从 API 获取资讯
-let allNews = [];
-try {
-  const response = await fetch('http://localhost:8502/api/news?limit=20');
-  allNews = await response.json();
-} catch (error) {
-  console.error('获取资讯失败:', error);
+let selectedNews = null;
+
+// 如果有 news_id 参数，获取该新闻的详细信息
+if (decodedNewsId) {
+  try {
+    // 首先尝试通过 news_id 从列表中获取
+    const allResponse = await fetch('http://localhost:8000/api/news?limit=200');
+    const allNews = await allResponse.json();
+    selectedNews = allNews.find(n => String(n.news_id) === String(decodedNewsId));
+  } catch (error) {
+    console.error('获取资讯失败:', error);
+  }
 }
 ---
 
@@ -38,36 +51,41 @@ try {
       </div>
 
       <div class="news-list">
-        {allNews.map(news => (
-          <div class="news-item" data-news-id={news.news_id}>
-            <h3>{news.title}</h3>
-            <p class="summary">{news.summary?.substring(0, 120)}...</p>
+        {selectedNews ? (
+          <div class="news-item selected" data-news-id={selectedNews.news_id} id={`news-${selectedNews.news_id}`}>
+            <h3>{selectedNews.title}</h3>
+            <p class="summary">{selectedNews.summary?.substring(0, 120)}...</p>
             <p class="meta">
-              <span class="source">{news.source}</span>
+              <span class="source">{selectedNews.source}</span>
               <span class="time">
-                {news.publish_time ? new Date(news.publish_time).toLocaleString('zh-CN') : ''}
+                {selectedNews.publish_time ? new Date(selectedNews.publish_time).toLocaleString('zh-CN') : ''}
               </span>
             </p>
 
             <div class="actions">
-              <button class="generate-all-btn" data-news-id={news.news_id}>
+              <button class="generate-all-btn" data-news-id={selectedNews.news_id}>
                 🚀 一键生成全部版本
               </button>
             </div>
 
-            <div class="result-container" id={`result-${news.news_id}`} style="display: none;">
+            <div class="result-container" id={`result-${selectedNews.news_id}`} style="display: none;">
               <div class="result-header">
                 <h4>✨ 生成结果</h4>
-                <button class="copy-all-btn" data-target={`result-content-${news.news_id}`}>
+                <button class="copy-all-btn" data-target={`result-content-${selectedNews.news_id}`}>
                   📋 复制全部
                 </button>
               </div>
-              <div class="result-content" id={`result-content-${news.news_id}`}>
+              <div class="result-content" id={`result-content-${selectedNews.news_id}`}>
                 <p class="loading">⏳ 正在生成中...</p>
               </div>
             </div>
           </div>
-        ))}
+        ) : (
+          <div class="empty-state">
+            <p>🔗 请从首页选择一条资讯来生成文案</p>
+            <a href="/" class="back-link">返回首页</a>
+          </div>
+        )}
       </div>
     </div>
 
@@ -133,11 +151,47 @@ try {
         gap: 24px;
       }
 
+      .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .empty-state p {
+        color: #666;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      .back-link {
+        display: inline-block;
+        padding: 10px 24px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      .back-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+
       .news-item {
         background: white;
         padding: 24px;
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .news-item.selected {
+        box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+        border: 2px solid #667eea;
       }
 
       .news-item h3 {
@@ -299,7 +353,88 @@ try {
       }
     </style>
 
+    <script define:vars={{ selectedNewsId }}>
+      // 简单的编码函数用于 localStorage 键
+      function encodeNewsId(newsId) {
+        try {
+          return btoa(encodeURIComponent(newsId));
+        } catch (e) {
+          return newsId.replace(/[^a-zA-Z0-9]/g, '_');
+        }
+      }
+
+      function decodeNewsId(encoded) {
+        try {
+          return decodeURIComponent(atob(encoded));
+        } catch (e) {
+          return encoded;
+        }
+      }
+
+      // 页面加载后，如果有选中的新闻，滚动到该位置
+      if (selectedNewsId) {
+        // 解码 news_id
+        const decodedNewsId = decodeURIComponent(selectedNewsId);
+        const encodedNewsId = encodeNewsId(decodedNewsId);
+
+        window.addEventListener('DOMContentLoaded', () => {
+          const selectedElement = document.getElementById(`news-${decodedNewsId}`);
+          if (selectedElement) {
+            setTimeout(() => {
+              selectedElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+          }
+
+          // 检查是否有已保存的生成结果
+          try {
+            const savedResults = JSON.parse(localStorage.getItem('generated_results') || '{}');
+            const now = Date.now();
+
+            if (savedResults[encodedNewsId]) {
+              const data = savedResults[encodedNewsId];
+              // 如果结果超过1天，清理掉
+              if (now - data.timestamp > 24 * 60 * 60 * 1000) {
+                delete savedResults[encodedNewsId];
+                localStorage.setItem('generated_results', JSON.stringify(savedResults));
+                return;
+              }
+
+              // 显示已保存的结果
+              const resultContainer = document.getElementById(`result-${decodedNewsId}`);
+              const resultContent = document.getElementById(`result-content-${decodedNewsId}`);
+              const generateBtn = document.querySelector(`[data-news-id="${decodedNewsId}"].generate-all-btn`);
+
+              if (resultContainer && resultContent) {
+                resultContainer.style.display = 'block';
+                // 调用 displayResults 函数
+                window._displaySavedResults = window._displaySavedResults || [];
+                window._displaySavedResults.push({ results: data.results, newsId: decodedNewsId });
+              }
+
+              if (generateBtn) {
+                generateBtn.textContent = '🚀 重新生成';
+              }
+            }
+          } catch (e) {
+            console.error('Error loading saved results:', e);
+          }
+        });
+      }
+    </script>
+
     <script>
+      // 存储所有轮询定时器
+      const pollIntervals = new Map();
+
+      // 简单的编码函数用于 localStorage 键
+      function encodeNewsId(newsId) {
+        return btoa(encodeURIComponent(newsId));
+      }
+
+      function decodeNewsId(encoded) {
+        return decodeURIComponent(atob(encoded));
+      }
+
       // 生成内容函数
       async function generateAllVersions(newsId) {
         const resultContainer = document.getElementById(`result-${newsId}`);
@@ -311,16 +446,17 @@ try {
         }
 
         if (resultContent) {
-          resultContent.innerHTML = '<p class="loading">⏳ 正在生成 3 个版本的文案，请稍候...</p>';
+          resultContent.innerHTML = '<p class="loading">⏳ 生成任务已启动，AI 正在后台生成中...<br><span style="font-size: 12px; color: #999;">您可以离开此页面，稍后回来查看结果</span></p>';
         }
 
         if (generateBtn) {
           generateBtn.disabled = true;
-          generateBtn.textContent = '⏳ 生成中...';
+          generateBtn.textContent = '✅ 已启动生成';
         }
 
         try {
-          const response = await fetch('http://localhost:8502/api/generate', {
+          // 启动异步生成任务
+          const response = await fetch('http://localhost:8000/api/generate', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -332,40 +468,19 @@ try {
           });
 
           if (response.ok) {
-            const results = await response.json();
-            if (results && results.length > 0) {
-              let html = '';
-              results.forEach(result => {
-                const versionInfo = {
-                  'A': { name: '硬核技术风', class: 'tag-a' },
-                  'B': { name: '轻松科普风', class: 'tag-b' },
-                  'C': { name: '热点观点风', class: 'tag-c' }
-                };
-                const info = versionInfo[result.version] || { name: '未知', class: '' };
+            const data = await response.json();
+            const taskId = data.task_id;
 
-                html += `
-                  <div class="version-section">
-                    <h3 class="version-title">
-                      版本 ${result.version}
-                      <span class="version-tag ${info.class}">${info.name}</span>
-                    </h3>
-                    <div class="generated-content">${result.content}</div>
-                    <div class="generated-hashtags">${result.hashtags ? result.hashtags.join(' ') : ''}</div>
-                  </div>
-                `;
-              });
-              if (resultContent) {
-                resultContent.innerHTML = html;
-              }
-            } else {
-              if (resultContent) {
-                resultContent.innerHTML = '<p class="loading" style="color: #dc3545;">❌ 生成失败：未返回内容</p>';
-              }
-            }
+            // 开始轮询任务状态
+            pollTaskStatus(taskId, newsId);
           } else {
             const error = await response.json();
             if (resultContent) {
               resultContent.innerHTML = `<p class="loading" style="color: #dc3545;">❌ 生成失败：${error.detail || error.message || '未知错误'}</p>`;
+            }
+            if (generateBtn) {
+              generateBtn.disabled = false;
+              generateBtn.textContent = '🚀 一键生成全部版本';
             }
           }
         } catch (error) {
@@ -373,11 +488,169 @@ try {
           if (resultContent) {
             resultContent.innerHTML = `<p class="loading" style="color: #dc3545;">❌ 生成失败：${error.message}</p>`;
           }
-        } finally {
           if (generateBtn) {
             generateBtn.disabled = false;
             generateBtn.textContent = '🚀 一键生成全部版本';
           }
+        }
+      }
+
+      // 轮询任务状态
+      function pollTaskStatus(taskId, newsId) {
+        // 保存任务状态到 localStorage
+        try {
+          const encodedNewsId = encodeNewsId(newsId);
+          const pendingTasks = JSON.parse(localStorage.getItem('pending_generation_tasks') || '{}');
+          pendingTasks[encodedNewsId] = {
+            taskId: taskId,
+            newsId: newsId,
+            startTime: Date.now()
+          };
+          localStorage.setItem('pending_generation_tasks', JSON.stringify(pendingTasks));
+        } catch (e) {
+          console.error('localStorage error:', e);
+        }
+
+        let isPolling = true;
+        let pollCount = 0;
+        const MAX_POLLS = 150; // 最多轮询150次（5分钟）
+
+        const poll = async () => {
+          // 如果页面不可见，跳过这次轮询
+          if (document.hidden) {
+            return;
+          }
+
+          if (!isPolling || pollCount >= MAX_POLLS) {
+            stopPolling();
+            if (pollCount >= MAX_POLLS) {
+              // 超时处理
+              const resultContent = document.getElementById(`result-content-${newsId}`);
+              if (resultContent) {
+                resultContent.innerHTML = '<p class="loading" style="color: #999;">⏳ 生成时间较长，请稍后手动刷新页面查看结果</p>';
+              }
+            }
+            return;
+          }
+
+          pollCount++;
+
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒超时
+
+            const response = await fetch(`http://localhost:8000/api/generate/status/${taskId}`, {
+              signal: controller.signal
+            });
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+              stopPolling();
+              cleanupPendingTask(newsId);
+              return;
+            }
+
+            const data = await response.json();
+
+            if (data.status === 'completed') {
+              stopPolling();
+              // 保存结果到 localStorage
+              try {
+                const encodedNewsId = encodeNewsId(newsId);
+                const savedResults = JSON.parse(localStorage.getItem('generated_results') || '{}');
+                savedResults[encodedNewsId] = {
+                  newsId: newsId,
+                  results: data.results,
+                  timestamp: Date.now()
+                };
+                localStorage.setItem('generated_results', JSON.stringify(savedResults));
+              } catch (e) {
+                console.error('Failed to save results:', e);
+              }
+              displayResults(data.results, newsId);
+              cleanupPendingTask(newsId);
+            } else if (data.status === 'failed') {
+              stopPolling();
+              const resultContent = document.getElementById(`result-content-${newsId}`);
+              const generateBtn = document.querySelector(`[data-news-id="${newsId}"].generate-all-btn`);
+              if (resultContent) {
+                resultContent.innerHTML = `<p class="loading" style="color: #dc3545;">❌ 生成失败：${data.error || '未知错误'}</p>`;
+              }
+              if (generateBtn) {
+                generateBtn.disabled = false;
+                generateBtn.textContent = '🚀 一键生成全部版本';
+              }
+              cleanupPendingTask(newsId);
+            }
+          } catch (error) {
+            console.error('查询任务状态失败:', error);
+            // 不停止轮询，继续尝试
+          }
+        };
+
+        const stopPolling = () => {
+          isPolling = false;
+          const encodedNewsId = encodeNewsId(newsId);
+          const interval = pollIntervals.get(encodedNewsId);
+          if (interval) {
+            clearInterval(interval);
+            pollIntervals.delete(encodedNewsId);
+          }
+        };
+
+        // 每2秒轮询一次
+        const interval = setInterval(poll, 2000);
+        pollIntervals.set(encodeNewsId(newsId), interval);
+      }
+
+      // 显示生成结果
+      function displayResults(results, newsId) {
+        console.log('displayResults called with newsId:', newsId, 'results:', results);
+        const resultContent = document.getElementById(`result-content-${newsId}`);
+        const generateBtn = document.querySelector(`[data-news-id="${newsId}"].generate-all-btn`);
+
+        console.log('resultContent:', resultContent, 'generateBtn:', generateBtn);
+
+        if (resultContent) {
+          let html = '';
+          results.forEach(result => {
+            const versionInfo = {
+              'A': { name: '硬核技术风', class: 'tag-a' },
+              'B': { name: '轻松科普风', class: 'tag-b' },
+              'C': { name: '热点观点风', class: 'tag-c' }
+            };
+            const info = versionInfo[result.version] || { name: '未知', class: '' };
+
+            if (result.error) {
+              html += `
+                <div class="version-section">
+                  <h3 class="version-title">
+                    版本 ${result.version}
+                    <span class="version-tag tag-error">生成失败</span>
+                  </h3>
+                  <div class="generated-content" style="color: #dc3545;">${result.error}</div>
+                </div>
+              `;
+            } else {
+              html += `
+                <div class="version-section">
+                  <h3 class="version-title">
+                    版本 ${result.version}
+                    <span class="version-tag ${info.class}">${info.name}</span>
+                  </h3>
+                  <div class="generated-content">${result.content}</div>
+                  <div class="generated-hashtags">${result.hashtags ? result.hashtags.join(' ') : ''}</div>
+                </div>
+              `;
+            }
+          });
+          resultContent.innerHTML = html;
+          console.log('Results displayed');
+        }
+
+        if (generateBtn) {
+          generateBtn.disabled = false;
+          generateBtn.textContent = '🚀 重新生成';
         }
       }
 
@@ -406,8 +679,41 @@ try {
         }
       }
 
+      // 清理所有轮询
+      function cleanupAllPolling() {
+        pollIntervals.forEach((interval, key) => {
+          clearInterval(interval);
+        });
+        pollIntervals.clear();
+      }
+
+      // 页面可见性变化时处理
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          console.log('页面隐藏，暂停轮询');
+        } else {
+          console.log('页面可见，恢复轮询');
+        }
+      });
+
+      // 页面卸载前清理所有轮询
+      window.addEventListener('beforeunload', () => {
+        cleanupAllPolling();
+      });
+
       // 为所有生成按钮添加事件
       document.addEventListener('DOMContentLoaded', () => {
+        // 处理保存的结果（从 define:vars 脚本传递过来的）
+        if (window._displaySavedResults && window._displaySavedResults.length > 0) {
+          window._displaySavedResults.forEach(({ results, newsId }) => {
+            displayResults(results, newsId);
+          });
+          window._displaySavedResults = [];
+        }
+
+        // 检查是否有正在进行的任务
+        checkPendingTasks();
+
         const generateButtons = document.querySelectorAll('.generate-all-btn');
         generateButtons.forEach(btn => {
           btn.addEventListener('click', () => {
@@ -425,6 +731,187 @@ try {
           });
         });
       });
+
+      // 检查是否有正在进行的任务或已完成的生成结果
+      function checkPendingTasks() {
+        // 首先检查是否有已完成的生成结果
+        try {
+          const savedResults = JSON.parse(localStorage.getItem('generated_results') || '{}');
+          const now = Date.now();
+
+          Object.entries(savedResults).forEach(([encodedNewsId, data]) => {
+            const newsId = data.newsId || decodeNewsId(encodedNewsId);
+            // 如果结果超过1天，清理掉
+            if (now - data.timestamp > 24 * 60 * 60 * 1000) {
+              delete savedResults[encodedNewsId];
+              localStorage.setItem('generated_results', JSON.stringify(savedResults));
+              return;
+            }
+
+            // 显示已保存的结果
+            const resultContainer = document.getElementById(`result-${newsId}`);
+            const resultContent = document.getElementById(`result-content-${newsId}`);
+            const generateBtn = document.querySelector(`[data-news-id="${newsId}"].generate-all-btn`);
+
+            if (resultContainer && resultContent) {
+              resultContainer.style.display = 'block';
+              displayResults(data.results, newsId);
+            }
+
+            if (generateBtn) {
+              generateBtn.textContent = '🚀 重新生成';
+            }
+          });
+        } catch (e) {
+          console.error('Error loading saved results:', e);
+        }
+
+        // 然后检查是否有正在进行的任务
+        try {
+          const pendingTasks = JSON.parse(localStorage.getItem('pending_generation_tasks') || '{}');
+
+          Object.entries(pendingTasks).forEach(([encodedNewsId, taskData]) => {
+            const newsId = taskData.newsId || decodeNewsId(encodedNewsId);
+            const { taskId, startTime } = taskData;
+
+            // 如果任务超过30分钟，认为已过期
+            if (Date.now() - startTime > 30 * 60 * 1000) {
+              delete pendingTasks[encodedNewsId];
+              localStorage.setItem('pending_generation_tasks', JSON.stringify(pendingTasks));
+              return;
+            }
+
+            // 检查是否已经有结果了
+            try {
+              const savedResults = JSON.parse(localStorage.getItem('generated_results') || '{}');
+              if (savedResults[encodedNewsId]) {
+                // 已有结果，清理pending任务
+                delete pendingTasks[encodedNewsId];
+                localStorage.setItem('pending_generation_tasks', JSON.stringify(pendingTasks));
+                return;
+              }
+            } catch (e) {
+              // 忽略错误
+            }
+
+            // 显示加载状态
+            const resultContainer = document.getElementById(`result-${newsId}`);
+            const resultContent = document.getElementById(`result-content-${newsId}`);
+            const generateBtn = document.querySelector(`[data-news-id="${newsId}"].generate-all-btn`);
+
+            if (resultContainer) {
+              resultContainer.style.display = 'block';
+            }
+
+            if (resultContent) {
+              resultContent.innerHTML = '<p class="loading">⏳ 检测到之前的生成任务，正在恢复...<br><span style="font-size: 12px; color: #999;">AI 正在后台生成中</span></p>';
+            }
+
+            if (generateBtn) {
+              generateBtn.disabled = true;
+              generateBtn.textContent = '✅ 生成中';
+            }
+
+            // 继续轮询任务状态
+            pollTaskStatusWithCleanup(taskId, newsId);
+          });
+        } catch (e) {
+          console.error('Error checking pending tasks:', e);
+        }
+      }
+
+      // 带清理的轮询任务状态
+      function pollTaskStatusWithCleanup(taskId, newsId) {
+        let isPolling = true;
+        const encodedNewsId = encodeNewsId(newsId);
+        const restoreKey = `restore_${encodedNewsId}`;
+
+        const poll = async () => {
+          // 如果页面不可见，跳过这次轮询
+          if (document.hidden) {
+            return;
+          }
+
+          if (!isPolling) {
+            return;
+          }
+
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            const response = await fetch(`http://localhost:8000/api/generate/status/${taskId}`, {
+              signal: controller.signal
+            });
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+              stopPollingWithCleanup();
+              cleanupPendingTask(newsId);
+              return;
+            }
+
+            const data = await response.json();
+
+            if (data.status === 'completed') {
+              stopPollingWithCleanup();
+              // 保存结果到 localStorage
+              try {
+                const savedResults = JSON.parse(localStorage.getItem('generated_results') || '{}');
+                savedResults[encodedNewsId] = {
+                  newsId: newsId,
+                  results: data.results,
+                  timestamp: Date.now()
+                };
+                localStorage.setItem('generated_results', JSON.stringify(savedResults));
+              } catch (e) {
+                console.error('Failed to save results:', e);
+              }
+              displayResults(data.results, newsId);
+              cleanupPendingTask(newsId);
+            } else if (data.status === 'failed') {
+              stopPollingWithCleanup();
+              const resultContent = document.getElementById(`result-content-${newsId}`);
+              const generateBtn = document.querySelector(`[data-news-id="${newsId}"].generate-all-btn`);
+              if (resultContent) {
+                resultContent.innerHTML = `<p class="loading" style="color: #dc3545;">❌ 生成失败：${data.error || '未知错误'}</p>`;
+              }
+              if (generateBtn) {
+                generateBtn.disabled = false;
+                generateBtn.textContent = '🚀 一键生成全部版本';
+              }
+              cleanupPendingTask(newsId);
+            }
+          } catch (error) {
+            console.error('查询任务状态失败:', error);
+            // 不停止轮询，继续尝试
+          }
+        };
+
+        const stopPollingWithCleanup = () => {
+          isPolling = false;
+          const interval = pollIntervals.get(restoreKey);
+          if (interval) {
+            clearInterval(interval);
+            pollIntervals.delete(restoreKey);
+          }
+        };
+
+        const interval = setInterval(poll, 2000);
+        pollIntervals.set(restoreKey, interval);
+      }
+
+      // 清理待处理的任务
+      function cleanupPendingTask(newsId) {
+        try {
+          const encodedNewsId = encodeNewsId(newsId);
+          const pendingTasks = JSON.parse(localStorage.getItem('pending_generation_tasks') || '{}');
+          delete pendingTasks[encodedNewsId];
+          localStorage.setItem('pending_generation_tasks', JSON.stringify(pendingTasks));
+        } catch (e) {
+          console.error('Failed to cleanup pending task:', e);
+        }
+      }
     </script>
   </body>
 </html>

@@ -9,7 +9,7 @@ import RefreshButton from '../components/RefreshButton.astro';
 let allNews = [];
 try {
   // SSR uses internal docker/host network
-  const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8002/api';
+  const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
   console.log(`[SSR] Fetching news from ${API_BASE}...`);
   const response = await fetch(`${API_BASE}/news?limit=50`);
   const data = await response.json();
@@ -70,7 +70,7 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
     </div>
 
     <!-- Pass PUBLIC_API_URL to client via data attribute on a script or meta -->
-    <script define:vars={{ PUBLIC_API_URL: import.meta.env.PUBLIC_API_URL || 'http://localhost:8002' }}>
+    <script define:vars={{ PUBLIC_API_URL: import.meta.env.PUBLIC_API_URL || 'http://localhost:8000' }}>
         window.PUBLIC_API_URL = PUBLIC_API_URL;
     </script>
 
@@ -86,7 +86,7 @@ const categories = ['全部', '产品', '模型', '融资', '观点'];
 
       // Helper to get API URL
       const getApiUrl = (path) => {
-        const baseUrl = window.PUBLIC_API_URL || 'http://localhost:8002';
+        const baseUrl = window.PUBLIC_API_URL || 'http://localhost:8000';
         // Remove trailing slash from base if present
         const cleanBase = baseUrl.replace(/\/$/, '');
         // Ensure path starts with /api if not present in base (logic depends on how we set env var)

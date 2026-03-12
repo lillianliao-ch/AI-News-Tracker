@@ -1,6 +1,6 @@
 const refreshBtn = document.getElementById('refreshBtn');
 const lastUpdateEl = document.getElementById('lastUpdate');
-const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:8502';
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:8000';
 
 if (refreshBtn) {
     refreshBtn.addEventListener('click', async () => {

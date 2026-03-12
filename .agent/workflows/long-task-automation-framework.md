@@ -398,55 +398,136 @@ class AutoRestartWrapper:
 
 ---
 
-### 3. Progress Monitor（进度监控）
+### 3. Progress Monitor（进度监控）— 视觉化规范
+
+> 🎯 所有批量脚本必须配套 `check_progress.sh` 监控器，使用统一的进度条风格。
+
+#### 输出规范
+
+所有监控器的终端输出必须遵循以下格式：
+
+```
+═══════════════════════════════════════════════════
+  📊 Mining Progress Monitor  (Ctrl+C to exit)
+═══════════════════════════════════════════════════
+  ⏰ 18:08:28
+
+  🔬 GitHub Mining — phase5_full_production_final
+     15,472 candidates | running 7h22m
+
+     Phase 3   S2学术富化    [████████████████████░░░░░░░░░░]  67.8%  10,497/15,472
+                                  23.7/min  ETA 21:38
+     Phase 3.5 网络挖掘      [████████████████████░░░░░░░░░░]  67.8%  10,497/15,472
+                                  23.7/min  ETA 21:38
+     Phase 4.5 LLM深度富化   [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]   waiting...
+
+  🔧 Processes: network_miner(phase3.5), batch_runner
+
+  💡 Tip: bash check_progress.sh -w  ← 实时刷新模式
+```
+
+#### 核心元素
+
+| 元素 | 说明 | 必须 |
+|------|------|:----:|
+| 进度条 `[█░]` | 30字符宽，`█` 填充 `░` 空白 | ✅ |
+| 百分比 | 右对齐 `XX.X%` | ✅ |
+| 计数 | `已完成/总数` 带千分位逗号 | ✅ |
+| 速率 | `XX.X/min` | ✅ |
+| ETA | 预计完成时间 `HH:MM` | ✅ |
+| 阶段状态 | `✅ Done` / `🔄 运行中` / `⏳ 等待中` | ✅ |
+| 活跃进程 | 通过 `ps` 检测，一行列出 | ✅ |
+| Watch 模式 | `-w` 参数，每 10 秒 `clear` + 重绘 | ✅ |
+
+#### Shell 模板
 
 ```bash
-# framework/monitor.sh
 #!/bin/bash
+# {任务名} 进度监控
+# 用法: bash check_progress.sh        (单次)
+#       bash check_progress.sh -w     (实时刷新)
 
-# 进度监控脚本
-# 用法: ./framework/monitor.sh <task_name>
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+WATCH_MODE=false
+[[ "$1" == "-w" || "$1" == "--watch" ]] && WATCH_MODE=true
 
-TASK_NAME=$1
-PROGRESS_FILE="./tasks/${TASK_NAME}_progress.json"
+show_progress() {
+python3 << 'PYTHON'
+import json, os, subprocess
+from datetime import datetime, timedelta
+from pathlib import Path
 
-if [ -z "$TASK_NAME" ]; then
-    echo "用法: $0 <task_name>"
-    exit 1
-fi
+# ── 进度条工具函数 ──
+def bar(pct, width=30):
+    filled = int(width * pct / 100)
+    return f"[{'█' * filled}{'░' * (width - filled)}]"
 
-if [ ! -f "$PROGRESS_FILE" ]; then
-    echo "❌ 未找到进度文件: $PROGRESS_FILE"
-    exit 1
-fi
+def fmt_dur(m):
+    if m < 60: return f"{m:.0f}m"
+    h, m = divmod(int(m), 60)
+    return f"{h}h{m:02d}m"
 
-echo "📊 任务进度: $TASK_NAME"
-echo "===================="
+now = datetime.now()
+print(f"  ⏰ {now.strftime('%H:%M:%S')}")
+print()
 
-# 使用 jq 解析 JSON（如果没有安装 jq，用 python）
-if command -v jq &> /dev/null; then
-    jq '.' "$PROGRESS_FILE"
+# ── 读取数据、计算进度 ──
+# TODO: 替换为实际文件路径和总量
+total = 10000
+processed = 0  # len(json.load(open(progress_file)))
+pct = processed / total * 100 if total else 0
+
+# elapsed = (now - start_time).total_seconds() / 60
+# speed = processed / elapsed if elapsed > 0 else 0
+# remaining = (total - processed) / speed if speed > 0 and processed < total else 0
+# eta = now + timedelta(minutes=remaining)
+
+# ── 输出进度条 ──
+# print(f"     Phase 1  任务描述  {bar(pct)} {pct:5.1f}%  {processed:,}/{total:,}")
+# print(f"     {'':25s}  {speed:.1f}/min  ETA {eta.strftime('%H:%M')}")
+
+# ── 检测活跃进程 ──
+res = subprocess.run(['ps', 'aux'], capture_output=True, text=True)
+procs = []
+for l in res.stdout.split('\n'):
+    if 'grep' in l or 'check_progress' in l: continue
+    # if 'your_process_name' in l: procs.append("your_process")
+status = ", ".join(procs) if procs else "⏸️ idle"
+print(f"  🔧 Processes: {status}")
+PYTHON
+}
+
+if $WATCH_MODE; then
+    while true; do
+        clear
+        echo "═══════════════════════════════════════════════════"
+        echo "  📊 {任务名} Progress Monitor  (Ctrl+C to exit)"
+        echo "═══════════════════════════════════════════════════"
+        show_progress
+        sleep 10
+    done
 else
-    python3 - << EOF
-import json
-with open('$PROGRESS_FILE', 'r') as f:
-    data = json.load(f)
-
-print(f"任务名: {data['task_name']}")
-print(f"总任务: {data['total_tasks']}")
-print(f"已完成: {data['completed']}")
-print(f"失败: {data['failed']}")
-print(f"运行中: {data['running']}")
-print(f"进度: {data['progress_percentage']}%")
-print("\n任务列表:")
-for t in data['tasks']:
-    status_icon = {"pending": "⏳", "running": "🔄", "completed": "✅", "failed": "❌"}.get(t['status'], "❓")
-    print(f"  {status_icon} {t['id']}: {t['status']}")
-    if t.get('error'):
-        print(f"      错误: {t['error']}")
-EOF
+    echo "═══════════════════════════════════════════════════"
+    echo "  📊 {任务名} Progress"
+    echo "═══════════════════════════════════════════════════"
+    show_progress
+    echo ""
+    echo "  💡 Tip: bash check_progress.sh -w  ← 实时刷新模式"
 fi
 ```
+
+#### 命名规范
+
+| 文件 | 位置 | 说明 |
+|------|------|------|
+| `check_progress.sh` | 与批量脚本同目录 | 固定文件名 |
+| 单次运行 | `bash check_progress.sh` | 打印一次后退出 |
+| Watch 模式 | `bash check_progress.sh -w` | 每 10s 自动刷新 |
+
+#### 实际示例
+
+参考 GitHub Mining 的 `check_progress.sh`：
+[check_progress.sh](file:///Users/lillianliao/notion_rag/github_mining/scripts/check_progress.sh)
 
 ---
 

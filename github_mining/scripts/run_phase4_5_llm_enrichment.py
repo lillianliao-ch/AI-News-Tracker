@@ -29,6 +29,8 @@ import json
 import time
 import requests
 import urllib3
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -72,7 +74,8 @@ if not DASHSCOPE_API_KEY:
         pass
 
 # 国籍检测配置
-sys.path.insert(0, str(HEADHUNTER_DIR / "scripts"))
+if str(HEADHUNTER_DIR / "scripts" / "extract") not in sys.path:
+    sys.path.insert(0, str(HEADHUNTER_DIR / "scripts" / "extract"))
 try:
     from add_nationality_tags import detect_nationality
     NATIONALITY_AVAILABLE = True
@@ -81,8 +84,9 @@ except ImportError:
     print("⚠️  无法导入国籍检测模块，将跳过国籍检测")
 
 # 导入标签体系（用于structured_tags提取）
+if str(HEADHUNTER_DIR) not in sys.path:
+    sys.path.insert(0, str(HEADHUNTER_DIR))
 try:
-    sys.path.insert(0, str(HEADHUNTER_DIR.parent))
     from extract_tags import TAG_SCHEMA
     TAGS_AVAILABLE = True
 except ImportError:
@@ -256,13 +260,22 @@ def load_candidates() -> List[Dict]:
 
 
 def filter_with_websites(candidates: List[Dict]) -> List[Dict]:
-    """筛选有个人网站的候选人"""
-    filtered = [
-        c for c in candidates
-        if c.get('homepage_scraped') and c.get('homepage_url')
-    ]
+    """筛选有可爬取网站的候选人（已爬取的 homepage 或有 blog URL）"""
+    filtered = []
+    already_scraped = 0
+    blog_only = 0
+    for c in candidates:
+        if c.get('homepage_scraped') and c.get('homepage_url'):
+            filtered.append(c)
+            already_scraped += 1
+        elif c.get('blog'):
+            # 设置 homepage_url 以便后续爬取
+            if not c.get('homepage_url'):
+                c['homepage_url'] = c['blog']
+            filtered.append(c)
+            blog_only += 1
 
-    log(f"🌐 有个人网站的候选人: {len(filtered)}/{len(candidates)}")
+    log(f"🌐 有网站的候选人: {len(filtered)}/{len(candidates)} (已爬取: {already_scraped}, blog待爬: {blog_only})")
     return filtered
 
 
@@ -281,21 +294,36 @@ def scrape_website_content(url: str) -> Optional[str]:
         if not url.startswith(('http://', 'https://')):
             url = 'https://' + url
 
-        # 跳过某些域名
-        skip_domains = ['github.com/', 'twitter.com/', 'x.com/', 'linkedin.com/',
-                       'zhihu.com/', 'weibo.com/', 'bilibili.com/', 'medium.com/']
-        if any(d in url.lower() for d in skip_domains):
+        url_lower = url.lower()
+
+        # 跳过纯社交/视频平台（保留 github.io、CSDN、博客园等有内容的站点）
+        skip_domains = ['twitter.com/', 'x.com/', 'linkedin.com/',
+                       'weibo.com/', 'bilibili.com/', 'youtube.com/',
+                       'facebook.com/', 'instagram.com/']
+        if any(d in url_lower for d in skip_domains):
+            return None
+
+        # github.com profile/repo 页面跳过，但保留 github.io 个人站
+        if 'github.com/' in url_lower and '.github.io' not in url_lower:
             return None
 
         # 发送请求
-        resp = requests.get(url, timeout=10, verify=False,
-                           headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'})
+        resp = requests.get(url, timeout=15, verify=False,
+                           headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'},
+                           allow_redirects=True)
         resp.encoding = resp.apparent_encoding or 'utf-8'
 
         if resp.status_code == 200:
             # 提取文本内容
             soup = BeautifulSoup(resp.text, 'html.parser')
+            # 移除 script/style 标签
+            for tag in soup(['script', 'style', 'nav', 'footer']):
+                tag.decompose()
             text_content = soup.get_text(separator='\n', strip=True)
+
+            # 过滤太短的内容（可能是空页面或登录页）
+            if len(text_content) < 50:
+                return None
 
             # 限制长度
             if len(text_content) > 10000:
@@ -444,10 +472,39 @@ def save_progress(progress: Dict):
 
 import argparse
 
+# ============================================================================
+# 并发处理单个候选人（线程安全）
+# ============================================================================
+def process_single_candidate(candidate: Dict, auth_token: str) -> Tuple[str, Dict, bool]:
+    """
+    处理单个候选人的 LLM 富化（线程安全）。
+
+    Returns:
+        (candidate_id, result_dict, success)
+    """
+    candidate_id = candidate.get('username', 'unknown')
+    name = candidate.get('name', 'Unknown')
+
+    try:
+        extracted = extract_with_llm(candidate, auth_token)
+        if extracted:
+            enriched = merge_candidate_data(candidate, extracted)
+            score = extracted.get("quality_score", 0)
+            log(f"  ✅ {name} ({candidate_id}) — 质量分: {score}")
+            return candidate_id, enriched, True
+        else:
+            log(f"  ⚠️  {name} ({candidate_id}) — 提取失败，保留原始数据")
+            return candidate_id, candidate, False
+    except Exception as e:
+        log(f"  ❌ {name} ({candidate_id}) — 异常: {e}")
+        return candidate_id, candidate, False
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=str, help="Input JSON file path")
     parser.add_argument("--output", type=str, help="Output JSON file path")
+    parser.add_argument("--workers", type=int, default=5, help="并发 worker 数(default: 5)")
     args = parser.parse_args()
 
     global INPUT_FILE, OUTPUT_FILE, PROGRESS_FILE
@@ -455,11 +512,12 @@ def main():
         INPUT_FILE = Path(args.input)
     if args.output:
         OUTPUT_FILE = Path(args.output)
-        # 将进度缓存文件隔离开，存入对应的批次目录避免全局污染
         PROGRESS_FILE = OUTPUT_FILE.parent / "phase4_5_progress.json"
 
+    MAX_WORKERS = args.workers
+
     log("=" * 70)
-    log("🚀 Phase 4.5: LLM 深度富化")
+    log(f"🚀 Phase 4.5: LLM 深度富化 (并发={MAX_WORKERS})")
     log("=" * 70)
 
     # 1. 加载候选人数据
@@ -467,119 +525,143 @@ def main():
     if not candidates:
         return
 
-    # 2. 筛选有网站的候选人
+    # 2. 筛选有网站的候选人（扩大范围：含 blog URL）
     target_candidates = filter_with_websites(candidates)
+
     if not target_candidates:
-        log("⚠️  没有需要处理的候选人")
+        log("⚠️  没有需要处理的候选人 (无网站)")
+        with open(OUTPUT_FILE, 'w') as f:
+            json.dump(candidates, f, indent=2, ensure_ascii=False)
         return
 
     # 3. 获取认证token
     auth_token = get_auth_token()
     if not auth_token:
-        log("❌ 无法获取认证token，退出")
+        log("❌ 无法获取认证token")
+        with open(OUTPUT_FILE, 'w') as f:
+            json.dump(candidates, f, indent=2, ensure_ascii=False)
         return
-
     log("✅ 认证成功")
 
-    # 4. 加载进度
+    # 4. 加载进度 & 清理过期数据
     progress = load_progress()
     completed_ids = set(progress.get("completed", []))
-    stats = progress.get("stats", {"total": len(target_candidates), "success": 0, "failed": 0})
 
-    log(f"📁 进度恢复: 已完成 {len(completed_ids)} 个")
+    # 只保留在当前 target 中的 completed IDs（修复进度追踪 Bug）
+    target_ids = {c.get('username') for c in target_candidates}
+    stale = completed_ids - target_ids
+    if stale:
+        log(f"🧹 清理过期进度: {len(stale)} 条旧记录")
+        completed_ids = completed_ids & target_ids
+    log(f"📁 进度恢复: 已完成 {len(completed_ids)}/{len(target_candidates)}")
 
-    # 5. 批量处理
-    log("=" * 70)
-    log("开始批量LLM提取...")
-    log("=" * 70)
-
-    results = []
-    batch_size = 100
-
-    for i, candidate in enumerate(target_candidates):
-        candidate_id = candidate.get('id', i)
-        name = candidate.get('name', 'Unknown')
-
-        # 跳过已完成的
-        if candidate_id in completed_ids:
-            # 保留已处理的数据
-            if 'extracted_work_history' in candidate:
-                results.append(candidate)
-            continue
-
-        log(f"[{len(completed_ids)+1}/{len(target_candidates)}] {name} (ID: {candidate_id})")
-
-        # LLM提取
-        extracted = extract_with_llm(candidate, auth_token)
-
-        if extracted:
-            # 合并数据
-            enriched = merge_candidate_data(candidate, extracted)
-            results.append(enriched)
-            completed_ids.add(candidate_id)
-            stats["success"] += 1
-
-            score = extracted.get("quality_score", 0)
-            log(f"  ✅ 提取成功，质量分: {score}")
+    # 5. 分出待处理列表
+    to_process = []
+    skipped_results = []  # 已完成的直接加入结果
+    for c in target_candidates:
+        cid = c.get('username')
+        if cid in completed_ids:
+            skipped_results.append(c)
         else:
-            # 保留原始数据
-            results.append(candidate)
-            stats["failed"] += 1
-            log(f"  ⚠️  提取失败，保留原始数据")
+            to_process.append(c)
 
-        # 每10个保存一次进度
-        if (i + 1) % 10 == 0:
-            save_progress({
-                "completed": list(completed_ids),
-                "failed": progress.get("failed", []),
-                "stats": stats,
-                "last_update": datetime.now().isoformat()
-            })
+    log(f"📋 待处理: {len(to_process)} 人，跳过(已完成): {len(skipped_results)} 人")
 
-        # 避免请求过快
-        time.sleep(0.5)
+    if not to_process:
+        log("✅ 所有目标已完成，直接合并输出")
+    else:
+        # 6. 并发批量处理
+        log("=" * 70)
+        log(f"开始并发LLM提取 (workers={MAX_WORKERS})...")
+        log("=" * 70)
 
-    # 6. 保存结果
-    log(f"💾 保存结果到: {OUTPUT_FILE}")
+        stats = {"success": len(completed_ids), "failed": 0}
+        progress_lock = threading.Lock()
+        results_lock = threading.Lock()
+        concurrent_results = []
 
-    # 合并未处理的候选人
+        processed_count = len(completed_ids)
+        total_target = len(target_candidates)
+
+        def on_complete(candidate_id, result, success):
+            nonlocal processed_count
+            with progress_lock:
+                if success:
+                    completed_ids.add(candidate_id)
+                    stats["success"] += 1
+                else:
+                    stats["failed"] += 1
+                processed_count += 1
+
+                # 每完成 20 个保存一次进度
+                if processed_count % 20 == 0:
+                    save_progress({
+                        "completed": list(completed_ids),
+                        "stats": stats,
+                        "last_update": datetime.now().isoformat()
+                    })
+                    log(f"  💾 进度: {processed_count}/{total_target} ({processed_count*100/total_target:.1f}%) | 成功: {stats['success']} | 失败: {stats['failed']}")
+
+            with results_lock:
+                concurrent_results.append(result)
+
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            futures = {}
+            for candidate in to_process:
+                future = executor.submit(process_single_candidate, candidate, auth_token)
+                futures[future] = candidate
+
+            for future in as_completed(futures):
+                try:
+                    candidate_id, result, success = future.result()
+                    on_complete(candidate_id, result, success)
+                except Exception as e:
+                    candidate = futures[future]
+                    log(f"  ❌ 并发异常 ({candidate.get('username')}): {e}")
+                    on_complete(candidate.get('username', 'unknown'), candidate, False)
+
+        # 合并跳过的和并发处理的结果
+        skipped_results.extend(concurrent_results)
+
+        # 最终保存进度
+        save_progress({
+            "completed": list(completed_ids),
+            "stats": stats,
+            "last_update": datetime.now().isoformat()
+        })
+
+    # 7. 保存最终结果
+    all_results = skipped_results
+    processed_usernames = {r.get('username') for r in all_results}
     for candidate in candidates:
-        if not any(r.get('id') == candidate.get('id') for r in results):
-            results.append(candidate)
+        if candidate.get('username') not in processed_usernames:
+            all_results.append(candidate)
 
+    log(f"💾 保存最终结果到: {OUTPUT_FILE} ({len(all_results)} 人)")
     with open(OUTPUT_FILE, 'w') as f:
-        json.dump(results, f, indent=2, ensure_ascii=False)
+        json.dump(all_results, f, indent=2, ensure_ascii=False)
 
-    # 7. 最终统计
+    # 8. 最终统计
     log("=" * 70)
     log("📊 最终统计")
     log("=" * 70)
-    log(f"总候选人数: {len(results)}")
-    log(f"成功提取: {stats['success']} ({stats['success']/len(target_candidates)*100:.1f}%)")
-    log(f"提取失败: {stats['failed']} ({stats['failed']/len(target_candidates)*100:.1f}%)")
+    log(f"总候选人数: {len(all_results)}")
+    log(f"参与富化人数: {len(target_candidates)}")
+    log(f"成功提取: {stats.get('success', len(completed_ids))}")
+    log(f"提取失败: {stats.get('failed', 0)}")
 
-    # 统计质量分数
-    high_quality = sum(1 for r in results if r.get('website_quality_score', 0) >= 90)
-    log(f"高质量(90+): {high_quality} 人")
-
-    # 统计国籍分布
     if NATIONALITY_AVAILABLE:
-        from collections import Counter
-        nat_dist = Counter(r.get('nationality', 'unknown') for r in results)
-        log(f"\n📊 国籍分布:")
-        log(f"  中国人:     {nat_dist.get('chinese', 0):5,} ({nat_dist.get('chinese', 0)/len(results)*100:.1f}%)")
-        log(f"  外国人:     {nat_dist.get('foreign', 0):5,} ({nat_dist.get('foreign', 0)/len(results)*100:.1f}%)")
-        log(f"  无法判断:   {nat_dist.get('unknown', 0):5,} ({nat_dist.get('unknown', 0)/len(results)*100:.1f}%)")
-
-    # 清理进度文件
-    if PROGRESS_FILE.exists():
-        PROGRESS_FILE.unlink()
+        try:
+            from collections import Counter
+            counts = Counter(r.get('_prefilter_nationality', 'unknown') for r in all_results)
+            log(f"国籍预估分布: {dict(counts)}")
+        except:
+            pass
 
     log("=" * 70)
     log(f"✅ Phase 4.5 完成！")
     log(f"📁 输出文件: {OUTPUT_FILE}")
     log(f"⏰ 完成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,148 @@
+#!/bin/bash
+# Phase 4 第二轮社交网络扩展 - 简化版
+# 创建时间: 2026-03-08
+# 最小共现: 2次
+
+set -e
+
+echo "=========================================="
+echo "🚀 Phase 4 第二轮社交网络扩展"
+echo "⏰ $(date '+%Y-%m-%d %H:%M:%S')"
+echo "=========================================="
+
+cd /Users/lillianliao/notion_rag/github_mining
+
+# Step 1: 准备种子用户（从Phase 4的11,976人中筛选）
+echo ""
+echo "▶️  Step 1: 准备种子用户..."
+python3 << 'EOF'
+import json
+
+# 加载 Phase 4 数据
+with open('scripts/github_mining/phase4_final_enriched.json') as f:
+    users = json.load(f)
+
+print(f'Phase 4 总用户: {len(users)} 人')
+
+# 筛选高质量种子
+seeds = []
+for u in users:
+    # 质量条件
+    if (u.get('ai_score', 0) >= 2.0 and
+        u.get('public_repos', 0) >= 5 and
+        u.get('followers', 0) >= 50):
+
+        # 排除组织账号
+        username = u.get('username', '').lower()
+        name = u.get('name', '').lower()
+        org_keywords = ['org', 'team', 'bot', 'ci', 'build', 'release']
+
+        if not any(kw in username or kw in name for kw in org_keywords):
+            seeds.append(u.get('username'))
+
+print(f'筛选出种子用户: {len(seeds)} 人')
+
+# 保存种子列表
+with open('phase4_round2_seeds_0308.json', 'w') as f:
+    json.dump(seeds, f, ensure_ascii=False, indent=2)
+
+print('✅ 已保存: phase4_round2_seeds_0308.json')
+EOF
+
+# Step 2: Phase 4 社交网络扩展（最小共现=2）
+echo ""
+echo "▶️  Step 2: Phase 4 社交网络扩展（最小共现>=2）..."
+echo "   预计耗时: 1.5-2小时"
+echo "   预计API调用: ~23,000次"
+echo ""
+
+python3 scripts/run_phase5_expansion.py \
+  --seeds-file phase4_round2_seeds_0308.json \
+  --min-cooccurrence 2 \
+  --max-seeds 300
+
+# 重命名输出
+if [ -f "scripts/github_mining/phase5_expanded.json" ]; then
+    mv scripts/github_mining/phase5_expanded.json github_mining/phase4_round2_expanded_0308.json
+    echo "✅ 输出: github_mining/phase4_round2_expanded_0308.json"
+else
+    echo "❌ Phase 5 输出文件未找到"
+    exit 1
+fi
+
+# 统计
+EXPANDED_COUNT=$(python3 -c "import json; print(len(json.load(open('github_mining/phase4_round2_expanded_0308.json'))))")
+echo "   发现新用户: $EXPANDED_COUNT 人"
+
+# Step 3: Phase 3 深度富化
+echo ""
+echo "▶️  Step 3: Phase 3 深度富化（获取repos详情）..."
+echo "   预计耗时: 30-45分钟"
+echo ""
+
+cd scripts
+python3 github_network_miner.py \
+  --phase3 \
+  --input ../github_mining/phase4_round2_expanded_0308.json \
+  --output ../github_mining/phase3_round2_0308.json
+cd ..
+
+PHASE3_COUNT=$(python3 -c "import json; print(len(json.load(open('github_mining/phase3_round2_0308.json'))))")
+echo "✅ Phase 3 完成: $PHASE3_COUNT 人"
+
+# Step 4: Phase 3.5 网站爬取
+echo ""
+echo "▶️  Step 4: Phase 3.5 网站爬取..."
+echo "   预计耗时: 1-2小时"
+echo ""
+
+cd scripts
+python3 github_network_miner.py \
+  --phase3.5 \
+  --input ../github_mining/phase3_round2_0308.json \
+  --output ../github_mining/phase35_round2_0308.json
+cd ..
+
+PHASE35_COUNT=$(python3 -c "import json; data=json.load(open('github_mining/phase35_round2_0308.json')); print(len([u for u in data if u.get('homepage_scraped')]))")
+echo "✅ Phase 3.5 完成: $PHASE35_COUNT 人有个人网站"
+
+# Step 5: Phase 4.5 LLM富化（包含结构化标签提取）
+echo ""
+echo "▶️  Step 5: Phase 4.5 LLM富化（一次性完成所有提取）..."
+echo "   包含: 工作履历、教育背景、技能、谈话点、结构化标签"
+echo "   预计耗时: 1-2小时"
+echo ""
+
+python3 scripts/run_phase4_5_llm_enrichment.py \
+  --input github_mining/phase35_round2_0308.json \
+  --output github_mining/phase45_round2_0308.json
+
+PHASE45_COUNT=$(python3 -c "import json; print(len(json.load(open('github_mining/phase45_round2_0308.json'))))")
+echo "✅ Phase 4.5 完成: $PHASE45_COUNT 人"
+
+# Step 6: 导入数据库
+echo ""
+echo "▶️  Step 6: 导入数据库..."
+cd ../personal-ai-headhunter
+python3 import_github_candidates.py \
+  --file ../github_mining/phase45_round2_0308.json
+
+echo ""
+echo "=========================================="
+echo "✅ Phase 4 第二轮扩展完成！"
+echo "=========================================="
+echo ""
+echo "📊 结果汇总:"
+echo "  - 种子用户: 300 人"
+echo "  - 发现新用户: $EXPANDED_COUNT 人"
+echo "  - Phase 3 富化: $PHASE3_COUNT 人"
+echo "  - Phase 3.5 有网站: $PHASE35_COUNT 人"
+echo "  - Phase 4.5 LLM富化: $PHASE45_COUNT 人"
+echo ""
+echo "🎯 下一步:"
+echo "  1. 查看数据库统计:"
+echo "     sqlite3 data/headhunter_dev.db 'SELECT COUNT(*) FROM candidates;'"
+echo ""
+echo "  2. 查看高质量候选人:"
+echo "     sqlite3 data/headhunter_dev.db 'SELECT name, github_url, website_quality_score FROM candidates WHERE website_quality_score >= 80 ORDER BY website_quality_score DESC LIMIT 20;'"
+echo ""

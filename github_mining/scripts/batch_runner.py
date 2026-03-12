@@ -13,7 +13,7 @@ GitHub Mining Batch Runner — 批次管理器 v1.0
 用法:
   # 完整端到端流程（含30人验证）
   python3 batch_runner.py --input phase5_pre_filtered_input.json \\
-    --phases prefilter,phase3,phase3_5,phase4_5,db_import \\
+    --phases prefilter,db_dedup,phase3,phase3_5,phase4_5,db_import,tier_update \\
     --max-users 30 --batch-name "e2e_validation"
 
   # 续传中断批次
@@ -99,47 +99,30 @@ def count_json(path: Path) -> int:
         return 0
 
 
+def safe_backup_if_exists(output_file: Path) -> bool:
+    """
+    写入前自动备份旧文件（防止同一批次内覆盖）
+    返回: True 如果进行了备份，False 如果文件不存在
+    """
+    if not output_file.exists():
+        return False
+
+    # 生成备份文件名（带时间戳）
+    timestamp = datetime.now().strftime('%H%M%S')
+    backup_name = f"{output_file.stem}_backup_{timestamp}{output_file.suffix}"
+    backup_path = output_file.parent / backup_name
+
+    # 复制到备份
+    shutil.copy2(output_file, backup_path)
+    size_mb = backup_path.stat().st_size / 1024 / 1024
+    log(f"  💾 自动备份旧文件: {backup_name} ({size_mb:.1f} MB)")
+
+    return True
+
+
 # ============================================================
 # Pre-filter 逻辑
 # ============================================================
-
-def detect_nationality_simple(name: str, company: str, bio: str) -> str:
-    """
-    简单国籍检测（不依赖外部模块）
-    返回: 'chinese' / 'foreign' / 'unknown'
-    只排除确定外国人，unknown 保留
-    """
-    # 先尝试导入精确版本
-    try:
-        sys.path.insert(0, str(PERSONAL_AI_DIR / "scripts"))
-        from add_nationality_tags import detect_nationality
-        nationality, _ = detect_nationality(name, company)
-        return nationality
-    except ImportError:
-        pass
-
-    # 兜底：简单规则
-    text = f"{name} {company} {bio}".lower()
-
-    # 明确中文标记
-    chinese_markers = ["中国", "北京", "上海", "深圳", "杭州", "成都", "阿里", "腾讯",
-                       "字节", "百度", "华为", "清华", "北大", "复旦", "浙大"]
-    for m in chinese_markers:
-        if m in text:
-            return "chinese"
-
-    # 明确外国标记（只排除确定外国人）
-    # 使用姓名规则：如果全是 ASCII 且公司不含中国关键词，才判为 foreign
-    if name and all(ord(c) < 128 for c in name):
-        company_lower = company.lower()
-        cn_companies = ["alibaba", "tencent", "bytedance", "baidu", "huawei",
-                        "didi", "meituan", "jd.com", "netease", "xiaomi",
-                        "deepseek", "minimax", "moonshot", "zhipu", "01.ai"]
-        if not any(c in company_lower for c in cn_companies):
-            return "foreign"
-
-    return "unknown"
-
 
 def run_prefilter(input_file: Path, output_file: Path, max_users: int = None) -> dict:
     """
@@ -184,8 +167,17 @@ def run_prefilter(input_file: Path, output_file: Path, max_users: int = None) ->
             stats["org_filtered"] += 1
             continue
 
-        # 2. 国籍过滤
-        nationality = detect_nationality_simple(name, company, bio)
+        # 2. 国籍过滤 (使用官方更精准的 detect_nationality 引擎)
+        import sys
+        if str(PERSONAL_AI_DIR / "scripts" / "extract") not in sys.path:
+            sys.path.append(str(PERSONAL_AI_DIR / "scripts" / "extract"))
+        try:
+            from add_nationality_tags import detect_nationality
+            nationality, _ = detect_nationality(name, company)
+        except ImportError:
+            # Fallback for unexpected missing file
+            nationality = "unknown"
+
         c["_prefilter_nationality"] = nationality  # 保存供分析
 
         if nationality == "foreign":
@@ -292,6 +284,9 @@ def run_phase3(input_file: Path, output_file: Path, batch_dir: Path,
     log("📊 Phase 3: GitHub repos 深度富化")
     log(f"{'='*60}")
 
+    # ✅ 自动备份旧文件（防止同一批次内覆盖）
+    safe_backup_if_exists(output_file)
+
     log_file = batch_dir / "logs" / f"phase3_{datetime.now().strftime('%H%M%S')}.log"
 
     cmd = [
@@ -332,6 +327,9 @@ def run_phase3_5(input_file: Path, output_file: Path, batch_dir: Path,
     log("🌐 Phase 3.5: 个人主页爬取")
     log(f"{'='*60}")
 
+    # ✅ 自动备份旧文件（防止同一批次内覆盖）
+    safe_backup_if_exists(output_file)
+
     log_file = batch_dir / "logs" / f"phase3_5_{datetime.now().strftime('%H%M%S')}.log"
 
     cmd = [
@@ -370,6 +368,9 @@ def run_phase4_5(input_file: Path, output_file: Path, batch_dir: Path) -> dict:
     log(f"\n{'='*60}")
     log("🤖 Phase 4.5: LLM 深度富化")
     log(f"{'='*60}")
+
+    # ✅ 自动备份旧文件（防止同一批次内覆盖）
+    safe_backup_if_exists(output_file)
 
     log_file = batch_dir / "logs" / f"phase4_5_{datetime.now().strftime('%H%M%S')}.log"
 
@@ -443,6 +444,51 @@ def run_db_import(input_file: Path, batch_dir: Path, dry_run: bool = False) -> d
             nums = re.findall(r'\d+', line)
             if nums:
                 stats["skipped"] = int(nums[0])
+
+    return stats
+
+
+def run_tier_update(batch_dir: Path) -> dict:
+    """运行评级更新（S/A+/A/B+/B/C）"""
+    log(f"\n{'='*60}")
+    log("🏆 Tier Update: 自动评级")
+    log(f"{'='*60}")
+
+    log_file = batch_dir / "logs" / f"tier_update_{datetime.now().strftime('%H%M%S')}.log"
+    tier_script = PERSONAL_AI_DIR / "batch_update_tiers.py"
+
+    if not tier_script.exists():
+        log(f"  ❌ 找不到评级脚本: {tier_script}")
+        return {"error": f"script not found: {tier_script}"}
+
+    cmd = [sys.executable, str(tier_script)]
+
+    log(f"  🚀 启动评级更新，日志: {log_file.name}")
+    with open(log_file, "w") as lf:
+        proc = subprocess.run(
+            cmd, cwd=str(PERSONAL_AI_DIR),
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True
+        )
+        lf.write(proc.stdout)
+
+    for line in proc.stdout.splitlines()[-20:]:
+        print(f"    {line}")
+
+    # 解析评级统计
+    stats = {"exit_code": proc.returncode}
+    for line in proc.stdout.splitlines():
+        if "总计" in line or "Total" in line:
+            import re
+            nums = re.findall(r'\d+', line)
+            if nums:
+                stats["total_updated"] = int(nums[0])
+        # 解析各级别数量
+        for tier in ["S", "A+", "A", "B+", "B", "C", "D"]:
+            if f"{tier}:" in line or f"{tier}级" in line:
+                import re
+                nums = re.findall(r'\d+', line)
+                if nums:
+                    stats[f"tier_{tier}"] = int(nums[0])
 
     return stats
 
@@ -560,6 +606,12 @@ def run_batch(input_file: Path, phases: list, batch_dir: Path,
             meta["lineage"] = lineage
             save_meta(batch_dir, meta)
 
+        elif phase == "tier_update":
+            stats = run_tier_update(batch_dir)
+            lineage["tier_update"] = stats
+            meta["lineage"] = lineage
+            save_meta(batch_dir, meta)
+
         else:
             log(f"⚠️  未知阶段: {phase}，跳过")
 
@@ -624,10 +676,18 @@ def generate_rich_summary(batch_dir: Path):
     candidates = load_json(final_json)
     if not candidates:
         return
-        
+    tier_stats = meta.get("lineage", {}).get("tier_update", {})
     stats = {
         "total_candidates": len(candidates),
-        "tiers_approx": {"S": 0, "A+": 0, "A": 0, "B+": 0, "B": 0, "C": 0, "D": 0},
+        "tiers_actual": {
+            "S": tier_stats.get("tier_S", 0),
+            "A+": tier_stats.get("tier_A+", 0),
+            "A": tier_stats.get("tier_A", 0),
+            "B+": tier_stats.get("tier_B+", 0),
+            "B": tier_stats.get("tier_B", 0),
+            "C": tier_stats.get("tier_C", 0),
+            "D": tier_stats.get("tier_D", 0)
+        },
         "contact_info": {"has_email": 0, "has_linkedin": 0, "has_website": 0},
         "enrichment_quality": {
             "has_llm_work_history": 0,
@@ -638,7 +698,6 @@ def generate_rich_summary(batch_dir: Path):
             "low_quality_site_lt_50": 0
         }
     }
-    
     for c in candidates:
         # 联系方式
         if c.get("email") or c.get("extra_emails") or c.get("all_emails"):
@@ -670,29 +729,13 @@ def generate_rich_summary(batch_dir: Path):
             else:
                 stats["enrichment_quality"]["low_quality_site_lt_50"] += 1
                 
-        # Tiers approx (根据 reference 文档简化预估)
-        score = c.get("final_score_v2") or c.get("final_score") or 0
-        followers = c.get("followers", 0)
-        stars = c.get("total_stars", 0)
-        
-        if followers > 5000 or stars > 5000:
-            stats["tiers_approx"]["S"] += 1
-        elif score >= 80:
-            stats["tiers_approx"]["A"] += 1
-        elif score >= 60:
-            stats["tiers_approx"]["B+"] += 1
-        elif followers > 500 or score >= 40:
-            stats["tiers_approx"]["B"] += 1
-        else:
-            stats["tiers_approx"]["C"] += 1
-            
     meta["rich_summary"] = stats
     save_meta(batch_dir, meta)
     
     log(f"\n{'='*60}")
     log(f"📈 批次业务终态统计 (Rich Summary)")
     log(f"   总人数: {stats['total_candidates']}")
-    log(f"   [预估评级] S:{stats['tiers_approx']['S']}  A:{stats['tiers_approx']['A']}  B+:{stats['tiers_approx']['B+']}  B:{stats['tiers_approx']['B']}  C:{stats['tiers_approx']['C']}")
+    log(f"   [真实入库评级] S:{stats['tiers_actual']['S']}  A+:{stats['tiers_actual']['A+']}  A:{stats['tiers_actual']['A']}  B+:{stats['tiers_actual']['B+']}  B:{stats['tiers_actual']['B']}  C:{stats['tiers_actual']['C']}")
     log(f"   [联系方式] 邮箱:{stats['contact_info']['has_email']}  LinkedIn:{stats['contact_info']['has_linkedin']}  个人网站:{stats['contact_info']['has_website']}")
     log(f"   [AI富化] 高质量简历:{stats['enrichment_quality']['high_quality_site_ge_70']}  含破冰话题:{stats['enrichment_quality']['has_talking_points']}")
     log(f"{'='*60}")
@@ -705,7 +748,7 @@ def generate_rich_summary(batch_dir: Path):
 def main():
     parser = argparse.ArgumentParser(description="GitHub Mining Batch Runner")
     parser.add_argument("--input", help="原始 input 文件路径")
-    parser.add_argument("--phases", default="prefilter,phase3,phase3_5,phase4_5,db_import",
+    parser.add_argument("--phases", default="prefilter,db_dedup,phase3,phase3_5,phase4_5,db_import,tier_update",
                         help="要运行的阶段（逗号分隔）")
     parser.add_argument("--batch-name", help="批次名称")
     parser.add_argument("--max-users", type=int, help="测试用：限制处理人数（Pre-filter 后截取）")

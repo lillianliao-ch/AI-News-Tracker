@@ -1,0 +1,1314 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns="http://www.w3.org/TR/REC-html40"><head><meta http-equiv=Content-Type  content="text/html; charset=gb2312" ><meta name=ProgId  content=Word.Document ><meta name=Generator  content="Microsoft Word 14" ><meta name=Originator  content="Microsoft Word 14" ><title></title><!--[if gte mso 9]><xml><o:DocumentProperties><o:Author>jianfei.qu</o:Author><o:LastAuthor>Hansel</o:LastAuthor><o:Revision>1</o:Revision><o:Pages>2</o:Pages><o:Characters>1624</o:Characters><o:Lines>13</o:Lines><o:Paragraphs>3</o:Paragraphs></o:DocumentProperties><o:CustomDocumentProperties><o:KSOProductBuildVer dt:dt="string" >2052-11.1.0.8806</o:KSOProductBuildVer></o:CustomDocumentProperties></xml><![endif]--><!--[if gte mso 9]><xml><o:OfficeDocumentSettings></o:OfficeDocumentSettings></xml><![endif]--><!--[if gte mso 9]><xml><w:WordDocument><w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel><w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery><w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery><w:DocumentKind>DocumentNotSpecified</w:DocumentKind><w:DrawingGridVerticalSpacing>7.8 磅</w:DrawingGridVerticalSpacing><w:PunctuationKerning></w:PunctuationKerning><w:View>Print</w:View><w:Compatibility><w:AlignTablesRowByRow/><w:BalanceSingleByteDoubleByteWidth/><w:DoNotExpandShiftReturn/><w:UseFELayout/></w:Compatibility><w:Zoom>0</w:Zoom></w:WordDocument></xml><![endif]--><!--[if gte mso 9]><xml><w:LatentStyles DefLockedState="false"  DefUnhideWhenUsed="true"  DefSemiHidden="true"  DefQFormat="false"  DefPriority="99"  LatentStyleCount="260" >
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Normal" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 9" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 9" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  Name="toc 9" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Normal Indent" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="footnote text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="annotation text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="header" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="footer" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index heading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="35"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="caption" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="table of figures" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="envelope address" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="envelope return" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="footnote reference" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="annotation reference" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="line number" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="page number" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="endnote reference" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="endnote text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="table of authorities" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="macro" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="toa heading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="10"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Title" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Closing" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Signature" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Default Paragraph Font" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text Indent" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Message Header" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="11"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Subtitle" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Salutation" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Date" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text First Indent" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text First Indent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Note Heading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text Indent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text Indent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Block Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Hyperlink" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="FollowedHyperlink" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="22"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Strong" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="20"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Emphasis" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Document Map" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Plain Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="E-mail Signature" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Normal (Web)" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Acronym" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Address" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Cite" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Code" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Definition" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Keyboard" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Preformatted" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Sample" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Typewriter" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Variable" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Normal Table" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="annotation subject" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="No List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="1 / a / i" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="1 / 1.1 / 1.1.1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Article / Section" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Simple 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Simple 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Simple 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Classic 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Classic 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Classic 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Classic 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Colorful 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Colorful 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Colorful 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table 3D effects 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table 3D effects 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table 3D effects 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Contemporary" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Elegant" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Professional" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Subtle 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Subtle 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Web 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Web 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Web 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Balloon Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Theme" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Placeholder Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="No Spacing" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Shading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Grid" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Dark List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Shading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Grid" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Shading Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light List Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Grid Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 1 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 2 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 1 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Paragraph" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Quote" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Intense Quote" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 2 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 1 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 2 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 3 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Dark List Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Shading Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful List Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Grid Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Shading Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light List Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Grid Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 1 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 2 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 1 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 2 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 1 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 2 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 3 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Dark List Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Shading Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful List Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Grid Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Shading Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light List Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Grid Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 1 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 2 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 1 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 2 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 1 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 2 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 3 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Dark List Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Shading Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful List Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Grid Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Shading Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light List Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Grid Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 1 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 2 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 1 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 2 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 1 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 2 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 3 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Dark List Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Shading Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful List Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Grid Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Shading Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light List Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Grid Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 1 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 2 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 1 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 2 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 1 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 2 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 3 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Dark List Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Shading Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful List Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Grid Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Shading Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light List Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Light Grid Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 1 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Shading 2 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 1 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium List 2 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 1 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 2 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Medium Grid 3 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Dark List Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Shading Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful List Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Colorful Grid Accent 6" ></w:LsdException>
+</w:LatentStyles></xml><![endif]--><style>
+@font-face{
+font-family:"Times New Roman";
+}
+
+@font-face{
+font-family:"宋体";
+}
+
+@font-face{
+font-family:"Calibri";
+}
+
+@font-face{
+font-family:"Wingdings";
+}
+
+@font-face{
+font-family:"Arial";
+}
+
+@font-face{
+font-family:"宋 体";
+}
+
+@font-face{
+font-family:"Heiti SC Light";
+}
+
+@font-face{
+font-family:"STSong-Light";
+}
+
+p.MsoNormal{
+mso-style-name:正文;
+mso-style-noshow:yes;
+mso-style-parent:"";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+mso-layout-grid-align:none;
+text-autospace:none;
+mso-pagination:none;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:12.0000pt;
+}
+
+h1{
+mso-style-name:"标题 1";
+mso-style-next:正文;
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+mso-layout-grid-align:none;
+text-autospace:none;
+mso-pagination:none;
+text-align:left;
+mso-outline-level:1;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:16.0000pt;
+}
+
+h2{
+mso-style-name:"标题 2";
+mso-style-next:正文;
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+mso-layout-grid-align:none;
+text-autospace:none;
+mso-pagination:none;
+text-align:left;
+mso-outline-level:2;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-style:italic;
+font-size:14.0000pt;
+}
+
+h3{
+mso-style-name:"标题 3";
+mso-style-next:正文;
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+mso-layout-grid-align:none;
+text-autospace:none;
+mso-pagination:none;
+text-align:left;
+mso-outline-level:3;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:13.0000pt;
+}
+
+h4{
+mso-style-name:"标题 4";
+mso-style-next:正文;
+margin-top:5.0000pt;
+margin-right:0.0000pt;
+margin-bottom:5.0000pt;
+margin-left:0.0000pt;
+mso-margin-top-alt:auto;
+mso-margin-bottom-alt:auto;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:宋体;
+font-weight:bold;
+font-size:12.0000pt;
+}
+
+h5{
+mso-style-name:"标题 5";
+mso-style-next:正文;
+margin-top:5.0000pt;
+margin-right:0.0000pt;
+margin-bottom:5.0000pt;
+margin-left:0.0000pt;
+mso-margin-top-alt:auto;
+mso-margin-bottom-alt:auto;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:宋体;
+font-weight:bold;
+font-size:10.0000pt;
+}
+
+h6{
+mso-style-name:"标题 6";
+mso-style-next:正文;
+margin-top:5.0000pt;
+margin-right:0.0000pt;
+margin-bottom:5.0000pt;
+margin-left:0.0000pt;
+mso-margin-top-alt:auto;
+mso-margin-bottom-alt:auto;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:宋体;
+font-weight:bold;
+font-size:7.5000pt;
+}
+
+span.10{
+font-family:Calibri;
+}
+
+span.15{
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+span.16{
+font-family:Calibri;
+color:rgb(128,0,128);
+text-decoration:underline;
+text-underline:single;
+}
+
+span.17{
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+span.18{
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+span.19{
+font-family:Calibri;
+color:rgb(0,0,255);
+text-decoration:underline;
+text-underline:single;
+}
+
+span.20{
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+span.21{
+font-family:'Heiti SC Light';
+mso-hansi-font-family:Arial;
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+p.MsoHeader{
+mso-style-name:页眉;
+mso-style-noshow:yes;
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+border-bottom:1.0000pt solid windowtext;
+mso-border-bottom-alt:0.7500pt solid windowtext;
+padding:0pt 0pt 1pt 0pt ;
+mso-layout-grid-align:none;
+layout-grid-mode:char;
+text-autospace:none;
+mso-pagination:none;
+text-align:center;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+p.MsoFooter{
+mso-style-name:页脚;
+mso-style-noshow:yes;
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+mso-layout-grid-align:none;
+layout-grid-mode:char;
+text-autospace:none;
+mso-pagination:none;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+p.MsoAcetate{
+mso-style-name:批注框文本;
+mso-style-noshow:yes;
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+mso-layout-grid-align:none;
+text-autospace:none;
+mso-pagination:none;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+p.25{
+mso-style-name:"页 眉 字 符 1";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:宋体;
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+p.26{
+mso-style-name:"标题 3字符1";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:宋体;
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:16.0000pt;
+}
+
+p.27{
+mso-style-name:"标题 2字符11";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:Calibri;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:16.0000pt;
+}
+
+p.28{
+mso-style-name:"标题 3字符";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:16.0000pt;
+}
+
+p.29{
+mso-style-name:"标题 1字符";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:22.0000pt;
+mso-font-kerning:22.0000pt;
+}
+
+p.pre{
+mso-style-name:"HTML 预设格式";
+mso-style-noshow:yes;
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:宋体;
+font-size:12.0000pt;
+}
+
+p.p{
+mso-style-name:"普通\(网站\)";
+mso-style-noshow:yes;
+margin-top:5.0000pt;
+margin-right:0.0000pt;
+margin-bottom:5.0000pt;
+margin-left:0.0000pt;
+mso-margin-top-alt:auto;
+mso-margin-bottom-alt:auto;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:宋体;
+font-size:12.0000pt;
+}
+
+p.32{
+mso-style-name:"页 脚 字 符 1";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:宋体;
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+p.33{
+mso-style-name:"标题 1字符11";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:宋体;
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:22.0000pt;
+mso-font-kerning:22.0000pt;
+}
+
+p.34{
+mso-style-name:"正 文";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+mso-layout-grid-align:none;
+text-autospace:none;
+mso-pagination:none;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:12.0000pt;
+}
+
+p.35{
+mso-style-name:"标题 2字符";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:Calibri;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:16.0000pt;
+}
+
+p.36{
+mso-style-name:"批 注 框 文 本 字 符 1";
+margin-top:0.0000pt;
+margin-right:0.0000pt;
+margin-bottom:0.0000pt;
+margin-left:0.0000pt;
+text-autospace:ideograph-numeric;
+mso-pagination:widow-orphan;
+text-align:left;
+font-family:Arial;
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+}
+
+span.msoIns{
+mso-style-type:export-only;
+mso-style-name:"";
+text-decoration:underline;
+text-underline:single;
+color:blue;
+}
+
+span.msoDel{
+mso-style-type:export-only;
+mso-style-name:"";
+text-decoration:line-through;
+color:red;
+}
+
+table.MsoNormalTable{
+mso-style-name:普通表格;
+mso-style-parent:"";
+mso-style-noshow:yes;
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:'Times New Roman';
+font-size:10.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.45{
+mso-style-name:"普 通 表 格";
+mso-style-noshow:yes;
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:Calibri;
+font-size:10.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.44{
+mso-style-name:"批 注 框 文 本 字 符 11";
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:Arial;
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:9.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.43{
+mso-style-name:"标题 3字符11";
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:Arial;
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:16.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.42{
+mso-style-name:"标题 1字符1";
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:22.0000pt;
+mso-font-kerning:22.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.41{
+mso-style-name:"标题 3字符2";
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:Arial;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:16.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.40{
+mso-style-name:"标题 2字符12";
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:Calibri;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:16.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.39{
+mso-style-name:"页 眉 字 符 11";
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:Arial;
+color:rgb(0,0,0);
+font-size:9.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.38{
+mso-style-name:"标题 2字符1";
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:Calibri;
+mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:16.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.37{
+mso-style-name:"标题 1字符12";
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:Arial;
+color:rgb(0,0,0);
+font-weight:bold;
+font-size:22.0000pt;
+mso-font-kerning:22.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+@page{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;}@page Section0{
+margin-top:36.0000pt;
+margin-bottom:36.0000pt;
+margin-left:36.0000pt;
+margin-right:36.0000pt;
+size:595.7500pt 842.0000pt;
+}
+div.Section0{page:Section0;}</style></head><body style="tab-interval:36pt;text-justify-trim:punctuation;" ><!--StartFragment--><div class="Section0" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><table class=45  border=1  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-border-left-alt:2.2500pt solid rgb(0,0,0);mso-border-top-alt:2.2500pt solid rgb(0,0,0);
+mso-border-right-alt:2.2500pt solid rgb(0,0,0);mso-border-bottom-alt:2.2500pt solid rgb(0,0,0);mso-border-insideh:2.2500pt solid rgb(0,0,0);
+mso-border-insidev:2.2500pt solid rgb(0,0,0);mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=697  valign=top  style="width:523.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+mso-border-left-alt:none;border-right:none;mso-border-right-alt:none;
+border-top:none;mso-border-top-alt:none;border-bottom:2.2500pt solid rgb(64,64,64);
+mso-border-bottom-alt:2.2500pt solid rgb(64,64,64);background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;color:rgb(64,64,64);
+font-weight:bold;font-size:15.0000pt;mso-font-kerning:1.0000pt;" >个人信息</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;color:rgb(64,64,64);font-size:15.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;color:rgb(64,64,64);
+font-size:15.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=0  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=93  valign=top  style="width:69.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >姓名：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >杨俊琰</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=93  valign=top  style="width:69.8000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >性别：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" >女</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=155  valign=top  rowspan=6  style="width:116.3000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:16.0000pt;" ><span style="font-family:'Times New Roman';mso-fareast-font-family:'宋 体';font-size:12.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td></tr><tr><td width=93  valign=top  style="width:69.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >手机号码：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >15381091270</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=93  valign=top  style="width:69.8000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >年龄：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >25 </span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=93  valign=top  style="width:69.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >电子邮件：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >yang_juny@163.com </span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=93  valign=top  style="width:69.8000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >教育程度：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >本科</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=93  valign=top  style="width:69.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >工作年限：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >3 年以上</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=93  valign=top  style="width:69.8000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >所在地：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >杭州</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=93  valign=top  style="width:69.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td><td width=93  valign=top  style="width:69.8000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td></tr><tr><td width=93  valign=top  style="width:69.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;line-height:15.0000pt;" ><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td><td width=93  valign=top  style="width:69.8000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  align=right  style="text-align:right;" ><span style="font-family:'Times New Roman';mso-fareast-font-family:'宋 体';font-size:12.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td><td width=178  valign=top  style="width:133.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="font-family:'Times New Roman';mso-fareast-font-family:'宋 体';font-size:12.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:'Times New Roman';mso-fareast-font-family:'宋 体';
+font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=1  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-border-left-alt:2.2500pt solid rgb(0,0,0);mso-border-top-alt:2.2500pt solid rgb(0,0,0);
+mso-border-right-alt:2.2500pt solid rgb(0,0,0);mso-border-bottom-alt:2.2500pt solid rgb(0,0,0);mso-border-insideh:2.2500pt solid rgb(0,0,0);
+mso-border-insidev:2.2500pt solid rgb(0,0,0);mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=697  valign=top  style="width:523.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+mso-border-left-alt:none;border-right:none;mso-border-right-alt:none;
+border-top:none;mso-border-top-alt:none;border-bottom:2.2500pt solid rgb(64,64,64);
+mso-border-bottom-alt:2.2500pt solid rgb(64,64,64);background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;color:rgb(64,64,64);
+font-weight:bold;font-size:15.0000pt;mso-font-kerning:1.0000pt;" >工作经历</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;color:rgb(64,64,64);font-size:15.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;color:rgb(64,64,64);
+font-size:15.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=0  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=97  valign=top  style="width:72.9000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(234,234,234);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:STSong-Light;font-weight:bold;
+font-size:10.0000pt;mso-font-kerning:1.0000pt;" >2016.03-至今</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=600  valign=top  colspan=4  style="width:450.4500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(234,234,234);" ><p class=MsoNormal  style="margin-left:5.0000pt;line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-weight:bold;
+font-size:10.0000pt;mso-font-kerning:1.0000pt;" >网易<font face="STSong-Light" >(</font><font face="宋体" >杭州</font><font face="STSong-Light" >)</font><font face="宋体" >网络有限公司</font></span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=97  valign=top  rowspan=4  style="width:72.9000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="font-family:'Times New Roman';mso-fareast-font-family:'宋 体';font-size:12.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td><td width=600  valign=top  colspan=4  style="width:450.4500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >公司性质： 未填写</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >| </span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >公司规模：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >未填写 | </span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >公司行业：互联网<font face="STSong-Light" >/</font><font face="宋体" >移动互联网</font><font face="STSong-Light" >/</font><font face="宋体" >电子商务</font></span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >公司描述：未填写 </span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=599  valign=top  colspan=2  style="width:449.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(234,234,234);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-weight:bold;
+font-size:10.0000pt;mso-font-kerning:1.0000pt;" >高级商品类目运营</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=0  valign=center  style="width:0.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;" ><p class=MsoNormal ><span style="font-family:Calibri;mso-fareast-font-family:'宋 体';color:rgb(0,0,0);
+font-size:10.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p></td><td width=0  valign=center  style="width:0.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;" ><p class=MsoNormal ><span style="font-family:Calibri;mso-fareast-font-family:'宋 体';color:rgb(0,0,0);
+font-size:10.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p></td></tr><tr><td width=600  valign=top  colspan=4  style="width:450.4500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >下属人数：<font face="STSong-Light" >3 | </font><font face="宋体" >所在地区：杭州 </font><font face="STSong-Light" >| </font><font face="宋体" >所在部门：未填写 </font></span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=150  valign=top  style="width:112.8500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="text-align:left;line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >工作职责和业绩：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=450  valign=top  colspan=3  style="width:337.6000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >一、于严选早期加入团队，从<font face="STSong-Light" >0-1</font><font face="宋体" >开拓了袜子</font><font face="STSong-Light" >/</font><font face="宋体" >围巾件套</font><font face="STSong-Light" >/</font><font face="宋体" >珠宝首饰等二级类目</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >- <font face="宋体" >根据市场数据，用户数据以及行业趋势，制定商品选品企划。 </font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >- <font face="宋体" >按主站运营计划，制定月度</font><font face="STSong-Light" >/</font><font face="宋体" >季度</font><font face="STSong-Light" >/</font><font face="宋体" >年度商品上新计划。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >- <font face="宋体" >与</font><font face="STSong-Light" >BD</font><font face="宋体" >团队共同进行供应商寻源和筛选优化工作，并管理商品成本。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >- GMV<font face="宋体" >与毛利额的不断提升。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >二、担任配饰配件和居家内衣类目负责人</span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >- <font face="宋体" >带领团队统筹共计</font><font face="STSong-Light" >13</font><font face="宋体" >个子类目，</font><font face="STSong-Light" >300</font><font face="宋体" >余个商品的规划选品。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >- <font face="宋体" >类目供应商管理。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >- <font face="宋体" >进行销售毛利目标管理。提升类目毛利额，类目全站占比，商品好评率指标。降低平均退货率以及总体成本。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >三、类目运营</span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >17-18<font face="宋体" >年，同时负责整个服饰</font><font face="STSong-Light" >BU</font><font face="宋体" >的类目运营工作。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >- <font face="宋体" >优化运营方向，以及进行策略改善。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >- <font face="宋体" >打造与安排类目活动，促进活动转化。</font></span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=1  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-border-left-alt:2.2500pt solid rgb(0,0,0);mso-border-top-alt:2.2500pt solid rgb(0,0,0);
+mso-border-right-alt:2.2500pt solid rgb(0,0,0);mso-border-bottom-alt:2.2500pt solid rgb(0,0,0);mso-border-insideh:2.2500pt solid rgb(0,0,0);
+mso-border-insidev:2.2500pt solid rgb(0,0,0);mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=697  valign=top  style="width:523.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+mso-border-left-alt:none;border-right:none;mso-border-right-alt:none;
+border-top:none;mso-border-top-alt:none;border-bottom:2.2500pt solid rgb(64,64,64);
+mso-border-bottom-alt:2.2500pt solid rgb(64,64,64);background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;color:rgb(64,64,64);
+font-weight:bold;font-size:15.0000pt;mso-font-kerning:1.0000pt;" >项目经历</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;color:rgb(64,64,64);font-size:15.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;color:rgb(64,64,64);
+font-size:15.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=0  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=117  valign=top  style="width:88.4500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(234,234,234);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:STSong-Light;font-weight:bold;
+font-size:10.0000pt;mso-font-kerning:1.0000pt;" >2018.03 &#8211;至今</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=579  valign=top  colspan=2  style="width:434.9000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(234,234,234);" ><p class=MsoNormal  style="margin-left:5.0000pt;line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-weight:bold;
+font-size:10.0000pt;mso-font-kerning:1.0000pt;" >服饰整体形象和系列企划</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=117  valign=top  rowspan=5  style="width:88.4500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="font-family:'Times New Roman';mso-fareast-font-family:'宋 体';font-size:12.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></td><td width=74  valign=top  style="width:55.7000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="margin-right:-2.3000pt;mso-para-margin-right:-0.1900gd;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >项目职务：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=505  valign=top  style="width:379.2000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >未填写</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=74  valign=top  style="width:55.7000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="margin-right:-2.3000pt;mso-para-margin-right:-0.1900gd;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >所在公司：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=505  valign=top  style="width:379.2000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >未填写</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=74  valign=top  style="width:55.7000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="margin-right:-9.3500pt;mso-para-margin-right:-0.7800gd;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >项目简介：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=505  valign=top  style="width:379.2000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >对服饰全品类制定形象提升方案，和各组沟通进行商品主题系列企划，并跟进落地工作。 </span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=74  valign=top  style="width:55.7000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="margin-right:-9.3500pt;mso-para-margin-right:-0.7800gd;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >项目职责：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=505  valign=top  style="width:379.2000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >1. <font face="宋体" >与商品 </font><font face="STSong-Light" >/ </font><font face="宋体" >设计中心同步对接，根据商品企划，进行系列和色彩的归纳；</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >2. <font face="宋体" >做类目呈现 </font><font face="STSong-Light" >/ </font><font face="宋体" >季度开发色彩制定 </font><font face="STSong-Light" >/ </font><font face="宋体" >各月主推系列确认 </font><font face="STSong-Light" >/ </font><font face="宋体" >价格段梳理；</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >3. <font face="宋体" >根据做出的系列计划，做每月推广运营方案，落地活动；</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >4. <font face="宋体" >跟进数据产出，进行复盘，不断优化模式。 </font></span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=74  valign=top  style="width:55.7000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="margin-right:-9.3500pt;mso-para-margin-right:-0.7800gd;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >项目业绩：</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=505  valign=top  style="width:379.2000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >1. <font face="宋体" >组织完成了</font><font face="STSong-Light" >19SS</font><font face="宋体" >，</font><font face="STSong-Light" >19AW</font><font face="宋体" >的服饰主题</font><font face="STSong-Light" >/</font><font face="宋体" >色彩</font><font face="STSong-Light" >/</font><font face="宋体" >系列</font><font face="STSong-Light" >/</font><font face="宋体" >推广计划。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >2. 19SS<font face="宋体" >期间，</font><font face="STSong-Light" >1-6</font><font face="宋体" >月每月主题活动按预期落地达成。</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >3. <font face="宋体" >服饰整体呈现改变，并辅以画册等圈粉方法，受到广泛认可。 </font></span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=1  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-border-left-alt:2.2500pt solid rgb(0,0,0);mso-border-top-alt:2.2500pt solid rgb(0,0,0);
+mso-border-right-alt:2.2500pt solid rgb(0,0,0);mso-border-bottom-alt:2.2500pt solid rgb(0,0,0);mso-border-insideh:2.2500pt solid rgb(0,0,0);
+mso-border-insidev:2.2500pt solid rgb(0,0,0);mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=697  valign=top  style="width:523.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+mso-border-left-alt:none;border-right:none;mso-border-right-alt:none;
+border-top:none;mso-border-top-alt:none;border-bottom:2.2500pt solid rgb(64,64,64);
+mso-border-bottom-alt:2.2500pt solid rgb(64,64,64);background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;color:rgb(64,64,64);
+font-weight:bold;font-size:15.0000pt;mso-font-kerning:1.0000pt;" >教育经历</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;color:rgb(64,64,64);font-size:15.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;color:rgb(64,64,64);
+font-size:15.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=0  cellspacing=0  style="border-collapse:collapse;width:100.0000%;margin-left:5.4000pt;
+border:none;mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=698  valign=top  colspan=3  style="width:523.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:STSong-Light;mso-fareast-font-family:宋体;
+font-weight:bold;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><a name="OLE_LINK1" >四川外国语大学</a></span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><b><span style="mso-spacerun:'yes';font-family:STSong-Light;font-weight:bold;
+font-size:10.0000pt;mso-font-kerning:1.0000pt;" >（ 2012.09-2016.07 ）</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=314  valign=top  style="width:235.7000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" >专业：汉语言文学（涉外）</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p></td><td width=244  valign=top  style="width:183.3000pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" >学历：本科</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p></td><td width=139  valign=top  style="width:104.7500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" >是否统招：是</span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=1  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-border-left-alt:2.2500pt solid rgb(0,0,0);mso-border-top-alt:2.2500pt solid rgb(0,0,0);
+mso-border-right-alt:2.2500pt solid rgb(0,0,0);mso-border-bottom-alt:2.2500pt solid rgb(0,0,0);mso-border-insideh:2.2500pt solid rgb(0,0,0);
+mso-border-insidev:2.2500pt solid rgb(0,0,0);mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=697  valign=top  style="width:523.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+mso-border-left-alt:none;border-right:none;mso-border-right-alt:none;
+border-top:none;mso-border-top-alt:none;border-bottom:2.2500pt solid rgb(64,64,64);
+mso-border-bottom-alt:2.2500pt solid rgb(64,64,64);background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;color:rgb(64,64,64);
+font-weight:bold;font-size:15.0000pt;mso-font-kerning:1.0000pt;" >语言能力</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;color:rgb(64,64,64);font-size:15.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;color:rgb(64,64,64);
+font-size:15.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=0  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=697  valign=top  style="width:523.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><b><span style="mso-spacerun:'yes';font-family:STSong-Light;mso-fareast-font-family:宋体;
+font-weight:bold;font-size:10.0000pt;mso-font-kerning:1.0000pt;" >英语<font face="STSong-Light" >(</font><font face="宋体" >读写精通、</font><font face="STSong-Light" >IELTS)</font><font face="宋体" >、普通话</font><font face="STSong-Light" >(</font><font face="宋体" >二级甲等</font><font face="STSong-Light" >)</font></span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=1  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-border-left-alt:2.2500pt solid rgb(0,0,0);mso-border-top-alt:2.2500pt solid rgb(0,0,0);
+mso-border-right-alt:2.2500pt solid rgb(0,0,0);mso-border-bottom-alt:2.2500pt solid rgb(0,0,0);mso-border-insideh:2.2500pt solid rgb(0,0,0);
+mso-border-insidev:2.2500pt solid rgb(0,0,0);mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=697  valign=top  style="width:523.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+mso-border-left-alt:none;border-right:none;mso-border-right-alt:none;
+border-top:none;mso-border-top-alt:none;border-bottom:2.2500pt solid rgb(64,64,64);
+mso-border-bottom-alt:2.2500pt solid rgb(64,64,64);background:rgb(255,255,255);" ><p class=MsoNormal  style="line-height:15.0000pt;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;color:rgb(64,64,64);
+font-weight:bold;font-size:15.0000pt;mso-font-kerning:1.0000pt;" >自我评价</span></b><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;color:rgb(64,64,64);font-size:15.0000pt;
+mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;color:rgb(64,64,64);
+font-size:15.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><table class=45  border=0  cellspacing=0  style="border-collapse:collapse;width:523.3500pt;margin-left:5.4000pt;
+border:none;mso-padding-alt:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;" ><tr><td width=697  valign=top  style="width:523.3500pt;padding:0.0000pt 0.0000pt 0.0000pt 0.0000pt ;border-left:none;
+border-right:none;border-top:none;border-bottom:none;
+background:rgb(255,255,255);" ><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >1.<font face="宋体" >丰富的服饰</font><font face="STSong-Light" >/</font><font face="宋体" >配饰品类行业供应链资源；</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >2.<font face="宋体" >对消费市场有良好的判断力，能够根据市场和用户的数据，以及品牌</font><font face="STSong-Light" >/</font><font face="宋体" >平台定位，来进行品类商品企划以及运营等工作；</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >3. <font face="宋体" >有一定商务</font><font face="STSong-Light" >BD</font><font face="宋体" >能力；</font></span><span style="font-family:宋体;mso-ascii-font-family:STSong-Light;mso-hansi-font-family:STSong-Light;
+mso-bidi-font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><br></span><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:STSong-Light;
+mso-hansi-font-family:STSong-Light;mso-bidi-font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:1.0000pt;" >4. <font face="宋体" >优秀的团队协作以及沟通能力。</font></span><span style="font-family:Arial;mso-fareast-font-family:'宋 体';mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="font-family:STSong-Light;font-size:10.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:STSong-Light;font-size:10.0000pt;
+mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=MsoNormal ><span style="mso-spacerun:'yes';font-family:Arial;mso-fareast-font-family:'宋 体';
+mso-bidi-font-family:'Times New Roman';color:rgb(0,0,0);font-size:12.0000pt;
+mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p></div><!--EndFragment--></body></html>

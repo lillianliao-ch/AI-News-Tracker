@@ -9,6 +9,7 @@ import sys
 import json
 import time
 import random
+import shutil
 from pathlib import Path
 from datetime import datetime
 from collections import Counter
@@ -19,8 +20,9 @@ sys.path.insert(0, str(script_dir))
 
 try:
     from github_network_miner import GitHubNetworkMiner, API_BASE, BASE_DIR
+    from batch_manager import get_batch_manager
 except ImportError:
-    print("❌ 无法导入 GitHubNetworkMiner")
+    print("❌ 无法导入依赖模块")
     sys.exit(1)
 
 
@@ -40,26 +42,91 @@ def load_seeds(seeds_file):
     return seed_usernames
 
 
-def check_existing(seeds_file):
-    """检查是否已有Phase 5输出"""
-    output_file = Path(seeds_file).parent / "phase5_expanded.json"
+
+
+def load_progress(progress_file):
+    """加载进度并返回起始位置"""
+    if not progress_file.exists():
+        return None
+
+    try:
+        with open(progress_file) as f:
+            progress = json.load(f)
+
+        print(f"� 发现进度文件:")
+        print(f"  已处理: {progress.get('processed_seeds', 0)} 个种子")
+        print(f"  新用户: {progress.get('total_new_users', 0)} 人")
+        print(f"  时间戳: {progress.get('timestamp', '')}")
+        print(f"  从进度继续...")
+
+        return progress.get('processed_seeds', 0)
+    except Exception as e:
+        print(f"⚠️  无法读取进度文件: {e}")
+        return None
+
+def generate_output_filename(seeds_file):
+    """生成带时间戳和种子标识的输出文件名，防止覆盖"""
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    seeds_name = Path(seeds_file).stem  # 获取种子文件名（不含路径和扩展名）
+    # 例如: phase5_expanded_phase4_round2_seeds_0308_20260309_163059.json
+    output_filename = f"phase5_expanded_{seeds_name}_{timestamp}.json"
+    return BASE_DIR / output_filename, timestamp, seeds_name
+
+
+def archive_existing_data(output_file, timestamp, seeds_name):
+    """归档已存在的输出文件到 archive 目录"""
+    if not output_file.exists():
+        return None
+
+    # 创建归档目录
+    archive_base = BASE_DIR / "archive" / "phase5_expanded" / datetime.now().strftime('%Y%m')
+    archive_base.mkdir(parents=True, exist_ok=True)
+
+    # 归档文件名
+    archive_name = f"phase5_expanded_{seeds_name}_{timestamp}.json"
+    archive_path = archive_base / archive_name
+
+    try:
+        # 复制到归档目录
+        shutil.copy2(output_file, archive_path)
+        user_count = len(json.load(open(output_file)))
+        print(f"📦 已归档旧数据: {archive_path.name}")
+        print(f"   用户数: {user_count:,}")
+        print(f"   位置: {archive_path}")
+        return archive_path
+    except Exception as e:
+        print(f"⚠️  归档失败: {e}")
+        return None
+
+
+def backup_existing_file(output_file):
+    """备份已存在的输出文件（本地备份）"""
     if output_file.exists():
-        print(f"⚠️  Phase 5输出已存在: {output_file}")
-        with open(output_file) as f:
-            existing = json.load(f)
-        print(f"   已发现: {len(existing)} 人")
-
-        choice = input("是否覆盖？(y/N): ").strip().lower()
-        if choice != 'y':
-            return None
-
-    return output_file
+        backup_name = f"{output_file.stem}_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}{output_file.suffix}"
+        backup_path = output_file.parent / backup_name
+        try:
+            shutil.copy(output_file, backup_path)
+            print(f"💾 本地备份: {backup_path}")
+            return True
+        except Exception as e:
+            print(f"⚠️  备份失败: {e}")
+            return False
+    return False
 
 
 def expand_network(seeds_file, min_cooccurrence=3, max_seeds=None):
     """执行社交网络扩展"""
 
     print_header("Phase 5: 社交网络扩展（第2轮）")
+
+    # 生成唯一的输出文件名（防止覆盖）
+    output_file, timestamp, seeds_name = generate_output_filename(seeds_file)
+    print(f"📁 输出文件: {output_file.name}")
+
+    # 归档已存在的数据（防止覆盖）
+    old_output = BASE_DIR / "phase5_expanded.json"
+    archive_existing_data(old_output, timestamp, seeds_name)
+    backup_existing_file(old_output)
 
     # 加载种子
     seed_usernames = load_seeds(seeds_file)
@@ -101,7 +168,19 @@ def expand_network(seeds_file, min_cooccurrence=3, max_seeds=None):
     cooccurrence = Counter()
     new_user_info = {}
 
-    for i, seed in enumerate(seeds):
+    # 断点恢复
+    progress_file = BASE_DIR / "phase5_progress.json"
+    start_index = 0
+    if progress_file.exists():
+        try:
+            with open(progress_file) as f:
+                progress = json.load(f)
+            start_index = progress.get('processed_seeds', 0)
+            print(f"🔄 从进度恢复: 已处理 {start_index} 个种子")
+        except Exception as e:
+            print(f"⚠️  无法读取进度文件: {e}")
+
+    for i, seed in enumerate(seeds[start_index:], start=start_index):
         username = seed["username"]
         if i % 20 == 0:
             print(f"  进度: {i}/{len(seeds)} | 已发现: {len(cooccurrence)} | 高共现: {len([v for v in cooccurrence.values() if v >= min_cooccurrence])}")
@@ -195,8 +274,8 @@ def expand_network(seeds_file, min_cooccurrence=3, max_seeds=None):
 
             # 排除机构账户
             org_keywords = ['org', 'organization', 'team', 'bot', 'ci', 'build', 'release']
-            username_lower = user.get("username", "").lower()
-            name_lower = user.get("name", "").lower()
+            username_lower = (user.get("username") or "").lower()
+            name_lower = (user.get("name") or "").lower()
             is_org = any(kw in username_lower or kw in name_lower for kw in org_keywords)
 
             if not is_org and ai_score >= 0.3:  # AI相关性阈值
@@ -204,16 +283,22 @@ def expand_network(seeds_file, min_cooccurrence=3, max_seeds=None):
 
         time.sleep(0.3 + random.uniform(0, 0.2))
         if (i + 1) % 100 == 0:
-            output_file = BASE_DIR / "phase5_expanded.json"
             miner._save_json(expanded, output_file)
-            print(f"  💾 已保存: {output_file}")
+            print(f"  💾 已保存: {output_file.name}")
 
     # 排序
     expanded.sort(key=lambda x: (x["cooccurrence"], x["ai_score"]), reverse=True)
 
     # 保存最终结果
-    output_file = BASE_DIR / "phase5_expanded.json"
     miner._save_json(expanded, output_file)
+
+    # 创建归档副本（永久保存）
+    archive_path = archive_existing_data(output_file, timestamp, seeds_name)
+
+    # 同时保存一个不带时间戳的副本（方便后续脚本使用）
+    latest_link = BASE_DIR / "phase5_expanded_latest.json"
+    miner._save_json(expanded, latest_link)
+    print(f"📎 最新副本: {latest_link.name}")
 
     print(f"\n✅ Phase 5 扩展完成！")
     print(f"   输出文件: {output_file}")
@@ -278,10 +363,10 @@ def main():
     if expanded:
         print_header("✅ Phase 5 完成")
         print(f"\n📋 下一步:")
-        print(f"  1. 查看结果: cat github_mining/phase5_expanded.json")
-        print(f"  2. Phase 3富化: cd scripts && python3 github_network_miner.py --phase3 --input github_mining/phase5_expanded.json")
-        print(f"  3. Phase 4.5富化: python3 run_phase4_5_llm_enrichment.py --input github_mining/phase3_from_phase5.json")
-        print(f"  4. 合并到主库: python3 merge_phase5_to_main.py")
+        print(f"  1. 查看结果: cat github_mining/phase5_expanded_latest.json")
+        print(f"  2. Phase 3富化: cd scripts && python3 github_network_miner.py --phase3 --input github_mining/phase5_expanded_latest.json")
+        print(f"  3. Phase 4.5富化: python3 run_phase4_5_llm_enrichment.py --input phase3_from_phase5.json")
+        print(f"  4. 备份保留: {output_file.name}")
 
 
 if __name__ == "__main__":

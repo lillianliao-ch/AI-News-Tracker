@@ -34,6 +34,61 @@ app.add_middleware(
 # 全局依赖
 ai_service = AIService()
 
+# ==================== 任务状态追踪 ====================
+# 用于存储异步生成任务的状态和结果
+generation_tasks = {}
+
+async def _generate_content_task(news_id: str, versions: List[str], task_id: str):
+    """后台生成任务"""
+    db = SessionLocal()
+    try:
+        # 查询资讯
+        news = db.query(News).filter(News.news_id == news_id).first()
+        if not news:
+            generation_tasks[task_id] = {
+                "status": "failed",
+                "error": "资讯不存在",
+                "results": []
+            }
+            return
+
+        # 生成各个版本
+        results = []
+        for version in versions:
+            try:
+                news_dict = {
+                    'title': news.title,
+                    'summary': news.summary,
+                    'content': news.content,
+                    'url': news.url
+                }
+                generated = await ai_service.generate_xiaohongshu_content(news_dict, version)
+                results.append({
+                    "version": version,
+                    "title": generated['title'],
+                    "content": generated['content'],
+                    "hashtags": generated['hashtags'],
+                    "image_prompt": generated.get('image_prompt', '')
+                })
+            except Exception as e:
+                results.append({
+                    "version": version,
+                    "error": str(e)
+                })
+
+        generation_tasks[task_id] = {
+            "status": "completed",
+            "results": results
+        }
+    except Exception as e:
+        generation_tasks[task_id] = {
+            "status": "failed",
+            "error": str(e),
+            "results": []
+        }
+    finally:
+        db.close()
+
 # ==================== 分类映射配置 ====================
 # 将前端显示的分类映射到数据库中的实际分类
 CATEGORY_MAP = {
@@ -224,10 +279,61 @@ async def get_news_detail(news_id: str):
         db.close()
 
 
-@app.post("/api/generate", response_model=List[GenerateResponse])
-async def generate_content(request: GenerateRequest):
+@app.post("/api/generate")
+async def generate_content(request: GenerateRequest, background_tasks: BackgroundTasks):
     """
-    生成小红书内容
+    生成小红书内容（异步）
+
+    参数:
+    - news_id: 资讯ID
+    - versions: 需要生成的版本列表 ['A', 'B', 'C']
+
+    返回: task_id，用于查询生成状态
+    """
+    db = SessionLocal()
+    try:
+        # 查询资讯是否存在
+        news = db.query(News).filter(News.news_id == request.news_id).first()
+        if not news:
+            raise HTTPException(status_code=404, detail="资讯不存在")
+
+        # 生成任务 ID
+        task_id = f"{request.news_id}_{datetime.now().timestamp()}"
+
+        # 初始化任务状态
+        generation_tasks[task_id] = {
+            "status": "processing",
+            "news_id": request.news_id,
+            "versions": request.versions,
+            "results": []
+        }
+
+        # 启动后台任务
+        background_tasks.add_task(_generate_content_task, request.news_id, request.versions, task_id)
+
+        return {
+            "task_id": task_id,
+            "status": "processing",
+            "message": "生成任务已启动，请使用 task_id 查询状态"
+        }
+    finally:
+        db.close()
+
+
+@app.get("/api/generate/status/{task_id}")
+async def get_generation_status(task_id: str):
+    """查询生成任务状态"""
+    if task_id not in generation_tasks:
+        raise HTTPException(status_code=404, detail="任务不存在")
+
+    return generation_tasks[task_id]
+
+
+# 保持原有的同步 API 用于兼容
+@app.post("/api/generate/sync", response_model=List[GenerateResponse])
+async def generate_content_sync(request: GenerateRequest):
+    """
+    生成小红书内容（同步，保持兼容）
 
     参数:
     - news_id: 资讯ID

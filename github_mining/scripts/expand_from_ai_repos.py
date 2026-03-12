@@ -181,20 +181,20 @@ def enrich_users(miner, users):
 
         # 基础信息
         user_data = {
-            "username": profile.get("login", ""),
-            "name": profile.get("name", ""),
-            "github_url": profile.get("html_url", ""),
-            "email": profile.get("email", ""),
-            "bio": profile.get("bio", ""),
-            "company": profile.get("company", ""),
-            "location": profile.get("location", ""),
-            "blog": profile.get("blog", ""),
-            "public_repos": profile.get("public_repos", 0),
-            "followers": profile.get("followers", 0),
-            "following": profile.get("following", 0),
-            "created_at": profile.get("created_at", ""),
-            "updated_at": profile.get("updated_at", ""),
-            "source": user.get("source", ""),
+            "username": profile.get("login", "") or "",
+            "name": profile.get("name") or "",
+            "github_url": profile.get("html_url", "") or "",
+            "email": profile.get("email") or "",
+            "bio": profile.get("bio") or "",
+            "company": profile.get("company") or "",
+            "location": profile.get("location") or "",
+            "blog": profile.get("blog") or "",
+            "public_repos": profile.get("public_repos", 0) or 0,
+            "followers": profile.get("followers", 0) or 0,
+            "following": profile.get("following", 0) or 0,
+            "created_at": profile.get("created_at", "") or "",
+            "updated_at": profile.get("updated_at", "") or "",
+            "source": user.get("source", "") or "",
         }
 
         # 添加contributor特定信息
