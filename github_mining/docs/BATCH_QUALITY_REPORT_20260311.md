@@ -155,3 +155,32 @@ Ope | ❌ |
 | 30 | 阿凯爱玩机器人 | C | 成都深感机器人 | [mushroom-x](https://github.com/mushroom-x) | ⬜ 待验证 |
 
 > 核实要点: 姓名、公司、职位是否与 GitHub/个人网站一致；评级是否合理
+
+## 六、发现的管道问题与改进计划
+
+### 已修复 ✅
+
+| 问题 | 影响 | 修复文件 |
+|------|------|---------|
+| Phase 3.5 resume 覆盖数据 | LinkedIn 丢失 ~3,591 人 | `github_network_miner.py` |
+| Phase 4.5 不提取社交链接 | 二次爬取时丢失 LinkedIn/Twitter | `run_phase4_5_llm_enrichment.py` |
+| 导入脚本 `twitter_username` 未转 URL | 2,061 Twitter 丢失 | `import_github_candidates.py` |
+| 评级不检查 `current_company` 作为学校 | 985/C9 学生被评 C (~700人) | `batch_update_tiers.py` |
+| 公司关键词缺失 | Netflix/Databricks/HF 等不在列表 | `company_tier_config.json` |
+
+### 管道改进计划
+
+#### 1. Email 清洗（导入时自动处理）
+- **问题**: 43 个异常邮箱（URL 编码、`[at]` 格式、注入攻击）在导入后才发现
+- **方案**: `import_github_candidates.py` 新增 `clean_email()` 函数，导入时自动清洗
+- **覆盖**: URL decode、`[at]`/`[dot]` 替换、注入过滤、空格剥离、格式校验
+
+#### 2. 组织账号检测增强
+- **问题**: 18 个组织/项目账号通过 Phase 2 筛选，被评为 S/A
+- **方案**: `import_github_candidates.py` 增强 `is_organization()` 启发式
+- **新增检测**: 名字后缀 (`-ai`, `-lab`, `.md`)、Bio 模式、无 followers+高 stars
+
+#### 3. 公司关键词自动发现
+- **问题**: 每批都有新公司不在列表里，导致大量 C 级误判
+- **方案**: `batch_update_tiers.py` 结尾自动统计 C 级高频公司，输出建议列表
+
