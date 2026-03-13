@@ -55,32 +55,65 @@
 4. ✅ 加 `ThreadPoolExecutor(max_workers=5)` → **22人/min** (5.3x 提速)
 
 ### 最终结果
-- **新增候选人**: 待 Phase 4.5 完成 (预计 ~11:30 3/12)
-- **评级分布**: 待完成
-- **高质量候选人**: 待完成
+- **新增候选人**: 9,315 人
+- **评级分布**: S:108 | A:136 | B+:240 | B:3,264 | C:5,462 | D:105
+- **优质候选人 (S/A/B+)**: **484 人 (5.2%)**
+- **跳过**: 936 已存在 + 246 组织账号
+- **Phase 4.5 LLM 富化**: 6,419 目标 → 4,941 成功 (77%) / 1,478 失败
+- **完成时间**: 2026-03-12 13:05 (db_import + tier_update)
+
+### 数据质量报告
+
+| 字段 | 人数 | 覆盖率 | 备注 |
+|------|------|--------|------|
+| 邮箱 | 5,521 | 52.6% | 正常 |
+| LinkedIn | 467 | **4.4%** | ⚠️ 异常低（旧批次 24.4%） |
+| Twitter/X | 2,340 | 22.3% | GitHub API 原生字段 |
+| Google Scholar | 433 | 4.1% | |
+| LLM提取-工作履历 | 2,516 | 24.0% | Phase 4.5 新增 |
+| LLM提取-教育背景 | 1,949 | 18.6% | Phase 4.5 新增 |
+| LLM提取-技能列表 | 4,319 | 41.1% | Phase 4.5 新增 |
 
 ### 效果评估
 - ✅ **优点**:
   - Pre-filter 有效过滤外国人（12,748 人，节省大量 API）
   - DB Dedup 有效去重（4,975 人）
+  - Phase 4.5 并发优化效果显著（22人/min，6,419人约 4.5h 完成）
   - 批次隔离系统工作正常
 
 - ⚠️ **问题**:
+  - 🐛 **LinkedIn 覆盖率异常低 (4.4% vs 旧批次 24.4%)** — **根因: Phase 3.5 断点续传 Bug**。batch_runner 中断后重启时，Phase 3.5 用 INPUT 数据覆盖了 OUTPUT 数据，导致第一轮成功爬取的 3,591 个用户的 LinkedIn/Scholar 等社交链接全部丢失。只剩第二轮的 1,282 个结果。详见「Phase 3.5 Resume Bug 报告」。
   - Phase 4.5 进度追踪 Bug（已修复）
   - filter_with_websites 漏掉 5,137 人（已修复）
-  - check_progress.sh 不识别 Phase 4.5 进度（待修复）
-  - Phase 3 日志文件为空（subprocess.run 等待完成后才写入）
+  - check_progress.sh 不识别 Phase 4.5 进度（已修复）
   - batch_runner.py 父进程在 kill Phase 4.5 后状态不一致（需手动执行后续阶段）
 
 - 💡 **优化点**:
   - ✅ 已加并发处理
-  - 🔧 check_progress.sh 需要适配 Phase 4.5 进度文件
+  - ✅ check_progress.sh 已适配 Phase 4.5 进度文件
+  - ✅ Phase 3.5 resume Bug 已修复（合并 OUTPUT 数据回 INPUT）
+  - ✅ Phase 4.5 `scrape_website_content` 已增加社交链接提取
+  - ✅ 数据补救脚本 `remediate_social_links.py` 已运行
   - 🔧 batch_runner.py 需要支持从指定阶段恢复
+
+### Phase 3.5 Resume Bug 报告 🐛
+
+**现象**: Phase 3.5 断点续传时，第一轮成功爬取的 3,591 个网站的社交链接数据全部丢失
+
+**根因**: `phase3_5_enrich` 的 resume 逻辑从 INPUT 文件重新加载数据作为基础，仅用 OUTPUT 文件获取已完成用户名列表（用于跳过），但未将 OUTPUT 中已富化的数据合并回 INPUT 用户。保存时用 INPUT 空白数据覆盖了 OUTPUT。
+
+**对比**: Phase 3 的 resume 逻辑正确（`enriched = existing`），Phase 3.5 缺少这一步。
+
+**影响**: 约 3,591 个网站的 LinkedIn/Scholar/Twitter 链接丢失，导致 LinkedIn 覆盖率从预期 ~15% 降到 4.4%
+
+**修复 (2026-03-12 22:05)**:
+1. ✅ `github_network_miner.py` Phase 3.5 resume 逻辑修复 — 现在合并 OUTPUT enriched 数据回 INPUT
+2. ✅ `run_phase4_5_llm_enrichment.py` `scrape_website_content` 增加社交链接提取
+3. ✅ `remediate_social_links.py` 补救脚本运行，重新爬取 12,212 个有网站但无 LinkedIn 的候选人
 
 ### 策略建议
 - ✅ 下次继续使用 Pre-filter（效果显著）
 - ✅ 下次继续使用 DB Dedup（避免重复）
-- 🔧 Phase 4.5 完成后需手动执行 db_import + tier_update
 - 🔧 下次跑批前确认 progress 文件干净（或直接删除旧 progress）
 
 ---
@@ -202,10 +235,11 @@
 3. ❌ **filter_with_websites 只看 homepage_scraped**（会漏掉 80% 有 blog URL 的人）
 
 ### ⚠️ 已踩的坑 (必看)
-1. 🐛 **进度文件 (progress.json) 里的 ID 必须与 target 匹配** — 如果 input 数据变了但 progress 没清，断点续传会完全失效（completed IDs 匹配不上新 target，每次重启都从头跑）
+1. 🐛 **进度文件 (progress.json) 里的 ID 必须与 target 匹配** — 如果 input 数据变了但 progress 没清，断点续传会完全失效
 2. 🐛 **blog URL ≠ homepage_scraped** — 有 blog 字段不代表已爬取。必须区分「有 URL」和「URL 已成功爬取」
-3. 🐛 **check_progress.sh 显示的百分比可能误导** — 它读的是 Phase 3 计数，不反映 Phase 4.5 进度
+3. 🐛 **check_progress.sh 显示的百分比可能误导** — 分母必须用对应阶段的实际目标数，而不是 pre_filter 总数
 4. 🐛 **kill 子进程后父进程 (batch_runner.py) 状态不一致** — 需要手动执行后续阶段
+5. 🐛 **LinkedIn 覆盖率低于预期** — Phase 3.5 网站爬取范围太窄，导致 LinkedIn URL 提取从 24.4% 降到 4.4%。Phase 4.5 LLM 提取未回写 `linkedin_url` 字段
 
 ### 待验证的策略
 1. ⏳ **实时日志输出**（待实现）
@@ -258,14 +292,17 @@
 
 ## 🔜 待跟进事项 (2026-03-12)
 
-### 紧急 (Phase 4.5 完成后立即执行)
-- [ ] Phase 4.5 完成后，手动执行 `db_import` 和 `tier_update`（因 batch_runner 父进程已终止）
-- [ ] 更新本文档的「最终结果」部分（新增人数、评级分布）
+### ✅ 已完成
+- [x] Phase 4.5 完成后，手动执行 `db_import` 和 `tier_update`
+- [x] 更新本文档的「最终结果」部分
+- [x] 更新 `check_progress.sh` — 正确读取 Phase 4.5 进度 + 修复分母
+- [x] 修复 Phase 3.5 resume 数据覆盖 Bug（`github_network_miner.py`）
+- [x] Phase 4.5 `scrape_website_content` 增加社交链接提取
+- [x] 运行 `remediate_social_links.py` 补救丢失的 LinkedIn 数据
 
 ### 近期优化
-- [ ] 更新 `check_progress.sh` — 让它正确读取 Phase 4.5 的 `phase4_5_progress.json`
-- [ ] `batch_runner.py` 增加「从指定阶段恢复」功能（避免 kill 子进程后无法续跑）
-- [ ] 每次跑批前自动清理或验证 progress 文件（防止 stale data bug 再现）
+- [ ] `batch_runner.py` 增加「从指定阶段恢复」功能
+- [ ] 每次跑批前自动清理或验证 progress 文件
 
 ### 长期改进
 - [ ] 实时日志输出（替代 subprocess.run 的 capture_output）

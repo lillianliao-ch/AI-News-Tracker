@@ -1121,8 +1121,20 @@ class GitHubNetworkMiner:
         already_done = set()
         if resume and output_path.exists():
             existing = self._load_json(output_path)
-            already_done = {u['username'] for u in existing if u.get('homepage_scraped')}
-            print(f"📂 断点续传: 已处理 {len(already_done)} 人")
+            # ✅ 构建已处理用户的完整数据映射（不仅仅是 username）
+            existing_map = {u['username']: u for u in existing if u.get('homepage_scraped')}
+            already_done = set(existing_map.keys())
+            # ✅ 把已处理用户的 enriched 数据合并回 INPUT 用户
+            # 防止 resume 时用 INPUT 空白数据覆盖 OUTPUT 的 enriched 数据
+            merged_count = 0
+            for user in users_to_process:
+                if user['username'] in existing_map:
+                    enriched_data = existing_map[user['username']]
+                    for key, val in enriched_data.items():
+                        if val and key not in ('username',):  # 保留所有非空值
+                            user[key] = val
+                    merged_count += 1
+            print(f"📂 断点续传: 已处理 {len(already_done)} 人，已合并 {merged_count} 人的数据")
 
         # 统计
         has_blog = sum(1 for u in users_to_process if u.get('blog'))

@@ -279,15 +279,16 @@ def filter_with_websites(candidates: List[Dict]) -> List[Dict]:
     return filtered
 
 
-def scrape_website_content(url: str) -> Optional[str]:
+def scrape_website_content(url: str) -> dict:
     """
-    爬取网站内容
+    爬取网站内容，同时提取社交链接
 
     Args:
         url: 网站 URL
 
     Returns:
-        网站文本内容，失败返回 None
+        dict with keys: text (网站文本), social_links (提取的社交链接)
+        失败返回 None
     """
     try:
         # 规范化 URL
@@ -314,22 +315,42 @@ def scrape_website_content(url: str) -> Optional[str]:
         resp.encoding = resp.apparent_encoding or 'utf-8'
 
         if resp.status_code == 200:
-            # 提取文本内容
             soup = BeautifulSoup(resp.text, 'html.parser')
-            # 移除 script/style 标签
+
+            # === 提取社交链接（从 HTML <a href>，与 Phase 3.5 保持一致）===
+            social_links = {}
+            all_links = [a.get('href', '') for a in soup.find_all('a', href=True)]
+
+            linkedin = [l for l in all_links if 'linkedin.com/in/' in l]
+            if linkedin:
+                social_links['linkedin_url'] = linkedin[0]
+
+            twitter = [l for l in all_links if 'twitter.com/' in l or 'x.com/' in l]
+            if twitter:
+                social_links['twitter_url'] = twitter[0]
+
+            scholar = [l for l in all_links if 'scholar.google' in l]
+            if scholar:
+                social_links['scholar_url'] = scholar[0]
+
+            zhihu = [l for l in all_links if 'zhihu.com/people/' in l]
+            if zhihu:
+                social_links['zhihu_url'] = zhihu[0]
+
+            # === 提取文本内容 ===
             for tag in soup(['script', 'style', 'nav', 'footer']):
                 tag.decompose()
             text_content = soup.get_text(separator='\n', strip=True)
 
             # 过滤太短的内容（可能是空页面或登录页）
             if len(text_content) < 50:
-                return None
+                return {'text': None, 'social_links': social_links} if social_links else None
 
             # 限制长度
             if len(text_content) > 10000:
                 text_content = text_content[:10000] + '...[truncated]'
 
-            return text_content
+            return {'text': text_content, 'social_links': social_links}
         else:
             return None
 
@@ -368,11 +389,19 @@ def extract_with_llm(candidate: Dict, auth_token: str = None) -> Optional[Dict]:
 
     if not content or len(content) < 100:
         # 重新爬取网站内容
-        content = scrape_website_content(website)
-        if content:
-            log(f"  📥 重新爬取网站内容成功 ({len(content)} 字符)")
-            # 保存到候选数据中（确保不重复爬取）
-            candidate['homepage_text'] = content
+        scrape_result = scrape_website_content(website)
+        if scrape_result:
+            content = scrape_result.get('text', '')
+            # ✅ 回写社交链接到候选数据（与 Phase 3.5 行为一致）
+            for link_key, link_val in scrape_result.get('social_links', {}).items():
+                if link_val and not candidate.get(link_key):
+                    candidate[link_key] = link_val
+            if content:
+                log(f"  📥 重新爬取网站内容成功 ({len(content)} 字符)")
+                candidate['homepage_text'] = content
+            else:
+                log(f"  ⚠️  无法获取网站内容")
+                return None
         else:
             log(f"  ⚠️  无法获取网站内容")
             return None
