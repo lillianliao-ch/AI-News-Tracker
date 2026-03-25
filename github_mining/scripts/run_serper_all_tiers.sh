@@ -2,17 +2,30 @@
 # Serper 全 tier 链式执行脚本
 # 用两个 key 的 5000 credits 覆盖 S/A+/A/B 四个 tier
 # 支持断点续传（缓存文件自动恢复）
+# 支持环境变量覆盖（复用于不同批次）：
+#   INPUT OUTPUT_DIR LOG_DIR KEY1 KEY2 KEY3 KEY4
+#
+# 用法示例（2019-2022 批次）:
+#   INPUT=.../serper_input.json OUTPUT_DIR=.../outputs \
+#   KEY1=xxx KEY2=xxx KEY3=xxx KEY4=xxx \
+#   bash run_serper_all_tiers.sh
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
-INPUT="$SCRIPT_DIR/../data/academic/runs/conference_full_20260311_131547/outputs/all_conf_2025_20260312_133211_full.json"
-OUTPUT_DIR="$SCRIPT_DIR/../data/academic/runs/conference_full_20260311_131547/outputs/"
-LOG_DIR="$SCRIPT_DIR/../data/academic/runs/conference_full_20260311_131547/logs/"
-CACHE="$OUTPUT_DIR/_serper_cache.json"
 
-KEY1="54b047a2bd3fe61b9a060237540bb72d7e96ae4b"
-KEY2="ec66c2ea352436642e0c7470b752d01bb582b982"
+# 路径：环境变量优先，否则用 2025 默认值（向后兼容）
+INPUT="${INPUT:-$SCRIPT_DIR/../data/academic/runs/conference_full_20260311_131547/outputs/all_conf_2025_20260312_133211_full.json}"
+OUTPUT_DIR="${OUTPUT_DIR:-$SCRIPT_DIR/../data/academic/runs/conference_full_20260311_131547/outputs/}"
+LOG_DIR="${LOG_DIR:-$SCRIPT_DIR/../data/academic/runs/conference_full_20260311_131547/logs/}"
+CACHE="${CACHE:-$OUTPUT_DIR/_serper_cache.json}"
+
+# Keys：环境变量优先，否则用原有默认值
+KEY1="${KEY1:-54b047a2bd3fe61b9a060237540bb72d7e96ae4b}"
+KEY2="${KEY2:-ec66c2ea352436642e0c7470b752d01bb582b982}"
+KEY3="${KEY3:-}"  # 第三个 Key（可选，有则并行加速 A tier）
+KEY4="${KEY4:-}"  # 第四个 Key（可选，有则并行加速 A tier）
+
 
 echo "=============================="
 echo "Serper 全 Tier 链式执行"

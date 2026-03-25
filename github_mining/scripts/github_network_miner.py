@@ -1173,7 +1173,7 @@ class GitHubNetworkMiner:
                 skipped += 1
                 continue
 
-            blog = user.get('blog', '')
+            blog = user.get('blog', '') or user.get('homepage', '')  # homepage 作为 fallback（兼容 academic_cooccurrence_miner 旧版输出）
             if not blog:
                 user['homepage_scraped'] = False
                 continue

@@ -170,6 +170,27 @@ def run_prefilter(input_file: Path, output_file: Path, max_users: int = None) ->
     input_count = len(candidates)
     log(f"  输入: {input_count} 人")
 
+    # ── 字段标准化 ──────────────────────────────────────────
+    # 不同数据源可能用不同字段名，在此统一为 pipeline 标准格式
+    # 这是 batch_runner 作为唯一入口的核心价值：保证下游 phase3/3.5/4.5 看到一致的字段
+    FIELD_ALIASES = {
+        "homepage": "blog",         # academic_cooccurrence_miner 用 homepage，标准是 blog
+        "github": "github_url",     # 部分脚本用 github，标准是 github_url
+        "emails": "email",          # 部分脚本用 emails，标准是 email
+    }
+    normalized_count = 0
+    for c in candidates:
+        for alias, standard in FIELD_ALIASES.items():
+            if alias in c and standard not in c:
+                c[standard] = c[alias]
+                normalized_count += 1
+            elif alias in c and not c.get(standard) and c.get(alias):
+                # 标准字段为空但别名有值 → 也补上
+                c[standard] = c[alias]
+                normalized_count += 1
+    if normalized_count > 0:
+        log(f"  🔄 字段标准化: {normalized_count} 次映射 (homepage→blog, github→github_url, emails→email)")
+
     # 机构账户过滤规则
     org_keywords = ["-bot", "-team", "-org", "-official", "-project",
                     "-ci", "-cd", "-action", "-app", "-sdk", "-api"]

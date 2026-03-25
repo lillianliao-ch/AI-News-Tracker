@@ -1,6 +1,70 @@
 # GitHub Mining 批次执行历史
 
-**最后更新**: 2026-03-24
+**最后更新**: 2026-03-25
+
+---
+
+## 🔴 [INCIDENT] 2026-03-24 Academic-GitHub 共现批次 — 数据质量事故
+
+### 事故摘要
+
+| 项目 | 说明 |
+|------|------|
+| **发现时间** | 2026-03-25 08:00 |
+| **影响** | 173 条外国人记录错误入库；4,314 人未入库 |
+| **严重程度** | 中（DB 可修复，无不可逆数据丢失） |
+| **根因** | `run_academic_cooc_pipeline.sh` 未调用 `batch_runner.py`，自行实现了阉割版流程 |
+
+### 问题清单
+
+| # | 缺失内容 | 实际影响 |
+|---|---------|---------|
+| 1 | **prefilter 完全缺失** | 306条入库中有 173 条外国人（56.5%）；4,814人未过滤跑了 Phase 3（浪费 API） |
+| 2 | **Phase 4.5 LLM 富化缺失** | 所有入库记录无工作履历/技能/谈话点字段 |
+| 3 | **Phase 3.5 只跑 Top 500** | 仅 500 人有主页富化，4,314 人未做 |
+| 4 | **入库对象错误** | 只从 Phase 3.5 的 500 人入库，而非 Phase 3 的全量 4,814 人 |
+
+### 数据量化
+
+```
+总共现挖掘: 4,814 人
+prefilter 应过滤:
+  - 机构账号:   5 人
+  - 外国人:  1,381 人
+  → 应保留:  3,428 人（chinese + unknown）
+
+实际入库:      306 人（来自 Top 500，无过滤）
+  - 外国人:    173 人 ← 错误入库
+  - chinese/unknown: 133 人 ← 正确
+未入库:      4,514 人（4,814 - 306 + 6 重复）
+```
+
+### 根因分析
+
+- **直接原因**：设计 `run_academic_cooc_pipeline.sh` 时，没有使用已有的 `batch_runner.py`（7步标准流程），自行写了一个独立的5步 shell 脚本，漏掉了 prefilter / phase4_5，并将 phase3_5 限制在 Top 500
+- **间接原因**：文档（`00-START-HERE.md`）虽然要求读工作流文档，但没有明确规定「入库必须走 `batch_runner.py`」，AI 在设计新 pipeline 时没有意识到需要复用
+
+### 补救行动（2026-03-25）
+
+| 步骤 | 状态 | 说明 |
+|------|------|------|
+| 删除 173 条外国人记录 | ✅ 完成 08:15 | 剩余 133 条均为 chinese/unknown |
+| 启动补救批次（batch_runner）| 🔄 运行中 | 对 4,814 人跑 prefilter→db_dedup→phase3_5→phase4_5→db_import→tier_update |
+| 重构 `run_academic_cooc_pipeline.sh` | ✅ 完成 | Steps 2-8 全部委托给 `batch_runner.py` |
+| 更新约束文档 | ✅ 完成 | `batch_runner.py` 头部加「给 AI 的强制规范」, `00-START-HERE.md` 加 Pipeline 约束章节 |
+| 添加 `ops-checklist.md` workflow | ✅ 完成 | git操作/DB操作/pipeline 三类高危操作前置检查 |
+
+**补救批次**：`scripts/runs/20260325_081555_academic_cooc_remediation_20260325/`
+- prefilter: 4,814 → 3,428（过滤 1,381 外国人 + 5 机构）
+- db_dedup: 3,428 → 3,296（过滤 132 已在库）
+- 预计入库约 1,000-2,000 人新候选人
+
+### 预防改进
+
+1. **`batch_runner.py` 强制规范注释**（第 25-57 行）：代码即文档，永不过时
+2. **`00-START-HERE.md` 约束章节**：明确禁止另写独立 pipeline 替代 batch_runner.py 的步骤
+3. **`run_academic_cooc_pipeline.sh` 重构为薄包装**：结构上不可能绕开 batch_runner.py
+4. **`ops-checklist.md`**：强制前置检查——git仓库确认、DB路径确认、pipeline 标准步骤确认
 
 ---
 

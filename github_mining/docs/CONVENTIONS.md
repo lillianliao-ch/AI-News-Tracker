@@ -5,6 +5,34 @@
 
 ---
 
+## 🚨 零号规则：禁止直接写新脚本
+
+**在写任何新脚本或新文件之前，必须先执行以下检查，缺一不可：**
+
+```
+步骤 1: ls scripts/*.sh scripts/*.py | cat           ← 列出所有现有脚本
+步骤 2: 阅读最相关的脚本（至少读 --help 和头部注释）
+步骤 3: 问自己：能否只改参数/路径/变量直接用现有脚本？
+步骤 4: 如果现有脚本有硬编码路径 → 参数化它，而不是复制一份
+步骤 5: 只有现有脚本结构上无法满足需求时，才允许写新文件
+```
+
+**已验证的可复用脚本清单（优先使用）**：
+
+| 任务 | 脚本 | 关键参数 |
+|------|------|---------|
+| Serper 联系方式提取 | `run_serper_all_tiers.sh` | 修改头部 KEY/INPUT/OUTPUT_DIR |
+| 学术管道（采集→S2→入库）| `academic_pipeline.sh` | `--year --phase --run-dir` |
+| GitHub 网络挖掘批次 | `batch_runner.py` | `--input --phases --batch-name` |
+| 进度监控 | `check_pipeline_status.sh` | 无需改动 |
+| Telegram 通知 | `telegram_notifier.py` `notify()` | 直接 import |
+
+> ❌ **违规示例（已发生）**：  
+> 有 `run_serper_all_tiers.sh` 的情况下，写了 `auto_serper_relay.sh` 和 `run_serper_2019_2022.sh`  
+> 正确做法：直接修改 `run_serper_all_tiers.sh` 的头部变量，或给它加 `$1` 参数支持
+
+---
+
 ## 1. 文件命名规范
 
 ### 规则：所有输出文件必须包含 `{年份}` 和 `{时间戳}`

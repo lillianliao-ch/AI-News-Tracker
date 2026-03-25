@@ -362,7 +362,7 @@ def run_cooccurrence(
                 "name": profile.get("name", ""),
                 "github": profile.get("html_url", f"https://github.com/{username}"),
                 "emails": profile.get("email", ""),           # 注意统一用 emails
-                "homepage": profile.get("blog", ""),          # 统一用 homepage
+                "blog": profile.get("blog", ""),              # ✅ 与 github_network_miner.py 一致，Phase 3.5 依赖此字段名
                 "bio": profile.get("bio", ""),
                 "company": profile.get("company", ""),
                 "location": profile.get("location", ""),

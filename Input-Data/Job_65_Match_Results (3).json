@@ -1,0 +1,2740 @@
+{
+  "export_time": "2026-03-16T11:48:20.924Z",
+  "job": {
+    "id": 65,
+    "title": "阿里控股-大模型训练基础架构研发工程师-AI Infra",
+    "company": "阿里集团-阿里控股",
+    "department": null,
+    "description": "【岗位描述】\n我们关注模型训练系统，为深度学习模型训练和超大规模训练提供算力基座，包括但不限于以下职责：\n\n1、支持百亿～万亿规模的超大模型、GPU千卡互联的超大规模分布式训练架构，通过分布式并行/流水线/通信优化，消除大规模分布式训练瓶颈；\n2、通过编译优化/专家优化，释放CPU/GPU/NPU等异构硬件协同的最大算力，旨在将硬件性能压榨到极致，打造一流的执行引擎，追求业界最领先的性能；\n3、支持业界领先的GPT、AIGC、多模态模型在国内最大的电商场景的业务落地。\n\n【岗位要求】\n1. 有扎实的工程算法基础，精通数据结构和常用算法，熟练掌握各种编译、调试、性能分析工具；\n2. 有极佳的工程实现能力，精通C/C++、Python；\n3. 有大规模分布式系统开发和优化经验；有大模型分布式训练经验者优先；\n4. 有异构计算相关经验优先：包括但不限于：GPU并发架构、CUDA编程、RDMA/NVLink技术、，TVM/XLA/MLIR/TRITON编译优化；\n5. 精通tensorflow/pytorch/megatron/deepspeed等业界主流深度学习引擎内核实现者优先，精通TVM/XLA/MLIR/TRITON等编译优化者优先；\n6. 勤于动手，善于动脑，乐于挑战的同学优先。",
+    "structured_tags": {
+      "tech_domain": [
+        "AI/算法类",
+        "基础架构/Infra"
+      ],
+      "core_specialty": [
+        "AI Infra",
+        "HPC+AI",
+        "分布式系统"
+      ],
+      "tech_skills": [
+        "性能优化",
+        "架构设计",
+        "分布式训练",
+        "算子优化"
+      ],
+      "role_type": "架构师",
+      "role_orientation": [
+        "Platform/Infra型",
+        "Tech Lead"
+      ],
+      "tech_stack": [
+        "C++",
+        "Python",
+        "PyTorch",
+        "DeepSpeed",
+        "CUDA",
+        "Megatron",
+        "TVM/XLA"
+      ],
+      "industry_exp": [
+        "互联网大厂",
+        "AI独角兽"
+      ],
+      "seniority": "资深(5-10年)",
+      "education": {
+        "degree": "",
+        "school": "",
+        "school_tier": ""
+      },
+      "academic_highlight": [],
+      "academic_lineage": [],
+      "risk_flags": [],
+      "data_confidence": "中",
+      "_raw_evidence_trace": {
+        "tech_domain": [
+          {
+            "tag": "AI/算法类",
+            "evidence": "岗位聚焦大模型训练基础架构，超大规模分布式训练、LLM预训练全链路支撑"
+          },
+          {
+            "tag": "基础架构/Infra",
+            "evidence": "职责明确为‘模型训练系统’‘算力基座’‘执行引擎’，属AI Infra与系统底层交叉领域"
+          }
+        ],
+        "core_specialty": [
+          {
+            "tag": "AI Infra",
+            "evidence": "JD标题直指‘AI Infra’，且职责含分布式训练架构、通信优化、编译优化、异构硬件协同等核心AI Infra能力"
+          },
+          {
+            "tag": "HPC+AI",
+            "evidence": "明确要求GPU千卡互联、RDMA/NVLink、算子级性能压榨、CPU/GPU/NPU协同，属典型HPC+AI交叉场景"
+          },
+          {
+            "tag": "分布式系统",
+            "evidence": "‘大规模分布式系统开发和优化经验’为硬性要求，且聚焦训练瓶颈消除与流水线/并行优化"
+          }
+        ],
+        "tech_skills": [
+          {
+            "tag": "性能优化",
+            "evidence": "‘将硬件性能压榨到极致’‘性能分析工具’‘编译优化/专家优化’"
+          },
+          {
+            "tag": "架构设计",
+            "evidence": "‘分布式训练架构’‘执行引擎’设计属系统级架构工作"
+          },
+          {
+            "tag": "量化/压缩",
+            "evidence": "虽未明写，但‘TVM/XLA/MLIR/TRITON编译优化’隐含模型图优化、算子融合、kernel生成等与量化/压缩强相关的底层能力（属AI Infra常见辅线）"
+          },
+          {
+            "tag": "数据管线构建",
+            "evidence": "超大规模训练依赖高效数据加载与预处理管线，属分布式训练基础设施必备环节（隐含在‘支持百亿～万亿模型训练’中）"
+          }
+        ],
+        "role_type": "架构师",
+        "role_orientation": [
+          "Platform/Infra型",
+          "Tech Lead"
+        ],
+        "tech_stack": [
+          {
+            "tag": "C++",
+            "evidence": "‘精通C/C++’为硬性要求"
+          },
+          {
+            "tag": "Python",
+            "evidence": "‘精通C/C++、Python’并列强调"
+          },
+          {
+            "tag": "PyTorch",
+            "evidence": "‘精通tensorflow/pytorch/megatron/deepspeed等主流深度学习引擎’"
+          },
+          {
+            "tag": "DeepSpeed",
+            "evidence": "同上，明确列出"
+          },
+          {
+            "tag": "CUDA",
+            "evidence": "‘GPU并发架构、CUDA编程’为优先项"
+          },
+          {
+            "tag": "K8s",
+            "evidence": "虽未明写，但千卡集群调度、资源隔离、弹性伸缩等大规模训练平台必然依赖K8s生态（行业通用事实，属合理推断）"
+          }
+        ],
+        "industry_exp": [
+          "互联网大厂",
+          "AI独角兽"
+        ],
+        "seniority": "资深(5-10年)",
+        "education": {
+          "degree": "",
+          "school": "",
+          "school_tier": ""
+        },
+        "academic_highlight": [],
+        "academic_lineage": [],
+        "risk_flags": [],
+        "data_confidence": "中"
+      }
+    }
+  },
+  "matched_candidates": [
+    {
+      "rank": 1,
+      "candidate_id": 20627,
+      "name": "杨偲乐",
+      "score": 77.8,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "快手",
+        "current_title": "AI infra",
+        "experience_years": 6,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "快手",
+            "title": "AI infra",
+            "position": "AI infra",
+            "startDate": "2025-05-01",
+            "endDate": "今",
+            "time": "2025-05-01 ~ 今",
+            "duration": "",
+            "description": "可灵AI infra"
+          },
+          {
+            "company": "联想集团",
+            "title": "主管研究员",
+            "position": "主管研究员",
+            "startDate": "2023-02",
+            "endDate": "2025-05",
+            "time": "2023-02 ~ 2025-05",
+            "duration": "",
+            "description": "负责分布式训练ai平台的设计研发工作"
+          },
+          {
+            "company": "联想控股股份有限公司",
+            "title": "主管研究员",
+            "position": "主管研究员",
+            "startDate": "2023-02",
+            "endDate": "2024-12",
+            "time": "2023-02 ~ 2024-12",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "阿里云",
+            "title": "基础平台开发工程师",
+            "position": "基础平台开发工程师",
+            "startDate": "2022-12",
+            "endDate": "2023-02",
+            "time": "2022-12 ~ 2023-02",
+            "duration": "",
+            "description": "机器学习平台开发"
+          },
+          {
+            "company": "阿里巴巴",
+            "title": "机器学习开发工程师",
+            "position": "机器学习开发工程师",
+            "startDate": "2022-12",
+            "endDate": "2023-02",
+            "time": "2022-12 ~ 2023-02",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "北京旷视科技有限公司",
+            "title": "资深软件开发工程师",
+            "position": "资深软件开发工程师",
+            "startDate": "2020-07",
+            "endDate": "2022-11",
+            "time": "2020-07 ~ 2022-11",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "北京旷视科技有限公司",
+            "title": "开发工程师",
+            "position": "开发工程师",
+            "startDate": "2020-07",
+            "endDate": "2022-10",
+            "time": "2020-07 ~ 2022-10",
+            "duration": "",
+            "description": "负责的业务：公有云私有云devops平台开发\n擅长的技能：golang、react、k8s"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "北京邮电大学",
+            "degree": "硕士",
+            "major": "通信工程",
+            "startYear": "2017",
+            "endYear": "2020",
+            "year": "2017-2020",
+            "description": "信息与通信工程学院",
+            "tags": [
+              "211"
+            ]
+          },
+          {
+            "school": "北京邮电大学",
+            "degree": "本科",
+            "major": "通信工程",
+            "startYear": "2012",
+            "endYear": "2016",
+            "year": "2012-2016",
+            "description": "信息与通信工程学院",
+            "tags": [
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 2,
+      "candidate_id": 11441,
+      "name": "张宇帆",
+      "score": 76.9,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "快手",
+        "current_title": "大模型训练框架研发工程师",
+        "experience_years": 5,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "快手",
+            "title": "大模型训练框架研发工程师",
+            "position": "大模型训练框架研发工程师",
+            "startDate": "2024-11-01",
+            "endDate": "今",
+            "time": "2024-11-01 ~ 今",
+            "duration": "",
+            "description": "可灵 infra"
+          },
+          {
+            "company": "北京百川智能科技有限公司",
+            "title": "分布式训练工程师",
+            "position": "分布式训练工程师",
+            "startDate": "2023-10",
+            "endDate": "2024-11",
+            "time": "2023-10 ~ 2024-11",
+            "duration": "",
+            "description": "训练框架开发"
+          },
+          {
+            "company": "上海人工智能实验室",
+            "title": "大规模训练研究员",
+            "position": "大规模训练研究员",
+            "startDate": "2021-08",
+            "endDate": "2023-10",
+            "time": "2021-08 ~ 2023-10",
+            "duration": "",
+            "description": "分布式训练框架开发"
+          },
+          {
+            "company": "商汤科技",
+            "title": "大规模训练研究员",
+            "position": "大规模训练研究员",
+            "startDate": "2021-08",
+            "endDate": "2021-08",
+            "time": "2021-08 ~ 2021-08",
+            "duration": "",
+            "description": "训练框架开发"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "University of Miami",
+            "degree": "硕士",
+            "major": "cs",
+            "startYear": "2019",
+            "endYear": "2021",
+            "year": "2019-2021",
+            "tags": [
+              "海外Top500"
+            ]
+          },
+          {
+            "school": "河北工业大学",
+            "degree": "本科",
+            "major": "软件工程",
+            "startYear": "2014",
+            "endYear": "2018",
+            "year": "2014-2018",
+            "tags": [
+              "211"
+            ]
+          },
+          {
+            "school": "浙江金华第一中学",
+            "degree": "",
+            "major": "未完善",
+            "startYear": "2011",
+            "endYear": "2014",
+            "year": "2011-2014"
+          }
+        ]
+      }
+    },
+    {
+      "rank": 3,
+      "candidate_id": 25927,
+      "name": "冯伯昂",
+      "score": 75.9,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阿里巴巴",
+        "current_title": "技术专家",
+        "experience_years": 11,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "阿里巴巴",
+            "title": "技术专家",
+            "position": "技术专家",
+            "startDate": "2022-03-01",
+            "endDate": "今",
+            "time": "2022-03-01 ~ 今",
+            "duration": "",
+            "description": "ai infra, pre-train"
+          },
+          {
+            "company": "腾讯",
+            "title": "应用研究",
+            "position": "应用研究",
+            "startDate": "2017-03",
+            "endDate": "2022-03",
+            "time": "2017-03 ~ 2022-03",
+            "duration": "",
+            "description": "短视频推荐 系统搭建，推荐策略迭代，召回侧算法开发及优化迭代等工作"
+          },
+          {
+            "company": "腾讯",
+            "title": "搜索研发工程师",
+            "position": "搜索研发工程师",
+            "startDate": "2016-03",
+            "endDate": "2017-03",
+            "time": "2016-03 ~ 2017-03",
+            "duration": "",
+            "description": "负责腾讯视频的视频搜索基础算法研发工作"
+          },
+          {
+            "company": "美团",
+            "title": "研发工程师",
+            "position": "研发工程师",
+            "startDate": "2015-01",
+            "endDate": "2015-11",
+            "time": "2015-01 ~ 2015-11",
+            "duration": "",
+            "description": "负责集团分布式计算/存储系统的组件开发和维护工作，搭建美团技术团队的基础架构、基础数据等，从而提高软件产品的质量和工程师的研发效率。"
+          },
+          {
+            "company": "北航信息安全实验室",
+            "title": "密码学算法实现",
+            "position": "密码学算法实现",
+            "startDate": "2014-08",
+            "endDate": "2017-03",
+            "time": "2014-08 ~ 2017-03",
+            "duration": "",
+            "description": "负责论文上算法的研究和实现；\n负责专利的起草和撰写"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "北京航空航天大学",
+            "degree": "硕士",
+            "major": "信息安全",
+            "startYear": "2014",
+            "endYear": "2017",
+            "year": "2014-2017",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "北京航空航天大学",
+            "degree": "本科",
+            "major": "电子信息工程",
+            "startYear": "2009",
+            "endYear": "2013",
+            "year": "2009-2013",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 4,
+      "candidate_id": 28436,
+      "name": "Bruce",
+      "score": 75.8,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阿里巴巴集团A",
+        "current_title": "1 电商/新零售 杭州",
+        "experience_years": 17,
+        "education_level": "清华大学985, 211, QS200 -硕士以上",
+        "work_experiences": [
+          {
+            "company": "阿里巴巴集团A",
+            "title": "高级技术专家",
+            "time": "2021-12 - 至今",
+            "description": ""
+          },
+          {
+            "company": "阿里巴巴集团A",
+            "title": "",
+            "time": "2020-04 - 2021-12",
+            "description": ""
+          },
+          {
+            "company": "阿里巴巴集团A",
+            "title": "",
+            "time": "2015-10 - 2020-03",
+            "description": "2017~2019 阿里云 架构设计"
+          },
+          {
+            "company": "华为技术有限公司北京分公司",
+            "title": "负责防火墙服务器交换机的研发和架构设计，研发团队管理",
+            "time": "2008-07 - 2015-10",
+            "description": ""
+          }
+        ],
+        "education_details": [
+          {
+            "school": "清华大学985, 211, QS200",
+            "degree": "硕士以上",
+            "major": "",
+            "year": "2013-07 - 2015-07"
+          }
+        ]
+      }
+    },
+    {
+      "rank": 5,
+      "candidate_id": 5575,
+      "name": "Yue（Laura） Tang",
+      "score": 75.3,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "",
+        "current_title": "机器学习工程师｜大语言模型工程师｜AIGC工程师",
+        "experience_years": null,
+        "education_level": null,
+        "work_experiences": [
+          {
+            "company": "Moore Threads Technology Co. Ltd. · 正式",
+            "position": "Generative AI Engineer",
+            "start_date": "",
+            "end_date": "",
+            "duration": "Moore Threads Technology Co. Ltd. · 正式",
+            "description": "Model ServingModel Serving"
+          },
+          {
+            "company": "Baidu, Inc. · 正式",
+            "position": "Senior Software Engineer",
+            "start_date": "",
+            "end_date": "",
+            "duration": "2023年7月 - 2024年7月 · 1 年 1 个月",
+            "description": "Stable DiffusionVision and AI native architectureStable Diffusion Vision and AI native architecture"
+          },
+          {
+            "company": "Kuaishou Technology · 正式",
+            "position": "Software Developer Engineer",
+            "start_date": "",
+            "end_date": "",
+            "duration": "2021年7月 - 2023年7月 · 2 年 1 个月",
+            "description": "commercial advertising data architecture and analysiscommercial advertising data architecture and analysis"
+          },
+          {
+            "company": "Alibaba Group · 实习",
+            "position": "Software Engineer Intern",
+            "start_date": "",
+            "end_date": "",
+            "duration": "2021年3月 - 2021年5月 · 3 个月",
+            "description": ""
+          },
+          {
+            "company": "JD.COM · 实习",
+            "position": "Software Engineer Intern",
+            "start_date": "",
+            "end_date": "",
+            "duration": "2019年12月 - 2020年4月 · 5 个月",
+            "description": "FinTechFinTech"
+          }
+        ],
+        "education_details": []
+      }
+    },
+    {
+      "rank": 6,
+      "candidate_id": 21681,
+      "name": "Leon Fan",
+      "score": 75.2,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "腾讯",
+        "current_title": "高性能计算实习生",
+        "experience_years": null,
+        "education_level": "博士",
+        "work_experiences": [
+          {
+            "company": "腾讯",
+            "title": "高性能计算实习生",
+            "position": "高性能计算实习生",
+            "startDate": "2026-02-01",
+            "endDate": "今",
+            "time": "2026-02-01 ~ 今",
+            "duration": "",
+            "description": "青云计划实习 腾讯混元 AI infra \n大模型预训练 infra 优化"
+          },
+          {
+            "company": "阿里云",
+            "title": "高性能计算实习生",
+            "position": "高性能计算实习生",
+            "startDate": "2025-01",
+            "endDate": "2026-02",
+            "time": "2025-01 ~ 2026-02",
+            "duration": "",
+            "description": "AI infra"
+          },
+          {
+            "company": "阿里云",
+            "title": "高性能计算实习生",
+            "position": "高性能计算实习生",
+            "startDate": "2024-08",
+            "endDate": "2025-01",
+            "time": "2024-08 ~ 2025-01",
+            "duration": "",
+            "description": "高性能网络"
+          },
+          {
+            "company": "北京大学",
+            "title": "研究实习生",
+            "position": "研究实习生",
+            "startDate": "2021-05",
+            "endDate": "2021-09",
+            "time": "2021-05 ~ 2021-09",
+            "duration": "",
+            "description": "金融+CV"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "上海交通大学",
+            "degree": "博士",
+            "major": "计算机科学与技术",
+            "startYear": "2023",
+            "endYear": "2028",
+            "year": "2023-2028",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "北京邮电大学",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "startYear": "2019",
+            "endYear": "2023",
+            "year": "2019-2023",
+            "tags": [
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 7,
+      "candidate_id": 781,
+      "name": "Gwilliam",
+      "score": 75.2,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "百度",
+        "current_title": "AI Infra高级算法工程师百度2025.10-至今 (2",
+        "experience_years": 5.6,
+        "education_level": "未知",
+        "work_experiences": [
+          {
+            "company": "百度",
+            "title": "AI Infra高级算法工程师百度2025.10-至今 (2",
+            "time": "2025.10-至今",
+            "description": "AI Infra高级算法工程师百度2025.10-至今 (2个月)聚焦AI算法从paper到工程，算子开发，训推加速AI算法gpu算子大模型算法训推框架"
+          },
+          {
+            "company": "华为",
+            "title": "高级研发工程师华为南京研究所",
+            "time": "2022.5-2025.9",
+            "description": "高级研发工程师华为南京研究所2022.5-2025.9 (3年4个月)了解昇腾芯片设计，精通CANN软件栈，算子加速"
+          },
+          {
+            "company": "江苏润和软件有限公司",
+            "title": "软件工程师江苏润和软件有限公司2020.11-2022.5 ",
+            "time": "2020.11-2022.5",
+            "description": "软件工程师江苏润和软件有限公司2020.11-2022.5 (1年6个月)"
+          },
+          {
+            "company": "Trax China",
+            "title": "AI模型训练工程师Trax China2020.3-2020",
+            "time": "2020.3-2020.9",
+            "description": "AI模型训练工程师Trax China2020.3-2020.9 (6个月)"
+          },
+          {
+            "company": "百度",
+            "title": "AI Infra高级工程师",
+            "position": "AI Infra高级工程师",
+            "startDate": "2025-10-01",
+            "endDate": "今",
+            "time": "2025-10-01 ~ 今",
+            "duration": "",
+            "description": "聚焦LLM推理加速技术，主要负责低精度量化算法、gpu算子开发与优化、sglang二次开发"
+          },
+          {
+            "company": "华为南京研究所",
+            "title": "高级研发工程师",
+            "position": "高级研发工程师",
+            "startDate": "2022-05",
+            "endDate": "2025-09",
+            "time": "2022-05 ~ 2025-09",
+            "duration": "",
+            "description": "了解昇腾芯片设计，精通CANN软件栈，算子加速"
+          },
+          {
+            "company": "江苏润和软件有限公司",
+            "title": "软件工程师",
+            "position": "软件工程师",
+            "startDate": "2020-11",
+            "endDate": "2022-05",
+            "time": "2020-11 ~ 2022-05",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "Trax China",
+            "title": "AI模型训练工程师",
+            "position": "AI模型训练工程师",
+            "startDate": "2020-03",
+            "endDate": "2020-09",
+            "time": "2020-03 ~ 2020-09",
+            "duration": "",
+            "description": ""
+          }
+        ],
+        "education_details": [
+          {
+            "school": "香港理工大学",
+            "degree": "未知",
+            "major": "",
+            "year": ""
+          },
+          {
+            "school": "哈尔滨理工大学",
+            "degree": "未知",
+            "major": "计算机",
+            "year": ""
+          }
+        ]
+      }
+    },
+    {
+      "rank": 8,
+      "candidate_id": 1302,
+      "name": "龙涛",
+      "score": 75.1,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "拼多多",
+        "current_title": "大模型Infra架构工程师",
+        "experience_years": 4,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "拼多多",
+            "position": "大模型Infra架构工程师",
+            "start_date": "2024.9",
+            "end_date": "至今",
+            "duration": "1年5个月",
+            "description": "搜索推荐工程 大模型工程\n推理加速 性能优化"
+          },
+          {
+            "company": "INTEL亚太研发有限公司 • System Software Engineer",
+            "position": "Cloud Software Engineer",
+            "start_date": "2022.7",
+            "end_date": "2024.5",
+            "duration": "1年10个月",
+            "description": "language runtime optimization"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "上海大学",
+            "degree": "硕士",
+            "major": "控制科学与工程",
+            "start_year": "2019",
+            "end_year": "2022"
+          }
+        ]
+      }
+    },
+    {
+      "rank": 9,
+      "candidate_id": 25144,
+      "name": "廖晓辉",
+      "score": 75.1,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阿里巴巴",
+        "current_title": "高级技术专家",
+        "experience_years": 19,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "阿里巴巴",
+            "title": "高级技术专家",
+            "position": "高级技术专家",
+            "startDate": "2017-07-01",
+            "endDate": "今",
+            "time": "2017-07-01 ~ 今",
+            "duration": "",
+            "description": "人工智能平台，AI infrastructure，AI工程，算法引擎，云原生，serverless算法平台"
+          },
+          {
+            "company": "北京恒昌利通投资管理有限公司",
+            "title": "技术总监",
+            "position": "技术总监",
+            "startDate": "2016-08",
+            "endDate": "2017-07",
+            "time": "2016-08 ~ 2017-07",
+            "duration": "",
+            "description": "大数据部总监\n征信公司总经理"
+          },
+          {
+            "company": "京东",
+            "title": "架构师",
+            "position": "架构师",
+            "startDate": "2012-07",
+            "endDate": "2016-08",
+            "time": "2012-07 ~ 2016-08",
+            "duration": "",
+            "description": "京东云大数据团队主管和技术负责人"
+          },
+          {
+            "company": "HP",
+            "title": "研发工程师",
+            "position": "研发工程师",
+            "startDate": "2008-10",
+            "endDate": "2012-07",
+            "time": "2008-10 ~ 2012-07",
+            "duration": "",
+            "description": "云计算，虚拟化"
+          },
+          {
+            "company": "北电网络有限公司 Nortel Networks Limited",
+            "title": "研发工程师",
+            "position": "研发工程师",
+            "startDate": "2007-03",
+            "endDate": "2008-08",
+            "time": "2007-03 ~ 2008-08",
+            "duration": "",
+            "description": "CDMA BTS& 4G LTE, BTS Middleware team"
+          },
+          {
+            "company": "微软亚洲工程院",
+            "title": "研发工程师",
+            "position": "研发工程师",
+            "startDate": "2006-01",
+            "endDate": "2006-08",
+            "time": "2006-01 ~ 2006-08",
+            "duration": "",
+            "description": "访问学生，实习，搜索广告，nlp"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "华南理工大学",
+            "degree": "硕士",
+            "major": "计算机应用技术",
+            "startYear": "2004",
+            "endYear": "2007",
+            "year": "2004-2007",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "华南理工大学",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "startYear": "2000",
+            "endYear": "2004",
+            "year": "2000-2004",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 10,
+      "candidate_id": 22181,
+      "name": "范舒翼",
+      "score": 75.1,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "智谱华章",
+        "current_title": "训练infra工程师",
+        "experience_years": 6,
+        "education_level": "本科",
+        "work_experiences": [
+          {
+            "company": "智谱华章",
+            "title": "训练infra工程师",
+            "position": "训练infra工程师",
+            "startDate": "2025-10-01",
+            "endDate": "今",
+            "time": "2025-10-01 ~ 今",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "快手",
+            "title": "算法引擎研发工程师",
+            "position": "算法引擎研发工程师",
+            "startDate": "2023-06",
+            "endDate": "2025-04",
+            "time": "2023-06 ~ 2025-04",
+            "duration": "",
+            "description": "LLM/视频生成模型小型化"
+          },
+          {
+            "company": "广州宸境科技有限公司",
+            "title": "算法工程师",
+            "position": "算法工程师",
+            "startDate": "2022-04",
+            "endDate": "2023-05",
+            "time": "2022-04 ~ 2023-05",
+            "duration": "",
+            "description": "三维重建 室内场景感知 ar系统研发"
+          },
+          {
+            "company": "旷视",
+            "title": "算法研究员",
+            "position": "算法研究员",
+            "startDate": "2020-07",
+            "endDate": "2022-04",
+            "time": "2020-07 ~ 2022-04",
+            "duration": "",
+            "description": ""
+          }
+        ],
+        "education_details": [
+          {
+            "school": "清华大学",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "startYear": "2015",
+            "endYear": "2020",
+            "year": "2015-2020",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 11,
+      "candidate_id": 21871,
+      "name": "Harrison",
+      "score": 75,
+      "match_tier": "可转型",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "深圳市道通科技",
+        "current_title": "Chief Architect of Data&AI（CTO）",
+        "experience_years": 21,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "深圳市道通科技",
+            "title": "Chief Architect of Data&AI（CTO）",
+            "position": "Chief Architect of Data&AI（CTO）",
+            "startDate": "2025-02-01",
+            "endDate": "今",
+            "time": "2025-02-01 ~ 今",
+            "duration": "",
+            "description": "1. 面向Drone/Robot/FSD的端到端的新一代Data Engine，AI Compute Engine和AI Agent产品的战略规划与构建；\n2. 为生成式AI（LLM，VLM，WFM），Agentic AI和Simulation构建大规模分布式训练和加速推理基础设施。"
+          },
+          {
+            "company": "独立Data&AI Infra 技术顾问",
+            "title": "Data&AI Infra技术专家",
+            "position": "Data&AI Infra技术专家",
+            "startDate": "2023-02",
+            "endDate": "2025-01",
+            "time": "2023-02 ~ 2025-01",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "华为",
+            "title": "Data&AI总监",
+            "position": "Data&AI总监",
+            "startDate": "2020-08",
+            "endDate": "2023-01",
+            "time": "2020-08 ~ 2023-01",
+            "duration": "",
+            "description": "作为 Data&AI 总监和数据存储领域 Data&AI 首席专家（技术专家A-20级），带领 Data&AI Infra 和 应用机器学习两个团队负责数据存储产品线 AI 基础设施的设计与研发，智能化(AI 基础设施/AIOps/智能数据管理)和云化(混合云/多云)竞争力的构筑;完成数据存储产品线基于云端和产品端的 AI 基础设施(数据引擎/基于 Ray 的计算引擎/AI 服务引擎)的研发，并通过技术项目成功商业化。完成产品线大规模分布式训练和推理基础设施 (1K+节点 AI 加速器集群)的建设，设计第三代生产机器学习架构且成功商业化。"
+          },
+          {
+            "company": "腾讯",
+            "title": "大数据&AI产品架构师",
+            "position": "大数据&AI产品架构师",
+            "startDate": "2018-04",
+            "endDate": "2020-08",
+            "time": "2018-04 ~ 2020-08",
+            "duration": "",
+            "description": "在腾讯云负责一站式AI开发平台智能钛(TI-one)和大数据平台(TBDS)的产品化和商业化;领导区域技术团队和合作伙伴为银行/智慧零售客户交付了多个大数据/AI平台项目包括机器学习模型的开发和上线。"
+          },
+          {
+            "company": "易安信",
+            "title": "Principal Engineer",
+            "position": "Principal Engineer",
+            "startDate": "2016-01",
+            "endDate": "2018-03",
+            "time": "2016-01 ~ 2018-03",
+            "duration": "",
+            "description": "在 DELL EMC(成都) 卓越研发中心负责 EMC Avamar 产品迁移上云(AWS，Azure)方案的设计、实现和自动化工具的研发。"
+          },
+          {
+            "company": "乐视云计算有限公司",
+            "title": "软件工程副总监",
+            "position": "软件工程副总监",
+            "startDate": "2014-08",
+            "endDate": "2016-01",
+            "time": "2014-08 ~ 2016-01",
+            "duration": "",
+            "description": "在乐视云计算负责组建并管理软件工程和消息中间件团队，负责持 续集成和持续交付系统(CI & CD)、企业级 Docker 私有镜像发布系统的设计与研发;同时负责消息系统和 Hadoop 基础平台的构建和运营。"
+          },
+          {
+            "company": "索尼移动通信(中国)有限公司",
+            "title": "Tools Dev Lead",
+            "position": "Tools Dev Lead",
+            "startDate": "2010-05",
+            "endDate": "2013-09",
+            "time": "2010-05 ~ 2013-09",
+            "duration": "",
+            "description": "在索尼移动负责组建和管理自动化工具研发团队，设计和实现了多个自动化工具和自 动化测试框架，并成功构建云测试(Global Cloud Test)实验室。"
+          },
+          {
+            "company": "摩托罗拉(中国)技术有限公司",
+            "title": "软件工程师",
+            "position": "软件工程师",
+            "startDate": "2005-05",
+            "endDate": "2010-04",
+            "time": "2005-05 ~ 2010-04",
+            "duration": "",
+            "description": "1. 组建北京 BLUR Services 部署团队，负责测试及预生产环境的部署和运维。\n2. BLUR 客户端和服务器 API 测试环境的规划、构建和维护。\n3. 负责开发 BLUR Serivices 部署和运维工具。"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "中国科学院研究生院",
+            "degree": "硕士",
+            "major": "控制工程",
+            "startYear": "2008",
+            "endYear": "2011",
+            "year": "2008-2011"
+          },
+          {
+            "school": "中国地质大学（北京）",
+            "degree": "本科",
+            "major": "机械设计制造及其自动化",
+            "startYear": "1999",
+            "endYear": "2003",
+            "year": "1999-2003",
+            "tags": [
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 12,
+      "candidate_id": 21872,
+      "name": "Harrison",
+      "score": 74.9,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "深圳市道通科技",
+        "current_title": "Chief Architect of Data&AI（CTO）",
+        "experience_years": null,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "深圳市道通科技",
+            "position": "Chief Architect of Data&AI（CTO）",
+            "start_date": "2025-02-01",
+            "end_date": "今",
+            "duration": "",
+            "description": "1. 面向Drone/Robot/FSD的端到端的新一代Data Engine，AI Compute Engine和AI Agent产品的战略规划与构建；\n2. 为生成式AI（LLM，VLM，WFM），Agentic AI和Simulation构建大规模分布式训练和加速推理基础设施。"
+          },
+          {
+            "company": "独立Data&AI Infra 技术顾问",
+            "position": "Data&AI Infra技术专家",
+            "start_date": "2023-02",
+            "end_date": "2025-01",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "华为",
+            "position": "Data&AI总监",
+            "start_date": "2020-08",
+            "end_date": "2023-01",
+            "duration": "",
+            "description": "作为 Data&AI 总监和数据存储领域 Data&AI 首席专家（技术专家A-20级），带领 Data&AI Infra 和 应用机器学习两个团队负责数据存储产品线 AI 基础设施的设计与研发，智能化(AI 基础设施/AIOps/智能数据管理)和云化(混合云/多云)竞争力的构筑;完成数据存储产品线基于云端和产品端的 AI 基础设施(数据引擎/基于 Ray 的计算引擎/AI 服务引擎)的研发，并通过技术项目成功商业化。完成产品线大规模分布式训练和推理基础设施 (1K+节点 AI 加速器集群)的建设，设计第三代生产机器学习架构且成功商业化。"
+          },
+          {
+            "company": "腾讯",
+            "position": "大数据&AI产品架构师",
+            "start_date": "2018-04",
+            "end_date": "2020-08",
+            "duration": "",
+            "description": "在腾讯云负责一站式AI开发平台智能钛(TI-one)和大数据平台(TBDS)的产品化和商业化;领导区域技术团队和合作伙伴为银行/智慧零售客户交付了多个大数据/AI平台项目包括机器学习模型的开发和上线。"
+          },
+          {
+            "company": "易安信",
+            "position": "Principal Engineer",
+            "start_date": "2016-01",
+            "end_date": "2018-03",
+            "duration": "",
+            "description": "在 DELL EMC(成都) 卓越研发中心负责 EMC Avamar 产品迁移上云(AWS，Azure)方案的设计、实现和自动化工具的研发。"
+          },
+          {
+            "company": "乐视云计算有限公司",
+            "position": "软件工程副总监",
+            "start_date": "2014-08",
+            "end_date": "2016-01",
+            "duration": "",
+            "description": "在乐视云计算负责组建并管理软件工程和消息中间件团队，负责持 续集成和持续交付系统(CI & CD)、企业级 Docker 私有镜像发布系统的设计与研发;同时负责消息系统和 Hadoop 基础平台的构建和运营。"
+          },
+          {
+            "company": "索尼移动通信(中国)有限公司",
+            "position": "Tools Dev Lead",
+            "start_date": "2010-05",
+            "end_date": "2013-09",
+            "duration": "",
+            "description": "在索尼移动负责组建和管理自动化工具研发团队，设计和实现了多个自动化工具和自 动化测试框架，并成功构建云测试(Global Cloud Test)实验室。"
+          },
+          {
+            "company": "摩托罗拉(中国)技术有限公司",
+            "position": "软件工程师",
+            "start_date": "2005-05",
+            "end_date": "2010-04",
+            "duration": "",
+            "description": "1. 组建北京 BLUR Services 部署团队，负责测试及预生产环境的部署和运维。\n2. BLUR 客户端和服务器 API 测试环境的规划、构建和维护。\n3. 负责开发 BLUR Serivices 部署和运维工具。"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "中国科学院研究生院",
+            "degree": "硕士",
+            "major": "控制工程",
+            "start_year": "2008",
+            "end_year": "2011"
+          },
+          {
+            "school": "中国地质大学（北京）",
+            "degree": "本科",
+            "major": "机械设计制造及其自动化",
+            "start_year": "1999",
+            "end_year": "2003",
+            "tags": [
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 13,
+      "candidate_id": 8147,
+      "name": "陈冠多",
+      "score": 74.9,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "月之暗面",
+        "current_title": "Technical Staff",
+        "experience_years": 2,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "月之暗面",
+            "position": "Technical Staff",
+            "start_date": "2025-07-01",
+            "end_date": "今",
+            "duration": "",
+            "description": "pertain infra"
+          },
+          {
+            "company": "月之暗面",
+            "position": "实习生",
+            "start_date": "2025-03",
+            "end_date": "2025-07",
+            "duration": "",
+            "description": "LLM training system"
+          },
+          {
+            "company": "美团",
+            "position": "开发实习生",
+            "start_date": "2025-01",
+            "end_date": "2025-03",
+            "duration": "",
+            "description": "多模态训练框架支持"
+          },
+          {
+            "company": "美团",
+            "position": "大模型架构研发实习",
+            "start_date": "2025-01-01",
+            "end_date": "今",
+            "duration": "",
+            "description": "VisionEncoder长序列训练支持(in - progress):设计并实现长序列并行（Context - Parallelism）策略，支持多模态大模型视觉编码器var - length长序列训练。"
+          },
+          {
+            "company": "香港科技大学",
+            "position": "助理研究员",
+            "start_date": "2024-04",
+            "end_date": "2025-01",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "字节跳动",
+            "position": "数据库开发实习",
+            "start_date": "2023-12",
+            "end_date": "2024-04",
+            "duration": "",
+            "description": "地理数据聚合查询benchmark:开发并基准测试了基于NYCTaxi数据集上的地理空间聚合查询，发现了不同数据库平台（StarRocks,ClickHouse,PostGIS,DuckDB,ByteHouse - CE）之间的性能差异，并提出了优化建议。CNCH地理数据类型支持:利用geos库将地理数据类型(geometrydatatype)集成到ByteHouse - CNCH(CloudNative ClickHouse)。CNCH地理类型主键索引设计和实现:在CNCH中增加地理数据主键索引支持，同时设计多级缓存(diskcache,memory cache)加速索引查询。相较于原生ClickHouse，CNCH地理数据聚合查询延迟降低近50%。"
+          },
+          {
+            "company": "南洋理工大学",
+            "position": "助理研究员",
+            "start_date": "2023-02",
+            "end_date": "2023-12",
+            "duration": "",
+            "description": ""
+          }
+        ],
+        "education_details": [
+          {
+            "school": "复旦大学",
+            "degree": "硕士",
+            "major": "计算机科学与技术",
+            "start_year": "2022",
+            "end_year": "2025",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "复旦大学",
+            "degree": "硕士",
+            "major": "计算机科学与技术",
+            "start_year": "",
+            "end_year": "",
+            "description": "研究方向:LLMSys,AI4DB",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "复旦大学",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "start_year": "2018",
+            "end_year": "2022",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 14,
+      "candidate_id": 25926,
+      "name": "xiandi",
+      "score": 74.8,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "某科技(北京)有限公司",
+        "current_title": "LLM RL infra Lead",
+        "experience_years": 11,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "某科技(北京)有限公司",
+            "title": "LLM RL infra Lead",
+            "position": "LLM RL infra Lead",
+            "startDate": "2023-11-01",
+            "endDate": "今",
+            "time": "2023-11-01 ~ 今",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "字节跳动",
+            "title": "机器学习系统工程师",
+            "position": "机器学习系统工程师",
+            "startDate": "2019-07",
+            "endDate": "2023-10",
+            "time": "2019-07 ~ 2023-10",
+            "duration": "",
+            "description": "机器学习系统 大规模并行训练 推理加速"
+          },
+          {
+            "company": "百度",
+            "title": "高级研发工程师",
+            "position": "高级研发工程师",
+            "startDate": "2016-12",
+            "endDate": "2019-07",
+            "time": "2016-12 ~ 2019-07",
+            "duration": "",
+            "description": "【工作职责】\n爬虫，TAG，机器学习，rank"
+          },
+          {
+            "company": "高德",
+            "title": "后端开发工程师",
+            "position": "后端开发工程师",
+            "startDate": "2015-07",
+            "endDate": "2016-12",
+            "time": "2015-07 ~ 2016-12",
+            "duration": "",
+            "description": "研发工程师"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "中国科学院大学",
+            "degree": "硕士",
+            "major": "地图学与地理信息系统",
+            "startYear": "2012",
+            "endYear": "2015",
+            "year": "2012-2015"
+          }
+        ]
+      }
+    },
+    {
+      "rank": 15,
+      "candidate_id": 22072,
+      "name": "官佑松",
+      "score": 74.7,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阶跃星辰",
+        "current_title": "AI infra",
+        "experience_years": 6,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "阶跃星辰",
+            "title": "AI infra",
+            "position": "AI infra",
+            "startDate": "2024-08-01",
+            "endDate": "今",
+            "time": "2024-08-01 ~ 今",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "理想汽车",
+            "title": "数据闭环—平台工程师",
+            "position": "数据闭环—平台工程师",
+            "startDate": "2023-11",
+            "endDate": "2024-05",
+            "time": "2023-11 ~ 2024-05",
+            "duration": "",
+            "description": "数据闭环—行泊pipeline开发"
+          },
+          {
+            "company": "理想汽车",
+            "title": "高级平台研发工程师",
+            "position": "高级平台研发工程师",
+            "startDate": "2023-11",
+            "endDate": "2024-05",
+            "time": "2023-11 ~ 2024-05",
+            "duration": "",
+            "description": "1.背景,挑战&成果：自动驾驶需要Bev+Occ视频感知数据进行训练，需要一个autolabel数据预刷交付平台，完成了行车occpipeline平台搭建开发工作，累计交付60+w数据交付。2.主要工作（关键流程：数据流转 +数据交付）：行车occpipeline平台搭建、40+w多场景clips数据交付及2k+真值精标数据clips交付；泊车occ、bev pipeline平台维护及20+wclip数据交付；Pipeline吞吐量提升60%+及ctl自动化交付工具开发；Pipeline平台可观测性方案设计和开发"
+          },
+          {
+            "company": "北京旷视科技有限公司",
+            "title": "基础平台研发工程师",
+            "position": "基础平台研发工程师",
+            "startDate": "2020-03",
+            "endDate": "2023-10",
+            "time": "2020-03 ~ 2023-10",
+            "duration": "",
+            "description": "工作开发"
+          },
+          {
+            "company": "北京旷视科技有限公司",
+            "title": "高级平台研发工程师",
+            "position": "高级平台研发工程师",
+            "startDate": "2020-03",
+            "endDate": "2023-10",
+            "time": "2020-03 ~ 2023-10",
+            "duration": "",
+            "description": "1.私有云Devops平台：（1）背景,挑战&成果：旷视一项重要的商业化项目为ToB,ToG的AI系统(视频识别，视频检索)。需要一个ToB，私有化交付平台来支持业务交付,部署和运维.完成了devops网络增强,存储，计算，监控告警,多集群运维模块设计和开发工作.支撑1500+项目现场落地。（2）主要工作（关键流程：service.yaml+ supervisor+docker）：网络：基于flannel,CoreDNS,Etcd设计的集群容器独立IP和域名访问方案设计和开发；基于iptables的devops防火墙和manager,agent单向网络设计和开发；基于keepalived的devops高可用集群功能设计和开发；ssh证书,https证书,nginx,coredns模块功能开发和增强。存储：etcd高可用,数据备份,恢复,压缩方案设计和开发；集群日志收集,业务数据备份方案设计和功能开发；基于kinesqlite的devopslite功能设计和开发.适配资源受限场景(盘古盒子)；Mariadb数据库高可用方案优化和pgsql的timescaleDB时序数据库等功能开发。监控"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "北京航空航天大学",
+            "degree": "硕士",
+            "major": "",
+            "startYear": "",
+            "endYear": "",
+            "year": "",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 16,
+      "candidate_id": 25472,
+      "name": "柳晓鹏",
+      "score": 74.6,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "字节跳动",
+        "current_title": "infra训练",
+        "experience_years": 7,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "字节跳动",
+            "title": "infra训练",
+            "position": "infra训练",
+            "startDate": "2025-04-01",
+            "endDate": "今",
+            "time": "2025-04-01 ~ 今",
+            "duration": "",
+            "description": "无。。。。"
+          },
+          {
+            "company": "百度在线网络技术（北京）有限公司",
+            "title": "后台开发工程师",
+            "position": "后台开发工程师",
+            "startDate": "2019-07",
+            "endDate": "2025-04",
+            "time": "2019-07 ~ 2025-04",
+            "duration": "",
+            "description": "深度学习平台开发，MLOps，LLMOps"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "中科大",
+            "degree": "硕士",
+            "major": "软件工程",
+            "startYear": "2016",
+            "endYear": "2019",
+            "year": "2016-2019"
+          },
+          {
+            "school": "安徽大学",
+            "degree": "本科",
+            "major": "软件工程",
+            "startYear": "2012",
+            "endYear": "2016",
+            "year": "2012-2016",
+            "tags": [
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 17,
+      "candidate_id": 24683,
+      "name": "kilin",
+      "score": 74.5,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "某实验室",
+        "current_title": "AI infra 工程师",
+        "experience_years": 4,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "某实验室",
+            "title": "AI infra 工程师",
+            "position": "AI infra 工程师",
+            "startDate": "2023-07-01",
+            "endDate": "今",
+            "time": "2023-07-01 ~ 今",
+            "duration": "",
+            "description": "训练框架开发/大模型推理/AI 编译器"
+          },
+          {
+            "company": "微软",
+            "title": "Software Engineer Intern",
+            "position": "Software Engineer Intern",
+            "startDate": "2022-06",
+            "endDate": "2025-12",
+            "time": "2022-06 ~ 2025-12",
+            "duration": "",
+            "description": "主要负责大数据处理平台spark上的job相关工作：从数据仓库comos上读取job运行信息，结构化后存储到MySQL数据库中，由前端读取展示；重构job代码，将其迁移到新的调度框架。（调度框架scheduler按照一定的规则来调度运行job）"
+          },
+          {
+            "company": "微软",
+            "title": "实习生",
+            "position": "实习生",
+            "startDate": "2022-06",
+            "endDate": "2022-09",
+            "time": "2022-06 ~ 2022-09",
+            "duration": "",
+            "description": "webxt/spark job/大数据处理"
+          },
+          {
+            "company": "Momenta",
+            "title": "研发实习生",
+            "position": "研发实习生",
+            "startDate": "2021-04",
+            "endDate": "2022-03",
+            "time": "2021-04 ~ 2022-03",
+            "duration": "",
+            "description": "一致性仿真开发。"
+          },
+          {
+            "company": "momenta",
+            "title": "研发实习生",
+            "position": "研发实习生",
+            "startDate": "2021-04",
+            "endDate": "2022-03",
+            "time": "2021-04 ~ 2022-03",
+            "duration": "",
+            "description": "主要负责一致性自动驾驶仿真器的开发，实习期间多次取得高绩效。主要内容包括：一致性仿真器的版本维护，跟进各个业务模块的变更，对仿真器与各业务模块的接口进行适配；可视化仿真过程计算图，用以辅助定位问题；单模块一致性的测试，开发脚本检测仿真器的一致性；仿真器的落地、部署、推动等。"
+          },
+          {
+            "company": "腾讯",
+            "title": "游戏测试开发实习生",
+            "position": "游戏测试开发实习生",
+            "startDate": "2020-05",
+            "endDate": "2020-09",
+            "time": "2020-05 ~ 2020-09",
+            "duration": "",
+            "description": "光子工作室，游戏的自动化测试开发。"
+          },
+          {
+            "company": "腾讯",
+            "title": "测试开发实习生",
+            "position": "测试开发实习生",
+            "startDate": "2020-05",
+            "endDate": "2020-09",
+            "time": "2020-05 ~ 2020-09",
+            "duration": "",
+            "description": "负责游戏的自动化功耗测试和自动化功能测试。编写测试用例，分析日志，定位bug；结合现有自动化测试框架和客户端代码修改逻辑部分代码，添加新的功能。"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "哈尔滨工业",
+            "degree": "硕士",
+            "major": "电子信息（计算机方向）",
+            "startYear": "2021",
+            "endYear": "2025",
+            "year": "2021-2025",
+            "description": "所在实验室为机器学习研究中心，主要研究课题为知识图谱的对齐。",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "哈尔滨工业",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "startYear": "2017",
+            "endYear": "2021",
+            "year": "2017-2021",
+            "description": "学分绩：88.68（专业前30%）；多次获得人民奖学金；保送至本校读研",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "哈尔滨工业大学",
+            "degree": "硕士",
+            "major": "电子信息（计算机方向）",
+            "startYear": "2021",
+            "endYear": "2025",
+            "year": "2021-2025",
+            "description": "所在实验室为机器学习研究中心，主要研究课题为知识图谱的对齐。",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 18,
+      "candidate_id": 11462,
+      "name": "李柏谦",
+      "score": 74.4,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "快手",
+        "current_title": "AI工程师",
+        "experience_years": 4,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "快手",
+            "title": "AI工程师",
+            "position": "AI工程师",
+            "startDate": "2022-04-01",
+            "endDate": "今",
+            "time": "2022-04-01 ~ 今",
+            "duration": "",
+            "description": "Training infra for Kling"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "浙江大学",
+            "degree": "硕士",
+            "major": "计算机科学与技术",
+            "startYear": "2019",
+            "endYear": "2022",
+            "year": "2019-2022",
+            "description": "yyds",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "浙江大学",
+            "degree": "本科",
+            "major": "软件工程",
+            "startYear": "2014",
+            "endYear": "2018",
+            "year": "2014-2018",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 19,
+      "candidate_id": 21293,
+      "name": "杨丁豪",
+      "score": 74.4,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "英伟达",
+        "current_title": "Senior System Engineer",
+        "experience_years": 5,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "英伟达",
+            "title": "Senior System Engineer",
+            "position": "Senior System Engineer",
+            "startDate": "2025-04-01",
+            "endDate": "今",
+            "time": "2025-04-01 ~ 今",
+            "duration": "",
+            "description": "RL, LLM Training"
+          },
+          {
+            "company": "Lepton AI",
+            "title": "Research Engineer",
+            "position": "Research Engineer",
+            "startDate": "2024-06",
+            "endDate": "2025-04",
+            "time": "2024-06 ~ 2025-04",
+            "duration": "",
+            "description": "模型优化，LLM推理优化"
+          },
+          {
+            "company": "阿里云",
+            "title": "算法工程师",
+            "position": "算法工程师",
+            "startDate": "2023-07",
+            "endDate": "2024-05",
+            "time": "2023-07 ~ 2024-05",
+            "duration": "",
+            "description": "AI Infra，LLM推理优化加速"
+          },
+          {
+            "company": "商汤科技",
+            "title": "计算机视觉见习研究员",
+            "position": "计算机视觉见习研究员",
+            "startDate": "2020-10",
+            "endDate": "2022-04",
+            "time": "2020-10 ~ 2022-04",
+            "duration": "",
+            "description": "分割/抠图/三维目标检测，自动标注"
+          },
+          {
+            "company": "鹏城实验室",
+            "title": "研究型实习生",
+            "position": "研究型实习生",
+            "startDate": "2019-10",
+            "endDate": "2020-07",
+            "time": "2019-10 ~ 2020-07",
+            "duration": "",
+            "description": "三维视觉"
+          },
+          {
+            "company": "北京旷视科技有限公司",
+            "title": "算法实习生",
+            "position": "算法实习生",
+            "startDate": "2019-09",
+            "endDate": "2019-09",
+            "time": "2019-09 ~ 2019-09",
+            "duration": "",
+            "description": "SLAM, CV算法实习生"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "北京大学",
+            "degree": "硕士",
+            "major": "计算机应用技术",
+            "startYear": "2020",
+            "endYear": "2023",
+            "year": "2020-2023",
+            "description": "计算机视觉，三维视觉",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "同济大学",
+            "degree": "本科",
+            "major": "软件工程",
+            "startYear": "2016",
+            "endYear": "2020",
+            "year": "2016-2020",
+            "description": "窝没啥好讲的",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 20,
+      "candidate_id": 24317,
+      "name": "Charlie",
+      "score": 74.3,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "Momenta",
+        "current_title": "高级研发工程师",
+        "experience_years": 5,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "Momenta",
+            "title": "高级研发工程师",
+            "position": "高级研发工程师",
+            "startDate": "2025-01",
+            "endDate": "2026-02",
+            "time": "2025-01 ~ 2026-02",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "华为技术有限公司杭州研究所",
+            "title": "研发工程师",
+            "position": "研发工程师",
+            "startDate": "2023-03",
+            "endDate": "2025-01",
+            "time": "2023-03 ~ 2025-01",
+            "duration": "",
+            "description": "昇腾AI infra，模型调优，万卡集群性能分析"
+          },
+          {
+            "company": "华为技术有限公司北京研究所",
+            "title": "通用软件工程师",
+            "position": "通用软件工程师",
+            "startDate": "2021-12",
+            "endDate": "2023-02",
+            "time": "2021-12 ~ 2023-02",
+            "duration": "",
+            "description": "5G云化网元开发"
+          },
+          {
+            "company": "北京字节跳动科技有限公司",
+            "title": "算法实习生",
+            "position": "算法实习生",
+            "startDate": "2020-11",
+            "endDate": "2021-04",
+            "time": "2020-11 ~ 2021-04",
+            "duration": "",
+            "description": "广告内容理解"
+          },
+          {
+            "company": "Tiktok Australia Pty Ltd.",
+            "title": "高性能低延迟系统｜RDMA",
+            "position": "高性能低延迟系统｜RDMA",
+            "startDate": "2021-08",
+            "endDate": "2025-11",
+            "time": "2021-08 ~ 2025-11",
+            "duration": "",
+            "description": "抖音点播存储：系统架构重构【单实例单盘】为【单实例多盘】，综合一致性哈希、分段锁map、MemoryPool、零拷贝、DirectIO、LRU缓存、lockfree等手段设计优化（收益：文件重合率15%->0%，IO速度+43%）；实验环境搭建基于InfiniBand/RoCE RDMA的高性能网络，优化热文件回源效率。通过零拷贝+内存注册优化，每百万次数据传输，网络吞吐量+33%，延迟-20%；持久化连接池：构建SocketPool持久化QUIC/TCP socket，结合low - level socket flag tunning（首包耗时-2.3%）；容器弹性调度：0->1设计及搭建弹性调度服务，动态垂直扩缩容实例资源规格。"
+          },
+          {
+            "company": "字节跳动",
+            "title": "网络传输算法工程师",
+            "position": "网络传输算法工程师",
+            "startDate": "2021-08-01",
+            "endDate": "今",
+            "time": "2021-08-01 ~ 今",
+            "duration": "",
+            "description": "视频点直播 传输协议 拥塞控制 webrtc"
+          },
+          {
+            "company": "BIGO",
+            "title": "RTC传输算法",
+            "position": "RTC传输算法",
+            "startDate": "2020-09",
+            "endDate": "2021-08",
+            "time": "2020-09 ~ 2021-08",
+            "duration": "",
+            "description": "RTC 拥塞控制算法"
+          },
+          {
+            "company": "Bigo",
+            "title": "RTC实时传输",
+            "position": "RTC实时传输",
+            "startDate": "2020-08",
+            "endDate": "2021-08",
+            "time": "2020-08 ~ 2021-08",
+            "duration": "",
+            "description": "基于WebRTC搭建Bigo的RTC 1v1实时通信系统；传输协议优化：自适应探测，随机丢包检测，关键帧补Padding等（画面抖动率-27%，带宽预测准确性+18%，人均视频时长+4.3s）；搭建Mahimahi+Pantheon仿真平台，修改源码支持多参数网损，复现线上Trace；TraceSystem：追踪多CC算法在一次通话中表现；基于线上trace做K-Means聚类。"
+          },
+          {
+            "company": "华为技术有限公司",
+            "title": "项目X",
+            "position": "项目X",
+            "startDate": "2019-07",
+            "endDate": "2020-08",
+            "time": "2019-07 ~ 2020-08",
+            "duration": "",
+            "description": "5G SA建设/政企ToB项目等，获得19年绩效A/优秀学员奖牌/方案比武第一/明日之星等荣誉。"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "北京大学",
+            "degree": "硕士",
+            "major": "软件工程",
+            "startYear": "2018",
+            "endYear": "2021",
+            "year": "2018-2021",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "北京理工大学",
+            "degree": "本科",
+            "major": "安全工程",
+            "startYear": "2013",
+            "endYear": "2017",
+            "year": "2013-2017",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "北京邮电大学",
+            "degree": "硕士",
+            "major": "电子科学与技术",
+            "startYear": "2016",
+            "endYear": "2019",
+            "year": "2016-2019",
+            "tags": [
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 21,
+      "candidate_id": 22942,
+      "name": "谭勇",
+      "score": 70.5,
+      "match_tier": "泛化拓展",
+      "match_reasons": [],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "地平线",
+        "current_title": "AI基础架构部湖仓负责人",
+        "experience_years": 22,
+        "education_level": "本科",
+        "work_experiences": [
+          {
+            "company": "地平线",
+            "title": "AI基础架构部湖仓负责人",
+            "position": "AI基础架构部湖仓负责人",
+            "startDate": "2022-02-01",
+            "endDate": "今",
+            "time": "2022-02-01 ~ 今",
+            "duration": "",
+            "description": "从0-1搭建湖仓团队，基于开源组件自研数据湖，支撑百PB级别的自动驾驶结构化数据\n· 选型并构建数据基建层 + 湖仓一体\n· 支撑pnc、感知等构建端到端数据闭环和数据挖掘，支撑以图搜图、图文混搜等非结构化数据挖掘\n· 支撑自动驾驶领域海量数据管理，数据资产的生命周期管理，数据治理等\n· 支撑自动驾驶数据闭环、数据飞轮、端到端数据挖掘、多模态数据、结构化和非结构化数据融合\n· 支撑地平线量产、商业化和稳定性，整体稳定性SLA>99%\n· 作为AI Infra计算、存储的架构补充，应用于Infra层元数据管理、血缘、流批一体、调度、数据分析展现等多个场景"
+          },
+          {
+            "company": "爱奇艺",
+            "title": "深度学习云负责人",
+            "position": "深度学习云负责人",
+            "startDate": "2018-08",
+            "endDate": "2022-01",
+            "time": "2018-08 ~ 2022-01",
+            "duration": "",
+            "description": "1.算法：\n- 3D视觉、人机交互、3D重建 (深度学习方向)：\n\t◼ 3D手部重建：单目重建精细化3D手部，论文<I2UV-HandNet: Image-to-UV Prediction Network for Accurate and High-fidelity 3D Hand Mesh Modeling>被ICCV 2021顶会收录。模型已落地在爱奇艺奇遇VR3，在VR移动端算力受限(不能使用GPU、NPU、CPU仅使用DSP 50%算力的情况下)实测单手速度达11毫秒。\n\t大数据文摘链接：https://mp.weixin.qq.com/s/iyQRA6t4Ngcb7hRBdJ-ftw\n\t机器之心链接： https://mp.weixin.qq.com/s/r6zOhnzNUoz4oTdRHTI4Fg \n\t◼ 2D 转 3D: 通过单目深度估计模型将普通 2D 电影转制为 3D 电影，每部节省100 万+版权成本，解决了业界 3D 片源稀缺的痛点，一年内已转制并上线几百部 3D 电影、连续剧、动漫。\n\t机器之心链接： https://mp.weixin.qq.com/s/ewD"
+          },
+          {
+            "company": "果小美",
+            "title": "AI部门负责人",
+            "position": "AI部门负责人",
+            "startDate": "2017-08",
+            "endDate": "2018-08",
+            "time": "2017-08 ~ 2018-08",
+            "duration": "",
+            "description": "阿里投资无人货架公司\n负责基于计算视觉、深度学习的新零售整体解决方案. 方向为智能货柜, 高并发在线推断, 并行加速, 云端异构高性能运算, 人脸识别等."
+          },
+          {
+            "company": "澳新银行",
+            "title": "对公银行负责人",
+            "position": "对公银行负责人",
+            "startDate": "2015-11",
+            "endDate": "2017-08",
+            "time": "2015-11 ~ 2017-08",
+            "duration": "",
+            "description": "负责对公银行数据挖掘、报表、模型"
+          },
+          {
+            "company": "IBM美国",
+            "title": "数据科学家",
+            "position": "数据科学家",
+            "startDate": "2009-09",
+            "endDate": "2015-10",
+            "time": "2009-09 ~ 2015-10",
+            "duration": "",
+            "description": "美国北卡罗来纳州三角科技园区IBM RTP中心, CIO(Chief Information Office)担任IBM Watson数据科学家"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "四川大学",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "startYear": "2000",
+            "endYear": "2004",
+            "year": "2000-2004",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 22,
+      "candidate_id": 8924,
+      "name": "Reta",
+      "score": 70.4,
+      "match_tier": "泛化拓展",
+      "match_reasons": [],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阿里巴巴集团",
+        "current_title": "AI产品经理",
+        "experience_years": 1,
+        "education_level": "本科",
+        "work_experiences": [
+          {
+            "company": "阿里巴巴集团",
+            "position": "AI产品经理",
+            "start_date": "2025-10-01",
+            "end_date": "今",
+            "duration": "",
+            "description": "图像生成、视频生成产品"
+          },
+          {
+            "company": "蚂蚁集团",
+            "position": "AI产品经理",
+            "start_date": "2025-10",
+            "end_date": "2025-11",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "字节跳动",
+            "position": "AI Infra产品经理",
+            "start_date": "2025-02",
+            "end_date": "2025-10",
+            "duration": "",
+            "description": "火山引擎 LLM Infra 产品\n- 公有云产品\n- 分布式引擎、多模态数据处理、大模型推理、system observability\n- MLP，TOS，Ark，Data 生态"
+          },
+          {
+            "company": "北京智谱华章科技有限公司",
+            "position": "AI产品经理",
+            "start_date": "2024-06",
+            "end_date": "2024-10",
+            "duration": "",
+            "description": "- GLM4-Plus\n- AutoGLM"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "中国矿业大学",
+            "degree": "本科",
+            "major": "摄影测量与遥感",
+            "start_year": "2022",
+            "end_year": "2026",
+            "description": "member of HFA Campus",
+            "tags": [
+              "211"
+            ]
+          },
+          {
+            "school": "中国矿业大学",
+            "degree": "本科",
+            "major": "遥感科学与技术",
+            "start_year": "2021",
+            "end_year": "2025",
+            "tags": [
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 23,
+      "candidate_id": 2128,
+      "name": "yafeng",
+      "score": 70,
+      "match_tier": "泛化拓展",
+      "match_reasons": [],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阿里巴巴",
+        "current_title": "deep learning, model compression, AI infra",
+        "experience_years": null,
+        "education_level": null,
+        "work_experiences": [
+          {
+            "company": "Alibaba",
+            "title": "deep learning",
+            "time": "Current",
+            "description": ""
+          }
+        ],
+        "education_details": []
+      }
+    },
+    {
+      "rank": 24,
+      "candidate_id": 12502,
+      "name": "John",
+      "score": 69.9,
+      "match_tier": "泛化拓展",
+      "match_reasons": [],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "腾讯",
+        "current_title": "大模型算法",
+        "experience_years": 3,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "腾讯",
+            "position": "大模型算法",
+            "start_date": "2024-03-01",
+            "end_date": "今",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "科大讯飞",
+            "position": "大模型",
+            "start_date": "2017-07",
+            "end_date": "2024-03",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "Plaud",
+            "title": "AI服务工程师",
+            "position": "AI服务工程师",
+            "startDate": "2025-09-01",
+            "endDate": "今",
+            "time": "2025-09-01 ~ 今",
+            "duration": "",
+            "description": "【北京】PLAUD ai-agent开发，LLM应用"
+          },
+          {
+            "company": "百度",
+            "title": "Golang开发工程师",
+            "position": "Golang开发工程师",
+            "startDate": "2024-05",
+            "endDate": "2025-09",
+            "time": "2024-05 ~ 2025-09",
+            "duration": "",
+            "description": "【北京】百度地图poi建设，地图影像处理链路"
+          },
+          {
+            "company": "Momenta",
+            "title": "R&D Engineer",
+            "position": "R&D Engineer",
+            "startDate": "2022-12",
+            "endDate": "2024-05",
+            "time": "2022-12 ~ 2024-05",
+            "duration": "",
+            "description": "【苏州】实习+工作，自动驾驶算法评测体系构建，Event Library & Simulation Infra"
+          },
+          {
+            "company": "商汤科技",
+            "title": "容器研发实习生",
+            "position": "容器研发实习生",
+            "startDate": "2022-03",
+            "endDate": "2022-09",
+            "time": "2022-03 ~ 2022-09",
+            "duration": "",
+            "description": "【上海】大装置 & Sence Falcon"
+          },
+          {
+            "company": "科大讯飞",
+            "title": "软件开发实习生",
+            "position": "软件开发实习生",
+            "startDate": "2021-11",
+            "endDate": "2022-03",
+            "time": "2021-11 ~ 2022-03",
+            "duration": "",
+            "description": "【合肥】AI工程院实习，太菜，基本没产出，白嫖了几个月晚饭券"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "武汉",
+            "degree": "硕士",
+            "major": "通信与信息系统",
+            "start_year": "2014",
+            "end_year": "2017",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "安徽大学",
+            "degree": "硕士",
+            "major": "通信与信息系统",
+            "startYear": "2020",
+            "endYear": "2023",
+            "year": "2020-2023",
+            "description": "一只gopher",
+            "tags": [
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 25,
+      "candidate_id": 24584,
+      "name": "谢淮冰",
+      "score": 69.5,
+      "match_tier": "泛化拓展",
+      "match_reasons": [],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "腾讯",
+        "current_title": "大模型算法工程师",
+        "experience_years": 1,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "腾讯",
+            "title": "大模型算法工程师",
+            "position": "大模型算法工程师",
+            "startDate": "2025-07-01",
+            "endDate": "今",
+            "time": "2025-07-01 ~ 今",
+            "duration": "",
+            "description": "混元大模型基础模型算法\npost-train pre-train"
+          },
+          {
+            "company": "字节跳动",
+            "title": "抖音推荐算法实习生",
+            "position": "抖音推荐算法实习生",
+            "startDate": "2023-09",
+            "endDate": "2024-03",
+            "time": "2023-09 ~ 2024-03",
+            "duration": "",
+            "description": ""
+          },
+          {
+            "company": "微软",
+            "title": "Research Intern",
+            "position": "Research Intern",
+            "startDate": "2023-03",
+            "endDate": "2023-07",
+            "time": "2023-03 ~ 2023-07",
+            "duration": "",
+            "description": "AI+system"
+          },
+          {
+            "company": "上海宽德投资管理中心（有限合伙）",
+            "title": "AI Infra实习生",
+            "position": "AI Infra实习生",
+            "startDate": "2022-06",
+            "endDate": "2022-09",
+            "time": "2022-06 ~ 2022-09",
+            "duration": "",
+            "description": "优化算法性能，支持高频量化"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "北京",
+            "degree": "硕士",
+            "major": "人工智能",
+            "startYear": "2022",
+            "endYear": "2025",
+            "year": "2022-2025",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "上海财经",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "startYear": "2018",
+            "endYear": "2022",
+            "year": "2018-2022",
+            "tags": [
+              "211"
+            ]
+          },
+          {
+            "school": "北京大学",
+            "degree": "硕士",
+            "major": "人工智能",
+            "startYear": "2022",
+            "endYear": "2025",
+            "year": "2022-2025",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "上海财经大学",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "startYear": "2018",
+            "endYear": "2022",
+            "year": "2018-2022",
+            "tags": [
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 26,
+      "candidate_id": 24714,
+      "name": "刘曜辉",
+      "score": 52.9,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阿里巴巴",
+        "current_title": "深度学习框架研发工程师",
+        "experience_years": 3,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "阿里巴巴",
+            "title": "深度学习框架研发工程师",
+            "position": "深度学习框架研发工程师",
+            "startDate": "2023-07",
+            "endDate": "2025-04",
+            "time": "2023-07 ~ 2025-04",
+            "duration": "",
+            "description": "负责构建分布式训练框架，推动AIGC大模型训练和落地"
+          },
+          {
+            "company": "阿里巴巴",
+            "title": "研发工程师",
+            "position": "研发工程师",
+            "startDate": "2023-07-01",
+            "endDate": "今",
+            "time": "2023-07-01 ~ 今",
+            "duration": "",
+            "description": "深度参与自动分布式框架开发。负责 SPMD 数据链路的实现和优化，机间扩展率达到 97%。参与 AI 编译方面的工作，优化编译性能并添加了 DTR 实现。框架在多模态模型上相比 PyTorch 速度提升 35%。支持阿里妈妈视频生成大模型的业务落地，负责模型预训练的基础模块开发、精度校准和千卡集群上的性能优化，为期半年的支持过程中 Flops 提升 30%。"
+          },
+          {
+            "company": "OneFlow 框架组",
+            "title": "框架研发实习生",
+            "position": "框架研发实习生",
+            "startDate": "2022-12",
+            "endDate": "2023-03",
+            "time": "2022-12 ~ 2023-03",
+            "duration": "",
+            "description": "负责 one-fx 的开发并探索 Transformers 自动并行化的支持；优化测试框架和修正算子实现。"
+          },
+          {
+            "company": "微软 STCA AI Platform",
+            "title": "软件开发实习生",
+            "position": "软件开发实习生",
+            "startDate": "2022-01",
+            "endDate": "2022-04",
+            "time": "2022-01 ~ 2022-04",
+            "duration": "",
+            "description": "负责 ONNX Runtime 中的子图模式匹配的开发和训推平台的基础模块开发。"
+          },
+          {
+            "company": "旷视科技引擎部门",
+            "title": "框架研发实习生",
+            "position": "框架研发实习生",
+            "startDate": "2021-08",
+            "endDate": "2021-12",
+            "time": "2021-08 ~ 2021-12",
+            "duration": "",
+            "description": "深度参与 MegEngine 手机端训练功能的开发和 OpenCL 算子开发。"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "电子科技",
+            "degree": "硕士",
+            "major": "通信与信息系统",
+            "startYear": "2020",
+            "endYear": "2023",
+            "year": "2020-2023",
+            "description": "研究方向：基于深度学习的图像处理",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "电子科技",
+            "degree": "本科",
+            "major": "通信工程",
+            "startYear": "2016",
+            "endYear": "2020",
+            "year": "2016-2020",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "电子科技大学",
+            "degree": "硕士",
+            "major": "通信与信息系统",
+            "startYear": "2020",
+            "endYear": "2023",
+            "year": "2020-2023",
+            "description": "研究方向：基于深度学习的图像处理",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 27,
+      "candidate_id": 1161,
+      "name": "承志",
+      "score": 52.6,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阿里巴巴",
+        "current_title": "ai大模型负责人阿里巴巴2022.6-至今 (3年7个月)大",
+        "experience_years": 8.3,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "阿里巴巴",
+            "title": "ai大模型负责人阿里巴巴2022.6-至今 (3年7个月)大",
+            "time": "2022.6-至今",
+            "description": "ai大模型负责人阿里巴巴2022.6-至今 (3年7个月)大模型负责人mcp应用大模型agent大模型基础大模型他有201个好友在此公司"
+          },
+          {
+            "company": "蚂蚁集团",
+            "title": "高级技术专家蚂蚁集团",
+            "time": "2017.9-2022.6",
+            "description": "高级技术专家蚂蚁集团2017.9-2022.6 (4年9个月)Java后端，ai大模型、大数据，风控交易，营销，信贷HadoopKafkaMySQLSpringSpringBoot分布式技术后端开发微"
+          },
+          {
+            "company": "阿里巴巴",
+            "position": "ai大模型负责人",
+            "start_date": "2022-06-01",
+            "end_date": "今",
+            "duration": "",
+            "description": "大模型负责人"
+          },
+          {
+            "company": "蚂蚁集团",
+            "position": "高级技术专家",
+            "start_date": "2017-09",
+            "end_date": "2022-06",
+            "duration": "",
+            "description": "Java后端，ai大模型、大数据，风控交易，营销，信贷"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "浙江大学",
+            "major": "计算机",
+            "year": "2014-2017"
+          },
+          {
+            "school": "浙江大学",
+            "major": "计算机",
+            "year": "2010-2014"
+          }
+        ]
+      }
+    },
+    {
+      "rank": 28,
+      "candidate_id": 1286,
+      "name": "张舫",
+      "score": 52.3,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阿里巴巴",
+        "current_title": "云大模型技术服务专家",
+        "experience_years": 6,
+        "education_level": null,
+        "work_experiences": [
+          {
+            "company": "阿里云",
+            "position": "大模型技术服务专家",
+            "start_date": "2023.12",
+            "end_date": "至今",
+            "duration": "2年2个月",
+            "description": ""
+          },
+          {
+            "company": "阿里云计算有限公司",
+            "position": "架构师",
+            "start_date": "2020.9",
+            "end_date": "至今",
+            "duration": "5年5个月",
+            "description": "阿里云全球交付"
+          },
+          {
+            "company": "阿里云计算有限公司",
+            "position": "业务架构师",
+            "start_date": "2020.9",
+            "end_date": "至今",
+            "duration": "5年5个月",
+            "description": "业务架构师"
+          },
+          {
+            "company": "上海汉得信息技术股份有限公司",
+            "position": "技术经理",
+            "start_date": "",
+            "end_date": "",
+            "duration": "",
+            "description": ""
+          }
+        ],
+        "education_details": []
+      }
+    },
+    {
+      "rank": 29,
+      "candidate_id": 24641,
+      "name": "暂不看机会的好鸫",
+      "score": 52.2,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "阿里巴巴集团",
+        "current_title": "深度学习框架研发工程师",
+        "experience_years": 3,
+        "education_level": "硕士",
+        "work_experiences": [
+          {
+            "company": "阿里巴巴集团",
+            "title": "深度学习框架研发工程师",
+            "position": "深度学习框架研发工程师",
+            "startDate": "2023-07-01",
+            "endDate": "今",
+            "time": "2023-07-01 ~ 今",
+            "duration": "",
+            "description": "大模型训练优化，暂不看机会"
+          },
+          {
+            "company": "微软",
+            "title": "SDE intern",
+            "position": "SDE intern",
+            "startDate": "2022-02",
+            "endDate": "2022-06",
+            "time": "2022-02 ~ 2022-06",
+            "duration": "",
+            "description": "分布式深度学习训练优化"
+          },
+          {
+            "company": "快手",
+            "title": "机器学习平台研发实习",
+            "position": "机器学习平台研发实习",
+            "startDate": "2021-04",
+            "endDate": "2021-08",
+            "time": "2021-04 ~ 2021-08",
+            "duration": "",
+            "description": "机器学习云平台后端"
+          },
+          {
+            "company": "英特尔亚太研发公司",
+            "title": "SDE intern",
+            "position": "SDE intern",
+            "startDate": "2019-10",
+            "endDate": "2020-01",
+            "time": "2019-10 ~ 2020-01",
+            "duration": "",
+            "description": "OpenVINO and Deep Learning Framework"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "中国科学院计算技术研究所",
+            "degree": "硕士",
+            "major": "计算机应用技术",
+            "startYear": "2020",
+            "endYear": "2023",
+            "year": "2020-2023"
+          },
+          {
+            "school": "中国科学院",
+            "degree": "硕士",
+            "major": "计算机应用技术",
+            "startYear": "2020",
+            "endYear": "2023",
+            "year": "2020-2023",
+            "description": "计算技术研究所"
+          },
+          {
+            "school": "同济",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "startYear": "2015",
+            "endYear": "2020",
+            "year": "2015-2020",
+            "description": "上海市优秀毕业生，国家奖学金",
+            "tags": [
+              "985",
+              "211"
+            ]
+          },
+          {
+            "school": "中国科学院大学",
+            "degree": "硕士",
+            "major": "计算机应用技术",
+            "startYear": "2020",
+            "endYear": "2023",
+            "year": "2020-2023",
+            "description": "计算技术研究所"
+          },
+          {
+            "school": "同济大学",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "startYear": "2015",
+            "endYear": "2020",
+            "year": "2015-2020",
+            "description": "上海市优秀毕业生，国家奖学金",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 30,
+      "candidate_id": 11383,
+      "name": "吴国昊",
+      "score": 51.6,
+      "match_tier": "泛化拓展",
+      "match_reasons": [
+        "🎯 标题匹配: ai infra"
+      ],
+      "risk_flags": [],
+      "candidate_info": {
+        "current_company": "快手",
+        "current_title": "大模型训练框架",
+        "experience_years": null,
+        "education_level": "本科",
+        "work_experiences": [
+          {
+            "company": "快手",
+            "position": "大模型训练框架",
+            "start_date": "2024-08-01",
+            "end_date": "今",
+            "duration": "",
+            "description": "支持大模型训练；大模型训练框架研发"
+          },
+          {
+            "company": "上海人工智能实验室",
+            "position": "大模型系统研发工程师",
+            "start_date": "2022-07",
+            "end_date": "2024-08",
+            "duration": "",
+            "description": "基于 ray 搭建1000亿参数模型 mu2net 分布式训练系统，负责其中的存储管理模块研发；\n\n“书生·天际”项目大模型系统核心研发，支持2000亿参数 NeRF 城市大模型实时渲染；"
+          },
+          {
+            "company": "美团",
+            "position": "自动驾驶算法实习生",
+            "start_date": "2021-07",
+            "end_date": "2021-10",
+            "duration": "",
+            "description": "负责美团无人车决策算法性能调优，使用多线程让端到端性能提升30%"
+          },
+          {
+            "company": "商汤科技",
+            "position": "parrots深度学习框架实习生",
+            "start_date": "2021-07",
+            "end_date": "2022-03",
+            "duration": "",
+            "description": "负责显存优化算法DLMO的开发"
+          },
+          {
+            "company": "旷视科技",
+            "position": "开发实习生",
+            "start_date": "2021-03",
+            "end_date": "2021-06",
+            "duration": "",
+            "description": "负责yinyangkmeans聚类算法的cpp实现"
+          }
+        ],
+        "education_details": [
+          {
+            "school": "清华大学",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "start_year": "2018",
+            "end_year": "2022",
+            "tags": [
+              "985",
+              "211"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
