@@ -1,19 +1,34 @@
 # 学术渠道扩展设计方案
 
-**日期**: 2026-03-11  
-**状态**: 设计阶段  
+**日期**: 2026-03-11 (最近更新: 2026-03-14 12:00)  
+**状态**: 2025 网页爬取中 (10 并发, ~14:30 完成)，2024 S2 带 API Key 运行中 (~16:00 完成)  
 **项目**: 扩展现有 `github_mining` 项目，新增学术来源渠道
 
 ---
 
-## 一、目标
+## 一、最终目标 — 候选人完整档案
 
-在现有 GitHub 社交网络挖猎管道之外，**新增一条学术渠道**，直接从顶级 AI 学术会议和论文数据库中挖掘高质量华人AI人才。
+> 🎯 学术渠道的核心目标不是「采集名字和邮箱」，而是为每个候选人建立**足以支撑猎头决策的完整档案**。
 
-### 核心诉求
-1. **找到 AI 领域顶级华人学者**（发表过 NeurIPS/ICML/ICLR/ACL/CVPR 论文）
-2. **拿到联系方式**：邮箱（优先）、GitHub URL、个人网页
-3. **有 GitHub URL 的直接接驳现有管道**，无 GitHub 的也能直接入库
+### 每个候选人必须达到的数据完整度
+
+| 维度 | 内容 | 用途 | 优先级 |
+|------|------|------|:------:|
+| **联系方式** | 邮箱、GitHub、LinkedIn、Twitter | 触达的前提 | P0 |
+| **工作履历** | 当前公司+职位，过往经历 | 判断在职状态、跳槽意愿、薪资范围 | P0 |
+| **教育背景** | 学位、学校、专业 | 判断学历层次 (985/海归/名校博士) | P0 |
+| **技术技能** | 具体技术栈 | 匹配 JD 技术要求 | P0 |
+| **学术影响力** | h-index、引用数、顶会论文 | 评估研究实力 | P1 |
+| **研究方向** | 具体研究领域和论文主题 | 找特定方向人才 (NLP/CV/RL) | P1 |
+| **谈话点** | 个性化外联话术 | 提高触达回复率 | P1 |
+| **人才标签** | 多维度结构化标签 (tech_domain, seniority...) | 智能匹配、批量筛选 | P1 |
+| **网页原文** | 主页 HTML 文本 | 二次分析、关系挖掘、不重复爬取 | P2 |
+
+### 数据完整度目标
+
+- **S/A+ Tier**: 所有 P0 + P1 字段必填，目标 100% 覆盖
+- **A/B Tier**: P0 字段 80%+ 覆盖，P1 尽量填充
+- **C Tier**: 仅保留基础数据，不消耗 API credits
 
 ### 与现有渠道的互补性
 
@@ -22,9 +37,104 @@
 | 覆盖人群 | 工程活跃、代码贡献者 | 论文发表者、研究员 |
 | 质量信号 | Followers、Stars | h-index、引用数、顶会录用 |
 | 联系方式 | commit 邮箱、bio | 论文邮箱、机构主页 |
-| 盲区 | 不写代码的学者 | 不发论文的工程师 |
+| 数据密度 | ✅ 完整 (LLM 富化) | ⚠️ 待补全 |
 
 两条管道通过 `github_url` / `email` 在数据库自然去重，互不干扰。
+
+---
+
+## 一.5、各阶段信息流分析 — 当前差距 (2026-03-14 审计)
+
+| 阶段 | 产出的信息 | 是否保存到DB | 差距 |
+|------|-----------|:---:|------|
+| Phase 1 论文采集 | 姓名、论文、会议 | ✅ notes | — |
+| Phase 2 S2 富化 | h-index、引用、机构 | ✅ structured_tags | — |
+| Phase 3 Serper | 主页URL、邮箱、GitHub、LinkedIn | ✅ 各字段 | ❌ **未存网页原文** |
+| Phase 4 PDF | 通讯邮箱 | ✅ email | — |
+| Phase 6 深度 | 子页面邮箱 | ⚠️ 仅提取邮箱 | ❌ **未做 LLM 富化** |
+| **LLM 富化** | 工作/教育/技能/谈话点 | ❌ **从未执行** | ❌ **核心缺失** |
+
+### 关键发现
+
+1. **Serper 没存网页原文** — 缓存只存了提取后的结构化数据，导致后续 LLM 分析必须重新爬取
+2. **academic_import.py 没有 LLM 字段映射** — 即使有 LLM 数据也写不进 DB
+3. **DB 中 academic 记录是“空壳”** — 0% 工作履历、0% 教育、0% 技能
+
+### 修复计划
+
+1. ✅ **2024 Serper 开始同时保存网页原文** → 修改 `academic_contact_enricher.py` 缓存结构
+2. ✅ **对所有有主页的 4,858 人执行 LLM 富化** → 复用 `run_phase4_5_llm_enrichment.py` 的 prompt
+3. ✅ **更新 `academic_import.py`** → 支持写入 LLM 提取的字段
+4. ✅ **LLM 与爬取分离** → 先爬存网页，再统一调用 LLM（见下方设计）
+
+---
+
+## 一.6、数据质量审计 — 2025 年度实测 (2026-03-14 16:25)
+
+### 按 Tier 联系方式覆盖率
+
+| | S (535) | A+ (541) | A (1,617) | B (2,374) | C (7,393) |
+|--|:--:|:--:|:--:|:--:|:--:|
+| **任一邮箱** | **64%** | **68%** | **57%** | **58%** | **0.07%** |
+| └ Serper (主力) | 61% | 65% | 55% | 56% | 0% |
+| └ Deep 子页面 | 2% | 2% | 1% | 1% | 0% |
+| └ GitHub commit | 2% | 3% | 2% | 2% | 0% |
+| └ S2 API | 4% | 4% | 3% | 1% | 0% |
+| **个人主页** | 100% | 100% | 89% | 99% | 0.12% |
+| **GitHub** | 35% | 47% | 44% | 45% | 0.08% |
+| **LinkedIn** | 20% | 23% | 21% | 22% | 0% |
+| **homepage_text** | 79% | 81% | 67% | 69% | 0% |
+| **LLM 已富化** | 40% | 37% | 34% | 33% | 0% |
+
+> **关键发现**: Serper 贡献了全部邮箱的 ~95%。Deep/GitHub/S2 合计不到 5%。
+
+### LLM 结构化数据质量评估
+
+| 类别 | 比例 | 说明 |
+|------|:---:|------|
+| ✅ 完整可用 (title+company+工作履历) | **93%** | 直接可用于猎头决策 |
+| ⚠️ 部分有用 | 1% | 有部分字段但不完整 |
+| ❌ 低质量 (q<50) | 6% | 网页内容太少或不可解析 |
+
+**结论**: LLM 富化的核心价值是**将非结构化网页文本转为可匹配、可筛选的结构化数据**。93% 可用率说明值得跑，但 6% 的低质量无法避免（取决于网页内容）。
+
+### 关键差距与决策
+
+**B+ 以上 (5,067 人) 的邮箱缺口**:
+- 36-43% 无邮箱 (~2,068 人) — 即使 Serper 跑过也搜不到
+- 这部分需要其他渠道补充（暂无高效方案）
+
+**C 级 (7,393 人) 完全空白**:
+- 因为未跑 Serper，0 邮箱、0 主页、0 一切
+- 如果跑 Serper 需要 **7,393 credits**
+- **决策**: 暂不投入。先跑 2024 年度优质人才（预估 B+ 以上 ~7,286 人），等 2024 完成后再评估 C 级投入
+
+### 2024 年度预估与时间线
+
+**规模预估** (按 2025 同比例):
+
+| Tier | 2024 预估人数 | 与 2025 的 overlap |
+|:---:|:---:|:---:|
+| S | ~769 | 高 (核心研究者跨年发文) |
+| A+ | ~778 | 高 |
+| A | ~2,325 | 中 |
+| B | ~3,414 | 低 |
+| **B+ 以上** | **~7,286** | — |
+| C | ~10,634 | — |
+
+**2024 流水线时间线**:
+
+| 阶段 | 预计耗时 | 预计完成 |
+|------|:---:|---------|
+| S2 富化 (当前 91%) | ~1h | **3/14 17:30** |
+| Tier 分配 + 过滤 | 即时 | 同上 |
+| Serper (B+ ~7,286) | ~2h (需 credits) | 3/14 或 3/15 |
+| PDF 邮箱 | ~8h | 次日 |
+| 主页爬取 (10并发) | ~3h | 当天 |
+| LLM 富化 (5并发) | ~3h | 当天 |
+| 入库 | ~5min | 即可 |
+
+> 最快路径：S2 今天完成 → 明天跑 Serper+PDF → 后天全部入库
 
 ---
 
@@ -113,11 +223,12 @@
 ┌─────────────────────────────────────────────┐
 │              联系方式挖掘 Phase C            │
 │                                             │
-│  ① 论文 PDF → 提取邮箱（成功率 60-70%）      │
-│  ② Semantic Scholar homepage → 爬个人主页   │
-│     复用现有 _extract_profile_from_page()   │
-│  ③ GitHub 关联（搜索、代码仓库链接）          │
-│     → 有 GitHub URL：约 30-40% 的人         │
+│  ① S2 API → ArXiv PDF → 提取邮箱 (48%)     │
+│  ② 严格名字匹配 → 精确邮箱 (25%)            │
+│  ③ 未匹配邮箱列表 → 人工审核 (23%)           │
+│  ④ Semantic Scholar homepage → 爬主页 (2%)  │
+│  ⑤ GitHub 关联（搜索、代码仓库链接）          │
+│     → 有 GitHub URL：约 1-2% 的人          │
 └──────────────┬───────────────┬──────────────┘
                │## 四、与现有管道的零成本对接 (已验证 ✅)
 
@@ -135,55 +246,25 @@
 
 ---
 
-## 五、新增文件
+## 五、脚本清单
 
 ```
 github_mining/scripts/
-├── academic_miner.py          ← 🆕 核心：学术种子采集 + Semantic Scholar 查询
-└── extract_paper_email.py     ← 🆕 辅助：主页 / PDF 联系方式提取 (待开发)
+├── academic_miner.py              ← 核心：学术种子采集 + S2 查询
+├── extract_paper_email.py         ← 辅助：主页 HTML 联系方式提取
+├── academic_contact_enricher.py   ← v3 PDF 邮箱提取 + Serper 集成
+├── academic_import.py             ← 🆕 合并三路缓存 + 安全导入 DB
+└── academic_deep_enrich.py        ← 🆕 主页深度爬取 + GitHub commit email
 ```
 
-### `academic_miner.py` 主要功能
+### 核心模块功能
 
-```python
-class AcademicMiner:
-    def phase_a1_collect_authors()   # 从顶会采集作者列表
-    def phase_a2_semantic_scholar()  # 查询 h-index、主页、引用数
-    def phase_b_filter_chinese()     # 国籍过滤（复用 detect_nationality）
-    def phase_b_score()              # 学术质量评分
-    def phase_c_extract_contacts()   # 联系方式挖掘（邮箱+GitHub）
-    def export_to_batch_runner()     # 输出格式对齐 batch_runner 输入
-```
-
-### 输出字段（与现有数据库字段对齐）
-
-```json
-{
-  "name": "Yuxin Fang",
-  "email": "2yuxinfang@gmail.com",
-  "github_url": "https://github.com/Yuxin-CV",
-  "personal_website": "https://yuxinfang.github.io",
-  "source": "scholar_iclr_2024",
-  "h_index": 15,
-  "citation_count": 3200,
-  "conference": "ICLR 2024",
-  "paper_count": 8,
-  "affiliation": "HKU"
-}
-```
-
----
-
-## 五、复用现有代码
-
-| 现有函数/模块 | 位置 | 复用场景 |
-|-------------|------|---------|
-| `detect_nationality()` | `add_nationality_tags.py` | 华人筛选 |
-| `_extract_profile_from_page()` | `github_network_miner.py:1272` | 个人主页解析 |
-| `_fetch_scholar_data()` | `github_network_miner.py:1398` | Google Scholar 数据（已有实现！） |
-| `phase3_5_enrich()` | `github_network_miner.py:1071` | 有 GitHub URL 后的主页爬取 |
-| `batch_runner.py` | scripts/ | 批次管理、断点续传、DB 导入 |
-| `import_github_candidates.py` | personal-ai-headhunter/ | 最终入库（幂等） |
+| 脚本 | 功能 | Serper | S2 API | GitHub API |
+|------|------|--------|--------|------------|
+| `academic_miner.py` | 种子采集 + S2 富化 + 评分 | ❌ | ✅ | ❌ |
+| `academic_contact_enricher.py` | Serper 搜主页 + v3 PDF 提取 | ✅ | ✅ | ❌ |
+| `academic_deep_enrich.py` | 主页子页面爬取 + commit email | ❌ | ❌ | ✅ |
+| `academic_import.py` | 合并缓存 + 安全去重入 DB | ❌ | ❌ | ❌ |
 
 ---
 
@@ -236,36 +317,259 @@ class AcademicMiner:
 - [x] 华人过滤 + 质量打分
 - [x] 验证与现有系统的**零代码修改导入**兼容性
 
-### Phase 2：联系方式提取（基本完成 ✅）
-- [x] 个人主页邮箱增强正则提取
+### Phase 2：联系方式提取（v3 已验证 ✅）
+
+- [x] 个人主页邮箱增强正则提取（`extract_paper_email.py`）
 - [x] 个人主页 GitHub URL 精准提取
-- [ ] PDF 离线解析备用邮箱提取 (`pdfplumber`)（*按需扩展*）
+- [x] **v3 论文 PDF 离线解析邮箱提取**（`academic_contact_enricher.py`）
+
+#### v3 联系方式提取方法论
+
+**核心流程**：
+```
+学者 s2_id → S2 API 查论文 → ArXiv PDF URL → 下载 PDF
+  → PyMuPDF 提取前 2 页文字 → Regex 提取邮箱
+  → 严格名字边界匹配 → 精确归属到目标学者
+```
+
+**PDF URL 查找策略（v3 优化后）**：
+1. S2 API 优先（已有 `s2_id`，查 10 篇论文，优先 ArXiv）
+2. OpenReview 标题搜索兜底（模糊标题匹配）
+3. S2 429 错误自动重试 3 次（5/10/15s backoff）
+
+**邮箱-作者名匹配算法（v3）**：
+| 置信度 | 规则 | 示例 |
+|--------|------|------|
+| High (10) | first + last name 都在 local part | `xiangnanhe@gmail.com` ← Xiangnan He |
+| High (8) | last name 在边界 + first initial | `pliang@cs.stanford.edu` ← Percy Liang |
+| High (6) | last name (3+字符) 在 local 边界 | `tangjili@msu.edu` ← Jiliang Tang |
+| High (7) | 短姓氏 (2字符) + first name 证据 | `maweiying@...` ← Wei-Ying Ma |
+| Medium (4) | 首字母缩写 `first_initial+last` | `jye@...` ← Jong Chul Ye |
+| None (0) | 无匹配 → **拒绝**，避免误配 | 合著者邮箱被正确过滤 |
+
+**关键设计决策**：
+- 边界检查：`'long' in 'wujialong'` → False（中间位置不算），避免短姓氏误匹配
+- 短姓氏保护：2 字符姓氏（Yu/Ma/Li）必须有 first name 旁证才算匹配
+- 宁缺毋滥：无法匹配的邮箱保存到 `pdf_emails_unmatched` 供人工审核
+
+#### v3 验证结果（100 S 级学者）
+
+| 指标 | 数量 | 说明 |
+|------|------|------|
+| 找到 PDF | 99/100 (99%) | S2 API → ArXiv PDF |
+| PDF 中有邮箱 | 48/100 (48%) | PyMuPDF 提取首页 |
+| ✅ 严格匹配到本人 | 25/100 (25%) | 名字边界匹配，全部 high 置信度 |
+| 📋 有邮箱但未匹配 | 23/100 (23%) | 合著者邮箱列表，可人工挑选 |
+| ❌ 无邮箱 | 52/100 (52%) | PDF 中未出现邮箱 |
+
+**准确性验证**：25 个匹配邮箱全部为 high 置信度，逐一检查后确认 24/25 正确（96%），1 例边界误匹配（co-author 名含目标姓氏）。
+
+**匹配到的代表性学者**：
+
+| 学者 | 邮箱 | h-index |
+|------|------|---------|
+| Shuicheng Yan | yansc@sea.com | 141 |
+| Percy Liang | pliang@cs.stanford.edu | 102 |
+| Xiangnan He | xiangnanhe@gmail.com | 101 |
+| Wei-Ying Ma | maweiying@air.tsinghua.edu.cn | 92 |
+| Jiliang Tang | tangjili@msu.edu | 90 |
+| Mingsheng Long | mingsheng@tsinghua.edu.cn | 66 |
 
 ### Phase 3：会议覆盖扩展（已完成 ✅）
 - [x] NeurIPS / ICML / CVPR Proceedings 爬虫
 
-### Phase 4：全量采集（🔄 进行中）
+### Phase 4：全量 S2 作者富化
 
 **当前批次**: `conference_full_20260311_131547`
-**年份策略**: 2025 → 2024（串行，优先最新年份）
-**状态**: 2025 年 S2 作者富化进行中（12,460 人）
 
 | 阶段 | 2025 | 2024 |
 |------|:----:|:----:|
 | 论文采集 | ✅ 30,964 条 | ✅ 63,595 条 |
-| 去重+国籍过滤 | ✅ 12,460 人 | ✅ 17,923 人 |
-| S2 作者富化 | 🔄 进行中 | ⏳ 排队 (已缓存 740) |
-| 联系方式提取 | ⏳ | ⏳ |
-| DB 导入 | ⏳ | ⏳ |
+| 去重+国籍过滤 | ✅ 12,460 人 | ✅ 33,925 人 |
+| S2 作者富化 | ✅ 12,460/12,460 | ⏸️ 7,440/33,925 (22%, 待恢复) |
 
-> ⚠️ **瓶颈**: S2 API 免费版限流严重（~1 req/35s），已申请 API Key 待批准。
-> 预计 2025 年采集完成需 ~8-9 天。
+### Phase 4.5：联系方式提取 — 2025 完成结果
+
+#### Serper Google Search (S/A+/A/B, 5,067 人)
+
+**消耗**: ~5,077 Serper credits (2 个 key)
+
+| 指标 | 数量 | 覆盖率 |
+|------|------|--------|
+| 查询人数 | 5,067 | S/A+/A/B 全覆盖 |
+| 找到主页 | 4,858 | 96% |
+| 提取邮箱 | 2,913 | 57% |
+| 提取 GitHub | 2,191 | 43% |
+| 提取 LinkedIn | 1,090 | 22% |
+
+#### v3 PDF 邮箱提取 (全量 12,460 人)
+
+**耗时**: 19.2 小时
+
+| 指标 | 数量 |
+|------|------|
+| 查询人数 | 8,612 (含缓存) |
+| 精确匹配邮箱 | 1,000 |
+
+#### 两路合并 & 重叠分析
+
+| | 邮箱数 |
+|--|--------|
+| Serper 独有 | 2,489 |
+| PDF 独有 | 576 |
+| 两者重叠 | 424 |
+| **合并后总邮箱** | **3,489** |
+
+> 重叠率仅 12% → 两种方法高度互补。Serper 找主页邮箱，PDF 找论文邮箱。
+
+#### 分 Tier 覆盖率
+
+| Tier | 人数 | 合并邮箱 | 主页 | GitHub | LinkedIn |
+|------|------|---------|------|--------|----------|
+| **S** | 535 | 366 (68%) | 533 | 184 | 104 |
+| **A+** | 541 | 382 (71%) | 540 | 253 | 124 |
+| **A** | 1,617 | 994 (61%) | 1,426 | 695 | 339 |
+| **B** | 2,374 | 1,446 (61%) | 2,359 | 1,059 | 523 |
+| **C** | 7,393 | 301 (4%) | — | — | — |
+| **总计** | **12,460** | **3,489 (28%)** | **4,858** | **2,191** | **1,090** |
+
+> C tier (h-index 0-4) 未跑 Serper。典型画像：博士生/初级研究员，71% 只有 1 篇论文。
+> 是否对 C tier 跑 Serper，视 2024 完成后的 key 余量决定。
+
+### Phase 5：数据库导入 — ⚠️ 跨源隔离规则 (2026-03-14 确立)
+
+> [!CAUTION]
+> **不同渠道的数据绝不互相更新！** Academic、GitHub、脉脉各自独立。
+> 即使通过 email/GitHub/LinkedIn/website 确认为同一人，也只 INSERT 新记录，不更新已有记录。
+> 跨源重复输出到 `duplicate_report.csv`，由人工决定是否合并。
+
+**导入策略**: `academic_import.py --update` 合并缓存 → 安全入库
+
+```
+跨源匹配 → INSERT 新 academic 记录 + 记录到 duplicate_report.csv
+同源匹配 → 用 s2_id 精确匹配 → 补充空字段 (不覆盖)
+无匹配   → INSERT 新 academic 记录
+```
+
+**⚠️ 必须指定 DB_PATH**: `DB_PATH=.../headhunter_dev.db python3 scripts/academic_import.py --update`
+
+**同源匹配 TODO**: 从 `name` 改为 `structured_tags.s2_id` (防止同名混淆)
+
+| 批次 | 说明 | 新增 | 跨源重复 |
+|------|------|:---:|:---:|
+| 2025 首次入库 | S/A+/A/B 用旧逻辑 | 3,641 | — |
+| 2025 补充入库 (修复后) | 全量跨源隔离模式 | 8,246 | 2,409 |
+
+**数据库状态**: 51,300 总候选人 (含 12,643 academic)
+
+### Phase 6：深度富化 — 网页爬取 + LLM 提取（🔧 2026-03-14 重新设计）
+
+> ⚠️ **2026-03-14 审计发现**: 原 Phase 6 仅设计了邮箱提取，导致 DB 中 academic 记录是“空壳”。
+> 现重新设计为完整的「网页爬取 + LLM 提取」流程。
+
+**核心架构决策: 爬取与 LLM 分离**
+
+```
+Step 6a: 爬取网页 (requests.get)          Step 6b: LLM 富化 (Qwen API)
+───────────────────────────          ───────────────────────────
+主页 + /contact,/about 子页面   →     读取已存 HTML → Qwen API
+提取邮箱 + 社交链接                提取工作/教育/技能/谈话点
+保存 homepage_text 到缓存     →     写入 structured_tags
+```
+
+**为什么分离？**
+- LLM 失败不影响爬取进度，各自独立重试
+- 改 prompt 不用重新爬网页，只重跑 LLM
+- 爬取速度 ~0.3s/人, LLM 5-worker 并发, 节奏不同
+
+**Step 6a: 网页爬取** (`academic_deep_enrich.py --mode homepage --workers 10`)
+
+| 数据源 | 目标人数 | 产出 | 状态 |
+|---------|---------|------|------|
+| 所有有主页的人 | 3,997 | 邮箱 + 社交链接 + **homepage_text** | 🔄 运行中 (PID 14222, 10 并发, ETA ~14:30) |
+| GitHub commit email | 2,107 | commit 邮箱 (47 个) | ✅ 完成 |
+
+**Step 6c: LLM 富化** (`academic_llm_enrich.py --workers 5`)
+
+| 指标 | 值 |
+|------|------|
+| 目标人数 | ~3,997 (所有有 homepage_text 的人) |
+| LLM API | DashScope Qwen-plus |
+| 并发数 | 5 workers |
+| 产出 | 工作履历 + 教育背景 + 技能 + 谈话点 + research_areas |
+| 进度保存 | _llm_enrichment_results.json + 断点续传 |
+| 测试结果 | ✅ 5/5 成功, 质量分 70-100, ~6s/人 |
+
+### Phase 7：2024 S2 全量富化（🔄 带 API Key 运行中 — 2026-03-14）
+
+| 指标 | 数值 |
+|------|------|
+| 2024 原始记录 | 63,595 条 |
+| 去重后 unique | 33,925 人 |
+| 华人+unknown 子集 | 17,923 人 |
+| S2 已缓存 | **~10,660 条 (59%)** (3/14 12:00 实时) |
+| 预估剩余时间 | **~4 小时** (带 API Key, 无限流) |
+
+**已使用 S2 API Key 重启** (PID 11498)。限流从每 20 条等 30-40s → **0 次限流**。
+
+```bash
+S2_API_KEY=xxx ./run_all_conferences.sh --resume
+```
+
+> ✅ **2024 Serper 将同时保存 homepage_text** — `academic_contact_enricher.py` 已修改缓存结构，
+> 后续 Serper 执行时自动存储网页原文，避免二次爬取。
+
+### Phase 8：全量执行计划（📋 2026-03-14 重新设计）
+
+**核心策略**: 爬取与 LLM 分离，按数据依赖关系流水执行。
+
+```
+═══ 2025 年度流水线 ═══
+
+    已完成                 │    今天 (3/14)
+───────────────────────────│─────────────────────────────────────
+ 采集→S2→Serper→PDF→入库    │  6a.爬取网页(并发10,ETA14:30)→保存HTML
+ GitHub commit(47 emails)✅  │  6c.LLM富化(ETA:爬取完成后~2h)
+ LLM脚本已开发测试✅          │  6d.--update入库
+
+═══ 2024 年度流水线 (后台) ═══
+
+ S2(带Key 59%→ETA16:00)→Serper(带HTML)→PDF→LLM富化→入库
+```
+
+**Serper Key 分配 (2024 专用)**:
+
+| Key | Credits | 用途 |
+|-----|---------|------|
+| Key 3 | ~2,500 | ICLR + CVPR S/A+/A/B |
+| Key 4 | ~2,500 | ICML + NeurIPS S/A+/A/B |
+| Key 5 | ~2,500 | 备用/余量 |
 
 ---
 
-## 九、不做的事（边界）
+## 九、关键数据保留清单
+
+**所有缓存文件必须保留** — 重新生成成本极高（API credits、时间、rate limit）。
+
+| 文件 | 大小 | 内容 | 重建成本 |
+|------|------|------|----------|
+| `_serper_cache.json` | 0.9MB | 5,067 人 Serper 结果 + homepage_text | 🔴 5,000 credits |
+| `_enrichment_cache.json` | 1.8MB | 12,460 人 PDF 邮箱 | 🔴 19 小时 |
+| `_deep_cache.json` | ~10MB | 网页爬取结果 + homepage_text | 🔴 重新爬取很慢 |
+| `_deep_github_cache.json` | ~0.2MB | GitHub commit email | 🟡 ~1h |
+| `_llm_enrichment_progress.json` | ~1MB | LLM 富化进度与结果 | 🔴 API credits |
+| `all_conf_2025_*_full.json` | 8.8MB | 12,460 人 S2 数据 | 🔴 ~24 小时 |
+| `all_conf_2025_s2_cache.json` | 7.4MB | S2 查询缓存 | 🔴 同上 |
+| `all_conf_2024_s2_cache.json` | ~10MB | S2 查询缓存 | 🔴 ~102h |
+
+> ❗ 新增 `homepage_text` 字段: Serper 缓存和深度爬取缓存都保存网页原文，避免二次爬取。
+
+---
+
+## 十、不做的事（边界）
 
 - ❌ 不新建独立项目（直接扩展现有 `github_mining`）
 - ❌ 不引入新数据库（全部走现有 SQLite）
-- ❌ 不处理付费数据源（只用免费 API）
-- ❌ Phase 1 未跑通前不做 Phase 2
+- ❌ 不处理付费数据源（只用免费 API + Serper 免费 credits）
+- ❌ C tier 默认不跑 Serper（除非 key 有余量）
+- ❌ 仅 name 匹配不做跨源合并（避免常见名污染）

@@ -467,5 +467,41 @@ ln -sf runs/latest_batch/outputs/phase3_enriched.json \
 
 ---
 
-**最后更新**: 2026-03-11
+## 🎓 Academic Pipeline 问题
+
+### 问题1: Pipeline 合并步骤找不到文件 (2023 事件)
+
+**症状**: Step 1 报 "0 人"，后续步骤全在空数据上跑
+
+**原因**: 合并脚本搜 `*${YEAR}*_full.json`，但个别会议的输出文件名不含年份
+
+**诊断**:
+```bash
+# 检查 outputs 目录下是否有 full.json 文件
+ls data/academic/runs/pipeline_*/outputs/*full*.json
+# 检查合并后的 all_conf 文件是否为空
+python3 -c "import json; print(len(json.load(open('all_conf_2023_*_full.json'))))"
+```
+
+**解决**: 手动合并各会议 JSON，或修复合并脚本的搜索 pattern
+
+### 问题2: 多年份共用目录导致缓存混用 (2024 事件)
+
+**症状**: Deep 爬取秒完成，但大量人未处理
+
+**原因**: `find_cache serper` 找到了另一个年份的 `_serper_cache.json`
+
+**诊断**:
+```bash
+# 检查 serper cache 包含多少个名字
+python3 -c "import json; print(len(json.load(open('_serper_cache.json'))))"
+# 对比目标 full.json 的人数
+python3 -c "import json; print(len(json.load(open('all_conf_2024_*_full.json'))))"
+```
+
+**解决**: 不同年份使用独立目录，或手动指定正确的缓存文件。详见 `CONVENTIONS.md`
+
+---
+
+**最后更新**: 2026-03-15
 **维护者**: GitHub Mining Team

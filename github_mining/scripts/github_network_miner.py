@@ -40,10 +40,15 @@ import functools
 print = functools.partial(print, flush=True)
 
 # ===== 配置 =====
+# BASE_DIR 指向历史数据目录（读取用），WRITE_DIR 指向当前写入目录
+# 使用 --new-run 时，WRITE_DIR 会指向带时间戳的子目录，避免覆盖历史数据
 BASE_DIR = Path(__file__).parent / "github_mining"
 BASE_DIR.mkdir(exist_ok=True)
 (BASE_DIR / "verification").mkdir(exist_ok=True)
 (BASE_DIR / "screenshots").mkdir(exist_ok=True)
+
+# WRITE_DIR 默认等于 BASE_DIR（向后兼容），可在运行时被 --new-run 覆盖
+WRITE_DIR = BASE_DIR
 
 API_BASE = "https://api.github.com"
 
@@ -224,10 +229,25 @@ def is_organization_account(user: Dict) -> bool:
 class GitHubNetworkMiner:
     """GitHub 社交网络挖掘器 (支持多 Token 池轮询)"""
 
-    def __init__(self, token: str = None, cache_days: int = 30, use_cache: bool = True):
+    def __init__(self, token: str = None, cache_days: int = 30, use_cache: bool = True,
+                 run_dir: Path = None):
+        """
+        run_dir: 如果指定，所有 phase1-4 的输出都写到该目录下，不影响 BASE_DIR（读取目录）。
+                 传入 None 时等价于原来的行为（写到 BASE_DIR = github_mining/）。
+        """
+        global WRITE_DIR
         self.tokens = []
         self.current_token_idx = 0
         self.session = requests.Session()
+
+        # 设置写入目录
+        if run_dir is not None:
+            run_dir = Path(run_dir)
+            run_dir.mkdir(parents=True, exist_ok=True)
+            (run_dir / "verification").mkdir(exist_ok=True)
+            WRITE_DIR = run_dir
+            print(f"📁 新 Run 目录: {WRITE_DIR}")
+        # else: WRITE_DIR 保持为 BASE_DIR（向后兼容）
 
         if token:
             # 支持传入单个 token 或多个 token (逗号分隔)，并严格清理空白符
@@ -373,8 +393,8 @@ class GitHubNetworkMiner:
         print(f"\n✅ 共采集 {len(all_users)} 个 Following 用户")
 
         # 保存原始列表
-        self._save_json(all_users, BASE_DIR / "phase1_following_list.json")
-        self._save_csv(all_users, BASE_DIR / "phase1_following_list.csv")
+        self._save_json(all_users, WRITE_DIR / "phase1_following_list.json")
+        self._save_csv(all_users, WRITE_DIR / "phase1_following_list.csv")
 
         # 逐个获取详细信息
         print(f"\n📊 开始获取详细用户资料...")
@@ -425,12 +445,12 @@ class GitHubNetworkMiner:
 
             # 定期保存（防止中断丢失）
             if (i + 1) % 200 == 0:
-                self._save_json(detailed_users, BASE_DIR / "phase1_seed_users.json")
+                self._save_json(detailed_users, WRITE_DIR / "phase1_seed_users.json")
                 print(f"  💾 中间保存: {len(detailed_users)} 人")
 
         # 最终保存
-        self._save_json(detailed_users, BASE_DIR / "phase1_seed_users.json")
-        self._save_csv(detailed_users, BASE_DIR / "phase1_seed_users.csv")
+        self._save_json(detailed_users, WRITE_DIR / "phase1_seed_users.json")
+        self._save_csv(detailed_users, WRITE_DIR / "phase1_seed_users.csv")
         print(f"\n✅ Phase 1 完成! 共 {len(detailed_users)} 人详细资料已保存")
         print(f"   API 请求总数: {self.request_count}")
 
@@ -491,7 +511,7 @@ class GitHubNetworkMiner:
                 print(f"  💾 中间保存: {len(detailed_users)} 人")
 
         self._save_json(detailed_users, seed_file)
-        self._save_csv(detailed_users, BASE_DIR / "phase1_seed_users.csv")
+        self._save_csv(detailed_users, WRITE_DIR / "phase1_seed_users.csv")
         print(f"\n✅ 断点续传完成! 共 {len(detailed_users)} 人")
         return detailed_users
 
@@ -566,7 +586,7 @@ class GitHubNetworkMiner:
             "top_locations": location_counter.most_common(20),
             "samples": [s["username"] for s in samples],
         }
-        self._save_json(report, BASE_DIR / "verification" / "verify1_report.json")
+        self._save_json(report, WRITE_DIR / "verification" / "verify1_report.json")
         print(f"\n📄 报告已保存到 github_mining/verification/verify1_report.json")
 
     # ============================================================
@@ -644,14 +664,14 @@ class GitHubNetworkMiner:
                 print(f"  ... 还有 {len(org_accounts) - 10} 个")
 
         # 保存
-        self._save_json(ai_candidates, BASE_DIR / "phase2_ai_filtered.json")
-        self._save_csv(ai_candidates, BASE_DIR / "phase2_ai_filtered.csv")
-        self._save_json(rejected, BASE_DIR / "phase2_rejected.json")
-        self._save_json(org_accounts, BASE_DIR / "phase2_org_accounts_filtered.json")  # 保存被过滤的组织账号
+        self._save_json(ai_candidates, WRITE_DIR / "phase2_ai_filtered.json")
+        self._save_csv(ai_candidates, WRITE_DIR / "phase2_ai_filtered.csv")
+        self._save_json(rejected, WRITE_DIR / "phase2_rejected.json")
+        self._save_json(org_accounts, WRITE_DIR / "phase2_org_accounts_filtered.json")  # 保存被过滤的组织账号
 
         # 保存分层文件
-        self._save_json(tier_a, BASE_DIR / "phase2_tier_a.json")
-        self._save_json(tier_b, BASE_DIR / "phase2_tier_b.json")
+        self._save_json(tier_a, WRITE_DIR / "phase2_tier_a.json")
+        self._save_json(tier_b, WRITE_DIR / "phase2_tier_b.json")
 
         print(f"\n✅ Phase 2 完成!")
         return ai_candidates, rejected
@@ -789,7 +809,7 @@ class GitHubNetworkMiner:
             "top_signals": Counter(all_signals).most_common(20),
             "tier_a_samples": [s["username"] for s in samples_a],
         }
-        self._save_json(report, BASE_DIR / "verification" / "verify2_report.json")
+        self._save_json(report, WRITE_DIR / "verification" / "verify2_report.json")
         print(f"\n📄 报告已保存")
 
     # ============================================================
@@ -835,14 +855,14 @@ class GitHubNetworkMiner:
             print(f"📂 输出路径(batch模式): {output_json}")
         elif input_file:
             if "phase4_expanded" in input_file:
-                output_json = BASE_DIR / "phase3_from_phase4.json"
-                output_csv = BASE_DIR / "phase3_from_phase4.csv"
+                output_json = WRITE_DIR / "phase3_from_phase4.json"
+                output_csv = WRITE_DIR / "phase3_from_phase4.csv"
             else:
-                output_json = BASE_DIR / "phase3_enriched.json"
-                output_csv = BASE_DIR / "phase3_enriched.csv"
+                output_json = WRITE_DIR / "phase3_enriched.json"
+                output_csv = WRITE_DIR / "phase3_enriched.csv"
         else:
-            output_json = BASE_DIR / "phase3_enriched.json"
-            output_csv = BASE_DIR / "phase3_enriched.csv"
+            output_json = WRITE_DIR / "phase3_enriched.json"
+            output_csv = WRITE_DIR / "phase3_enriched.csv"
 
         # 断点续传：加载已处理的数据
         enriched = []
@@ -1063,7 +1083,7 @@ class GitHubNetworkMiner:
             "email_rate": has_email / total if total else 0,
             "blog_rate": has_blog / total if total else 0,
         }
-        self._save_json(report, BASE_DIR / "verification" / "verify3_report.json")
+        self._save_json(report, WRITE_DIR / "verification" / "verify3_report.json")
 
     # ============================================================
     # Phase 3.5: 个人主页深度数据提取
@@ -1111,11 +1131,11 @@ class GitHubNetworkMiner:
             output_csv = output_path.with_suffix(".csv")
             print(f"📂 输出路径(batch模式): {output_path}")
         elif input_file and ("phase4_expanded" in input_file or "phase3_from_phase4" in input_file):
-            output_path = BASE_DIR / "phase4_final_enriched.json"
-            output_csv = BASE_DIR / "phase4_final_enriched.csv"
+            output_path = WRITE_DIR / "phase4_final_enriched.json"
+            output_csv = WRITE_DIR / "phase4_final_enriched.csv"
         else:
-            output_path = BASE_DIR / "phase3_5_enriched.json"
-            output_csv = BASE_DIR / "phase3_5_enriched.csv"
+            output_path = WRITE_DIR / "phase3_5_enriched.json"
+            output_csv = WRITE_DIR / "phase3_5_enriched.csv"
 
         # 断点续传
         already_done = set()
@@ -1623,7 +1643,7 @@ class GitHubNetworkMiner:
                     "total_new_users": len(cooccurrence),
                     "high_cooccurrence": len([v for v in cooccurrence.values() if v >= min_cooccurrence]),
                 }
-                self._save_json(progress, BASE_DIR / "phase4_progress.json")
+                self._save_json(progress, WRITE_DIR / "phase4_progress.json")
 
         # 过滤高共现用户
         high_co = {u: c for u, c in cooccurrence.items() if c >= min_cooccurrence}
@@ -1668,12 +1688,12 @@ class GitHubNetworkMiner:
 
             time.sleep(0.3 + random.uniform(0, 0.2))
             if (i + 1) % 100 == 0:
-                self._save_json(expanded, BASE_DIR / "phase4_expanded.json")
+                self._save_json(expanded, WRITE_DIR / "phase4_expanded.json")
 
         expanded.sort(key=lambda x: (x["cooccurrence"], x["ai_score"]), reverse=True)
 
-        self._save_json(expanded, BASE_DIR / "phase4_expanded.json")
-        self._save_csv(expanded, BASE_DIR / "phase4_expanded.csv")
+        self._save_json(expanded, WRITE_DIR / "phase4_expanded.json")
+        self._save_csv(expanded, WRITE_DIR / "phase4_expanded.csv")
 
         # 共现 Top 50
         print(f"\n🏆 共现 Top 30 新发现人才:")
@@ -2097,6 +2117,9 @@ def main():
     parser.add_argument("--max-users", type=int, default=None, help="Phase 3 最大处理人数")
     parser.add_argument("--input", type=str, default=None, help="Phase 3/Phase 3.5 输入文件路径 (支持Phase 4输出)")
     parser.add_argument("--output", type=str, default=None, help="Phase 3 输出文件路径（指定后直接写到该路径，适合 batch_runner.py 调用）")
+    parser.add_argument("--new-run", action="store_true",
+                        help="将所有 phase 输出写到带时间戳的新子目录（github_mining/runs/YYYYMMDD_HHMMSS/），"
+                             "避免覆盖历史数据。读取（verify/resume）仍从 github_mining/ 读取。")
 
     args = parser.parse_args()
 
@@ -2115,7 +2138,14 @@ def main():
         print("   建议: python github_network_miner.py phase1 --token ghp_xxxxx")
         print("   或设置环境变量: export GITHUB_TOKEN=ghp_xxxxx\n")
 
-    miner = GitHubNetworkMiner(token=token)
+    # 如果指定 --new-run，创建带时间戳的输出目录（避免覆盖历史数据）
+    run_dir = None
+    if getattr(args, 'new_run', False):
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        run_dir = Path(__file__).parent / "github_mining" / "runs" / ts
+        print(f"📁 --new-run 模式: 输出将写入 {run_dir}")
+
+    miner = GitHubNetworkMiner(token=token, run_dir=run_dir)
 
     if args.command == "phase1":
         miner.phase1_collect_following(args.target)

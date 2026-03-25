@@ -1,8 +1,133 @@
 # GitHub Mining 批次执行历史
 
-**最后更新**: 2026-03-11
+**最后更新**: 2026-03-24
 
 ---
+
+## 🔗 2026-03-24 Academic-GitHub 共现挖掘批次
+
+### 基本信息
+- **脚本**: `github_mining/scripts/academic_cooccurrence_miner.py`
+- **端到端流水线**: `github_mining/scripts/run_academic_cooc_pipeline.sh`
+- **种子来源**: DB 中 academic 渠道有 `github_url` 的候选人
+- **种子数量**: 3,849 个有效 GitHub username（过滤了 215 个组织账号）
+- **共现阈值**: ≥2（被至少 2 个学术种子共同 follow）
+- **Token 池**: 3 个，总速率 15,000次/小时
+
+### 文件路径（CONVENTIONS.md 合规：带年份+日期）
+| 文件 | 路径 |
+|------|------|
+| 种子列表 | `github_mining/academic_github_seeds_20260324.json` |
+| 进度快照 | `scripts/github_mining/academic_cooc_progress_20260324.json` |
+| 共现产出 | `scripts/github_mining/academic_cooc_expanded_20260324.json` |
+| Phase 3 | `scripts/github_mining/academic_cooc_phase3_20260324.json` |
+| Phase 3.5 | `scripts/github_mining/academic_cooc_phase35_20260324.json` |
+| 流水线日志 | `github_mining/academic_cooc_pipeline_20260324.log` |
+
+### 正式运行状态（更新：2026-03-24 16:12）
+| 步骤 | 状态 | 说明 |
+|------|------|------|
+| 种子导出 | ✅ 完成 | 3,849 人，已保存，全部已在 DB |
+| academic_cooccurrence_miner | ✅ **13:49 完成** | 共现挖掘成功 |
+| academic_cooc_pipeline（共现网络扩展）| 🔄 **86%（4,150/4,814）** | 仍在运行，预计今晚完成 |
+| Phase 3 富化产出 | 🔄 进行中 | 产出 `academic_cooc_phase3_20260324.json`（3,900人，带 final_score） |
+| 入库 | 📋 待运行 | Phase 3 完成后执行 |
+| 分级 | 📋 待运行 | — |
+
+### 种子数据说明
+> 3,849 人（`academic_github_seeds_20260324.json`）**已经是 DB 已有用户**（db_id 与 SQLite id 匹配），
+> 不需要重新导入。真正的新产出是 `academic_cooc_phase3_20260324.json`（3,900人），待流水线完成后入库。
+
+---
+
+## 🎓 2026-03-24 顶会作者挖掘 (2019-2022届)
+
+### 基本信息
+- **脚本**: `github_mining/scripts/conf_author_miner_2019_2022.py`
+- **目标会议**: NeurIPS, ICML, ICLR, CVPR, ICCV, ECCV, ACL, EMNLP, NAACL, AAAI
+- **目标年份**: 2019-2022（预计已就职 3-5 年的 AI 人才）
+- **数据源**: NeurIPS proceedings / ICML PMLR / ICLR OpenReview / ACL Anthology / S2 fallback
+- **输出目录**: `data/conf_2019_2022/runs/pipeline_2019_2022_TIMESTAMP/`
+
+### Dry-run 验证结果 (2026-03-24 08:13)
+- 测试范围: NeurIPS 2021 + ICML 2021 + ACL 2021 (max 30篇/会议)
+- NeurIPS 2021: 缓存命中 ✅
+- ICML 2021 (PMLR v139): 正确解析 119 条 / 30 篇 ✅
+- ACL 2021: ACL Anthology 解析（待验证正式运行）
+- **DB 去重**: 103 新增 / 11 已存在 ✅
+- **输出目录**: `runs/pipeline_2019_2022_20260324_081311/outputs/` ✅
+
+### 已导入（2026-03-24 16:00）
+- **小批次测试**（`authors_import_20260324_082406.json`，99人）→ **成功导入 96 人，3 人超时失败**
+  - 格式：name / current_title / talent_tier / source:academic / notes（含会议+代表论文）
+  - 数据富化状态：**未富化**（github_url/linkedin_url/email 多为 null，h-index=0）
+  - 待后续跑 Semantic Scholar 富化 + LinkedIn/GitHub 查找
+
+### 正式运行状态（更新：2026-03-24 16:12）
+| 批次 | 会议 | 状态 |
+|------|------|------|
+| **batch_A_ai（S2 ID 补全）** | NeurIPS+ICML+ICLR+AAAI | 🔄 **71%（21,352/29,870）** 限流慢，预计明早完成 |
+| 批次 B | CVPR+ICCV+ECCV | 📋 待运行 |
+| 批次 C | ACL+EMNLP+NAACL | 📋 待运行 |
+
+> `batch_A_ai` = 给 29,870 名 2019-2022 顶会论文作者补全 Semantic Scholar ID（用于后续拉 h-index、引用数）。
+> S2 API 限流严重（每次等 30-38 秒），按当前速度预计明早 08:00 前完成。
+
+> 详细执行步骤见: `docs/TASK_19_conf_2019_2022.md`
+
+---
+
+
+
+## 🔬 2026-03-24 S2 共作者扩散批次
+
+### 基本信息
+- **脚本**: `github_mining/scripts/s2_coauthor_expansion.py`
+- **种子来源**: DB 中已有的 18,263 个学术人才（有 s2_id）
+- **扩散年份**: 2021-2022 年论文
+- **策略**: 每批约 3,200 种子，分批运行+导入
+
+### 设计决策
+> S2 共作者扩散**天然覆盖 2019-2022 届已就职人才**：
+> 库里的 2023-2025 届种子，2021-2022 年发论文时的共作者，大量是比他们早 2-4 年毕业的人。
+> 这批人到 2024 年工作 3-5 年，功能上等价于顶会作者挖掘（且依赖已有关系网更精准）。
+
+### 批次记录
+
+| 批次 | 种子范围 | 状态 | 共作者数 | 导入数 | PID |
+|------|----------|------|----------|--------|-----|
+| 批次1（停） | 1-3,200 | ✅ 扩散完成，富化被中断 | 86,055 | — | 5028（已停）|
+| **批次2** | 1-6,400 | 🔄 **运行中** (08:19 启动) | 86,055+新增中 | 待完成 | 18952 |
+
+### 监控命令
+```bash
+tail -f /Users/lillianliao/notion_rag/github_mining/data/s2_coauthor_expansion/batch2_6400.log
+ps aux | grep s2_coauthor | grep -v grep
+```
+
+### 下次批次
+- 批次3: `--max-seeds 9600`（9601-6400 从缓存，以此类推）
+- 最终目标: 全量 18,263 个种子 ≈ 6 批次
+
+---
+
+## 🎓 2026-03-24 顶会作者挖掘 (2019-2022届) — ⏸️ 已暂停待修复
+
+### 暂停原因
+| 问题 | 说明 |
+|------|------|
+| NeurIPS S2 venue 名错误 | S2 存的是 `"Neural Information Processing Systems"`，不是 `"NeurIPS"` |
+| OpenReview API 403 | `content.venue` 参数格式不被新版 API 接受 |
+
+### NeurIPS 只有 2021 正常
+- 2021 用缓存（上次 tencent miner 跑过），2019/2020/2022 返回 0
+- ICML PMLR 网页解析正常 ✅
+
+### 待修复后恢复
+详细步骤见: `docs/TASK_19_conf_2019_2022.md`
+
+---
+
 
 ## 📋 说明
 
@@ -14,6 +139,123 @@
 - 最终结果（新增人数、评级分布）
 - 效果评估（优点、问题、优化点）
 - 策略建议（下次改进）
+
+---
+
+## 🎓 2026-03-14 学术流水线 (Academic Sourcing Pipeline)
+
+### 基本信息
+- **批次目录**: `data/academic/runs/conference_full_20260311_131547/`
+- **目标会议**: ICLR, ACL, NeurIPS, ICML, CVPR (2025 + 2024)
+- **最终目标**: 为每位候选人建立完整猎头档案 (工作/教育/技能/联系方式/谈话点)
+
+### 2025 年度
+
+| 阶段 | 人数/状态 | 说明 |
+|------|----------|------|
+| Phase A-C 采集+S2 | 12,460 unique | ✅ |
+| Phase D Serper (B+) | 5,067 | ✅ |
+| Phase D Serper (C) | 7,393 | 🔄 PID 65120, Key 1, 34% |
+| Phase E-F2 PDF+爬取+GitHub | — | ✅ |
+| Phase F3 LLM (R1+R2) | 3,587 | ✅ 100% 完成 |
+| Phase G 入库 | 8,246 新增 | ✅ (跨源隔离模式) |
+
+### 2024 年度
+
+| 阶段 | 人数/状态 | 说明 |
+|------|----------|------|
+| Phase A 论文采集 | 33,925 unique | ✅ |
+| Phase C S2 富化 | 17,923 | ✅ 3/14 17:40 完成 |
+| Phase D Serper (B+) | 7,276 | 🔄 PID 80649, Key 2, 22% |
+| Phase D Serper (C) | 10,647 | 🔄 PID 84700, Key 4, 10% |
+| Phase E-G | 待 Serper 完成 | |
+
+### ⚠️ 事件记录 (2026-03-14)
+
+1. **跨源污染事件**: `--update` 模式通过名字匹配，将 academic 数据写入了 242 条 github 记录
+   - 已修复: 清除污染数据 + 重写 `import_to_db()` 逻辑
+   - 规则确立: **不同渠道绝不互相更新**，只能各自 INSERT
+2. **DB 路径陷阱**: CWD 不对导致写入影子 DB → 修复: 必须显式指定 `DB_PATH`
+3. **匹配改进**: 同源匹配从 `name` 改为 `s2_id` ✅ (2026-03-14 完成)
+4. **⚠️ 缓存字段名不统一** (2026-03-15 发现) — 导致分析代码查错字段、得出完全相反的结论
+   - Serper cache: `homepage`, `emails`, `github`, `linkedin`
+   - Deep cache: `homepage_text`, `all_emails`, `matched_email`, `github`, `linkedin`
+   - Deep cache key: `deep_homepage::Name::URL` (有前缀，需 split 提取 name)
+   - **TODO**: 2024/2025 跑完后统一 schema，所有缓存使用相同字段名
+
+### 联系方式来源分析 (2026-03-15, 2025 年度)
+
+> ⚠️ 此分析用于评估各步骤的投入产出比，指导后续年度的流程优化。
+
+#### 邮箱覆盖 (按来源)
+
+| Tier | 总数 | Serper 邮箱 | Deep 邮箱 | 仅Serper | 仅Deep | 重叠 | 无邮箱 |
+|------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| S | 271 | 174 (64%) | 108 (39%) | 79 | 13 | 95 | 84 |
+| A+ | 738 | 464 (62%) | 219 (29%) | 263 | 18 | 201 | 256 |
+| A | 1,453 | 855 (58%) | 324 (22%) | 552 | 21 | 303 | 577 |
+| B | 2,277 | 1,269 (55%) | 443 (19%) | 869 | 43 | 400 | 965 |
+| C | 7,721 | 1,734 (22%) | 636 (8%) | 1,150 | 52 | 584 | 5,935 |
+| **ALL** | **12,460** | **4,496 (36%)** | **1,730 (13%)** | **2,913** | **147** | **1,583** | **7,817** |
+
+#### 主页/GitHub/LinkedIn 覆盖
+
+| Tier | Serper 主页 | Serper GitHub | Serper LinkedIn | Deep GitHub | Deep LinkedIn |
+|------|:---:|:---:|:---:|:---:|:---:|
+| S | 270 (99%) | 89 (32%) | 54 (19%) | 7 | 14 |
+| A+ | 736 (99%) | 310 (42%) | 157 (21%) | 22 | 36 |
+| A | 1,294 (89%) | 654 (45%) | 323 (22%) | 50 | 72 |
+| B | 2,245 (98%) | 1,019 (44%) | 502 (22%) | 40 | 79 |
+| C | 2,818 (36%) | 1,307 (16%) | 680 (8%) | 15 | 93 |
+
+#### 关键结论
+
+1. **Serper 不可跳过** — 是最大邮箱来源 (4,496, 36%)，也是主页/GitHub/LinkedIn 的主要发现者
+2. **Deep 是有效补充** — 在 Serper 没找到邮箱的人中，额外找到 147 个独占邮箱
+3. **Serper → Deep 链条**: Serper 找到 7,363 个主页 → Deep 爬取这些主页 → 提取邮箱/LinkedIn
+4. **B+ 级 Serper 邮箱 55-64%**，C 级仅 22% — C 级 presence 少，Serper 效果有限
+5. **Deep 对 LinkedIn 的补充**: Serper LinkedIn 已较高 (19-22%)，Deep 额外补充 3-5%
+
+### 关键数据
+- **数据库 (2026-03-15 15:15)**: Academic **14,022** (原 4,397 + 2025 新增 8,246 + 2024 新增 1,379)，全库 **53,109**
+- **跨源重复**: 2,409 条 (`duplicate_report.csv`)，暂不合并
+- **同名碰撞**: 290 条疑似错配 (`name_collision_report.csv`)，S/A+ 34 条需优先处理
+- **Serper Keys**: 共 10 个，已耗尽，2023 年需补充新 key
+
+### 2024+2025 联系方式合并统计 (去重后 23,848 人)
+
+| Tier | 总数 | 有邮箱 | LinkedIn | GitHub | 可触达(邮箱或LI) |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| S | 461 | 231 (50%) | 67 (14%) | 107 (23%) | 239 (51%) |
+| A+ | 1,329 | 617 (46%) | 202 (15%) | 390 (29%) | 650 (48%) |
+| A | 2,745 | 1,148 (41%) | 442 (16%) | 856 (31%) | 1,200 (43%) |
+| B | 4,439 | 1,691 (38%) | 659 (14%) | 1,329 (29%) | 1,783 (40%) |
+| C | 14,868 | 2,714 (18%) | 999 (6%) | 1,867 (12%) | 2,858 (19%) |
+| **B+合计** | **8,974** | **3,687 (41%)** | — | — | **3,872 (43%)** |
+
+### ⚠️ 事件记录 (2026-03-15)
+
+5. **2024 Deep 用错缓存** — `find_cache serper` 找到 `_serper_cache.json` (2025的)，2024 独有 11,378 人完全未被 Deep 处理
+   - 修复: 合并两个 Serper 缓存 → `_serper_cache_merged.json` (41,765 条)，重跑 2024 Deep
+   - 根因: 多年份共用 run 目录 + 缓存文件无年份标识 (详见 CONVENTIONS.md)
+6. **2023 Pipeline 空跑** — Step 1 合并脚本搜 `*2023*_full.json`，但文件名是 `academic_20260315_*_full.json`，匹配到 0 个文件
+   - 采集数据仍在: ICLR 1,307 + NeurIPS 6,192 + ICML 2,852 = ~10,351 人
+   - 需要修复合并逻辑后重跑 Step 2-7
+7. **同名碰撞** — Serper 搜 "Yuan Qi" 找到了错误的人 (齐逸岩 而非论文作者)
+   - 已生成校验报告: `data/academic/name_collision_report.csv` (290 条)
+   - 解决方案: 缓存 key 改 s2_id + Serper 搜索加机构消歧 + LLM 后验证
+
+### 评级体系对照
+
+| 等级 | Academic (h-index) | GitHub (综合) |
+|:---:|------|------|
+| S | h ≥ 40 | Followers >5k / Stars >5k |
+| A+ | h ≥ 20 | 3+ 顶会论文 |
+| A | h ≥ 10 | 顶尖 Lab |
+| B | h ≥ 5 | 一线大厂 + 985 |
+| C | h < 5 | 其他 |
+
+> ⚠️ Academic 纯靠 h-index，会低估业界转型者（如前蚂蚁副总裁）。TODO: 综合评级。
 
 ---
 

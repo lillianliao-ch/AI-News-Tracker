@@ -23,6 +23,38 @@ GitHub Mining Batch Runner — 批次管理器 v1.0
   python3 batch_runner.py --list
 """
 
+# ===========================================================
+# ⚠️  给 AI 的强制规范 — 标准 Pipeline 步骤定义
+#
+# 本文件是所有 GitHub 候选人 pipeline 的**唯一执行入口**。
+# 任何新的数据源（academic 共现、S2 共作者、论文作者等）
+# 产出 GitHub 用户 JSON 后，必须通过本脚本完成后续处理。
+#
+# 🚫 禁止：另写独立 shell/python 脚本来替代本文件的步骤
+# ✅ 允许：只写「数据源采集脚本」，采集产出 JSON 后交给本脚本
+#
+# 当前标准 7 步（按顺序，不可跳过）：
+#
+#   Step 1: prefilter   — 过滤机构账号 + detect_nationality() 过滤外国人
+#                         只保留 chinese + unknown；零 API 调用
+#   Step 2: db_dedup    — 剔除 DB 中已有 github_url 的人，节省后续 API
+#   Step 3: phase3      — GitHub API 拉取 repos、语言、评分（耗 API）
+#   Step 4: phase3_5    — 爬取个人主页，提取邮箱/LinkedIn/职位（耗时）
+#   Step 5: phase4_5    — LLM 深度富化：工作履历/技能/谈话点（耗 token）
+#   Step 6: db_import   — 先 dry-run 预览，再正式入库（幂等）
+#   Step 7: tier_update — 全库重新分级 S/A+/A/B+/B/C/D
+#
+# 标准命令：
+#   cd /Users/lillianliao/notion_rag/github_mining/scripts
+#   python3 batch_runner.py \
+#     --input <你的数据源产出.json> \
+#     --phases prefilter,db_dedup,phase3,phase3_5,phase4_5,db_import,tier_update \
+#     --batch-name "<批次描述>"
+#
+# 如脚本有更新（新增/删除步骤），请同步修改上方步骤列表。
+# 最后更新: 2026-03-25
+# ===========================================================
+
 import os
 import sys
 import json

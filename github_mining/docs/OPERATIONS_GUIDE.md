@@ -360,14 +360,99 @@ cat runs/*/batch_meta.json | jq '.rich_summary.tiers_actual'
 
 ---
 
+## 🎓 学术流水线 (Academic Pipeline)
+
+### 环境变量
+
+```bash
+# Semantic Scholar API Key (加速 S2 查询，避免限流)
+export S2_API_KEY="your_key_here"
+
+# DashScope API Key (LLM 富化)
+# 已在 github_hunter_config.py 中配置
+```
+
+### 完整流程
+
+```
+Phase A: 论文采集 (OpenReview/ACL/DBLP)
+Phase B: 去重 + 国籍过滤
+Phase C: S2 作者富化 (h-index/引用/主页/GitHub)    ← 需要 S2_API_KEY
+Phase D: Serper 搜索 (主页/联系方式/homepage_text)
+Phase E: PDF 邮箱提取
+Phase F: 深度富化 (主页爬取 + LLM)                   ← 必须并行
+Phase G: 数据库入库
+```
+
+### Phase C: S2 富化
+
+```bash
+# 必须带 S2_API_KEY 运行，否则限流严重
+S2_API_KEY=xxx nohup ./run_all_conferences.sh --resume > .../logs/run_serial.log 2>&1 &
+```
+
+### Phase F: 深度富化 (三步)
+
+**Step 1: 主页爬取 (必须用 --workers 并行)**
+```bash
+nohup python3 scripts/academic_deep_enrich.py \
+  --input .../all_conf_2025_full.json \
+  --serper-cache .../_serper_cache.json \
+  --output-dir .../outputs/ \
+  --mode homepage \
+  --workers 10 \
+  > .../logs/deep_homepage.log 2>&1 &
+```
+
+> ⚠️ **不加 --workers 默认 10 并发。串行 (workers=1) 需要 ~24h，10 并发 ~2.5h**
+
+**Step 2: GitHub commit email**
+```bash
+nohup python3 scripts/academic_deep_enrich.py \
+  --input .../all_conf_2025_full.json \
+  --serper-cache .../_serper_cache.json \
+  --output-dir .../outputs/ \
+  --mode github-commit \
+  > .../logs/deep_github.log 2>&1 &
+```
+
+**Step 3: LLM 富化**
+```bash
+nohup python3 scripts/academic_llm_enrich.py \
+  --deep-cache .../_deep_cache.json \
+  --serper-cache .../_serper_cache.json \
+  --input .../all_conf_2025_full.json \
+  --workers 5 \
+  > .../logs/llm_enrich.log 2>&1 &
+```
+
+### 监控命令
+
+```bash
+# 所有进程
+ps aux | grep academic | grep -v grep
+
+# 主页爬取进度
+tail -5 .../logs/deep_homepage.log
+
+# S2 进度
+tail -5 .../logs/run_serial.log
+
+# LLM 富化进度
+tail -5 .../logs/llm_enrich.log
+```
+
+---
+
 ## 🔗 相关文档
 
 - [主文档 - 路线图](../../.agent/workflows/github-network-mining.md)
 - [参考文档 - 技术标准](../../.agent/workflows/github-mining-reference.md)
+- [学术流水线设计](./academic_sourcing_design.md)
 - [故障排查手册](./TROUBLESHOOTING.md)
 - [批次执行历史](./BATCH_HISTORY.md)
 
 ---
 
-**最后更新**: 2026-03-11
+**最后更新**: 2026-03-14
 **维护者**: GitHub Mining Team

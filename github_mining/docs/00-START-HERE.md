@@ -35,7 +35,8 @@
 ### 新手入门
 1. **第一步**: 阅读 `github-network-mining.md`（了解项目）
 2. **第二步**: 阅读 `github-mining-reference.md`（了解标准）
-3. **第三步**: 阅读 `docs/OPERATIONS_GUIDE.md`（学习操作）
+3. **第2.5步**: 阅读 `docs/CONVENTIONS.md`（**脚本与数据规范，必读！**）
+4. **第三步**: 阅读 `docs/OPERATIONS_GUIDE.md`（学习操作）
 
 ### 执行任务时
 1. 查看 `github-network-mining.md` 的"待办事项"
@@ -65,6 +66,36 @@
 
 ---
 
+## ⛔ Pipeline 强制约束（AI 必读）
+
+**任何需要将 GitHub 候选人入库的任务，必须先阅读以下文件开头的「给 AI 的强制规范」注释块：**
+
+```
+github_mining/scripts/batch_runner.py  （第 25-57 行）
+```
+
+**该注释块是当前标准 7 步流程的权威真相源（唯一）**。当脚本更新时，注释块同步更新，所以它永远反映最新步骤。
+
+### 核心规则
+
+- ✅ 新数据源（如学术共现、S2 共作者等）**只写「采集脚本」**，产出 JSON 后交给 `batch_runner.py`
+- ❌ **禁止**另写独立 shell/python 脚本来替代 `batch_runner.py` 的过滤/富化/入库步骤
+- ❌ **禁止**在新 pipeline 里自己实现 prefilter、Phase 3/3.5/4.5、db_import
+
+### 正确命令模板
+
+```bash
+cd /Users/lillianliao/notion_rag/github_mining/scripts
+python3 batch_runner.py \
+  --input <数据源采集产出.json> \
+  --phases prefilter,db_dedup,phase3,phase3_5,phase4_5,db_import,tier_update \
+  --batch-name "<批次名称>"
+```
+
+> **为什么这样设计**：`batch_runner.py` 的注释直接在代码里，脚本有任何更新时注释必须同步改，让"读注释"等价于"读最新执行逻辑"。
+
+---
+
 ## 📂 完整文档结构
 
 ```
@@ -75,6 +106,7 @@
 
 /github_mining/docs/                    # 实战文档（补充）
 ├── 00-START-HERE.md                    # 本文件（强制入口）
+├── CONVENTIONS.md                      # ⚠️ 脚本与数据规范（AI 必读）
 ├── OPERATIONS_GUIDE.md                 # 实战操作指南
 ├── TROUBLESHOOTING.md                  # 故障排查手册
 ├── BATCH_HISTORY.md                    # 批次执行历史
@@ -87,6 +119,7 @@
 
 - [主文档 - 路线图](../../.agent/workflows/github-network-mining.md)
 - [参考文档 - 技术标准](../../.agent/workflows/github-mining-reference.md)
+- [⚠️ 脚本与数据规范](./CONVENTIONS.md)（写代码前必读）
 - [实战操作指南](./OPERATIONS_GUIDE.md)
 - [故障排查手册](./TROUBLESHOOTING.md)
 - [批次执行历史](./BATCH_HISTORY.md)
