@@ -34,7 +34,7 @@ description: 从AI猎头的GitHub Following网络中挖掘AI人才，包括采�
 | **Phase 4.5** | **LLM 深度富化** | **✅ 新增** | **2,476 人** | **在导入前进行 LLM 智能提取（工作履历/教育/技能/谈话点）** |
 | Phase 5 | 入库+统一评级打标 | ✅ 完成 | 4,043 人 | S/A/B/C + V2 标签，新增 `tier_updated_at` |
 | **Phase 5 V2** | **多轮社交网络扩展** | **[/] 进行中** | **28,242 人** | **从高质量种子再次延展，无人值守端到端富化入库后台运行中** |
-| **Academic Seed 共现** | **学术网络深挖** | **[/] 进行中** | **TBD** | **以 academic 渠道有 GitHub 的 3,849 人为种子，共现分析 ≥2 发现新 AI 人才** |
+| **Academic Seed 共现** | **学术网络深挖** | **🔄 补救中** | **3,296人待入库** | **共现挖掘 4,814 人，出现[数据事故](file:///Users/lillianliao/notion_rag/github_mining/docs/BATCH_HISTORY.md)，当前正在执行 v2 补救富化批次** |
 | Phase 6 | 分层触达 | ✅ 引擎就绪 | V2 Prompt | LinkedIn/邮件按标签智能选模板 |
 | Phase 6.5 | 网站内容价值提取 | ✅ Phase 2 完成 | 5,193 人 | 从个人网站提取结构化数据 (工作履历/技能/教育) |
 | Phase 7 | 持续跟进 | [/] 进行中 | — | CRM + Nurture (邮件触达 P1/P2 已开始) |
@@ -1255,6 +1255,38 @@ python3 github_mining/scripts/github_network_miner.py phase4 --seed-tier S,A+,A
 - 🆕 新增目标用户（如某技术大牛）
 - 🔄 重新执行全流程（如算法更新后）
 - 📊 批量处理多个种子用户
+
+---
+
+## Runbook 3.5: 学术渠道共现挖掘 (Academic Co-occurrence)
+
+> 以 academic 渠道有 GitHub 的人为种子，采集共现网络，并执行标准入库富化流程。
+> **注意**: 切勿自行编写 pipeline 脚本，涉及入库**必须使用** `batch_runner.py` 执行标准 7 步流程。
+
+### 步骤 1: 共现采集
+
+```bash
+cd /Users/lillianliao/notion_rag
+# 默认共现阈值为 2。支持断点续传。
+python3 github_mining/scripts/academic_cooccurrence_miner.py --resume
+```
+* 产出: `github_mining/scripts/github_mining/academic_cooc_expanded_YYYYMMDD.json`
+
+### 步骤 2: 标准入库富化 (7步全流程)
+
+```bash
+cd /Users/lillianliao/notion_rag/github_mining/scripts
+# 使用 batch_runner.py 串行执行全量标准化过滤和富化
+python3 batch_runner.py \
+  --input github_mining/academic_cooc_expanded_YYYYMMDD.json \
+  --phases prefilter,db_dedup,phase3,phase3_5,phase4_5,db_import,tier_update \
+  --batch-name "academic_cooc_YYYYMMDD"
+```
+
+**(可选) 一键后台执行脚本**:
+```bash
+nohup bash github_mining/scripts/run_academic_cooc_pipeline.sh > github_mining/academic_cooc_pipeline_$(date +%Y%m%d).log 2>&1 &
+```
 
 ---
 

@@ -428,7 +428,8 @@ def extract_with_llm(candidate: Dict, auth_token: str = None) -> Optional[Dict]:
 
         client = OpenAI(
             api_key=DASHSCOPE_API_KEY,
-            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
+            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+            timeout=30.0  # 加入 30 秒超时强制断开，防止死锁
         )
 
         response = client.chat.completions.create(
