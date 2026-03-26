@@ -83,199 +83,200 @@ class AssistantPanel {
         const isSearch = this.activeTab === 'search';
 
         this.panel.innerHTML = `
-      <div class="panel-header">
-        <h3 class="panel-title">🎯 Maimai Assistant</h3>
-        <button class="panel-toggle" id="panelToggle">−</button>
+      <div class="panel-header" style="background: white; padding: 16px 20px; border-bottom: 1px solid #dadce0; display: flex; align-items: center; justify-content: space-between;">
+        <h3 class="panel-title" style="margin: 0; font-size: 16px; font-weight: 600; color: #191919; display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a66c2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            Talent CRM
+        </h3>
+        <button class="panel-toggle" id="panelToggle" style="background: none; border: none; font-size: 24px; color: #666; cursor: pointer; padding: 0;">&times;</button>
       </div>
       
-      <div class="panel-content">
+      <div class="panel-content" style="padding: 16px; background: #f8f9fa; flex: 1; overflow-y: auto;">
+        
         <!-- Tab 切换 -->
-        <div class="panel-tab-bar">
-          <button class="panel-tab ${isRecruit ? 'active' : ''}" data-tab="recruit">招聘</button>
-          <button class="panel-tab ${isSearch ? 'active' : ''}" data-tab="search">社区</button>
+        <div class="panel-tab-bar" style="display: flex; background: white; border: 1px solid #dadce0; border-radius: 8px; padding: 4px; margin-bottom: 16px;">
+          <button class="panel-tab ${isRecruit ? 'active' : ''}" data-tab="recruit" style="flex: 1; padding: 6px 0; border: none; border-radius: 6px; background: ${isRecruit ? '#f0f7ff' : 'transparent'}; color: ${isRecruit ? '#0a66c2' : '#666'}; font-weight: ${isRecruit ? '600' : '500'}; font-size: 13px; cursor: pointer; transition: all 0.2s;">Talent Profiling</button>
+          <button class="panel-tab ${isSearch ? 'active' : ''}" data-tab="search" style="flex: 1; padding: 6px 0; border: none; border-radius: 6px; background: ${isSearch ? '#f0f7ff' : 'transparent'}; color: ${isSearch ? '#0a66c2' : '#666'}; font-weight: ${isSearch ? '600' : '500'}; font-size: 13px; cursor: pointer; transition: all 0.2s;">Community Search</button>
         </div>
 
         <!-- ========== TAB 1: 招聘 ========== -->
-        <div class="tab-content" id="tabRecruit" style="display: ${isRecruit ? 'block' : 'none'}">
-        <!-- 1️⃣ 导入/查看（最顶部） -->
-        <div class="panel-section" style="padding-bottom: 8px;">
-          <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 6px;">
-            <button class="action-btn" id="importFriendsBtn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 4px;">
-              📥 好友页导入
-            </button>
-            <button class="action-btn" id="importTalentBtn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 4px;">
-              📥 人才库单行导入
-            </button>
-            <button class="action-btn" id="batchImportTalentBtn" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-              📚 批量导入当前页
-            </button>
-          </div>
-          <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 6px;">
-            <button class="action-btn" id="updatePhoneBtn" style="background: linear-gradient(135deg, #20bf55 0%, #01baef 100%); border: none; color: white; flex: 1.5; margin: 0; font-size: 10px; padding: 6px 4px;">
-              📞 从剪贴板更新电话
-            </button>
-            <button class="action-btn" id="markRepliedBtn" style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); border: none; color: white; flex: 1; margin: 0; font-size: 10px; padding: 6px 2px;" title="标记当前人为已回复">
-              ✅ 标记已回复
-            </button>
-            <button class="refresh-btn" id="refreshBtn" title="刷新检测" style="flex-shrink: 0; width: 26px;">🔄</button>
-          </div>
-          <div style="display: flex; align-items: center; gap: 4px; margin-bottom: 4px; padding: 0 4px;">
-            <input type="checkbox" id="forceCreateCheckbox" style="width: 14px; height: 14px; margin: 0; cursor: pointer;">
-            <label for="forceCreateCheckbox" style="font-size: 9px; color: #f5576c; cursor: pointer; flex: 1;">
-              ⚠️ 强制新建（忽略重复，仅当确认是不同人时使用）
-            </label>
-          </div>
-          <div style="font-size: 10px; color: #888; text-align: center;">
-            检测到 <span class="detection-count" id="detectedCount" style="color: #667eea; font-weight: 600;">0</span> 位候选人
-          </div>
-        </div>
-        
-        <!-- 2️⃣ AI 个性化消息（核心功能） -->
-        <div class="panel-section ai-section" style="border-top: 1.5px solid #667eea; padding-top: 10px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-            <span style="font-size: 13px; font-weight: 600; color: #667eea;">✨ AI 个性化消息</span>
-            <button id="refreshJobsBtn" style="font-size: 10px; color: #999; background: none; border: none; cursor: pointer;">🔄 刷新JD</button>
-          </div>
-          <select id="jobSelect" style="width: 100%; padding: 5px 8px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 11px; background: white; cursor: pointer; margin-bottom: 8px;">
-            <option value="auto">🎯 自动匹配（紧急JD优先）</option>
-          </select>
-          <button class="action-btn" id="aiGenerateBtn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; color: white; font-weight: 600;">
-            <span class="btn-icon">🤖</span> AI 生成个性化消息
-          </button>
-          <div id="aiGenerateStatus" style="font-size: 11px; color: #999; margin-top: 4px; display: none;"></div>
-        </div>
-        
-        <!-- 生成的消息显示区 -->
-        <div class="panel-section message-result-section" id="messageResultSection" style="display: none; background: linear-gradient(135deg, #f5f7ff 0%, #f0f4ff 100%); border-radius: 8px; padding: 10px; border: 1px solid #e0e6ff;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <span style="font-size: 11px; font-weight: 600; color: #333;">📨 AI 消息</span>
-            <div style="display: flex; align-items: center; gap: 4px;">
-              <button class="copy-btn" id="copyMsgBtn" style="font-size: 10px; padding: 2px 6px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer;">📋 复制</button>
-              <label style="font-size: 10px; color: #667eea; cursor: pointer; display: flex; align-items: center; gap: 2px; white-space: nowrap;">
-                <input type="checkbox" id="sendRequestCb" checked style="margin: 0; accent-color: #667eea;"> 发申请
-              </label>
-              <button class="copy-btn" id="fillMsgBtn" style="font-size: 10px; padding: 2px 6px; border: 1px solid #667eea; border-radius: 4px; background: #667eea; color: white; cursor: pointer;">📝 填入对话框</button>
-            </div>
-          </div>
-          <div id="generatedMessage" style="font-size: 12px; line-height: 1.5; color: #333; white-space: pre-wrap; word-break: break-all; max-height: 120px; overflow-y: auto; background: white; padding: 8px; border-radius: 6px; border: 1px solid #e0e0e0;"></div>
-          <div style="margin-top: 6px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 10px; color: #999;">
-              <span id="candidateName" style="color: #667eea;"></span>
-            </span>
-            <span style="font-size: 10px; color: #999;">
-              <span id="charCount"></span>字
-              <span id="jobUsed" style="color: #764ba2; margin-left: 4px;"></span>
-            </span>
-          </div>
-        </div>
+        <div class="tab-content" id="tabRecruit" style="display: ${isRecruit ? 'block' : 'none'};">
+            
+            <!-- White Card 1: 焦点候选人 Focus Candidate Operations -->
+            <div style="background: white; border: 1px solid #dadce0; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                <div style="font-size: 14px; font-weight: 600; color: #191919; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                    Focus Candidate
+                    <div style="display: flex; gap: 8px;">
+                        <span style="padding: 2px 8px; background: #e8f0fe; color: #1a73e8; border-radius: 12px; font-size: 11px; font-weight: 500;"><span id="detectedCount">0</span> Detected</span>
+                        <button id="refreshBtn" title="🔄 Refresh Target" style="background: none; border: none; cursor: pointer; font-size: 12px; padding: 0;">🔄</button>
+                    </div>
+                </div>
 
-        <!-- 3️⃣ 批量操作（折叠） -->
-        <details class="panel-section" style="margin-top: 6px;">
-          <summary style="font-size: 11px; color: #999; cursor: pointer; padding: 4px 0;">⚡ 批量操作</summary>
-          <div style="margin-top: 8px;">
-            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
-              <label style="font-size: 11px; color: #666; white-space: nowrap;">数量:</label>
-              <input type="number" id="batchCount" class="batch-input" value="30" min="1" max="100" style="width: 50px;" />
-              <span style="font-size: 11px; color: #999;">条</span>
-              <label style="font-size: 11px; color: #666; white-space: nowrap; margin-left: 6px;">页数:</label>
-              <input type="number" id="batchPages" class="batch-input" value="1" min="1" max="50" style="width: 45px;" />
-              <span style="font-size: 11px; color: #999;">页</span>
+                <!-- Primary Action: AI Generate -->
+                <div style="margin-bottom: 12px;">
+                    <select id="jobSelect" style="width: 100%; padding: 8px 12px; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; color: #333; margin-bottom: 8px; appearance: auto; background: white; cursor: pointer; outline: none;">
+                        <option value="auto">🎯 Auto Match Priority JD</option>
+                    </select>
+                    <button id="aiGenerateBtn" style="width: 100%; padding: 10px; background: #0a66c2; color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                        <span class="btn-icon">🤖</span> Generate Outreach Message
+                    </button>
+                    <div id="aiGenerateStatus" style="font-size: 12px; color: #666; margin-top: 6px; display: none; text-align: center;"></div>
+                </div>
+
+                <!-- Generated Message Result Area -->
+                <div id="messageResultSection" style="display: none; background: #f8f9fa; border: 1px solid #e1e3e6; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <div style="font-size: 12px; font-weight: 600; color: #191919; display: flex; align-items: center; gap: 4px;">
+                            <span id="candidateName" style="color: #0a66c2;"></span>
+                            <span id="jobUsed" style="color: #666; font-weight: 400; font-size: 11px;"></span>
+                        </div>
+                        <div style="font-size: 11px; color: #666;"><span id="charCount"></span></div>
+                    </div>
+                    <div id="generatedMessage" style="font-size: 13px; line-height: 1.5; color: #333; white-space: pre-wrap; word-break: break-all; max-height: 160px; overflow-y: auto; background: white; padding: 10px; border-radius: 6px; border: 1px solid #dadce0; margin-bottom: 8px;"></div>
+                    
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <button id="fillMsgBtn" style="flex: 1; padding: 6px 12px; background: #f0f7ff; color: #0a66c2; border: 1px solid #c2d7f0; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+                            Inject to Chat
+                        </button>
+                        <button id="copyMsgBtn" style="padding: 6px 12px; background: white; color: #666; border: 1px solid #dadce0; border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                            📋 Copy
+                        </button>
+                        <label style="font-size: 12px; color: #666; display: flex; align-items: center; gap: 4px; cursor: pointer; width: 100%;">
+                            <input type="checkbox" id="sendRequestCb" checked style="accent-color: #0a66c2;"> Track as Connection Request
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Secondary Actions: Save & Update -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <button class="action-btn" id="importTalentBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                        📥 Save to CRM
+                    </button>
+                    <button class="action-btn" id="markRepliedBtn" style="width: 100%; padding: 8px; background: white; color: #057642; border: 1px solid #b2d5c3; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                        ✅ Mark Replied
+                    </button>
+                    <button class="action-btn" id="updatePhoneBtn" style="grid-column: span 2; padding: 8px; background: white; color: #666; border: 1px dashed #dadce0; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                        📞 Update Phone from Clipboard
+                    </button>
+                    <button class="action-btn" id="importFriendsBtn" style="grid-column: span 2; padding: 8px; background: white; color: #666; border: 1px dashed #dadce0; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: none;">
+                        好友页导入
+                    </button>
+                </div>
             </div>
-            <button class="action-btn primary" id="batchAddFriendsBtn" style="margin-bottom: 6px;">
-              <span class="btn-icon">🤝</span> 批量加好友
-            </button>
-            <button class="action-btn warning" id="batchSendMsgBtn" style="margin-bottom: 6px;">
-              <span class="btn-icon">💬</span> 批量立即沟通 (AI消息)
-            </button>
-            <div style="display: flex; gap: 6px; margin-bottom: 6px;">
-              <button class="action-btn" id="extractBtn" style="flex: 1;">
-                <span class="btn-icon">📋</span> 提取信息
-              </button>
-            </div>
-            <details style="margin-top: 4px;">
-              <summary style="font-size: 10px; color: #bbb; cursor: pointer;">📝 消息模板</summary>
-              <textarea id="messageTemplate" class="template-textarea" 
-                placeholder="您好{name}，我是XX公司的HR..."></textarea>
-              <div class="template-hint" style="font-size: 10px;">变量: {name} {company} {position} {experience}</div>
+
+            <!-- White Card 2: 批量作业 Global Operations -->
+            <details style="background: white; border: 1px solid #dadce0; border-radius: 12px; padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                <summary style="font-size: 14px; font-weight: 600; color: #191919; cursor: pointer; display: flex; align-items: center; gap: 6px; list-style: none;">
+                    Global Batch Operations
+                    <span style="margin-left: auto; color: #666; font-size: 12px;">▼</span>
+                </summary>
+                
+                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #f0f0f0;">
+                    <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center;">
+                        <input type="number" id="batchCount" value="30" min="1" max="100" style="width: 60px; padding: 4px 8px; border: 1px solid #dadce0; border-radius: 6px; font-size: 12px; outline: none;" />
+                        <span style="font-size: 12px; color: #666;">Cands/Page</span>
+                        <input type="number" id="batchPages" value="1" min="1" max="50" style="width: 50px; padding: 4px 8px; border: 1px solid #dadce0; border-radius: 6px; font-size: 12px; margin-left: 8px; outline: none;" />
+                        <span style="font-size: 12px; color: #666;">Pages</span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <button id="batchAddFriendsBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                            🤝 Batch Connect
+                        </button>
+                        <button id="batchSendMsgBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                            💬 Batch Nurture (AI Message)
+                        </button>
+                        <button id="batchImportTalentBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                            📥 Batch Save to CRM
+                        </button>
+                        <button id="extractBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: none;">
+                            提取信息
+                        </button>
+                        <div style="display: flex; gap: 6px;">
+                            <button id="exportCsvBtn" style="flex: 1; padding: 4px; background: white; color: #666; border: 1px solid #dadce0; border-radius: 6px; font-size: 11px; cursor: pointer;">📄 CSV</button>
+                            <button id="exportJsonBtn" style="flex: 1; padding: 4px; background: white; color: #666; border: 1px solid #dadce0; border-radius: 6px; font-size: 11px; cursor: pointer;">📋 JSON</button>
+                        </div>
+                    </div>
+
+                    <!-- Progress Section -->
+                    <div id="progressSection" style="display: none; margin-top: 12px; padding: 12px; background: #f0f7ff; border-radius: 8px; border: 1px solid #c2d7f0;">
+                        <div style="height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; margin-bottom: 8px;">
+                            <div id="progressFill" style="height: 100%; width: 0%; background: #0a66c2; transition: width 0.3s ease;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 11px; color: #0a66c2; margin-bottom: 6px;">
+                            <span id="progressText">0/0</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 500;">
+                            <span style="color: #057642;">✓ <span id="successCount">0</span></span>
+                            <span style="color: #d11124;">✗ <span id="failedCount">0</span></span>
+                        </div>
+                        <button id="stopBtn" style="width: 100%; margin-top: 8px; padding: 6px; background: white; color: #d11124; border: 1px solid #f8b4b4; border-radius: 6px; font-size: 12px; cursor: pointer;">
+                            ⏹ Stop Operation
+                        </button>
+                    </div>
+                </div>
             </details>
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding-top: 6px; border-top: 1px solid #eee;">
-              <div style="display: flex; gap: 4px;">
-                <button class="action-btn success" id="exportCsvBtn" style="font-size: 10px; padding: 3px 6px; width: auto;">📄 CSV</button>
-                <button class="action-btn" id="exportJsonBtn" style="font-size: 10px; padding: 3px 6px; width: auto;">📋 JSON</button>
-              </div>
-              <div style="font-size: 10px; color: #999;">
-                今日 <span id="todayCount" style="color: #667eea; font-weight: 600;">${this.stats.today}</span> · 
-                总计 <span id="totalCount" style="color: #667eea; font-weight: 600;">${this.stats.total}</span>
-              </div>
+
+            <!-- Metadata footer -->
+            <div style="margin-top: 16px; padding: 0 4px; display: flex; align-items: flex-start; justify-content: space-between; font-size: 11px; color: #999;">
+                <label style="display: flex; align-items: center; gap: 4px; cursor: pointer; width: 60%;">
+                    <input type="checkbox" id="forceCreateCheckbox" style="accent-color: #0a66c2; flex-shrink: 0;"> Ignore Dups (Force create instead of update)
+                </label>
+                <div style="text-align: right;">Today <span id="todayCount" style="color: #0a66c2; font-weight: 600;">${this.stats.today}</span><br>Total <span id="totalCount" style="color: #333;">${this.stats.total}</span></div>
             </div>
-          </div>
-        </details>
-        
-        <!-- 进度显示 -->
-        <div class="panel-section progress-section" id="progressSection">
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-          <div class="progress-text">
-            <span id="progressText">0/0</span>
-            <span id="progressPercent">0%</span>
-          </div>
-          <div class="progress-stats">
-            <span class="success">✓ <span id="successCount">0</span></span>
-            &nbsp;|&nbsp;
-            <span class="failed">✗ <span id="failedCount">0</span></span>
-          </div>
-          <button class="action-btn danger small" id="stopBtn" style="margin-top: 6px;">
-            ⏹ 停止
-          </button>
-        </div>
+
         </div><!-- /tabRecruit -->
 
         <!-- ========== TAB 2: 社区搜索 ========== -->
-        <div class="tab-content" id="tabSearch" style="display: ${isSearch ? 'block' : 'none'}">
-          <div class="panel-section">
-            <textarea id="searchKeywords" class="search-textarea" placeholder="每行一个关键词&#10;廖娅伶&#10;张三"></textarea>
-          </div>
-          <div class="panel-section" style="display: flex; align-items: center; gap: 6px;">
-            <select id="searchMode" class="search-select">
-              <option value="first">首个结果</option>
-              <option value="all">所有结果</option>
-            </select>
-            <label class="search-checkbox">
-              <input type="checkbox" id="searchAddFriend">
-              <span>加好友</span>
-            </label>
-          </div>
-          <div class="panel-section" style="display: flex; gap: 6px;">
-            <button class="action-btn success" id="searchStartBtn" style="flex: 1;">▶ 开始</button>
-            <button class="action-btn primary" id="searchExportBtn" style="flex: 1;">📥 导出</button>
-          </div>
-          <div class="panel-section" style="display: flex; align-items: center; gap: 8px; padding-top: 4px;">
-            <span style="font-size: 10px; color: #999;">导出方式:</span>
-            <label class="search-radio"><input type="radio" name="exportMode" value="excel" checked><span>Excel</span></label>
-            <label class="search-radio"><input type="radio" name="exportMode" value="api"><span>API导入</span></label>
-          </div>
-          <div class="panel-section" style="font-size: 10px; color: #999; text-align: center; padding-top: 2px;">
-            已采集 <span id="searchResultCount" style="color: #667eea; font-weight: 600;">0</span> 条
-          </div>
+        <div class="tab-content" id="tabSearch" style="display: ${isSearch ? 'block' : 'none'};">
+            <div style="background: white; border: 1px solid #dadce0; border-radius: 12px; padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                <div style="font-size: 14px; font-weight: 600; color: #191919; margin-bottom: 12px;">Community Search List</div>
+                <textarea id="searchKeywords" class="search-textarea" placeholder="Keywords (one per line)" style="width: 100%; height: 80px; padding: 10px; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; margin-bottom: 12px; outline: none;"></textarea>
+                
+                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                    <select id="searchMode" style="flex: 1; padding: 8px; border: 1px solid #dadce0; border-radius: 6px; font-size: 13px; background: white; outline: none;">
+                        <option value="first">First Result Only</option>
+                        <option value="all">Collect All</option>
+                    </select>
+                    <label style="display: flex; align-items: center; gap: 4px; font-size: 13px; color: #333; cursor: pointer; padding: 0 8px;">
+                        <input type="checkbox" id="searchAddFriend" style="accent-color: #0a66c2;"> Connect
+                    </label>
+                </div>
+                
+                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                    <button id="searchStartBtn" style="flex: 1; padding: 8px; background: #0a66c2; color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;">▶ Start Auto Search</button>
+                    <button id="searchExportBtn" style="flex: 1; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer;">📥 Export</button>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; font-size: 12px; color: #666; margin-bottom: 12px;">
+                    Export as:
+                    <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;"><input type="radio" name="exportMode" value="excel" checked style="accent-color: #0a66c2;"> Excel/CSV</label>
+                    <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;"><input type="radio" name="exportMode" value="api" style="accent-color: #0a66c2;"> Cloud API</label>
+                </div>
+                
+                <div style="font-size: 12px; color: #666; text-align: center;">
+                    Collected <span id="searchResultCount" style="color: #0a66c2; font-weight: 600;">0</span> records
+                </div>
 
-          <!-- 搜索进度 -->
-          <div class="panel-section progress-section" id="searchProgressSection">
-            <div class="progress-bar">
-              <div class="progress-fill" id="searchProgressFill"></div>
+                <!-- 搜索进度 -->
+                <div id="searchProgressSection" style="display: none; margin-top: 16px; padding: 12px; background: #f0f7ff; border-radius: 8px; border: 1px solid #c2d7f0;">
+                    <div style="height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; margin-bottom: 8px;">
+                        <div id="searchProgressFill" style="height: 100%; width: 0%; background: #0a66c2; transition: width 0.3s ease;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 11px; color: #0a66c2; margin-bottom: 6px;">
+                        <span id="searchProgressText">0/0</span>
+                        <span id="searchProgressPercent">0%</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 500;">
+                        <span style="color: #057642;">✓ <span id="searchSuccessCount">0</span></span>
+                        <span style="color: #d11124;">✗ <span id="searchFailedCount">0</span></span>
+                    </div>
+                    <button id="searchStopBtn" style="width: 100%; margin-top: 8px; padding: 6px; background: white; color: #d11124; border: 1px solid #f8b4b4; border-radius: 6px; font-size: 12px; cursor: pointer;">⏹ Stop</button>
+                </div>
             </div>
-            <div class="progress-text">
-              <span id="searchProgressText">0/0</span>
-              <span id="searchProgressPercent">0%</span>
-            </div>
-            <div class="progress-stats">
-              <span class="success">✓ <span id="searchSuccessCount">0</span></span>
-              &nbsp;|&nbsp;
-              <span class="failed">✗ <span id="searchFailedCount">0</span></span>
-            </div>
-            <button class="action-btn danger small" id="searchStopBtn" style="margin-top: 6px;">⏹ 停止</button>
-          </div>
         </div><!-- /tabSearch -->
+
       </div>
     `;
     }
@@ -1030,36 +1031,7 @@ class AssistantPanel {
     }
 
     bindDragEvents() {
-        const header = this.panel.querySelector('.panel-header');
-        if (!header) return;
-
-        let isDragging = false;
-        let dragOffset = { x: 0, y: 0 };
-
-        header.addEventListener('mousedown', (e) => {
-            if (e.target.tagName === 'BUTTON') return;
-            isDragging = true;
-            const rect = this.panel.getBoundingClientRect();
-            dragOffset.x = e.clientX - rect.left;
-            dragOffset.y = e.clientY - rect.top;
-            header.style.cursor = 'grabbing';
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const x = e.clientX - dragOffset.x;
-            const y = e.clientY - dragOffset.y;
-            const maxX = window.innerWidth - this.panel.offsetWidth;
-            const maxY = window.innerHeight - this.panel.offsetHeight;
-            this.panel.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
-            this.panel.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
-            this.panel.style.bottom = 'auto';
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            header.style.cursor = 'move';
-        });
+        // Disabled drag events for fixed right-anchored sidebar design
     }
 
     showProgress() {
@@ -1201,8 +1173,12 @@ class AssistantPanel {
 
     show() {
         if (this.panel) {
-            this.panel.classList.add('show');
-            this.panel.style.display = 'block';
+            this.panel.style.display = 'flex';
+            setTimeout(() => {
+                this.panel.classList.add('show');
+                document.body.style.width = 'calc(100% - 360px)';
+                document.body.style.transition = 'width 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+            }, 10);
             this.isVisible = true;
         }
     }
@@ -1214,6 +1190,8 @@ class AssistantPanel {
     collapse() {
         if (this.panel) {
             this.panel.classList.add('collapsed');
+            this.panel.classList.remove('show');
+            document.body.style.width = '100%';
             this.panel.querySelector('#panelToggle').textContent = '+';
             this.isCollapsed = true;
         }
@@ -1222,6 +1200,8 @@ class AssistantPanel {
     expand() {
         if (this.panel) {
             this.panel.classList.remove('collapsed');
+            this.panel.classList.add('show');
+            document.body.style.width = 'calc(100% - 360px)';
             this.panel.querySelector('#panelToggle').textContent = '−';
             this.isCollapsed = false;
         }
@@ -1229,6 +1209,7 @@ class AssistantPanel {
 
     destroy() {
         if (this.panel) {
+            document.body.style.width = '100%';
             this.panel.remove();
             this.panel = null;
         }
