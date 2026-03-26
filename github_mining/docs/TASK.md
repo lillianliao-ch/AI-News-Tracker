@@ -92,6 +92,26 @@ query = "Yuan Qi MIT homepage"
 
 ---
 
+## 🚨 Task 19: 补齐 CV/NLP 历史领域欠债 (最高优先级)
+
+> 📅 2026-03-25 分析发现：2019-2025 所有挖掘批次均**严重缺失** NLP（完全未跑）和一半的 CV（完全漏掉 ICCV/ECCV）。大模型时代的 Vision 和 NLP 专家供给被严重切断。
+
+### 优先级 P0 (已完成)
+- [x] **2019-2022 批次大盘收尾**: 已在此前完成自动纠正，执行 `academic_import.py --update` 将 3,305 人的 LLM 深度提取数据安全注入主库。
+
+### 优先级 P1 (已完成)
+- [x] **跑通 2019-2022 的 Batch B (CV) 和 Batch C (NLP)**
+  - **Batch B**: CVPR, ICCV, ECCV (2019-2022)
+  - **Batch C**: ACL, EMNLP, NAACL (2019-2022)
+  - *战报*：端到端（S2+Serper+LLM+入库）全自动拉通，成功新增 1,096 名野生大牛，补充完善了 1,276 人的详细履历。
+
+### 优先级 P2 (算力空闲时补充预备役)
+- [ ] **补齐 2024-2025 梯队缺漏的 CV & NLP 顶会**
+  - **补充目标**: ICCV, ECCV, ACL, EMNLP, NAACL (2024 & 2025)
+  - *依据*：充实 0-2 年的高潜力天才少年/应届生池子，为后续 Sourcing 和 Nurture 提供充足的冷启动种子池。
+
+---
+
 ## Task 1-6: 基础设施 — ✅ 全部完成
 
 (详见 BATCH_HISTORY.md)
@@ -320,6 +340,31 @@ tail -5 data/academic/runs/pipeline_2023_20260315_070407/logs/serper_c_chain.log
 | 10 | `dc03c4fc92e7f788c667fce356f0b457e36ed6c9` | 接力备用 |
 
 > Key 用完后接力: `SERPER_API_KEY=<key> python3 scripts/academic_contact_enricher.py ...`（缓存自动跳过已完成）
+
+---
+
+## 🔔 Telegram 通知规范 (单行实战秘籍)
+
+> 在执行长时间运行的任务（特别是跨越数小时的 API 抓取或 LLM 富化）时，必须挂载后台监听器，任务结束后自动推送到关联的 Telegram 账号。底层模块已配置好 Token，无需重新造轮子。
+
+**底层引擎直接调用 (Python 核心):**
+```python
+import sys
+sys.path.insert(0, '/Users/lillianliao/notion_rag/personal-ai-headhunter')
+from telegram_notifier import notify
+notify('🎉 任务已完成！')
+```
+
+**终端实战用法 (结合 PID 等待 — 推荐复制使用):**
+假设你在后台刚跑了一个长任务，得到了它的 PID（例如 `10280`）。直接在终端执行以下挂载脚本，它会静默监控该进程直到消失，再发 Telegram 提醒你：
+
+```bash
+nohup bash -c '
+TARGET_PID=10280
+while kill -0 $TARGET_PID 2>/dev/null; do sleep 60; done
+python3 -c "import sys; sys.path.insert(0, \"/Users/lillianliao/notion_rag/personal-ai-headhunter\"); from telegram_notifier import notify; notify(f\"🎉 报告老板，长期任务(PID {TARGET_PID}) 已顺利执行完毕！\")"
+' >/dev/null 2>&1 &
+```
 
 ---
 

@@ -191,29 +191,17 @@ python3 github_mining/scripts/github_network_miner.py phase3_5 --top $((N + 20))
 - `--resume`: 跳过已处理的用户
 - 耗时约 10-30 分钟（取决于网络和网站可达性）
 
-### 步骤 3/5: 导入到猎头系统
+### 步骤 3/5: 统一执行入库与分级
 
-> ⚠️ **致命警告**：**必须** `cd` 进入 `personal-ai-headhunter` 目录下执行后续脚本！因为 `.env` 里的 `DB_PATH=data/headhunter_dev.db` 是相对路径，如果在根目录跑，系统会在根目录凭空造出一个影子数据库并把数据倒进去！
+> ⚠️ **强烈规范**：**必须使用 `batch_runner.py` 作为唯一入库入口**，它能够原子性地、安全地完成入库、去重和自动分级三大任务。严禁手动执行 `import_github_candidates.py`！
 
 ```bash
-cd /Users/lillianliao/notion_rag/personal-ai-headhunter
-python3 import_github_candidates.py --file ../github_mining/scripts/github_mining/phase3_5_enriched.json
+cd /Users/lillianliao/notion_rag/github_mining/scripts
+python3 batch_runner.py --input github_mining/phase3_5_enriched.json --phases db_import,tier_update --batch-name "manual_import"
 ```
 
 - 自动去重（基于 GitHub username），已导入的会跳过
-- 组织账号自动过滤
-
-### 步骤 4/5: 自动分级
-
-> 脚本 `batch_update_tiers.py` 现已**纯净化**，只会对数据库中已存在的人员进行打分，不会再越俎代庖去偷偷读取 json 文件执行暗箱导入（为防混入旧垃圾数据）。
-
-```bash
-cd /Users/lillianliao/notion_rag/personal-ai-headhunter
-python3 batch_update_tiers.py
-```
-
-- 分级标准详见 [reference 文档的「分级标准」章节](file:///Users/lillianliao/notion_rag/.agent/workflows/github-mining-reference.md)
-- S/A+/A/B+/B/D 六级，对齐大厂 P 级体系，非 AI 者强制打入 D 级。
+- 自动完成 S/A/B/C 分层打分
 
 ### 步骤 5/5: 验证结果
 
