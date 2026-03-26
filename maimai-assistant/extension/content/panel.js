@@ -93,108 +93,99 @@ class AssistantPanel {
       
       <div class="panel-content" style="padding: 16px; background: #f8f9fa; flex: 1; overflow-y: auto;">
         
-        <!-- Tab 切换 -->
-        <div class="panel-tab-bar" style="display: flex; background: white; border: 1px solid #dadce0; border-radius: 8px; padding: 4px; margin-bottom: 16px;">
-          <button class="panel-tab ${isRecruit ? 'active' : ''}" data-tab="recruit" style="flex: 1; padding: 6px 0; border: none; border-radius: 6px; background: ${isRecruit ? '#f0f7ff' : 'transparent'}; color: ${isRecruit ? '#0a66c2' : '#666'}; font-weight: ${isRecruit ? '600' : '500'}; font-size: 13px; cursor: pointer; transition: all 0.2s;">Talent Profiling</button>
-          <button class="panel-tab ${isSearch ? 'active' : ''}" data-tab="search" style="flex: 1; padding: 6px 0; border: none; border-radius: 6px; background: ${isSearch ? '#f0f7ff' : 'transparent'}; color: ${isSearch ? '#0a66c2' : '#666'}; font-weight: ${isSearch ? '600' : '500'}; font-size: 13px; cursor: pointer; transition: all 0.2s;">Community Search</button>
-        </div>
-
-        <!-- ========== TAB 1: 招聘 ========== -->
-        <div class="tab-content" id="tabRecruit" style="display: ${isRecruit ? 'block' : 'none'};">
-            
-            <!-- White Card 1: 焦点候选人 Focus Candidate Operations -->
-            <div style="background: white; border: 1px solid #dadce0; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
-                <div style="font-size: 14px; font-weight: 600; color: #191919; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
-                    Focus Candidate
-                    <div style="display: flex; gap: 8px;">
-                        <span style="padding: 2px 8px; background: #e8f0fe; color: #1a73e8; border-radius: 12px; font-size: 11px; font-weight: 500;"><span id="detectedCount">0</span> Detected</span>
-                        <button id="refreshBtn" title="🔄 Refresh Target" style="background: none; border: none; cursor: pointer; font-size: 12px; padding: 0;">🔄</button>
-                    </div>
-                </div>
-
-                <!-- Primary Action: AI Generate -->
-                <div style="margin-bottom: 12px;">
-                    <select id="jobSelect" style="width: 100%; padding: 8px 12px; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; color: #333; margin-bottom: 8px; appearance: auto; background: white; cursor: pointer; outline: none;">
-                        <option value="auto">🎯 Auto Match Priority JD</option>
-                    </select>
-                    <button id="aiGenerateBtn" style="width: 100%; padding: 10px; background: #0a66c2; color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;">
-                        <span class="btn-icon">🤖</span> Generate Outreach Message
-                    </button>
-                    <div id="aiGenerateStatus" style="font-size: 12px; color: #666; margin-top: 6px; display: none; text-align: center;"></div>
-                </div>
-
-                <!-- Generated Message Result Area -->
-                <div id="messageResultSection" style="display: none; background: #f8f9fa; border: 1px solid #e1e3e6; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <div style="font-size: 12px; font-weight: 600; color: #191919; display: flex; align-items: center; gap: 4px;">
-                            <span id="candidateName" style="color: #0a66c2;"></span>
-                            <span id="jobUsed" style="color: #666; font-weight: 400; font-size: 11px;"></span>
-                        </div>
-                        <div style="font-size: 11px; color: #666;"><span id="charCount"></span></div>
-                    </div>
-                    <div id="generatedMessage" style="font-size: 13px; line-height: 1.5; color: #333; white-space: pre-wrap; word-break: break-all; max-height: 160px; overflow-y: auto; background: white; padding: 10px; border-radius: 6px; border: 1px solid #dadce0; margin-bottom: 8px;"></div>
-                    
-                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                        <button id="fillMsgBtn" style="flex: 1; padding: 6px 12px; background: #f0f7ff; color: #0a66c2; border: 1px solid #c2d7f0; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
-                            Inject to Chat
-                        </button>
-                        <button id="copyMsgBtn" style="padding: 6px 12px; background: white; color: #666; border: 1px solid #dadce0; border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
-                            📋 Copy
-                        </button>
-                        <label style="font-size: 12px; color: #666; display: flex; align-items: center; gap: 4px; cursor: pointer; width: 100%;">
-                            <input type="checkbox" id="sendRequestCb" checked style="accent-color: #0a66c2;"> Track as Connection Request
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Secondary Actions: Save & Update -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                    <button class="action-btn" id="importTalentBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
-                        📥 Save to CRM
-                    </button>
-                    <button class="action-btn" id="markRepliedBtn" style="width: 100%; padding: 8px; background: white; color: #057642; border: 1px solid #b2d5c3; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
-                        ✅ Mark Replied
-                    </button>
-                    <button class="action-btn" id="updatePhoneBtn" style="grid-column: span 2; padding: 8px; background: white; color: #666; border: 1px dashed #dadce0; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
-                        📞 Update Phone from Clipboard
-                    </button>
-                    <button class="action-btn" id="importFriendsBtn" style="grid-column: span 2; padding: 8px; background: white; color: #666; border: 1px dashed #dadce0; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: none;">
-                        好友页导入
-                    </button>
+        <!-- White Card 1: 焦点候选人 Focus Candidate Operations -->
+        <div style="background: white; border: 1px solid #dadce0; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+            <div style="font-size: 14px; font-weight: 600; color: #191919; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                📌 焦点候选人
+                <div style="display: flex; gap: 8px;">
+                    <span style="padding: 2px 8px; background: #e8f0fe; color: #1a73e8; border-radius: 12px; font-size: 11px; font-weight: 500;"><span id="detectedCount">0</span> 已捕获</span>
+                    <button id="refreshBtn" title="刷新焦点" style="background: none; border: none; cursor: pointer; font-size: 12px; padding: 0;">🔄</button>
                 </div>
             </div>
+
+            <!-- Primary Action: AI Generate -->
+            <div style="margin-bottom: 12px;">
+                <select id="jobSelect" style="width: 100%; padding: 8px 12px; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; color: #333; margin-bottom: 8px; appearance: auto; background: white; cursor: pointer; outline: none;">
+                    <option value="auto">🎯 自动匹配 (紧急JD优先)</option>
+                </select>
+                <button id="aiGenerateBtn" style="width: 100%; padding: 10px; background: #0a66c2; color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                    <span class="btn-icon">✨</span> 快速生成破冰话术
+                </button>
+                <div id="aiGenerateStatus" style="font-size: 12px; color: #666; margin-top: 6px; display: none; text-align: center;"></div>
+            </div>
+
+            <!-- Generated Message Result Area -->
+            <div id="messageResultSection" style="display: none; background: #f8f9fa; border: 1px solid #e1e3e6; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <div style="font-size: 12px; font-weight: 600; color: #191919; display: flex; align-items: center; gap: 4px;">
+                        <span id="candidateName" style="color: #0a66c2;"></span>
+                        <span id="jobUsed" style="color: #666; font-weight: 400; font-size: 11px;"></span>
+                    </div>
+                    <div style="font-size: 11px; color: #666;"><span id="charCount"></span></div>
+                </div>
+                <div id="generatedMessage" style="font-size: 13px; line-height: 1.5; color: #333; white-space: pre-wrap; word-break: break-all; max-height: 160px; overflow-y: auto; background: white; padding: 10px; border-radius: 6px; border: 1px solid #dadce0; margin-bottom: 8px;"></div>
+                
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <button id="fillMsgBtn" style="flex: 1; padding: 6px 12px; background: #f0f7ff; color: #0a66c2; border: 1px solid #c2d7f0; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+                        注入聊天框
+                    </button>
+                    <button id="copyMsgBtn" style="padding: 6px 12px; background: white; color: #666; border: 1px solid #dadce0; border-radius: 6px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                        📋 复制
+                    </button>
+                    <label style="font-size: 12px; color: #666; display: flex; align-items: center; gap: 4px; cursor: pointer; width: 100%;">
+                        <input type="checkbox" id="sendRequestCb" checked style="accent-color: #0a66c2;"> 同步记录为好友请求
+                    </label>
+                </div>
+            </div>
+
+            <!-- Secondary Actions: Save & Update -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <button class="action-btn" id="importTalentBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                    📥 收录当前人才 (搜索页用)
+                </button>
+                <button class="action-btn" id="importFriendsBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px dashed #dadce0; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                    📥 收录当前好友 (好友页用)
+                </button>
+                <button class="action-btn" id="updatePhoneBtn" style="width: 100%; padding: 8px; background: white; color: #666; border: 1px dashed #dadce0; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                    📞 从剪贴板更新电话
+                </button>
+                <button class="action-btn" id="markRepliedBtn" style="width: 100%; padding: 8px; background: white; color: #057642; border: 1px solid #b2d5c3; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
+                    ✅ 标记已回复
+                </button>
+            </div>
+        </div>
 
             <!-- White Card 2: 批量作业 Global Operations -->
             <details style="background: white; border: 1px solid #dadce0; border-radius: 12px; padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
                 <summary style="font-size: 14px; font-weight: 600; color: #191919; cursor: pointer; display: flex; align-items: center; gap: 6px; list-style: none;">
-                    Global Batch Operations
+                    ⚡ 全局批量作业
                     <span style="margin-left: auto; color: #666; font-size: 12px;">▼</span>
                 </summary>
                 
                 <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #f0f0f0;">
                     <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center;">
                         <input type="number" id="batchCount" value="30" min="1" max="100" style="width: 60px; padding: 4px 8px; border: 1px solid #dadce0; border-radius: 6px; font-size: 12px; outline: none;" />
-                        <span style="font-size: 12px; color: #666;">Cands/Page</span>
+                        <span style="font-size: 12px; color: #666;">人/页</span>
                         <input type="number" id="batchPages" value="1" min="1" max="50" style="width: 50px; padding: 4px 8px; border: 1px solid #dadce0; border-radius: 6px; font-size: 12px; margin-left: 8px; outline: none;" />
-                        <span style="font-size: 12px; color: #666;">Pages</span>
+                        <span style="font-size: 12px; color: #666;">页数</span>
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 8px;">
                         <button id="batchAddFriendsBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
-                            🤝 Batch Connect
+                            🤝 批量加好友 (当前页)
                         </button>
                         <button id="batchSendMsgBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
-                            💬 Batch Nurture (AI Message)
+                            💬 批量打招呼 (当前页)
                         </button>
                         <button id="batchImportTalentBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;">
-                            📥 Batch Save to CRM
+                            📥 批量提取人才 (人才搜索页)
                         </button>
                         <button id="extractBtn" style="width: 100%; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: none;">
                             提取信息
                         </button>
                         <div style="display: flex; gap: 6px;">
-                            <button id="exportCsvBtn" style="flex: 1; padding: 4px; background: white; color: #666; border: 1px solid #dadce0; border-radius: 6px; font-size: 11px; cursor: pointer;">📄 CSV</button>
-                            <button id="exportJsonBtn" style="flex: 1; padding: 4px; background: white; color: #666; border: 1px solid #dadce0; border-radius: 6px; font-size: 11px; cursor: pointer;">📋 JSON</button>
+                            <button id="exportCsvBtn" style="flex: 1; padding: 4px; background: white; color: #666; border: 1px solid #dadce0; border-radius: 6px; font-size: 11px; cursor: pointer;">📄 CSV 导出</button>
+                            <button id="exportJsonBtn" style="flex: 1; padding: 4px; background: white; color: #666; border: 1px solid #dadce0; border-radius: 6px; font-size: 11px; cursor: pointer;">📋 复制 JSON</button>
                         </div>
                     </div>
 
@@ -212,7 +203,7 @@ class AssistantPanel {
                             <span style="color: #d11124;">✗ <span id="failedCount">0</span></span>
                         </div>
                         <button id="stopBtn" style="width: 100%; margin-top: 8px; padding: 6px; background: white; color: #d11124; border: 1px solid #f8b4b4; border-radius: 6px; font-size: 12px; cursor: pointer;">
-                            ⏹ Stop Operation
+                            ⏹ 停止作业
                         </button>
                     </div>
                 </div>
@@ -220,62 +211,11 @@ class AssistantPanel {
 
             <!-- Metadata footer -->
             <div style="margin-top: 16px; padding: 0 4px; display: flex; align-items: flex-start; justify-content: space-between; font-size: 11px; color: #999;">
-                <label style="display: flex; align-items: center; gap: 4px; cursor: pointer; width: 60%;">
+                <label style="display: flex; align-items: center; gap: 4px; cursor: pointer; width: 60%; display: none;">
                     <input type="checkbox" id="forceCreateCheckbox" style="accent-color: #0a66c2; flex-shrink: 0;"> Ignore Dups (Force create instead of update)
                 </label>
-                <div style="text-align: right;">Today <span id="todayCount" style="color: #0a66c2; font-weight: 600;">${this.stats.today}</span><br>Total <span id="totalCount" style="color: #333;">${this.stats.total}</span></div>
+                <div style="text-align: right; width: 100%;">今日抓取 <span id="todayCount" style="color: #0a66c2; font-weight: 600;">${this.stats.today}</span><br>历史总计 <span id="totalCount" style="color: #333;">${this.stats.total}</span></div>
             </div>
-
-        </div><!-- /tabRecruit -->
-
-        <!-- ========== TAB 2: 社区搜索 ========== -->
-        <div class="tab-content" id="tabSearch" style="display: ${isSearch ? 'block' : 'none'};">
-            <div style="background: white; border: 1px solid #dadce0; border-radius: 12px; padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
-                <div style="font-size: 14px; font-weight: 600; color: #191919; margin-bottom: 12px;">Community Search List</div>
-                <textarea id="searchKeywords" class="search-textarea" placeholder="Keywords (one per line)" style="width: 100%; height: 80px; padding: 10px; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; margin-bottom: 12px; outline: none;"></textarea>
-                
-                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-                    <select id="searchMode" style="flex: 1; padding: 8px; border: 1px solid #dadce0; border-radius: 6px; font-size: 13px; background: white; outline: none;">
-                        <option value="first">First Result Only</option>
-                        <option value="all">Collect All</option>
-                    </select>
-                    <label style="display: flex; align-items: center; gap: 4px; font-size: 13px; color: #333; cursor: pointer; padding: 0 8px;">
-                        <input type="checkbox" id="searchAddFriend" style="accent-color: #0a66c2;"> Connect
-                    </label>
-                </div>
-                
-                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-                    <button id="searchStartBtn" style="flex: 1; padding: 8px; background: #0a66c2; color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;">▶ Start Auto Search</button>
-                    <button id="searchExportBtn" style="flex: 1; padding: 8px; background: white; color: #333; border: 1px solid #dadce0; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer;">📥 Export</button>
-                </div>
-                
-                <div style="display: flex; align-items: center; gap: 12px; font-size: 12px; color: #666; margin-bottom: 12px;">
-                    Export as:
-                    <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;"><input type="radio" name="exportMode" value="excel" checked style="accent-color: #0a66c2;"> Excel/CSV</label>
-                    <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;"><input type="radio" name="exportMode" value="api" style="accent-color: #0a66c2;"> Cloud API</label>
-                </div>
-                
-                <div style="font-size: 12px; color: #666; text-align: center;">
-                    Collected <span id="searchResultCount" style="color: #0a66c2; font-weight: 600;">0</span> records
-                </div>
-
-                <!-- 搜索进度 -->
-                <div id="searchProgressSection" style="display: none; margin-top: 16px; padding: 12px; background: #f0f7ff; border-radius: 8px; border: 1px solid #c2d7f0;">
-                    <div style="height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; margin-bottom: 8px;">
-                        <div id="searchProgressFill" style="height: 100%; width: 0%; background: #0a66c2; transition: width 0.3s ease;"></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 11px; color: #0a66c2; margin-bottom: 6px;">
-                        <span id="searchProgressText">0/0</span>
-                        <span id="searchProgressPercent">0%</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 500;">
-                        <span style="color: #057642;">✓ <span id="searchSuccessCount">0</span></span>
-                        <span style="color: #d11124;">✗ <span id="searchFailedCount">0</span></span>
-                    </div>
-                    <button id="searchStopBtn" style="width: 100%; margin-top: 8px; padding: 6px; background: white; color: #d11124; border: 1px solid #f8b4b4; border-radius: 6px; font-size: 12px; cursor: pointer;">⏹ Stop</button>
-                </div>
-            </div>
-        </div><!-- /tabSearch -->
 
       </div>
     `;
@@ -283,71 +223,6 @@ class AssistantPanel {
 
     bindEvents() {
         if (!this.panel) return;
-
-        // === Tab 切换 ===
-        this.panel.querySelectorAll('.panel-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                const target = tab.dataset.tab;
-                this.activeTab = target;
-
-                // 更新 Tab 高亮
-                this.panel.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                // 切换内容
-                const recruitTab = this.panel.querySelector('#tabRecruit');
-                const searchTab = this.panel.querySelector('#tabSearch');
-                if (recruitTab) recruitTab.style.display = target === 'recruit' ? 'block' : 'none';
-                if (searchTab) searchTab.style.display = target === 'search' ? 'block' : 'none';
-            });
-        });
-
-        // === 搜索 Tab 事件 ===
-        this._initSearchEngine();
-
-        this.panel.querySelector('#searchStartBtn')?.addEventListener('click', () => {
-            const textarea = this.panel.querySelector('#searchKeywords');
-            const keywords = (textarea?.value || '').split('\n').map(s => s.trim()).filter(Boolean);
-            if (keywords.length === 0) {
-                MaimaiUtils.showNotification('请输入关键词', 'warning');
-                return;
-            }
-
-            const mode = this.panel.querySelector('#searchMode')?.value || 'first';
-            const addFriend = this.panel.querySelector('#searchAddFriend')?.checked || false;
-            const exportMode = this.panel.querySelector('input[name="exportMode"]:checked')?.value || 'excel';
-
-            const section = this.panel.querySelector('#searchProgressSection');
-            if (section) section.classList.add('show');
-
-            this.searchEngine?.start(keywords, mode, addFriend, exportMode);
-        });
-
-        this.panel.querySelector('#searchStopBtn')?.addEventListener('click', () => {
-            this.searchEngine?.stop();
-            MaimaiUtils.showNotification('搜索已停止', 'info');
-        });
-
-        this.panel.querySelector('#searchExportBtn')?.addEventListener('click', async () => {
-            if (!this.searchEngine || this.searchEngine.state.results.length === 0) {
-                MaimaiUtils.showNotification('暂无数据可导出', 'warning');
-                return;
-            }
-
-            const exportMode = this.panel.querySelector('input[name="exportMode"]:checked')?.value || 'excel';
-
-            if (exportMode === 'excel') {
-                const csv = this.searchEngine.exportToCSV();
-                if (csv) {
-                    const ts = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
-                    MaimaiUtils.downloadAsFile(csv, `脉脉搜索结果_${ts}.csv`, 'text/csv;charset=utf-8');
-                    MaimaiUtils.showNotification(`已导出 ${this.searchEngine.state.results.length} 条`, 'success');
-                }
-            } else {
-                const result = await this.searchEngine.exportToAPI();
-                MaimaiUtils.showNotification(`API导入完成: 成功${result.success}, 失败${result.failed}`, result.failed > 0 ? 'warning' : 'success');
-            }
-        });
 
         // 折叠/展开
         this.panel.querySelector('#panelToggle')?.addEventListener('click', () => this.toggle());
