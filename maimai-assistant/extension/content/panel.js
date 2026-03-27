@@ -249,6 +249,21 @@ class AssistantPanel {
                     
                     <div id="crmActionStatus" style="font-size:11px; margin-top:8px; text-align:center; color:#666;"></div>
                     
+                    <!-- Schedule Editor (NEW) -->
+                    <div id="crmScheduleArea" style="display:none; margin-top:8px; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:8px;">
+                        <div style="font-size:11px;color:#6b7280;margin-bottom:6px;">📅 设置预约跟进</div>
+                        <div style="display:flex;gap:4px;margin-bottom:4px;">
+                            <input id="crmSchedDate" type="date" style="flex:1;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;">
+                            <input id="crmSchedTime" type="time" style="flex:1;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;">
+                        </div>
+                        <div style="margin-bottom:6px;">
+                            <textarea id="crmSchedRemark" placeholder="跟进备注..." rows="2" style="width:100%;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;resize:vertical;"></textarea>
+                        </div>
+                        <div style="text-align:right;">
+                            <button id="crmSaveSchedBtn" class="crm-btn crm-btn-primary" style="padding:4px 10px;font-size:11px;">保存预约</button>
+                        </div>
+                    </div>
+
                     <!-- DB Message Editor -->
                     <div id="crmMessageResultSection" style="display:none; margin-top:8px; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:8px;">
                         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
@@ -1217,6 +1232,43 @@ class AssistantPanel {
         }
     }
 
+    async handleSaveSchedule() {
+        if (!this._lastSyncedCandidateId) return MaimaiUtils.showNotification('请先导入人才', 'warning');
+        
+        const date = this.panel.querySelector('#crmSchedDate')?.value || null;
+        const time = this.panel.querySelector('#crmSchedTime')?.value || null;
+        const remark = this.panel.querySelector('#crmSchedRemark')?.value || null;
+        
+        const payload = {
+            scheduled_contact_date: date,
+            scheduled_contact_time: time,
+            scheduled_contact_remark: remark,
+            scheduled_contact_type: '跟进'
+        };
+        
+        const btn = this.panel.querySelector('#crmSaveSchedBtn');
+        const original = btn.innerHTML;
+        btn.disabled = true; btn.innerHTML = '保存中...';
+        
+        try {
+            const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
+            const resp = await fetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}/schedule`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            
+            MaimaiUtils.showNotification('✅ 预约跟进设置成功！', 'success');
+            this.panel.querySelector('#crmScheduleArea').style.display = 'none';
+            setTimeout(() => this.syncCurrentProfile(), 800);
+        } catch (e) {
+            MaimaiUtils.showNotification(`预约更新失败: ${e.message}`, 'error');
+        } finally {
+            if (btn) { btn.disabled = false; btn.innerHTML = original; }
+        }
+    }
+
     async handleSaveMsg() {
         if (!this._lastSyncedCandidateId) return MaimaiUtils.showNotification('请先导入人才', 'warning');
         const msgEl = this.panel.querySelector('#crmGeneratedMessage');
@@ -1308,7 +1360,11 @@ class AssistantPanel {
         this.panel.querySelector('#crmQuickGenerateMsgBtn')?.addEventListener('click', () => this.handleAIGenerateMessage(false));
         this.panel.querySelector('#crmDbEnhanceBtn')?.addEventListener('click', () => this.handleAIGenerateMessage(true));
         this.panel.querySelector('#crmAiPortraitBtn')?.addEventListener('click', () => this.handleAIPortrait());
-        this.panel.querySelector('#crmScheduleBtn')?.addEventListener('click', () => MaimaiUtils.showNotification('预约系统建设中...', 'warning'));
+        this.panel.querySelector('#crmScheduleBtn')?.addEventListener('click', () => {
+            const schedArea = this.panel.querySelector('#crmScheduleArea');
+            if (schedArea) schedArea.style.display = schedArea.style.display === 'none' ? 'block' : 'none';
+        });
+        this.panel.querySelector('#crmSaveSchedBtn')?.addEventListener('click', () => this.handleSaveSchedule());
         
         // Tab 2: 消息编辑交互
         this.panel.querySelector('#crmCopyMsgBtn')?.addEventListener('click', () => this.handleCopyMessage(true));
@@ -1566,7 +1622,35 @@ class AssistantPanel {
                         }
                         
                         if (dbData.ai_summary) {
-                            if (evalContent) evalContent.innerHTML = `<div style="font-size: 13px; line-height: 1.5; color: #333; white-space: pre-wrap;">${dbData.ai_summary}</div>`;
+                            const isLong = dbData.ai_summary.length > 100;
+                            if (evalContent) {
+                                evalContent.innerHTML = `
+                                    <div id="aiSummaryTextContainer" style="position:relative;">
+                                        <div id="aiSummaryText" style="font-size: 13px; line-height: 1.5; color: #333; white-space: pre-wrap; transition: max-height 0.3s ease; overflow: hidden; ${isLong ? 'max-height:80px;' : ''}">${dbData.ai_summary}</div>
+                                        ${isLong ? '<div id="aiSummaryGradient" style="position:absolute;bottom:0;left:0;right:0;height:30px;background:linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));pointer-events:none;"></div>' : ''}
+                                    </div>
+                                    ${isLong ? '<button id="aiSummaryToggle" style="background:none;border:none;color:#0a66c2;font-size:12px;padding:4px 0 0 0;cursor:pointer;margin-top:2px;">展开全部 ▾</button>' : ''}
+                                `;
+                                
+                                if (isLong) {
+                                    const textEl = evalContent.querySelector('#aiSummaryText');
+                                    const gradientDiv = evalContent.querySelector('#aiSummaryGradient');
+                                    const toggleBtn = evalContent.querySelector('#aiSummaryToggle');
+                                    let isCollapsed = true;
+                                    toggleBtn.addEventListener('click', () => {
+                                        isCollapsed = !isCollapsed;
+                                        if (isCollapsed) {
+                                            textEl.style.maxHeight = '80px';
+                                            if (gradientDiv) gradientDiv.style.display = 'block';
+                                            toggleBtn.textContent = '展开全部 ▾';
+                                        } else {
+                                            textEl.style.maxHeight = 'none';
+                                            if (gradientDiv) gradientDiv.style.display = 'none';
+                                            toggleBtn.textContent = '收起 ▴';
+                                        }
+                                    });
+                                }
+                            }
                         } else {
                             if (evalContent) evalContent.style.display = 'none';
                             if (evalEmptyText) evalEmptyText.style.display = 'inline';
