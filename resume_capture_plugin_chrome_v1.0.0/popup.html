@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>简历导入助手</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="section">
+      <label>系统地址</label>
+      <input id="apiBase" placeholder="http://127.0.0.1:8000" />
+    </div>
+    <div class="section capture-row">
+      <button id="btnCapture" class="btn-primary">抓取</button>
+      <button id="btnClipboard" class="btn-outline">查重</button>
+      <button id="btnRecommend" class="btn-recommend" disabled>推荐</button>
+      <button id="btnGenerateReport" class="btn-report" disabled>生成报告</button>
+    </div>
+    <div class="section upload-section">
+      <div id="pluginUploadDropzone" class="dropzone-compact">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <span>拖拽或点击上传 PDF/Word/TXT/图片</span>
+        <input type="file" id="pluginUploadFile" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" style="display:none" />
+      </div>
+      <div id="pluginUploadProgress" class="upload-progress" style="display:none;">
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+      <div id="pluginUploadMsg" class="upload-msg"></div>
+    </div>
+    <div class="section info-form" id="infoForm">
+      <div class="form-title">基本信息 <span class="form-hint">（抓取后自动填充，可手动修改）</span></div>
+      <div class="form-grid">
+        <div class="form-item">
+          <label>姓名 <span class="req">*</span></label>
+          <input id="fieldName" placeholder="某先生/某女士" />
+        </div>
+        <div class="form-item">
+          <label>手机号 <span class="req">*</span></label>
+          <input id="fieldPhone" placeholder="必填" />
+        </div>
+        <div class="form-item">
+          <label>当前公司</label>
+          <input id="fieldCompany" placeholder="" />
+        </div>
+        <div class="form-item">
+          <label>当前职位</label>
+          <input id="fieldTitle" placeholder="" />
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-item">
+          <label>毕业学校</label>
+          <input id="fieldSchool" placeholder="" />
+        </div>
+        <div class="form-item">
+          <label>学历</label>
+          <input id="fieldEdu" placeholder="" />
+        </div>
+      </div>
+      <div class="form-grid single">
+        <div class="form-item full">
+          <label>备注</label>
+          <input id="remark" placeholder="导入备注（选填）" />
+        </div>
+      </div>
+    </div>
+    <div class="section resume-text-section">
+      <div class="resume-text-title">
+        <label for="resumeText">简历全文</label>
+        <span class="resume-text-hint">可自动抓取简历，或手动复制粘贴（更快更准）</span>
+      </div>
+      <textarea id="resumeText" placeholder="自动抓取后会展示完整文本，也可手动粘贴后直接录入"></textarea>
+    </div>
+    <div class="section">
+      <button id="btnImport" class="btn-action">录入人才库</button>
+    </div>
+    <div id="result" class="result-box"></div>
+  </div>
+  <div id="recommendModal" class="recommend-modal" style="display:none;">
+    <div class="recommend-modal-content">
+      <div class="recommend-modal-header">
+        <h3>推荐简历到订单</h3>
+        <button id="btnRecommendClose" class="recommend-modal-close">&times;</button>
+      </div>
+      <div class="recommend-modal-body">
+        <input type="hidden" id="recommendResumeId" />
+        <input type="hidden" id="recommendCaseId" />
+        <div class="form-group">
+          <label>选择订单</label>
+          <div class="order-autocomplete-wrapper">
+            <input type="text" id="recommendCompanyInput" placeholder="输入公司名搜索或创建订单..." autocomplete="off" />
+            <div id="orderSuggestions" class="order-suggestions" style="display:none;"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>备注</label>
+          <textarea id="recommendNote" rows="3" placeholder="推荐理由或备注..."></textarea>
+        </div>
+      </div>
+      <div class="recommend-modal-footer">
+        <button id="btnRecommendSubmit" class="btn-primary">确认推荐</button>
+        <button id="btnRecommendCancel" class="btn-outline">取消</button>
+      </div>
+    </div>
+  </div>
+  <div id="generateReportModal" class="recommend-modal" style="display:none;">
+    <div class="recommend-modal-content report-modal-content">
+      <div class="recommend-modal-header">
+        <h3>生成推荐报告</h3>
+        <button id="btnGenerateReportClose" class="recommend-modal-close">&times;</button>
+      </div>
+      <div class="recommend-modal-body">
+        <p class="report-modal-tip">选择一个推荐报告模板，AI将根据简历内容生成对应格式的推荐报告。</p>
+        <div class="form-group">
+          <label>选择模板</label>
+          <div class="report-template-row">
+            <select id="reportTemplateSelect">
+              <option value="">-- 请选择模板 --</option>
+            </select>
+            <button id="btnUploadReportTemplate" type="button" class="btn-outline">上传模板</button>
+            <input type="file" id="reportTemplateFile" accept=".txt,.docx,.doc" style="display:none;" />
+          </div>
+        </div>
+        <div id="generateReportMsg" class="form-tip"></div>
+      </div>
+      <div class="recommend-modal-footer">
+        <button id="btnConfirmGenerateReport" type="button" class="btn-primary">开始生成</button>
+        <button id="btnGenerateReportCancel" type="button" class="btn-outline">取消</button>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

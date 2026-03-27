@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "简历抓取导入助手",
+  "version": "1.0.0",
+  "description": "手动抓取招聘网站候选人信息，查重并导入人才库",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs",
+    "webNavigation",
+    "system.display"
+  ],
+  "host_permissions": [
+    "*://zhipin.com/*",
+    "*://*.zhipin.com/*",
+    "*://liepin.com/*",
+    "*://*.liepin.com/*",
+    "*://51job.com/*",
+    "*://*.51job.com/*",
+    "*://51jobcdn.com/*",
+    "*://*.51jobcdn.com/*",
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "简历抓取导入助手"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://zhipin.com/*",
+        "*://*.zhipin.com/*",
+        "*://liepin.com/*",
+        "*://*.liepin.com/*",
+        "*://51job.com/*",
+        "*://*.51job.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}
