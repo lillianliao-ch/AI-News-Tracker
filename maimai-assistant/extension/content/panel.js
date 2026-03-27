@@ -167,7 +167,10 @@ class AssistantPanel {
             <!-- 状态头：提取到名字时显示 -->
             <div id="crmProfileHeader" class="crm-card" style="padding: 10px 14px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
                 <div>
-                    <div id="crmName" class="crm-title" style="font-size: 15px; margin-bottom: 2px;">未获取姓名</div>
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                        <div id="crmName" class="crm-title" style="margin:0;">未获取姓名</div>
+                        <div id="crmStatusTagsContainer" style="display:flex;gap:4px;"></div>
+                    </div>
                     <div id="crmTitle" class="crm-subtitle" style="font-size: 11px;">-</div>
                 </div>
                 <div id="crmEvalScore" class="crm-eval-score" style="margin: 0; padding: 3px 8px; font-size: 11px;">AI 适配度: 暂无</div>
@@ -208,12 +211,28 @@ class AssistantPanel {
                 <div class="crm-card">
                     <div class="crm-section-title" style="justify-content: space-between;">
                         <span>📇 联系方式</span>
-                        <button class="crm-btn crm-btn-outline" style="padding: 4px 10px; font-size: 11px;" id="crmUpdatePhoneBtn">从剪贴板更新</button>
+                        <div style="display:flex;gap:6px;">
+                            <button class="crm-btn crm-btn-outline" style="padding: 4px 10px; font-size: 11px;" id="crmUpdatePhoneBtn">从剪贴板更新</button>
+                            <button class="crm-edit-trigger" id="crmEditContactBtn" style="background:none;border:none;cursor:pointer;font-size:11px;color:#0a66c2;">✏️ 新增联系</button>
+                        </div>
                     </div>
-                    <div class="crm-contact-grid">
-                        <div class="crm-contact-chip"><span style="font-size:13px;">✉️</span> <span id="crmEmail">-</span></div>
-                        <div class="crm-contact-chip"><span style="font-size:13px;">📞</span> <span id="crmPhone">-</span></div>
-                        <div class="crm-contact-chip"><span style="font-size:13px;">💬</span> <span id="crmWechat">-</span></div>
+                    <div class="crm-contact-grid" id="crmContactGrid">
+                        <div class="crm-contact-chip empty"><span class="chip-icon">📭</span>暂无联系方式</div>
+                    </div>
+                    
+                    <!-- Contact Edit Form (Hidden by default) -->
+                    <div id="crmContactEditArea" style="display:none;margin-top:8px;">
+                        <div style="display:flex;gap:4px;margin-bottom:4px;">
+                            <input id="crmEditEmail" placeholder="Email" style="flex:1;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;">
+                            <input id="crmEditPhone" placeholder="Phone" style="flex:1;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;">
+                        </div>
+                        <div style="display:flex;gap:4px;margin-bottom:8px;">
+                            <input id="crmEditWechat" placeholder="WeChat" style="flex:1;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;">
+                            <input id="crmEditGithub" placeholder="GitHub" style="flex:1;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;">
+                        </div>
+                        <div style="text-align:right;">
+                            <button id="crmSaveContactBtn" class="crm-btn crm-btn-primary" style="padding:4px 10px;font-size:11px;">保存进DB</button>
+                        </div>
                     </div>
                 </div>
 
@@ -221,9 +240,25 @@ class AssistantPanel {
                 <div class="crm-card">
                     <div class="crm-section-title" style="margin-bottom: 8px;">⚡ 操作</div>
                     <div class="crm-action-grid" style="grid-template-columns: 1fr 1fr; gap: 6px;">
-                        <button class="crm-btn crm-btn-primary" id="crmImportTalentBtn">同步更新(搜索)</button>
-                        <button class="crm-btn crm-btn-primary" style="background: #057642;" id="crmImportFriendBtn">收录好友(好友页)</button>
-                        <button class="crm-btn crm-btn-outline" id="crmDbEnhanceBtn" style="color: #7c3aed; border-color: #ddd6fe; background: #f5f3ff;">✨ DB增强消息</button>
+                        <button class="crm-btn crm-btn-primary" id="crmImportTalentBtn">🔄 同步更新(数据)</button>
+                        <button class="crm-btn crm-btn-primary" id="crmImportFriendBtn">📥 收录好友(页面)</button>
+                        <button class="crm-btn crm-btn-outline" id="crmDbEnhanceBtn">🚀 DB增强消息</button>
+                        <button class="crm-btn crm-btn-outline" id="crmAiPortraitBtn">🧠 AI画像生成</button>
+                        <button class="crm-btn crm-btn-outline" id="crmScheduleBtn" style="grid-column: span 2;">📅 预约跟进</button>
+                    </div>
+                    
+                    <div id="crmActionStatus" style="font-size:11px; margin-top:8px; text-align:center; color:#666;"></div>
+                    
+                    <!-- DB Message Editor -->
+                    <div id="crmMessageResultSection" style="display:none; margin-top:8px; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:8px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                            <div style="font-size:11px;color:#6b7280;">✏️ 增强消息 (<span id="crmMsgCharCount">0</span>字)</div>
+                            <div style="display:flex;gap:4px;">
+                                <button id="crmCopyMsgBtn" class="crm-btn crm-btn-outline" style="padding:2px 8px;font-size:11px;">📋 复制</button>
+                                <button id="crmSaveMsgBtn" class="crm-btn crm-btn-primary" style="padding:2px 8px;font-size:11px;background:#16a34a;">💾 保存入库</button>
+                            </div>
+                        </div>
+                        <textarea id="crmGeneratedMessage" rows="5" style="width:100%;border:1px solid #d1d5db;border-radius:4px;padding:6px;font-size:12px;resize:vertical;font-family:inherit;line-height:1.5;box-sizing:border-box;"></textarea>
                     </div>
                 </div>
 
@@ -618,18 +653,19 @@ class AssistantPanel {
                 this.lastCandidate = candidateData;
 
                 if (isCrm) {
-                    const crmMsgContainer = this.panel.querySelector('#crmDbMessageContainer');
+                    const crmMsgContainer = this.panel.querySelector('#crmMessageResultSection');
                     const crmMsgEl = this.panel.querySelector('#crmGeneratedMessage');
                     const crmCharCountEl = this.panel.querySelector('#crmMsgCharCount');
                     
                     if (crmMsgContainer && crmMsgEl) {
                         crmMsgContainer.style.display = 'block';
-                        crmMsgEl.textContent = aiResult.message;
+                        crmMsgEl.value = aiResult.message;
                     }
                     if (crmCharCountEl) {
-                        crmCharCountEl.textContent = `${aiResult.char_count || aiResult.message.length}/300`;
+                        crmCharCountEl.textContent = `${aiResult.char_count || aiResult.message.length}`;
                         crmCharCountEl.style.color = (aiResult.char_count || aiResult.message.length) > 300 ? '#d11124' : '#666';
                     }
+                    if (btn) btn.innerHTML = '<span class="btn-icon">🚀</span> DB增强消息 (成)';
                 } else {
                     // 显示生成的消息 (Tab 1)
                     const msgSection = this.panel.querySelector('#messageResultSection');
@@ -1089,22 +1125,129 @@ class AssistantPanel {
         }
     }
 
-    // 复制消息
-    handleCopyMessage() {
-        const msgEl = this.panel.querySelector('#generatedMessage');
-        if (msgEl && msgEl.textContent) {
-            navigator.clipboard.writeText(msgEl.textContent).then(() => {
+    // 复制消息 (兼容单边和高级CRM)
+    handleCopyMessage(isCrm = false) {
+        const msgEl = isCrm ? this.panel.querySelector('#crmGeneratedMessage') : this.panel.querySelector('#generatedMessage');
+        const contentToCopy = msgEl ? (msgEl.value || msgEl.textContent) : '';
+        if (contentToCopy) {
+            navigator.clipboard.writeText(contentToCopy).then(() => {
                 MaimaiUtils.showNotification('消息已复制到剪贴板', 'success');
-                this._recordCommLog();
-
-                // 如果勾选了"发申请"，同时记录触达
-                const sendRequestCb = this.panel.querySelector('#sendRequestCb');
-                if (sendRequestCb && sendRequestCb.checked) {
-                    this._recordOutreach();
+                if (!isCrm) {
+                    this._recordCommLog();
+                    // 如果勾选了"发申请"，同时记录触达
+                    const sendRequestCb = this.panel.querySelector('#sendRequestCb');
+                    if (sendRequestCb && sendRequestCb.checked) {
+                        this._recordOutreach();
+                    }
                 }
             }).catch(() => {
                 MaimaiUtils.showNotification('复制失败', 'error');
             });
+        }
+    }
+    
+    // ================== Phase 13 新增交互绑定 ==================
+
+    async handleAIPortrait() {
+        if (!this._lastSyncedCandidateId) return MaimaiUtils.showNotification('请先导入人才', 'warning');
+        const btn = this.panel.querySelector('#crmAiPortraitBtn');
+        const original = btn.innerHTML;
+        btn.disabled = true; btn.innerHTML = '🧠 生成画像中...';
+
+        try {
+            const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
+            const resp = await fetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}/ai-portrait`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+            MaimaiUtils.showNotification('✅ AI画像已成功生成！', 'success');
+            // 自动刷新当前面板数据并滚动至AI画像处
+            setTimeout(() => {
+                this.syncCurrentProfile();
+                setTimeout(() => {
+                    const evalBox = this.panel.querySelector('#crmEvalContent');
+                    if (evalBox) evalBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 400); // 预留接口请求刷新DOM的时间
+            }, 800);
+        } catch (e) {
+            MaimaiUtils.showNotification(`画像生成失败: ${e.message}`, 'error');
+        } finally {
+            if (btn) { btn.disabled = false; btn.innerHTML = original; }
+        }
+    }
+
+    async handleSaveContact() {
+        if (!this._lastSyncedCandidateId) return MaimaiUtils.showNotification('请先导入人才', 'warning');
+        
+        const email = this.panel.querySelector('#crmEditEmail')?.value?.trim();
+        const phone = this.panel.querySelector('#crmEditPhone')?.value?.trim();
+        const wechat = this.panel.querySelector('#crmEditWechat')?.value?.trim();
+        const githubUrl = this.panel.querySelector('#crmEditGithub')?.value?.trim();
+        
+        const payload = {};
+        if (email) payload.email = email;
+        if (phone) payload.phone = phone;
+        if (wechat) payload.wechat = wechat;
+        if (githubUrl) payload.github_url = githubUrl;
+        
+        if (Object.keys(payload).length === 0) return MaimaiUtils.showNotification('没有可保存的数据', 'warning');
+        
+        const btn = this.panel.querySelector('#crmSaveContactBtn');
+        const original = btn.innerHTML;
+        btn.disabled = true; btn.innerHTML = '保存中...';
+        
+        try {
+            const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
+            const resp = await fetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            
+            MaimaiUtils.showNotification('✅ 联系方式更新成功！', 'success');
+            this.panel.querySelector('#crmContactEditArea').style.display = 'none';
+            setTimeout(() => this.syncCurrentProfile(), 800);
+        } catch (e) {
+            MaimaiUtils.showNotification(`更新失败: ${e.message}`, 'error');
+        } finally {
+            if (btn) { btn.disabled = false; btn.innerHTML = original; }
+        }
+    }
+
+    async handleSaveMsg() {
+        if (!this._lastSyncedCandidateId) return MaimaiUtils.showNotification('请先导入人才', 'warning');
+        const msgEl = this.panel.querySelector('#crmGeneratedMessage');
+        const message = msgEl?.value?.trim();
+        if (!message) return MaimaiUtils.showNotification('内容为空', 'warning');
+
+        const saveBtn = this.panel.querySelector('#crmSaveMsgBtn');
+        const btnOriginal = saveBtn.innerHTML;
+        saveBtn.disabled = true; saveBtn.innerHTML = '💾...';
+
+        try {
+            const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
+            const resp = await fetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}/quick-comm-log`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    channel: 'maimai_direct',
+                    content: message,
+                    direction: 'outbound'
+                }),
+            });
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+            MaimaiUtils.showNotification('✅ 消息已保存为沟通记录', 'success');
+            if (saveBtn) { 
+                saveBtn.innerHTML = '✅ 已保存'; 
+                setTimeout(() => { saveBtn.innerHTML = btnOriginal; saveBtn.disabled = false; }, 2000); 
+            }
+        } catch (e) {
+            MaimaiUtils.showNotification(`保存失败: ${e.message}`, 'error');
+            if (saveBtn) { saveBtn.disabled = false; saveBtn.innerHTML = btnOriginal; }
         }
     }
 
@@ -1163,6 +1306,24 @@ class AssistantPanel {
 
         // Tab 2: 绑定快速操作区按钮
         this.panel.querySelector('#crmQuickGenerateMsgBtn')?.addEventListener('click', () => this.handleAIGenerateMessage(false));
+        this.panel.querySelector('#crmDbEnhanceBtn')?.addEventListener('click', () => this.handleAIGenerateMessage(true));
+        this.panel.querySelector('#crmAiPortraitBtn')?.addEventListener('click', () => this.handleAIPortrait());
+        this.panel.querySelector('#crmScheduleBtn')?.addEventListener('click', () => MaimaiUtils.showNotification('预约系统建设中...', 'warning'));
+        
+        // Tab 2: 消息编辑交互
+        this.panel.querySelector('#crmCopyMsgBtn')?.addEventListener('click', () => this.handleCopyMessage(true));
+        this.panel.querySelector('#crmSaveMsgBtn')?.addEventListener('click', () => this.handleSaveMsg());
+        this.panel.querySelector('#crmGeneratedMessage')?.addEventListener('input', (e) => {
+            const countEl = this.panel.querySelector('#crmMsgCharCount');
+            if (countEl) countEl.textContent = e.target.value.length;
+        });
+
+        // Tab 2: 联系方式新增编辑交互
+        this.panel.querySelector('#crmEditContactBtn')?.addEventListener('click', () => {
+            const editArea = this.panel.querySelector('#crmContactEditArea');
+            if (editArea) editArea.style.display = editArea.style.display === 'none' ? 'block' : 'none';
+        });
+        this.panel.querySelector('#crmSaveContactBtn')?.addEventListener('click', () => this.handleSaveContact());
 
         // 监听页面变化，自动更新
         const observer = new MutationObserver(() => {
@@ -1273,7 +1434,7 @@ class AssistantPanel {
             tagsGroup.innerHTML = '';
             skills.slice(0, 5).forEach(skill => {
                 const tagDiv = document.createElement('div');
-                tagDiv.className = 'crm-tag active';
+                tagDiv.className = 'crm-tag'; // Removed 'active' class to keep it neutral grey
                 tagDiv.textContent = skill;
                 tagsGroup.appendChild(tagDiv);
             });
@@ -1362,12 +1523,24 @@ class AssistantPanel {
                         this.activeDbData = dbData;
                         this._lastDbCheckedCandidateName = candidateData.name;
 
+                        // 0. Status Tags 注入姓名旁 (Phase 13)
+                        const tagsContainer = this.panel.querySelector('#crmStatusTagsContainer');
+                        if (tagsContainer) {
+                            tagsContainer.innerHTML = '';
+                            if (dbData.status_tags) {
+                                const statusTagsList = dbData.status_tags.split(',').filter(Boolean);
+                                tagsContainer.innerHTML = statusTagsList.map(t => 
+                                    `<span style="background:#eaf5ea;color:#137333;border:1px solid #b7e1cd;padding:2px 6px;border-radius:4px;font-size:10px;white-space:nowrap;">${t.trim()}</span>`
+                                ).join('');
+                            }
+                        }
+
                         // 1. Tags (使用后端真实的 talent_labels)
                         const tagsGroup = this.panel.querySelector('#crmTagsGroup');
                         if (tagsGroup && dbData.talent_labels && dbData.talent_labels.length > 0) {
                             tagsGroup.innerHTML = '';
                             dbData.talent_labels.forEach(tag => {
-                                tagsGroup.innerHTML += `<span class="crm-tag" style="background: #e0e7ff; color: #4f46e5; border-color: #c7d2fe; display: inline-flex; align-items: center; gap: 3px; padding: 3px 8px; border-radius: 10px; font-size: 10px; font-weight: 500;">${tag}</span>`;
+                                tagsGroup.innerHTML += `<span class="crm-tag" style="display: inline-flex; align-items: center; gap: 3px; padding: 3px 8px; border-radius: 10px; font-size: 10px; font-weight: 500;">${tag}</span>`;
                             });
                         }
 
