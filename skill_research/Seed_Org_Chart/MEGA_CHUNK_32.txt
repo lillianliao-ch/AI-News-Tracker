@@ -1,0 +1,82 @@
+# CANDIDATE BATCH 32
+
+========================================
+Candidate ID: 56454
+Name Mask: *uoyin Wang
+Current Title/Company: Lead of Qwen Pilot @ Alibaba
+
+=== WORK EXPERIENCES ===
+[{"company": "Alibaba", "title": "Lead of Qwen Pilot", "time": "", "description": ""}, {"company": "01.AI (Rhymes AI)", "title": "Lead of post-training team", "time": "", "description": ""}, {"company": "ByteDance Seed", "title": "Unknown", "time": "", "description": ""}, {"company": "Amazon", "title": "Unknown", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 56874
+Name Mask: *uwen Xiong
+Current Title/Company: Research Scientist @ ByteDance Seed
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance Seed", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Waabi", "title": "Senior Researcher", "time": "", "description": ""}, {"company": "Uber ATG", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Microsoft Research Asia", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57006
+Name Mask: *engjia Li
+Current Title/Company: Ph.D. Candidate @ Zhejiang University
+
+=== WORK EXPERIENCES ===
+[{"company": "Carnegie Mellon University", "title": "Visiting Scholar, Human Sensing Lab", "time": "", "description": ""}, {"company": "Bytedance Seed", "title": "Research Intern", "time": "", "description": ""}, {"company": "TikTok", "title": "Research Intern", "time": "", "description": ""}, {"company": "Tongyi WanX", "title": "Research Intern", "time": "", "description": ""}, {"company": "HeyGen", "title": "Research Intern", "time": "", "description": ""}, {"company": "Hedra", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57042
+Name Mask: *uoqiang Wei
+Current Title/Company: Research Scientist @ ByteDance Seed
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance Seed", "title": "Research Scientist", "time": "", "description": ""}, {"company": "ByteDance AI Lab", "title": "Research Intern", "time": "", "description": ""}, {"company": "Microsoft Research Asia (MSRA)", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57088
+Name Mask: *iazhan Feng
+Current Title/Company: PhD Student @ Peking University
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance Seed", "title": "Research Scientist", "time": "", "description": ""}, {"company": "University of Oxford", "title": "Visiting (Recognised) Student", "time": "", "description": ""}, {"company": "Microsoft Azure AI", "title": "Research Intern", "time": "", "description": ""}, {"company": "Microsoft Research Asia (MSRA)", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57090
+Name Mask: *iaxu Zhang
+Current Title/Company: Ph.D. Student @ Wuhan University
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance Seed", "title": "Research Intern for AIGC and MLLM", "time": "", "description": ""}, {"company": "ByteDance", "title": "Research Intern for AIGC and MLLM", "time": "", "description": ""}, {"company": "StepFun", "title": "Research Intern for AIGC", "time": "", "description": ""}, {"company": "Tencent", "title": "Research Intern", "time": "", "description": ""}, {"company": "Nanyang Technological University", "title": "Joint Ph.D. Student", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57345
+Name Mask: *aibin Lin
+Current Title/Company: LLM Infrastructure Engineer @ Bytedance Seed
+
+=== WORK EXPERIENCES ===
+[{"company": "Bytedance Seed", "title": "LLM infrastructure engineer, focusing on optimizing training framework for LLMs & multimodal models (pre-training and RLHF/verl infra)", "time": "", "description": ""}, {"company": "Bytedance", "title": "Engineer working on collective communication libraries for recommendation systems", "time": "", "description": ""}, {"company": "Amazon", "title": "Engineer on Apache MXNet (training, inference, BERT pre-training recipes with gluon-nlp)", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57439
+Name Mask: *uajian Xin
+Current Title/Company: Ph.D. student in Artificial Intelligence @ University of Edinburgh
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance", "title": "student researcher at Seed Team", "time": "", "description": ""}, {"company": "DeepSeek AI", "title": "intern", "time": "", "description": ""}]
+
+========================================
+

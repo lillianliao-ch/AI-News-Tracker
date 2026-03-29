@@ -1,0 +1,106 @@
+# CANDIDATE BATCH 20
+
+========================================
+Candidate ID: 25830
+Name Mask: *沪豪
+Current Title/Company: 算法工程师 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-04-01", "endDate": "\u4eca", "time": "2024-04-01 ~ \u4eca", "duration": "", "description": "seed\u591a\u6a21\u6001\u97f3\u89c6\u9891\u7406\u89e3\u751f\u6210"}, {"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2", "title": "\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2021-01", "endDate": "2024-03", "time": "2021-01 ~ 2024-03", "duration": "", "description": "pretrain,\u591a\u6a21\u6001\uff0c\u8bed\u97f3\u89c6\u9891\u751f\u6210\uff0c"}, {"company": "\u54c8\u5de5\u5927\u6df1\u5733", "title": "\u5728\u6821\u5b66\u751f", "position": "\u5728\u6821\u5b66\u751f", "startDate": "2018-09", "endDate": "2021-01", "time": "2018-09 ~ 2021-01", "duration": "", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 25889
+Name Mask: *俊杰
+Current Title/Company: 高级算法专家 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u9ad8\u7ea7\u7b97\u6cd5\u4e13\u5bb6", "position": "\u9ad8\u7ea7\u7b97\u6cd5\u4e13\u5bb6", "startDate": "2018-12-01", "endDate": "\u4eca", "time": "2018-12-01 ~ \u4eca", "duration": "", "description": "Seed\n\u8c46\u5305\u8bed\u97f3\u5408\u6210\n\u756a\u8304\u5c0f\u8bf4\u8bed\u97f3\u5408\u6210\n\u526a\u6620\u8bed\u97f3\u5408\u6210"}, {"company": "Nuance", "title": "\u8d44\u6df1\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u8d44\u6df1\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2016-09", "endDate": "2018-12", "time": "2016-09 ~ 2018-12", "duration": "", "description": "\u4e2d\u6587\u8bed\u97f3\u5408\u6210\u7814\u53d1\n\u6df1\u5ea6\u5b66\u4e60\u6846\u67b6\n\u524d\u7aef\u6a21\u578b\u7814\u53d1"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 26948
+Name Mask: *泽宇
+Current Title/Company: Seed-Robotics @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "Seed-Robotics", "position": "Seed-Robotics", "startDate": "2024-12-01", "endDate": "\u4eca", "time": "2024-12-01 ~ \u4eca", "duration": "", "description": "Seed-Robotics\u5177\u8eab\u667a\u80fd\u573a\u666f\u7684VLA/VLM\u7684\u6570\u636e/\u63a8\u7406/\u8bad\u7ec3\u7684\u5f02\u6784\u8ba1\u7b97\u6027\u80fd\u4f18\u5316\n\n\u89c6\u9891\u751f\u6210\u6a21\u578b\u6570\u636e\u94fe\u8def\u4e0e\u6a21\u578b\u63a8\u7406\u4f18\u5316"}, {"company": "\u5c0f\u7ea2\u4e66", "title": "\u7b97\u6cd5\u5f15\u64ce\u7814\u53d1\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5f15\u64ce\u7814\u53d1\u5de5\u7a0b\u5e08", "startDate": "2023-06", "endDate": "2024-12", "time": "2023-06 ~ 2024-12", "duration": "", "description": "\u670d\u52a1\u7aef/\u79fb\u52a8\u7aef\u7684\u7b97\u6cd5\u6a21\u578b\u4f18\u5316\u90e8\u7f72\uff0cCUDA/PTX/TensorRT/ARM/\u6a21\u578b\u8f7b\u91cf\u5316/\u6a21\u578b\u91cf\u5316/Pipeline\u4f18\u5316/\u7b97\u5b50\u4f18\u5316\u7b49"}, {"company": "\u5c0f\u7ea2\u4e66", "title": "\u9ad8\u6027\u80fd\u5f02\u6784\u8ba1\u7b97\u5de5\u7a0b\u5e08", "position": "\u9ad8\u6027\u80fd\u5f02\u6784\u8ba1\u7b97\u5de5\u7a0b\u5e08", "startDate": "2023-06-01", "endDate": "\u4eca", "time": "2023-06-01 ~ \u4eca", "duration": "", "description": "\u8d1f\u8d23\u89c6\u89c9/\u8bed\u97f3/\u591a\u6a21\u6001\u4ee5\u53ca\u63a8\u5e7f\u641c\u6240\u9700\u5185\u5bb9\u7406\u89e3\u80fd\u529b\u7684\u7b97\u6cd5\u6027\u80fd\u4e0e\u6210\u672c\u4f18\u5316"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u57fa\u7840\u67b6\u6784\u5de5\u7a0b\u5e08\u5b9e\u4e60\u751f", "position": "\u57fa\u7840\u67b6\u6784\u5de5\u7a0b\u5e08\u5b9e\u4e60\u751f", "startDate": "2022-06", "endDate": "2022-10", "time": "2022-06 ~ 2022-10", "duration": "", "description": "Owned \u6a21\u5757\uff1a\u706b\u5c71\u5f15\u64ce Version 0.0.0 - TOS - \u4e91\u4e0a\u56fe\u50cf/\u89c6\u9891\u5bf9\u8c61\u5904\u7406 (22.09 \u4e0a\u7ebf)"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u57fa\u7840\u67b6\u6784\u5de5\u7a0b\u5e08", "position": "\u57fa\u7840\u67b6\u6784\u5de5\u7a0b\u5e08", "startDate": "2022-05", "endDate": "2022-11", "time": "2022-05 ~ 2022-11", "duration": "", "description": "\u706b\u5c71\u5f15\u64ce\u5bf9\u8c61\u5b58\u50a8ToB"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u8bed\u97f3\u7b97\u6cd5\u57fa\u7840\u80fd\u529b\u4f18\u5316", "time": "2023-11\u81f32024-03", "description": "\u9488\u5bf9\u8bf8\u5982 ASR\u3001TTS\u3001VAD \u7b49\u8fdb\u884c\u7b97\u5b50\u4e0e pipeline \u4f18\u5316\uff0c\u4f18\u5316 Beam Search (for ASR)\u3001xxFFT \u7b49\u8ba1\u7b97\u7684\u7b97\u5b50\uff0c\u63a5\u5165\u8be5\u516c\u53f8\u5185\u5305\u62ec\u4f46\u4e0d\u9650\u4e8e\u76f4\u64ad\u3001\u793e\u533a\u53d1\u5e03\u3001\u7535\u5546\u3001\u5546\u4e1a\u5316\u3001\u5b89\u5ba1\u3001LLM Agent\u3001\u63a8\u5e7f\u641c\u7b49\u591a\u4e2a\u573a\u666f\u4e1a\u52a1\uff0c\u5e76\u7d2f\u8ba1\u8282\u7701 A100 \u7b49\u7ea7 GPU \u8d44\u6e90 150+\uff0c\u5927\u5e45\u4f18\u5316 RTF \u4e0e\u541e\u5410\u91cf\uff08\u81f3\u5c11\u7ea6 60%\uff09\u3002"}, {"name": "\u5343\u5361\u63a8\u7406\u96c6\u7fa4\u5229\u7528\u7387\u6cbb\u7406\u4e13\u9879", "time": "2024-03-01\u81f3\u4eca", "description": "\u5b9e\u73b0\u975e\u4fb5\u5165\u5f0f\u7684\u3001\u51e0\u4e4e\u6027\u80fd 0 \u635f\u8017\u7684\u5728\u79bb\u7ebf\u6df7\u90e8\u8c03\u5ea6\u673a\u5236\uff0c\u5c06 A100 \u96c6\u7fa4\u5229\u7528\u7387 6%\u63d0\u5347\u81f3 25%+\uff08\u4ec5\u6700\u521d\u534a\u6708\uff09"}]
+
+========================================
+
+========================================
+Candidate ID: 27019
+Name Mask: *轩韬
+Current Title/Company: Seed 大模型AI搜索算法工程师 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "Seed \u5927\u6a21\u578bAI\u641c\u7d22\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "Seed \u5927\u6a21\u578bAI\u641c\u7d22\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-07-01", "endDate": "\u4eca", "time": "2025-07-01 ~ \u4eca", "duration": "", "description": "\u8c46\u5305AI\u641c\u7d22"}, {"company": "\u5c0f\u7ea2\u4e66", "title": "\u5927\u6a21\u578bAI\u641c\u7d22\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5927\u6a21\u578bAI\u641c\u7d22\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-06", "endDate": "2025-07", "time": "2023-06 ~ 2025-07", "duration": "", "description": ""}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "AI-Lab NLP\u7b97\u6cd5\u5de5\u7a0b\u5e08(\u5b9e\u4e60)", "position": "AI-Lab NLP\u7b97\u6cd5\u5de5\u7a0b\u5e08(\u5b9e\u4e60)", "startDate": "2022-03", "endDate": "2023-05", "time": "2022-03 ~ 2023-05", "duration": "", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 27696
+Name Mask: *勇
+Current Title/Company: NLP算法工程师 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "NLP\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "NLP\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-09-01", "endDate": "\u4eca", "time": "2023-09-01 ~ \u4eca", "duration": "", "description": "Seed LLM"}, {"company": "\u817e\u8baf", "title": "NLP\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "NLP\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2021-06", "endDate": "2023-09", "time": "2021-06 ~ 2023-09", "duration": "", "description": "NLP\u7b97\u6cd5"}, {"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2", "title": "\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7814\u7a76\u5b9e\u4e60\u751f", "position": "\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7814\u7a76\u5b9e\u4e60\u751f", "startDate": "2020-06", "endDate": "2021-02", "time": "2020-06 ~ 2021-02", "duration": "", "description": "\u4eba\u673a\u5bf9\u8bdd\u7b97\u6cd5\u7684\u7814\u7a76\u4e0e\u843d\u5730"}, {"company": "\u534e\u4e3a", "title": "\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7814\u7a76\u5b9e\u4e60\u751f", "position": "\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7814\u7a76\u5b9e\u4e60\u751f", "startDate": "2020-03", "endDate": "2020-06", "time": "2020-03 ~ 2020-06", "duration": "", "description": "\u673a\u5668\u7ffb\u8bd1\u7b97\u6cd5\u7814\u7a76"}, {"company": "\u817e\u8baf", "title": "\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7814\u7a76\u5b9e\u4e60\u751f", "position": "\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7814\u7a76\u5b9e\u4e60\u751f", "startDate": "2019-04", "endDate": "2020-04", "time": "2019-04 ~ 2020-04", "duration": "", "description": "\u4eba\u673a\u5bf9\u8bdd\u7b97\u6cd5\u7684\u7814\u7a76\u4e0e\u843d\u5730"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 27727
+Name Mask: *伟
+Current Title/Company: AI工程师 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "AI\u5de5\u7a0b\u5e08", "position": "AI\u5de5\u7a0b\u5e08", "startDate": "2023-12-01", "endDate": "\u4eca", "time": "2023-12-01 ~ \u4eca", "duration": "", "description": "seed \u6587\u751f\u56fe\u57fa\u7840\u6a21\u578b\u9884\u8bad\u7ec3\u52a0\u901f\u548c\u5de5\u7a0b"}, {"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2", "title": "C\uff0b\uff0b\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "C\uff0b\uff0b\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2022-07", "endDate": "2023-11", "time": "2022-07 ~ 2023-11", "duration": "", "description": "\u8bad\u7ec3\u52a0\u901f\uff0c\u5206\u5e03\u5f0f\u8bad\u7ec3\uff0cai\u7f16\u8bd1\u4f18\u5316"}, {"company": "\u963f\u91cc\u5df4\u5df4", "title": "c++\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "c++\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2021-06", "endDate": "2021-09", "time": "2021-06 ~ 2021-09", "duration": "", "description": "\u5b9e\u4e60\uff0c\u5927\u89c4\u6a21\u673a\u5668\u5b66\u4e60\u8bad\u7ec3\u52a0\u901f"}, {"company": "\u817e\u8baf", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2021-04", "endDate": "2021-06", "time": "2021-04 ~ 2021-06", "duration": "", "description": "\u5b9e\u4e60\uff0ccv\u7b97\u6cd5"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 27780
+Name Mask: *卓 Joya
+Current Title/Company: Seed·研究实习生 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "Seed\u00b7\u7814\u7a76\u5b9e\u4e60\u751f", "position": "Seed\u00b7\u7814\u7a76\u5b9e\u4e60\u751f", "startDate": "2025-03-01", "endDate": "\u4eca", "time": "2025-03-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "TikTok Inc.", "title": "Research Intern, Multimodal LLM", "position": "Research Intern, Multimodal LLM", "startDate": "2024-08", "endDate": "2025-02", "time": "2024-08 ~ 2025-02", "duration": "", "description": ""}, {"company": "Facebook", "title": "AI Research Scienist Intern at FAIR", "position": "AI Research Scienist Intern at FAIR", "startDate": "2023-08", "endDate": "2024-05", "time": "2023-08 ~ 2024-05", "duration": "", "description": ""}, {"company": "\u817e\u8baf", "title": "\u7814\u7a76\u5b9e\u4e60\u751f", "position": "\u7814\u7a76\u5b9e\u4e60\u751f", "startDate": "2018-06", "endDate": "2019-11", "time": "2018-06 ~ 2019-11", "duration": "", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 27977
+Name Mask: *欢
+Current Title/Company: 高级客户经理 @ 北京字节跳动科技有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u5b57\u8282\u8df3\u52a8\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u9ad8\u7ea7\u5ba2\u6237\u7ecf\u7406", "position": "\u9ad8\u7ea7\u5ba2\u6237\u7ecf\u7406", "startDate": "2020-07-01", "endDate": "\u4eca", "time": "2020-07-01 ~ \u4eca", "duration": "", "description": "\u706b\u5c71\u5f15\u64ce\u534e\u5357\u533a\u7b2c\u4e00\u6279\u706b\u5c71\u6cdb\u4e92\u884c\u4e1a\u9500\u552e\uff5e\u76ee\u524d\u5df2\u7ecfrebase\u5b9a\u5c45\u6210\u90fd\uff0c\u8d1f\u8d23\u897f\u5357\u6cdb\u4e92\uff5e\n\n\u8d1f\u8d23\u5b57\u8282\u8df3\u52a8\u65d7\u4e0b\u4e91\u670d\u52a1\u5e73\u53f0\u706b\u5c71\u5f15\u64ce\u5168\u7cfb\u5217\u4ea7\u54c1\u9500\u552e\u3002\n\u73b0\u5728\u4e3b\u63a8\u8c46\u5305\uff1a\u6587\u672c\u5927\u6a21\u578b\u3001\u89c6\u89c9\u5927\u6a21\u578b\u3001\u8bed\u97f3\u5927\u6a21\u578b\u7b49\uff5eseedance\u3001seedream\u3001seededit\u3001seed\u6587\u672c\uff5e\r\n1.\u6570\u636e\u4e2d\u53f0\u3001bytehouse\u3001\u6570\u636e\u5206\u6790\u3001ABtest\u7b49\r\n2.\u5b58\u50a8\u3001\u6570\u636e\u5e93\u3001\u516c\u6709\u4e91\uff08ECS\u3001GPU\uff09\u3001\u673a\u5668\u5b66\u4e60\u5e73\u53f0\u3001\u5bb9\u5668\u4e91\u3001VPN\u3001\u7f51\u7edcIP\u7b49\r\n3.\u89c6\u9891\u4e91\u3001\u70b9\u64ad\u3001\u76f4\u64ad\u3001RTC\u7b49\r\n4.AI\u7279\u6548\u7f8e\u989c\u3001\u6296\u97f3\u7279\u6548\u7b49\n5.\u8fb9\u7f18\u4e91\u3001\u5168\u7403\u52a0\u901f\u3001MCDN\u3001DCDN\u3001\u8fb9\u7f18\u8ba1\u7b97\u8282\u70b9\u3001\u8de8\u5883\u65b9\u6848\n\n\u671f\u95f4\u83b7\u5f97\uff1a\n2020-\u706b\u5c71\u5c0f\u65b0\u5956\u9879\n2022-\u706b\u5c71\u5f15\u64ce\u534e\u5357\u533a\u533a\u57df\u4e4b\u661f\u5956\u9879\n2023-\u5b57\u8282\u8df3\u52a8\u6700\u6709\u5b57\u8282\u8303\u5956\u9879\uff08\u706b\u5c71\u5f15\u64ce\u9500\u552e\u552f\u4e00\uff09\n2025-\u706b\u5c71\u5f15\u64ce\u65b0\u62d3MaaS\u4ef7\u503c\u5ba2\u6237\u5956\n2025-\u706b\u5c71\u5f15\u64ce\u5927\u6a21\u578b\u660e\u661f\u5ba2\u6237\u5956"}, {"company": "\u4e03\u725b\u4e91", "title": "\u5927\u5ba2\u6237\u7ecf\u7406KA", "position": "\u5927\u5ba2\u6237\u7ecf\u7406KA", "startDate": "2017-06", "endDate": "2020-07", "time": "2017-06 ~ 2020-07", "duration": "", "description": "\u8d1f\u8d23\u4e03\u725b\u4e91cdn\u3001\u5b58\u50a8\u3001\u76f4\u64ad\u4e91\u3001\u4e91\u4e3b\u673a\u3001\u6570\u636e\u5e93\u3001\u4e91\u77ed\u4fe1\u4ee5\u53caAI\u548c\u5927\u6570\u636e\u65e5\u5fd7\u4ea7\u54c1\u7684\u5546\u52a1\u6e20\u9053\u5efa\u8bbe\u3001\u5546\u52a1\u8c08\u5224\uff0c\u4fc3\u8fdb\u7b7e\u8ba2\u5408\u540c\u3002\n\u6df1\u5ea6\u6316\u6398\u5ba2\u6237\u9700\u6c42\uff0c\u534f\u8c03\u5185\u90e8\u8d44\u6e90\u7ef4\u62a4\u5ba2\u6237\u5173\u7cfb\uff0c\u62d3\u5c55\u5546\u673a\u63a5\u5165\u91cd\u70b9\u5927\u5ba2\u6237\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+

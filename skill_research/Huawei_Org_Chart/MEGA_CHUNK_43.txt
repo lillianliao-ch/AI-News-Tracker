@@ -1,0 +1,223 @@
+# CANDIDATE BATCH 43
+
+========================================
+Candidate ID: 51860
+Name Mask: *嘻
+Current Title/Company: AI产品经理 @ 华为
+
+=== WORK EXPERIENCES ===
+[{"company": "\u534e\u4e3a", "title": "AI\u4ea7\u54c1\u7ecf\u7406", "position": "AI\u4ea7\u54c1\u7ecf\u7406", "startDate": "2023-07-01", "endDate": "\u4eca", "time": "2023-07-01 ~ \u4eca", "duration": "", "description": "ai\u4ea7\u54c1"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 51868
+Name Mask: *洛
+Current Title/Company: 项目经理PM @ 华为
+
+=== WORK EXPERIENCES ===
+[{"company": "\u534e\u4e3a", "title": "\u9879\u76ee\u7ecf\u7406PM", "position": "\u9879\u76ee\u7ecf\u7406PM", "startDate": "2024-06-01", "endDate": "\u4eca", "time": "2024-06-01 ~ \u4eca", "duration": "", "description": "LLM\u7b97\u6cd5\u7684\u843d\u5730\u5e94\u7528\u5b9e\u8df5\uff0c\u7aef\u5230\u7aef\u6280\u672f\u65b9\u6848\u8bbe\u8ba1\u548c\u56e2\u961f\u7ba1\u7406\uff0c\u5305\u62ecLLM\u843d\u5730\u6559\u80b2\uff0cdeepsearch\u7b49\u65b9\u5411"}, {"company": "\u534e\u4e3a\u6280\u672f\u6709\u9650\u516c\u53f8\u676d\u5dde\u7814\u7a76\u6240", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-07", "endDate": "2024-06", "time": "2023-07 ~ 2024-06", "duration": "", "description": "\u4ee3\u7801\u751f\u6210\u6a21\u578b\u6548\u679c\u4f18\u5316\uff0c\u63d0\u5347\u7eed\u5199\u573a\u666f\u63a5\u7eb3\u7387\u7b49\u3002"}, {"company": "\u534e\u4e3a\u6280\u672f\u6709\u9650\u516c\u53f8\u676d\u5dde\u7814\u7a76\u6240", "title": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2022-06", "endDate": "2022-10", "time": "2022-06 ~ 2022-10", "duration": "", "description": ""}, {"company": "\u534e\u4e3a\u676d\u5dde\u7814\u7a76\u6240", "title": "\u5b9e\u4e60\u751f", "position": "\u5b9e\u4e60\u751f", "startDate": "2022-06-01", "endDate": "\u4eca", "time": "2022-06-01 ~ \u4eca", "duration": "", "description": "\u5728\u676d\u7814\u6240\u7684\u4e2d\u592e\u8f6f\u4ef6\u9662IDE\u5b9e\u9a8c\u5ba4\u7684AI\u8f6f\u4ef6\u5de5\u7a0b\u7ec4\u4ece\u4e8bIDE\u63d2\u4ef6\u7684\u7b97\u6cd5\u7814\u7a76\uff0c\u4e3b\u8981\u662fCodeAI\u9886\u57df\u7684\u4efb\u52a1\uff0c\u5982\u4ee3\u7801\u751f\u6210\uff1b\u6b63\u5728\u8fdb\u884c\u81ea\u5df1\u7814\u7a76\u4efb\u52a1\u7684\u8bba\u6587\u64b0\u5199(\u5df2\u5b8c\u6210)\uff0c\u8ba1\u5212\u6295\u7a3f\u81f3JSEP(Chinasoft\u7684EvaluationandProcess\u7684track\uff0cCCF - B)"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u57fa\u4e8e\u4e0a\u4e0b\u6587\u7684\u5bf9\u8bdd\u751f\u6210\u7cfb\u7edf\u7814\u7a76", "time": "2020-10\u81f32021-09", "description": "\u4f7f\u7528\u57fa\u4e8eBert,Roberta\u7b49\u9884\u8bad\u7ec3\u6a21\u578b\u8fdb\u884c\u5fae\u8c03\u7684NLU\u4efb\u52a1\uff0c\u6784\u5efa\u57fa\u4e8e\u4e0a\u4e0b\u6587\u77db\u76fe\u7684\u6570\u636e\u96c6\uff0c\u8fdb\u884c\u5bf9\u6bd4\u5b9e\u9a8c\u5e76\u5f97\u51fa\u7ed3\u8bba\u548c\u8d21\u732e"}, {"name": "\u57fa\u4e8ecodeparrot\u548ccodegen\u5728\u6570\u901a\u6570\u636e\u573a\u666f\u4e0b\u7684\u4ee3\u7801\u751f\u6210", "time": "2022-06\u81f32022-08", "description": "\u57fa\u4e8ecodeparrot\u548ccodegen\u6240\u63d0\u51fa\u7684\u601d\u60f3\u548c\u6a21\u578b\u67b6\u6784\u8fdb\u884c\u7814\u7a76\u5e76\u63d0\u51fa\u81ea\u5df1\u7684\u6a21\u578b\uff0c\u4e3aide\u63d2\u4ef6\u63d0\u4f9b\u7b97\u6cd5\u652f\u6301\uff0c\u9879\u76ee\u5df2\u5b8c\u6210\u4ea4\u4ed8"}, {"name": "\u81ea\u52a8\u7a0b\u5e8f\u4fee\u590d", "time": "2021-09\u81f32022-05", "description": "\u76f8\u5173\u8bba\u6587\u5df2\u6295\u7a3f\uff0c\u5df2\u88abASE(CCF - A)\u5f55\u7528\uff1b\u590d\u73b0\u4e86Recoder\uff0cSequenceR\u7b49\u5f53\u524d\u9886\u57dfSOTA\u5de5\u4f5c\u7684\u7814\u7a76\u6210\u679c\uff0c\u6536\u96c6\u6574\u7406\u4e86\u8fd9\u4e9b\u5de5\u4f5c\u6240\u63d0\u51fa\u7528\u5230\u7684\u6570\u636e\u96c6\uff1b\u5f97\u51faAPR\u548c\u5176\u4ed6codeAI\u9886\u57df\u4efb\u52a1\u4e0d\u540c\u7b49\u7ed3\u8bba\u5e76\u4e3a\u5176\u53d1\u5c55\u505a\u51fa\u8d21\u732e"}]
+
+========================================
+
+========================================
+Candidate ID: 51888
+Name Mask: *泽灵
+Current Title/Company: AI产品经理 @ 华为
+
+=== WORK EXPERIENCES ===
+[{"company": "\u534e\u4e3a", "title": "AI\u4ea7\u54c1\u7ecf\u7406", "position": "AI\u4ea7\u54c1\u7ecf\u7406", "startDate": "2024-10", "endDate": "2025-07", "time": "2024-10 ~ 2025-07", "duration": "", "description": "\u2022\u4ea7\u54c1\u89c4\u5212\uff1a\u4e3b\u5bfc\u4ea7\u54c1\u5168\u6d41\u7a0b\u8bbe\u8ba1\uff0c\u5b8c\u6210 10 + \u884c\u4e1a\u7ade\u54c1\u6df1\u5ea6\u5206\u6790\u7ed3\u5408\u81ea\u8eab\u4f18\u52bf\uff0c\u7cbe\u51c6\u5b9a\u4f4d AI \u89c6\u9891\u751f\u6210\u9886\u57df\u5dee\u5f02\u5316\u529f\u80fd\uff0c\u660e\u786e\u5728\u6cdb\u5a31\u4e50\u3001\u7535\u5546\u3001\u5f71\u89c6\u3001\u81ea\u52a8\u9a7e\u9a76\u7b49\u573a\u666f\u7684\u5546\u4e1a\u5316\u8def\u5f84\u3002\r\n\r\n\u2022\u8de8\u56e2\u961f\u534f\u4f5c\uff1a\u7edf\u7b79\u7b97\u6cd5\u3001\u5f00\u53d1\u3001\u6d4b\u8bd5\u7b49 5 \u4e2a\u90e8\u95e8 60 + \u4eba\u534f\u540c\u5de5\u4f5c\uff0c\u5efa\u7acb\u654f\u6377\u5f00\u53d1\u673a\u5236\uff0c\u63a8\u52a8\u6a21\u578b\u8fed\u4ee3\u4f18\u5316\u3002\u4e0e\u5e02\u573a\u56e2\u961f\u5408\u4f5c\u5236\u5b9a\u63a8\u5e7f\u7b56\u7565\uff0c\u52a9\u529b\u7b7e\u7ea6 2\u5bb6\u884c\u4e1a\u5934\u90e8\u5ba2\u6237\uff0c\u9884\u8ba1\u5e74\u8425\u6536\u589e\u957f\u8d85 4000 \u4e07\u5143\u3002"}, {"company": "\u534e\u4e3a", "title": "\u79fb\u52a8\u5ba2\u6237\u7aef\u5f00\u53d1", "position": "\u79fb\u52a8\u5ba2\u6237\u7aef\u5f00\u53d1", "startDate": "2019-07", "endDate": "2024-10", "time": "2019-07 ~ 2024-10", "duration": "", "description": "\u2022\u6280\u672f\u653b\u575a\uff1a\u4e3b\u5bfc Android \u5ba2\u6237\u7aef\u6838\u5fc3\u6a21\u5757\u7684\u5168\u94fe\u8def\u5f00\u53d1\uff0c\u6df1\u5ea6\u53c2\u4e0e\u7528\u6237\u589e\u957f\u3001\u5356\u70b9\u529f\u80fd\u8fed\u4ee3\u7b49\u5173\u952e\u9700\u6c42\u3002\u53c2\u4e0e\u534e\u4e3a\u5e94\u7528\u5e02\u573a\u3001\u6e38\u620f\u4e2d\u5fc3\u3001\u5e94\u7528\u52a9\u624b\u7b49\u591a\u4e2a\u5934\u90e8 App \u7684\u529f\u80fd\u5f00\u53d1\uff0c\u5728\u6280\u672f\u67b6\u6784\u4f18\u5316\u4e0e\u6027\u80fd\u63d0\u5347\u65b9\u9762\u53d6\u5f97\u663e\u8457\u6210\u679c\u3002\r\n\r\n\u2022\u9e3f\u8499\u751f\u6001\u5efa\u8bbe\uff1a\u4f5c\u4e3a\u9e3f\u8499\u5e94\u7528\u5f00\u53d1\u7684\u6838\u5fc3\u6280\u672f\u9aa8\u5e72\uff0c\u53c2\u4e0e\u534e\u4e3a\u81ea\u7814\u5e94\u7528\u6e38\u620f\u670d\u52a1\u7684\u9e3f\u8499\u7cfb\u7edf\u9002\u914d\uff0c\u6709\u529b\u63a8\u52a8\u9e3f\u8499\u751f\u6001\u7684\u89c4\u6a21\u5316\u53d1\u5c55\u3002\u671f\u95f4\u7d2f\u8ba1\u8f93\u51fa\u591a\u7bc7\u9ad8\u8d28\u91cf\u6280\u672f\u6587\u6863\uff0c\u6784\u5efa\u5b8c\u5584\u7684\u6280\u672f\u77e5\u8bc6\u5e93\uff0c\u5e76\u6210\u529f\u57f9\u517b 3\u540d\u9e3f\u8499\u5f00\u53d1\u4eba\u624d\uff0c\u4e3a\u56e2\u961f\u6301\u7eed\u53d1\u5c55\u6ce8\u5165\u65b0\u52a8\u529b\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 51910
+Name Mask: *旭
+Current Title/Company: 用户体验设计师 @ 华为
+
+=== WORK EXPERIENCES ===
+[{"company": "\u534e\u4e3a", "title": "\u7528\u6237\u4f53\u9a8c\u8bbe\u8ba1\u5e08", "position": "\u7528\u6237\u4f53\u9a8c\u8bbe\u8ba1\u5e08", "startDate": "2022-04-01", "endDate": "\u4eca", "time": "2022-04-01 ~ \u4eca", "duration": "", "description": "\u4eba\u56e0\u7814\u7a76/camera\u7814\u7a76"}, {"company": "vivo", "title": "\u52a9\u7406\u5f71\u50cf\u6548\u679c\u4ea7\u54c1\u7ecf\u7406", "position": "\u52a9\u7406\u5f71\u50cf\u6548\u679c\u4ea7\u54c1\u7ecf\u7406", "startDate": "2021-06", "endDate": "2021-09", "time": "2021-06 ~ 2021-09", "duration": "", "description": "\u534f\u52a9\u5b8c\u6210\u8fd0\u52a8\u6293\u62cd&\u6e05\u6670\u5ea6\u8d5b\u9053\u7684\u9700\u6c42\u9a8c\u8bc1\u3001\u7ade\u54c1\u5206\u6790\u3001\u7248\u672c\u70b9\u68c0\u3001\u6548\u679c\u8bc4\u5ba1\u7b49\u5de5\u4f5c\u3002"}, {"company": "\u62cd\u8bbe \u5199\u771f\u5de5\u4f5c\u5ba4", "title": "\u6444\u5f71\u5e08", "position": "\u6444\u5f71\u5e08", "startDate": "2019-10", "endDate": "2021-05", "time": "2019-10 ~ 2021-05", "duration": "", "description": "\u9762\u5411\u5728\u65e5\u534e\u4eba\u53ca\u8bbf\u65e5\u6e38\u5ba2\u7684\u65c5\u884c\u7ea6\u62cd\u3001\u8bc1\u4ef6\u7167\u3001\u5a5a\u7eb1\u7167\u7b49\u5199\u771f\u670d\u52a1 \n\u804c\u8d23:1.\u8bbe\u8ba1\u5e76\u7ba1\u7406\u9884\u7ea6\u5e73\u53f0\uff0c\u5229\u7528\u793e\u4ea4\u5a92\u4f53\u53ca\u53e3\u7891\u8fdb\u884c\u5ba3\u4f20\u3002\n2.\u6839\u636e\u5ba2\u6237\u9700\u6c42\u8c03\u6574\u5e76\u4e30\u5bcc\u4e1a\u52a1\u7c7b\u578b\uff0c\u4ece\u6821\u56ed\u7ea6\u62cd\u53d1\u5c55\u5230\u65c5\u62cd\u3001\u5a5a\u7eb1\u7167\u3001\u77ed\u89c6\u9891\u7b49\u591a\u9879 \u4e1a\u52a1\u3002"}, {"company": "\u521b\u65b0\u5de5\u573a", "title": "\u8bbe\u8ba1\u5b9e\u4e60\u751f", "position": "\u8bbe\u8ba1\u5b9e\u4e60\u751f", "startDate": "2019-07", "endDate": "2019-08", "time": "2019-07 ~ 2019-08", "duration": "", "description": "\u4e3b\u5bfc\u5e76\u63a8\u8fdbAI\u91d1\u878d\u9886\u57df\u7684\u80a1\u7968\u9884\u6d4b\u7cfb\u7edf\u7684\u5168\u6d41\u7a0b\u8bbe\u8ba1 / \u8bbe\u8ba1\u7ec4\u7ec4\u957f"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 51961
+Name Mask: *玉洁
+Current Title/Company: AI产品经理 @ 华为技术有限公司济南工作处
+
+=== WORK EXPERIENCES ===
+[{"company": "\u534e\u4e3a\u6280\u672f\u6709\u9650\u516c\u53f8\u6d4e\u5357\u5de5\u4f5c\u5904", "title": "AI\u4ea7\u54c1\u7ecf\u7406", "position": "AI\u4ea7\u54c1\u7ecf\u7406", "startDate": "2023-11-01", "endDate": "\u4eca", "time": "2023-11-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u79d1\u5927\u8baf\u98de\u80a1\u4efd\u6709\u9650\u516c\u53f8", "title": "\u4ea7\u54c1\u7ecf\u7406", "position": "\u4ea7\u54c1\u7ecf\u7406", "startDate": "2019-01", "endDate": "2022-11", "time": "2019-01 ~ 2022-11", "duration": "", "description": "\u667a\u5b66\u7f51 \u4e2a\u6027\u5316\u5b66\u4e60\u4e1a\u52a1\u7ebf\n\u4ea7\u54c1\u7ecf\u7406"}, {"company": "\u79d1\u5927\u8baf\u98de\u80a1\u4efd\u6709\u9650\u516c\u53f8", "title": "\u4ea7\u54c1\u7ecf\u7406", "position": "\u4ea7\u54c1\u7ecf\u7406", "startDate": "2016-07", "endDate": "2019-01", "time": "2016-07 ~ 2019-01", "duration": "", "description": "\u79d1\u5927\u8baf\u98de\u6559\u80b2\u4ea7\u54c1\u90e8\u4ea7\u54c1\u7ecf\u7406\uff0c\u6559\u80b2\u7efc\u5408\u89e3\u51b3\u65b9\u6848\u8d1f\u8d23\u4ea7\u54c1\u65b9\u6848\u89c4\u5212\uff0c\u62db\u6295\u6807\u53c2\u6570\uff0c\u9700\u6c42\u8c03\u7814\uff0c\u4ea7\u54c1\u8bbe\u8ba1\uff0c\u4ea7\u54c1\u4ea4\u4ed8\u4ee5\u53ca\u9a8c\u6536\u7684\u5168\u6d41\u7a0b\u7ba1\u7406"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 51975
+Name Mask: *云智
+Current Title/Company: AI产品经理 @ 华为云计算
+
+=== WORK EXPERIENCES ===
+[{"company": "\u534e\u4e3a\u4e91\u8ba1\u7b97", "title": "AI\u4ea7\u54c1\u7ecf\u7406", "position": "AI\u4ea7\u54c1\u7ecf\u7406", "startDate": "2024-05-01", "endDate": "\u4eca", "time": "2024-05-01 ~ \u4eca", "duration": "", "description": "LLM \u63a8\u7406\u6846\u67b6\uff0c\u6a21\u578b\u9009\u578b"}, {"company": "\u534e\u4e3a\u4e91", "title": "\u4e91\u4ea7\u54c1\u7ecf\u7406 - AI\u65b9\u5411", "position": "\u4e91\u4ea7\u54c1\u7ecf\u7406 - AI\u65b9\u5411", "startDate": "2024-04-01", "endDate": "\u4eca", "time": "2024-04-01 ~ \u4eca", "duration": "", "description": "\u8d1f\u8d23\u534e\u4e3a\u817e\u4e91LLM\u63a8\u7406\u6846\u67b6\u4ea7\u54c1\u7ba1\u7406\u5de5\u4f5c\uff0c\u5305\u542b\u4ea7\u54c1\u89c4\u5212\uff08\u6a21\u578b\u9009\u578b\u3001\u6846\u67b6\u7ade\u4e89\u529b\u89c4\u5212\uff09\u3001\u9700\u6c42\u7ba1\u7406\u3001\u4ea7\u54c1&\u6280\u672f\u6d1e\u5bdf\u4ee5\u53ca\u5173\u952e\u5e02\u573a\u9879\u76ee\u652f\u6301\u7b49\u5de5\u4f5c\uff1b\u8d1f\u8d23\u534e\u4e3a\u817e\u4e91\u5173\u952e\u673a\u578b\u4ea7\u54c1\u5316\u76f8\u5173\u5de5\u4f5c\uff0c\u5305\u542b\u4ea7\u54c1&\u5546\u4e1a\u6a21\u5f0f\u8bbe\u8ba1\uff1b\u8d1f\u8d23\u534e\u4e3a\u817e\u4e91\u8d85\u8282\u70b9\u7684\u53ef\u9760\u6027\u4ea7\u54c1\u8bbe\u8ba1\u4e0e\u9700\u6c42\u843d\u5730\u3002"}, {"company": "\u534e\u4e3a", "title": "AIGC\u5e73\u53f0\u7814\u53d1\u5de5\u7a0b\u5e08", "position": "AIGC\u5e73\u53f0\u7814\u53d1\u5de5\u7a0b\u5e08", "startDate": "2022-04", "endDate": "2024-05", "time": "2022-04 ~ 2024-05", "duration": "", "description": "\u4e0d\u641e\u7b97\u6cd5\uff0c\u4e13\u6ce8\u7b97\u6cd5\u5de5\u7a0b\u5316\u3002"}, {"company": "\u534e\u4e3a\u7ec8\u7aef", "title": "Ai\u5e73\u53f0\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "Ai\u5e73\u53f0\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2022-04", "endDate": "2024-04", "time": "2022-04 ~ 2024-04", "duration": "", "description": "\u53c2\u4e0e\u7ec8\u7aef\u4e91\u4e92\u5a92\u5185\u90e8AIGC\u5e73\u53f0\u5f00\u53d1\uff0c\u8d1f\u8d23\u56fe\u7247\u751f\u6210\u3001\u6709\u58f0\u4e66\u751f\u6210\u4efb\u52a1\u6846\u67b6\u5f00\u53d1\uff0c\u8d1f\u8d23\u5185\u90e8\u56fe\u7247\u751f\u6210\u8bc4\u6d4bbenchmark\u6784\u5efa\uff0c\u63a8\u52a8\u76f8\u5173\u4e1a\u52a1\u5728\u6e38\u620f\u7d20\u6750\u751f\u6210\u65b9\u5411\u7684\u4e1a\u52a1\u843d\u5730\uff1b\u53c2\u4e0e\u7ec8\u7aef\u4e91\u4e92\u5a92\u5185\u90e8AI\u7b97\u6cd5\u5e73\u53f0\u5f00\u53d1\uff0c\u8d1f\u8d23\u9ad8\u6027\u80fdAI\u7f51\u5173\u5f00\u53d1\uff0c\u8d1f\u8d23\u82e5\u5e72\u7b97\u6cd5\u5728\u97f3\u4e50\u3001\u6e38\u620f\u4e2d\u5fc3\u7b49\u4e1a\u52a1\u843d\u5730\u3002"}, {"company": "\u534e\u4e3a\u4e91", "title": "\u5927\u6570\u636e\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "\u5927\u6570\u636e\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2018-09", "endDate": "2022-04", "time": "2018-09 ~ 2022-04", "duration": "", "description": "\u8d1f\u8d23\u534e\u4e3a\u4e91\u5927\u6570\u636e\u670d\u52a1DLI Flink\u6a21\u5757\u4e1a\u52a1\u89c4\u5212\uff0c\u5305\u542b\u5173\u952e\u5e02\u573a\u9879\u76ee\u9700\u6c42\u5f00\u53d1\u3001\u5185\u6838\u7ade\u4e89\u529b\u7279\u6027\u4ea7\u54c1\u5316\uff1b\u53c2\u4e0e\u534e\u4e3a\u4e91\u5927\u6570\u636e\u670d\u52a1DLI\u5e73\u53f0\u5f00\u53d1\uff0c\u53c2\u4e0e\u5927\u6570\u636e\u5173\u952e\u9879\u76ee\u652f\u6301\u3001\u73b0\u7f51\u4e1a\u52a1\u8fd0\u7ef4\u3002"}, {"company": "\u534e\u4e3a\u4e91", "title": "\u5927\u6570\u636e\u5e73\u53f0\u7814\u53d1\u5de5\u7a0b\u5e08", "position": "\u5927\u6570\u636e\u5e73\u53f0\u7814\u53d1\u5de5\u7a0b\u5e08", "startDate": "2018-06", "endDate": "2022-04", "time": "2018-06 ~ 2022-04", "duration": "", "description": "Date Lake Insight Flink\u7ec4\u8d1f\u8d23\u4eba"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 54726
+Name Mask: *unhe Wang
+Current Title/Company: Head of the Huawei Applied AI Lab @ Huawei
+
+=== WORK EXPERIENCES ===
+[{"company": "Huawei", "title": "Head of the Huawei Applied AI Lab and Senior Researcher at Huawei Noah's Ark Lab", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 55755
+Name Mask: *inglong Xia
+Current Title/Company: Applied Research Scientist @ Facebook AI
+
+=== WORK EXPERIENCES ===
+[{"company": "Facebook AI", "title": "Applied Research Scientist (applied machine learning), working on graph-based platform and application technologies", "time": "", "description": ""}, {"company": "Futurewei Technologies (Huawei Research America)", "title": "Chief Architect, leading a global team on AI platform products based on in-house Graph Engine (GES)", "time": "", "description": ""}, {"company": "IBM Watson Research Center", "title": "Technical Leader and Research Staff Member, exploring graph database and reasoning framework; created IBM System G platform", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 56923
+Name Mask: *eigao Sun
+Current Title/Company: Young Scientist @ Shanghai AI Laboratory
+
+=== WORK EXPERIENCES ===
+[{"company": "Shanghai AI Laboratory", "title": "Young Scientist", "time": "", "description": ""}, {"company": "Huawei", "title": "AI Researcher", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57168
+Name Mask: *ijun Li
+Current Title/Company: Assistant Professor @ Shanghai Jiao Tong University
+
+=== WORK EXPERIENCES ===
+[{"company": "Shanghai Jiao Tong University", "title": "Assistant Professor", "time": "", "description": ""}, {"company": "Huawei Noah's Ark Lab", "title": "Principal Researcher", "time": "", "description": ""}, {"company": "Huawei Noah's Ark Lab", "title": "Senior Research Engineer A", "time": "", "description": ""}, {"company": "Huawei Noah's Ark Lab", "title": "Senior Research Engineer B", "time": "", "description": ""}, {"company": "Huawei Noah's Ark Lab", "title": "Research Engineer", "time": "", "description": ""}, {"company": "Huawei Noah's Ark Lab", "title": "Research Intern", "time": "", "description": ""}, {"company": "Ministry of Science and Technology of the People\u2019s Republic of China", "title": "On Secondment", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57259
+Name Mask: *ianfei Guo
+Current Title/Company: Researcher @ Shanghai Artificial Intelligence Laboratory
+
+=== WORK EXPERIENCES ===
+[{"company": "Shanghai Artificial Intelligence Laboratory", "title": "Researcher", "time": "", "description": ""}, {"company": "Huawei Technologies Co., Ltd.", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57534
+Name Mask: *hanghua Meng
+Current Title/Company: LLM Researcher @ ByteDance
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance", "title": "LLM Researcher", "time": "", "description": ""}, {"company": "Kuaishou", "title": "Recommendation Algorithm Engineer", "time": "", "description": ""}, {"company": "Tencent", "title": "Recommendation Algorithm Intern", "time": "", "description": ""}, {"company": "ByteDance", "title": "Search Algorithm Intern", "time": "", "description": ""}, {"company": "Alibaba Group", "title": "Research Intern", "time": "", "description": ""}, {"company": "Huawei", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57682
+Name Mask: *hao Liao
+Current Title/Company: PhD candidate @ Shanghai Jiao Tong University
+
+=== WORK EXPERIENCES ===
+[{"company": "Huawei TCS Lab", "title": "Researcher", "time": "", "description": ""}, {"company": "Shanghai Jiao Tong University", "title": "PhD candidate", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57693
+Name Mask: *ao Cong
+Current Title/Company: Professor @ Nanyang Technological University
+
+=== WORK EXPERIENCES ===
+[{"company": "Nanyang Technological University", "title": "Professor, College of Computing and Data Science", "time": "", "description": ""}, {"company": "Nanyang Technological University", "title": "Associate Professor", "time": "", "description": ""}, {"company": "Nanyang Technological University", "title": "Assistant Professor", "time": "", "description": ""}, {"company": "Aalborg University", "title": "Assistant Professor, Department of Computer Science and Center for Data-intensive Systems (Daisy)", "time": "", "description": ""}, {"company": "Microsoft Research Asia", "title": "Researcher", "time": "", "description": ""}, {"company": "University of Edinburgh", "title": "Postdoc Research Fellow, Database Group, School of Informatics", "time": "", "description": ""}, {"company": "National University of Singapore", "title": "Ph.D. student and Pre-doc, Department of Computer Science", "time": "", "description": ""}, {"company": "ShenZhen Huawei Company", "title": "Engineer", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 58401
+Name Mask: *ongyao Tang
+Current Title/Company: Associate Research Fellow @ Tianjin University
+
+=== WORK EXPERIENCES ===
+[{"company": "Tianjin University", "title": "Associate Research Fellow", "time": "", "description": ""}, {"company": "Mila / Universit\u00e9 de Montr\u00e9al", "title": "Postdoctoral Research Fellow", "time": "", "description": ""}, {"company": "Huawei Noah's Ark Lab", "title": "DRL Researcher (Intern)", "time": "", "description": ""}, {"company": "Tencent Quantum Lab", "title": "AI Researcher (Intern)", "time": "", "description": ""}, {"company": "NetEase Fuxi AI Lab", "title": "DRL Researcher (Intern)", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 59886
+Name Mask: *henjun Xiao
+Current Title/Company: Assistant Professor @ The Chinese University of Hong Kong (Shenzhen)
+
+=== WORK EXPERIENCES ===
+[{"company": "The Chinese University of Hong Kong (Shenzhen)", "title": "Assistant Professor and Presidential Young Fellow", "time": "", "description": ""}, {"company": "Huawei Noah Ark Lab", "title": "Research Scientist (Huawei TopMind)", "time": "", "description": ""}, {"company": "Google Brain (now Google DeepMind)", "title": "Student Researcher", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 63400
+Name Mask: *ongze Lian
+Current Title/Company: Research Scientist @ Huawei
+
+=== WORK EXPERIENCES ===
+[{"company": "Huawei Singapore", "title": "Research Scientist", "time": "", "description": ""}, {"company": "National University of Singapore", "title": "Research Fellow", "time": "", "description": ""}, {"company": "Tencent Youtu Lab", "title": "Research Intern", "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 63763
+Name Mask: *uesong Shen
+Current Title/Company: Assistant/Associate Professor @ 
+
+=== WORK EXPERIENCES ===
+[{"company": "Huawei Hong Kong Research Center", "title": "Researcher", "time": "", "description": ""}, {"company": "Technicolor", "title": "Intern", "time": "", "description": ""}, {"company": "Valeo", "title": "Intern / Student Job", "time": "", "description": ""}, {"company": "Artisense", "title": "Intern / Student Job", "time": "", "description": ""}, {"company": "RIKEN AIP", "title": "Collaborator (Approximate Bayesian Inference Team)", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 67906
+Name Mask: *ingyang Yi
+Current Title/Company: Assistant Professor @ Renmin University of China
+
+=== WORK EXPERIENCES ===
+[{"company": "Renmin University of China", "title": "Assistant Professor of School of Information", "time": "", "description": ""}, {"company": "Huawei Noah\u2019s Ark Lab", "title": "Researcher, AI Theory Group", "time": "", "description": ""}, {"company": "Huawei Noah\u2019s Ark Lab", "title": "Research Intern, AI Theory Group", "time": "", "description": ""}, {"company": "Huawei Noah\u2019s Ark Lab", "title": "Research Intern, Speech & Language Processing Group", "time": "", "description": ""}, {"company": "Microsoft Research Asia", "title": "Research Intern, Machine Learning Group", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 74051
+Name Mask: *晨曦
+Current Title/Company: AI产品经理 @ 华为
+
+=== WORK EXPERIENCES ===
+[{"company": "\u534e\u4e3a", "title": "AI\u4ea7\u54c1\u7ecf\u7406", "position": "AI\u4ea7\u54c1\u7ecf\u7406", "startDate": "2024-12-01", "endDate": "\u4eca", "time": "2024-12-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u82b1\u65d7\u94f6\u884c", "title": "\u5546\u4e1a\u5206\u6790\u5e08", "position": "\u5546\u4e1a\u5206\u6790\u5e08", "startDate": "2023-02", "endDate": "2024-08", "time": "2023-02 ~ 2024-08", "duration": "", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+

@@ -1,0 +1,357 @@
+# CANDIDATE BATCH 3
+
+========================================
+Candidate ID: 273
+Name Mask: *钊宁
+Current Title/Company: 算法工程师上海阶跃星辰智能科技 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280", "time": "2023.6-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82023.6-\u81f3\u4eca (2\u5e746\u4e2a\u6708)\u4e3b\u529b\u5f00\u53d1\u4e86\u8dc3\u95ee\u3001\u6df1\u5ea6\u7814\u7a76\u3001\u5c0f\u8d22\u795e\u7b49\u4ea7\u54c1Python\u7b97\u6cd5\u5f00\u53d1pipeline"}, {"company": "\u65f7\u89c6", "title": "\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u62802022.3-2023.6 (1\u5e743\u4e2a\u6708)\u7b97\u6cd5", "time": "2022.3-2023.6", "description": "\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u62802022.3-2023.6 (1\u5e743\u4e2a\u6708)\u7b97\u6cd5\u504f\u5f00\u53d1"}, {"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-06-01", "endDate": "\u4eca", "time": "2023-06-01 ~ \u4eca", "duration": "", "description": "\u4e3b\u529b\u5f00\u53d1\u4e86\u8dc3\u95ee\u3001\u6df1\u5ea6\u7814\u7a76\u3001\u5c0f\u8d22\u795e\u7b49\u4ea7\u54c1"}, {"company": "\u65f7\u89c6\u79d1\u6280", "title": "\u7814\u7a76\u5458", "position": "\u7814\u7a76\u5458", "startDate": "2022-03", "endDate": "2023-06", "time": "2022-03 ~ 2023-06", "duration": "", "description": "\u7b97\u6cd5\u504f\u5f00\u53d1"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师上海阶跃星辰智能科技有限公司2023.6-至今 (2年6个月)主力开发了跃问、深度研究、小财神等产品Python算法开发pipeline | 研究员旷视科技2022.3-2023.6 (1年3个月)算法偏开发
+
+【教育经历】
+华东师范大学 计算机 | 山西大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 274
+Name Mask: *威
+Current Title/Company: 数据挖掘算法工程师阶跃星辰2023.8-至今 (2年4个月) @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u6570\u636e\u6316\u6398\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb02023.8-\u81f3\u4eca (2\u5e744\u4e2a\u6708)", "time": "2023.8-\u81f3\u4eca", "description": "\u6570\u636e\u6316\u6398\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb02023.8-\u81f3\u4eca (2\u5e744\u4e2a\u6708)\u6570\u636e\u6316\u6398"}, {"company": "\u5fae\u8f6f", "title": "senior software engineer\u5fae\u8f6f2015", "time": "2015.10-2023.8", "description": "senior software engineer\u5fae\u8f6f2015.10-2023.8 (7\u5e7410\u4e2a\u6708)\u6570\u636e\u6316\u6398"}, {"company": "\u767e\u5ea6", "title": "\u641c\u7d22\u7814\u53d1\u5de5\u7a0b\u5e08\u767e\u5ea62013.7-2015.10 (2\u5e743\u4e2a\u6708", "time": "2013.7-2015.10", "description": "\u641c\u7d22\u7814\u53d1\u5de5\u7a0b\u5e08\u767e\u5ea62013.7-2015.10 (2\u5e743\u4e2a\u6708)\u767e\u5ea6\u89c6\u9891\u641c\u7d22\u6570\u636e\u6316\u6398C++MapReduce"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u6570\u636e\u6316\u6398\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u6570\u636e\u6316\u6398\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-08-01", "endDate": "\u4eca", "time": "2023-08-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u5fae\u8f6f", "title": "senior software engineer", "position": "senior software engineer", "startDate": "2015-10", "endDate": "2023-08", "time": "2015-10 ~ 2023-08", "duration": "", "description": ""}, {"company": "\u767e\u5ea6", "title": "\u641c\u7d22\u7814\u53d1\u5de5\u7a0b\u5e08", "position": "\u641c\u7d22\u7814\u53d1\u5de5\u7a0b\u5e08", "startDate": "2013-07", "endDate": "2015-10", "time": "2013-07 ~ 2015-10", "duration": "", "description": "\u767e\u5ea6\u89c6\u9891\u641c\u7d22"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+数据挖掘算法工程师阶跃星辰2023.8-至今 (2年4个月)数据挖掘 | senior software engineer微软2015.10-2023.8 (7年10个月)数据挖掘 | 搜索研发工程师百度2013.7-2015.10 (2年3个月)百度视频搜索数据挖掘C++MapReduce
+
+【教育经历】
+北京邮电大学 软件工程 | 北京邮电大学
+
+========================================
+
+========================================
+Candidate ID: 275
+Name Mask: *ukee
+Current Title/Company: 算法研究员上海阶跃星辰智能科技有限公司2023.9-至今 ( @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u7814\u7a76\u5458\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82023.9-\u81f3\u4eca (", "time": "2023.9-\u81f3\u4eca", "description": "\u7b97\u6cd5\u7814\u7a76\u5458\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82023.9-\u81f3\u4eca (2\u5e743\u4e2a\u6708)\u5927\u6a21\u578balignment\uff0crlhf\u5f3a\u5316\u5b66\u4e60Python"}, {"company": "\u65f7\u89c6", "title": "\u7b97\u6cd5\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u62802022.7-2023.9 (1\u5e742\u4e2a\u6708)", "time": "2022.7-2023.9", "description": "\u7b97\u6cd5\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u62802022.7-2023.9 (1\u5e742\u4e2a\u6708)\u81ea\u52a8\u9a7e\u9a76\u611f\u77e5\u7b97\u6cd5"}, {"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2023-09-01", "endDate": "\u4eca", "time": "2023-09-01 ~ \u4eca", "duration": "", "description": "\u5927\u6a21\u578balignment\uff0crlhf"}, {"company": "\u65f7\u89c6\u79d1\u6280", "title": "\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2022-07", "endDate": "2023-09", "time": "2022-07 ~ 2023-09", "duration": "", "description": "\u81ea\u52a8\u9a7e\u9a76\u611f\u77e5\u7b97\u6cd5\n\u5927\u8bed\u8a00\u6a21\u578b\u5fae\u8c03"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法研究员上海阶跃星辰智能科技有限公司2023.9-至今 (2年3个月)大模型alignment，rlhf强化学习Python | 算法研究员旷视科技2022.7-2023.9 (1年2个月)自动驾驶感知算法 大语言模型微调Python深度学习算法自然语言处理视觉图像算法
+
+【教育经历】
+武汉大学 | 武汉大学 软件工程
+
+========================================
+
+========================================
+Candidate ID: 276
+Name Mask: *恒
+Current Title/Company: 算法工程师上海阶跃星辰智能科技 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280", "time": "2023.9-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82023.9-\u81f3\u4eca (2\u5e743\u4e2a\u6708)\u5927\u6a21\u578balignment Boosting\u6a21\u5f0f\u8bc6\u522bSeq2SeqMapReduce\u6df1\u5ea6\u5b66\u4e60\u7b97\u6cd5\u6570\u636e\u5206\u6790Python\u6734\u7d20\u8d1d\u53f6\u65afCN"}, {"company": "\u65f7\u89c6", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u65f7\u89c6\u79d1\u6280", "time": "2023.7-2023.9", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u65f7\u89c6\u79d1\u62802023.7-2023.9 (2\u4e2a\u6708)CNNPythonRNN/LSTMSeq2SeqSVM\u53d8\u91cf\u5206\u6790"}, {"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-09-01", "endDate": "\u4eca", "time": "2023-09-01 ~ \u4eca", "duration": "", "description": "\u5927\u6a21\u578balignment"}, {"company": "\u65f7\u89c6\u79d1\u6280", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-07", "endDate": "2023-09", "time": "2023-07 ~ 2023-09", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师上海阶跃星辰智能科技有限公司2023.9-至今 (2年3个月)大模型alignment Boosting模式识别Seq2SeqMapReduce深度学习算法数据分析Python朴素贝叶斯CNN机器学习算法SVM逻辑回归强化学习 | 算法工程师旷视科技2023.7-2023.9 (2个月)CNNPythonRNN/LSTMSeq2SeqSVM变量分析
+
+【教育经历】
+北京邮电大学 电子
+
+========================================
+
+========================================
+Candidate ID: 277
+Name Mask: *恒
+Current Title/Company: 算法工程师上海阶跃星辰智能科技 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "上海阶跃星辰智能科技有限公司", "title": "算法工程师上海阶跃星辰智能科技", "time": "2023.9-至今", "description": "算法工程师上海阶跃星辰智能科技有限公司2023.9-至今 (2年3个月)大模型alignment Boosting模式识别Seq2SeqMapReduce深度学习算法数据分析Python朴素贝叶斯CN"}, {"company": "旷视", "title": "算法工程师旷视科技", "time": "2023.7-2023.9", "description": "算法工程师旷视科技2023.7-2023.9 (2个月)CNNPythonRNN/LSTMSeq2SeqSVM变量分析"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师上海阶跃星辰智能科技有限公司2023.9-至今 (2年3个月)大模型alignment Boosting模式识别Seq2SeqMapReduce深度学习算法数据分析Python朴素贝叶斯CNN机器学习算法SVM逻辑回归强化学习 | 算法工程师旷视科技2023.7-2023.9 (2个月)CNNPythonRNN/LSTMSeq2SeqSVM变量分析
+
+【教育经历】
+北京邮电大学 电子
+
+========================================
+
+========================================
+Candidate ID: 278
+Name Mask: *学锐
+Current Title/Company: 算法阶跃星辰2024.5-至今 (1年7个月)自然语言处理语 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5\u9636\u8dc3\u661f\u8fb02024.5-\u81f3\u4eca (1\u5e747\u4e2a\u6708)\u81ea\u7136\u8bed\u8a00\u5904\u7406\u8bed", "time": "2024.5-\u81f3\u4eca", "description": "\u7b97\u6cd5\u9636\u8dc3\u661f\u8fb02024.5-\u81f3\u4eca (1\u5e747\u4e2a\u6708)\u81ea\u7136\u8bed\u8a00\u5904\u7406\u8bed\u97f3\u7b97\u6cd5"}, {"company": "\u672f\u5927\u7586", "title": "\u6280\u672f\u5927\u75862021.5-2024.5 (3\u5e74)\u81ea\u7136\u8bed\u8a00\u5904\u7406\u8bed\u97f3", "time": "2021.5-2024.5", "description": "\u6280\u672f\u5927\u75862021.5-2024.5 (3\u5e74)\u81ea\u7136\u8bed\u8a00\u5904\u7406\u8bed\u97f3\u7b97\u6cd5"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5", "position": "\u7b97\u6cd5", "startDate": "2024-05-01", "endDate": "\u4eca", "time": "2024-05-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u5927\u7586", "title": "\u6280\u672f", "position": "\u6280\u672f", "startDate": "2021-05", "endDate": "2024-05", "time": "2021-05 ~ 2024-05", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法阶跃星辰2024.5-至今 (1年7个月)自然语言处理语音算法 | 技术大疆2021.5-2024.5 (3年)自然语言处理语音算法
+
+【教育经历】
+复旦大学
+
+========================================
+
+========================================
+Candidate ID: 279
+Name Mask: *浩南
+Current Title/Company: 视觉算法工程师阶跃星辰2025.7-至今 (5个月) @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb02025.7-\u81f3\u4eca (5\u4e2a\u6708)", "time": "2025.7-\u81f3\u4eca", "description": "\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb02025.7-\u81f3\u4eca (5\u4e2a\u6708)"}, {"company": "\u9b45\u65cf\u79d1\u6280\u516c\u53f8", "title": "\u9ad8\u7ea7\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9b45\u65cf\u79d1\u6280\u516c\u53f82022.5-2025.7 (", "time": "2022.5-2025.7", "description": "\u9ad8\u7ea7\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9b45\u65cf\u79d1\u6280\u516c\u53f82022.5-2025.7 (3\u5e742\u4e2a\u6708)"}, {"company": "\u6e56\u5317\u661f\u7eaa\u9b45\u65cf\u96c6\u56e2\u6709\u9650\u516c\u53f8", "title": "\u8d44\u6df1\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08\u6e56\u5317\u661f\u7eaa\u9b45\u65cf\u96c6\u56e2\u6709\u9650\u516c\u53f8 ? \u6570\u5b57\u79d1\u5b66\u5b9e\u9a8c", "time": "2020.11-2022.5", "description": "\u8d44\u6df1\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08\u6e56\u5317\u661f\u7eaa\u9b45\u65cf\u96c6\u56e2\u6709\u9650\u516c\u53f8 ? \u6570\u5b57\u79d1\u5b66\u5b9e\u9a8c\u5ba42020.11-2022.5 (1\u5e746\u4e2a\u6708)"}, {"company": "\u9a6c\u4e0a\u6d88\u8d39\u91d1\u878d", "title": "\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9a6c\u4e0a\u6d88\u8d39\u91d1\u878d ? \u4eba\u5de5\u667a\u80fd\u7814\u7a76\u96622018.3-", "time": "2018.3-2020.11", "description": "\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9a6c\u4e0a\u6d88\u8d39\u91d1\u878d ? \u4eba\u5de5\u667a\u80fd\u7814\u7a76\u96622018.3-2020.11 (2\u5e748\u4e2a\u6708)"}, {"company": "\u636e\u6316\u6398\u5317\u4eac\u56fd\u53cc\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u6570\u636e\u6316\u6398\u5317\u4eac\u56fd\u53cc\u79d1\u6280\u6709\u9650\u516c\u53f8 ? \u5e94\u7528\u79d1\u5b66\u90e82016.7-2", "time": "2016.7-2018.3", "description": "\u6570\u636e\u6316\u6398\u5317\u4eac\u56fd\u53cc\u79d1\u6280\u6709\u9650\u516c\u53f8 ? \u5e94\u7528\u79d1\u5b66\u90e82016.7-2018.3 (1\u5e748\u4e2a\u6708)"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-07-01", "endDate": "\u4eca", "time": "2025-07-01 ~ \u4eca", "duration": "", "description": "\u89c6\u89c9\u7b97\u6cd5\u5f00\u53d1"}, {"company": "\u9b45\u65cf\u79d1\u6280\u516c\u53f8", "title": "\u9ad8\u7ea7\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u9ad8\u7ea7\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-05", "endDate": "2025-07", "time": "2022-05 ~ 2025-07", "duration": "", "description": ""}, {"company": "\u6e56\u5317\u661f\u7eaa\u9b45\u65cf\u96c6\u56e2\u6709\u9650\u516c\u53f8", "title": "\u8d44\u6df1\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u8d44\u6df1\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2020-11", "endDate": "2022-05", "time": "2020-11 ~ 2022-05", "duration": "", "description": "\u5728\u8be5\u516c\u53f8\u62c5\u4efb\u8d44\u6df1\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08\u671f\u95f4\uff0c\u4e3b\u8981\u5de5\u4f5c\u6709\uff1a\n1\u3001\t\u914d\u5408\u4e1a\u52a1\u8fdb\u884c\u56fe\u50cf\u89e3\u51b3\u65b9\u6848\u7684\u8bbe\u8ba1\u4e0e\u7814\u53d1\uff0c\u5305\u62ec\u4e86\u56fe\u50cf\u5206\u7c7b\uff0c\u76ee\u6807\u68c0\u6d4b\uff0cOCR\u8bc6\u522b\u7b49\u3002\n2\u3001\t\u6307\u5bfc\u521d\u4e2d\u7ea7\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08\u7684\u65e5\u5e38\u5de5\u4f5c\uff0c\u63a8\u52a8\u7814\u53d1\u4e0a\u7ebf\u4e0e\u6a21\u578b\u8fed\u4ee3\u3002\n3\u3001\t\u9605\u8bfb\u9876\u4f1a\u6587\u7ae0\uff0c\u7ed3\u5408\u524d\u6cbf\u5b66\u672f\u7814\u7a76\u5bf9\u6a21\u578b\u8fdb\u884c\u6539\u8fdb\uff0c\u63d0\u51fa\u6280\u672f\u5c42\u9762\u7684\u89e3\u51b3\u65b9\u6848\u5e76\u5b9e\u73b0\u843d\u5730\uff0c\u7a81\u7834\u73b0\u6709\u7b97\u6cd5\u7684\u6548\u679c\u4e0a\u9650\uff0c\u63d0\u5347\u6a21\u578b\u9c81\u68d2\u6027\u3002"}, {"company": "\u9a6c\u4e0a\u6d88\u8d39\u91d1\u878d", "title": "\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2018-03", "endDate": "2020-11", "time": "2018-03 ~ 2020-11", "duration": "", "description": "\u5728\u8be5\u516c\u53f8\u62c5\u4efb\u56fe\u50cf\u7b97\u6cd5\u5de5\u7a0b\u5e08\u671f\u95f4\uff0c\u4e3b\u8981\u5de5\u4f5c\u6709\uff1a\n1\u3001\t\u76ee\u6807\u68c0\u6d4b\uff0c\u5305\u62ec\u4e86\u624b\u52bf\u68c0\u6d4b\uff0c\u5de5\u5382\u706b\u707e\u68c0\u6d4b\uff0c\u5173\u952e\u70b9\u68c0\u6d4b\u7b49\u3002\u3002\n2\u3001\t\u4eba\u8138\u8bc6\u522b\uff0c\u5305\u62ec\u4e86\u4eba\u8bc1\u6bd4\u5bf9\uff0c\u9ed1\u8138\u5e93\u9879\u76ee\u3002\n3\u3001\t\u8f85\u52a9\u9879\u76ee\uff0c\u5305\u62ec\u4e86\u56fe\u50cf\u7ffb\u62cd\u68c0\u6d4b\uff0c\u56fe\u50cf\u8d28\u91cf\u5224\u65ad\uff08\u6a21\u7cca\uff0c\u906e\u6321\uff0c\u5149\u7167\uff0c\u89d2\u5ea6\u7b49\uff09\u3002"}, {"company": "\u5317\u4eac\u56fd\u53cc\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u6570\u636e\u6316\u6398", "position": "\u6570\u636e\u6316\u6398", "startDate": "2016-07", "endDate": "2018-03", "time": "2016-07 ~ 2018-03", "duration": "", "description": "\u5728\u8be5\u516c\u53f8\u62c5\u4efb\u6570\u636e\u6316\u6398\u5de5\u7a0b\u5e08\u3002\u4e3b\u8981\u5de5\u4f5c\u6709\uff1a \n1\u3001\u65b0\u589e\u6570\u636e\u6ce2\u52a8\u548c\u5f02\u5e38\u7684\u76d1\u63a7\u3002 \n2\u3001\u6839\u636e\u5386\u53f2\u6570\u636e\u6316\u6398\u51fa\u6570\u636e\u4e2d\u7684\u5f02\u5e38\u7528\u6237\u3002 \n3\u3001\u5976\u7c89\u914d\u65b9\u7684OCR\u8bc6\u522b\u3002 \n4\u3001\u57fa\u4e8e\u516c\u53f8\u6d77\u91cf\u6570\u636e\u6784\u5efa\u7528\u6237\u753b\u50cf\uff0c\u5305\u62ec\u4eba\u53e3\u5c5e\u6027\uff0c\u793e\u4f1a\u5c5e\u6027\u548c\u8d2d\u7269\u504f\u597d\u7b49\u3002 \n5\u3001\u57fa\u4e8e\u7528\u6237\u753b\u50cf\u5e76\u7ed3\u5408\u4e1a\u52a1\u573a\u666f\u7684\u76f8\u5173\u6570\u636e\u6316\u6398\u5de5\u4f5c\uff0c\u4f8b\u5982\uff1a\u5206\u7c7b\uff0c\u805a\u7c7b\uff0c\u56de\u5f52\u7b49\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+视觉算法工程师阶跃星辰2025.7-至今 (5个月) | 高级图像算法工程师魅族科技公司2022.5-2025.7 (3年2个月) | 资深图像算法工程师湖北星纪魅族集团有限公司 ? 数字科学实验室2020.11-2022.5 (1年6个月) | 图像算法工程师马上消费金融 ? 人工智能研究院2018.3-2020.11 (2年8个月) | 数据挖掘北京国双科技有限公司 ? 应用科学部2016.7-2018.3 (1年8个月)
+
+【教育经历】
+中央民族大学 | 中央民族大学
+
+========================================
+
+========================================
+Candidate ID: 280
+Name Mask: *宇翔
+Current Title/Company: 算法工程师上海阶跃星辰智能科技 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280", "time": "2024.3-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82024.3-\u81f3\u4eca (1\u5e749\u4e2a\u6708)\u5f3a\u5316\u5b66\u4e60"}, {"company": "MiniMax", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08MiniMax", "time": "2023.6-2024.1", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08MiniMax2023.6-2024.1 (7\u4e2a\u6708)Python\u81ea\u7136\u8bed\u8a00\u5904\u7406"}, {"company": "Landing AI", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08Landing AI", "time": "2021.7-2023.6", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08Landing AI ? Model Iteration2021.7-2023.6 (1\u5e7411\u4e2a\u6708)\u5de5\u4f5c\u5185\u5bb9: \u6a21\u578b\u4f18\u5316Python\u6df1\u5ea6\u5b66\u4e60\u7b97\u6cd5\u81ea\u7136\u8bed\u8a00\u5904\u7406\u89c6\u89c9\u56fe\u50cf\u7b97\u6cd5"}, {"company": "Accern \u7ebd\u7ea6", "title": "\u9ad8\u7ea7\u673a\u5668\u5b66\u4e60\u5de5\u7a0b\u5e08Accern \u7ebd\u7ea62016.6-2021.", "time": "2016.6-2021.6", "description": "\u9ad8\u7ea7\u673a\u5668\u5b66\u4e60\u5de5\u7a0b\u5e08Accern \u7ebd\u7ea62016.6-2021.6 (5\u5e74)\u8d1f\u8d23\u5f00\u53d1\u65f6\u95f4\u5e8f\u5217\u673a\u5668\u5b66\u4e60\u6a21\u578b\uff0c\u90e8\u7f72\u5f00\u53d1\u57fa\u4e8e\u4e91\u670d\u52a1\u5668\u7684\u673a\u5668\u5b66\u4e60\u5e73\u53f0Python\u6570\u636e\u5206\u6790"}, {"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-03-01", "endDate": "\u4eca", "time": "2024-03-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "MiniMax", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-06", "endDate": "2024-01", "time": "2023-06 ~ 2024-01", "duration": "", "description": ""}, {"company": "Landing AI", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2021-07", "endDate": "2023-06", "time": "2021-07 ~ 2023-06", "duration": "", "description": "\u5de5\u4f5c\u5185\u5bb9: \u6a21\u578b\u4f18\u5316"}, {"company": "Accern \u7ebd\u7ea6", "title": "\u9ad8\u7ea7\u673a\u5668\u5b66\u4e60\u5de5\u7a0b\u5e08", "position": "\u9ad8\u7ea7\u673a\u5668\u5b66\u4e60\u5de5\u7a0b\u5e08", "startDate": "2016-06", "endDate": "2021-06", "time": "2016-06 ~ 2021-06", "duration": "", "description": "\u8d1f\u8d23\u5f00\u53d1\u65f6\u95f4\u5e8f\u5217\u673a\u5668\u5b66\u4e60\u6a21\u578b\uff0c\u90e8\u7f72\u5f00\u53d1\u57fa\u4e8e\u4e91\u670d\u52a1\u5668\u7684\u673a\u5668\u5b66\u4e60\u5e73\u53f0"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师上海阶跃星辰智能科技有限公司2024.3-至今 (1年9个月)强化学习 | 算法工程师MiniMax2023.6-2024.1 (7个月)Python自然语言处理 | 算法工程师Landing AI ? Model Iteration2021.7-2023.6 (1年11个月)工作内容: 模型优化Python深度学习算法自然语言处理视觉图像算法 | 高级机器学习工程师Accern 纽约2016.6-2021.6 (5年)负责开发时间序列机器学习模型，部署开发基于云服务器的机器学习平台Python数据分析
+
+【教育经历】
+南开大学
+
+========================================
+
+========================================
+Candidate ID: 281
+Name Mask: *业昌
+Current Title/Company: 算法研究员阶跃星辰2023.7-至今 (2年5个月)文本语音 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5\u7814\u7a76\u5458\u9636\u8dc3\u661f\u8fb02023.7-\u81f3\u4eca (2\u5e745\u4e2a\u6708)\u6587\u672c\u8bed\u97f3", "time": "2023.7-\u81f3\u4eca", "description": "\u7b97\u6cd5\u7814\u7a76\u5458\u9636\u8dc3\u661f\u8fb02023.7-\u81f3\u4eca (2\u5e745\u4e2a\u6708)\u6587\u672c\u8bed\u97f3\u591a\u6a21\u6001\u6a21\u578b\u9884\u8bad\u7ec3PythonPyTorch\u8bed\u97f3\u7b97\u6cd5"}, {"company": "\u65f7\u89c6", "title": "\u7b97\u6cd5\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u62802019.7-2023.7 (4\u5e74)Pyt", "time": "2019.7-2023.7", "description": "\u7b97\u6cd5\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u62802019.7-2023.7 (4\u5e74)Python"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2023-07-01", "endDate": "\u4eca", "time": "2023-07-01 ~ \u4eca", "duration": "", "description": "\u6587\u672c\u8bed\u97f3\u591a\u6a21\u6001\u6a21\u578b\u9884\u8bad\u7ec3"}, {"company": "\u65f7\u89c6\u79d1\u6280", "title": "\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2019-07", "endDate": "2023-07", "time": "2019-07 ~ 2023-07", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法研究员阶跃星辰2023.7-至今 (2年5个月)文本语音多模态模型预训练PythonPyTorch语音算法 | 算法研究员旷视科技2019.7-2023.7 (4年)Python
+
+【教育经历】
+华中科技大学 电子 | 北京航空航天大学 电子
+
+========================================
+
+========================================
+Candidate ID: 282
+Name Mask: *艾米
+Current Title/Company: 算法&数据&系统组HRBP上海阶跃星辰智能科技有限公司202 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "&\u6570\u636e&\u7cfb\u7edf\u7ec4HRBP\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5&\u6570\u636e&\u7cfb\u7edf\u7ec4HRBP\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8202", "time": "2024.8-\u81f3\u4eca", "description": "\u7b97\u6cd5&\u6570\u636e&\u7cfb\u7edf\u7ec4HRBP\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82024.8-\u81f3\u4eca (1\u5e744\u4e2a\u6708)\u516c\u53f8\u5927\u7b97\u6cd5\u4f53\u7cfb\uff08\u542b\u7814\u7a76\u548c\u4e1a\u52a1\u7b97\u6cd5\uff09\u3001\u7cfb\u7edf\u7ec4HRG"}, {"company": "\uff08HR\u8d1f\u8d23\u4eba\uff09\u5317\u4eac\u56fe\u68ee\u667a\u9014\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u62db\u8058\u603b\u76d1\uff08HR\u8d1f\u8d23\u4eba\uff09\u5317\u4eac\u56fe\u68ee\u667a\u9014\u79d1\u6280\u6709\u9650\u516c\u53f82019.1-", "time": "2019.1-2024.4", "description": "\u62db\u8058\u603b\u76d1\uff08HR\u8d1f\u8d23\u4eba\uff09\u5317\u4eac\u56fe\u68ee\u667a\u9014\u79d1\u6280\u6709\u9650\u516c\u53f82019.1-2024.4 (5\u5e743\u4e2a\u6708)\u5c16\u7aef\u4eba\u624d\u6316\u6398\u4e0e\u6838\u5fc3\u56e2\u961f\u62db\u8058"}, {"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5&\u6570\u636e&\u7cfb\u7edf\u7ec4HRBP", "position": "\u7b97\u6cd5&\u6570\u636e&\u7cfb\u7edf\u7ec4HRBP", "startDate": "2024-08-01", "endDate": "\u4eca", "time": "2024-08-01 ~ \u4eca", "duration": "", "description": "\u516c\u53f8\u5927\u7b97\u6cd5\u4f53\u7cfb\uff08\u542b\u7814\u7a76\u548c\u4e1a\u52a1\u7b97\u6cd5\uff09\u3001\u7cfb\u7edf\u7ec4HRG\n\u5c16\u7aef\u6280\u672f\u4eba\u624d\u6316\u6398\u4e0e\u62db\u8058\n\u7ec4\u7ec7\u8bca\u65ad\u4e0e\u67b6\u6784\u6539\u9769\n\u56e2\u961f\u5efa\u8bbe\u4e0e\u4e1a\u52a1\u652f\u6491\n\u4f01\u4e1a\u6587\u5316\u843d\u5730\u4e0e\u900f\u4f20"}, {"company": "\u5317\u4eac\u56fe\u68ee\u667a\u9014\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u62db\u8058\u603b\u76d1\uff08HR\u8d1f\u8d23\u4eba\uff09", "position": "\u62db\u8058\u603b\u76d1\uff08HR\u8d1f\u8d23\u4eba\uff09", "startDate": "2019-01", "endDate": "2024-04", "time": "2019-01 ~ 2024-04", "duration": "", "description": "\u5c16\u7aef\u4eba\u624d\u6316\u6398\u4e0e\u6838\u5fc3\u56e2\u961f\u62db\u8058\n\u884c\u4e1a\u6d1e\u5bdf\u4e0e\u4eba\u624dmapping\n\u4ece0-1\u62db\u8058\u5236\u5ea6\u4e0e\u6d41\u7a0b\u4f53\u7cfb\u642d\u5efa\n\u62db\u8058\u8fd0\u8425\u4e0e\u96c7\u4e3b\u54c1\u724c\u5efa\u8bbe\n\u62db\u8058\u56e2\u961f\u7ba1\u7406\u4e0e\u8d4b\u80fd\n\u85aa\u916c\u804c\u7ea7\u4f53\u7cfb\u6539\u9769\u4e0e\u63a8\u8fdb"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法&数据&系统组HRBP上海阶跃星辰智能科技有限公司2024.8-至今 (1年4个月)公司大算法体系（含研究和业务算法）、系统组HRG 尖端技术人才挖掘与招聘 组织诊断与架构改革 团队建设与业务支撑 企业文化落地与透传员工关系培训开发技术团队HRBP招聘配置绩效管理薪酬福利 | 招聘总监（HR负责人）北京图森智途科技有限公司2019.1-2024.4 (5年3个月)尖端人才挖掘与核心团队招聘 行业洞察与人才mapping 从0-1招聘制度与流程体系搭建 招聘运营与雇主品牌建设 招聘团队管理与赋能 薪酬职级体系改革与推进人工智能（AI）人力资源人力资源管理师二级员工关系招聘配置雇主品牌服务
+
+【教育经历】
+华中科技大学 管理 | 武汉轻工大学 管理
+
+========================================
+
+========================================
+Candidate ID: 283
+Name Mask: *浩天
+Current Title/Company: 大模型算法工程师阶跃星辰2025.11-至今 (1个月) @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb02025.11-\u81f3\u4eca (1\u4e2a\u6708)", "time": "2025.11-\u81f3\u4eca", "description": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb02025.11-\u81f3\u4eca (1\u4e2a\u6708)"}, {"company": "\u6d59\u6c5f\u96f6\u8dd1\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8", "title": "\u6fc0\u5149\u96f7\u8fbe\u611f\u77e5\u7b97\u6cd5\u5de5\u7a0b\u5e08\u6d59\u6c5f\u96f6\u8dd1\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f82022.3-", "time": "2022.3-2025.10", "description": "\u6fc0\u5149\u96f7\u8fbe\u611f\u77e5\u7b97\u6cd5\u5de5\u7a0b\u5e08\u6d59\u6c5f\u96f6\u8dd1\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f82022.3-2025.10 (3\u5e747\u4e2a\u6708)"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-11-01", "endDate": "\u4eca", "time": "2025-11-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u6d59\u6c5f\u96f6\u8dd1\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8", "title": "\u6fc0\u5149\u96f7\u8fbe\u611f\u77e5\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u6fc0\u5149\u96f7\u8fbe\u611f\u77e5\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-03", "endDate": "2025-10", "time": "2022-03 ~ 2025-10", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+大模型算法工程师阶跃星辰2025.11-至今 (1个月) | 激光雷达感知算法工程师浙江零跑科技股份有限公司2022.3-2025.10 (3年7个月)
+
+【教育经历】
+浙江大学
+
+========================================
+
+========================================
+Candidate ID: 284
+Name Mask: *iva
+Current Title/Company: Agent算法实习生阶跃星辰2025.3-2025.7 (4 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b9e\u4e60\u751f\u9636\u8dc3\u661f\u8fb0", "title": "Agent\u7b97\u6cd5\u5b9e\u4e60\u751f\u9636\u8dc3\u661f\u8fb02025.3-2025.7 (4", "time": "2025.3-2025.7", "description": "Agent\u7b97\u6cd5\u5b9e\u4e60\u751f\u9636\u8dc3\u661f\u8fb02025.3-2025.7 (4\u4e2a\u6708)\u79d1\u7814\u578b\u5b9e\u4e60\uff0cAgent\u4f7f\u7528\u4ee3\u7801\u89e3\u51b3\u590d\u6742\u4efb\u52a1\u3002"}, {"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u767e\u5ea62024.7-2025.2 (7\u4e2a\u6708)\u57fa\u4e8eco", "time": "2024.7-2025.2", "description": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u767e\u5ea62024.7-2025.2 (7\u4e2a\u6708)\u57fa\u4e8ecode generation\u7684Agent\u5de5\u5177\u8c03\u7528\u89e3\u51b3\u590d\u6742\u4efb\u52a1\uff1bMulti-agent\u6846\u67b6\u642d\u5efa\u4e0e\u9884\u7814\uff1b\u63a8\u7406system2\u57fa\u6a21\u8bad\u7ec3\u3002"}, {"company": "\u5b9e\u4e60\u751f\u5317\u4eac\u667a\u6e90\u4eba\u5de5\u667a\u80fd\u7814\u7a76\u9662", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u5317\u4eac\u667a\u6e90\u4eba\u5de5\u667a\u80fd\u7814\u7a76\u96622023.10-2024.6", "time": "2023.10-2024.6", "description": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u5317\u4eac\u667a\u6e90\u4eba\u5de5\u667a\u80fd\u7814\u7a76\u96622023.10-2024.6 (8\u4e2a\u6708)\u8ba4\u77e5\u5927\u6a21\u578b\u7ec4\uff0c\u7edf\u4e00\u591a\u6a21\u6001\u6a21\u578b\u8868\u5f81\u63a2\u7d22PythonPyTorch\u6570\u636e\u5efa\u6a21\u6a21\u5f0f\u8bc6\u522b\u7b97\u6cd5\u8bbe\u8ba1\u81ea\u7136\u8bed\u8a00\u5904\u7406"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "Agent\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "Agent\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2025-03", "endDate": "2025-07", "time": "2025-03 ~ 2025-07", "duration": "", "description": "\u79d1\u7814\u578b\u5b9e\u4e60\uff0cAgent\u4f7f\u7528\u4ee3\u7801\u89e3\u51b3\u590d\u6742\u4efb\u52a1\u3002\n\u53d1\u8868NIPS\u5171\u4e00\u4e00\u7bc7\uff0cAAAI\u4e00\u4f5c\u4e00\u7bc7\u3002"}, {"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2024-07", "endDate": "2025-02", "time": "2024-07 ~ 2025-02", "duration": "", "description": "\u57fa\u4e8ecode generation\u7684Agent\u5de5\u5177\u8c03\u7528\u89e3\u51b3\u590d\u6742\u4efb\u52a1\uff1bMulti-agent\u6846\u67b6\u642d\u5efa\u4e0e\u9884\u7814\uff1b\u63a8\u7406system2\u57fa\u6a21\u8bad\u7ec3\u3002\n\u4e00\u4f5c\u53d1\u8868ACL\u4e00\u7bc7\u3002"}, {"company": "\u5317\u4eac\u667a\u6e90\u4eba\u5de5\u667a\u80fd\u7814\u7a76\u9662", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2023-10", "endDate": "2024-06", "time": "2023-10 ~ 2024-06", "duration": "", "description": "\u8ba4\u77e5\u5927\u6a21\u578b\u7ec4\uff0c\u7edf\u4e00\u591a\u6a21\u6001\u6a21\u578b\u8868\u5f81\u63a2\u7d22"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+Agent算法实习生阶跃星辰2025.3-2025.7 (4个月)科研型实习，Agent使用代码解决复杂任务。 发表NIPS共一一篇，AAAI一作一篇。PyTorch数据建模深度学习算法自然语言处理 | 算法实习生百度2024.7-2025.2 (7个月)基于code generation的Agent工具调用解决复杂任务；Multi-agent框架搭建与预研；推理system2基模训练。 一作发表ACL一篇。深度学习算法自然语言处理 | 算法实习生北京智源人工智能研究院2023.10-2024.6 (8个月)认知大模型组，统一多模态模型表征探索PythonPyTorch数据建模模式识别算法设计自然语言处理
+
+【教育经历】
+中国科学院 自动化 | 哈尔滨工业大学 通信
+
+========================================
+
+========================================
+Candidate ID: 285
+Name Mask: *van
+Current Title/Company: 算法工程师北京阶跃星辰智能科技 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5317\u4eac\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280", "time": "2024.11-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5317\u4eac\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82024.11-\u81f3\u4eca (1\u5e741\u4e2a\u6708)"}, {"company": "\u817e\u8baf", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u817e\u8baf", "time": "2023.11-2024.11", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u817e\u8baf2023.11-2024.11 (1\u5e74)"}, {"company": "\u5fae\u8f6f", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5fae\u8f6f", "time": "2022.12-2023.11", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5fae\u8f6f2022.12-2023.11 (11\u4e2a\u6708)"}, {"company": "\u5317\u4eac\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-11-01", "endDate": "\u4eca", "time": "2024-11-01 ~ \u4eca", "duration": "", "description": "step3.5-flash\uff0cdeepresearch\uff0cagentRL"}, {"company": "\u817e\u8baf", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-11", "endDate": "2024-11", "time": "2023-11 ~ 2024-11", "duration": "", "description": "AI lab"}, {"company": "\u5fae\u8f6f", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-12", "endDate": "2023-11", "time": "2022-12 ~ 2023-11", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师北京阶跃星辰智能科技有限公司2024.11-至今 (1年1个月) | 算法工程师腾讯2023.11-2024.11 (1年) | 算法工程师微软2022.12-2023.11 (11个月)
+
+【教育经历】
+北京大学 软件工程
+
+========================================
+
+========================================
+Candidate ID: 286
+Name Mask: *叶青
+Current Title/Company: 算法工程师阶跃星辰 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb0", "time": "2024.1-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb02024.1-\u81f3\u4eca (1\u5e7411\u4e2a\u6708)\u591a\u6a21\u6001\u5927\u6a21\u578b\u89c6\u89c9\u56fe\u50cf\u7b97\u6cd5"}, {"company": "\u65f7\u89c6", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u65f7\u89c6\u79d1\u6280", "time": "2021.7-2023.12", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u65f7\u89c6\u79d1\u62802021.7-2023.12 (2\u5e745\u4e2a\u6708)\u7b97\u6cd5"}, {"company": "\u5546\u6c64", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b9e\u4e60\u751f\u5546\u6c64\u79d1\u6280 ?", "time": "2020.5-2020.8", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b9e\u4e60\u751f\u5546\u6c64\u79d1\u6280 ? \u79fb\u52a8\u667a\u80fd\u4e8b\u4e1a\u7fa42020.5-2020.8 (3\u4e2a\u6708)\u81ea\u52a8\u9a7e\u9a76\u76f8\u5173\u4e1a\u52a1\u6df1\u5ea6\u5b66\u4e60\u7b97\u6cd5\u89c6\u89c9\u56fe\u50cf\u7b97\u6cd5"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-01-01", "endDate": "\u4eca", "time": "2024-01-01 ~ \u4eca", "duration": "", "description": "\u591a\u6a21\u6001\u5927\u6a21\u578b"}, {"company": "\u65f7\u89c6\u79d1\u6280", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2021-07", "endDate": "2023-12", "time": "2021-07 ~ 2023-12", "duration": "", "description": "\u7b97\u6cd5"}, {"company": "\u5546\u6c64\u79d1\u6280", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b9e\u4e60\u751f", "startDate": "2020-05", "endDate": "2020-08", "time": "2020-05 ~ 2020-08", "duration": "", "description": "\u81ea\u52a8\u9a7e\u9a76\u76f8\u5173\u4e1a\u52a1"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师阶跃星辰2024.1-至今 (1年11个月)多模态大模型视觉图像算法 | 算法工程师旷视科技2021.7-2023.12 (2年5个月)算法 | 算法工程师实习生商汤科技 ? 移动智能事业群2020.5-2020.8 (3个月)自动驾驶相关业务深度学习算法视觉图像算法
+
+【教育经历】
+清华大学 信息 | 电子科技大学 通信
+
+========================================
+
+========================================
+Candidate ID: 287
+Name Mask: *政
+Current Title/Company: 算法工程师阶跃星辰 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb0", "time": "2024.4-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u9636\u8dc3\u661f\u8fb02024.4-\u81f3\u4eca (1\u5e748\u4e2a\u6708)3D AIGCC++Python"}, {"company": "\u4e0d\u9e23\u79d1\u6280", "title": "\u6e38\u620f\u5f15\u64ce\u5f00\u53d1\u5de5\u7a0b\u5e08\u4e0d\u9e23\u79d1\u62802023.12-2024.4 (4", "time": "2023.12-2024.4", "description": "\u6e38\u620f\u5f15\u64ce\u5f00\u53d1\u5de5\u7a0b\u5e08\u4e0d\u9e23\u79d1\u62802023.12-2024.4 (4\u4e2a\u6708)C/C++Cmake"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u6280\u672f\u7f8e\u672f(TA)\u5b57\u8282\u8df3\u52a82021.12-2023.12 (2", "time": "2021.12-2023.12", "description": "\u6280\u672f\u7f8e\u672f(TA)\u5b57\u8282\u8df3\u52a82021.12-2023.12 (2\u5e74)\u4e3b\u8981\u8d1f\u8d23ECSLightmap\u548cGIShaderLab\u56fe\u5f62\u6e32\u67d3\u6e38\u620f\u5f15\u64ce"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-04-01", "endDate": "\u4eca", "time": "2024-04-01 ~ \u4eca", "duration": "", "description": "3D AIGC"}, {"company": "\u4e0d\u9e23\u79d1\u6280", "title": "\u6e38\u620f\u5f15\u64ce\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "\u6e38\u620f\u5f15\u64ce\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2023-12", "endDate": "2024-04", "time": "2023-12 ~ 2024-04", "duration": "", "description": ""}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u6280\u672f\u7f8e\u672f(TA)", "position": "\u6280\u672f\u7f8e\u672f(TA)", "startDate": "2021-12", "endDate": "2023-12", "time": "2021-12 ~ 2023-12", "duration": "", "description": "\u4e3b\u8981\u8d1f\u8d23ECSLightmap\u548cGI"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师阶跃星辰2024.4-至今 (1年8个月)3D AIGCC++Python | 游戏引擎开发工程师不鸣科技2023.12-2024.4 (4个月)C/C++Cmake | 技术美术(TA)字节跳动2021.12-2023.12 (2年)主要负责ECSLightmap和GIShaderLab图形渲染游戏引擎
+
+【教育经历】
+武汉大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 288
+Name Mask: *鸿宇
+Current Title/Company: 算法研究员上海阶跃星辰智能科技有限公司2023.7-至今 ( @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u7814\u7a76\u5458\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82023.7-\u81f3\u4eca (", "time": "2023.7-\u81f3\u4eca", "description": "\u7b97\u6cd5\u7814\u7a76\u5458\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82023.7-\u81f3\u4eca (2\u5e745\u4e2a\u6708)\u8bad\u7ec3\u6846\u67b6Python"}, {"company": "\u65f7\u89c6", "title": "\u52a9\u7406\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u62802022.7-2023.7 (1\u5e74)202", "time": "2022.7-2023.7", "description": "\u52a9\u7406\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u62802022.7-2023.7 (1\u5e74)2022\uff1a\u81ea\u52a8\u9a7e\u9a76/3D\u611f\u77e5\u30012D\u76ee\u6807\u68c0\u6d4b\u3001\u534a\u76d1\u7763\u68c0\u6d4b\u7b97\u6cd5\u5f00\u53d1\u3002"}, {"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2023-07-01", "endDate": "\u4eca", "time": "2023-07-01 ~ \u4eca", "duration": "", "description": "\u8bad\u7ec3\u6846\u67b6"}, {"company": "\u65f7\u89c6\u79d1\u6280", "title": "\u52a9\u7406\u7814\u7a76\u5458", "position": "\u52a9\u7406\u7814\u7a76\u5458", "startDate": "2022-07", "endDate": "2023-07", "time": "2022-07 ~ 2023-07", "duration": "", "description": "2022\uff1a\u81ea\u52a8\u9a7e\u9a76/3D\u611f\u77e5\u30012D\u76ee\u6807\u68c0\u6d4b\u3001\u534a\u76d1\u7763\u68c0\u6d4b\u7b97\u6cd5\u5f00\u53d1\u3002\n2023\uff1a\u5927\u8bed\u8a00\u6a21\u578b\u8bad\u7ec3\u57fa\u5efa\u6838\u5fc3\u5f00\u53d1\u3001\u5927\u89c4\u6a21\u5206\u5e03\u5f0f\u6a21\u578b\u8bad\u7ec3\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法研究员上海阶跃星辰智能科技有限公司2023.7-至今 (2年5个月)训练框架Python | 助理研究员旷视科技2022.7-2023.7 (1年)2022：自动驾驶/3D感知、2D目标检测、半监督检测算法开发。 2023：大语言模型训练基建核心开发、大规模分布式模型训练。深度学习算法
+
+【教育经历】
+哈尔滨工业大学 信息
+
+========================================
+
+========================================
+Candidate ID: 289
+Name Mask: *布丁
+Current Title/Company: 算法实习生阶跃星辰2024.7-2025.5 (10个月) @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b9e\u4e60\u751f\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u9636\u8dc3\u661f\u8fb02024.7-2025.5 (10\u4e2a\u6708)", "time": "2024.7-2025.5", "description": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u9636\u8dc3\u661f\u8fb02024.7-2025.5 (10\u4e2a\u6708)"}, {"company": "\u7406\u60f3\u6c7d\u8f66", "title": "VLA\u5efa\u6a21", "position": "VLA\u5efa\u6a21", "startDate": "2025-06-01", "endDate": "\u4eca", "time": "2025-06-01 ~ \u4eca", "duration": "", "description": "\u63a2\u7d22\u89c6\u89c9 - \u8bed\u8a00 - \u52a8\u4f5c\uff08Vision - Language - Action,VLA\uff09\u5efa\u6a21\u65b9\u5f0f\uff0c\u5305\u62ecAction\u7f16\u7801\u4e0e\u538b\u7f29\u3001\u52a8\u4f5c\u4e0e\u6307\u4ee4\u5bf9\u9f50\u3001\u6a21\u4eff\u5b66\u4e60\u548c\u5f3a\u5316\u5b66\u4e60\u7b49\u3002\u53c2\u4e0e\u5b8c\u6210\u4e00\u7bc7RoboticManipulation\u5de5\u4f5c\uff08\u5df2\u5f55\u7528\uff09\u3002\u642d\u5efa\u89c6\u89c9 - \u8bed\u4e49 - \u52a8\u4f5c\u63a8\u7406\u6570\u636e\u751f\u4ea7\u53cadVLM\u8bad\u7ec3\u5de5\u4f5c\u6d41\u3002"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "AIGC\u89c6\u9891\u751f\u6210\uff08\u6570\u636e\u4e0e\u8bc4\u6d4b\uff09", "position": "AIGC\u89c6\u9891\u751f\u6210\uff08\u6570\u636e\u4e0e\u8bc4\u6d4b\uff09", "startDate": "2025-01", "endDate": "2025-05", "time": "2025-01 ~ 2025-05", "duration": "", "description": "\u4ece\u96f6\u6784\u5efa\u89c6\u9891\u751f\u6210\u9879\u76ee\u7684\u6570\u636e\u91c7\u96c6\u89c4\u5219\u4e0e\u6e05\u6d17\u6d41\u7a0b\uff0c\u5305\u542b\u5e27\u7387\u3001\u6e05\u6670\u5ea6\u8fc7\u6ee4\u3001\u7f8e\u5b66\u8bc4\u5206\u8fc7\u6ee4\uff0c\u4ee5\u53caGrounding/Optical Flow/Caption/PoseEstimation\u7b49\u6807\u6ce8\u6d41\u7a0b\u3002\u53c2\u4e0e\u642d\u5efa\u4e0d\u540c\u751f\u6210\u6761\u4ef6\u4e0b\u7684\u8bc4\u6d4b\u6307\u6807\u3002"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2024-07", "endDate": "2025-05", "time": "2024-07 ~ 2025-05", "duration": "", "description": ""}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "RLHF for AIGC\u6587\u751f\u56fe\u6a21\u578b\u4f18\u5316", "position": "RLHF for AIGC\u6587\u751f\u56fe\u6a21\u578b\u4f18\u5316", "startDate": "2024-07", "endDate": "2024-12", "time": "2024-07 ~ 2024-12", "duration": "", "description": "\u4e0e\u6570\u636e\u6807\u6ce8\u56e2\u961f\u534f\u4f5c\uff0c\u91c7\u96c6\u6709\u660e\u786e\u504f\u597d\u6807\u6ce8\u76842D\u56fe\u50cf\u6570\u636e\u96c6\uff0c\u5e76\u5728\u8be5\u6570\u636e\u4e0a\u4f7f\u7528RLHF\u65b9\u6cd5\u6301\u7eed\u4f18\u5316\u57fa\u7840\u6a21\u578b\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u6c5f\u82cf\u6c14\u8c61\u7b97\u6cd5\u6311\u6218\u8d5b,\u963f\u91cc\u4e91\u5929\u6c60\uff5c\u8fbe\u6469\u9662", "time": "2022-05\u81f32022-07", "description": "\u6574\u5408\u96f7\u8fbe/\u964d\u6c34/\u98ce\u529b\u89c2\u6d4b\u7ad9\u6570\u636e\uff0c\u9884\u6d4b\u672a\u67650\u20132h\u6c14\u8c61\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法实习生阶跃星辰2024.7-2025.5 (10个月)
+
+【教育经历】
+北京航空航天大学 软件工程 | 厦门大学 计算机 | 哈尔滨工程大学 软件工程
+
+========================================
+
+========================================
+Candidate ID: 291
+Name Mask: *伟南
+Current Title/Company: 互联网业务负责人阶跃星辰2025.6-至今 (6个月)大客户 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u4e92\u8054\u7f51\u4e1a\u52a1\u8d1f\u8d23\u4eba\u9636\u8dc3\u661f\u8fb02025.6-\u81f3\u4eca (6\u4e2a\u6708)\u5927\u5ba2\u6237", "time": "2025.6-\u81f3\u4eca", "description": "\u4e92\u8054\u7f51\u4e1a\u52a1\u8d1f\u8d23\u4eba\u9636\u8dc3\u661f\u8fb02025.6-\u81f3\u4eca (6\u4e2a\u6708)\u5927\u5ba2\u6237\u9500\u552eC\u7aef\u4ea7\u54c1\u4ea7\u54c1\u56e2\u961f\u7ba1\u7406\u4ea7\u54c1\u89c4\u5212"}, {"company": "\u6e56\u5317\u661f\u7eaa\u9b45\u65cf\u96c6\u56e2\u6709\u9650\u516c\u53f8", "title": "\u4e92\u8054\u7f51\u4e1a\u52a1\u8d1f\u8d23\u4eba\u6e56\u5317\u661f\u7eaa\u9b45\u65cf\u96c6\u56e2\u6709\u9650\u516c\u53f82024.12-20", "time": "2024.12-2025.6", "description": "\u4e92\u8054\u7f51\u4e1a\u52a1\u8d1f\u8d23\u4eba\u6e56\u5317\u661f\u7eaa\u9b45\u65cf\u96c6\u56e2\u6709\u9650\u516c\u53f82024.12-2025.6 (6\u4e2a\u6708)- \u4e92\u8054\u7f51\u4ea7\u54c1\u4e0e\u670d\u52a1\u7684\u89c4\u5212\u4e0e\u6267\u884c\uff1a\u8d1f\u8d23\u9b45\u65cf\u6240\u6709\u4e92\u8054\u7f51\u670d\u52a1\u4ea7\u54c1\u7684\u89c4\u5212\u548c\u8bbe\u8ba1\uff0c\u5305\u62ec\u4e91\u670d\u52a1\u3001\u667a\u80fd\u786c\u4ef6\u751f\u6001\u5e94\u7528\u3001\u5185\u5bb9\u5e73\u53f0\u7b49\uff0c\u786e\u4fdd"}, {"company": "\u8363\u8000", "title": "\u5546\u52a1BD\u603b\u76d1\u8363\u80002021.1-2024.9 (3\u5e748\u4e2a\u6708)I", "time": "2021.1-2024.9", "description": "\u5546\u52a1BD\u603b\u76d1\u8363\u80002021.1-2024.9 (3\u5e748\u4e2a\u6708)IT/\u4e92\u8054\u7f51"}, {"company": "\u534e\u4e3a", "title": "\u4e92\u8054\u7f51BD\u7ecf\u7406\u534e\u4e3a2013.12-2020.12 (7\u5e74)I", "time": "2013.12-2020.12", "description": "\u4e92\u8054\u7f51BD\u7ecf\u7406\u534e\u4e3a2013.12-2020.12 (7\u5e74)IT/\u4e92\u8054\u7f51"}, {"company": "Harris Corporation", "title": "\u4ea7\u54c1\u603b\u76d1Harris Cor", "time": "2007.7-2013.12", "description": "\u4ea7\u54c1\u603b\u76d1Harris Corporation2007.7-2013.12 (6\u5e745\u4e2a\u6708)B\u7aef\u4ea7\u54c1\u4fe1\u606f\u7cfb\u7edf\u533b\u7597\u4ea7\u54c1"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+互联网业务负责人阶跃星辰2025.6-至今 (6个月)大客户销售C端产品产品团队管理产品规划 | 互联网业务负责人湖北星纪魅族集团有限公司2024.12-2025.6 (6个月)- 互联网产品与服务的规划与执行：负责魅族所有互联网服务产品的规划和设计，包括云服务、智能硬件生态应用、内容平台等，确保产品与用户需求紧密契合。 - 硬件与互联网服务融合：推动魅族智能终端、IOT终端与互联网服务的深度融合，打通跨终端互联互通生态，为用户提供流畅、一体化的产品体验。 - 用户运营与增长：通过大数据分析、精准的用户运营策略和内容创新，持续提升用户活跃度、留存率及付费转化，扩大魅族品牌的影响力。 - 互联网商业化：探索并实践创新的商业化模式，包括但不限于广告、内容、增值服务、订阅付费、AI创新商业化等，确保互联网业务为公司带来可持续的收入增长。 - 产品创新与技术推动：持续推动技术创新，结合AI大模型、大数据等先进技术，提升互联网产品的智能化水平，满足不断变化的市场需求。 - 品牌塑造与生态拓展：通过有效的市场推广、品牌建设和跨行业生态合作，提升魅族互联网产品的知名度，扩大市场份额并增强品牌忠诚度，推动公司产品的全面商业化。战略管理运营管理销售管理 | 商务BD总监荣耀2021.1-2024.9 (3年8个月)IT/互联网 | 互联网BD经理华为2013.12-2020.12 (7年)IT/互联网 | 产品总监Harris Corporation2007.7-2013.12 (6年5个月)B端产品信息系统医疗产品
+
+【教育经历】
+南京理工大学 软件工程
+
+========================================
+
+========================================
+Candidate ID: 300
+Name Mask: *古力
+Current Title/Company: 安全&风控负责人上海阶跃星辰智能科技有限公司2023.9-至 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "上海阶跃星辰智能科技有限公司", "title": "安全&风控负责人上海阶跃星辰智能科技有限公司2023.9-至", "time": "2023.9-至今", "description": "安全&风控负责人上海阶跃星辰智能科技有限公司2023.9-至今 (2年3个月)1. AI业务/应用/基础设施安全"}, {"company": "Tesla", "title": "安全专家Tesla2021.9-2023.9 (2年)1. ", "time": "2021.9-2023.9", "description": "安全专家Tesla2021.9-2023.9 (2年)1. 车联网/工控平台安全"}, {"company": "阿里巴巴", "title": "安全专家蚂蚁集团2020.3-2021.9 (1年6个月)1", "time": "2020.3-2021.9", "description": "安全专家蚂蚁集团2020.3-2021.9 (1年6个月)1. 流量安全风控"}, {"company": "", "title": "安全研究员3602017.7-2020.3 (2年8个月)1", "time": "2017.7-2020.3", "description": "安全研究员3602017.7-2020.3 (2年8个月)1. 数据/算法驱动安全"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+安全&风控负责人上海阶跃星辰智能科技有限公司2023.9-至今 (2年3个月)1. AI业务/应用/基础设施安全 2. 安全智能体平台研发 3. 企业安全风险治理与合规AI系统安全云计算/大数据系统架构 | 安全专家Tesla2021.9-2023.9 (2年)1. 车联网/工控平台安全 2. 内/外部威胁研究与分析 3. 车联网数据合规 | 安全专家蚂蚁集团2020.3-2021.9 (1年6个月)1. 流量安全风控 2. 入侵检测 | 安全研究员3602017.7-2020.3 (2年8个月)1. 数据/算法驱动安全 2. 互联网黑灰产研究
+
+【教育经历】
+南开大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 884
+Name Mask: *嘉豪
+Current Title/Company: 稳定性 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u7a33\u5b9a\u6027", "time": "2025.7-\u81f3\u4eca", "description": ""}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u8bad\u7ec3", "time": "2024.5-2025.7", "description": "\u6709\u6548\u8bad\u7ec3\u65f6\u957f\u63d0\u5347(\u8bad\u7ec3\u7a33\u5b9a\u6027)\uff0c\u8fdc\u8d85Meta\uff0c\u89c1: arxiv.org/abs/2502.10248 6.5\uff1b"}, {"company": "\u963f\u91cc\u5df4\u5df4 \u8682\u8681", "title": "\u53ef\u4fe1\u539f\u751f\u6280\u672f\u90e8-\u5bb9\u5668\u7f16\u6392", "time": "2021.8-2024.5", "description": "\u8682\u8681AI on K8s: \u62d3\u6251\u611f\u77e5\u8c03\u5ea6\uff0c\u5f02\u6784\u8ba1\u7b97\u5361\u6545\u969c\u53d1\u73b0\u548c\u81ea\u6108(\u5bf9\u63a5\u8bad\u7ec3\u7cfb\u7edf)\u3001GPU/RDMA/.. de"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "Seed-Infra-\u7a33\u5b9a\u6027", "position": "Seed-Infra-\u7a33\u5b9a\u6027", "startDate": "2025-07-01", "endDate": "\u4eca", "time": "2025-07-01 ~ \u4eca", "duration": "", "description": "\u5916\u5356\u63a5\u6536\u5458"}, {"company": "\u4e0a\u6d77\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u8bad\u7ec3\u5e73\u53f0\u5de5\u7a0b\u5e08", "position": "\u8bad\u7ec3\u5e73\u53f0\u5de5\u7a0b\u5e08", "startDate": "2024-05", "endDate": "2025-07", "time": "2024-05 ~ 2025-07", "duration": "", "description": "\u6709\u6548\u8bad\u7ec3\u65f6\u957f\u63d0\u5347(\u8bad\u7ec3\u7a33\u5b9a\u6027)\uff0c\u8fdc\u8d85Meta\uff0c\u89c1: arxiv.org/abs/2502.10248 6.5\uff1b\n\u4e3b\u5bfc\u9636\u8dc3\u6570\u4e07\u5361GPU\u8d44\u6e90\u6c60\u4f18\u5148\u7ea7\u5212\u5206\uff0c\u673a\u5668\u6253\u5206\u548c\u667a\u80fd\u6d41\u8f6c\u7cfb\u7edf\uff1b\n\u5927\u89c4\u6a21\u8bad\u7ec3\u4efb\u52a1\u5f02\u6784\u8d44\u6e90\u8c03\u5ea6rerank\u63d0\u5347\u8bad\u7ec3mfu\uff1b\n\u591a\u4e2a\u4e07\u5361\u96c6\u7fa4\u5efa\u8bbe\uff1bGPU\u5229\u7528\u7387\u63d0\u5347\u3002"}, {"company": "\u8682\u8681\u96c6\u56e2", "title": "\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2021-08", "endDate": "2024-05", "time": "2021-08 ~ 2024-05", "duration": "", "description": "\u8682\u8681AI on K8s: \u62d3\u6251\u611f\u77e5\u8c03\u5ea6\uff0c\u5f02\u6784\u8ba1\u7b97\u5361\u6545\u969c\u53d1\u73b0\u548c\u81ea\u6108(\u5bf9\u63a5\u8bad\u7ec3\u7cfb\u7edf)\u3001GPU/RDMA/.. device-plugin\u7edf\u4e00\u3001\u6570\u636e\u7f13\u5b58\u8c03\u5ea6\u52a0\u901f\u8bad\u7ec3\u3001\u96c6\u5408\u901a\u4fe1\u4f18\u5316\u63a2\u7d22\uff1b\u591a\u4e2a\u4e07\u5361\u96c6\u7fa4\u5efa\u8bbe\u3002\n\u5bb9\u5668\u4ea4\u4ed8\u901f\u5ea6\u63d0\u5347\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+Seed-Infra-稳定性字节跳动2025.7-至今 (5个月)外卖接收员他有74个好友在此公司
+
+---
+
+训练平台工程师上海阶跃星辰智能科技有限公司2024.5-2025.7 (1年2个月)有效训练时长提升(训练稳定性)，远超Meta，见: arxiv.org/abs/2502.10248 6.5；
+主导阶跃数万卡GPU资源池优先级划分，机器打分和智能流转系统；
+大规模训练任务异构资源调度rerank提升训练mfu；
+多个万卡集群建设；GPU利用率提升。他有10个好友在此公司
+
+---
+
+开发工程师蚂蚁集团 • 可信原生技术部-容器编排2021.8-2024.5 (2年9个月)蚂蚁AI on K8s: 拓扑感知调度，异构计算卡故障发现和自愈(对接训练系统)、GPU/RDMA/.. device-plugin统一、数据缓存调度加速训练、集合通信优化探索；多个万卡集群建设。
+容器交付速度提升。他有19个好友在此公司
+
+【教育经历】
+浙江大学 软件工程 | 厦门大学 自动化
+
+========================================
+

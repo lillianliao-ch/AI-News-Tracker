@@ -1,0 +1,151 @@
+# CANDIDATE BATCH 18
+
+========================================
+Candidate ID: 58798
+Name Mask: *inbin Huang
+Current Title/Company: PhD Student @ The University of Hong Kong
+
+=== WORK EXPERIENCES ===
+[{"company": "Microsoft Research Asia (MSRA)", "title": "Intern", "time": "", "description": ""}, {"company": "ShanghaiTech University", "title": "PhD Student", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 60595
+Name Mask: *eyu Qin
+Current Title/Company: Ph.D. student @ Hong Kong University of Science and Technology
+
+=== WORK EXPERIENCES ===
+[{"company": "Kimi", "title": "Intern, Agent Team", "time": "", "description": ""}, {"company": "Microsoft Research Asia (MSRA) GenAI", "title": "Research Intern", "time": "", "description": ""}, {"company": "Alibaba DAMO Academy", "title": "Research Intern", "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 67251
+Name Mask: *avid Alvarez-Melis
+Current Title/Company: Assistant Professor @ Harvard University
+
+=== WORK EXPERIENCES ===
+[{"company": "Harvard University", "title": "Assistant Professor, Computer Science", "time": "", "description": ""}, {"company": "Microsoft Research New England", "title": "Researcher", "time": "", "description": ""}, {"company": "Kempner Institute", "title": "Associate Faculty", "time": "", "description": ""}, {"company": "IBM T.J. Watson Research Center", "title": "Researcher (Speech Recognition and NLP teams)", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 67710
+Name Mask: *ing Li
+Current Title/Company: Research Scientist and Team Lead @ Beijing Institute for General Artificial Intelligence (BIGAI)
+
+=== WORK EXPERIENCES ===
+[{"company": "Beijing Institute for General Artificial Intelligence (BIGAI)", "title": "Research Scientist and Team Lead", "time": "", "description": ""}, {"company": "Google Research", "title": "Intern", "time": "", "description": ""}, {"company": "Microsoft Azure AI", "title": "Intern", "time": "", "description": ""}, {"company": "Amazon Alexa", "title": "Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 74068
+Name Mask: *蔚然
+Current Title/Company: SoftwareEngineerII @ 微软
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5fae\u8f6f", "title": "SoftwareEngineerII", "position": "SoftwareEngineerII", "startDate": "2022-05", "endDate": "2025-08", "time": "2022-05 ~ 2025-08", "duration": "", "description": "\u4e3b\u5bfc\u4ece\u96f6\u8bbe\u8ba1\u5f00\u53d1AzurePurview\u7684Workflow\u4e2d\u7684\u8868\u8fbe\u5f0f\u529f\u80fd\uff0c\u8bbe\u8ba1DSL\u5e76\u642d\u5efa\u89e3\u6790\u5668\u548c\u8fd0\u884c\u65f6\uff0c\u6781\u5927\u63d0\u5347\u4e86\u5e73\u53f0\u7684\u53ef\u5b9a\u5236\u6027\uff0c\u670d\u52a1\u4e8e\u5305\u62ec\u5168\u7403\u4e94\u767e\u5f3a\u5728\u5185\u7684\u6570\u5343\u4f01\u4e1a\u7528\u6237\uff1b\u68b3\u7406PurviewWorkflow\u5e94\u7528\u6a21\u578b\uff0c\u5efa\u7acb\u5e95\u5c42\u53ef\u5b9a\u5236Action\u5e76\u6574\u5408\u8868\u8fbe\u5f0f\u529f\u80fd\uff0c\u8d4b\u80fd\u4ed6\u4eba\u5b9a\u5236\u5316\u5f00\u53d1\uff0c\u63d0\u9ad8\u5f00\u53d1\u6548\u738770%\u4ee5\u4e0a\uff1b\u4e3b\u5bfc\u8bbe\u8ba1\u5e76\u5efa\u7acb\u65b0\u4e00\u4ee3\u4e0a\u4e0b\u6587\u6d1e\u5bdf\u5e73\u53f0Outlook Copilot Insights Service\uff0c\u91c7\u7528\u51b7\u70ed\u6570\u636e\u5206\u5c42\u4e0e\u6df7\u5408\u8ba1\u7b97\u67b6\u6784\uff0c\u5c06\u5173\u952e\u63a5\u53e3\u5ef6\u8fdfP99\u964d\u4f4e20\u500d\uff0c\u6210\u529f\u652f\u6491OutlookCopilot\u6838\u5fc3\u529f\u80fd\u65e5\u57471.2\u4ebf\u6b21\u8c03\u7528\uff0cSLA\u9ad8\u8fbe99.95%\uff1b\u9886\u5bfc3\u4eba\u56e2\u961f\u8de8\u56e2\u961f\u534f\u8c03\u591a\u4e2a\u5408\u4f5c\u65b9\uff0c\u57283\u4e2a\u6708\u5185\u5b8c\u6210\u5bf9\u65e7\u7cfb\u7edf\u7684\u5e73\u6ed1\u8fc1\u79fb\u4e0e\u4e0b\u7ebf\uff1b\u901a\u8fc7\u63a8\u52a8\u6743\u9650\u96c6\u6210\u4e0e\u5e73\u53f0\u5316\u5efa\u8bbe\uff0c\u5c06\u8c03\u7528\u65b9\u4ece3\u4e2a\u6269\u5c55\u81f37\u4e2a\uff0c\u5cf0\u503cQPS\u8fbe7500"}, {"company": "\u5fae\u8f6f", "title": "\u8f6f\u4ef6\u5de5\u7a0b\u5e08", "position": "\u8f6f\u4ef6\u5de5\u7a0b\u5e08", "startDate": "2022-05-01", "endDate": "\u4eca", "time": "2022-05-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u963f\u91cc\u5df4\u5df4", "title": "\u9ad8\u7ea7\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "\u9ad8\u7ea7\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2021-03", "endDate": "2022-05", "time": "2021-03 ~ 2022-05", "duration": "", "description": "\u5f00\u53d1\u5e76\u7ba1\u7406\u6dd8\u5b9d\u865a\u62df\u5546\u54c1\u5206\u5e03\u5f0f\u4e1a\u52a1\u5de5\u4f5c\u6d41\u8c03\u5ea6\u7cfb\u7edf\uff0c\u6bcf\u65e5\u652f\u64912200\u4e07\u4efb\u52a1\u5b9e\u4f8b\uff1b\u9886\u5bfc\u5e76\u534f\u8c03\u6dd8\u5b9d\u5145\u503c\u4e2d\u5fc3\u9879\u76ee\uff0c\u8d4b\u80fd\u6570\u767e\u6dd8\u5b9d\u5546\u5bb6\uff0c\u6bcf\u5e74\u589e\u52a0300\u4ebfGMV\uff1b\u4f7f\u7528\u5b9e\u7528\u9886\u57df\u9a71\u52a8\u8bbe\u8ba1\uff0c\u4f18\u5316\u91cd\u6784\u6dd8\u5b9d\u865a\u62df\u5546\u54c1\u4ea4\u6613\u5fae\u670d\u52a1\u4f53\u7cfb"}, {"company": "\u7f8e\u56e2", "title": "\u7cfb\u7edf\u5f00\u53d1", "position": "\u7cfb\u7edf\u5f00\u53d1", "startDate": "2020-06", "endDate": "2021-03", "time": "2020-06 ~ 2021-03", "duration": "", "description": "\u53c2\u4e0e\u9910\u996eSaaS\u6280\u672f\u90e8\u6838\u5fc3\u5546\u6237\u9886\u57df\u8bbe\u8ba1\uff0c\u8de8\u56e2\u961f\u4ece\u96f6\u642d\u5efa\u9886\u57df\u670d\u52a1\uff1b\u62c9\u53d6\u6570\u4ed3\u5168\u91cf\u5b9e\u65f6\u6570\u636e\uff0c\u4f7f\u7528ES\u5b9e\u73b0\u54c1\u724c\u3001\u603b\u90e8\u3001\u95e8\u5e97\u7b49\u4fe1\u606f\u7684\u641c\u7d22\u805a\u5408\uff0c\u670d\u52a1\u4e8e30\u4e07\u4ee5\u4e0a\u4e00\u7ebf\u9500\u552e\uff1b\u5b9e\u73b0\u89c4\u5219\u5f15\u64ce\u63a8\u5bfc\u5ba2\u6237\u5355\u5143\uff0c\u7ef4\u62a410\u4e07\u4ee5\u4e0a\u5ba2\u6237\u5355\u5143\u4fe1\u606f\uff0c\u8d23\u4efb\u7530\u4e0b\u53d1\u51c6\u786e\u7387\u63d0\u534745%\uff1b\u4f9b\u5e94\u94fe\u7cfb\u7edf\u4e1a\u52a1\u6d41\u7a0b\u4f18\u5316\uff0c\u91cd\u6784\u76f8\u5173\u670d\u52a1\u3001\u4f18\u5316\u63a5\u53e3\u6027\u80fd\uff0cTP90\u6700\u9ad8\u4e0b\u964d65%"}, {"company": "\u963f\u91cc\u5df4\u5df4", "title": "\u5b9e\u4e60\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "\u5b9e\u4e60\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2019-06", "endDate": "2019-08", "time": "2019-06 ~ 2019-08", "duration": "", "description": "\u4e3b\u5bfc\u5e76\u5f00\u53d1\u6dd8\u5b9d\u53f0\u6e7e\u4e1a\u52a1\u6838\u5fc3\u670d\u52a1\u2e3a\u53f0\u6e7e\u5730\u533aToC\u7aef\u7ade\u5bf9\u5546\u5bb6\u5546\u54c1\u6570\u636e\u8f6c\u79fb\u5de5\u5177\uff08\u642c\u5bb6\u5de5\u5177\uff09\uff1b\u5927\u89c4\u6a21\u5f02\u6784\u6570\u636e\u8f6c\u5316\uff0c\u4fe1\u606f\u63d0\u53d6\uff0c\u4f4e\u7ef4\u6587\u672c\u4fe1\u606f\u5230\u9ad8\u7ef4\u7ed3\u6784\u5316\u4fe1\u606f\uff0c\u6570\u636e\u53ec\u56de\u738780%\u4ee5\u4e0a\uff1b\u53ef\u652f\u6301\u591a\u7ade\u5bf9\u591a\u7ad9\u70b9\uff0c\u53ef\u5b9a\u5236\u63d0\u53d6\u89c4\u5219\uff0c\u53ef\u5b9a\u65f6\u8fd0\u884c\u4efb\u52a1\uff0c15min\u8f6c\u53162\u4ebf\u6570\u636e\uff0c\u5546\u54c1\u6570\u636e\u5b8c\u6574\u5ea670%\u4ee5\u4e0a"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 74215
+Name Mask: *看机会
+Current Title/Company: 合作伙伴解决方案架构师 (AI商业解决方案) @ 微软
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5fae\u8f6f", "position": "\u5408\u4f5c\u4f19\u4f34\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08 (AI\u5546\u4e1a\u89e3\u51b3\u65b9\u6848)", "start_date": "2024-07-01", "end_date": "\u4eca", "duration": "", "description": "\u5fae\u8f6fAI\u5546\u4e1a\u89e3\u51b3\u65b9\u6848\u552e\u524d\u6280\u672f\u652f\u6301\uff1a\n- \u5f15\u5bfc\u5ba2\u6237\u901a\u8fc7Microsoft 365 Copilot\u4e86\u89e3\u5927\u8bed\u8a00\u6a21\u578bLLM\u4e0eMicrosoft Office\u7684\u6df1\u5ea6\u96c6\u6210\uff0c\u5982\u4f55\u5904\u7406\u4ece\u65e5\u5e38\u4efb\u52a1\u5230\u4e1a\u52a1\u5173\u952e\u6d41\u7a0b\u7684\u4e00\u7ad9\u5f0fAI\u4f53\u9a8c\uff1b\u79ef\u6781\u4e0e\u4e1a\u52a1\u548c\u6280\u672f\u51b3\u7b56\u8005\u6c9f\u901a\uff0c\u901a\u8fc7\u5236\u5b9aCopilot\u91c7\u7528\u8ba1\u5212\u63a8\u52a8\u5ba2\u6237\u90e8\u7f72\u610f\u5411\uff0c\u63d0\u5347Copilot MAU\uff1b\n- \u5e2e\u52a9\u5ba2\u6237\u4e86\u89e3Agent\u3001MCP\u3001A2A\u7b49AI\u6280\u672f\u8d8b\u52bf\uff0c\u534f\u52a9\u5ba2\u6237\u901a\u8fc7Copilot Studio\u6784\u5efaAI\u667a\u80fd\u4f53\uff0c\u5728\u5782\u76f4\u4e1a\u52a1\u573a\u666f\u843d\u5730\u5927\u8bed\u8a00\u6a21\u578bLLM\u4ea7\u54c1\uff1b\n- \u89e3\u51b3\u5ba2\u6237\u9488\u5bf9\u751f\u6210\u5f0fAI\u7684\u6570\u636e\u5b89\u5168\u4e0e\u9690\u79c1\u5408\u89c4\u62c5\u5fe7\uff0c\u4f8b\u5982Microsoft 365 Copilot\u7684\u6743\u9650\u7ee7\u627f\u673a\u5236\u3001\u6570\u636e\u4e22\u5931\u9632\u62a4DLP\u7b56\u7565\u96c6\u6210\u3001\u7248\u6743\u4fdd\u62a4\u627f\u8bfaCCC\u7b49\u3002\n\n\u5fae\u8f6f\u5408\u4f5c\u4f19\u4f34\u652f\u6301\u4e0e\u7ba1\u7406\uff1a\n- \u4e0e\u8054\u60f3\u3001\u4e2d\u5efa\u6750\u3001\u795e\u5dde\u6570\u7801\u7b49\u603b\u4ee3\u53ca20\u4f59\u5bb6\u4ee3\u7406\u5546\u5b9a\u671f\u6c9f\u901a\u53ca\u5efa\u7acb\u5408\u4f5c\u5173\u7cfb\uff0c\u53c2\u4e0e\u5408\u4f5c\u4f19\u4f34\u53d1\u5c55\u8ba1\u5212\u7684\u5236\u5b9a\uff0c\u57f9\u517b\u5408\u4f5c\u4f19\u4f34\u5de5\u7a0b\u5e08\u7684\u6280\u672f\u80fd\u529b\uff0c\u5b8c\u5584\u5fae\u8f6f\u5408\u4f5c\u4f19\u4f34\u751f\u6001\u3002\n- \u534f\u52a9\u5408\u4f5c\u4f19\u4f34\u5b8c\u6210\u5fae\u8f6f\u4f53\u7cfb\u8ba4\u8bc1MAICPP\u3001ASP\u7b49\uff0c\u6307\u5bfc\u5408\u4f5c\u4f19\u4f34\u5f00\u53d1\u57fa\u4e8e\u5fae\u8f6f\u4ea7\u54c1\u7684co-sell\u89e3\u51b3\u65b9\u6848\uff0c\u5e76\u4e0a\u67b6\u5fae\u8f6fMarketplace\u5411\u7ec8\u7aef\u5ba2\u6237\u8fdb\u884c\u9500\u552e\u3002"}, {"company": "\u5fae\u8f6f", "position": "\u4e91\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08 (\u5b89\u5168\u4e0e\u5408\u89c4)", "start_date": "2022-07", "end_date": "2024-07", "duration": "", "description": "\u5fae\u8f6f\u5b89\u5168\u4ea7\u54c1\u552e\u524d\u6280\u672f\u652f\u6301\uff1a\n- \u8d1f\u8d23\u5fae\u8f6f\u5b89\u5168\u3001\u5408\u89c4\u4e0e\u8eab\u4efd(SCI)\u76f8\u5173\u4ea7\u54c1\u65b9\u6848\u548c\u552e\u524d\u67b6\u6784\u8bbe\u8ba1\uff0c\u4e3a\u5ba2\u6237\u8fdb\u884cPoC\u6f14\u793a\uff0c\u76f8\u5173\u573a\u666f\u5305\u62ec\u4f46\u4e0d\u9650\u4e8e\u8eab\u4efd\u8bbf\u95ee\u548c\u7ba1\u7406(\u96f6\u4fe1\u4efb)\u3001\u7ec8\u7ed3\u70b9\u68c0\u6d4b\u548c\u54cd\u5e94(EDR)\u3001\u79fb\u52a8\u8bbe\u5907\u7ba1\u7406(MDM)\u3001\u6570\u636e\u52a0\u5bc6\u548c\u6cbb\u7406\u3001\u9493\u9c7c\u90ae\u4ef6\u9632\u62a4\u7b49\uff1b\n- \u57fa\u4e8e\u4f01\u4e1a\u5f53\u524dIT\u57fa\u7840\u8bbe\u65bd\u67b6\u6784\u548c\u6570\u636e\u5408\u89c4\u9700\u6c42\uff0c\u7ed3\u5408\u56fd\u5185\u201c\u4e09\u6cd5\u201d\u8981\u6c42\u53ca\u4e0d\u540c\u56fd\u5bb6\u53ca\u5730\u533a\u7684\u6cd5\u5f8b\u6cd5\u89c4\u8981\u6c42(e.g., GDPR, ISO, SOC...)\uff0c\u5411\u5ba2\u6237\u63d0\u4f9b\u4fe1\u606f\u5b89\u5168\u4e0e\u6cd5\u89c4\u9075\u4ece\u6027\u54a8\u8be2\u3002"}, {"company": "\u5fae\u8f6f", "position": "\u4e91\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08 (Azure Infra)", "start_date": "2021-07", "end_date": "2022-07", "duration": "", "description": "\u5fae\u8f6f\u516c\u6709\u4e91\u4ea7\u54c1Microsoft Azure\u552e\u524d\u6280\u672f\u652f\u6301\uff1a\n- \u7406\u89e3\u5ba2\u6237\u4e1a\u52a1\u9700\u6c42\u5e76\u63d0\u4f9b\u6280\u672f\u6307\u5bfc\u4e0e\u67b6\u6784\u54a8\u8be2\uff0c\u6db5\u76d6IaaS\u3001PaaS\u3001\u6570\u636e\u5e73\u53f0\u3001\u5b89\u5168\u4e0e\u5408\u89c4\u7b49\u9886\u57df\uff0c\u8bbe\u8ba1\u5e76\u4ea4\u4ed8\u57fa\u4e8eMicrosoft Azure\u7684\u7aef\u5230\u7aef\u89e3\u51b3\u65b9\u6848\uff1b\n- \u534f\u52a9\u5408\u4f5c\u4f19\u4f34\u63d0\u5347\u5176\u6280\u672f\u80fd\u529b\uff0c\u63a8\u52a8\u5176co-sell\u89e3\u51b3\u65b9\u6848\u5728Azure\u5e73\u53f0\u4e0a\u7684\u843d\u5730\u4e0e\u4f18\u5316\uff0c\u5171\u540c\u652f\u6301\u5ba2\u6237\u7684Azure\u4e0a\u4e91\u3001\u8fc1\u79fb\u4e0e\u73b0\u4ee3\u5316\u9879\u76ee\u3002"}, {"company": "\u5fae\u8f6f", "position": "\u5408\u4f5c\u4f19\u4f34\u6280\u672f\u652f\u6301 (\u73b0\u4ee3\u5316\u529e\u516c)", "start_date": "2019-07", "end_date": "2021-07", "duration": "", "description": "\u5fae\u8f6f\u73b0\u4ee3\u5316\u529e\u516c\u4ea7\u54c1Microsoft 365\u6280\u672f\u652f\u6301\uff1a\n- \u5f15\u5bfc\u5ba2\u6237\u57fa\u4e8eMicrosoft 365\u6784\u5efa\u7ec4\u7ec7\u73b0\u4ee3\u5316\u529e\u516c\u5e73\u53f0\uff0c\u5305\u62ec\u90ae\u4ef6/\u6587\u6863/IM\u7b49\u534f\u4f5c\u5de5\u5177\uff1b\u534f\u52a9\u5ba2\u6237\u5b8c\u6210AD\u76ee\u5f55\u540c\u6b65\u3001Exchange\u90ae\u4ef6\u6df7\u5408\u90e8\u7f72\u7b49\u6570\u636e\u8fc1\u79fb\u8fc7\u7a0b\uff1b\n- \u57fa\u4e8e\u5fae\u8f6f\u4f4e\u4ee3\u7801\u4ea7\u54c1Power Platform\u9a71\u52a8\u5ba2\u6237\u6570\u5b57\u5316\u8f6c\u578b\uff0c\u901a\u8fc7Power BI\u6784\u5efa\u4f01\u4e1aBI\u548c\u6570\u636e\u53ef\u89c6\u5316\u5e73\u53f0\uff0c\u901a\u8fc7Power Automate\u843d\u5730\u4f01\u4e1aOA\u573a\u666f\uff1b\n\u5173\u6ce8\u73b0\u4ee3\u5316\u529e\u516c\u5e02\u573a\u9700\u6c42\u548c\u7ade\u54c1\u52a8\u6001\uff0c\u9488\u5bf9Google Workspace\u3001\u963f\u91cc\u9489\u9489\u3001\u817e\u8baf\u4f01\u4e1a\u5fae\u4fe1\u3001\u5b57\u8282\u98de\u4e66\u7b49\u8fdb\u884c\u7ade\u54c1\u5206\u6790\uff0c\u5411\u5ba2\u6237\u548c\u5408\u4f5c\u4f19\u4f34\u5c55\u73b0\u5fae\u8f6f\u73b0\u4ee3\u5316\u529e\u516c\u89e3\u51b3\u65b9\u6848\u4f18\u52bf\u3002"}, {"company": "\u534e\u4e3a\u6280\u672f\u6709\u9650\u516c\u53f8", "position": "\u7f51\u7edc\u6280\u672f\u5de5\u7a0b\u5e08", "start_date": "2018-07", "end_date": "2018-09", "duration": "", "description": "\u5de5\u4f5c\u5185\u5bb9:\n\u201cGTS\u6570\u5b57\u5316\u5b9e\u8df5\u9879\u76ee\u7ec4-\u6570\u636e\u5e95\u5ea7\u5b50\u9879\u76ee\u201d\u5b9e\u4e60\uff0c\u4e3b\u8981\u8d1f\u8d23\u6570\u636e\u91c7\u96c6\u53ca\u89e3\u6790\u5de5\u4f5c\uff0c\u72ec\u7acb\u5b8c\u6210\u5c06\u4e00\u7ebf\u7684Visio\u548cExcel\u5de5\u7a0b\u56fe\u7eb8\u89e3\u6790\u5b58\u50a8\u4e3a\u7ed3\u6784\u5316\u6570\u636e\uff0c\u4ee5\u4fbf\u540e\u671f\u8fdb\u884c\u6570\u636e\u6316\u6398\u4e0e\u5e94\u7528\uff1b\u5e76\u5728\u6b64\u57fa\u7840\u4e0a\u901a\u8fc7Python GUI \u5e93Tkinter\u5f00\u53d1\u56fe\u5f62\u7528\u6237\u754c\u9762\uff0c\u4fbf\u4e8e\u4e00\u7ebf\u4eba\u5458\u4f7f\u7528"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 75033
+Name Mask: *宸乐
+Current Title/Company: sde @ 微软
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5fae\u8f6f", "title": "sde", "position": "sde", "startDate": "2021-12-01", "endDate": "\u4eca", "time": "2021-12-01 ~ \u4eca", "duration": "", "description": "M365 Copilot"}, {"company": "\u817e\u8baf-\u5fae\u4fe1\u4e8b\u4e1a\u7fa4", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2021-01", "endDate": "2021-10", "time": "2021-01 ~ 2021-10", "duration": "", "description": "\u4e3b\u8981\u8d1f\u8d23\u7cbe\u51c6\u95ee\u7b54\u4e1a\u52a1"}, {"company": "\u5fae\u8f6f\u4e9a\u592a\u7814\u53d1\u96c6\u56e2", "title": "\u7814\u7a76\u5b9e\u4e60\u751f", "position": "\u7814\u7a76\u5b9e\u4e60\u751f", "startDate": "2019-08", "endDate": "2020-08", "time": "2019-08 ~ 2020-08", "duration": "", "description": ""}, {"company": "\u767e\u5ea6", "title": "\u7814\u7a76\u5b9e\u4e60\u751f", "position": "\u7814\u7a76\u5b9e\u4e60\u751f", "startDate": "2019-07", "endDate": "2019-08", "time": "2019-07 ~ 2019-08", "duration": "", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 75715
+Name Mask: *eyang Cui
+Current Title/Company: 高级研究员 @ 
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent", "position": "Senior Researcher", "start_date": "", "end_date": "", "duration": "2022\u5e746\u6708 - \u81f3\u4eca \u00b7 3 \u5e74 10 \u4e2a\u6708", "description": ""}, {"company": "WeChat", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2021\u5e746\u6708 - 2021\u5e7412\u6708 \u00b7 7 \u4e2a\u6708", "description": ""}, {"company": "\u5fae\u8f6f", "position": "Research Intern at MSRA", "start_date": "", "end_date": "", "duration": "2020\u5e7411\u6708 - 2021\u5e745\u6708 \u00b7 7 \u4e2a\u6708", "description": ""}, {"company": "\u5fae\u8f6f", "position": "Research Intern at MSRA", "start_date": "", "end_date": "", "duration": "2019\u5e748\u6708 - 2019\u5e7411\u6708 \u00b7 4 \u4e2a\u6708", "description": ""}, {"company": "A*STAR - Agency for Science, Technology and Research", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2017\u5e748\u6708 - 2018\u5e744\u6708 \u00b7 9 \u4e2a\u6708", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 75908
+Name Mask: *ei Tao
+Current Title/Company: 高级研究员 @ 
+
+=== WORK EXPERIENCES ===
+[{"company": "\u817e\u8baf \u00b7 \u6b63\u5f0f", "position": "\u9ad8\u7ea7\u7814\u7a76\u5458", "start_date": "", "end_date": "", "duration": "2024\u5e748\u6708 - \u81f3\u4eca \u00b7 1 \u5e74 8 \u4e2a\u6708", "description": ""}, {"company": "\u4e0a\u6d77\u4eba\u5de5\u667a\u80fd\u5b9e\u9a8c\u5ba4 \u00b7 \u5b9e\u4e60", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2023\u5e748\u6708 - 2024\u5e746\u6708 \u00b7 11 \u4e2a\u6708", "description": "Research on large language model-based autonomous agents for software evolution, under the supervision of Prof. Yu Cheng. We analyze, design, and develop a multi-agent framework for GitHub Issue Resolution. The corresponding paper, MAGIS, is accepted at NeurIPS 2024.Research on large language model-based autonomous agents for software evolution, under the supervision of Prof. Yu Cheng. We analyze, design, and develop a multi-agent framework for GitHub Issue Resolution. The corresponding paper, MAGIS, is accepted at NeurIPS 2024. \u2026\u5c55\u5f00"}, {"company": "\u5fae\u8f6f \u00b7 \u5b9e\u4e60", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2020\u5e7411\u6708 - 2021\u5e747\u6708 \u00b7 9 \u4e2a\u6708", "description": "As an intern in MSRA, I research on the area of Code Intelligence especially Commit Message Generation. The paper entitled \"On the Evaluation of Commit Message Generation Models: An Experimental Study\"(first author) was accepted to the Research track of the 37th International Conference on Software Maintenance and Evolution (ICSME) 2021(CORE A).As an intern in MSRA, I research on the area of Code Intelligence especially Commit Message Generation. The paper entitled \"On the Evaluation of Commit Message Generation Models: An Experimental Study\"(first author) was accepted to the Research track of the 37th International Conference on Software Maintenance and Evolution (ICSME) 2021(CORE A). \u2026\u5c55\u5f00"}]
+
+========================================
+
+========================================
+Candidate ID: 88157
+Name Mask: *耀华
+Current Title/Company: Microsoft STCA Software Engineer @ Microsoft
+
+=== WORK EXPERIENCES ===
+[{"company": "Microsoft", "title": "Microsoft STCA Software Engineer", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 96844
+Name Mask: *aozhi Qi
+Current Title/Company: Research Scientist @ Amazon Frontier AI & Robotics (FAR)
+
+=== WORK EXPERIENCES ===
+[{"company": "Amazon Frontier AI & Robotics (FAR)", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Microsoft Research Asia (MSRA)", "title": "Researcher", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 96862
+Name Mask: *ei Tian
+Current Title/Company: Research Scientist @ Facebook
+
+=== WORK EXPERIENCES ===
+[{"company": "Facebook", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Microsoft Research Asia (MSRA)", "title": "Researcher", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 98030
+Name Mask: *ijie Huang
+Current Title/Company: Research Engineer @ Meta Reality Lab
+
+=== WORK EXPERIENCES ===
+[{"company": "Meta Reality Lab", "title": "Research Engineer", "time": "", "description": ""}, {"company": "Snap Research Creative Vision Group", "title": "Research Intern", "time": "", "description": ""}, {"company": "Microsoft Research Asia (MSRA)", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 98957
+Name Mask: *unhang Shen
+Current Title/Company: Researcher @ 
+
+=== WORK EXPERIENCES ===
+[{"company": "Microsoft Research Asia (MSRA)", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+

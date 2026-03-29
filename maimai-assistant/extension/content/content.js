@@ -855,6 +855,36 @@ class MaimaiAssistant {
         }
     }
 
+    // 批量处理IM消息
+    async batchProcessImMessages(days = 3) {
+        if (!this.imProcessor) {
+            this.imProcessor = new ImProcessor(this);
+        }
+        
+        if (this.imProcessor.isRunning) {
+            MaimaiUtils.showNotification('消息处理正在运行中...', 'warning');
+            return;
+        }
+
+        try {
+            await this.imProcessor.run(days, (progress) => {
+                this.batchState = {
+                    isRunning: true,
+                    total: progress.total,
+                    currentIndex: progress.current,
+                    successful: progress.success,
+                    failed: progress.fail
+                };
+                if (this.panel) this.panel.updateProgress(this.batchState);
+            });
+        } catch (e) {
+            console.error('Batch IM Process Error', e);
+        } finally {
+            this.batchState.isRunning = false;
+            if (this.panel) this.panel.updateProgress(this.batchState);
+        }
+    }
+
     // 停止批量操作
     stopBatchOperation() {
         this.batchState.isRunning = false;

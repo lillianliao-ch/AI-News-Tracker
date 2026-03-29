@@ -1,0 +1,16 @@
+Company: 字节跳动
+Title: Agent算法负责人-国际电商
+
+【岗位职责】
+1、主导电商业务多智能体系统（Multi-Agent System）的研发与迭代，探索Agent Architectures/Structures的上限，在业务场景中最大程度释放模型的能力；
+2、负责多智能体工具、模型、引擎、平台的研发，提升其在电商场景自动规划、泛化决策、多模态交互能力，以Agent的形式突破现有方法和模型无法解决的问题，识别模型能力缺陷，从应用探索反哺基础模型迭代；
+3、负责Agent System性能与稳定性优化，包括但不限于系统资源利用、环境交互速度、系统成本等；能从业务需求中沉淀通用能力，规划平台路径图，构建稳定可靠的 Agent Infra；
+4、持续追踪AI Agent领域的最新进展，引入并验证新技术的可行性，沉淀技术文档与最佳实践，推动前沿技术在电商业务中的应用，保持团队的技术领先性；
+5、你将与团队一起，深入研究和挖掘多智能体在电商内容生态、商家/达人服务、用户体验等领域的创新应用场景，用技术驱动业务的变革与想象。
+
+【岗位要求】
+1、精通Python的编程技能，并有构建生产应用程序的经验，具备在Linux开发环境下的开发能力，熟悉至少一种主流大模型应用框架（如LangGraph、LangChain、LlamaIndex、OpenAI AgentsSDK、GoogleADK等）；
+2、对大模型和Agent有较深入的理解，了解Agent Architectures/Structures（Multi-Agent、ContextEngineering/Mangemant/Memory、ReAct/PlanAct/CodeAct），了解Agent相关的交互协议（MCP、A2A、FunctionCall），熟悉常见的LLM实施模式、提示工程、评估框架、代理框架和检索框架等；
+3、熟悉模型的Post-training训练技术，能针对特定模型能力问题进行SFT、RL训练优化；
+4、具备强大的技术沟通能力，能够创建可扩展的内容（文档、教程、示例代码），同时有较强的项目管理能力和多团队协同能力；
+5、熟悉海内外大模型服务，有AI算法相关领域技术背景、有设计并落地复杂Agent系统经验优先。

@@ -1,0 +1,773 @@
+=== 阿里集团-平头哥 职位描述数据集 (第 1 批) ===
+
+【职位编号】: ALI0258
+【职位名称】: 平头哥- 3D IC工艺专家/高级专家-上海/深圳
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+•与设计团队及3D Fab合作，确定芯片3D物理架构及其技术落地方式，完成产品结构设计和工艺选择；
+•与3D Fab 合作，设计和优化 3D 芯片工艺集成流程，确保技术方案满足项目要求和技术规格
+•负责3D芯片的Tape out；沟通，评估并协调满足3D Fab，2D Fab等各方的技术需求
+•负责3D芯片的技术开发，工程验证和量产导入；
+•负责3D工艺技术问题的监控解决及3D良率提升，持续改进；
+•负责3D 芯片新的物理架构和技术实现方案的探索；
+
+【岗位要求】
+•微电子，电子工程，物理，化学，材料等专业；
+•6年以上12寸半导体工作经验，至少3年3D工艺相关经验；
+•精通Hybrid Bond，Fusion bond等WoW，CoW 产品的3D集成工艺及流程，有丰富的解决相关技术问题的实际经验；
+•精通3D新产品工艺验证，导入量产流程，有与3D Fab，2D Fab的沟通合作经验，
+•熟悉开发先进堆叠工艺的流程实现和设计方法学，有丰富的3D项目经验。
+•精通Hybrid Bonding工艺，有WoW或CoW堆叠经验优先；
+•熟悉FINFET先进工艺和Interposer, CoWoS等2.5D，Chiplet先进封装技术是加分项
+•有良好的沟通和表达能力；
+•有创新意识和能力，富有激情，具有很强的自我驱动能力；
+
+================================================================================
+
+【职位编号】: ALI102
+【职位名称】: 平头哥- AI芯片SoC设计技术专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+In this role, you will work with software and hardware engineering groups to define the cutting edge of next-generation AI SOC chips for high-performance computing platform in Data Center.
+
+* as a design engineer, strong coding skill of system Verilog or Verilog to implement RTL design, develop SOC domain system/interface IP for various SOCs
+* familiar with ASIC flow to create complex SOCs with advanced methodologies more efficient, participated 3rd party IP integration
+* strong problem solving and solution for SOC design and IP integration, timing closure, silicon bring up and issue debug
+* Documents the high-level architecture specification that defines the chip with various sub-systems for the cutting-edge cloud applications.
+* Works closely with PD, power, system, and verification team to bring up the subsystem
+
+【岗位要求】
+* Minimum of 5 years of experience on complex SOC design for proven silicons.
+* Strong experience on following domain: CPU, GPU, PCIe, Memory, Network.
+* Expe
+
+================================================================================
+
+【职位编号】: ALI119
+【职位名称】: 平头哥-AI 框架技术专家-上海/杭州
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1. 在AI 芯片上移植开源深度学习框架，分析解决移植过程中各类问题
+2. 分析和验证各类深度学习算法在AI芯片上的功能、性能与精度，从算法与框架层分析并解决发现的功能、精度与性能问题，为芯片设计与AI软件栈提供参考实现
+3. 对模型、框架、AI生态做竞品对比、原理分析，构建差异化竞争力，为AI芯片客户提供问题支持和解决方案
+
+【岗位要求】
+1. 硕士以上，计算机科学相关专业， 至少3+年AI领域相关的开发经验。
+2. 熟悉主流深度学习算法、LLM大模型与AIGC模型算法的结构与工作原理
+2. 熟悉主流深度学习框架Pytorch、Tensorflow，分布式训练框架Megatron-LM、DeepSpeed ，推理框架FasterTransformer、TRT-LLM等；熟悉主流LLM（大语言）模型算法；具备适配算法与框架到AI芯片的工程化经验
+3. 熟悉CUDA 并行编程技术
+4. 具备分析与解决业务场景中AI软硬件全栈的功能、精度、性能问题， 能够跨团队、部门协作达成产品化目标
+
+================================================================================
+
+【职位编号】: ALI0263
+【职位名称】: 平头哥-AI 框架技术专家-北京
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1. 在AI 芯片上适配SOTA开源框架和SOTA模型，分析解决适配过程中发现的功能、性能与精度问题，为AI芯片客户提供问题支持和解决方案
+2. 对SOTA模型和框架做原理分析，竞对分析、构建差异化产品竞争力，贡献开源社区提升产品影响力
+3. 构建SOTA模型和框架端到端粒度、算子粒度、Kernel粒度的仿真框架，在芯片设计阶段提前发现精度、性能问题，保障芯片设计成功
+
+【岗位要求】
+1. 硕士以上，计算机科学相关专业， 至少8+年AI领域相关的开发经验。
+2. 熟练掌握Python、C/C++编程语言，掌握AI Vibe Coding技术，良好的逻辑思维与问题分析能力
+3. 熟悉SOTA大语言模型、多模态模型、VLA模型的架构与原理
+4. 熟悉主流深度学习框架Pytorch、Tensorflow，分布式训练框架Megatron、DeepSpeed ，推理框架VLLM、SGlang等；增强学习框架 Slime 、roll 等
+5. 熟悉CUDA、Triton、Tilelang 并行编程技术
+6. 责任心强， 能够跨团队/部门协作分析与解决业务场景中AI软硬件全栈的功能、精度、性能问题达成产品化目标
+
+================================================================================
+
+【职位编号】: ALI021
+【职位名称】: 平头哥-AI 芯片PCIE 设计专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+In this role, you will work with software and hardware engineering groups to define the cutting edge of next-generation AI SOC chips for high-performance computing platform in Data Center.
+ 
+·   According to SOC architecture, evaluate PCIE subsystem feature requirement include but not limited to PCIE protocol/PPA improvement/SRIOV virtualization etc.
+·   As the PCIE subsystem IP owner, integration and glue logic RTL development for various of complex SOCs, high quality IP deliver with clean Lint/cdc/rdc and timing closure.
+·   Strong problem solving and solution for PCIE design and IP integration, work together with DV owner and Emulation to cover PCIE related features.
+·  Participate in post silicon bring up and PCIE related issue debug.
+
+【岗位要求】
+·   Minimum of 5 years of experience on PCIE design for proven silicon.
+·   Familiar with PCIE protocol, including physical layer/data link layer/transaction layer.
+·   Familiar with PCIE Gen5/6 or CXL is plus.
+·   Familiar with AMBA bu
+
+================================================================================
+
+【职位编号】: ALI088
+【职位名称】: 平头哥-AI芯片Cache验证高级专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+o   负责和主导平头哥前沿科技芯片的开发
+o   负责和主导芯片验证文档的撰写，包括验证方法学，验证Testbench搭建及实现，Testplan等
+o   负责和主导AI芯片cache 领域验证TB开发、环境开发、测试向量开发及调试，覆盖率收集、问题复现等
+o   负责和参与Infrastructure的工具和流程的开发
+
+【岗位要求】
+o   硕士及硕士以上，10年及以上相关工作经验，电子工程，通讯，计算机专业等优先
+o   熟悉ASIC芯片设计和验证流程
+o   熟悉AI芯片cache 验证，cache 一致性验证，有成功流片经验优先
+o   熟悉SystemVerilog, Verilog等设计验证语言
+o   精通UVM验证方法学
+o   熟悉自底向上的Testbench的集成，有独立从头开发block, subsystem或IP DV环境的经验有加分
+o   有AI，GPU 相关经验者优先
+o Power/Performance相关验证经验的同学优先考虑
+o   熟悉Synopsys VCS或Cadence Xcelium等流程和EDA工具的使用，有Cadence TBA或Palladium或PSS经验有加分
+o   熟悉Linux系统环境，熟悉Python, Shell, Makefile, Perl, Ruby, Tcl等编程脚本语言。精通Python语言的优先考虑
+o   熟悉计算机体系结构，熟悉计算机图形处理的同学优先考虑
+o   富有激情，有创新意识和能力，具有自我驱动和良好的团队合作能力
+o   良好的沟通和表达能力
+
+================================================================================
+
+【职位编号】: ALI0564
+【职位名称】: 平头哥-AI芯片SoC验证高级工程师/专家-上海
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1. 负责和参与平头哥前沿科技芯片的开发
+2. 负责和参与芯片验证文档的撰写，包括验证策略和架构文档，验证计划文档等
+3. 负责和参与芯片验证环境开发、测试用例开发及调试、覆盖率收集、流程脚本开发、软件调试支持等
+4. 负责和参与Infrastructure的工具和流程的开发
+
+【岗位要求】
+1. 电子工程，通讯，计算机等专业背景优先
+2. 熟悉ASIC芯片设计和验证流程
+3. 熟悉SystemVerilog, Verilog等设计验证语言
+4. 熟悉UVM验证方法学
+5. 熟悉常见EDA工具（如Synopsys VCS/Verdi，Cadence Xcelium等）的使用
+6. 熟悉Linux系统环境，熟悉Makefile，熟悉Python, Shell, Perl, Ruby, Tcl中至少一门脚本语言
+7. 有大规模SoC验证相关经验者优先
+8. 有PCIe、Ethernet、UCIe、DDR、HBM等高速接口/存储系统验证经验者优先
+9. 良好的自驱力和目标感，良好的沟通和表达能力，良好的团队合作能力
+
+================================================================================
+
+【职位编号】: ALI023
+【职位名称】: 平头哥-AI芯片互联架构师-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+In this role, you will work with hardware and software engineering groups to define the next-generation inter-chip network architecture for high-performance AI chip and AI network.
+
+* Identifies the challenging problems, and evaluate various architectural solutions for the next-generation of network for AI chip and AI Super Pod.
+* Gets strong influences on future AI products by advanced architecture design as the excellent interface between software and hardware.
+* Architecture design of AI chip to chip interconnect subsystem, Scale-up Switch chip, C2C link, and etc.
+* Documents the high-level architecture specification.
+* Participation in defining the micro-architecture of key subsystem.
+* Strong technical leadership to achieve successful delivery of final silicon product.
+* Works closely with design, software, system, and verification team.
+
+【岗位要求】
+* Minimum Bachelor degree in Computer Science or Electronics Engineering; M.S. or Ph.D. degree is preferred.
+* Minimum of 5 years 
+
+================================================================================
+
+【职位编号】: ALI014
+【职位名称】: 平头哥-AI芯片互联架构建模工程师 -上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+In this role, you will work with architect, hardware and software engineering groups to provide accurate performance modeling of the next-generation inter-chip network architecture for high-performance AI chip and AI network.
+
+* Identifies the challenging problems, and evaluate various architectural solutions for the next-generation of network for AI chip and AI Super Pod.
+* Gets strong influences on future AI products by advanced architecture and evaluates the new architecture with performance modeling using C, C++, SystemC or other high level description languages.
+* Provides solid and accurate modeling result and influence the direction of next generation of AI networking.
+* Focus in the domain of AI chip to chip interconnect subsystem, Scale-up Switch chip, C2C link, and etc.
+* Participation in defining the micro-architecture of key subsystem.
+* Works closely with design, software, system, and verification team for the final success of products.
+
+【岗位要求】
+* Minimum Bachelor de
+
+================================================================================
+
+【职位编号】: ALI120
+【职位名称】: 平头哥-AI芯片互联验证专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1、与架构、软件、设计等团队合作构建高端芯片设计验证平台；
+2、负责和参与data-center inter-chip connections的验证TB开发、环境开发、测试向量开发及调试，覆盖率收集及整体DV signoff的流程开发；
+3、负责和参与芯片验证文档的撰写，验证Testbench搭建及实现，Testplan等；
+4、负责和参与验证方法学制定，开发高性能验证架构。
+
+【岗位要求】
+1、电子工程，通讯，计算机专业等优先；
+2、熟悉ASIC芯片设计和验证流程；
+3、熟悉SystemVerilog, Verilog等硬件设计语言；
+4、熟悉UVM验证方法学；
+5、熟悉Linux系统环境，熟悉Python, Shell, Makefile, Perl, Tcl等编程脚本语言；
+6、有芯片互联相关的项目经验；
+7、熟悉PCIe、CCIX、CXL、GENZ标准是加分项；
+8、具备RDMA/RoCE相关验证经验是加分项；
+9、具备Ethernet Switch相关验证经验是加分项；
+10、具备高速PHY接口验证经验是加分项；
+11、富有激情，有创新意识和能力，具有自我驱动和良好的团队合作能力；
+12、良好的沟通和表达能力。
+
+================================================================================
+
+【职位编号】: ALI097
+【职位名称】: 平头哥-AI芯片互联验证高级专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1、与架构、软件、设计等团队合作构建高端芯片设计验证平台；
+2、负责和主导验证方法学和验证策略制定，开发高性能验证架构；
+3、负责和主导数据中心芯片互联验证TB开发、环境开发、测试向量开发及调试，覆盖率收集及整体DV signoff的流程开发；
+4、负责和主导芯片验证文档的撰写，验证Testbench搭建及实现，Testplan等；
+
+【岗位要求】
+1、 电子工程，通讯，计算机专业硕士及以上学历，业界验证领域15年以上相关工作经验；
+2、 精通RDMA协议，有RDMA 产品成功流片和回片测试经验者优先；
+3、 熟悉ASIC芯片设计和验证流程；
+4、 熟悉SystemVerilog, Verilog等硬件设计语言；
+5、 熟悉UVM验证方法学；
+6、 熟悉Linux系统环境，熟悉Python, Shell, Makefile, Perl, Tcl等编程脚本语言；
+7、 有芯片互联相关的项目经验；
+8、 熟悉PCIe、CCIX、CXL、GENZ标准是加分项；
+9、 具备Ethernet Switch相关验证经验是加分项；
+10、具备高速PHY接口验证经验是加分项；
+11、富有激情，有创新意识和能力，具有自我驱动和良好的团队合作能力；
+12、良好的沟通和表达能力。
+
+================================================================================
+
+【职位编号】: ALI118
+【职位名称】: 平头哥-AI芯片低功耗设计专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+As a member of the power team, works with the front-end design team together to deliver the excellent power efficiency product. The responsibility includes (but is not limited to):
+- Identify/optimize RTL design power by workload power simulation and analysis.
+- Co-work with design/verification teams to define and develop different power tests.
+- Low power features development and verification.
+- Delivery different workloads’ power simulation data for IR-drop, PDN and thermal analysis.
+- Define power optimization solution/methodology/flow and drive them into the design.
+
+【岗位要求】
+- +5 years validated experience in RTL design/verification.
+- Experienced in power analysis/optimization at architecture/RTL/block synthesis.
+- Experienced in one or more power features design (like droop-mitigation, peak current control, dynamic frequency scaling, etc…)
+- A strong coding skill in Perl or Python or other script languages and the validated flow development experience.
+- Good understanding 
+
+================================================================================
+
+【职位编号】: ALI116
+【职位名称】: 平头哥-AI芯片验证专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+o 负责和参与平头哥前沿AI芯片的研发
+o 负责和参与AI芯片验证策略制定，验证Testbench架构规划和实现，Testplan撰写和实现等
+o 负责和参与AI 芯片block level, sub-system level, IP level等多层级验证环境的开发、测试向量开发及调试，覆盖率收集等端到端的sign-off 全流程
+o 负责和参与Infrastructure的工具和流程的开发
+
+【岗位要求】
+o 硕士及硕士以上，电子工程，通讯，计算机专业等优先
+o 熟悉ASIC芯片设计和验证流程
+o 精通UVM验证方法学，熟悉SystemVerilog, Verilog等设计验证语言
+o 熟悉自底向上的Testbench的集成，有独立从头开发block, subsystem或IP DV环境的经验有加分
+o 有AI芯片功能验证，功耗验证，性能验证相经验者优先
+o 熟悉Synopsys VCS或Cadence Xcelium等流程和EDA工具的使用，有Cadence TBA或Palladium或PSS经验有加分
+o 熟悉Linux系统环境，熟悉Python, Shell, Makefile, Perl, Ruby, Tcl等编程脚本语言。精通Python语言的优先考虑
+o 有开发过设计/验证类Infrastructure的经验优先考虑并有加分，比如：
+n 有开发代码自动化生成工具的经验，有DSL经验的优先考虑
+n 有开发AI芯片功耗分析，性能分析工具经验
+o 富有激情，有创新意识和能力，具有自我驱动和良好的团队合作能力
+o 良好的沟通和表达能力
+
+================================================================================
+
+【职位编号】: ALI112
+【职位名称】: 平头哥-AI计算加速软件专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1. 设计开发高性能计算加速算法，包括但不限于MoE、Attention、卷积、矩阵乘及相关的融合和量化。
+2. 基于硬件特性进行极致性能分析和优化，制定通用性能调优策略，适配和调优各种主流框架和开源代码。
+3. 深度分析各种实际应用，如生成式AI/大语言模型推理和训练等场景，发明和改进能发挥硬件优势的加速算法。
+4. 和其他团队紧密合作，参与并影响芯片架构、编程模型和软件平台的设计和路线演进。
+
+【岗位要求】
+1. 计算机/电子/数学相关专业硕士及以上学历，3年或以上相关从业经验。
+2. 精通 C/C++，具备出色的程序开发、设计、调试和调优能力。
+3. 精通各种基本算法，对操作系统、计算机体系结构有深入的理解。
+4. 良好的沟通和解决问题能力、时间管理能力、自我驱动能力、英文读写能力。
+5. 满足以下一种或多种条件者从优：
+ꔷ 具备大模型推理或训练相关开源模块的开发经验，如 cutlass、Flash-Attention、FlashInfer、MoE、DeepGemm 等；
+ꔷ 熟悉主流框架，如 Pytorch、Tensorflow、vllm、sglang、TRT-LLM 等；熟悉大语言模型算法，如 LLaMa/Qwen/DeepSeek 等；
+ꔷ 具备坚实的并行编程基础：有 CUDA/OpenCL 相关项目经历；
+ꔷ 参与卷积、矩阵乘、矩阵分解、Normalize 等 AI 相关算子开发调优经验；
+ꔷ 深入参与软件架构设计和优化、性能分析和调优的项目经验；
+ꔷ 对可编程芯片（如 GPU/NPU/TPU/CPU）架构有深入理解，或有对应研发经历；
+ꔷ 对数值计算、线性代数相关算法有深刻的理解；
+
+================================================================================
+
+【职位编号】: ALI053
+【职位名称】: 平头哥-AI计算加速软件专家-上海/杭州
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1. 设计开发高性能计算加速算法，包括但不限于MoE、Attention、卷积、矩阵乘及相关的融合和量化。
+2. 基于硬件特性进行极致性能分析和优化，制定通用性能调优策略，适配和调优各种主流框架和开源代码。
+3. 深度分析各种实际应用，如生成式AI/大语言模型推理和训练等场景，发明和改进能发挥硬件优势的加速算法。
+4. 和其他团队紧密合作，参与并影响芯片架构、编程模型和软件平台的设计和路线演进。
+
+【岗位要求】
+1. 计算机/电子/数学相关专业硕士及以上学历，3年或以上相关从业经验。
+2. 精通 C/C++，具备出色的程序开发、设计、调试和调优能力。
+3. 精通各种基本算法，对操作系统、计算机体系结构有深入的理解。
+4. 良好的沟通和解决问题能力、时间管理能力、自我驱动能力、英文读写能力。
+5. 满足以下一种或多种条件者从优：
+ꔷ 具备大模型推理或训练相关开源模块的开发经验，如 cutlass、Flash-Attention、FlashInfer、MoE、DeepGemm 等；
+ꔷ 熟悉主流框架，如 Pytorch、Tensorflow、vllm、sglang、TRT-LLM 等；熟悉大语言模型算法，如 LLaMa/Qwen/DeepSeek 等；
+ꔷ 具备坚实的并行编程基础：有 CUDA/OpenCL 相关项目经历；
+ꔷ 参与卷积、矩阵乘、矩阵分解、Normalize 等 AI 相关算子开发调优经验；
+ꔷ 深入参与软件架构设计和优化、性能分析和调优的项目经验；
+ꔷ 对可编程芯片（如 GPU/NPU/TPU/CPU）架构有深入理解，或有对应研发经历；
+ꔷ 对数值计算、线性代数相关算法有深刻的理解；
+
+================================================================================
+
+【职位编号】: ALI0264
+【职位名称】: 平头哥-AI计算加速软件专家-北京
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1. 设计开发高性能计算加速算法，包括但不限于MoE、Attention、卷积、矩阵乘及相关的融合和量化。
+2. 基于硬件特性进行极致性能分析和优化，制定通用性能调优策略，适配和调优各种主流框架和开源代码。
+3. 深度分析各种实际应用，如生成式AI/大语言模型推理和训练等场景，发明和改进能发挥硬件优势的加速算法。
+4. 和其他团队紧密合作，参与并影响芯片架构、编程模型和软件平台的设计和路线演进。
+
+【岗位要求】
+1. 计算机/电子/数学相关专业硕士及以上学历，8年或以上相关从业经验。
+2. 精通 C/C++，具备出色的程序开发、设计、调试和调优能力。
+3. 精通各种基本算法，对操作系统、计算机体系结构有深入的理解。
+4. 良好的沟通和解决问题能力、时间管理能力、自我驱动能力、英文读写能力。
+5. 满足以下一种或多种条件者从优：
+ꔷ 具备大模型推理或训练相关开源模块的开发经验，如 cutlass、Flash-Attention、FlashInfer、MoE、DeepGemm 等；
+ꔷ 熟悉主流框架，如 Pytorch、Tensorflow、vllm、sglang、TRT-LLM 等；熟悉大语言模型算法，如 LLaMa/Qwen/DeepSeek 等；
+ꔷ 具备坚实的并行编程基础：有 CUDA/OpenCL 相关项目经历；
+ꔷ 参与卷积、矩阵乘、矩阵分解、Normalize 等 AI 相关算子开发调优经验；
+ꔷ 深入参与软件架构设计和优化、性能分析和调优的项目经验；
+ꔷ 对可编程芯片（如 GPU/NPU/TPU/CPU）架构有深入理解，或有对应研发经历；
+ꔷ 对数值计算、线性代数相关算法有深刻的理解；
+
+================================================================================
+
+【职位编号】: ALI117
+【职位名称】: 平头哥-AI软件架构师-Cmodel-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1、负责自研AI芯片算法和功能行为的设计分析及其CModel开发。
+2、负责CMODEL和驱动的协同开发，以辅助硬件设计验证。
+3、跟RTL团队合作，进行交叉验证。
+1. Design and analyze algorithms and features of AI chip, and develop corresponding behavior and performance model.
+2. Co-work with driver team to verify function and performance of new algorithms and features based on CModel.
+3. Co-work with RTL team, cross-verify the CModel and RTL.
+
+【岗位要求】
+1. 计算机相关专业，3年以上相关工作经验
+2. 熟悉计算机系统体系和架构
+3. 有CPU/DSP/GPU架构设计和它们模拟器开发和性能分析经验者优先考虑。
+4. 熟练掌握C/C++、汇编、等基本技能；
+5. 有独立工作的能力，同时具有很好的团队协作能力与沟通能力。对技术执着，追求卓越品质。
+1. Bachelor and above for CS/EE or related majors. 3+ working experience.
+2. Familiar with compute system architecture
+3. Familiar with CPU/DSP/GPU’s architecture design, and CMODEL’s development as well as the performance profiling is better.
+4. Excellent on C/C++ and familiar with ASM.
+
+================================================================================
+
+【职位编号】: ALI099
+【职位名称】: 平头哥-AI软件测试开发高级技术专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+职位描述：
+作为 AI 软件测试开发高级技术专家，您将参与平头哥 AI 芯片从硅前到硅后的研发过程并推动实现产品化. 您将负责构建高覆盖率的测试体系，确保框架的功能正确性、性能优化和稳定性。
+
+主要职责:
+参与 AI 芯片解决方案的系统测试工作，保证产品的交付质量;
+参与 AI 领域推理框架，模型训练的测试策略，测试方法，测试工具以及测试用例设计。
+参与 AI 领域软件基础框架，算子库，编译的测试策略，测试方法，测试工具以及测试用例设计。
+参与设计、建立以及推动 AI 芯片软件质量持续提升流程。
+与开发团队、项目管理团队一起制定软件需求开发计划，并且制定对应的测试开发计划，
+参与平头哥整体软件质量流程建设，对软件开发的质量进行监控和追踪.
+
+【岗位要求】
+本科及以上学历，计算机科学/电子工程相关专业;
+8年以上软件开发及测试工作经验，有芯片验证相关经验者优先;
+具备较强的debug和问题定位能力;
+具备较强的自动化测试开发能力, 能熟练运用devops工具部署自动化测试;
+有深度学习或高性能计算相关工作经验者优先;
+熟练操作Linux系统，有在unix/Linux环境下工作经验;
+熟练掌握汇编，C/C++, Python, Shell等一种或者多种语言；
+熟悉缺陷管理流程，包括系统性的进行缺陷追踪，分析和定位；
+有实际操作经验使用Gitlab，Github等代码维护工具，和敏捷开发工具
+良好的沟通和合作意识, 具备较强的解决问题的能力。
+
+================================================================================
+
+【职位编号】: ALI0313
+【职位名称】: 平头哥-Thermal Design Engineer-上海
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1. 作为散热解决方案设计师，基于芯片封装解决方案及散热环境开展芯片散热相关仿真评估，并指导芯片功耗设计和封装解决方案设计开展优化迭代，交付有竞争力的散热方案，同时针对芯片周边系统设计和散热环境提供优化建议，甚至散热解决方案，并推动优化措施的落地，保证芯片在系统中的应用。
+2. 负责芯片散热特性的分析及测试验证
+3. 对散热相关材料特性、散热结构开展测试验证，包括材料导热特性、结构界面接触热阻等，为热设计分析提供有效数据支撑
+4. 与业界供应商、研究机构进行互动，跟踪行业趋势，推动新技术研发及应用
+
+【岗位要求】
+1. 材料、动力工程及工程热物理、热能工程等相关专业硕士及以上学历
+2. 必须具备传热学、热力学、材料科学等基础知识
+3. 3年及以上热仿真设计经验，有Ansys、Flotherm等热相关EDA软件使用经验、芯片及电子系统热设计实践经验者优先
+4. 有材料热性能测试及常见散热器机械结构制造经验者优先
+5. 有IC行业经验者优先
+
+================================================================================
+
+【职位编号】: ALI219
+【职位名称】: 平头哥-Thermal Design Engineer-深圳
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位职责】
+1. 作为散热解决方案设计师，基于芯片封装解决方案及散热环境开展芯片散热相关仿真评估，并指导芯片功耗设计和封装解决方案设计开展优化迭代，交付有竞争力的散热方案，同时针对芯片周边系统设计和散热环境提供优化建议，甚至散热解决方案，并推动优化措施的落地，保证芯片在系统中的应用。
+2. 负责芯片散热特性的分析及测试验证
+3. 对散热相关材料特性、散热结构开展测试验证，包括材料导热特性、结构界面接触热阻等，为热设计分析提供有效数据支撑
+4. 与业界供应商、研究机构进行互动，跟踪行业趋势，推动新技术研发及应用
+
+【岗位要求】
+1. 材料、动力工程及工程热物理、热能工程等相关专业硕士及以上学历
+2. 必须具备传热学、热力学、材料科学等基础知识
+3. 3年及以上热仿真设计经验，有Ansys、Flotherm等热相关EDA软件使用经验、芯片及电子系统热设计实践经验者优先
+4. 有材料热性能测试及常见散热器机械结构制造经验者优先
+5. 有IC行业经验者优先
+
+================================================================================
+
+【职位编号】: ALI193
+【职位名称】: 平头哥-合规&法务专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位职责】
+1、对影响芯片行业的国内外重要合规领域法律法规变化、案例进行追踪和分析研究，结合公司实际情况并拉通上下游各业务团队，输出风险预警和应对预案。
+2、独立支持芯片产品的法务工作，为技术与产品研发、销售提供法律合规及风险防范建议。并可领导外部律师完成复杂法律问题的研究分析。
+3、基于公司业务运行架构和模式，识别公司在研发或经营活动中的系统风险，内部拉通各相关方形成解决方案，并在各团队有效落地。
+
+【岗位要求】
+1、法律/法学硕士，且通过司法考试。
+2、5年以上知名律所或芯片企业的出口管制和制裁领域工作经验，其中企业工作经验不少于3年。
+3、在重点合规领域有独立工作能力，掌握治理框架，并有出色的学习/分析能力迅速完成对新规的法律研究、风险预警和应对预案。
+4、拥有较强的跨团队沟通及协作能力，能够作为PM推动合规项目开展和方案落实。
+5、有重大合规事件的应急处置经验者优先。
+6、流利的英文读写与口语沟通能力。
+
+================================================================================
+
+【职位编号】: ALI0259
+【职位名称】: 平头哥-封装工艺工程师-上海
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1. 参与封装方案设计，负责芯片封装方案的DFM落地与竞争力
+Participate in the Chip packaging solution design，and responsible for the DFM implementation and competitiveness of chip packaging solutions
+2. 负责芯片封装相关NPI阶段生产制造及工程工艺质量保障，工艺失效分析及改进措施制定与落地，完成试产到量产的转移
+Responsible for chip packaging related NPI manufacturing and engineering process quality assurance, process failure analysis, process improvement and implementation, and complete the transfer from NPI to SVM and HVM production
+3. 负责芯片新材料、新封装技术应用的开发
+Responsible for the development of new chip materials and new packaging technology applications
+4. 负责定期组织供应商交流，梳理供应商能力，为封装方案设计提供能力支撑
+Responsible for regularly organizing supplier exchanges (e.g. QTR), sorting out supplier capabilities, and providing capability support for packaging solution design
+5. 通过技术维度支持供应链及采购体系维护有竞争力的供应商合作关系
+Support the supply chain and procurement system through the technical dimension to maintain a competitive supplier partnership
+
+【岗位要求】
+1. 电子，材料等相关专业，硕士或以上学历
+Major in electronics, ma
+
+================================================================================
+
+【职位编号】: ALI0306
+【职位名称】: 平头哥-数字电路版图设计专家-上海
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1.负责独立完成标准单元电路包括逻辑门和触发器电路的版图设计。
+2.配合电路工程师完成Memory的子模块和顶层的布局布线和版图设计。
+3.根据foundry提供的design rule完成DRC/LVS/DFM等检查。
+4.优化版图减少寄生RC，并完成EMIR的修改。
+
+【岗位要求】
+1.微电子、计算机、电子工程及相关专业本科以上学历。
+2.三年以上版图设计经验，熟悉CMOS工艺制程。
+3.熟悉Cadence，Synopsys、Mentor等主流版图设计工具。
+4.有Finfet和先进工艺相关版图经验的优先。
+5.工作认真负责、有较强的上进心，具备良好的团队精神及沟通能力。
+
+================================================================================
+
+【职位编号】: ALI0269
+【职位名称】: 平头哥-数字电路版图设计专家-深圳
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1.负责独立完成标准单元电路包括逻辑门和触发器电路的版图设计。
+2.配合电路工程师完成Memory的子模块和顶层的布局布线和版图设计。
+3.根据foundry提供的design rule完成DRC/LVS/DFM等检查。
+4.优化版图减少寄生RC，并完成EMIR的修改。
+
+【岗位要求】
+1.微电子、计算机、电子工程及相关专业本科以上学历。
+2.三年以上版图设计经验，熟悉CMOS工艺制程。
+3.熟悉Cadence，Synopsys、Mentor等主流版图设计工具。
+4.有Finfet和先进工艺相关版图经验的优先。
+5.工作认真负责、有较强的上进心，具备良好的团队精神及沟通能力。
+
+================================================================================
+
+【职位编号】: ALI108
+【职位名称】: 平头哥-服务器AI性能分析优化专家-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+负责以下一个或者多个领域：
+1. 基于平头哥数据中心服务器AI芯片的应用和benchmark的性能分析与优化。
+2. 通过分析包括上层的应用，中间层的框架、库和底层的Linux操作系统、硬件驱动的行为模式，以及竞对的性能表现，识别系统性能瓶颈，明确软硬件的优化方向。
+3. 将识别出的性能瓶颈场景进行简化，实现称为有代表性的perf microbenchmark，作为软硬件优化的输入和用例。
+4. 和软件团队协作，参与软件优化的开发工作，包括但不限于：给出优化方案或建议，提供性能测试用例。
+5. 和AI芯片架构和硬件设计团队协作，将分析中定位到的硬件性能瓶颈问题反馈给硬件团队，提供相应测试用例，为下一代硬件产品的优化提出可行性建议。
+6. 和测试自动化团队合作，建立和完善高效的AI芯片性能测试系统；提高团队内性能测试和回归的工作效率。
+
+【岗位要求】
+1. 熟悉C/C++、汇编语言以及Bash/Python等编程语言。
+2. 对计算机体系结构有深入理解，熟悉GPU并行计算芯片的架构。
+3. 掌握常用的GPU性能分析与优化方法，熟悉性能分析工具，如Nsight，perfetto等。
+4. 了解并行计算体系结构，理解并行计算芯片的原理，具备CUDA/OpenCL并行编程技术的经验。
+5. 拥有强大的学习能力，能够快速掌握和理解复杂问题，条理清晰地组织信息；具备分析与解决AI软硬件全栈问题的能力。
+6. 具备良好的沟通和协调能力，能够跨团队、跨部门有效协作，共同实现产品化目标。
+
+================================================================================
+
+【职位编号】: ALI115
+【职位名称】: 平头哥-深度学习推理引擎研发专家-杭州
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1、参与设计和实现推理引擎SDK，提升推理性能、易用性和产品稳定性。（Design and develop inference engine。Focusing on performance、usability and product robustness）
+2、参与设计和实现推理引擎的AI编译。包括图融合、各类图优化、算子优化以及自动化调优等（Design and develop AI Compiling。including fusion，graph optimizations、kernel optimization and auto-tuning）
+3、参与设计和实现推理引擎的运行时系统。包括内存管理以及资源管理等等。实现高效和稳定的稳定性。（Design and develop runtime system，including memory management and resource management）
+4、参与设计和实现大模型的推理优化。基于推理引擎，研发和应用大模型推理优化的技术（Design and optimize LLM inference。Based on inference engine，develop and apply core technology for LLM inference）
+
+【岗位要求】
+1、 CS/EE相关领域，5+年工作经验(A Masters or higher degree in Computer Engineering, Computer Science, Applied Mathematics or related computing focused degree (or equivalent experience), 5+ years of relevant software development experience)
+2、 熟悉C/C++编程（Excellent C/C++ programming and software design skills, including debugging, performance analysis, and test design）.
+3、 熟悉深度学习框架，如Tensorflow，Pytorch（Familiar with deep learnin
+
+================================================================================
+
+【职位编号】: ALI0524
+【职位名称】: 平头哥-组织人才发展专家-上海
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+1、负责HR领域的数据分析，使用技术手段对HR数据进行系统化梳理；通过数字化帮助识别问题，通过工具化提升HR工作效率。
+2、参与HR领域AI应用能力建设，例如在招聘匹配、人才盘点、技能发展、知识管理等场景，将业务问题抽象为算法任务，以创新的思路解决业务问题，提升组织运行效率。
+3、参与HR领域AI系统能力建设，包括需求分析、技术评审，以及编码开发和系统功能实现，保证HR产品能力迭代和交付。
+
+【岗位要求】
+1、计算机科学、软件工程、人工智能、数学、统计学等相关专业，本科及以上学历；具备从业务需求抽象到工具设计、工程实现及线上运维的完整闭环能力
+2、沟通表达和合作协同能力强
+3、有HR领域AI应用经验优先
+
+================================================================================
+
+【职位编号】: ALI233
+【职位名称】: 平头哥-编译器技术专家-AI软件-上海/北京/杭州
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位职责】
+1、参与人工智能芯片的软硬件协同设计，指令集功能验证；
+2、参与人工智能芯片的编译器算法设计和实现, 工具链开发与维护，网络模型的性能调优；
+3、参与深度学习软件栈的设计和实现；
+
+1. Working closely with hardware/architecture engineering and software teams to understand the hardware and software requirements.
+2. Responsible for compiler and tool chain design, implementation, maintaining and performance tuning.
+3. Responsible for the design and implementation of deep learning software stack.
+
+【岗位要求】
+1. 熟练掌握C/C++/Python等编程技能，有扎实的编程基础、良好的编程风格和工作习惯；
+2. 熟悉编译原理和算法实现，二年及以上编译器开发经验；
+3. 对机器学习算法/深度学习有一定了解尤佳；
+4. 有GCC、LLVM和Open64等开源编译器相关开发经验尤佳；
+5. 有CUDA/OpenCL/汇编级优化经验尤佳;
+6. 有深度学习相关框架中如Caffe/Tensorflow/PyTorch/MXNet等图优化开发经验尤佳；
+7. 有计算机体系结构背景，熟悉芯片架构/微架构（包括CPU/GPU/SoC/FPGA), 有软硬件协同设计经验尤佳；
+8. 具有独立解决问题的能力，良好的团队合作意识和沟通能力；
+
+Requirements:
+1. Strong C/C++/Python programming skills and solid knowledge of data structure and algorithm.
+2. Familiarity with compiler theory, and experience on compiler development at least two year
+3. Familiarity with machine learning or deep learning is a good 
+
+================================================================================
+
+【职位编号】: ALI101
+【职位名称】: 平头哥-融合计算技术专家-杭州
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+职位描述
+1. 紧跟学界业界新技术动态，设计开发高性能计算加速软件，包括但不限于注意力机制性能优化、大模型推理量化技术开发；
+2. 针对大语言模型、视频生成模型训练、推理场景，结合自研处理器芯片基于硬件特性进行极致性能优化，为通用+并行融合计算技术提供应用、算法和系统级软件优化；
+3. 和其他团队紧密合作，参与融合计算技术硅前应用场景性能分析，并影响芯片架构、编程模型和软件平台的设计和路线演进；
+
+【岗位要求】
+职位要求
+1. 计算机/电子/数学相关专业硕士及以上学历，5年或以上相关从业经验；
+2. 具备坚实的计算编程基础：有c++/CUDA相关开发经验；
+3. 精通各种基本算法，对操作系统、计算机体系结构有深入的认识。
+4. 良好的沟通和解决问题能力、时间管理能力、自我驱动能力、英文读写能力。
+5. 满足以下一种或多种条件者从优：
+- 具备大模型相关量化算法开发和落地经验；
+- 熟悉程序指令流切片技术；
+- 熟悉常见的深度学习模型和框架；
+- 对ARM处理器及可编程并行计算芯片（如GPU/NPU/TPU）架构有深入理解，或有对应研发经历；
+
+================================================================================
+
+【职位编号】: ALI022
+【职位名称】: 平头哥-资深AI芯片互联架构师-上海
+【所在部门】: None
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+In this role, you will work with hardware and software engineering groups to define the next-generation inter-chip network architecture for high-performance AI chip and AI network.
+* Identifies the challenging problems, and evaluate various architectural solutions for the next-generation of network for AI chip and AI Super Pod.
+* Gets strong influences on future AI products by advanced architecture design as the excellent interface between software and hardware.
+* Leads architecture design of AI chip to chip interconnect subsystem, Scale-up Switch chip, C2C link, and etc.
+* Documents the high-level architecture specification.
+* Participation in defining the micro-architecture of key subsystem.
+* Strong technical leadership to achieve successful delivery of final silicon product.
+* Works closely with design, software, system, and verification team.
+
+【岗位要求】
+* Minimum Bachelor degree in Computer Science or Electronics Engineering; M.S. or Ph.D. degree is preferred.
+* Minimum of 12 
+
+================================================================================
+
+【职位编号】: ALI0562
+【职位名称】: 平头哥-软件解决方案定制团队leader-上海
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+职位概述：
+作为平头哥数据中心产品线软件解决方案定制团队leader，负责管理软件解决方案定制团队，为终端客户提供高水平的技术支持与解决方案，确保客户在使用平头哥数据中心产品及相关技术时获得最佳体验。 与客户建立紧密关系，推动客户满意度，并协调跨部门合作以解决复杂的技术问题。
+
+主要职责：
+客户反馈与改进：收集客户的需求和反馈，分析趋势，向产品管理和研发团队提供改进建议，推动产品优化。
+客户技术支持：直接与广大客户联系，能够高效复现客户侧的技术问题，提供专业的技术建议和解决方案。
+问题处理和协调：确保快速响应客户的技术咨询，协调内部资源以达成客户满意的解决方案。
+技术支持文档：负责客户支持技术文档的撰写、验证和发布，确保用户能够更加便利地使用产品。
+团队管理：领导并激励团队，制定培训计划，提升团队的技术能力和服务质量，建立一支技术能力强的团队。
+
+【岗位要求】
+任职要求：
+1. 学历：计算机科学、电子工程、人工智能或相关领域的学士或硕士学位。
+2. 经验：5 年以上数据中心AI软件领域研发或技术支持经验， 3 年以上团队管理经验。
+3. 技术能力：
+- 要求技术面广，熟悉数据中心AI芯片软件在 AI 训练、推理等各类技术领域的应用。
+- 理解并行计算编程模型（如CUDA、OpenCL）及并行计算架构。
+- 对 AI 软件框架（如TensorFlow、PyTorch、VLLM、TensorRT）、加速库（cudnn、cublas等）、互联库（NCCL）等技术有较好的理解。
+- 具备极强的分析和解决问题的能力，能够快速定位各种 AI 软件在自家芯片上运行的各种技术问题：如模型精度问题、稳定性问题、应用运行奔溃问题等。
+- 具备较好的软件性能分析和定位能力，熟悉常见的性能分析工具（Vtune、perf、nsight system、nsight compute 等），理解 CPU、AI 软件性能分析和优化策略，如内存管理、事务并发性等。
+4. 管理与沟通能力：
+- 优秀的领导能力和团队管理经验，能够激励和发展团队成员。
+- 出色的客户沟通能力，能够清晰且有效地解释技术问题，并与客户建立信任关系。
+- 良好的跨团队协作能力，跟软件研发部门保持良好的协作关系，一起推动客户技术问题的快速解决。
+5.问题解决能力：具备独立分析和解决复杂问题的能力，并能够协调
+
+================================================================================
+
+【职位编号】: ALI0563
+【职位名称】: 平头哥-软件解决方案定制工程师-上海/杭州
+【所在部门】: 
+【所在团队】: None
+【原始JD文本】:
+【岗位描述】
+职位概述：
+作为平头哥数据中心产品线软件解决方案定制工程师，主要负责为终端客户提供高水平的技术支持与软件解决方案，确保客户在使用平头哥数据中心产品及相关技术时获得最佳体验。 与客户建立紧密关系，推动客户满意度，并协调跨部门合作以解决复杂的技术问题。
+
+主要职责：
+• 协助客户完成技术评估和项目导入，解决客户AI芯片落地过程中相关问题，并能指导客户进行系统性调优，确保产品在客户业务场景中顺利落地。
+• 收集并分析客户需求，并总结前代产品落地过程中遇到的各种问题将其转化为产品改进建议，与产品和研发团队合作推动产品升级。
+• 跟研发工程师完成项目相关技术文档的撰写工作。
+
+【岗位要求】
+任职要求：
+1. 学历：计算机科学、电子工程、人工智能或相关领域的学士或硕士学位。
+2. 经验：5 年以上数据中心AI软件领域研发或技术支持经验。
+
+专业技能:
+1.掌握 并行计算架构及其基本原理。
+2.掌握 Python、C/C++、CUDA 等编程语言，最好能够编写高性能的并行计算程序。
+3.熟悉常见的 AI 训练和推理软件框架，如 Megatron、Deepspeed、TensorFlow、PyTorch、vllm、sglang 等。
+4.对常见的AI算法模型有不错的理解，如 CV、NLP、搜素推荐类、LLM 等，对各类算法模型的精度、性能测评方法有实际经验。
+5.具备优秀的 Linux 系统调试和解决问题的能力，熟练掌握gdb、cuda-gdb的使用。
+6.具备良好的AI软件性能分析方法，具有使用VTune、Perf、Nsight System/Compute等系列性能分析工具的使用经验。
+7.熟悉GPU卡间互联拓扑结构，对类似 NCCL 互联库有一定的研究。
+8.对网络配置（如 TCP/IP、SNMP）和分布式系统有基本的了解。
+9.具备优秀的技术文档撰写能力，能够根据客户需求发布Application Notes等。
+
+客户服务技能:
+1. 优秀的沟通能力，能够清晰地理解客户的技术需求和技术问题，善于总结归纳客户状态。
+2. 能够跨部门协调研发团队，及时处理客户的技术咨询和问题，并提供使其满意的解决方案。
+
+================================================================================
+

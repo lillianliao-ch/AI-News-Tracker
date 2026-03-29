@@ -1,0 +1,797 @@
+# CANDIDATE BATCH 10
+
+========================================
+Candidate ID: 21314
+Name Mask: *天蒲
+Current Title/Company: 资深策略工程师 T6 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u8d44\u6df1\u7b56\u7565\u5de5\u7a0b\u5e08 T6", "time": "2014/8 ~ 2023/3.31", "description": "\u8d1f\u8d23\u641c\u7d22\u70ed\u8bae\u4ea7\u54c1\u6574\u4f53\u6ee1\u610f\u5ea6\u548c\u8986\u76d6\u5ea6\u7684\u63d0\u5347\uff0c\u5305\u62ec\u534f\u8c03\u4ea7\u54c1\u7ecf\u7406\u5bf9\u9f50\u6307\u6807\u3001\u4f18\u5316\u8bc4\u4f30\u5236\u5ea6\u3001\u6307\u5bfc\u6570\u636e\u6807\u6ce8\u3001\u7b56\u7565\u548c\u914d\u5957\u5de5\u7a0b\u8fed\u4ee3\u5de5\u4f5c\uff1b\u91c7\u7528\u5bf9\u6bd4\u5b66\u4e60\u8303\u5f0f\u8fdb\u884c\u5927\u89c4\u6a21\u81ea\u76d1\u7763\u9884\u8bad\u7ec3\uff1bquery-doc\u7684\u76f8\u5173\u6027\u8ba1\u7b97\uff1b\u7ed3\u5408\u591a\u79cd\u7279\u5f81\u4f18\u5316\u7cbe\u6392\u6a21\u578b\u7b49\u3002"}, {"company": "\u767e\u5ea6", "title": "\u63a8\u8350\u7b56\u7565\u90e8", "time": "2016/4 ~ 2019/7", "description": "\u8d1f\u8d23\u63a8\u8350\u7cfb\u7edfDoc\u4fa7\u5185\u5bb9\u7406\u89e3\u90e8\u5206\u7684\u7b56\u7565\u8fed\u4ee3\uff0c\u5305\u62ec\u6587\u672c\u5206\u7c7b\u3001TAG\u62bd\u53d6\u3001\u5185\u5bb9\u8d28\u91cf\u5206\u6863\u3001\u4f4e\u8d28\u8bc6\u522b\u7b49\uff1b\u53c2\u4e0e\u56fe\u7247\u3001\u89c6\u9891\u7684\u57fa\u7840\u7279\u5f81\u5efa\u8bbe\uff1b\u8d1f\u8d23\u5efa\u8bbe\u63a8\u8350\u7cfb\u7edf\u5728\u7ebf\u90e8\u5206\u7684\u65b0\u8d44\u6e90\u66dd\u5149\u961f\u5217\u3002"}, {"company": "\u767e\u5ea6", "title": "\u4e92\u8054\u7f51\u6570\u636e\u7814\u53d1\u90e8", "time": "2014/8 \u2013 2016/4", "description": "\u8d1f\u8d23\u5b9e\u4f53\u3001\u5b9e\u4f53\u5173\u7cfb\u62bd\u53d6\u7b49\u77e5\u8bc6\u56fe\u8c31\u6570\u636e\u5efa\u8bbe\u5de5\u4f5c\uff0c\u5305\u62ec\u4ece\u7ed3\u6784\u5316\u6570\u636e\u4e2d\u62bd\u53d6\u5b9e\u4f53\u3001\u5b9e\u4f53\u5173\u7cfb\uff1b\u68b3\u7406\u767e\u5ea6\u77e5\u8bc6\u56fe\u8c31\u80fd\u529b\uff0c\u89c4\u5212\u5b9e\u65f6\u4eba\u7269\u5173\u7cfb\u56fe\u8c31\u3002"}, {"company": "\u5f53\u5f53\u7f51", "title": "\u793e\u533a\u3001\u5546\u54c1\u8bc4\u8bba\u7cfb\u7edf\u8d1f\u8d23\u4eba", "time": "2011/9 - 2014/8", "description": "\u8d1f\u8d23\u6539\u8fdb\u5f53\u5f53\u7f51\u793e\u533a\u3001\u5546\u54c1\u8bc4\u8bba\u7cfb\u7edf\uff0c\u5305\u62ec\u5546\u54c1\u8be6\u60c5\u9875\u6539\u9020\u3001\u641c\u7d22\u5f15\u64ce\u4f18\u5316\u3001\u5546\u54c1\u8bc4\u8bba\u7cfb\u7edf\u5de5\u7a0b\u8fed\u4ee3\u5347\u7ea7\uff1b\u5229\u7528\u8d1d\u53f6\u65af\u8fc7\u6ee4\u81ea\u52a8\u9274\u522b\u4f4e\u8d28\u8bc4\u8bba\uff1b\u5229\u7528tf-idf,\u4f59\u5f26\u76f8\u4f3c\u6027\u63d0\u9ad8\u4e3b\u9898\u76f8\u5173\u3001\u4ef7\u503c\u5ea6\u9ad8\u7684\u8bc4\u8bba\u5f97\u5206\u3002"}, {"company": "\u827a\u9f99\u65c5\u884c\u7f51", "title": "\u9152\u5e97\u7f51\u7ad9\u7cfb\u7edf\u5f00\u53d1", "time": "2006/9 \u2013 2011/9", "description": "\u65e9\u671f\u53c2\u4e0e\u827a\u9f99\u65c5\u884c\u7f51\u9152\u5e97\u7f51\u7ad9\u7cfb\u7edf\u7684\u5f00\u53d1\uff0c\u540e\u671f\u8d1f\u8d23\u5efa\u7acb\u7f51\u7ad9\u7684\u65e5\u5fd7\u6253\u70b9\u3001\u6570\u636e\u7edf\u8ba1\u5206\u6790\u3001SEM/SEO\u7cfb\u7edf\uff1b\u8bbe\u8ba1\u5f00\u53d1\u4e1a\u52a1\u5173\u952e\u6307\u6807\u62a5\u8868\uff0c\u5b9e\u73b0\u65e5\u5e38\u62a5\u8868\u81ea\u52a8\u5316\uff1b\u8bbe\u8ba1\u5f00\u53d1SEM\u7cfb\u7edf\u7ba1\u7406\u5de5\u5177\u548cSEO\u8f85\u52a9\u7ba1\u7406\u5de5\u5177\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[]
+
+=== RAW RESUME EXTRACT ===
+姓名：高天蒲 手机：13811897509 微信:gaotianpu
+邮箱：gaotianpu@hotmail.com
+个人知识库： https://gitee.com/gaotianpu/antiai/blob/master/README.md
+专业技能：
+1. 扎实的深度学习理论基础，熟悉掌握前沿技术；
+a. 深度学习基础原理：全连接、各类激活函数、归一化、初始化策略、各种损失
+函数、优化算法、残差连接思想、正则化策略等；
+b. 各类机器学习模型架构：SVM/GBDT/MLP, RNN,CNN,Transfomers等；
+c. 自监督预训练范式：文本\图像\多模态的掩码自动编码、生成式自回归、对比
+学习等；
+d. 各 种 下 游 任 务 的 微 调 、 提 示 学 习 、 基 于 人 类 反 馈 的 意 图 对 齐
+(chatGPT,SegmentAnything)等；
+2. 丰富的推荐/搜索引擎策略经验；
+a.基于深度学习的实体\实体关系抽取、文本分类、质量分档、q-doc相关性分档、
+图像视觉信息提取等
+b.基于 term，语义向量的 doc召回策略；pair-wise,list-wise的搜索排序策略；
+3. 丰富的工程实践经验；
+a.推荐/搜索离线数据流式处理流程；在线日志打点、点调数据收拢清洗，训练数
+据准备、人工数据标注管理等；
+b.深度学习模型的改进、训练、蒸馏、部署、调用等；
+c.数据仓库，hadoop/spark、网络爬虫、高并发在线模型应用程序开发部署等；工作经历 ：
+2014/8 ~ 2023/3.31 百度(资深策略工程师 T6)
+2019/7 ~2023/3 百度搜索策略部
+主要负责搜索热议产品整体满意度和覆盖度的提升，包括：
+1. 协调产品经理对齐热议产品的各项指标，细化评估标准，优化完善评估制度，
+指导数据标注、策略和配套工程迭代工作；
+2. 参考 OpenAI 的 cpt-txt 论文，采用对比学习范式，将相邻的两段文本作为
+正样本，随机采样非相邻的两段文本作为负样本，基于 Ernie模型(类似 BERT)，
+进行大规模的自监督预训练；在此基础上，收集点展日志，展现量>100,点击
+率>0.7%的 query-doc为正样本，全局范围内采样负样本，同样基于双塔模型
+进行弱监督训练；针对稀缺、困难 cases，基于少量人工标注样本微调，产出最
+终的文本表示模型，得到 query 和 doc侧的向量表示；
+3. query-doc的相关性计算， 一种term召回， 在线实时获取的query侧向量 和
+离线写入的 doc 向量做相似度判定；另一种建立语义召回索引库，直接通过语
+义召回相关 doc。
+4. 结合相关性得分、内容质量分档、权威性、时效性、丰富度、评论点赞数、
+历史点击率等特征，使用 GBDT, 优化精排模型，产出最终排序输出。（GBDT
+可改造为 dnn 模型，在基于点调的大规模弱监督的基础上上，用少量人工标注
+的微调方式效果可能还有提升)
+5. 其他策略模型：Query 理解(需求等级(强中弱无)识别、时效性等级(突发、高
+时鲜、普通))；用于统计分析的中间特征，如内一二级分类、内容质量分档等)2016/4 ~ 2019/7 百度-推荐策略部
+主要负责推荐系统 Doc侧内容理解部分的策略迭代：
+1. 在 NLP 部分提供的 Ernie 基础上，改造模型，协调训练数据的标注，完成
+文本的一二级分类、TAG抽取、内容质量分档、低质识别专项(题文不符、水文、
+东拼西凑)等策略迭代升级，为在线推荐策略提供高质量的基础特征。
+2. 参与图片、视频的基础特征建设，包括图片视频分类、低质识别，视频内容
+抽取，为视频指纹去重策略提供基础的数据预处理工作。
+3. 负责建设推荐系统在线部分的新资源曝光队列： 基于 ctr预估策略，召回高质
+量单位时间内未充分展现资源，建立后验信号实时收集通路，基于实时后验数据
+为新资源获取更多的曝光数据，为后续其他推荐策略提供成分后验信号。
+2014/8 – 2016/4 百度-互联网数据研发部
+主要负责实体、实体关系抽取等知识图谱数据建设工作
+1. 从各站点结构化数据中抽取实体(名称、类型等)、实体关系；
+2. 从文本中抽取实体、实体关系；
+3. 梳理百度知识图谱能力，规划实时人物关系图谱，基于知识图谱对外输出精准问答，
+多答案问答产品形态；
+2011/9 - 2014/8 当当网
+负责改进当当网社区、商品评论系统：
+1.早期负责当当网商品详情页的改造，重点关注搜索引擎优化效果，后期负责当当网商
+品评论系统工程方面的迭代升级；2.利用贝叶斯过滤，利用过往用户提交内容数据进行智能训练，达到自动鉴别低质评论
+的功能
+3.利用 tf-idf,余弦相似性，把主题相关、价值度高的评论得分提高，方便用户查看商品
+评论
+2006/9 – 2011/9 艺龙旅行网
+早期主要参与艺龙旅行网酒店网站系统的开发，后期负责建立网站的日志打点、数据统
+计分析、SEM/SEO系统；
+1. 酒店系统的开发迭代，后期重点在网站日志打点、数据收集清洗、数据仓库建设，
+营销数据整合、前端用户行为数据，后端商业财务数据；设计开发设计开发业务关
+键指标报表，实现日常报表自动化。
+2. 结合用户在网站浏览行为，最终预订数据等，设计开发 SEM系统管理工具，实现
+在各大搜索引擎平台上关键词投放；
+3. 设计开发SEO辅助管理工具，实现 SEO关键指标可数据支持
+教育经历：
+2000 ~ 2004 郑州大学 数学系 信息与计算科学专业
+
+========================================
+
+========================================
+Candidate ID: 21352
+Name Mask: *全昌
+Current Title/Company: 量化, 负责模型相关工作 @ 跟朋友一起创业
+
+=== WORK EXPERIENCES ===
+[{"company": "\u8ddf\u670b\u53cb\u4e00\u8d77\u521b\u4e1a", "title": "\u91cf\u5316, \u8d1f\u8d23\u6a21\u578b\u76f8\u5173\u5de5\u4f5c", "time": "2025\u5e741\u6708-\u81f3\u4eca", "description": "\u8d1f\u8d23\u91cf\u5316\u6a21\u578b\u76f8\u5173\u5de5\u4f5c"}, {"company": "\u767e\u5ea6\u65f6\u4ee3(\u5317\u4eac)\u6709\u9650\u516c\u53f8", "title": "\u51e4\u5de2\u6a21\u578b\u8d1f\u8d23\u4eba", "time": "2020.09-2025.01", "description": "\u8d1f\u8d23\u5546\u4e1a\u6392\u5e8f\u6a21\u578b\u7b56\u7565\uff0c\u5782\u7c7b\u6d41\u91cf\u6574\u4f53\u53d8\u73b0\u6280\u672f\uff0c\u65e5\u6536\u5165\u63d0\u5347600w+\uff1b\u5e26\u9886\u56e2\u961f\u83b7\u5f97\u767e\u5ea6\u6700\u9ad8\u5956"}, {"company": "\u817e\u8baf\u79d1\u6280(\u5317\u4eac)\u6709\u9650\u516c\u53f8-AMS", "title": "\u7b56\u7565\u4e13\u5bb6", "time": "2017.09-2020.08", "description": "\u8d1f\u8d23\u5e7f\u70b9\u901aCVR\u7cbe\u6392\u6a21\u578b\u7b97\u6cd5\u7b56\u7565\uff0c\u5b9e\u73b0\u5927\u89c4\u6a21\u79bb\u6563DNN\u6846\u67b6\uff0c\u7ebf\u4e0a\u9884\u4f30\u670d\u52a1"}, {"company": "\u7f51\u6613\u65b0\u95fb", "title": "\u63a8\u8350\u7b97\u6cd5\u4e13\u5bb6", "time": "2016.10-2017.09", "description": "\u672a\u77e5"}, {"company": "\u767e\u5ea6\u7814\u7a76\u9662-\u5927\u6570\u636e\u5b9e\u9a8c\u5ba4", "title": "\u7814\u7a76\u5458", "time": "2014.12-2016.10", "description": "\u8d1f\u8d23\u5b9e\u9a8c\u5ba4\u673a\u5668\u5b66\u4e60\u5e73\u53f0\u5efa\u8bbe\uff0c\u5305\u62ecDNN\u3001FM\u7b49\u6a21\u578b\uff0c\u63a8\u5e7f\u5230\u516c\u53f8\u6838\u5fc3\u4e1a\u52a1\u7ebf"}, {"company": "\u963f\u91cc\u5df4\u5df4-\u76f4\u901a\u8f66\u641c\u7d22\u5e7f\u544a", "title": "\u5de5\u7a0b\u5e08", "time": "2013.11-2014.12", "description": "\u8d1f\u8d23\u5927\u89c4\u6a21\u79bb\u6563\u6a21\u578b\u5efa\u8bbe\uff0c\u652f\u6301\u767e\u4ebf\u4ee5\u4e0a\u79bb\u6563\u7279\u5f81\u8bad\u7ec3\uff0cCTR\u7279\u5f81\u9009\u62e9\u548c\u7b97\u6cd5\u4f18\u5316"}, {"company": "\u817e\u8baf\u79d1\u6280(\u5317\u4eac)\u6709\u9650\u516c\u53f8\u2014\u641c\u7d22\u5e7f\u544a\u5e73\u53f0\u90e8\u95e8", "title": "\u5de5\u7a0b\u5e08", "time": "2011.06-2013.06", "description": "\u53c2\u4e0e\u641c\u7d22\u5e7f\u544a\u3001\u8054\u76df\u5e7f\u544aCTR\u7684\u7279\u5f81\u548c\u7b97\u6cd5\u4f18\u5316\uff0c\u8d1f\u8d23CTR\u8bad\u7ec3\u7cfb\u7edf\u3001\u7ebf\u4e0b\u7279\u5f81\u62bd\u53d6\u5e73\u53f0"}]
+
+=== PROJECT EXPERIENCES ===
+[]
+
+=== RAW RESUME EXTRACT ===
+推荐理由
+人选985本硕，百度凤巢模型负责人（T9+），负责50+团队，在百度期间将大模型推荐成功落地
+到百度广告业务。有推荐业务工作经验。
+姓名:祁全昌
+性别:男
+出生日期:1988.06
+所在地:北京
+期望城市:北京
+教育经历
+2010年9月-2012年7月南京大学计算机科学与技术
+2008年9月-2012年7月南京大学计算机科学与技术
+2025年1月-至今跟朋友一起创业,做量化,负责模型相关工作。
+2020.09-2025.01百度时代(北京)有限公司
+1.横向技术-商业排序模型策略(搜索+信息流+垂类)x(CTR+CVR)x行业2.纵向业务-垂类(健康
+、知识、小说、贴吧等)流量整体变现技术,日收入提升600w+
+3.2022年带领模型团队获得2021-2022年度百度最高奖(全公司3个团队)
+4.绩效:2021M+(top3ofT9),2022E(top1ofT9)
+2017.09-2020.08腾讯科技(北京)有限公司-AMS
+1.策略:负责广点通CVR精排模型算法策略,oCPA广告从千万/天增涨到亿/天
+2.工程:实现了公司第一个大规模离散DNN框架(获得公司技术突破奖),同期负责线上预估服务3.
+绩效:2019年春季晋升T4.1专家
+2016.10-2017.09网易新闻推荐算法专家
+2014.12-2016.10百度研究院-大数据实验室
+1.负责实验室机器学习平台建设,包括DNN、FM等模型,并推广到公司核心业务线
+2.凤巢:局部个性化特征和序列建模;实现大规模DNN训练框架,大部分代码融入abacus
+2013.11-2014.12阿里巴巴-直通车搜索广告
+1.大规模离散模型建设,集团第一个大规模离散LR,支持百亿以上离散特征训练
+2.CTR特征选择和算法优化
+2011.06-2013.06腾讯科技(北京)有限公司—搜索广告平台部门
+1.策略:先后参与搜索广告、联盟广告CTR的特征和算法优化
+2.工程:负责CTR训练系统、线下特征抽取平台;参与并实现了联盟广告的线上预估系统
+3.绩效:实习期间(top1/16个实习生),工作期间S(top1/19正式员工)
+
+========================================
+
+========================================
+Candidate ID: 21380
+Name Mask: *敬源
+Current Title/Company: 商业信用 产品经理 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u5546\u4e1a\u4fe1\u7528 \u4ea7\u54c1\u7ecf\u7406", "time": "2015/07 \uff0d\u81f3\u4eca", "description": "\u901a\u8fc7\u5e73\u53f0\u5546\u5bb6\u8d44\u8d28\u3001\u5916\u90e8\u673a\u6784\u5408\u4f5c\u3001\u652f\u4ed8\u4ea4\u6613\u573a\u666f\u7b49\u6570\u636e\u6e90\u4e3a\u5546\u5bb6\u63d0\u4f9b\u5e73\u53f0\u8ba4\u8bc1\u548c\u4fe1\u8a89\u8bc4\u7ea7\uff1b\u8bbe\u8ba1\u589e\u503c\u4e1a\u52a1\u4ea7\u54c1\u5982\u7cef\u7c73\u670d\u52a1\u751f\u6001\u548c\u641c\u7d22\u5185\u5bb9\u751f\u6001\u3002"}, {"company": "\u4eac\u4e1c\u91d1\u878d", "title": "\u4eac\u4e1c\u767d\u6761 1.0-2.0\u4ea7\u54c1\u7ecf\u7406 \u6821\u56ed\u767d\u6761\u4ea7\u54c1\u8d1f\u8d23\u4eba", "time": "2013/09 \uff0d2015/06", "description": "\u8d1f\u8d23\u4eac\u4e1c\u767d\u6761\u4ea7\u54c1\u8bbe\u8ba1\uff0c\u5305\u62ec\u5efa\u7acb\u4fe1\u7528\u8d26\u6237\u3001\u5f00\u53d1\u4fe1\u8d37\u6838\u5fc3\u7cfb\u7edf\u7b49\uff1b\u8d1f\u8d23\u6821\u56ed\u767d\u6761\u4ea7\u54c1\u8bbe\u8ba1\u3001\u7ebf\u4e0b\u63a8\u5e7f\u3001\u65b0\u5a92\u4f53\u8fd0\u8425\u7b49\u3002"}, {"company": "\u4e2d\u56fd\u5149\u5927\u94f6\u884c\u80a1\u4efd\u6709\u9650\u516c\u53f8", "title": "\u7528\u6237\u4f53\u9a8c\u5c97", "time": "2009/09 -2013/07", "description": "\u8fdb\u884c\u4ea7\u54c1\u4f53\u9a8c\u5206\u6790\u548c\u6570\u636e\u5206\u6790\uff0c\u7ef4\u62a4\u65e5\u5e38\u62a5\u8868\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u4fe1\u7528\u4e2d\u56fd", "role": "\u4ea7\u54c1\u7ecf\u7406", "time": "2016/02 -\u81f3\u4eca", "description": "\u8d1f\u8d23\u534f\u8c03GR\uff08\u653f\u5e9c\u5408\u4f5c\uff09\u3001\u6cd5\u52a1\u3001\u8fd0\u8425\u7ba1\u7406\u3001\u7814\u53d1\u3001UED\u3001BI\u7b49\u90e8\u95e8\u5b8c\u6210\u4ea7\u54c1\u8bbe\u8ba1\u3001\u5f00\u53d1\u3001\u8fd0\u8425\u7ba1\u7406\uff0c\u8fbe\u6210\u5546\u4e1a\u76ee\u6807\u3002"}, {"name": "\u6821\u56ed\u767d\u6761", "role": "\u4ea7\u54c1\u8d1f\u8d23\u4eba", "time": "2014/12 -2015/6", "description": "\u8d1f\u8d23\u4ea7\u54c1\u3001\u5b9a\u4ef7\u7b56\u7565\u3001\u8d37\u540e\u7ba1\u7406\u3001\u7528\u6237\u5206\u6790\u3001\u5916\u90e8\u5408\u4f5c\u7b49\u3002"}, {"name": "\u4eac\u4e1c\u767d\u6761", "role": "\u4ea7\u54c1\u7ecf\u7406", "time": "2013/09 -2014/12", "description": "\u8d1f\u8d23\u4ea7\u54c1\u8bbe\u8ba1\uff0c\u5305\u62ec\u53c2\u4e0e\u98ce\u63a7\u6a21\u578b\u3001\u8fd0\u8425\u540e\u53f0\u7edf\u8ba1\u5b57\u6bb5\u5b9a\u5236\u3001\u4ea4\u6613\u76d1\u63a7\u3001\u5e02\u573a\u63a8\u5e7f\u7b49\u3002"}, {"name": "\u624b\u673a\u94f6\u884c APP", "role": "\u7528\u6237\u7814\u7a76", "time": "2012/06 -2013/8", "description": "\u8fdb\u884c\u4ea7\u54c1\u4f53\u9a8c\u548c\u6d4b\u8bd5\uff0c\u63d0\u51fa\u4f18\u5316\u5efa\u8bae\uff0c\u7edf\u8ba1\u4ea7\u54c1\u4f7f\u7528\u6570\u636e\uff0c\u64b0\u5199\u7528\u7814\u62a5\u544a\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+  个人简历  
+关敬源  
+男｜未婚｜ 30岁｜户口：北京  
+7年以上工作经验  
+18600122395      
+E-mail: 23614772@ qq.com  
+目前公司： 百度         目前职位： 商业信用 产品经理  
+   
+  工作经验  
+2015/07 －至今        百度  
+金融/互联网 /电子 商务 | 公司 性质：上市公司  
+产品经理         
+工作地点：北京｜所在部门： 商业 信用 平台 部 | 汇报 对象： 部门总监  |下属人数： 2人 
+工作职责：  
+1. 百度平台商家认证和信誉评级：通过平台商家资质、外部机构合作、支付交易场景等数据源为商家提供平台认
+证和信誉评级。  
+2. 增值业务产品设计 ：糯米 服务生态（糯米 卡、糯米白条、糯米户外险 ）， 搜索 内容生态（搜索 官网认证、承诺
+保障、消费预警 ） 
+ 
+2013/09 －2015/06      京东金融   
+金融 ／移动互联网／电子商务  ｜企业性质：上市公司   
+京东白条 1.0-2.0产品经理   校园白条产品负责人         
+工作地点：北京｜ 所在部门：消费金融｜  汇报对象：部门总监｜  下属人数： 3人 
+工作职责：  
+京东白条产品设计 ：建立 信用账户、 开发 信贷核心系统（ 计息 结算、风险审批、账户监控、贷后 管理 ）、透支 交
+易、分期、定价 &推广 。 
+校园白条产品负责人：产品设计、线下推广、新媒体运营、外部资源合作扩展（ EMS 邮寄录取通知书、饿了么、
+友宝、易到送回家等）   
+工作业绩：  
+京东消费金融白条产品负责人，负责产品规划、项目管理。产品上线 1年用户破百万；  
+消费金融垂直领域校园白条产品负责人，负责产品规划、风险设计以及搭建用户支付场景。  
+ 
+2009/09 -2013/07    中国光大银行股份有限公司   
+银行 ｜企业性质：国企   
+用户体验岗  
+工作地点：北京 | 下属人数： 0人  
+2 工作职责：  
+1.产品体验分析  ：光大银行手机银行、 IVR 语音系统  
+2.数据分析  ：通过 SQL 、Excel 维护日常报表  
+所获荣誉：  
+中国光大银行 2012 年年度最佳科技创新个人奖  
+   
+  项目经验  
+信用中国     2016/02 -至今                                                                                                 
+项目职责：产品经理   
+百度承办国家发改委信用中国项目，通过政府权威、三方合作和自身平台获取了 2.8亿条信用数据，覆盖企业主体 9000w 。同
+时16年魏则西等事件部门加强搜索信用产品建设。  负责协调 GR（政府合作）、法务、运营管理、研发、 UED 、BI等部门完
+成产品设计、开发、运营管理  ，达成商业目标。                                                                           
+1.百度 平台 商家 行业划分 ：通过 商家推广物料、 tag 标签 、商标信息 性判断 商家 行业 归属 。 
+2.商家主体 信誉评级 ：通过行业 调研、指标 提取 、评级策略、准召分析 完成商家 信誉评分 卡设计 。 
+3.灰度企业消费预警： 通过舆情、 DBG 、NLP 等部门合作分析舆情事件影响设计警示触发策略、展示卡片完成承诺保障等商业
+背书产品 。 
+ 
+校园白条    2014/12 -2015/6  
+项目职责：产品 负责人  
+1.负责产品、 定价策略 、贷后管理、用户分析、外部合作  ； 
+2.配合风控部门、参与外部合作部门对接，制定学生准入条件  ； 
+3.搭建新媒体（微信等）平台完成拉新、存活及转化目标  ； 
+4.规划 APP 引流及支付场景完成学生群体转化 。 
+项目描述：  
+京东白条不断扩展白条的应用场景，推出企业白条、旅游白条、校园白条等，校园是个细分的市场，而学生市场又比较特殊和
+复杂， 14年底针对学生市场推出的分期服务如趣分期已经遥遥领先，我们成立校园白条项目组推广针对学生群体 —— 校园白
+条。 
+ 
+京东白条    2013/09 -2014/12  
+项目职责：  产品经理  
+整个产品甚至部门搭建我经历了一个从无到有的过程。初期担任的角色比较多，部门总监制定公司部门战略，协调资源。   
+1.负责产品设计，包括参与风控模型、运 营后台统计字段定制、交易监控、市场推广甚至协议制定、商标注册等；  
+2.负责对接其他业务部门，包括支付业务、资金业务、技术及数据、法务合规等 ； 
+3.用研分析、产品优化及版本迭代 。 
+项目描述：  
+京东金融为京东用户提供全方位定制化金融服务，京东白条类似银行虚拟信用卡（消费信贷服务），用户在京东商城购物可以
+先用后付，并可以享受分期服务。 2个月的时间完成产品上线，为京东金融打响第一枪 。 
+ 3 手机银行 APP   2012/06 -2013/8  
+项目职责：用户研究  
+产品体验和测试，提出优化建议，统计产品使用数据，撰写用研报告。  
+项目描述：  
+基于银行常规业务和手机 APP 的特点，提出产品优化建议和意见并添加改进方案。光大银行手机银行客户端在 12年评为最佳
+用户体验奖； 获得 12年年度个人创新奖 。 
+ 
+      教育
+程度 
+学历 [Insert  Dates]  
+此区域
+可用来
+提供您
+希望读
+者采取
+之下一
+步骤的
+清楚指
+示。可
+能是您
+要他们
+拨打的
+电话号
+码、希
+望他们
+造访的
+网站，
+或是希
+望他们
+填写的
+资讯。
+无论如
+何，这
+份资讯
+应该要
+清楚、
+简短并
+能提供
+读者继
+续往下
+阅读的
+动机。  
+学历 [Insert Dates]    个人评价  
+1. 商业 增值 产品设计 经验：有较强产品调研、商业分析、沟通合作和运营规划能力，根据业务规划达成商业目标。  
+2. 金融创新产品规划实施经验： 通过银行积累的金融理论及实操经验结合京东优势成功设计、推广 、运营 消费金融产品， 完成
+业务规划。  
+3. 银行数据分析、用户体验经验：了解用户，把握 需求，完善产品设计， 12年银行年度科技创新奖。  
+ 
+  教育经历  
+北京航天航空大学 |工商管理 |硕士                                  2014/09 -至今 
+郑州大学 |电子信息科学与技术 |本科                               2005/09 -2009/06  
+ 
+  语音能力  
+ 
+英语 六级 ：读写能力熟练  | 听说能力熟练  
+ 
+
+========================================
+
+========================================
+Candidate ID: 21506
+Name Mask: *城赫
+Current Title/Company: 文心一言/千帆SRE @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u6587\u5fc3\u4e00\u8a00/\u5343\u5e06SRE", "position": "\u6587\u5fc3\u4e00\u8a00/\u5343\u5e06SRE", "startDate": "2023-05-01", "endDate": "\u4eca", "time": "2023-05-01 ~ \u4eca", "duration": "", "description": "\u7a33\u5b9a\u6027\u8d1f\u8d23\u4eba"}, {"company": "\u5feb\u624b", "title": "\u8fd0\u7ef4\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "\u8fd0\u7ef4\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2021-07", "endDate": "2023-05", "time": "2021-07 ~ 2023-05", "duration": "", "description": ""}, {"company": "\u767e\u5ea6", "title": "\u641c\u7d22SRE", "position": "\u641c\u7d22SRE", "startDate": "2018-07", "endDate": "2021-07", "time": "2018-07 ~ 2021-07", "duration": "", "description": ""}, {"company": "360", "title": "\u8fd0\u7ef4\u5de5\u7a0b\u5e08", "position": "\u8fd0\u7ef4\u5de5\u7a0b\u5e08", "startDate": "2017-03", "endDate": "2018-07", "time": "2017-03 ~ 2018-07", "duration": "", "description": "\u8fd0\u7ef4\u53ca\u76f8\u5173\u5f00\u53d1"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 21511
+Name Mask: *阳
+Current Title/Company: 大模型算法工程师 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-05-01", "endDate": "\u4eca", "time": "2025-05-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u767e\u5ea6\u00b7\u6587\u5fc3\u4e00\u8a00\u00b7Code", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2025-04-01", "endDate": "\u4eca", "time": "2025-04-01 ~ \u4eca", "duration": "", "description": "\u53c2\u4e0e\u4e24\u4e2a\u9879\u76ee\u3002\u9879\u76ee\u4e00\uff1aSWE\u6570\u636e\u81ea\u52a8\u5316\u751f\u4ea7\u4f53\u7cfb\u6784\u5efa\u3002\u9488\u5bf9\u5927\u6a21\u578b\u7f3a\u4e4fSWE\u6570\u636e\u3001\u96be\u4ee5\u89c4\u6a21\u5316\u7684\u95ee\u9898\uff0c\u6784\u5efaSWE\u81ea\u52a8\u5316\u6570\u636e\u751f\u4ea7\u4f53\u7cfb\u3002\u4e3b\u8981\u5de5\u4f5c\u5305\u62ec\u8bbe\u8ba1\u5e76\u5b9e\u73b0MENVAGENT\u591aAgent\u6570\u636e\u751f\u4ea7\u6846\u67b6\uff08\u5df2\u5f00\u6e90\uff09\uff1b\u4f18\u5316\u955c\u50cf\u6784\u5efa\u6d41\u7a0b\uff0c\u5c06\u955c\u50cf\u6784\u5efa\u6210\u529f\u7387\u4ece5%\u63d0\u5347\u81f340%\uff1b\u57fa\u4e8eAgent\u81ea\u52a8\u751f\u6210\u53ef\u6267\u884c\u6d4b\u8bd5\u547d\u4ee4\uff0c\u6784\u5efa\u5e76\u5f00\u6e90MENV - Traj\u73af\u5883\u4ea4\u4e92\u8f68\u8ff9\u6570\u636e\u96c6\uff1b\u57fa\u4e8eMENV - Traj\u6570\u636e\u96c6\u5bf9Qwen2.5 - Coder 7B/14B/32B\u8fdb\u884cSFT\u9a8c\u8bc1\uff0c\u6a21\u578b\u6027\u80fd\u6700\u5927\u63d0\u534747%\uff1b\u6253\u901a\u6570\u636e\u6e05\u6d17\u3001\u955c\u50cf\u5316\u3001\u6267\u884c\u53cd\u9988\u4e0e\u7ed3\u6784\u5316\u5b58\u50a8\u6d41\u6c34\u7ebf\uff0c\u7cfb\u7edf\u53ef\u7a33\u5b9a\u4ea7\u51fa3000+ SWE\u955c\u50cf\u6837\u672c/\u5929\u3002\u9879\u76ee\u4e8c\uff1a\u81ea\u9002\u5e94\u5e76\u884c\u4ee3\u7801\u5b9a\u4f4dAgent\u3002\u9488\u5bf9\u771f\u5b9eSWE\u573a\u666f\u4e2d\u4ee3\u7801\u5b9a\u4f4d\u7684\u6027\u80fd\u74f6\u9888\u95ee\u9898\uff0c\u8bbe\u8ba1\u5e76\u5b9e\u73b0\u8f7b\u91cf\u7ea7\u3001\u8bed\u8a00\u65e0\u5173\u7684\u4ee3\u7801\u5b9a\u4f4dAgent\uff1b\u57fa\u4e8eSWE Docker\u73af\u5883\u81ea\u52a8\u5316\u6784\u5efa5w+\u4ed3\u5e93\u7ea7\u4ee3\u7801\u5b9a\u4f4d\u6837\u672c\u7528\u4e8e\u8bad\u7ec3\uff1b\u5728SWE - Verified\u57fa\u51c6\u4e0a\u53d6\u5f97\u663e\u8457\u5b9e\u9a8c\u6548\u679c\uff0c\u5982Qwen2.5 - Coder - 7B\u7684\u6587\u4ef6\u7ea7\u5b9a\u4f4dF1\u4ece38.1%\u63d0\u5347\u81f374.7%\uff0c\u51fd\u6570\u7ea7F1\u8fbe\u523056.4%\uff0c\u8054\u5408\u8bad\u7ec3\u540e\uff0cQwen2.5 - Coder - 32B\u7684\u7aef\u5230\u7aef"}, {"company": "\u4f46\u95ee\u667a\u80fd", "title": "NLP\u7b97\u6cd5\u5e94\u7528\u5b9e\u4e60\u751f", "position": "NLP\u7b97\u6cd5\u5e94\u7528\u5b9e\u4e60\u751f", "startDate": "2024-11", "endDate": "2025-02", "time": "2024-11 ~ 2025-02", "duration": "", "description": "\u4e3a\u6784\u5efa\u667a\u80fd\u8f66\u4f01\u52a9\u624b\uff0c\u8d1f\u8d23Query\u6539\u5199\u4e0e\u610f\u56fe/\u69fd\u4f4d\u8bc6\u522b\u6a21\u5757\u5f00\u53d1\u3002\u57fa\u4e8e\u4e0a\u7ebf\u6570\u636e\u6784\u5efa3\u4e07 + \u6709\u6548\u6837\u672c\u5e76\u901a\u8fc7PE\u5de5\u7a0b\u751f\u6210\u6539\u5199\u6570\u636e\uff0c\u4f7f\u7528LlamaFactory\u8bad\u7ec3bert - tiny\u5224\u522b\u6a21\u578b\u4e0eqwen2.5 - 0.5b\u6539\u5199\u6a21\u578b\uff0c\u5728\u4eba\u5de5\u9a8c\u8bc1\u96c6\u4e0a\u53d6\u5f9792%\u51c6\u786e\u7387\u3002\u540c\u65f6\u5b8c\u62105k\u69fd\u4f4d\u6570\u636e\u7684functional call\u586b\u5145\u4e0e\u6821\u9a8c\uff0c\u53c2\u4e0e\u4f18\u5316\u53cc\u5c42\u610f\u56fe\u8bc6\u522b\u67b6\u6784\uff0c\u5c06BERT - Large Top - 1\u53ec\u56de\u7387\u4ece86%\u63d0\u5347\u523089%+\uff0c\u5e76\u57fa\u4e8eQwen2.5 - 7B + Function Call\u5b9e\u73b082%+\u7684\u610f\u56fe\u53ca\u69fd\u4f4d\u8bc6\u522b\u51c6\u786e\u7387\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u81ea\u9002\u5e94\u5e76\u884c\u4ee3\u7801\u5b9a\u4f4dAgent", "time": "2025-04\u81f32026-02", "description": "\u5728\u771f\u5b9eSWE\u573a\u666f\u4e2d\uff0c\u4ee3\u7801\u5b9a\u4f4d\u662f\u81ea\u52a8\u4fee\u590d\u7684\u4e3b\u8981\u6027\u80fd\u74f6\u9888\u3002\u73b0\u6709LLM Agent\u56e0Issue\u6587\u4ef6/\u51fd\u6570\u5b9a\u4f4d\u4e0d\u51c6\u800c\u53d7\u9650\uff1b\u987a\u5e8f\u641c\u7d22\u4fe1\u606f\u4e0d\u8db3\uff0c\u56fa\u5b9a\u5e76\u884c\u53c8\u4ea7\u751f\u5197\u4f59\u8c03\u7528\uff0c\u96be\u4ee5\u517c\u987e\u7cbe\u5ea6\u4e0e\u6548\u7387\u3002"}, {"name": "SWE\u6570\u636e\u81ea\u52a8\u5316\u751f\u4ea7\u4f53\u7cfb\u6784\u5efa", "time": "2025-04\u81f32026-02", "description": "\u9488\u5bf9\u5927\u6a21\u578b\u7f3a\u4e4fSWE\u6570\u636e\u3001\u96be\u4ee5\u89c4\u6a21\u5316\u7684\u95ee\u9898\uff0c\u6784\u5efaSWE\u81ea\u52a8\u5316\u6570\u636e\u751f\u4ea7\u4f53\u7cfb\u3002\u901a\u8fc7\u591aAgent\u534f\u4f5c\uff0c\u5b9e\u73b0\u4ece\u4ed3\u5e93\u83b7\u53d6\u5230\u6267\u884c\u53cd\u9988\u7684\u5168\u94fe\u8def\u81ea\u52a8\u5316\u95ed\u73af\u751f\u4ea7\uff0c\u4e3a\u6a21\u578b\u6301\u7eed\u8fed\u4ee3\u63d0\u4f9b\u89c4\u6a21\u5316\u3001\u9ad8\u8d28\u91cf\u5de5\u7a0b\u6570\u636e\u3002"}]
+
+========================================
+
+========================================
+Candidate ID: 21514
+Name Mask: *ikod
+Current Title/Company: 文心一言前瞻自然语言处理算法研究intern @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u6587\u5fc3\u4e00\u8a00\u524d\u77bb\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7b97\u6cd5\u7814\u7a76intern", "position": "\u6587\u5fc3\u4e00\u8a00\u524d\u77bb\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7b97\u6cd5\u7814\u7a76intern", "startDate": "2025-03-01", "endDate": "\u4eca", "time": "2025-03-01 ~ \u4eca", "duration": "", "description": "\u540e\u8bad\u7ec3 agenticRL deepResearch\u3001\u53bb\u5e7b\u89c9"}, {"company": "\u4e2d\u56fd\u7535\u4fe1\u80a1\u4efd\u6709\u9650\u516c\u53f8\u4eba\u5de5\u667a\u80fd\u7814\u7a76\u9662\uff08\u4e0a\u6d77\uff09", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08intern", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08intern", "startDate": "2024-10", "endDate": "2025-03", "time": "2024-10 ~ 2025-03", "duration": "", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 21515
+Name Mask: *滩的麦迪逊
+Current Title/Company: 大模型算法工程师 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-11-01", "endDate": "\u4eca", "time": "2025-11-01 ~ \u4eca", "duration": "", "description": "\u5927\u6a21\u578b\u7b97\u6cd5\u90e8 \u6587\u5fc3\u4e00\u8a00"}, {"company": "\u5fae\u8d22\u79d1\u6280", "title": "AI\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "AI\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2025-06", "endDate": "2025-09", "time": "2025-06 ~ 2025-09", "duration": "", "description": "ai\u5f00\u53d1"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 21516
+Name Mask: *稚园里的幼稚鬼
+Current Title/Company: 大模型算法工程师 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-06-01", "endDate": "\u4eca", "time": "2025-06-01 ~ \u4eca", "duration": "", "description": "\u4f18\u5316\u6587\u5fc3\u4e00\u8a00\u6a21\u578b\u80fd\u529b"}, {"company": "\u767e\u5ea6", "title": "\u81ea\u7136\u8bed\u8a00\u5904\u7406\u5b9e\u4e60\u751f", "position": "\u81ea\u7136\u8bed\u8a00\u5904\u7406\u5b9e\u4e60\u751f", "startDate": "2024-10", "endDate": "2025-03", "time": "2024-10 ~ 2025-03", "duration": "", "description": "\u5185\u90e8\u6a21\u578b\u957f\u6587\u672c\u521b\u4f5c"}, {"company": "\u767e\u5ea6", "title": "\u7f51\u6587\u5c0f\u8bf4\u521b\u4f5c\uff08\u6587\u5fc3\u4e00\u8a00\uff09", "position": "\u7f51\u6587\u5c0f\u8bf4\u521b\u4f5c\uff08\u6587\u5fc3\u4e00\u8a00\uff09", "startDate": "2024-10", "endDate": "2025-01", "time": "2024-10 ~ 2025-01", "duration": "", "description": "\u80cc\u666f\uff1a\u5229\u7528\u73b0\u6709\u5927\u6a21\u578b\u5408\u6210\u9ad8\u8d28\u91cf\u7684\u7f51\u6587\u5c0f\u8bf4\u6570\u636e\uff0c\u4fee\u590d\u6587\u5fc3\u4e00\u8a00\u7f51\u6587\u5c0f\u8bf4\u521b\u4f5c\u65f6\u5b58\u5728\u7684\u6587\u98ce\u95ee\u9898\uff1b\u76ee\u6807\uff1a\u4e3a\u6587\u5fc3\u4e00\u8a00\u589e\u52a0\u5176\u5728\u7f51\u6587\u5c0f\u8bf4\u521b\u4f5c\u65b9\u9762\u53cd\u601d\u5e76\u4fee\u6539\u6587\u98ce\u95ee\u9898\u7684\u80fd\u529b\uff0c\u4ee5\u63d0\u5347\u5176\u7f51\u6587\u5c0f\u8bf4\u521b\u4f5c\u7efc\u5408\u80fd\u529b\uff1b\u804c\u8d23\uff1a1)\u57fa\u4e8e\u7f51\u6587\u5c0f\u8bf4\u7ae0\u7c92\u5ea6\uff0c\u5bf9\u6bd4\u6587\u5fc3\u4e00\u8a00\u751f\u6210\u7684\u7f51\u6587\u5c0f\u8bf4\u4e0e\u6807\u51c6\u7f51\u6587\u5c0f\u8bf4\u7684\u5dee\u5f02\uff0c\u603b\u7ed3\u73b0\u5b58\u6587\u98ce\u95ee\u9898\uff1b\u6839\u636e\u5404\u79cd\u73b0\u6709\u95ee\u9898\uff0c\u6784\u5efa\u53cd\u5411query\u751f\u6210\u5de5\u5177\u3001\u98ce\u683c\u601d\u8003\u5de5\u5177\u3001\u95ee\u9898\u53cd\u601d\u5de5\u5177\u3001\u95ee\u9898\u4fee\u590d\u5de5\u5177\u4ee5\u53ca\u81ea\u52a8\u5316\u8bc4\u4f30\u5de5\u5177\uff0c\u5e76\u8fdb\u884c\u5de5\u5177\u7a33\u5b9a\u6027\u6d4b\u8bd5\u3001\u4e0e\u4eba\u5de5\u4e00\u81f4\u6027\u68c0\u9a8c\uff0c\u8fdb\u800c\u9010\u6b65\u8fed\u4ee3\u4f18\u5316\u5404\u5de5\u5177\uff1b2)\u8bbe\u8ba1\u6570\u636e\u4e0e\u6a21\u578b\u4f9d\u6b21\u8fed\u4ee3\u7684\u957f\u601d\u8003\u6570\u636e\u5408\u6210\u65b9\u6cd5\uff0c\u63d0\u5347\u5e26\u6709\u957f\u601d\u8003\u7684\u7f51\u6587\u5c0f\u8bf4\u521b\u4f5c\u6570\u636e\u7684\u8d28\u91cf\uff1b\u7ed3\u679c\uff1aQwen2 - 72B\u4e0a\u4ec5SFT\uff08400\u6761\u6570\u636e\uff09\u540e\u5b9e\u73b0\u7f51\u6587\u5c0f\u8bf4\u521b\u4f5c\u6587\u98ce\u95ee\u989880%\u7684\u89e3\u51b3\u7387\uff0c\u8f83Qwen - max\u63d0\u534750%+."}, {"company": "\u5ea6\u5c0f\u6ee1", "title": "\u89d2\u8272\u5927\u6a21\u578b", "position": "\u89d2\u8272\u5927\u6a21\u578b", "startDate": "2024-01", "endDate": "2024-08", "time": "2024-01 ~ 2024-08", "duration": "", "description": "\u80cc\u666f\uff1a\u4e3aLLM\u5b9e\u73b0\u89d2\u8272\u6a21\u62df\u4e0e\u5b9a\u5236\u529f\u80fd\uff0c\u8fdb\u800c\u4e3a\u7528\u6237\u63d0\u4f9b\u81ea\u7136\u548c\u4e2a\u6027\u5316\u7684\u5bf9\u8bdd\u4f53\u9a8c\uff1b\u76ee\u6807\uff1a\u9884\u8bad\u7ec3\u57fa\u5ea7\u6a21\u578b\u8986\u76d6\u5bf9\u8bdd\u3001\u6545\u4e8b\u521b\u4f5c\u7b49\u9ad8\u901f\u589e\u957f\u7684\u4e1a\u52a1\u573a\u666f\uff1bSFT\u6a21\u578b\u5b9e\u73b0\u89d2\u8272\u6a21\u62df\u4e0e\u5b9a\u5236\u529f\u80fd\uff1b\u804c\u8d23\uff1a1) Pretrain\u9636\u6bb5\uff0c\u8c03\u7814\u57fa\u5ea7\u6a21\u578b\uff0c\u6536\u96c6\u6570\u636e\u96c6\uff0c\u6d4b\u8bd5\u9884\u8bad\u7ec3\u6570\u636e\u5904\u7406\u65b9\u6848\uff0c\u5e76\u53c2\u4e0e\u7ea62T (tokens)\u6570\u636e\u96c6\u7684\u9884\u8bad\u7ec3\u5904\u7406\u8fc7\u7a0b\uff0c\u8d1f\u8d23\u5176\u4e2d\u89c4\u5219\u8fc7\u6ee4\u3001\u591a\u8bed\u8a00\u8bed\u4e49\u53bb\u91cd\u3001\u5927\u6a21\u578b\u8fc7\u6ee4\u6b65\u9aa4\uff0c\u6700\u7ec8\u5269\u4f59\u7ea6220B (tokens)\u6570\u636e. 2) SFT\u9636\u6bb5\uff0c\u6df1\u5165\u8c03\u7814\u5927\u6a21\u578b\u89d2\u8272\u76f8\u5173\u6587\u732e\u4e0e\u6280\u672f\u8d44\u6599\uff0c\u8bc4\u4f30\u53ef\u884c\u6027\u65b9\u6848\uff0c\u79d1\u5b66\u6784\u5efaSFT\u57df\u5185\u6570\u636e\u53ca\u57df\u5916\u6570\u636e\uff1b\u53bb\u9664\u91cd\u590d\u6027\u6570\u636e\uff0c\u786e\u4fdd\u591a\u6837\u6027\uff0c\u8bc4\u4f30\u6570\u636e\u8d28\u91cf\uff1b\u4f9d\u636eSFT\u5b9e\u9a8c\u786e\u5b9a\u6570\u636e\u914d\u6bd4\uff0c\u53ca\u65f6\u53cd\u9988\u65b9\u6848\u7ed3\u679c\uff0c\u4fc3\u8fdb\u65b9\u6848\u8c03\u6574\uff1b\u53c2\u4e0e\u5236\u5b9a\u5e76\u5b9e\u73b0SFT\u6a21\u578b\u81ea\u52a8\u5316\u8bc4\u6d4b\u6807\u51c6\u4e0e\u65b9\u6cd5\uff0c\u4f9d\u636e\u8bc4\u6d4b\u7ed3\u679c\u8fed\u4ee3\u4f18\u5316\u6a21\u578b\uff1b\u7ed3\u679c\uff1a\u9884\u8bad\u7ec3\u57fa\u5ea7\u6a21\u578b\u4e2d\u65e5\u80fd\u529b\u4f18\u4e8eLlama3 - 8B(+5.12, +6.44)\uff0c\u82f1\u6587\u80fd\u529b\u4e0e\u4e4b\u6301\u5e73\uff1bSFT\u6a21\u578b\u89d2\u8272\u626e\u6f14\u80fd\u529b\u8d85\u8fc7GPT - 4(83:34:43)\uff0c\u82f1\u6587\u901a\u7528\u80fd\u529b\u4e0eLlama3 - 8B - Chat\u6301\u5e73\uff0c\u4e2d\u65e5\u4f18\u4e8eLlama3 - 8B - Chat."}, {"company": "\u5ea6\u5c0f\u6ee1\u79d1\u6280\uff08\u5317\u4eac\uff09\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2023-09", "endDate": "2024-09", "time": "2023-09 ~ 2024-09", "duration": "", "description": "\u7535\u9500\u5927\u6a21\u578b\uff06\u89d2\u8272\u5927\u6a21\u578b"}, {"company": "\u5ea6\u5c0f\u6ee1", "title": "\u7535\u9500\u5927\u6a21\u578b\u5750\u5e2d\u8f85\u52a9", "position": "\u7535\u9500\u5927\u6a21\u578b\u5750\u5e2d\u8f85\u52a9", "startDate": "2023-09", "endDate": "2024-01", "time": "2023-09 ~ 2024-01", "duration": "", "description": "\u80cc\u666f\uff1a\u5229\u7528\u5927\u6a21\u578b\u6280\u672f\u8f85\u52a9\u63d0\u5347\u8f6c\u5316\u548c\u7ee9\u6548\uff0c\u5b9e\u73b0\u5927\u6a21\u578b\u5728\u7535\u9500\u573a\u666f\u7684\u9996\u6b21\u5e94\u7528\u5c42\u9762\u843d\u5730\uff1b\u76ee\u6807\uff1a\u5927\u6a21\u578b\u5b9e\u65f6\u5904\u7406\u5ba2\u6237\u63d0\u53ca\u7684\u5f02\u8bae\uff0c\u63a8\u8350\u6293\u624b\u548c\u8bdd\u672f\uff0c\u63d0\u5347\u8425\u9500\u8f6c\u5316\u6548\u679c\uff1b\u804c\u8d23\uff1a1) \u5b9e\u73b0Mock\u7248\u672c\u903b\u8f91\uff0c\u6a21\u62df\u9636\u6bb5\u6027\u6d41\u7a0b\uff0c\u9a8c\u8bc1\u843d\u5730\u5b9e\u7528\u6027\uff0c\u786e\u5b9a\u4ea7\u54c1\u5f62\u6001\u6293\u624b+\u8bdd\u672f\uff0c\u5e76\u5f62\u6210\u6570\u636e\u98de\u8f6e\uff1b2) \u53c2\u4e0e\u5236\u5b9a\u5e76\u5b9e\u73b0SFT\u8bad\u7ec3\u6570\u636e\u89c4\u8303\u5316\u903b\u8f91\uff0c\u4f9d\u636e\u5f02\u8bae\u5206\u7c7b\u6a21\u578b\u7ed3\u679c\u5207\u5206\u6570\u636e\uff0c\u5408\u7406\u5229\u7528\u591a\u8f6e\u5bf9\u8bdd\u6570\u636e\uff1b\u53c2\u4e0e\u8bbe\u8ba1\u8425\u9500\u6293\u624b\u4e0e\u8bdd\u672f\uff0c\u5236\u5b9a\u6807\u6ce8\u89c4\u8303\uff0c\u5bf9\u6807\u6ce8\u6570\u636e\u8fdb\u884c\u81ea\u52a8\u5316\u8d28\u68c0\u4e0e\u62bd\u6837\u8d28\u68c0\uff1b\u8c03\u7814\u4e3b\u6d41\u6a21\u578b(GLM\u7cfb\u5217\u3001Baichuan\u7cfb\u5217\u3001Qwen\u7cfb\u5217)\u6027\u80fd\uff0c\u53ca\u65f6\u53cd\u9988\u5b9e\u9a8c\u7ed3\u679c\uff0c\u4fc3\u8fdb\u57fa\u5ea7\u6a21\u578b\u7684\u786e\u5b9a\uff1b3) \u8bbe\u8ba1Prompt\uff0c\u5229\u7528GPT - 4\u589e\u91cf\u751f\u6210\u6570\u503c\u4fe1\u606f\u578b\u6570\u636e\uff0c\u589e\u52a0\u6570\u636e\u591a\u6837\u6027\uff1b\u57fa\u4e8eChatGLM2\u3001Qwen\u7b49\u6a21\u578b\u8fdb\u884cSFT\u5fae\u8c03\u5b9e\u9a8c\uff1b\u53c2\u4e0e\u5236\u5b9a\u4e0d\u540c\u5c42\u6b21\u8bc4\u4f30\u6807\u51c6\uff0c\u6839\u636e\u8bc4\u4f30\u53cd\u9988\u7ed3\u679c\u8fed\u4ee3\u6a21\u578b\uff0c\u4fc3\u8fdb\u8f6c\u5316\u7387\u7684\u63d0\u5347\uff1b\u7ed3\u679c\uff1a \u9879\u76ee\u843d\u5730\u4e00\u4e2a\u6708\u5185\u5750\u5e2d\u8f6c\u5316\u7387\u63d0\u534710%\uff1b\u7ee9\u5dee\u5750\u5e2d\u8f6c\u5316\u81f3\u7ee9\u4f18\u5750\u5e2d\uff0c\u5177\u4f53\u6307\u6807\u5982\u6709\u6548\u5bf9\u8bdd\u8f6e\u6570\u63d0\u534730%(10.8\u81f314\u8f6e)\uff0c\u901a\u8bdd\u65f6\u957f30s+\u5360\u6bd4\u63d0\u534715%( 41.8%\u81f348.1%)."}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 21520
+Name Mask: *新航
+Current Title/Company: 大模型后训练算法实习生-代码方向 @ 文心一言
+
+=== WORK EXPERIENCES ===
+[{"company": "\u6587\u5fc3\u4e00\u8a00", "title": "\u5927\u6a21\u578b\u540e\u8bad\u7ec3\u7b97\u6cd5\u5b9e\u4e60\u751f-\u4ee3\u7801\u65b9\u5411", "position": "\u5927\u6a21\u578b\u540e\u8bad\u7ec3\u7b97\u6cd5\u5b9e\u4e60\u751f-\u4ee3\u7801\u65b9\u5411", "startDate": "2025-06", "endDate": "2025-10", "time": "2025-06 ~ 2025-10", "duration": "", "description": "\u6587\u5fc3\u57fa\u5ea7\u5927\u6a21\u578b\u4ee3\u7801reasoning\u80fd\u529b\u63d0\u5347\uff1a\u57fa\u4e8e\u540e\u8bad\u7ec3post - training\uff08RLHF\u3001DPO\uff09\u6280\u672f\u6784\u5efa\u540e\u8bad\u7ec3\u7ba1\u7ebf\uff0c\u805a\u7126\u4ee3\u7801\u76f8\u5173\u4efb\u52a1\uff08\u7b97\u6cd5\u4e0e\u63a8\u7406\u3001\u5168\u6808\u5f00\u53d1\u3001\u4ee3\u7801\u95ee\u7b54\u7b49\uff09\uff0c\u663e\u8457\u589e\u5f3a\u6a21\u578b\u7684\u903b\u8f91\u4e0e\u63a8\u7406\u8868\u73b0\u3002\u63a8\u52a8\u6587\u5fc3\u7cfb\u5217\u6a21\u578b\uff08X1\u3001ERNIE - 4.5 - 21B - A3B - Thinking\u3001EB5\u7b49\uff09\u5728LiveCodeBench\u3001ChatbotArena\u7b49\u4e3b\u6d41\u4ee3\u7801\u57fa\u51c6\u6d4b\u8bd5\u4e2d\u53d6\u5f97\u6027\u80fd\u63d0\u5347\u3002\u8bbe\u8ba1\u5e76\u5b9e\u73b0\u9ad8\u8d28\u91cf\u6570\u636e\u5408\u6210\u3001\u62d2\u7edd\u91c7\u6837\u4e0e\u8bad\u7ec3\u7b56\u7565\uff0c\u4f18\u5316Reward\u8bbe\u8ba1\uff0c\u652f\u6301\u4e00\u8a00\u6a21\u578b\u7684\u4ee3\u7801\u601d\u8003\u80fd\u529b\u7a81\u7834\u3002"}, {"company": "\u767e\u5ea6\u7814\u7a76\u9662", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2024-10", "endDate": "2025-05", "time": "2024-10 ~ 2025-05", "duration": "", "description": "\u591a\u6a21\u6001\u5927\u6a21\u578bGroundingBenchmark\u6784\u5efa\uff1a\u63d0\u51faChartAnchor\u57fa\u51c6\uff0c\u8986\u76d630\u7c7b\u56fe\u8868\u30018000 + \u6837\u672c\uff0c\u8bbe\u8ba1\u56fe\u8868\u8f6c\u4ee3\u7801\u548c\u6570\u636e\u6062\u590d\u4efb\u52a1\uff0c\u5e76\u914d\u5957\u63d0\u51fa\u591a\u5c42\u6b21\u8bed\u4e49\u3001\u7ed3\u6784\u4e0e\u611f\u77e5\u8bc4\u6d4b\u4f53\u7cfb\uff0c\u7cfb\u7edf\u8bc4\u4f30\u591a\u6a21\u6001\u5927\u6a21\u578b\u5bf9\u89c6\u89c9\u7ed3\u6784\u548c\u6570\u503c\u4fe1\u606f\u7684Grounding\u80fd\u529b\uff0c\u523b\u753b\u591a\u6a21\u6001\u5927\u6a21\u578b\u5728\u7ed3\u6784\u8fd8\u539f\u3001\u89c6\u89c9\u4e00\u81f4\u6027\u4e0e\u6570\u503c\u7cbe\u5ea6\u65b9\u9762\u7684\u80fd\u529b\u8fb9\u754c\uff0c\u63a8\u52a8\u79d1\u5b66\u3001\u91d1\u878d\u7b49\u9886\u57df\u591a\u6a21\u6001\u667a\u80fd\u53d1\u5c55\u3002\u591a\u6a21\u6001/\u5927\u8bed\u8a00\u6a21\u578b\u8bad\u7ec3\u4e0e\u8c03\u4f18\uff1a\u9762\u5411\u5730\u56fePOI\u67e5\u8be2\u751f\u6210\u4efb\u52a1\u548c\u56fe\u8868\u6458\u8981\u4efb\u52a1\uff0c\u5206\u522b\u5fae\u8c03\u5927\u8bed\u8a00\u6a21\u578b\uff08ChatGLM\u3001Llama\u7b49\uff09\u4e0e\u591a\u6a21\u6001\u6a21\u578b\uff08Intern - VL\u3001Qwen - VL\u7b49\uff09\uff0c\u5728\u6ee1\u8db3\u4e1a\u52a1\u9700\u6c42\u7684\u540c\u65f6\uff0c\u5bf9\u56fe\u8868\u6458\u8981\u8fc7\u7a0b\u8fdb\u884c\u53bb\u5e7b\u89c9\u4f18\u5316\uff0c\u63d0\u5347\u751f\u6210\u5185\u5bb9\u7684\u51c6\u786e\u6027\u4e0e\u53ef\u9760\u6027\u3002"}, {"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2024-10-01", "endDate": "\u4eca", "time": "2024-10-01 ~ \u4eca", "duration": "", "description": "\u767e\u5ea6\u6587\u5fc3\u4e00\u8a00code post train"}, {"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2022-12", "endDate": "2024-02", "time": "2022-12 ~ 2024-02", "duration": "", "description": ""}, {"company": "\u767e\u5ea6\u7814\u7a76\u9662", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2022-11", "endDate": "2023-12", "time": "2022-11 ~ 2023-12", "duration": "", "description": "\u57fa\u4e8e\u5927\u6a21\u578b\u7684\u7ed3\u6784\u5316\u6570\u636e\u7406\u89e3\u4e0e\u751f\u6210\u7814\u7a76\uff1a\u9762\u5411\u7ed3\u6784\u5316\u6570\u636e\u7684\u7edf\u4e00\u5efa\u6a21\u4e0e\u7406\u89e3\uff0c\u63d0\u51fa\u5927\u6a21\u578b\u51bb\u7ed3\u5f0f\u91cd\u7f16\u7a0b\u65b9\u6cd5\uff0c\u6784\u5efa\u591a\u5c42\u6b21\u63d0\u793a\u878d\u5408\u67b6\u6784\uff0c\u5b9e\u73b0\u53c2\u6570\u9ad8\u6548\u5fae\u8c03\uff0c\u663e\u8457\u589e\u5f3a\u5927\u6a21\u578b\u5bf9\u7ed3\u6784\u5316\u6570\u636e\u4e2d\u8bed\u4e49\u3001\u6a21\u5f0f\u548c\u590d\u6742\u5173\u7cfb\u7684\u7406\u89e3\u80fd\u529b\uff0c\u540c\u65f6\u652f\u6301\u9ad8\u6548\u751f\u6210\u4efb\u52a1\uff0c\u8d4b\u80fd\u667a\u80fd\u53ef\u89c6\u5316\u3001\u6570\u636e\u5206\u6790\u548c\u77e5\u8bc6\u53d1\u73b0\u7b49\u5e94\u7528\u573a\u666f\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u591a\u6a21\u6001\u5927\u6a21\u578b\u56fe\u8868\u6458\u8981\u751f\u6210\u4e0e\u5e7b\u89c9\u6d88\u9664", "time": "", "description": "\u591a\u6a21\u6001\u5927\u8bed\u8a00\u6a21\u578b\u5fae\u8c03|\u5e7b\u89c9\u6291\u5236|\u56fe\u8868\u6458\u8981\u751f\u6210"}, {"name": "\u57fa\u4e8e\u5927\u6a21\u578b\u7684\u5730\u5740POIQuery\u751f\u6210", "time": "", "description": "\u5927\u8bed\u8a00\u6a21\u578b\u5fae\u8c03|Query\u751f\u6210"}, {"name": "\u591a\u6a21\u6001\u5927\u6a21\u578b\u56fe\u8868\u7406\u89e3\u57fa\u51c6ChartAnchor", "time": "", "description": "\u591a\u6a21\u6001\u5927\u6a21\u578b|\u56fe\u8868\u7406\u89e3|\u5927\u6a21\u578b\u8bc4\u6d4b\uff5c\u6570\u636e\u6062\u590d\u4e0e\u4ee3\u7801\u751f\u6210"}, {"name": "\u57fa\u4e8e\u63d0\u793a\u91cd\u7f16\u7a0b\u7684\u5927\u8bed\u8a00\u6a21\u578b\u53ef\u89c6\u5316\u63a8\u8350\u7b97\u6cd5", "time": "", "description": "\u5927\u8bed\u8a00\u6a21\u578b\u8bad\u7ec3\u4e0e\u5bf9\u9f50|\u53c2\u6570\u9ad8\u6548\u5fae\u8c03\uff5c\u63d0\u793a\u91cd\u7f16\u7a0b|\u53ef\u89c6\u5316\u63a8\u8350"}, {"name": "\u57fa\u4e8e\u540e\u8bad\u7ec3\u6280\u672f(post - training)\u4f18\u5316\u6587\u5fc3\u57fa\u5ea7\u5927\u6a21\u578b\u7684\u4ee3\u7801\u80fd\u529b", "time": "", "description": "\u57fa\u5ea7\u5927\u6a21\u578b|post - training|reasoning\uff5c\u4ee3\u7801\u5927\u6a21\u578b"}]
+
+========================================
+
+========================================
+Candidate ID: 21526
+Name Mask: *笑天
+Current Title/Company: 多模态算法高级工程师 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u591a\u6a21\u6001\u7b97\u6cd5\u9ad8\u7ea7\u5de5\u7a0b\u5e08", "position": "\u591a\u6a21\u6001\u7b97\u6cd5\u9ad8\u7ea7\u5de5\u7a0b\u5e08", "startDate": "2024-12-01", "endDate": "\u4eca", "time": "2024-12-01 ~ \u4eca", "duration": "", "description": "\u6587\u5fc3\u4e00\u8a00"}, {"company": "\u7f8e\u56e2", "title": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2021-03", "endDate": "2024-11", "time": "2021-03 ~ 2024-11", "duration": "", "description": "\u8bed\u97f3\u5408\u6210"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 21527
+Name Mask: *英盛
+Current Title/Company: 大模型算法工程师 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-01-01", "endDate": "\u4eca", "time": "2025-01-01 ~ \u4eca", "duration": "", "description": "\u6587\u5fc3\u4e00\u8a00"}, {"company": "\u5ea6\u5c0f\u6ee1", "title": "\u5927\u6a21\u578b\u7b97\u6cd5", "position": "\u5927\u6a21\u578b\u7b97\u6cd5", "startDate": "2023-10", "endDate": "2024-09", "time": "2023-10 ~ 2024-09", "duration": "", "description": "\u5b9e\u4e60\u751f\uff0c\u8d1f\u8d23\u5927\u6a21\u578b\u957f\u6587\u6548\u679c\u7814\u7a76"}, {"company": "\u817e\u8baf", "title": "\u4e92\u52a8\u89c6\u9891\u63a8\u8350\u7ec4\u5458\u5de5", "position": "\u4e92\u52a8\u89c6\u9891\u63a8\u8350\u7ec4\u5458\u5de5", "startDate": "2023-05", "endDate": "2023-10", "time": "2023-05 ~ 2023-10", "duration": "", "description": "\u5b9e\u4e60\u751f"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 21529
+Name Mask: *一轩
+Current Title/Company: 算法工程师 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-06-01", "endDate": "\u4eca", "time": "2025-06-01 ~ \u4eca", "duration": "", "description": "\u6587\u5fc3\u65b0\u661f\u4eba\u624d\u8ba1\u5212\u5b9e\u4e60\u751f\uff0c\u5927\u6a21\u578b\u9ad8\u6548\u63a8\u7406"}, {"company": "\u767e\u5ea6\u6587\u5fc3\u4e00\u8a00", "title": "\u6587\u5fc3\u65b0\u661f\u4eba\u624d\u8ba1\u5212\u5b9e\u4e60\u751f", "position": "\u6587\u5fc3\u65b0\u661f\u4eba\u624d\u8ba1\u5212\u5b9e\u4e60\u751f", "startDate": "2025-06-01", "endDate": "\u4eca", "time": "2025-06-01 ~ \u4eca", "duration": "", "description": "\u9762\u5411\u957f\u6587\u672c\u7684\u9ad8\u6548\u7a00\u758f\u6ce8\u610f\u529b\u7b97\u6cd5\u6539\u8fdb\uff08ICLR 2026\uff09\uff0c\u5bf9\u53ef\u8bad\u7ec3\u7a00\u758f\u6ce8\u610f\u529b\u5728\u5e7f\u6cdb\u6a21\u578b\u67b6\u6784\u4e0b\u8fdb\u884c\u9002\u914d\u3002\u63a2\u7d22\u73b0\u6709\u9ad8\u6548\u6ce8\u610f\u529b\u6a21\u5757\uff08SWA\u3001Linear Attention\u7b49\uff09\u7684\u6539\u8fdb\u5de5\u4f5c\uff0c\u53ca\u4ece\u73b0\u6709\u67b6\u6784\u7684\u9ad8\u6548\u8f6c\u6362\u3002"}, {"company": "\u79d1\u5927\u8baf\u98de", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-06", "endDate": "2023-10", "time": "2023-06 ~ 2023-10", "duration": "", "description": "\u52a9\u7406\u7814\u7a76\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff0c\u5927\u6a21\u578b\u5e94\u7528"}, {"company": "\u54c8\u5de5\u5927\u79d1\u5927\u8baf\u98de\u8054\u5408\u5b9e\u9a8c\u5ba4", "title": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2023-06", "endDate": "2023-09", "time": "2023-06 ~ 2023-09", "duration": "", "description": "\u5927\u8bed\u8a00\u6a21\u578b\u5728\u6587\u672c\u6821\u5bf9\u9886\u57df\u7684\u5e94\u7528\u7814\u7a76\u3002\u9488\u5bf9\u6587\u672c\u6821\u5bf9\u8fc7\u5ea6\u77eb\u6b63\u73b0\u8c61\u63d0\u51fa\u6a21\u578b\u5c42\u9762\u4f18\u5316\uff08COLING2024\uff09\uff0c\u9488\u5bf9\u9ad8\u8d28\u91cf\u6570\u636e\u7a00\u7f3a\u73b0\u8c61\u63d0\u51fa\u9488\u5bf9\u6027\u5408\u6210\u6570\u636e\u6784\u5efa\u65b9\u6cd5\uff08ACL2024 Findings\uff09\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "LLM Application", "time": "", "description": "\u53d1\u8868\u591a\u7bc7\u76f8\u5173\u8bba\u6587\uff0c\u5982\u201cTag - Evol: Achieving Efficient Instruction Evolving via Tag Injection\u201d\u7b49"}, {"name": "KV Cache Compression", "time": "", "description": "\u53d1\u8868\u591a\u7bc7\u76f8\u5173\u8bba\u6587\uff0c\u5982\u201cLookahead Q - Cache: Achieving More Consistent KV Cache Eviction via Pseudo Query\u201d\u7b49"}, {"name": "Sparse Attention", "time": "", "description": "\u53d1\u8868\u8bba\u6587\u201cProxyAttn: Guided Sparse Attention via Representative Heads\u201d"}, {"name": "Speculative Decoding", "time": "", "description": "\u53d1\u8868\u591a\u7bc7\u76f8\u5173\u8bba\u6587\uff0c\u5982\u201cMake Some Noise: Unlocking Language Model Parallel Inference Capability through Noisy Training\u201d\u7b49"}]
+
+========================================
+
+========================================
+Candidate ID: 21539
+Name Mask: *羡生
+Current Title/Company: 算法专家 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u4e13\u5bb6", "position": "\u7b97\u6cd5\u4e13\u5bb6", "startDate": "2023-06-01", "endDate": "\u4eca", "time": "2023-06-01 ~ \u4eca", "duration": "", "description": "NLP\uff0c\u5927\u6a21\u578b\uff0c\u6587\u5fc3\u4e00\u8a00"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "OpenRLHF", "time": "2023-07-01\u81f3\u4eca", "description": "OpenRLHF\uff1a\u8f7b\u91cf\u9ad8\u6548\u7684RLHF\u8bad\u7ec3\u6846\u67b6\uff0c\u9996\u4e2a\u8986\u76d6llama2\u5168\u6d41\u7a0b\u7684\u5f00\u6e90\u6846\u67b6"}]
+
+========================================
+
+========================================
+Candidate ID: 21547
+Name Mask: *瓜
+Current Title/Company: 算法工程师 @ 百度国际科技（深圳）有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6\u56fd\u9645\u79d1\u6280\uff08\u6df1\u5733\uff09\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-07-01", "endDate": "\u4eca", "time": "2024-07-01 ~ \u4eca", "duration": "", "description": "\u98de\u6868\u3001\u6587\u5fc3\u4e00\u8a00\u5f00\u6e90\u4fa7"}, {"company": "\u767e\u5ea6", "title": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2023-06", "endDate": "2024-06", "time": "2023-06 ~ 2024-06", "duration": "", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 21550
+Name Mask: *为先进欧米伽
+Current Title/Company: 大模型算法工程师 @ 百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u767e\u5ea6", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-07-01", "endDate": "\u4eca", "time": "2025-07-01 ~ \u4eca", "duration": "", "description": "\u6587\u5fc3\u4e00\u8a00\uff0cernie code"}, {"company": "\u8682\u8681\u96c6\u56e2", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-07", "endDate": "2025-06", "time": "2023-07 ~ 2025-06", "duration": "", "description": "Ling Team\uff0c\u57fa\u7840\u6a21\u578b\u7ed3\u6784\u4f18\u5316\uff0c\u6a21\u578b\u8f7b\u91cf\u5316\u548c\u526a\u679d\uff0c\u8bad\u7ec3\u63a8\u7406\u52a0\u901f\u3002"}, {"company": "\u963f\u91cc\u4e91", "title": "\u673a\u5668\u5b66\u4e60\u5e73\u53f0\u5b9e\u4e60\u751f", "position": "\u673a\u5668\u5b66\u4e60\u5e73\u53f0\u5b9e\u4e60\u751f", "startDate": "2022-12", "endDate": "2023-04", "time": "2022-12 ~ 2023-04", "duration": "", "description": "\u963f\u91cc\u4e91PAI \u673a\u5668\u5b66\u4e60\u5e73\u53f0\uff0c\u4e91\u539f\u751f\u5206\u5e03\u5f0f\u8bad\u7ec3\uff0ckubeflow training operator"}, {"company": "\u5fae\u8f6f", "title": "Software Engineer Intern", "position": "Software Engineer Intern", "startDate": "2022-06", "endDate": "2022-09", "time": "2022-06 ~ 2022-09", "duration": "", "description": "Azure kubernetes"}, {"company": "\u7f51\u6613", "title": "\u6e38\u620fAI\u5de5\u7a0b\u5e08", "position": "\u6e38\u620fAI\u5de5\u7a0b\u5e08", "startDate": "2022-05", "endDate": "2022-06", "time": "2022-05 ~ 2022-06", "duration": "", "description": "\u5546\u4e1a\u5316\u6e38\u620fAI Bot\u5206\u5e03\u5f0f\u8bad\u7ec3\u6846\u67b6"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 21581
+Name Mask: *海
+Current Title/Company: 推荐算法实习生 @ 阿里巴巴大文娱集团
+
+=== WORK EXPERIENCES ===
+[{"company": "\u963f\u91cc\u5df4\u5df4\u5927\u6587\u5a31\u96c6\u56e2", "title": "\u63a8\u8350\u7b97\u6cd5\u5b9e\u4e60\u751f", "time": "2023.05 - \u81f3\u4eca", "description": "\u9879\u76ee\u80cc\u666f\uff1a\u4f18\u9177\u9996\u9875\u6c89\u6d78\u6d41\u89c6\u9891\u63a8\u8350\uff0c\u7c97\u6392\u4e0e\u7cbe\u6392\u6a21\u578b\u5728\u6027\u80fd\u65b9\u9762\u548c\u5168\u94fe\u8def\u4e00\u81f4\u6027\u65b9\u9762\u4e0a\u90fd\u4ecd\u6709\u5dee\u8ddd\u3002\u89e3\u51b3\u601d\u8def\uff1a\u589e\u52a0\u4e92\u52a8\u7279\u5f81\u53ca\u76ee\u6807\u3001\u91c7\u7528\u6a21\u578b\u84b8\u998f\u53ca\u7528\u6237\u7c92\u5ea6\u7684\u5bf9\u6bd4\u5b66\u4e60\uff0c\u540c\u65f6\u5b66\u4e60\u7cbe\u6392\u6392\u5e8f\u4ee5\u589e\u52a0\u8054\u8def\u4e00\u81f4\u6027\u3002"}, {"company": "\u5fae\u8f6f BingAds \u90e8\u95e8", "title": "NLP \u7b97\u6cd5\u5b9e\u4e60\u751f", "time": "2022.11 - 2023.03", "description": "\u9879\u76ee\u80cc\u666f\uff1aSeq2Seq \u6a21\u578b\u662f\u5e7f\u544a\u53ec\u56de\u4e2d\u7684\u91cd\u8981\u94fe\u8def\u4e4b\u4e00\uff0c\u7814\u7a76\u7f13\u89e3\u5176\u4e2d\u5b58\u5728\u7684\u66dd\u5149\u504f\u5dee\u95ee\u9898\u540c\u65f6\u63d0\u9ad8\u53ec\u56de\u591a\u6837\u6027\u3002\u89e3\u51b3\u601d\u8def\uff1a1. \u901a\u8fc7\u5bf9\u6bd4\u5b66\u4e60\u5c06\u6392\u5e8f\u8fc7\u7a0b\u878d\u5408\u5230\u4f18\u5316\u76ee\u6807\uff0c\u5728\u6392\u5e8f\u89c4\u5219\u4e2d\u5f15\u5165\u4e86\u591a\u79cd\u4e1a\u52a1\u6307\u6807\u4f7f\u5176\u4ea7\u751f\u66f4\u5408\u7406\u7684\u6392\u5e8f\u30022. \u4f7f\u7528\u7ebf\u4e0a\u8d28\u91cf\u8bc4\u4f30\u6a21\u578b\u3001BERT\u3001CHATGPT \u7b49\u6a21\u578b\u6253\u5206\uff0c\u5bf9 GPT2 \u8fdb\u884c RLHF \u8fed\u4ee3\u548c\u4f18\u5316\u3002\u6548\u679c\uff1a\u5728 BingAds \u7684\u4e1a\u52a1\u6570\u636e\u96c6\u4e0a\u7684\u5b9e\u9a8c\u7ed3\u679c\u663e\u793a\u8be5\u65b9\u6cd5\u5728 BLEU \u7b49\u6307\u6807\u4e0a\u63d0\u9ad8\u4e86\u7ea6 5.5%\u3002"}, {"company": "\u767e\u5ea6\u81ea\u7136\u8bed\u8a00\u5904\u7406\u90e8", "title": "NLP \u7b97\u6cd5\u5b9e\u4e60\u751f", "time": "2022.7 - 2022.11", "description": "\u9879\u76ee\u80cc\u666f\uff1a\u5927\u6a21\u578b\u5728\u5b9e\u9645\u90e8\u7f72\u5e94\u7528\u65f6\u9700\u8981\u8f83\u9ad8\u7684\u8ba1\u7b97\u6210\u672c\uff0c\u56e0\u6b64\u9700\u8981\u7814\u7a76\u5982\u4f55\u5c06\u5176\u4e2d\u7684\u77e5\u8bc6\u84b8\u998f\u5230\u5c0f\u6a21\u578b\u4e2d\u3002\u5de5\u4f5c\u5185\u5bb9\uff1a1. \u9488\u5bf9\u4fe1\u606f\u62bd\u53d6\u548c\u5206\u7c7b\u4efb\u52a1\uff0c\u5c06\u5927\u6a21\u578b\u84b8\u998f\u4e3a\u5c0f\u6a21\u578b\u30022. \u4e3a\u4e86\u8fdb\u4e00\u6b65\u63d0\u5347\u5927\u6a21\u578b\u5fae\u8c03\u6548\u679c\uff0c\u8bbe\u8ba1\u591a\u79cd\u4f4e\u8d28\u6570\u636e\u68c0\u6d4b\u65b9\u6cd5\u5bf9\u5fae\u8c03\u6570\u636e\u534f\u540c\u8fdb\u884c\u68c0\u6d4b\uff1a\u57fa\u4e8e\u89c4\u5219\u7684\u3001\u57fa\u4e8e\u68af\u5ea6\u7684\u3001\u57fa\u4e8e\u7f6e\u4fe1\u5ea6\u7684\u3002\u6548\u679c\uff1a\u77e5\u8bc6\u84b8\u998f\u4efb\u52a1\u7684\u5b9e\u9a8c\u7ed3\u679c\u663e\u793a\u5c0f\u6a21\u578b\u53ef\u4ee5\u8fbe\u5230\u5927\u6a21\u578b\u6548\u679c\u7684 99.3%\uff0c\u4f4e\u8d28\u6570\u636e\u68c0\u6d4b\u4efb\u52a1\u7684\u5b9e\u9a8c\u7ed3\u679c\u663e\u793a\u6240\u63d0\u65b9\u6cd5\u80fd\u8fbe\u5230\u7ea6 60%\u7684\u53ec\u56de\u7387\u3002"}, {"company": "\u9274\u667a\u533b\u5f71", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "time": "2021.04 - 2021.08", "description": "\u9879\u76ee\u80cc\u666f\uff1a\u533b\u5b66\u5f71\u50cf\u7684\u62cd\u6444\u8d28\u91cf\u96be\u4ee5\u59cb\u7ec8\u4fdd\u6301\u8f83\u9ad8\u6c34\u5e73\uff0c\u6b64\u65f6\u9700\u8981\u901a\u8fc7\u6280\u672f\u624b\u6bb5\u6539\u5584\u5176\u8d28\u91cf\u3002\u5de5\u4f5c\u5185\u5bb9\uff1a\u5bf9\u524d\u6cbf\u7684\u56fe\u50cf/\u89c6\u9891\u7b97\u6cd5\u8fdb\u884c\u4e86\u6df1\u5165\u8c03\u7814\uff0c\u91c7\u7528\u56fe\u50cf\u589e\u5f3a\u3001\u56fe\u50cf\u53bb\u96fe\u3001\u8272\u5f69\u8fd8\u539f\u7b49\u6280\u672f\u4ece\u591a\u89d2\u5ea6\u6539\u5584\u533b\u5b66\u5f71\u50cf\u8d28\u91cf\uff0c\u5171\u590d\u73b0\u8fd1 20 \u7bc7\u8bba\u6587\u8fdb\u884c\u5bf9\u6bd4\u5206\u6790\u4ee5\u53ca\u6539\u8fdb\u3002\u90e8\u5206\u7814\u7a76\u8fc7\u7a0b\u53ca\u76f8\u5173\u4ee3\u7801\uff1ahttps://github.com/chongli9230\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u4e2d\u56fd\u4eba\u6c11\u5927\u5b66 DBIIR \u5b9e\u9a8c\u5ba4\uff08\u5b9e\u9a8c\u5ba4\u56fd\u5bb6\u81ea\u7136\u79d1\u5b66\u57fa\u91d1\u91cd\u70b9\u652f\u6301\u9879\u76ee\uff09", "role": "\u7814\u7a76\u6210\u5458", "time": "2020.09 - 2021.09", "description": "\u9879\u76ee\u80cc\u666f\uff1a\u653f\u5e9c\u7a0e\u52a1\u95ee\u7b54\u670d\u52a1\u7684\u8d28\u91cf\u96be\u4ee5\u68c0\u9a8c\uff0c\u56e0\u800c\u9700\u8981\u8fdb\u884c\u5168\u9762\u51c6\u786e\u4e14\u5177\u6709\u89e3\u91ca\u6027\u7684\u95ee\u7b54\u8d28\u91cf\u8bc4\u4f30\u3002\u5de5\u4f5c\u5185\u5bb9\uff1a\u9996\u5148\u5c06\u7528\u6237\u95ee\u9898\u62c6\u89e3\u5206\u6790\u5f97\u5230\u95ee\u9898\u7c7b\u522b\uff0c\u7136\u540e\u5229\u7528 AS2\u3001MRC \u7b49\u6a21\u578b\u9488\u5bf9\u6027\u62bd\u53d6\u56de\u7b54\uff0c\u8fdb\u800c\u5bf9\u95ee\u7b54\u7684\u76f8\u5173\u6027\u3001\u6613\u8bfb\u6027\u7b49\u4e0d\u540c\u65b9\u9762\u8fdb\u884c\u8bc4\u4f30\u3002\u5b9e\u9a8c\u7ed3\u679c\u663e\u793a\u8be5\u65b9\u6cd5\u5c06 F1 \u503c\u4ece\u7ecf\u5178 BERT \u7684 0.749 \u63d0\u5347\u81f3 0.87\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+北京市海淀区中关村大街59号
+教育背景
+2017.09-2021.06 中国人民大学（本科） 信息学院 专业：数据科学与大数据技术
+2021.09-2024.06 中国人民大学（学硕）（保研） 信息学院 专业：大数据科学与工程（计算机专业课全A及以上）
+个人能力与技术背景
+技能清单：CET-6. PyTorch,TensorFlow, Linux, Docker, SQL.
+个人总结：主要从事自然语言处理、信息检索、搜索广告推荐等领域的研究。
+学术成果
+Category-Highlighting Transformer Network for Question Retrieval. DASFAA 2023. （CCF B）（学生一作）
+背景：现有问题检索方法忽略了两个问题之间基于类别的语义关系。
+方法：设计类别识别单元学习基于类别的问题表示，并将其引入到类别感知的 self-attention 中。
+Reusing Keywords for Fine-grained Representations and Matching. 在投. （一作）
+背景：现有文本匹配方法难以区分两个问题在重要关键词上的差异。
+方法：提出基于多级关键词集学习问题的细粒度语义表示，并设计细粒度匹配模块进行端到端的文本匹配。
+A Practical Multi-Domain Recommendation Framework. 在投. （学生一作）
+背景：现有 多域推荐方法直接使用全域数据训练一个模型，难以捕捉每个域各自的特点。
+方法：设计基于域感知子模块的多域推荐框架，并提出多通道域感知 SENet 估计特定域下特征的置信度以消偏。
+实习经历
+阿里巴巴大文娱集团 推荐算法实习生 2023.05 - 至今
+项目背景：优酷首页沉浸流视频推荐，粗排与精排模型在性能方面和全链路一致性方面上都仍有差距。
+解决思路：增加互动特征及目标、采用模型蒸馏及用户粒度的对比学习，同时学习精排排序以增加联路一致性。
+微软 BingAds 部门 NLP 算法实习生 2022.11 - 2023.03
+项目背景：Seq2Seq 模型是广告召回中的重要链路之一，研究缓解其中存在的曝光偏差问题同时提高召回多样性。
+解决思路：1. 通过对比学习将排序过程融合到优化目标，在排序规则中引入了多种业务指标使其产生更合理的排序。
+2.使用线上质量评估模型、BERT、CHATGPT 等模型打分，对 GPT2 进行 RLHF 迭代和优化。
+效果：在 BingAds 的业务数据集上的实验结果显示该方法在 BLEU 等指标上提高了约 5.5%。
+百度自然语言处理部 NLP 算法实习生 2022.7 - 2022.11
+项目背景：大模型在实际部署应用时需要较高的计算成本，因此需要研究如何将其中的知识蒸馏到小模型中。
+工作内容：1. 针对信息抽取和分类任务，将大模型蒸馏为小模型。2. 为了进一步提升大模型微调效果，设计多种低质数据检测方法对微调数据协同进行检测：基于规则的、基于梯度的、基于置信度的。
+效果：知识蒸馏任务的实验结果显示小模型可以达到大模型效果的 99.3%，低质数据检测任务的实验结果显示所提方法能达到约 60%的召回率。
+鉴智医影 算法实习生 2021.04 - 2021.08
+项目背景：医学影像的拍摄质量难以始终保持较高水平，此时需要通过技术手段改善其质量。
+工作内容：对前沿的图像/视频算法进行了深入调研，采用图像增强、图像去雾、色彩还原等技术从多角度改善医学影像质量，共复现近 20 篇论文进行对比分析以及改进。部分研究过程及相关代码：https://github.com/chongli9230 。
+研究项目
+中国人民大学 DBIIR 实验室（实验室国家自然科学基金重点支持项目） 2020.09 - 2021.09
+项目背景：政府税务问答服务的质量难以检验，因而需要进行全面准确且具有解释性的问答质量评估。
+工作内容：首先将用户问题拆解分析得到问题类别，然后利用 AS2、MRC 等模型针对性抽取回答，进而对问答的相关性、易读性等不同方面进行评估。实验结果显示该方法将 F1 值从经典 BERT 的 0.749 提升至 0.87。
+其它合作成果
+论文：DiCausal: Exploiting Domain Knowledge for Interactive Causal Discovery. DASFAA 2023. (CCF B)
+软著：基于意图分析的税务问答推荐系统
+
+========================================
+
+========================================
+Candidate ID: 21585
+Name Mask: *思华
+Current Title/Company: 算法工程师 @ 浙江天猫技术有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u6d59\u6c5f\u5929\u732b\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u5927\u6dd8\u5b9d\u641c\u7d22\u548c\u63a8\u8350\u7b97\u6cd5\u90e8\u95e8", "time": "2023.06 - 2023.10", "description": "\u8d1f\u8d23\u6dd8\u5b9d\u5185\u5bb9\u98ce\u63a7\u76f8\u5173\u7684\u591a\u6a21\u6001\u5927\u6a21\u578b\u7814\u7a76\uff0c\u4e3b\u8981\u9488\u5bf9\u4e0d\u540c\u4e1a\u52a1\u505a\u5230\u76f8\u5e94\u7cbe\u51c6\u7684\u4f4e\u4fd7\u8bc6\u522b\uff0c\u63d0\u5347\u7528\u6237\u4f53\u9a8c\uff1b\u6839\u636e\u5df2\u6709\u7684\u6dd8\u5b9d\u7535\u5546\u56fe\u50cf\u6587\u672c\u6570\u636e\uff0c\u5728\u4e2d\u6587 CLIP \u6a21\u578b\u7684\u57fa\u7840\u4e0a\u7ed3\u5408\u7535\u5546\u98ce\u63a7\uff0c\u8fdb\u884c\u591a\u6a21\u9884\u8bad\u7ec3\u4efb\u52a1\uff08MVC\u3001PAC\u3001AMLM\u3001MPFC \u7b49\uff09\u548c\u591a\u6a21\u4fe1\u606f\u878d\u5408\uff08QFormer \u7b49\uff09\u7684\u76f8\u5173\u65b9\u6cd5\u5b9e\u9a8c\uff0c\u4ee5\u6b64\u63d0\u5347\u7ebf\u4e0a\u6548\u679c"}, {"company": "\u767e\u5ea6\u5728\u7ebf\u7f51\u7edc\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u641c\u7d22\u5185\u5bb9\u6280\u672f\u90e8\u95e8", "time": "2022.11 - 2023.03", "description": "\u8d1f\u8d23\u957f\u6587\u672c\u9884\u8bad\u7ec3\u6a21\u578b\u7684\u7814\u7a76\uff0c\u63d0\u53d6\u6574\u4e2a\u7f51\u9875\u5185\u5bb9\u7684\u8bed\u4e49\u5411\u91cf\uff0c\u4ee5\u652f\u6301\u66f4\u957f\u7684\u4e0a\u4e0b\u6587\u7406\u89e3\u80fd\u529b\u548c\u7bc7\u7ae0\u7ea7\u5efa\u6a21\uff1b\u53c2\u7167 SimCSE\uff0c\u5f00\u53d1\u4e86 Nystromformer-based \u7684\u5bf9\u6bd4\u5b66\u4e60\u6846\u67b6\u8fdb\u884c\u6587\u672c\u5bf9\u6bd4\u5b66\u4e60\u9884\u8bad\u7ec3\uff1b\u540c\u65f6\u589e\u8bbe\u4e86 sd\uff08\u53e5\u5b50\u8ddd\u79bb\uff09\u548c tpm\uff08\u6807\u9898\u9875\u9762\u5339\u914d\uff09\u4e24\u79cd\u65b0\u7684\u9884\u8bad\u7ec3\u4efb\u52a1\uff1b\u5bf9\u6bd4\u5b66\u4e60\u9884\u8bad\u7ec3\u4efb\u52a1\u5e2e\u52a9\u805a\u661f\u7cfb\u7edfDoc\u5411\u91cf Recal1@80 \u503c\u63d0\u5347\u4e8610%\uff1btpm \u9884\u8bad\u7ec3\u4efb\u52a1\u5728\u4e0b\u6e38 KeySentences \u4efb\u52a1\u7684\u53ec\u56de\u7387\u548c loss \u6307\u6807\u4ee5\u53ca\u9898\u76ee\u5339\u914d\u4efb\u52a1\u7684\u51c6\u786e\u7387\u548c\u53ec\u56de\u7387\u4e0a\u90fd\u5f97\u5230\u4e86\u63d0\u5347"}, {"company": "\u767e\u5ea6\u5728\u7ebf\u7f51\u7edc\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u667a\u9a7e\u5730\u56fe\u6570\u636e\u5f15\u64ce\u90e8\u95e8", "time": "2022.09 - 2022.11", "description": "\u53c2\u4e0e\u8f68\u8ff9\u6570\u636e\u6316\u6398\u4e8b\u6545\u9879\u76ee\uff0c\u4e3b\u8981\u8d1f\u8d23\u8f68\u8ff9\u6570\u636e\u7684\u7279\u5f81\u5de5\u7a0b\uff1b\u4f7f\u7528 QGIS \u548c\u767e\u5ea6\u56fe\u7075\u8fdb\u884c\u53ef\u89c6\u5316\u8bbe\u8ba1\u5e76\u63d0\u53d6\u7279\u5f81\u3001\u7f16\u5199\u7b56\u7565\u7b97\u6cd5\u6765\u7b5b\u9009\u7279\u5f81\u5e76\u7528 DBSCAN \u548c K-means \u5bf9\u8f68\u8ff9\u8fdb\u884c\u805a\u7c7b\uff0c\u4ee5\u6b64\u6765\u8ba1\u7b97\u4e8b\u6545\u70b9\u9884\u6d4b\u7684\u51c6\u786e\u7387\u548c\u53ec\u56de\u7387\uff1b\u7279\u5f81\u5de5\u7a0b\u5728\u6548\u679c\u4e0a\u5e2e\u52a9\u4e8b\u6545\u53ec\u56de\u7387\u63d0\u9ad8\u4e8650%"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u57fa\u4e8e\u6df1\u5ea6\u5b66\u4e60\u7684 FAST \u5236\u52a8\u5668\u5bff\u547d\u9884\u6d4b\u4e0e\u5065\u5eb7\u7ba1\u7406\u6280\u672f\u7814\u7a76", "role": "\u79d1\u7814\u9879\u76ee", "time": "2022.03 - \u81f3\u4eca", "description": "\u5b9e\u73b0 FAST \u5929\u773c\u7684\u5feb\u901f\u6545\u969c\u8bc6\u522b\u548c\u6839\u56e0\u5b9a\u4f4d\uff0c\u53ca\u65f6\u5b8c\u6210\u5176\u6545\u969c\u9884\u5904\u7406\uff0c\u63d0\u9ad8 FAST \u7684\u89c2\u6d4b\u6548\u7387\uff1b\u57fa\u4e8e\u7c7b Transformer \u6a21\u578b(Informer\u7b49)\u7684\u957f\u65f6\u95f4\u5e8f\u5217\u9884\u6d4b\u65b9\u6cd5\uff0c\u5904\u7406\u5236\u52a8\u5668\u5173\u952e\u90e8\u4ef6\u6545\u969c\u8bb0\u5f55\u548c\u4f20\u611f\u5668\u56de\u4f20\u8fd0\u884c\u6570\u636e\uff0c\u6784\u5efa\u57fa\u4e8e\u7c7b\u4f3c Autoformer \u6846\u67b6\u540c\u65f6\u501f\u9274 Swin Transformer/FEDformer \u601d\u60f3\u7684\u5bff\u547d\u9884\u6d4b\u6a21\u578b"}, {"name": "\u901a\u8fc7\u81ea\u7136\u8bed\u8a00\u7834\u8bd1\u6709\u673a\u5206\u5b50\u7684\u5316\u5b66\u7ed3\u6784\u6765\u9884\u6d4b\u5176\u7194\u70b9\u8303\u56f4", "role": "\u8bfe\u7a0b\u9879\u76ee", "time": "2021.10 - 2022.02", "description": "\u6316\u6398\u6709\u673a\u5c0f\u5206\u5b50\u7684\u7ed3\u6784\u4fe1\u606f\u8fdb\u800c\u5bf9\u5176\u7194\u70b9\u8303\u56f4\u8fdb\u884c\u9884\u6d4b\uff0c\u5e76\u8bbe\u8ba1\u517110\u6b21\u7684\u4e0d\u540c\u6a21\u578b\u5bf9\u6bd4\u5b9e\u9a8c\uff1b\u4e3b\u8981\u57fa\u4e8e\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7684\u65b9\u6cd5\uff0c\u5904\u7406\u5f00\u6e90 ONS \u7194\u70b9\u6570\u636e\u5e93\u4e2d\u8fd12w\u4e2a\u5206\u5b50\u7684\u6709\u673a\u5316\u5408\u7269\u6807\u51c6\u5316 SMILES \u8868\u8fbe\u5f0f\uff08\u5b57\u7b26\u4e32\uff09\u3001\u7194\u70b9\u5747\u503c\u7b49\u4fe1\u606f\uff0c\u7ed3\u6784\u548c\u5206\u8bcd\u64cd\u4f5c\uff0c\u6784\u5efa\u4ee5 LSTM \u4e3a\u6838\u5fc3\u7684\u591a\u79cd\u4e0d\u540c\u9884\u6d4b\u6a21\u578b"}, {"name": "\u63a8\u8350\u7cfb\u7edf\u7efc\u8ff0\u53ca xDeepFM \u7b97\u6cd5\u590d\u73b0\u7814\u7a76", "role": "\u8bfe\u7a0b\u9879\u76ee", "time": "2021.10 - 2022.01", "description": "\u7efc\u8ff0\u4e86\u63a8\u8350\u7cfb\u7edf\u7684\u53d1\u5c55\uff0c\u5b66\u4e60\u4e86\u63a8\u8350\u7cfb\u7edf\u4e2d\u53ec\u56de\u3001\u6392\u5e8f\u7b49\u73af\u8282\u4ee5\u53ca ctr/cvr \u6307\u6807\u53ca\u5176\u9884\u6d4b\u7b97\u6cd5\uff1b\u91cd\u70b9\u5bf9 xDeepFM \u7b97\u6cd5\u8fdb\u884c\u4e86\u5f52\u7eb3\u603b\u7ed3\uff0c\u5e76\u6307\u51fa\u4e86\u5176\u52a8\u673a\u548c\u5c40\u9650\uff0c\u4e0e\u8fd1\u5e74\u6765\u70ed\u95e8\u6216\u8005\u76f8\u5173\u6027\u5f88\u9ad8\u7684\u5176\u4ed6\u7b97\u6cd5\uff08\u5982 DIN\u3001DIEN\u3001SIM\uff09\u505a\u4e86\u7b80\u8981\u9610\u8ff0\u548c\u5bf9\u6bd4\uff1b\u540c\u65f6\u8fd8\u590d\u73b0\u4e86\u5176\u65b9\u6cd5\u5e76\u8fdb\u884c\u4e86\u5b9e\u9a8c\u7ed3\u679c\u5206\u6790\u53ca\u53ef\u89c6\u5316"}]
+
+=== RAW RESUME EXTRACT ===
+个人简历
+姓名 联系方式
+硕士院校 清华大学/自动化系-电子信息专业(2021-2024)
+本科院校 河北工业大学/电气工程及其自动化(2017-2021)
+主修课程 机器学习与模式识别、人工神经网络、大数据分析、大数据系统基础
+实习经历
+浙江天猫技术有限公司 大淘宝搜索和推荐算法部门 2023.06 - 2023.10
+· 负责淘宝内容风控相关的多模态大模型研究，主要针对不同业务做到相应精准的低俗识别，提升用户体验
+· 根据已有的淘宝电商图像文本数据，在中文 CLIP 模型的基础上结合电商风控，进行多模预训练任务
+（ MVC、PAC、AMLM、MPFC 等）和多模信息融合（ QFormer 等）的相关方法实验，以此提升线上效果
+百度在线网络技术有限公司 搜索内容技术部门 2022.11 - 2023.03
+· 负责长文本预训练模型的研究，提取整个网页内容的语义向量，以支持更长的上下文理解能力和篇章级建模
+· 参照 SimCSE，开发了 Nystromformer-based 的对比学习框架进行文本对比学习预训练；同时增设了 sd（句
+子距离）和 tpm（标题页面匹配）两种新的预训练任务
+· 对比学习预训练任务帮助聚星系统Doc向量 Recal1@80 值提升了10%；tpm 预训练任务在下游 KeySentences
+任务的召回率和 loss 指标以及题目匹配任务的准确率和召回率上都得到了提升
+百度在线网络技术有限公司 智驾地图数据引擎部门 2022.09 - 2022.11
+· 参与轨迹数据挖掘事故项目，主要负责轨迹数据的特征工程
+· 使用 QGIS 和百度图灵进行可视化设计并提取特征、编写策略算法来筛选特征并用 DBSCAN 和 K-means 对
+轨迹进行聚类，以此来计算事故点预测的准确率和召回率
+· 特征工程在效果上帮助事故召回率提高了50%
+科研经历
+《基于深度学习的 FAST 制动器寿命预测与健康管理技术研究》 科研项目 2022.03 - 至今
+· 实现 FAST 天眼的快速故障识别和根因定位，及时完成其故障预处理，提高 FAST 的观测效率
+· 基于类 Transformer 模型(Informer等)的长时间序列预测方法，处理制动器关键部件故障记录和传感器回
+传运行数据，构建基于类似 Autoformer 框架同时借鉴 Swin Transformer/FEDformer 思想的寿命预测模型
+《通过自然语言破译有机分子的化学结构来预测其熔点范围》 课程项目 2021.10 - 2022.02
+· 挖掘有机小分子的结构信息进而对其熔点范围进行预测，并设计共10次的不同模型对比实验
+· 主要基于自然语言处理的方法，处理开源 ONS 熔点数据库中近2w个分子的有机化合物标准化 SMILES 表达式
+（字符串）、熔点均值等信息，结构和分词操作，构建以 LSTM 为核心的多种不同预测模型
+《推荐系统综述及 xDeepFM 算法复现研究》 课程项目 2021.10 - 2022.01
+· 综述了推荐系统的发展，学习了推荐系统中召回、排序等环节以及 ctr/cvr 指标及其预测算法
+· 重点对 xDeepFM 算法进行了归纳总结，并指出了其动机和局限，与近年来热门或者相关性很高的其他算法
+（如 DIN、DIEN、SIM）做了简要阐述和对比；同时还复现了其方法并进行了实验结果分析及可视化
+开源贡献
+Github: https://github.com/tsinghua-zhang
+· 为 LLaMa、ChatGLM、GLM、BLOOM 等大模型添加全流程 LoRA 并与 Prefix-Tuning 做对比:
+https://github.com/PaddlePaddle/PaddleNLP/pull/5786 (*5804, 5881, 5887, 5930)
+· 开发基于 GPT 模型的 Prefix-Tuning 的 PaddleNLP-Prompt API, 应用于 NLG 任务:
+https://github.com/PaddlePaddle/PaddleNLP/pull/5539 (*5919)
+· 给 Electra 模型提供了 Trainer 训练 API，针对训练过程的通用训练配置用 Trainer-API 做了封装
+https://github.com/PaddlePaddle/PaddleNLP/pull/5317
+· 升级 GPT-3、Reformer、BigBird 模型结构并且增加基础单测:
+https://github.com/PaddlePaddle/PaddleNLP/pull/6012 (*4841, 5062, 5160, 5186 等)
+
+========================================
+
+========================================
+Candidate ID: 21586
+Name Mask: *脉招聘
+Current Title/Company: None @ None
+
+=== WORK EXPERIENCES ===
+[]
+
+=== PROJECT EXPERIENCES ===
+[]
+
+=== RAW RESUME EXTRACT ===
+{
+    "name": "王菁辉",
+    "email": null,
+    "phone": null,
+    "age": null,
+    "expect_location": "北京",
+    "education_level": "本科",
+    "current_company": "快手-智能研发中心-KwaiKAT团队",
+    "current_title": "算法专家",
+    "experience_years": 6,
+    "skills": [
+        "Agent",
+        "RL",
+        "Posttrain agentic system",
+        "AI Coding",
+        "LLM",
+        "Coding能力",
+        "KAT-Coder",
+        "SeamlessFlow",
+        "MCTS",
+        "routing replay",
+        "mode collapse",
+        "Prompt攻击",
+        "Agent架构设计",
+        "IDE",
+        "online learning",
+        "Research",
+        "auto-think",
+        "system benchmark",
+        "multi-agent",
+        "T-URL",
+        "minimax",
+        "TPG",
+        "图像去噪",
+        "人脸变形与纹理合成"
+    ],
+    "education_details": [
+        {
+            "school": "北京邮电大学",
+            "degree": "本科",
+            "major": "计算机科学与技术",
+            "year": "2015.09-2019.06",
+            "description": null
+        }
+    ],
+    "work_experiences": [
+        {
+            "company": "快手-智能研发中心-KwaiKAT团队",
+            "title": "算法专家",
+            "time": "2025.03-至今",
+            "description": "后训练算法负责人，研发KAT系列通用LLM，注重Coding能力。成功推出KAT-Coder系列模型，AA综合能力位居全球前10，Openrouter调用量全球第13，编程类全球第3。主持自研RL训练框架(Seamlessflow)的设计与实现，满足了RL高吞吐、低耦合、上万容器并行运行以及调度的复杂agent训练场景的需求。框架特点：1、支持异构算力的无空泡RL训练 2、支持任意脚手架的非侵入式接入，提出直接在轨迹树上进行训练，实现megatron吞吐量提升3倍以上，同时助力SFT和RL的训练。相关论文投MLSYS。领导算法团队与INFRA团队的合作研发。解决了MOE Agentic RL的训练稳定性问题，业内首个提出从采样噪声的角度理解RL的不稳定性来源，相对应算法显著优于其他方法（Qtis，routing replay）。引入模型内部信号进行reward shaping，对RL trust region约束所引发的mode collapse现象，最终有效缓解模型经过RL训练后出现的回答多样性严重下降的问题。负责快手内部统一的沙箱管理平台KwaiEnv的建设，现已集成10000+镜像环境，并能通过统一的训练接口接入RL训练，进行RL scaling的研究。负责分析模型API回流的数据，建立多个实时模型效果评测指标，基于此进行：1、防御线上的Prompt攻击行为 2、大幅降低工具调用的死循环。参与快手自研IDE KwaiPilot的Agent架构设计，该IDE是快手公司的默认编程IDE。基于该IDE主持开展online learning的算法、基础研究。参与团队的research工作，涉及reasoning、auto-think、system、benchmark、multi-agent、下一代RL算法等数个方向，在这期间有数篇paper、blog发表。研究性模型KAT-V1位居LCB PRO榜单开源第一（7-8月）。"
+        },
+        {
+            "company": "旷视",
+            "title": "研究员",
+            "time": "2019.11-2025.02",
+            "description": "测测(愈心科技)：负责公司的AI技术转型，训练自研LLM实现心理学multi-agent对话能力，该能力成功上线。百度：负责文心一言推理能力增强，推动X模型在web端成功上线，可以进行深度思考、自主实用工具解决复杂任务。参与RL基础建设，完成了自研RL框架的搭建，支持训练分卡、训推共卡两种架构。领导多模态RL的探索，增强模型的多模态规划、解题能力。其中多模态规划的research工作发表于ICCV2025。minimax：领导公司3D方向的基建，参与Talking head项目的算法研发，负责强化学习方向的算法研发，稳定自研大语言模型（AABB 3D/AABB 4）的PPO的训练。后3D方向被公司取消，后入职百度。旷视：负责ISP/底层图像视觉算法的研发工作，精通降噪算法、模型量化。"
+        }
+    ],
+    "project_experiences": [],
+    "awards_achievements": [
+        {
+            "type": "科研成果",
+            "title": "KAT-Coder Technical Report",
+            "time": null,
+            "description": "一作"
+        },
+        {
+            "type": "科研成果",
+            "title": "SeamlessFlow: A Trainer Agent Isolation RL Framework Achieving Bubble-Free Training Pipelines via Tag Scheduling",
+            "time": null,
+            "description": "一作"
+        },
+        {
+            "type": "科研成果",
+            "title": "Tree Training: Packing Tree-based Trajectory in Agentic LLM Training",
+            "time": "2026",
+            "description": "一作，投MLSYS 2026"
+        },
+        {
+            "type": "科研成果",
+            "title": "Reducing Sampling Noise to Improve Stability of Moe Reinforcement Learning",
+            "time": null,
+            "description": "一作"
+        },
+        {
+            "type": "科研成果",
+            "title": "KAT-V1: Kwai-AutoThink Technical Report",
+            "time": null,
+       
+
+========================================
+
+========================================
+Candidate ID: 21587
+Name Mask: *功鹏
+Current Title/Company: 电子信息/硕士 @ 中国科学技术大学
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4e91\u77e5\u58f0", "title": "\u591a\u6a21\u6001\u60c5\u611f\u5206\u6790\u7814\u53d1\u5b9e\u4e60\u751f", "time": "2022.12-2023.06", "description": "\u4e3b\u8981\u804c\u8d23\uff1a\u591a\u6a21\u6001\u60c5\u611f\u5206\u6790\u4efb\u52a1\uff0c\u8bbe\u8ba1\u6a21\u578b\uff0c\u4ece\u4e8b\u79d1\u7814\u4efb\u52a1\uff0c\u5206\u6790\u4eba\u7c7b\u60c5\u611f\uff0c\u4fc3\u8fdb\u4ee5\u4eba\u4e3a\u672c\u7684\u4e1a\u52a1\u9700\u6c42\uff0c\u5177\u4f53\u9488\u5bf9\u6709\u5173\u4eba\u8138\u3001\u8eab\u4f53\u3001\u624b\u52bf\u3001\u8bed\u97f3\u3001\u97f3\u9891\u3001\u6587\u672c\u548c\u8bed\u8a00\u7684\u8bc6\u522b\u3001\u5206\u6790\uff0c\u89e3\u51b3\u8de8\u753b\u9762\u5bf9\u9762\u7b49\u6a21\u5f0f\u3002\u5de5\u4f5c\u4e1a\u7ee9\uff1a\u8bbe\u8ba1\u51fa\u4e00\u6b3e\u591a\u6a21\u6001\u60c5\u611f\u5206\u6790\u6846\u67b6\uff0c\u5728\u5927\u89c4\u6a21\u4eba\u8138\u6570\u636e\u5e93\uff08LFW, CASIA-WebFace, Vggface2\uff09\u4e0a\u9762\uff0c\u8fdb\u884c\u8868\u60c5\u8bc6\u522b\uff0c\u52a8\u4f5c\u5355\u5143\u68c0\u6d4b\uff0cVA\u4f30\u8ba1\uff0c\u53d1\u8868\u5b66\u672f\u8bba\u65873\u7bc7\u3002"}, {"company": "\u79d1\u5927\u8baf\u98de", "title": "\u8f93\u5165\u6cd5\u94fe\u8def\u7814\u53d1\u5b9e\u4e60\u751f", "time": "2023.09-2023.12", "description": "\u4e3b\u8981\u804c\u8d23\uff1a\u8d1f\u8d23\u8f93\u5165\u6cd5\u94fe\u8def\uff0c\u5229\u7528AIGC\u5927\u6a21\u578b\uff0c\u6839\u636e\u7528\u6237\u8f93\u5165\u7684\u6587\u5b57\u6216\u8005\u56fe\u7247\uff0c\u4e3a\u5ba2\u6237\u4e2a\u6027\u5316\u5b9a\u5236\u624b\u673a\u8f93\u5165\u76ae\u80a4\u3002\u5de5\u4f5c\u4e1a\u7ee9\uff1a\u5236\u5b9a\u4e86\u4e00\u671f\u5f00\u53d1\u8ba1\u5212\uff0c\u521d\u6b65\u8fbe\u5230\u4e0a\u7ebf\u7684\u8981\u6c42\uff0c\u5e94\u7528\u4e8e\u661f\u706b\u5927\u6a21\u578b\u4e2d\uff0c\u4f46\u662f\u8fd8\u6709\u4e00\u4e9b\u95ee\u9898\u672a\u80fd\u89e3\u51b3\uff0c\u5143\u7d20\u4e4b\u95f4\u7684\u534f\u8c03\u4e00\u81f4\u6027\uff0c\u5bfc\u81f4\u6807\u7b26\u53f7\u80cc\u540e\u7684\u73b0\u5b9e\u88ab\u8bc1\uff0c\u5df2\u7ecf\u4e2d\u6587\u5b57\u7b26\u4e0d\u591f\u7f8e\u89c2\u3002"}, {"company": "\u5feb\u624b", "title": "\u591a\u6a21\u6001\u6280\u672f\u4e0e\u5e94\u7528\u5b9e\u4e60\u751f", "time": "2024.08-\u81f3\u4eca", "description": "\u4e3b\u8981\u804c\u8d23\uff1a\u4e0e\u63a8\u8350\u6a21\u578b\u7ec4\u8fdb\u884c\u5408\u4f5c\uff0c\u8d1f\u8d23\u89c6\u9891\uff0c\u6587\u672c\uff0c\u97f3\u9891\u6570\u636e\u8fdb\u884c\u7aef\u5230\u7aef\u7684\u8bad\u7ec3\uff0c\u5bf9\u6cb3\u56feembeddingV3\u5efa\u6a21\uff0c\u5f97\u5230\u5bf9\u9f50\u7684\u7279\u5f81\u4f5c\u4e1a\u7ee9\uff1a\u6682\u672a\u6295\u5165\u4f7f\u7528"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u534e\u4e3a\u9879\u76ee", "role": "\u9879\u76ee\u80cc\u666f", "time": "2022.09-2022.12", "description": "\u8be5\u9879\u76ee\u65e8\u5728\u5c06\u4f7f\u7528 PyTorch \u5b9e\u73b0\u7684\u76ee\u6807\u68c0\u6d4b\u6a21\u578b PAA \u590d\u5236\u5230 MindSpore \u8bed\u8a00\u4e2d\u3002\u4e3b\u8981\u804c\u8d23\uff1a\u8fd0\u7528\u5bf9 PyTorch \u548c MindSpore \u6846\u67b6\u7684\u4e13\u4e1a\u77e5\u8bc6\uff0c\u5c06 PyTorch \u5b9e\u73b0\u8f6c\u6362\u4e3a MindSpore \u8bed\u8a00\uff0c\u786e\u4fdd\u529f\u80fd\u548c\u6027\u80fd\u5f97\u5230\u4fdd\u6301\u3002\u5de5\u4f5c\u4e1a\u7ee9\uff1a\u73b0\u5df2\u7ed3\u9879\uff0c\u4ea4\u4ed8\u4ee3\u7801\uff0c\u5e76\u62a5\u544a\u5f02\u5e38\u3002"}, {"name": "\u767e\u5ea6\u9879\u76ee", "role": "\u9879\u76ee\u80cc\u666f", "time": "2024.07-\u81f3\u4eca", "description": "\u8be5\u9879\u76ee\u65e8\u5728\u5229\u7528\u751f\u6210\u5f0f\u6a21\u578b\u751f\u6210\u81ea\u52a8\u9a7e\u9a76\u7684\u591a\u89c6\u89d2\u573a\u666f\u3002\u4e3b\u8981\u804c\u8d23\uff1a\u5229\u7528\u751f\u6210\u5f0f\u6a21\u578b\u751f\u6210\u9ad8\u8d28\u91cf\u7684\u81ea\u52a8\u9a7e\u9a76\u591a\u89c6\u89d2\u56fe\u7247\uff0c\u5c06\u751f\u6210\u7684\u56fe\u7247\u6cdb\u5316\u5230\u4e0b\u6e38\u4efb\u52a1\uff0c\u73b0\u5df2\u751f\u6210\u7684\u56fe\u7247\u7684 FID \u7ecf\u8fbe\u5230 sota\uff0c\u4ee5\u53ca\u4e0b\u6e38\u4efb\u52a1\u7684 map\uff0cvehicle mIoU \u4e5f\u5df2\u7ecf\u8fbe\u5230 sota\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+教育背景
+2022.09-2025.06 中国科学技术大学 电子信息/硕士 GPA ：前 30%
+2017.09-2021.06 安徽师范大学 软件工程/本科 GPA ：前 2%
+实验室：语音情感计算及多模态交换研究院 研究方向：计算机视觉
+竞赛经历
+2023 CVPR （冠军，负责人） IBIoHash competition at 10th FGVC
+■ 主要问题：随着实际应用中细粒度数据的操作式增长,传统的存储方法可能需要大量的存储空间来保存大规模的细粒度数据。尤其是在数据量大的情况下，成本显著增加，并且存储效率低下，访问速度慢。
+■ 解决方案：受到了 MAE 的启发，我们提出了精馏化特征增强哈希检索框架，构建精研-重建辅助分支，结合预训练模型进行微调，训练出更鲁棒的 backbone 特征，之后采用特征增强技术（DBA,QE,PCA)对特征进行增强，使用 MD5 加密方法生成图像的 48 位哈希码。
+2023 ACM MM （冠军，负责人） MMsports Basketball Player ReID
+■ 主要问题：竞赛所提供的训练数据较少，且同一队的球员通常穿着非常相似的服装，例如队服，这使得很难区分它们。图像通常具有低分辨率，并且分辨率可能会在不同的场景中发生变化。结合球员的重叠和快速移动，这增加了重新识别任务的挑战。
+■ 解决方案：为解决上述的问题，我们仿照 CLIP 的设计思想，建立图像-文本对的训练方式，设计 N 对（图像，图像）的对比训练方式，设计 Info Loss 以训练目标，同时使用 k-reciprocal re-ranking 的后处理策略，快速与其他队伍拉开差距。我们通过实验证明，我们的模型具有一定的 OCR 能力。
+2022 ECCV （季军，负责人） SSLAD Track1-2D object detection
+■ 主要问题：竞赛所提供的训练数据较少，且训练数据和测试数据存在一定的分布差异。另一方面，大多数队伍方案 相近，均采用大模型、大尺度提升分割效果，需要从额外角度提升模型效果。
+■ 解决方案：为解决数据缺乏的问题，我们对收集的无标注外部数据采用伪标签方法，使用半监督学习流程训练模 型。为了在方案设计上和其他队伍拉开差距，我们设计了多模型交叉伪标签训练的策略，利用 CNN 和 Transformer 特征提取的偏好性，互相监督以增强模型的特征提取能力。
+论文发表
+1. Local region perception and rela-tionship learning combined with feature fusion for facial action unit detection(CVPRW 学生二作)
+2. Exploring Large-scale Unlabeled Faces to Enhance Facial Expression Recognition(CVPRW 学生二作)
+3. A Dual Branch Network for Emotional Reaction Intensity Estimation(CVPRW 其他)
+4. AUD-TGN: Advancing Action Unit Detection with Temporal Convolution and GPT-2 in Wild Audiovisual Contexts(CVPRW 其他)
+5. Multimodal Fusion with Spatiotemporal Sequences and Relationship Learning for Valence-Arousal Estimation(CVPRW 学生一作)
+6. Efficient Feature Extraction and Late Fusion Strategy for Audiovisual Emotional Mimicry Intensity Estimation(CVPRW 其他)
+7. Multi Model Ensemble for Compound Expression Recognition(CVPRW 其他)
+8. Exploring Facial Expression Recognition through Semi-Supervised Pre-training and Temporal Modeling(CVPRW 其他)
+9. End-to-end Spatio-Temporal Information Aggregation For Micro-Action Detection(ACMMM 学生二作)
+10. RAG-Guided Large Language Models for Visual Spatial Description with Adaptive Hallucination Correc 学生二作)
+11. Temporal-Informative Adapters in VideoMAE V2 and Multi-Scale Feature Fusion for Micr Spotting-then-Recognition(ACMMM 学生一作)
+12. Micro-Expression Spotting Based on Optical Flow Feature with Boundary Calibration (ACMMM 学生二作)
+在投论文
+Contrastive Training with Squeeze-and-Excitation Temporal Convolutional Networks for Person ReID （IEEE TITS 在投中 学生一作）
+其他奖项
+ECCV2022: Open-PreTrain Track （冠军）
+ECCV2022: ImageNet1K-Pretrain Track （冠军）
+CVPR2023: 6th UG2+ Challenge Track 1: Object Detection In Haze(冠军)
+CVPR2023: Few-Shot Object Recognition Challenge （亚军）
+ICCV2023: 3D Instance Segmentation of Urban-scale Point Clouds （冠军）
+AAAI2024: 2024 数学人竞赛（Self-Supervised Face Geometry Reconstruction Competition）（季军）
+AAAI2024: 2024 数学人竞赛（Semi-supervised 3D Skull Reconstruction）（亚军）
+CVPR2023: OmniCV challenge（亚军）
+CVPR2023: Action Unit Detection （季军）
+CVPR2023: Emotional Reaction intensity Estimation Challenge （亚军）
+安徽省2023 跨界 AI 创新大赛-应用赛道（银奖）并获得《华为智能基座奖学金》
+本科期间：获得 3 次一等奖学金，1 次二等奖学金，1 次华软奖学金，1 次国家励志奖学金，2 次三好学生，1 次优秀学术干部标兵，2 次三好学生标兵，2 项软件著作权，1 项专利，1 次安徽省优秀毕业生。
+实习经历
+2022.12-2023.06 云知声 多模态情感分析研发实习生
+主要职责：多模态情感分析任务，设计模型，从事科研任务，分析人类情感，促进以人为本的业务需求，具体针对有关人脸、身 体、手势、语音、音频、文本和语言的识别、分析，解决跨画面对面等模式。
+工作业绩：设计出一款多模态情感分析框架，在大规模人脸数据库（LFW, CASIA-WebFace, Vggface2）上面，进行表情识别， 动作单元检测，VA 估计，发表学术论文3 篇。
+2023.09-2023.12 科大讯飞 输入法链路研发实习生
+主要职责：负责输入法链路，利用 AIGC 大模型，根据用户输入的文字或者图片，为客户个性化定制手机输入皮肤。
+工作业绩：制定了一期开发计划，初步达到上线的要求，应用于星火大模型中，但是还有一些问题未能解决，元素之间的协调一 致性，导致标符号背后的现实被证，已经
+
+========================================
+
+========================================
+Candidate ID: 21592
+Name Mask: *铭
+Current Title/Company: 算法工程师 @ 理想汽车
+
+=== WORK EXPERIENCES ===
+[{"company": "\u7406\u60f3\u6c7d\u8f66", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2023.04-\u81f3\u4eca", "description": "\u667a\u80fd\u7a7a\u95f4\u90e8-\u591a\u6a21\u6001\u611f\u77e5\u90e8\uff0c\u5de5\u4f5c\u5730\u70b9\uff1a\u5317\u4eac\u5e02"}, {"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2019.09-2023.04", "description": "\u8bed\u97f3\u6280\u672f\u90e8\uff0c\u5de5\u4f5c\u5730\u70b9\uff1a\u5317\u4eac\u5e02"}, {"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09", "time": "2017.03-2018.03", "description": "\u8bed\u97f3\u6280\u672f\u90e8\uff0c\u5de5\u4f5c\u5730\u70b9\uff1a\u5317\u4eac\u5e02"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u68c0\u9519\u7ea0\u9519\u6a21\u578b\u7b97\u6cd5\u63a2\u7d22", "role": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2023.02-\u81f3\u4eca", "description": "\u63a2\u7d22 SoftCorrect \u7b97\u6cd5\uff0c\u4ee5\u53ca CTC \u5206\u4f30\u8ba1\u58f0\u5b66\u7f6e\u4fe1\u5ea6\u7684\u65b9\u6cd5\uff0c\u5b8c\u6210\u5c0f\u89c4\u6a21\u6570\u636e\u9a8c\u8bc1\uff0c\u7ebf\u4e0a\u76f8\u5173\u6d4b\u8bd5\u96c6\u4e0a\uff0c\u68c0\u9519\u6a21\u5757\u5bf9\u9519\u5b57\u7684\u68c0\u9519\u7cbe\u786e 70%\u3001\u53ec\u56de 30%\uff0c\u7ea0\u9519\u6a21\u5757\u8bc6\u522b\u6027\u80fd\u76f8\u5bf9\u63d0\u5347 5%\uff0c\u521d\u6b65\u8fbe\u5230\u4e0a\u7ebf\u6807\u51c6"}, {"name": "\u8bed\u97f3\u5927\u6a21\u578b\u7b97\u6cd5\u63a2\u7d22", "role": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2023.07-2023.11", "description": "\u63a2\u7d22 500M \u8bed\u97f3\u5927\u6a21\u578b\u7684\u8bad\u7ec3\u65b9\u6cd5\uff0c\u914d\u5408\u5206\u6790\u3001\u5f00\u53d1\u548c\u6821\u9a8c deepspeed\u3001FSDP \u7b49\u76f8\u5173\u5927\u6a21\u578b\u8bad\u7ec3\u7b97\u6cd5\uff1b500M \u6a21\u578b\u5728\u5f00\u653e\u57df\u573a\u666f\u4e0b\u76f8\u5bf9\u63d0\u5347 10%\uff0c\u901a\u7528\u573a\u666f\u4e0b\u76f8\u5bf9\u63d0\u5347 8%\uff1b\u8bbe\u8ba1\u5e76\u5f00\u53d1\u57fa\u4e8e whisper \u7684\u6d41\u5f0f\u5316 finetune \u7b97\u6cd5\uff0c\u5728\u82f1\u6587\u6570\u636e\u91cf\u8f83\u5c0f\u7684\u524d\u63d0\u4e0b\uff0c\u6027\u80fd\u76f8\u5bf9 whisper \u8bc1\u636e\u6a21\u578b\u964d\u4f4e\u5728 15%\u4ee5\u5185\uff0c\u76f8\u5bf9\u7ebf\u4e0a\u4e2d\u82f1\u6587\u6a21\u578b\u63d0\u5347 35%"}, {"name": "\u8bed\u97f3\u5927\u6a21\u578b\u6570\u636e\u6316\u6398", "role": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2023.07-\u81f3\u4eca", "description": "\u8bbe\u8ba1\u5e76\u5f00\u53d1\u89c6\u9891\u8bed\u97f3\u6570\u636e\u7684\u6316\u6398\u65b9\u6cd5\uff0c\u642d\u5efa\u9884\u5904\u7406-OCR-\u540e\u5904\u7406\u7684 pipeline\uff0c\u76ee\u524d\u5df2\u6316\u6398 1w+\u5c0f\u65f6\u6570\u636e\uff1b\u4f18\u5316\u7ebf\u4e0a\u6a21\u578b\u957f\u5c3e\u573a\u666f\u7684\u8bc6\u522b\u80fd\u529b\uff0c\u9488\u5bf9\u7ae5\u58f0\u3001\u9ad8\u566a\u3001\u5feb\u8bed\u901f\u4e09\u79cd\u957f\u5c3e\u573a\u666f\u63d0\u51fa\u6316\u6398\u65b9\u6cd5\uff0c\u6784\u5efa\u8bad\u7ec3\u6d4b\u8bd5\u96c6\uff0c\u76ee\u524d\u5728\u4e09\u79cd\u573a\u666f\u5e73\u5747\u63d0\u5347\u5728 3%\u4ee5\u4e0a"}, {"name": "Text injection \u65b9\u6cd5", "role": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2023.03-2018.03", "description": "\u57fa\u4e8e\u7ebf\u4e0a\u6a21\u578b\u5f00\u53d1\u5e76\u8bad\u7ec3 text injection \u7b97\u6cd5\uff0c\u70ed\u8bcd\u573a\u666f\u6027\u80fd\u76f8\u5bf9\u63d0\u5347 27%\uff1b\u5f00\u53d1\u70ed\u8bcd\u8fc5\u901f\u54cd\u5e94\u673a\u5236\uff0c\u7ecf\u8fc7 12 \u4e2a\u5c0f\u65f6\u8bad\u7ec3\uff0c\u70ed\u8bcd\u573a\u666f\u6027\u80fd\u76f8\u5bf9\u63d0\u5347 11%"}, {"name": "hoyui \u5e73\u53f0\u7684 TTS \u76f8\u5173\u5f00\u53d1\u8bad\u7ec3\u652f\u6301", "role": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2021.01-2023.04", "description": "\u8fc1\u79fb torch \u4e0a\u7684 TTS \u7b97\u6cd5 CSuGAN \u5230 hoyui \u5e73\u53f0\uff0c\u6570\u503c\u5bf9\u9f50\u7ed3\u679c\u548c\u8bad\u7ec3\u6548\u679c\u548c torch \u4e00\u81f4\uff0c\u4e0a\u7ebf\u767e\u5ea6\u6570\u5b57\u4eba\u9879\u76ee\uff1b\u534f\u52a9\u5f00\u53d1\u8bad\u7ec3 hoyui \u4e0a\u7684\u6d41\u5f0f conformer \u6a21\u578b\uff0c\u8c03\u4f18 conformer \u7ed3\u6784\uff0c\u4e0a\u7ebf TTS-VC \u6a21\u578b\uff1b\u8fc1\u79fb tacotron\u3001qrnn \u529f\u80fd\u5230 hoyui \u5e73\u53f0\uff0c\u5b9e\u73b0\u5728 hoyui \u4e0a\u8bad\u7ec3 TTS \u6a21\u578b\uff1b\u57fa\u4e8e hoyui \u8fc1\u79fb\u5f00\u53d1\u964d\u566a\u6a21\u5757\u3001\u7ebf\u6027 AEC \u6a21\u5757\u3001fclp \u6a21\u5757\uff0c\u52a9\u529b TTS \u6a21\u578b\u8bad\u7ec3"}, {"name": "\u57fa\u4e8e SMLTA2 \u7684\u5927\u6a21\u578b\u9884\u7814", "role": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2022.01-2023.04", "description": "\u8fc1\u79fb\u4e0e\u8bad\u7ec3\u7b97\u6cd5 Hubert\u3001wav2vec2 \u548c JUST \u7b49\u7b97\u6cd5\u4ee3\u7801\u5230 hoyui \u8bad\u7ec3\u5e73\u53f0\uff0c\u5b8c\u6210\u548c\u8bba\u6587\u7684\u6570\u503c\u5bf9\u9f50\u548c\u8bad\u7ec3\u6027\u80fd\u5bf9\u9f50\uff0c\u7b26\u5408\u6807\u51c6\uff0c\u534f\u52a9\u5b8c\u6210\u9884\u8bad\u7ec3\u6a21\u578b\u7684\u7b97\u6cd5\u52a0\u901f\uff1b\u57fa\u4e8e\u6d41\u5f0f\u6a21\u578b SMLTA2 \u5c1d\u8bd5\u591a\u79cd\u9884\u8bad\u7ec3\u7b97\u6cd5\uff0c\u5728\u4e0d\u52a0\u989d\u5916\u6570\u636e\u7684\u60c5\u51b5\u4e0b\uff0c\u5728\u65b9\u8a00\u7684\u76f8\u5173\u6d4b\u8bd5\u96c6\u4e0a\uff0c95M \u6a21\u578b\u6027\u80fd\u76f8\u5bf9\u63d0\u5347 1.4%\uff0c240M \u6a21\u578b\u6027\u80fd\u76f8\u5bf9\u63d0\u5347 2.3%\uff1b\u63a2\u7d22 SMLTA2 \u7edf\u4e00\u6a21\u578b\u7684\u65e5\u8bed\u8bc6\u522b\uff0c\u66f4\u6539\u65e5\u8bed\u5efa\u6a21\u5355\u5143\uff0c\u5728\u4e2d\u6587\u548c\u4e2d\u82f1\u6587\u6027\u80fd\u635f\u5931\u8f83\u5c0f\u7684\u60c5\u51b5\u4e0b\uff0c\u65e5\u8bed\u6027\u80fd\u8d85\u8fc7 SMLTA1 \u57fa\u7ebf"}, {"name": "\u6d41\u5f0f\u8bed\u97f3\u8bc6\u522b\u7cfb\u7edf SMLTA \u7b97\u6cd5\u4f18\u5316", "role": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2019.12-2022.01", "description": "\u8c03\u7814\u5e76\u5f00\u53d1\u57fa\u4e8e SMLTA \u7684\u533a\u5206\u5ea6\u6280\u672f\u548c\u57fa\u4e8e SMLTA \u7684 PTR \u6280\u672f\u4ee5\u53ca\u8c31\u589e\u5e7f\u6280\u672f\uff0c\u5728\u901a\u7528\u6d4b\u8bd5\u96c6\u4e0a\u8bc6\u522b\u6027\u80fd\u76f8\u5bf9\u63d0\u5347 5.3%\uff0c\u4e0a\u7ebf\u5728\u7ebf\u8f93\u5165\u6cd5\uff1b\u5176\u4e2d\u533a\u5206\u5ea6\u6280\u672f\u540c\u65f6\u4e0a\u7ebf SMLTA2 \u6a21\u578b\uff1b\u8c03\u7814\u5e76\u5f00\u53d1\u6570\u636e\u95ed\u73af+\u5408\u6210\u6570\u636e\u8c31\u589e\u5e7f\u7684\u65b9\u6cd5\uff0c\u7528\u6237\u4f53\u9a8c\u6301\u7eed\u63d0\u5347\uff1b\u4e0a\u7ebf\u79bb\u7ebf\u8f93\u5165\u6cd5\u6a21\u578b SMLTA-tiny \u4e8c\u4ee3\uff0c\u7814\u53d1\u57fa\u4e8e\u91cf\u5316\u7684 PTR \u6280\u672f\uff0c\u4e2d\u6587\u76f8\u5bf9\u63d0\u5347 11.5%\uff0c\u4e2d\u82f1\u6587\u76f8\u5bf9\u63d0\u5347 39.5%"}, {"name": "\u4f4e\u5ef6\u8fdf\u8bed\u97f3\u8bc6\u522b\u7cfb\u7edf", "role": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2021.01-2021.12", "description": "\u63d0\u51fa\u5e76\u5f00\u53d1\u8bc6\u522b VAD \u4e00\u4f53\u5316\u6a21\u578b\uff0c\u76f8\u6bd4\u4f20\u7edf VAD\uff0c\u5728\u5ef6\u8fdf\u4e00\u81f4\u7684\u60c5\u51b5\u4e0b\uff0c\u5207\u5206\u9519\u8bef\u964d\u4f4e 66%\uff0c\u4e0a\u7ebf JIDU \u6c7d\u8f66\uff1b\u7814\u53d1\u9488\u5bf9 CTC peak \u4f4d\u7f6e\u7684 CTC peak \u7ea6\u675f\u7b97\u6cd5\uff0c\u5728\u57fa\u672c\u8bc6\u522b\u6027\u80fd\u57fa\u672c\u4e0d\u964d\u4f4e\u7684\u524d\u63d0\u4e0b\uff0c\u53e5\u5c3e peak \u5e73\u5747\u63d0\u524d 230ms"}]
+
+=== RAW RESUME EXTRACT ===
+求职意向：算法工程师
+出生年月：1994年11月 性别：男
+籍贯：辽宁大连 毕业学校：中国科学技术大学
+学历：硕士 电话：138****7777
+工作地址：北京市 邮箱：186****@qq.com
+教育经历
+2016.09-2019.06 中国科学技术大学 数学科学学院
+学位：计算数学硕士（学硕推免）
+实验室：大数据科学实验室 导师：杨周旺 教授
+2010.09-2016.06 中国科学技术大学 数学科学学院
+学位：应用数学学士
+工作经历
+2023.04-至今 理想汽车 智能空间部-多模态感知部
+工作：算法工程师 地点：北京市
+2019.09-2023.04 百度 语音技术部
+工作：算法工程师 地点：北京市
+2017.03-2018.03 百度 语音技术部
+工作：算法工程师（实习） 地点：北京市
+项目经历
+理想汽车工作期间
+2023.02-至今 检错纠错模型算法探索
+● 探索 SoftCorrect 算法，以及 CTC 分估计声学置信度的方法，完成小规模数据验证，线上相关测试集上，检错模块对错字的检错精确 70%、召回 30%，纠错模块识别性能相对提升 5%，初步达到上线标准
+2023.07-2023.11 语音大模型算法探索
+● 探索 500M 语音大模型的训练方法，配合分析、开发和校验 deepspeed、FSDP 等相关大模型训练算法
+● 500M 模型在开放域场景下相对提升 10%，通用场景下相对提升 8%
+● 设计并开发基于 whisper 的流式化 finetune 算法，在英文数据量较小的前提下，性能相对 whisper 证据模型降低在 15%以内，相对线上中英文模型提升 35%
+2023.07-至今 语音大模型数据挖掘
+● 设计并开发视频语音数据的挖掘方法，搭建预处理-OCR-后处理的 pipeline，目前已挖掘 1w+小时数据
+● 优化线上模型长尾场景的识别能力，针对童声、高噪、快语速三种长尾场景提出挖掘方法，构建训练测试集，目前在三种场景平均提升在 3%以上
+2023.03-2018.03 Text injection 方法
+● 基于线上模型开发并训练 text injection 算法，热词场景性能相对提升 27%
+● 开发热词迅速响应机制，经过 12 个小时训练，热词场景性能相对提升 11%
+百度工作期间
+2021.01-2023.04 houyi 平台的 TTS 相关开发训练支持
+● 迁移 torch 上的 TTS 算法 CSuGAN 到 houyi 平台，数值对齐结果和训练效果和 torch 一致，上线百度数字人项目
+● 协助开发训练 houyi 上的流式 conformer 模型，调优 conformer 结构，上线 TTS-VC 模型
+● 迁移 tacotron、qrnn 功能到 houyi 平台，实现在 houyi 上训练 TTS 模型
+● 基于 houyi 迁移开发降噪模块、线性 AEC 模块、fclp 模块，助力 TTS 模型训练
+2022.01-2023.04 基于 SMLTA2 的大模型预研
+● 迁移与训练算法 Hubert、wav2vec2 和 JUST 等算法代码到 houyi 训练平台，完成和论文的数值对齐和训练性能对齐，符合标准，协助完成预训练模型的算法加速
+● 基于流式模型 SMLTA2 尝试多种预训练算法，在不加额外数据的情况下，在方言的相关测试集上，95M 模型性能相对提升 1.4%，240M 模型性能相对提升 2.3%
+● 探索 SMLTA2 统一模型的日语识别，更改日语建模单元，在中文和中英文性能损失较小的情况下，日语性能超过 SMLTA1 基线
+2019.12-2022.01 流式语音识别系统 SMLTA 算法优化
+● 调研并开发基于 SMLTA 的区分度技术和基于 SMLTA 的 PTR 技术以及谱增广技术，在通用测试集上识别性能相对提升 5.3%，上线在线输入法；其中区分度技术同时上线 SMLTA2 模型
+● 调研并开发数据闭环+合成数据谱增广的方法，用户体验持续提升
+● 上线离线输入法模型 SMLTA-tiny 二代，研发基于量化的 PTR 技术，中文相对提升 11.5%，中英文相对提升 39.5%
+2021.01-2021.12 低延迟语音识别系统
+● 提出并开发识别 VAD 一体化模型，相比传统 VAD，在延迟一致的情况下，切分错误降低 66%，上线 JIDU 汽车
+● 研发针对 CTC peak 位置的 CTC peak 约束算法，在基本识别性能基本不降低的前提下，句尾 peak 平均提前 230ms
+发表论文
+Wen M, Xu Y, ZhengY, et al. Sparse deep neural networks using L 1,∞-weight normalization[J]. Statistica Sinica, 2021, 31(3): 1397-1414.
+Dong H, Wen M, YangZ. Vehicle Speed Estimation Based on 3D ConvNets and Non-Local Blocks[J]. Future Internet, 2019, 11(6): 123.
+其他
+技能：
+● 编程语言：Python（熟练）、C++、CUDA
+● 训练平台：PyTorch（熟练）、houdini（Baidu，熟练）、kaldi
+● 语言能力：英语（CET-6）、日语（N3 水平）
+自我评价：
+拥有较好的数学基础、有一定工程能力、踏实肯干，能出色完成任务、团结同事，为人真诚坦率
+研究生期间工作：
+视频分析、神经网络稀疏化 SparseDNN、中电集团航空调度算法
+
+========================================
+

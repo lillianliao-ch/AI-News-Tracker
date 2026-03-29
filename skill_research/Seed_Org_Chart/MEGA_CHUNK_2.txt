@@ -1,0 +1,214 @@
+# CANDIDATE BATCH 2
+
+========================================
+Candidate ID: 917
+Name Mask: *oop
+Current Title/Company: 实习生 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8 Seed", "title": "\u5b9e\u4e60\u751f", "time": "2025.4-2025.10", "description": ""}, {"company": "\u4e0a\u6d77\u4eba\u5de5\u667a\u80fd\u5b9e\u9a8c\u5ba42", "title": "\u7b97\u6cd5\u7814\u7a76\u5458\uff08\u5b9e\u4e60\u751f\uff09", "time": "2023.7-2025.2", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+Seed字节跳动2025.4-2025.10 (6个月)他有43个好友在此公司
+
+---
+
+算法研究员上海人工智能实验室2023.7-2025.2 (1年7个月)
+
+【教育经历】
+上海交通大学2023年-2026年，计算机科学与技术，硕士他有7个好友在此学校 | 南京大学2019年-2023年，软件工程，本科他有14个好友在此学校
+
+========================================
+
+========================================
+Candidate ID: 923
+Name Mask: *常越
+Current Title/Company: 训推框架优化 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8 Seed", "title": "\u8bad\u63a8\u6846\u67b6\u4f18\u5316", "time": "2025.4-\u81f3\u4eca", "description": ""}, {"company": "\u6708\u4e4b\u6697\u9762", "title": "\u63a8\u7406\u6846\u67b6\u5b9e\u4e60\u751f", "time": "2024.6-2024.9", "description": "\u534f\u52a9\u5f00\u53d1\u63a8\u7406\u670d\u52a1\u7cfb\u7edfMooncake"}, {"company": "MiniMax", "title": "\u8bad\u7ec3\u6846\u67b6\u5b9e\u4e60\u751f", "time": "2024.3-2024.6", "description": "2024.3-2024.6 (3\u4e2a\u6708)\u4e3a\u8bad\u7ec3\u6846\u67b6\u5f00\u53d1\u5f02\u6784\u5b58\u50a8\u7684\u7279\u6027\n"}, {"company": "\u4e0a\u6d77\u671f\u667a\u7814\u7a76\u9662", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "time": "2021.7-2021.10", "description": "(\u6e05\u534e\u5927\u5b66\u4ea4\u53c9\u4fe1\u606f\u7814\u7a76\u9662\u590f\u4ee4\u8425)"}, {"company": "\u5b57\u8282\u8df3\u52a8", "position": "Seed-\u8bad\u63a8\u6846\u67b6\u4f18\u5316", "start_date": "2025-04-01", "end_date": "\u4eca", "duration": "", "description": ""}, {"company": "\u6708\u4e4b\u6697\u9762", "position": "\u63a8\u7406\u6846\u67b6\u5b9e\u4e60\u751f", "start_date": "2024-06", "end_date": "2024-09", "duration": "", "description": "\u534f\u52a9\u5f00\u53d1\u63a8\u7406\u670d\u52a1\u7cfb\u7edfMooncake\uff0c\u4ee5\u53ca\u6587\u751f\u89c6\u9891\u6a21\u578b\u7684\u90e8\u7f72\u3002"}, {"company": "MiniMax", "position": "\u8bad\u7ec3\u6846\u67b6\u5b9e\u4e60\u751f", "start_date": "2024-03", "end_date": "2024-06", "duration": "", "description": "\u4e3a\u8bad\u7ec3\u6846\u67b6\u5f00\u53d1\u5f02\u6784\u5b58\u50a8\u7684\u7279\u6027\uff0c\u8c03\u7814\u6d41\u6c34\u7ebf\u5e76\u884c\u7684\u8d1f\u8f7d\u5747\u8861\u3002"}, {"company": "\u4e0a\u6d77\u671f\u667a\u7814\u7a76\u9662(\u6e05\u534e\u5927\u5b66\u4ea4\u53c9\u4fe1\u606f\u7814\u7a76\u9662\u590f\u4ee4\u8425)", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "start_date": "2021-07", "end_date": "2021-10", "duration": "", "description": "\u6e05\u534e\u5927\u5b66\u4ea4\u53c9\u4fe1\u606f\u7814\u7a76\u9662\u505a\u5206\u5e03\u5f0f\u548c\u5f3a\u5316\u5b66\u4e60"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "ASC\u4e16\u754c\u5927\u5b66\u751f\u8d85\u7ea7\u8ba1\u7b97\u673a\u7ade\u8d5b\u4e00\u7b49\u5956", "time": "2021-01\u81f32021-06", "description": "\u603b\u4f53\u53d6\u5f97\u56e2\u4f53\u4e00\u7b49\u5956\uff087/20\uff09\uff0c\u4e2a\u4eba\u8d1f\u8d23\u7684\u52a0\u901f\u5927\u89c4\u6a21\u8bed\u8a00\u6a21\u578b\u8d5b\u9898\u83b7\u5f97\u5168\u573a\u7b2c\u4e00\u540d\uff081/20\uff09"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+Seed-训推框架优化字节跳动2025.4-至今 (8个月)Python深度学习算法他有20个好友在此公司
+
+---
+
+推理框架实习生月之暗面2024.6-2024.9 (3个月)协助开发推理服务系统Mooncake，以及文生视频模型的部署。
+
+---
+
+训练框架实习生MiniMax2024.3-2024.6 (3个月)为训练框架开发异构存储的特性，调研流水线并行的负载均衡。
+
+---
+
+算法实习生上海期智研究院(清华大学交叉信息研究院夏令营)2021.7-2021.10 (3个月)清华大学交叉信息研究院做分布式和强化学习
+
+【教育经历】
+浙江大学2022年-2025年，软件工程，硕士他有12个好友在此学校 | 山西大学2018年-2022年，计算机科学与技术，本科他有4个好友在此学校
+
+========================================
+
+========================================
+Candidate ID: 955
+Name Mask: *钲清不看机会只吃瓜
+Current Title/Company: 工程师 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u641c\u7d22\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b57\u8282\u8df3\u52a8", "title": "\u5de5\u7a0b\u5e08", "time": "2025.9-\u81f3\u4eca", "description": "AI\u641c\u7d22\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b57\u8282\u8df3\u52a82025.9-\u81f3\u4eca (4\u4e2a\u6708)Seed application AI\u641c\u7d22\u641c\u7d22\u7b97\u6cd5TA\u670939\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8"}, {"company": "\u8682\u8681\u96c6\u56e2", "title": "\u5de5\u7a0b\u5e08", "time": "2024.7-2025.8", "description": "\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08\u8682\u8681\u96c6\u56e22024.7-2025.8 (1\u5e741\u4e2a\u6708)- AI\u641c\u7d22url\u91cd\u6392\u4e0e\u9009\u62e9\u7b56\u7565\u6a21\u578b\uff0c\u63d0\u9ad8\u641c\u7d22\u7ed3\u679c\u6574\u4f53\u542b\u7b54\u6848\u7387 3%\u3002"}, {"company": "\u63a8\u8350\u7b97\u6cd5\u5b9e\u4e60\u751f\u8682\u8681\u96c6\u56e2", "title": "\u63a8\u8350\u7b97\u6cd5\u5b9e\u4e60\u751f\u8682\u8681\u96c6\u56e22022.8-20", "time": "2022.8-2024.3", "description": "\u63a8\u8350\u7b97\u6cd5\u5b9e\u4e60\u751f\u8682\u8681\u96c6\u56e22022.8-2024.3 (1\u5e747\u4e2a\u6708)Python\u6570\u636e\u6316\u6398\u673a\u5668\u5b66\u4e60\u7b97\u6cd5\u6a21\u5f0f\u8bc6\u522b\u6df1\u5ea6\u5b66\u4e60\u7b97\u6cd5TA\u67098\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "AI\u641c\u7d22\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "AI\u641c\u7d22\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-09-01", "endDate": "\u4eca", "time": "2025-09-01 ~ \u4eca", "duration": "", "description": "Seed application AI\u641c\u7d22"}, {"company": "\u8682\u8681\u96c6\u56e2", "title": "\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-07", "endDate": "2025-08", "time": "2024-07 ~ 2025-08", "duration": "", "description": "- AI\u641c\u7d22url\u91cd\u6392\u4e0e\u9009\u62e9\u7b56\u7565\u6a21\u578b\uff0c\u63d0\u9ad8\u641c\u7d22\u7ed3\u679c\u6574\u4f53\u542b\u7b54\u6848\u7387 3%\u3002\n- AI\u641c\u7d22\u79bb\u7ebf\u7f51\u9875\u5904\u7406\u67b6\u6784\uff0c\u6784\u5efaagentic\u4e8b\u5b9e\u6838\u67e5\u667a\u80fd\u4f53\u6838\u67e5\u79bb\u7ebf\u5185\u5bb9\uff0c\u4ea4\u53c9\u6bd4\u5bf9\u6d4b\u8bd5\u4e0b\uff0c\u6548\u7387\u4e0e\u51c6\u786e\u7387\u5747\u4f18\u4e8e\u4eba\u5de5\u6838\u9a8c\u3002\n- \u57fa\u4e8e\u8bed\u8a00\u6a21\u578b\u7684\u7528\u6237\u8de8\u57df\u5e8f\u5217\u884c\u4e3a\u5efa\u6a21\uff0c\u4ea7\u51fa\u79bb\u7ebf\u7279\u5f81\uff0c\u51b7\u542f\u52a8\u5355\u5143 CPM +36%\uff0c\u5927\u76d8CPM +2%"}, {"company": "\u8682\u8681\u96c6\u56e2", "title": "\u63a8\u8350\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u63a8\u8350\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2022-08", "endDate": "2024-03", "time": "2022-08 ~ 2024-03", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+AI搜索算法工程师字节跳动2025.9-至今 (4个月)Seed application AI搜索搜索算法TA有39个好友在此公司
+
+---
+
+高级算法工程师蚂蚁集团2024.7-2025.8 (1年1个月)- AI搜索url重排与选择策略模型，提高搜索结果整体含答案率 3%。
+- AI搜索离线网页处理架构，构建agentic事实核查智能体核查离线内容，交叉比对测试下，效率与准确率均优于人工核验。
+- 基于语言模型的用户跨域序列行为建模，产出离线特征，冷启动单元 CPM +36%，大盘CPM +2%AIAI搜索多智能体系统广告算法搜索算法自然语言处理视觉图像算法TA有8个好友在此公司
+
+---
+
+推荐算法实习生蚂蚁集团2022.8-2024.3 (1年7个月)Python数据挖掘机器学习算法模式识别深度学习算法TA有8个好友在此公司
+
+【教育经历】
+浙江大学2019年-2024年，眼科学交叉人工智能，博士发表CCF A类论文1篇/B类论文3篇
+发表SCI 一区论文2篇
+TA有12个好友在此学校 | 浙江大学2015年-2019年，求是科学班（计算机），本科浙江大学竺可桢学院
+
+1. 拔尖人才奖学金
+2. 学业奖学金
+TA有12个好友在此学校
+
+========================================
+
+========================================
+Candidate ID: 1013
+Name Mask: *eqin Lei
+Current Title/Company: Co-Founder @ SpaceTime Creative
+
+=== WORK EXPERIENCES ===
+[{"company": "SpaceTime Creative \u00b7 \u6b63\u5f0f", "title": "Co-Founder", "time": "2024\u5e746\u6708 - \u81f3\u4eca \u00b7 1 \u5e74 8 \u4e2a\u6708", "description": "Co-Founder @ SpaceTime Creative \u00b7 \u6b63\u5f0f (2024\u5e746\u6708 - \u81f3\u4eca \u00b7 1 \u5e74 8 \u4e2a\u6708)"}, {"company": "Nanjing Xuanjia Network Technology Co. \u00b7 \u5408\u540c", "title": "Product Manager", "time": "2023\u5e7410\u6708 - 2024\u5e746\u6708 \u00b7 9 \u4e2a\u6708", "description": "Product Manager @ Nanjing Xuanjia Network Technology Co. \u00b7 \u5408\u540c (2023\u5e7410\u6708 - 2024\u5e746\u6708 \u00b7 9 \u4e2a\u6708)"}, {"company": "Self-Employed \u00b7 \u81ea\u7531\u804c\u4e1a", "title": "Freelance Illustrator", "time": "2020\u5e741\u6708 - 2023\u5e7410\u6708 \u00b7 3 \u5e74 10 \u4e2a\u6708", "description": "Freelance Illustrator @ Self-Employed \u00b7 \u81ea\u7531\u804c\u4e1a (2020\u5e741\u6708 - 2023\u5e7410\u6708 \u00b7 3 \u5e74 10 \u4e2a\u6708)"}, {"company": "The high school Affiliated to CAFA \u00b7 \u5408\u540c", "title": "Illustration Teacher", "time": "2022\u5e749\u6708 - 2023\u5e746\u6708 \u00b7 10 \u4e2a\u6708", "description": "Illustration Teacher @ The high school Affiliated to CAFA \u00b7 \u5408\u540c (2022\u5e749\u6708 - 2023\u5e746\u6708 \u00b7 10 \u4e2a\u6708)"}, {"company": "ByteDance \u00b7 \u5168\u804c", "title": "Lead Storyboard Artist", "time": "2021\u5e742\u6708 - 2022\u5e747\u6708 \u00b7 1 \u5e74 6 \u4e2a\u6708", "description": "Lead Storyboard Artist @ ByteDance \u00b7 \u5168\u804c (2021\u5e742\u6708 - 2022\u5e747\u6708 \u00b7 1 \u5e74 6 \u4e2a\u6708)"}, {"company": "SpaceTime Creative \u00b7 \u6b63\u5f0f", "position": "Co-Founder", "start_date": "", "end_date": "", "duration": "2024\u5e746\u6708 - \u81f3\u4eca \u00b7 1 \u5e74 9 \u4e2a\u6708", "description": "Leading product and creative direction for our AI-powered review and project management app, designed to help designers and creators better understand client needs, reduce rework, and improve delivery efficiency.\u2022 Developed and iterated core features that shorten review cycles and build transparency and trust between creators and clients;\u2022 Oversaw delivery of 100+ minutes of high-quality AI short videos across children\u2019s education, game advertising, and toy IP design;\u2022 Manage a cross-functional team to balance scalability with quality in production;\u2022 Building toward a two-sided platform that connects creators and clients with trust and accountability at its core.Leading product and creative direction for our AI-powered review and project management app, designed to help designers and creators better understand client needs, reduce rework, and improve delivery efficiency. \u2022 Developed and iterated core features that shorten review cycles and build transparency and trust between creators and clients; \u2022 Oversaw delivery of 100+ minutes of high-quality AI short videos across children\u2019s education, game advertising, and toy IP design; \u2022 Manage a cross-functional team to balance scalability with quality in production; \u2022 Building toward a two-sided platform that connects creators and clients with trust and accountability at its core."}, {"company": "Nanjing Xuanjia Network Technology Co. \u00b7 \u5408\u540c", "position": "Product Manager", "start_date": "", "end_date": "", "duration": "2023\u5e7410\u6708 - 2024\u5e746\u6708 \u00b7 9 \u4e2a\u6708", "description": "\u2022 Led the launch of 3 AI products based on client requirements, driving enterprise adoption and deployment;\u2022 Built and mentored a product intern team, improving delivery efficiency and iteration speed by approx. 20%;\u2022 Directed a 12-member team to produce the short film \u201cThe Wandering Moon: The Last Seed\u201d, leveraging my background in animation and AI, which won the 2024 Beijing International Film Festival AIGC Award of Excellence.\u2022 Led the launch of 3 AI products based on client requirements, driving enterprise adoption and deployment; \u2022 Built and mentored a product intern team, improving delivery efficiency and iteration speed by approx. 20%; \u2022 Directed a 12-member team to produce the short film \u201cThe Wandering Moon: The Last Seed\u201d, leveraging my background in animation and AI, which won the 2024 Beijing International Film Festival AIGC Award of Excellence."}, {"company": "Self-Employed \u00b7 \u81ea\u7531\u804c\u4e1a", "position": "Freelance Illustrator", "start_date": "", "end_date": "", "duration": "2020\u5e741\u6708 - 2023\u5e7410\u6708 \u00b7 3 \u5e74 10 \u4e2a\u6708", "description": "Created 3 original collections of NFT work on different platforms. SameHeadGuy (2100 items) and another NFT project (2100 items) are sold on Yit. Dragon Man (888 items) is published with the DM community on a Chinese NFT trading platform. SameHeadGuy was sold out 20 minutes after publishing.Provide a variety of high-quality storyboard animatics and illustrations with artistic aesthetics for clients.Created 3 original collections of NFT work on different platforms. SameHeadGuy (2100 items) and another NFT project (2100 items) are sold on Yit. Dragon Man (888 items) is published with the DM community on a Chinese NFT trading platform. SameHeadGuy was sold out 20 minutes after publishing. Provide a variety of high-quality storyboard animatics and illustrations with artistic aesthetics for clients."}, {"company": "The high school Affiliated to CAFA \u00b7 \u5408\u540c", "position": "Illustration Teacher", "start_date": "", "end_date": "", "duration": "2022\u5e749\u6708 - 2023\u5e746\u6708 \u00b7 10 \u4e2a\u6708", "description": "2022: Collaborated with foreign teachers to create customized illustration plans for high school seniors, achieving a 100% college acceptance rate, including top institutions like the Royal College of Art.2023: Taught sophomores foundational skills and innovative thinking, optimizing their portfolio preparation process.Led promotional events to introduce the illustration course to freshmen, guiding their professional choices and enhancing their interest in the art field.2022: Collaborated with foreign teachers to create customized illustration plans for high school seniors, achieving a 100% college acceptance rate, including top institutions like the Royal College of Art. 2023: Taught sophomores foundational skills and innovative thinking, optimizing their portfolio preparation process. Led promotional events to introduce the illustration course to freshmen, guiding their professional choices and enhancing their interest in the art field."}, {"company": "ByteDance \u00b7 \u5168\u804c", "position": "Lead Storyboard Artist", "start_date": "", "end_date": "", "duration": "2021\u5e742\u6708 - 2022\u5e747\u6708 \u00b7 1 \u5e74 6 \u4e2a\u6708", "description": "- Supervised and managed a group with 10+ storyboard artists by establishing workflows, norms, and agreements. - Providing ongoing guidance, ensuring the production and quality of storyboards within the deadlines.- Created high-quality 50+ storyboards for 2 products. 10+ videos\u2019 view counts on Douyin (Chinese Tiktok) are 50k+.- Oversaw the creation of 15+ animations. Proactively and effectively partnered with operation teams, director teams, illustration teams, and animation teams to continually improve the quality of final animations.- Supervised and managed a group with 10+ storyboard artists by establishing workflows, norms, and agreements. - Providing ongoing guidance, ensuring the production and quality of storyboards within the deadlines. - Created high-quality 50+ storyboards for 2 products. 10+ videos\u2019 view counts on Douyin (Chinese Tiktok) are 50k+. - Oversaw the creation of 15+ animations. Proactively and effectively partnered with operation teams, director teams, illustration teams, and animation teams to continually improve the quality of final animations."}]
+
+=== RAW RESUME EXTRACT ===
+【职位】Building AI-Powered Video Studio & Content Tools | Co-founder @ SpaceTime Creative
+【位置】中国 上海市
+
+【工作经历】
+Co-Founder @ SpaceTime Creative · 正式 (2024年6月 - 至今 · 1 年 8 个月); Product Manager @ Nanjing Xuanjia Network Technology Co. · 合同 (2023年10月 - 2024年6月 · 9 个月); Freelance Illustrator @ Self-Employed · 自由职业 (2020年1月 - 2023年10月 · 3 年 10 个月); Illustration Teacher @ The high school Affiliated to CAFA · 合同 (2022年9月 - 2023年6月 · 10 个月); Lead Storyboard Artist @ ByteDance · 全职 (2021年2月 - 2022年7月 · 1 年 6 个月)
+
+【教育经历】
+Bachelor of Arts - BA，Illustration  @ School of the Art Institute of Chicago (2015年 - 2019年)
+
+【备注】
+kikilei.com (作品集)
+电话
+17338608377 (移动)
+邮箱
+helena1997@foxmail.com
+
+========================================
+
+========================================
+Candidate ID: 1016
+Name Mask: *hen Li
+Current Title/Company: Algorithm Lead @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8 \u00b7 \u6b63\u5f0f", "title": "Algorithm Lead", "time": "2024\u5e74 - \u81f3\u4eca \u00b7 2 \u5e74 1 \u4e2a\u6708", "description": "Algorithm Lead @ \u5b57\u8282\u8df3\u52a8 \u00b7 \u6b63\u5f0f (2024\u5e74 - \u81f3\u4eca \u00b7 2 \u5e74 1 \u4e2a\u6708)"}, {"company": "\u963f\u91cc\u5df4\u5df4", "title": "Staff Engineer", "time": "2017\u5e74 - 2024\u5e74 \u00b7 7 \u5e74", "description": "Staff Engineer @ \u963f\u91cc\u5df4\u5df4 (2017\u5e74 - 2024\u5e74 \u00b7 7 \u5e74)"}, {"company": "Baidu Inc.", "title": "Senior Engineer", "time": "2014\u5e749\u6708 - 2017\u5e7412\u6708 \u00b7 3 \u5e74 4 \u4e2a\u6708", "description": "Senior Engineer @ Baidu Inc. (2014\u5e749\u6708 - 2017\u5e7412\u6708 \u00b7 3 \u5e74 4 \u4e2a\u6708)"}, {"company": "Huawei", "title": "Research Engineer", "time": "2012\u5e746\u6708 - 2014\u5e748\u6708 \u00b7 2 \u5e74 3 \u4e2a\u6708", "description": "Research Engineer @ Huawei (2012\u5e746\u6708 - 2014\u5e748\u6708 \u00b7 2 \u5e74 3 \u4e2a\u6708)"}, {"company": "HKUST", "title": "Research Assistant", "time": "2011\u5e74 - 2011\u5e74 \u00b7 \u4e0d\u5230 1 \u5e74", "description": "Research Assistant @ HKUST (2011\u5e74 - 2011\u5e74 \u00b7 \u4e0d\u5230 1 \u5e74)"}, {"company": "\u5b57\u8282\u8df3\u52a8 \u00b7 \u6b63\u5f0f", "position": "Algorithm Lead", "start_date": "", "end_date": "", "duration": "2024\u5e74 - \u81f3\u4eca \u00b7 2 \u5e74 2 \u4e2a\u6708", "description": "Leading Doubao Mobile Assistant application & research at Bytedance Seed. Key works: UI-TARS (https://seed-tars.com), Agent TARS (https://agent-tars.com) and AIO agent Sandbox (https://sandbox.agent-infra.com)Leading Doubao Mobile Assistant application & research at Bytedance Seed. Key works: UI-TARS (https://seed-tars.com), Agent TARS (https://agent-tars.com) and AIO agent Sandbox (https://sandbox.agent-infra.com)"}, {"company": "\u963f\u91cc\u5df4\u5df4", "position": "Staff Engineer", "start_date": "", "end_date": "", "duration": "2017\u5e74 - 2024\u5e74 \u00b7 7 \u5e74", "description": "Research Scientist and Lead at DAMO Acadamy and Tongyi NLP Lab, working on LLM, NLP and multimodal document understanding. Key works: Tongyi Zhiwen & Qwen-Long, Dingtalk AI.Research Scientist and Lead at DAMO Acadamy and Tongyi NLP Lab, working on LLM, NLP and multimodal document understanding. Key works: Tongyi Zhiwen & Qwen-Long, Dingtalk AI."}, {"company": "Baidu Inc.", "position": "Staff Engineer", "start_date": "", "end_date": "", "duration": "2014\u5e749\u6708 - 2017\u5e7412\u6708 \u00b7 3 \u5e74 4 \u4e2a\u6708", "description": "Research Scientist at Baidu NLP, working on semantic search, learning to rank, i18n and open-domain dialogue system.Research Scientist at Baidu NLP, working on semantic search, learning to rank, i18n and open-domain dialogue system."}, {"company": "Huawei", "position": "Research Engineer", "start_date": "", "end_date": "", "duration": "2012\u5e746\u6708 - 2014\u5e748\u6708 \u00b7 2 \u5e74 3 \u4e2a\u6708", "description": "Research and Development for Huawei large-scale data mining platform SmartMiner, including classification, clustering and frequent pattern mining algorithms.Research and Development for Huawei large-scale data mining platform SmartMiner, including classification, clustering and frequent pattern mining algorithms."}, {"company": "HKUST", "position": "Research Assistant", "start_date": "", "end_date": "", "duration": "2011\u5e74 - 2011\u5e74 \u00b7 \u4e0d\u5230 1 \u5e74", "description": "Research for high performance computing on data center virtual-machine, including parallel clustering and soft-switching algorithms for Huawei-HKUST innovation project.Research for high performance computing on data center virtual-machine, including parallel clustering and soft-switching algorithms for Huawei-HKUST innovation project."}]
+
+=== RAW RESUME EXTRACT ===
+【职位】Bytedance Seed. Prev MTS @Alibaba DAMO Academy & Tongyi Lab, Baidu NLP
+【位置】中国 浙江省 杭州
+
+【工作经历】
+Algorithm Lead @ 字节跳动 · 正式 (2024年 - 至今 · 2 年 1 个月); Staff Engineer @ 阿里巴巴 (2017年 - 2024年 · 7 年); Senior Engineer @ Baidu Inc. (2014年9月 - 2017年12月 · 3 年 4 个月); Research Engineer @ Huawei (2012年6月 - 2014年8月 · 2 年 3 个月); Research Assistant @ HKUST (2011年 - 2011年 · 不到 1 年)
+
+【教育经历】
+Master of Science  @ 香港科技大学 (2010年 - 2011年); Bachelor of Science  @ 澳门大学 (2006年 - 2010年)
+
+【备注】
+mylichking@gmail.com
+
+========================================
+
+========================================
+Candidate ID: 1019
+Name Mask: *eyu Ren
+Current Title/Company: Robotics Researcher @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance \u00b7 \u5408\u540c", "title": "Robotics Researcher", "time": "2023\u5e7411\u6708 - \u81f3\u4eca \u00b7 2 \u5e74 3 \u4e2a\u6708", "description": "Robotics Researcher @ ByteDance \u00b7 \u5408\u540c (2023\u5e7411\u6708 - \u81f3\u4eca \u00b7 2 \u5e74 3 \u4e2a\u6708)"}, {"company": "Xiaomi Technology \u00b7 \u5408\u540c", "title": "Senior Hardware Engineer", "time": "2021\u5e749\u6708 - 2023\u5e7411\u6708 \u00b7 2 \u5e74 3 \u4e2a\u6708", "description": "Senior Hardware Engineer @ Xiaomi Technology \u00b7 \u5408\u540c (2021\u5e749\u6708 - 2023\u5e7411\u6708 \u00b7 2 \u5e74 3 \u4e2a\u6708)"}, {"company": "ROKAE \u00b7 \u5168\u804c", "title": "Mechatronic Engineer in Robotic", "time": "2020\u5e744\u6708 - 2021\u5e749\u6708 \u00b7 1 \u5e74 6 \u4e2a\u6708", "description": "Mechatronic Engineer in Robotic @ ROKAE \u00b7 \u5168\u804c (2020\u5e744\u6708 - 2021\u5e749\u6708 \u00b7 1 \u5e74 6 \u4e2a\u6708)"}, {"company": "\u5168\u804c \u00b7 4 \u5e74 5 \u4e2a\u6708", "title": "Istituto Italiano di Tecnologia", "time": "\u5168\u804c \u00b7 4 \u5e74 5 \u4e2a\u6708", "description": "Istituto Italiano di Tecnologia @ \u5168\u804c \u00b7 4 \u5e74 5 \u4e2a\u6708 (\u5168\u804c \u00b7 4 \u5e74 5 \u4e2a\u6708)"}, {"company": "ByteDance \u00b7 \u5408\u540c", "position": "Robotics Researcher", "start_date": "", "end_date": "", "duration": "2023\u5e7411\u6708 - \u81f3\u4eca \u00b7 2 \u5e74 4 \u4e2a\u6708", "description": "Working on R&D of dexterous robotic hands, cobot arms, tactile sensors and humanoid robots.Working on R&D of dexterous robotic hands, cobot arms, tactile sensors and humanoid robots."}, {"company": "Xiaomi Technology \u00b7 \u5408\u540c", "position": "Senior Hardware Engineer", "start_date": "", "end_date": "", "duration": "2021\u5e749\u6708 - 2023\u5e7411\u6708 \u00b7 2 \u5e74 3 \u4e2a\u6708", "description": "Design and development of Xiaomi Humanoid Robot CyberOne.Design and development of Xiaomi Humanoid Robot CyberOne."}, {"company": "ROKAE \u00b7 \u5168\u804c", "position": "Mechatronic Engineer in Robotic", "start_date": "", "end_date": "", "duration": "2020\u5e744\u6708 - 2021\u5e749\u6708 \u00b7 1 \u5e74 6 \u4e2a\u6708", "description": "Design and development of high performance collaborative robotic arms, xMate CR series.Design and development of high performance collaborative robotic arms, xMate CR series."}, {"company": "\u5168\u804c \u00b7 4 \u5e74 5 \u4e2a\u6708", "position": "Istituto Italiano di Tecnologia", "start_date": "", "end_date": "", "duration": "\u5168\u804c \u00b7 4 \u5e74 5 \u4e2a\u6708", "description": "I worked as a post-doc under Dr. Nikos G. Tsagarakis in the research line of Humanoids and Human Centered Mechatronics (HHCM).I worked as a post-doc under Dr. Nikos G. Tsagarakis in the research line of Humanoids and Human Centered Mechatronics (HHCM)."}]
+
+=== RAW RESUME EXTRACT ===
+【职位】Robotic Researcher at ByteDance Seed
+【位置】中国 北京市
+
+【工作经历】
+Robotics Researcher @ ByteDance · 合同 (2023年11月 - 至今 · 2 年 3 个月); Senior Hardware Engineer @ Xiaomi Technology · 合同 (2021年9月 - 2023年11月 · 2 年 3 个月); Mechatronic Engineer in Robotic @ ROKAE · 全职 (2020年4月 - 2021年9月 · 1 年 6 个月); Istituto Italiano di Tecnologia @ 全职 · 4 年 5 个月 (全职 · 4 年 5 个月)
+
+【教育经历】
+Doctor of Philosophy - PhD，Bioengineering and Robotics  @ University of Genoa (2015年 - 2019年); Bachelor's degree，Mechatronics Robotics @ 浙江大学 (2011年 - 2015年)
+
+【备注】
+zeyuren93.netlify.app/ (个人)
+邮箱
+zeyuren93@gmail.com
+
+========================================
+
+========================================
+Candidate ID: 1053
+Name Mask: *iashuo Liu
+Current Title/Company: Research Scientist @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance \u00b7 \u6b63\u5f0f", "title": "Research Scientist", "time": "2025\u5e746\u6708 - \u81f3\u4eca \u00b7 8 \u4e2a\u6708", "description": "Research Scientist @ ByteDance \u00b7 \u6b63\u5f0f (2025\u5e746\u6708 - \u81f3\u4eca \u00b7 8 \u4e2a\u6708)"}, {"company": "University of Cambridge \u00b7 \u5b9e\u4e60", "title": "Visiting Ph.D. Student", "time": "2024\u5e746\u6708 - 2025\u5e741\u6708 \u00b7 8 \u4e2a\u6708", "description": "Visiting Ph.D. Student @ University of Cambridge \u00b7 \u5b9e\u4e60 (2024\u5e746\u6708 - 2025\u5e741\u6708 \u00b7 8 \u4e2a\u6708)"}, {"company": "Columbia Business School \u00b7 \u5b9e\u4e60", "title": "Visiting Ph.D. Student", "time": "2023\u5e741\u6708 - 2025\u5e741\u6708 \u00b7 2 \u5e74 1 \u4e2a\u6708", "description": "Visiting Ph.D. Student @ Columbia Business School \u00b7 \u5b9e\u4e60 (2023\u5e741\u6708 - 2025\u5e741\u6708 \u00b7 2 \u5e74 1 \u4e2a\u6708)"}, {"company": "Stanford University Department of Management Science & Engineering \u00b7 \u5168\u804c", "title": "Visiting Ph.D. Student", "time": "2023\u5e7410\u6708 - 2024\u5e744\u6708 \u00b7 7 \u4e2a\u6708", "description": "Visiting Ph.D. Student @ Stanford University Department of Management Science & Engineering \u00b7 \u5168\u804c (2023\u5e7410\u6708 - 2024\u5e744\u6708 \u00b7 7 \u4e2a\u6708)"}, {"company": "WeChat \u00b7 \u5b9e\u4e60", "title": "Research Intern", "time": "2022\u5e747\u6708 - 2023\u5e746\u6708 \u00b7 1 \u5e74", "description": "Research Intern @ WeChat \u00b7 \u5b9e\u4e60 (2022\u5e747\u6708 - 2023\u5e746\u6708 \u00b7 1 \u5e74)"}, {"company": "ByteDance \u00b7 \u6b63\u5f0f", "position": "Research Scientist", "start_date": "", "end_date": "", "duration": "2025\u5e746\u6708 - \u81f3\u4eca \u00b7 9 \u4e2a\u6708", "description": "ByteDance Seed TeamLLM Auto-Evaluation and PretrainingByteDance Seed Team LLM Auto-Evaluation and Pretraining"}, {"company": "University of Cambridge \u00b7 \u5b9e\u4e60", "position": "Visiting Ph.D. Student", "start_date": "", "end_date": "", "duration": "2024\u5e746\u6708 - 2025\u5e741\u6708 \u00b7 8 \u4e2a\u6708", "description": "Data-centric ML for health-careAdvisor: Prof. Mihaela van der SchaarData-centric ML for health-care Advisor: Prof. Mihaela van der Schaar"}, {"company": "Columbia Business School \u00b7 \u5b9e\u4e60", "position": "Visiting Ph.D. Student", "start_date": "", "end_date": "", "duration": "2023\u5e741\u6708 - 2025\u5e741\u6708 \u00b7 2 \u5e74 1 \u4e2a\u6708", "description": "Building the foundation of robust optimizationAdvisor: Prof. Hongseok NamkoongBuilding the foundation of robust optimization Advisor: Prof. Hongseok Namkoong"}, {"company": "Stanford University Department of Management Science & Engineering \u00b7 \u5168\u804c", "position": "Visiting Ph.D. Student", "start_date": "", "end_date": "", "duration": "2023\u5e7410\u6708 - 2024\u5e744\u6708 \u00b7 7 \u4e2a\u6708", "description": "Machine Learning Model Stability Evaluation, Distributional RobustnessAdvisor: Prof. Jose BlanchetMachine Learning Model Stability Evaluation, Distributional Robustness Advisor: Prof. Jose Blanchet"}, {"company": "WeChat \u00b7 \u5b9e\u4e60", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2022\u5e747\u6708 - 2023\u5e746\u6708 \u00b7 1 \u5e74", "description": "Explore sub-populations with heterogeneous preferences in recommendation systems.Explore sub-populations with heterogeneous preferences in recommendation systems."}]
+
+=== RAW RESUME EXTRACT ===
+【职位】Research Scientist @ByteDance Seed
+【位置】中国 北京市
+
+【工作经历】
+Research Scientist @ ByteDance · 正式 (2025年6月 - 至今 · 8 个月); Visiting Ph.D. Student @ University of Cambridge · 实习 (2024年6月 - 2025年1月 · 8 个月); Visiting Ph.D. Student @ Columbia Business School · 实习 (2023年1月 - 2025年1月 · 2 年 1 个月); Visiting Ph.D. Student @ Stanford University Department of Management Science & Engineering · 全职 (2023年10月 - 2024年4月 · 7 个月); Research Intern @ WeChat · 实习 (2022年7月 - 2023年6月 · 1 年)
+
+【教育经历】
+Doctor of Philosophy - PhD，Computer Science  @ 清华大学 (2020年8月 - 2025年6月); Visiting Student Researcher，Management Science and Engineering  @ 美国斯坦福大学 (2023年10月 - 2024年4月)
+
+【备注】
+ljsthu.github.io (个人)
+web.stanford.edu/people/jiashuo (其他)
+电话
++86 13015155336 (移动)
+邮箱
+liujiashuo77@gmail.com
+
+========================================
+
+========================================
+Candidate ID: 1054
+Name Mask: *anyu LYU
+Current Title/Company: Software Developer @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance \u00b7 \u6b63\u5f0f", "title": "Software Developer", "time": "2025\u5e745\u6708 - \u81f3\u4eca \u00b7 9 \u4e2a\u6708", "description": "Software Developer @ ByteDance \u00b7 \u6b63\u5f0f (2025\u5e745\u6708 - \u81f3\u4eca \u00b7 9 \u4e2a\u6708)"}, {"company": "Weixin/WeChat \u00b7 \u5b9e\u4e60", "title": "Full-stack Developer", "time": "2024\u5e748\u6708 - 2025\u5e742\u6708 \u00b7 7 \u4e2a\u6708", "description": "Full-stack Developer @ Weixin/WeChat \u00b7 \u5b9e\u4e60 (2024\u5e748\u6708 - 2025\u5e742\u6708 \u00b7 7 \u4e2a\u6708)"}, {"company": "ByteDance \u00b7 \u5b9e\u4e60", "title": "Software Developer", "time": "2023\u5e7410\u6708 - 2024\u5e746\u6708 \u00b7 9 \u4e2a\u6708", "description": "Software Developer @ ByteDance \u00b7 \u5b9e\u4e60 (2023\u5e7410\u6708 - 2024\u5e746\u6708 \u00b7 9 \u4e2a\u6708)"}, {"company": "Kanaries Data \u00b7 \u5b9e\u4e60", "title": "Open Source Developer", "time": "2022\u5e744\u6708 - 2022\u5e748\u6708 \u00b7 5 \u4e2a\u6708", "description": "Open Source Developer @ Kanaries Data \u00b7 \u5b9e\u4e60 (2022\u5e744\u6708 - 2022\u5e748\u6708 \u00b7 5 \u4e2a\u6708)"}, {"company": "ByteDance \u00b7 \u6b63\u5f0f", "position": "Software Developer", "start_date": "", "end_date": "", "duration": "2025\u5e745\u6708 - \u81f3\u4eca \u00b7 10 \u4e2a\u6708", "description": "Seed-RoboticsSeed-Robotics"}, {"company": "Weixin/WeChat \u00b7 \u5b9e\u4e60", "position": "Full-stack Developer", "start_date": "", "end_date": "", "duration": "2024\u5e748\u6708 - 2025\u5e742\u6708 \u00b7 7 \u4e2a\u6708", "description": "WXG - WeChat PayWXG - WeChat Pay"}, {"company": "ByteDance \u00b7 \u5b9e\u4e60", "position": "Software Developer", "start_date": "", "end_date": "", "duration": "2023\u5e7410\u6708 - 2024\u5e746\u6708 \u00b7 9 \u4e2a\u6708", "description": "AI-Lab AI-Lab"}, {"company": "Kanaries Data \u00b7 \u5b9e\u4e60", "position": "Open Source Developer", "start_date": "", "end_date": "", "duration": "2022\u5e744\u6708 - 2022\u5e748\u6708 \u00b7 5 \u4e2a\u6708", "description": "GraphicWalker GraphicWalker"}]
+
+=== RAW RESUME EXTRACT ===
+【职位】SDE @Bytedance Seed-Robotics MSc Computer Science CityU24 | ZJU19
+【位置】中国 上海市
+
+【工作经历】
+Software Developer @ ByteDance · 正式 (2025年5月 - 至今 · 9 个月); Full-stack Developer @ Weixin/WeChat · 实习 (2024年8月 - 2025年2月 · 7 个月); Software Developer @ ByteDance · 实习 (2023年10月 - 2024年6月 · 9 个月); Open Source Developer @ Kanaries Data · 实习 (2022年4月 - 2022年8月 · 5 个月)
+
+【教育经历】
+Bachelor of Applied Science - BASc  @ 浙江大学 (2019年9月 - 2023年6月); Master of Science - MS，Computer Science  @ 香港城市大学 (2024年9月 - 2025年6月)
+
+【备注】
+lvdanyu39@gmail.com
+
+========================================
+

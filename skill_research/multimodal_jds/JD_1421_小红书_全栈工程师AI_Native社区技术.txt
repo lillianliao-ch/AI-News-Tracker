@@ -1,0 +1,26 @@
+Company: 小红书
+Title: 全栈工程师（AI Native）-社区技术
+
+【岗位描述】
+1、深度使用 AI 工具驱动日常开发，将 AI 融入需求分析、方案设计、编码实现、调试排查、Code Review 等研发全流程；
+2、独立设计、开发和迭代 AI Agent，能根据业务场景完成 Agent 的架构选型、Prompt 设计、工具编排与端到端交付；
+3、建立 Agent 效果评估体系，设计评测指标与测试用例，通过系统化的 Eval 持续度量和优化 Agent 表现；
+4、开发和维护团队内部的 AI 提效工具与工作流，包括自定义 Skills、MCP Server、Prompt 模板、自动化脚本等；
+5、独立或协作完成业务功能的全链路交付，覆盖前端、客户端、后端，不设边界；
+6、持续探索 AI 新工具和新模式，沉淀最佳实践，推动团队整体 AI 能力提升。
+
+【岗位要求】
+1、1 年以上开发经验，至少精通一个技术领域（前端 / 客户端 / 后端均可）；
+2、熟练使用 AI 编程工具（Cursor、Claude Code、GitHub Copilot 等），有用AI突破自身不熟悉领域的实际经验；
+3、扎实的 Prompt Engineering 能力，掌握 System Prompt 设计、Few-shot、CoT、结构化输出等技巧；
+4、深入理解 Function Calling / Tool Use 机制，能设计 Tool Schema、处理多轮工具调用链路；
+5、熟悉 Agent 架构模式（ReAct、Plan-and-Execute、Multi-Agent 等），有独立开发 Agent 与搭建 Eval 体系的经验；
+6、有 RAG 系统开发经验，了解文档切分、Embedding 选型、向量检索及质量优化；
+7、熟悉主流大模型 API（Claude / OpenAI / DeepSeek 等），了解 Streaming、Context Window 管理、Token 成本优化等工程实践；
+8、能编写自定义 Skills、搭建 MCP Server，为团队构建可复用的 AI 工作流。
+
+加分项：
+1、有全栈开发经验，能独立覆盖前端、客户端、后端中两个及以上方向；
+2、有模型微调（LoRA）、多模态应用或 AI 可观测性建设经验；
+3、有 MCP、A2A 等 AI 协议的实践经验；
+4、有开源贡献或 AI 相关 Side Project 经历。

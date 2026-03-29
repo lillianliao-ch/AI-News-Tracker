@@ -1,0 +1,88 @@
+# CANDIDATE BATCH 10
+
+========================================
+Candidate ID: 8905
+Name Mask: *ohn
+Current Title/Company: NLP算法实习生 @ 北京字节跳动科技有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u5b57\u8282\u8df3\u52a8\u79d1\u6280\u6709\u9650\u516c\u53f8", "position": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "start_date": "2024-07", "end_date": "2024-12", "duration": "", "description": "\u57fa\u4e8e\u5411\u91cf\u5e93\u7684\u5934\u6761\u641c\u7d22\uff0c\u53c2\u4e0e\u4ece0\u52301\u5f00\u53d1\u57fa\u4e8e\u5411\u91cf\u5e93\u7684\u5934\u6761\u641c\u7d22\u7684\u63a5\u53e3\uff0c\u4ee5\u63d0\u5347\u5934\u6761\u5185\u5bb9\u68c0\u7d22\u7684\u51c6\u786e\u7387\uff1b\u5e94\u7528VIking\u5411\u91cf\u5e93\u3001ES\u3001\u8c46\u5305\u5927\u6a21\u578b\uff0c\u4f7f\u7528bge - m3\u5411\u91cf\u6a21\u578b\u5411\u91cf\u5316\u5934\u6761\u7684\u56fe\u6587\u4fe1\u606f\uff0c\u5b9e\u73b0\u5411\u91cf\u68c0\u7d22\uff0c\u540c\u65f6\u4f7f\u7528ES\u5b9e\u73b0\u591a\u8def\u53ec\u56de\uff0c\u642d\u5efa\u4e00\u5957\u5b8c\u6574\u7684\u5411\u91cf\u53ec\u56de\u6846\u67b6\u3002"}, {"company": "\u5b57\u8282\u8df3\u52a8", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "start_date": "2024-07-01", "end_date": "\u4eca", "duration": "", "description": ""}, {"company": "\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f8", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "start_date": "2023-02", "end_date": "2024-06", "duration": "", "description": "\u63a8\u7279\u793e\u4ea4\u673a\u5668\u4eba\u81ea\u52a8\u5316\u517b\u6b96\uff08200\u4e07\uff09\uff0c\u53c2\u4e0e\u4ece0\u52301\u5f00\u53d1\u4e86\u57fa\u4e8e\u5927\u6a21\u578b\u7684\u793e\u4ea4\u673a\u5668\u4eba\u7cfb\u7edf\uff0c\u81ea\u52a8\u6267\u884c\u591a\u79cd\u793e\u4ea4\u4e92\u52a8\uff0c\u4ee5\u63d0\u5347\u63a8\u7279\u8d26\u53f7\u7684\u5f71\u54cd\u529b\uff0c\u57fa\u4e8eGLM4\u4f7f\u7528\u7528\u6237\u4eba\u8bbe\u4fe1\u606f\u5bf9\u63a8\u6587\u5217\u8868\u8fdb\u884c\u591a\u79cd\u7684\u4e3b\u52a8\u64cd\u4f5c\uff0c\u4ee5\u6a21\u62df\u771f\u5b9e\u7528\u6237\u7684\u793e\u4ea4\u884c\u4e3a\uff0c\u8bbe\u8ba1\u7d20\u6750\u5e93\uff0c\u9009\u53d6\u9ad8\u70ed\u5ea6\u63a8\u6587\u901a\u8fc7\u8bed\u8a00\u8f6c\u6362\u3001\u5185\u5bb9\u6539\u5199\u5e76\u5229\u7528\u56fe\u7247\u5e93\u4e3a\u63a8\u6587\u914d\u56fe\uff0c\u589e\u5f3a\u63a8\u6587\u7684\u89c6\u89c9\u6548\u679c\uff0c\u6210\u529f\u57f9\u517b\u4e86500\u4e2a\u7cbe\u517b\u8d26\u53f7\u548c20\u4e07\u4e2a\u8349\u6839\u8d26\u53f7\u30012000\u4e2a\u8d26\u53f7\u7684\u5173\u6ce8\u6570\u8d85\u8fc71\u4e07\u4eba\uff0c\u63d0\u5347\u4e86\u8d26\u53f7\u7684\u5f71\u54cd\u529b\uff1b\u79d1\u6280\u60c5\u62a5\u52a9\u7406Agent\uff08\u5df2\u4e0a\u7ebf\uff09\uff0c\u4e3a\u63d0\u9ad8\u79d1\u6280\u60c5\u62a5\u5206\u6790\u7684\u6548\u7387\uff0c\u4ece0\u52301\u5f00\u53d1\u548c\u4f18\u5316\u79d1\u6280\u60c5\u62a5\u52a9\u7406Agent\uff0c\u5b9a\u4e49\u4e86\u5b66\u8005\u7814\u7a76\u5174\u8da3\u3001\u5b66\u8005\u8457\u4f5c\u3001\u591a\u7bc7\u8bba\u6587\u57fa\u672c\u4fe1\u606f\u7b499\u79cd\u5de5\u5177\uff0c\u91c7\u7528Ptuning\u548cLora\uff0c\u5bf9ChatGLM2 - 6B\u548cChatGLM3\u6a21\u578b\u8fdb\u884c\u5fae\u8c03\uff0c\u63d0\u5347\u6a21\u578b\u5de5\u5177\u8c03\u7528\u7684\u80fd\u529b\uff0c\u5fae\u8c03\u540e\u79d1\u6280\u60c5\u62a5\u52a9\u7406Agent\u5728\u8c03\u7528\u5de5\u5177\u65f6\u7684\u51c6\u786e\u7387\u8fbe\u5230\u4e8670%\uff0c\u63d0\u9ad8\u4e86\u81ea\u52a8\u5316\u5904\u7406\u79d1\u6280\u60c5\u62a5\u7684\u51c6\u786e\u6027\uff1b\u667a\u80fd\u6587\u672c\u89e3\u6790\u7cfb\u7edf\uff0870\u4e07\uff09\uff0c\u53c2\u4e0e\u5f00\u53d1\u667a\u80fd\u6587\u672c\u89e3\u6790\u7cfb\u7edf\uff0c\u96c6\u6210\u591a\u79cd\u5f00\u6e90\u6a21\u578b\u5b9e\u73b0\u6587\u6863\u6574\u5408\u3001\u98ce\u683c\u8f6c\u6362\u3001\u4e8b\u4ef6\u62bd\u53d6\u548c\u6784\u5efa\u9886\u57df\u77e5\u8bc6\u5e93\uff0c\u591a\u6587\u6863\u6574\u7f16\uff1a\u5c06\u591a\u4e2a\u957f\u6587\u672c\uff08\u5982\u516c\u6587\uff09\u667a\u80fd\u6574\u5408\uff0c\u751f\u6210\u8fde\u8d2f\u3001\u7ed3\u6784\u5316\u7684\u5355\u7bc7\u6587\u6863\uff0c\u63d0\u5347\u5de5\u4f5c\u6548\u7387\uff0c\u4e8b\u4ef6\u62bd\u53d6\uff1a\u62bd\u53d6\u54a8\u8be2"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "seed\u5927\u8bed\u8a00\u6a21\u578b", "position": "seed\u5927\u8bed\u8a00\u6a21\u578b", "startDate": "2023-08-01", "endDate": "\u4eca", "time": "2023-08-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u5e7f\u544a\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5e7f\u544a\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-05", "endDate": "2023-08", "time": "2022-05 ~ 2023-08", "duration": "", "description": "\u6296\u97f3 \u5e7f\u544a\u7b97\u6cd5"}, {"company": "\u5317\u4eac\u5e02\u5546\u6c64\u79d1\u6280\u5f00\u53d1\u6709\u9650\u516c\u53f8", "title": "\u7814\u7a76\u5458", "position": "\u7814\u7a76\u5458", "startDate": "2019-01", "endDate": "2021-04", "time": "2019-01 ~ 2021-04", "duration": "", "description": "\u4eba\u8138\u8bc6\u522b\u3001ocr\u7b49"}, {"company": "\u5317\u4eac\u5730\u5e73\u7ebf\u4fe1\u606f\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2018-04", "endDate": "2018-11", "time": "2018-04 ~ 2018-11", "duration": "", "description": "\u76ee\u6807\u68c0\u6d4b \u5206\u5272\u7b49"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "RAU: Towards Regularized Alignment and Uniformity", "time": "2023-12\u81f32024-12", "description": "\u6539\u5584\u5bf9\u6bd4\u5b66\u4e60\u5728\u63a8\u8350\u7cfb\u7edf\u4e0a\u7684\u5bf9\u9f50\u548c\u5747\u5300\u6027\uff0c\u63d0\u51fa\u4e86\u6b63\u5219\u5316\u5747\u5300\u6027\u4e0e\u5747\u5300\u6027\uff08RAU\uff09\uff0c\u7f13\u89e3\u6570\u636e\u7a00\u758f\u6027\u3002"}, {"name": "DCF: Uniformity Optimization for Dual Collaborative Filtering", "time": "2023-10\u81f32024-12", "description": "\u501f\u9274BarlowTwins\u6539\u8fdb\u5bf9\u6bd4\u5b66\u4e60\u5728\u63a8\u8350\u7cfb\u7edf\u7684\u5747\u5300\u6027\uff0c\u63d0\u51fa\u4e86\u53cc\u534f\u540c\u8fc7\u6ee4\uff08DCF\uff09\u6700\u7ec8\u63d0\u9ad8\u4e86\u63a8\u8350\u7684\u6027\u80fd\u3002"}, {"name": "Dimension Independent Mixup for Hard Negativate Sample in Collaborative Filtering", "time": "2023-03\u81f32024-06", "description": "\u63d0\u51fa\u4e86\u5168\u65b0\u7684\u786c\u8d1f\u91c7\u6837\u65b9\u6cd5\uff08DINS\uff09\uff0c\u518dEmbedding\u7ef4\u5ea6\u72ec\u7acb\u6df7\u5408\u6837\u672c\u4fe1\u606f\uff0c\u6709\u6548\u63d0\u9ad8\u4e86\u63a8\u8350\u6027\u80fd\u3002"}, {"name": "KGCFRec: Improving Collaborative Filtering Recommendation with Knowledge Graph", "time": "2023-10\u81f32024-04", "description": "\u4f7f\u7528\u6ce8\u610f\u529b\u673a\u5236\u878d\u5408\u7528\u6237\u4e0e\u7269\u54c1\u7684\u4ea4\u4e92\u4fe1\u606f\u548c\u77e5\u8bc6\u56fe\u8c31\u4fe1\u606f\uff0c\u63d0\u51fa\u4e86\u5168\u65b0\u63a8\u8350\u7b97\u6cd5\uff08KGCFRec\uff09\uff0c\u7f13\u89e3\u4e86\u4ea4\u4e92\u4fe1\u606f\u7a00\u758f\u95ee\u9898\uff0c\u63d0\u9ad8\u4e86\u534f\u540c\u8fc7\u6ee4\u6846\u67b6\u7684\u63a8\u8350\u6027\u80fd\u3002"}, {"name": "\u5177\u6709\u5965\u8fd0\u4f1a\u9898\u6750\u7684\u6587\u751f\u89c6\u9891\u7cfb\u7edf", "time": "2023-02\u81f32024-06", "description": "\u4ece0\u52301\u6784\u5efa\u4e86\u4e00\u4e2a\u6587\u751f\u89c6\u9891\u5de5\u4f5c\u6d41\u7a0b\uff0c\u6839\u636e\u7528\u6237\u8f93\u5165\u6587\u672c\u751f\u6210\u5177\u6709\u5965\u8fd0\u4f1a\u9898\u6750\u7684\u89c6\u9891\u3002"}, {"name": "\u667a\u80fd\u6587\u672c\u89e3\u6790\u7cfb\u7edf", "time": "2023-02\u81f32024-06", "description": "\u53c2\u4e0e\u5f00\u53d1\u667a\u80fd\u6587\u672c\u89e3\u6790\u7cfb\u7edf\uff0c\u96c6\u6210\u591a\u79cd\u5f00\u6e90\u6a21\u578b\u5b9e\u73b0\u6587\u6863\u6574\u5408\u3001\u98ce\u683c\u8f6c\u6362\u3001\u4e8b\u4ef6\u62bd\u53d6\u548c\u6784\u5efa\u9886\u57df\u77e5\u8bc6\u5e93\u3002"}, {"name": "\u79d1\u6280\u60c5\u62a5\u52a9\u7406Agent", "time": "2023-02\u81f32024-06", "description": "\u4e3a\u63d0\u9ad8\u79d1\u6280\u60c5\u62a5\u5206\u6790\u7684\u6548\u7387\uff0c\u4ece0\u52301\u5f00\u53d1\u548c\u4f18\u5316\u79d1\u6280\u60c5\u62a5\u52a9\u7406Agent\u3002"}, {"name": "\u63a8\u7279\u793e\u4ea4\u673a\u5668\u4eba\u81ea\u52a8\u5316\u517b\u6b96", "time": "2023-02\u81f32024-06", "description": "\u53c2\u4e0e\u4ece0\u52301\u5f00\u53d1\u4e86\u57fa\u4e8e\u5927\u6a21\u578b\u7684\u793e\u4ea4\u673a\u5668\u4eba\u7cfb\u7edf\uff0c\u81ea\u52a8\u6267\u884c\u591a\u79cd\u793e\u4ea4\u4e92\u52a8\uff0c\u4ee5\u63d0\u5347\u63a8\u7279\u8d26\u53f7\u7684\u5f71\u54cd\u529b\u3002"}, {"name": "\u57fa\u4e8e\u5411\u91cf\u5e93\u7684\u5934\u6761\u641c\u7d22", "time": "2024-07\u81f32024-12", "description": "\u53c2\u4e0e\u4ece0\u52301\u5f00\u53d1\u57fa\u4e8e\u5411\u91cf\u5e93\u7684\u5934\u6761\u641c\u7d22\u7684\u63a5\u53e3\uff0c\u4ee5\u63d0\u5347\u5934\u6761\u5185\u5bb9\u68c0\u7d22\u7684\u51c6\u786e\u7387\u3002"}]
+
+========================================
+
+========================================
+Candidate ID: 8933
+Name Mask: *祥琨
+Current Title/Company: 机器学习平台研发工程师 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "position": "\u673a\u5668\u5b66\u4e60\u5e73\u53f0\u7814\u53d1\u5de5\u7a0b\u5e08", "start_date": "2025-07-01", "end_date": "\u4eca", "duration": "", "description": "seed-infra"}, {"company": "\u5b57\u8282\u8df3\u52a8", "position": "\u673a\u5668\u5b66\u4e60\u7cfb\u7edf\u5b9e\u4e60\u751f", "start_date": "2024-05", "end_date": "2024-10", "duration": "", "description": "\u652f\u6491\u5382\u5185\u4e1a\u52a1\u7b97\u6cd5\u548c Seed \u6a21\u578b\u5168\u751f\u547d\u5468\u671f"}, {"company": "\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f8", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "start_date": "2023-12", "end_date": "2024-03", "duration": "", "description": "LLM SFT & application"}, {"company": "\u5b57\u8282\u8df3\u52a8", "position": "\u63a8\u8350\u67b6\u6784\u5b9e\u4e60\u751f", "start_date": "2023-02", "end_date": "2023-06", "duration": "", "description": "Python"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "Apache Seata", "time": "2023-06-01\u81f3\u4eca", "description": "\u5206\u5e03\u5f0f\u4e8b\u52a1\u6846\u67b6"}]
+
+========================================
+
+========================================
+Candidate ID: 8986
+Name Mask: *agic Mai
+Current Title/Company: 🚀 Research Intern@NVIDIA’25 & Bytedance Seed’24 @ Peking University @PKU-IDEA
+
+=== WORK EXPERIENCES ===
+[{"company": "Peking University @PKU-IDEA ", "title": "\ud83d\ude80 Research Intern@NVIDIA\u201925 & Bytedance Seed\u201924", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 9041
+Name Mask: *u-Yun
+Current Title/Company: Legacy carbon unit (brain backend) @ Seed, ByteDance
+
+=== WORK EXPERIENCES ===
+[{"company": "Seed, ByteDance", "title": "Legacy carbon unit (brain backend)", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 9050
+Name Mask: *uzxb
+Current Title/Company: Interested in Machine Learning and Deep Learning @ bytedance-seed
+
+=== WORK EXPERIENCES ===
+[{"company": "bytedance-seed", "title": "Interested in Machine Learning and Deep Learning", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 9056
+Name Mask: *unlong Lin
+Current Title/Company: Multimodal learning｜AI Agents @ XMU | Tencent HY -> ByteDance Seed
+
+=== WORK EXPERIENCES ===
+[{"company": "XMU | Tencent HY -> ByteDance Seed", "title": "Multimodal learning\uff5cAI Agents", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 9067
+Name Mask: *eiqi Feng
+Current Title/Company: I'm a Research Scientist @ Harvard University
+
+=== WORK EXPERIENCES ===
+[{"company": "Harvard University", "title": "Research Scientist @ Bytedance Seed", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 9292
+Name Mask: *ong Mao
+Current Title/Company: @sjtu-ieee; Retired OIer; NLPer @bytedance LLM @ Bytedance, Seed
+
+=== WORK EXPERIENCES ===
+[{"company": "Bytedance, Seed", "title": "@sjtu-ieee; Retired OIer; NLPer @bytedance LLM", "time": "Current", "description": ""}]
+
+========================================
+

@@ -34,6 +34,7 @@
                 "search/search-extractor.js",
                 "search/search-engine.js",
                 "content/panel.js",
+                "content/im-processor.js",
                 "content/content.js"
             ],
             "css": [

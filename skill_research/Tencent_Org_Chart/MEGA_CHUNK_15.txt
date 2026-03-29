@@ -1,0 +1,152 @@
+# CANDIDATE BATCH 15
+
+========================================
+Candidate ID: 55999
+Name Mask: *ijie Cheng
+Current Title/Company: Ph.D. candidate @ Tsinghua University
+
+=== WORK EXPERIENCES ===
+[{"company": "Rayneo", "title": "Intern, Foundation Model Group", "time": "", "description": ""}, {"company": "Tencent Robotics X", "title": "Research Intern", "time": "", "description": ""}, {"company": "01.AI Company", "title": "Research Intern, Pre-training Group", "time": "", "description": ""}, {"company": "Sinovation Ventures", "title": "Investment Intern", "time": "", "description": ""}, {"company": "Shanghai AI Lab", "title": "Research Intern, Natural Language Processing Group", "time": "", "description": ""}, {"company": "Institute for AI Industry Research, Tsinghua University", "title": "Research Intern", "time": "", "description": ""}, {"company": "Meituan", "title": "Research Intern, Natural Language Understanding Group", "time": "", "description": ""}, {"company": "Westlake University", "title": "Research Intern, Text Intelligence Lab", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 56279
+Name Mask: *hongwen Xu
+Current Title/Company: Principal Scientist @ Tencent
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent", "title": "Principal Scientist", "time": "", "description": ""}, {"company": "Sea AI Lab", "title": "Principal Scientist", "time": "", "description": ""}, {"company": "National University of Singapore", "title": "Adjunct Assistant Professor", "time": "", "description": ""}, {"company": "DeepMind", "title": "Senior Research Scientist", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 56283
+Name Mask: *unchi Yu
+Current Title/Company: Postdoc Researcher @ University of Oxford
+
+=== WORK EXPERIENCES ===
+[{"company": "University of Oxford", "title": "Postdoc Researcher", "time": "", "description": ""}, {"company": "Shanghai AI Lab", "title": "Research Intern", "time": "", "description": ""}, {"company": "Tencent AI LAB", "title": "Research Intern", "time": "", "description": ""}, {"company": "Yale University", "title": "Visiting Student", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 56340
+Name Mask: *ingfeng Shen
+Current Title/Company: Member of Technical Staff @ Microsoft AI SuperIntelligence
+
+=== WORK EXPERIENCES ===
+[{"company": "Microsoft AI SuperIntelligence", "title": "Member of Technical Staff", "time": "", "description": ""}, {"company": "Bytedance Seed", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": "Undergraduate Research Intern", "time": "", "description": ""}, {"company": "Microsoft AI \u00b7 \u5168\u804c", "position": "Member of Technical Staff", "start_date": "", "end_date": "", "duration": "2026\u5e741\u6708 - \u81f3\u4eca \u00b7 3 \u4e2a\u6708", "description": "Agent post-train and enviroment scaling.Agent post-train and enviroment scaling."}, {"company": "ByteDance \u00b7 \u5168\u804c", "position": "Research Scientist", "start_date": "", "end_date": "", "duration": "2024\u5e745\u6708 - 2026\u5e741\u6708 \u00b7 1 \u5e74 9 \u4e2a\u6708", "description": "Bytedance Seed. Working on enhancing the reasoning and planning capacity of LLMs. Building LLM agents!Bytedance Seed. Working on enhancing the reasoning and planning capacity of LLMs. Building LLM agents!"}, {"company": "The Johns Hopkins University \u00b7 \u5168\u804c", "position": "Research Assistant", "start_date": "", "end_date": "", "duration": "2022\u5e749\u6708 - 2024\u5e745\u6708 \u00b7 1 \u5e74 9 \u4e2a\u6708", "description": ""}, {"company": "Tencent \u00b7 \u5168\u804c", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2023\u5e745\u6708 - 2023\u5e748\u6708 \u00b7 4 \u4e2a\u6708", "description": "Research Intern at Tencent AI LabResearch Intern at Tencent AI Lab"}]
+
+========================================
+
+========================================
+Candidate ID: 56342
+Name Mask: *ifeng Jin
+Current Title/Company: PhD candidate @ The Ohio State University
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent AI Lab", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 56349
+Name Mask: *ianjun Yang
+Current Title/Company: Member of Technical Staff @ Reflection AI
+
+=== WORK EXPERIENCES ===
+[{"company": "Reflection AI", "title": "Member of Technical Staff", "time": "", "description": ""}, {"company": "Meta Superintelligence Lab", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Meta GenAI", "title": "Research Intern", "time": "", "description": ""}, {"company": "Amazon", "title": "Research Intern", "time": "", "description": ""}, {"company": "NEC Laboratories America", "title": "Research Intern", "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": "Research Intern", "time": "", "description": ""}, {"company": "Reflection AI \u00b7 \u5168\u804c", "position": "Member of Technical Staff", "start_date": "", "end_date": "", "duration": "2026\u5e742\u6708 - \u81f3\u4eca \u00b7 2 \u4e2a\u6708", "description": "mid-trainingmid-training"}, {"company": "Meta \u00b7 \u5168\u804c", "position": "Research Scientist", "start_date": "", "end_date": "", "duration": "2024\u5e7412\u6708 - 2025\u5e7412\u6708 \u00b7 1 \u5e74 1 \u4e2a\u6708", "description": "I work on Meta AI reasoning/search/safety at the GenAI/MSL team.I work on Meta AI reasoning/search/safety at the GenAI/MSL team."}, {"company": "Meta \u00b7 \u5b9e\u4e60", "position": "Research Scientist", "start_date": "", "end_date": "", "duration": "2024\u5e746\u6708 - 2024\u5e7410\u6708 \u00b7 5 \u4e2a\u6708", "description": "I am a research scientist intern at the LangSpeech/Safety department at GenAI.I am a research scientist intern at the LangSpeech/Safety department at GenAI."}, {"company": "Amazon \u00b7 \u5b9e\u4e60", "position": "Research Scientist", "start_date": "", "end_date": "", "duration": "2024\u5e743\u6708 - 2024\u5e746\u6708 \u00b7 4 \u4e2a\u6708", "description": "I was a research scientist intern at the Trust&Safety team.I was a research scientist intern at the Trust&Safety team."}, {"company": "NEC Laboratories America, Inc. \u00b7 \u5b9e\u4e60", "position": "Research Scientist", "start_date": "", "end_date": "", "duration": "2023\u5e741\u6708 - 2023\u5e746\u6708 \u00b7 6 \u4e2a\u6708", "description": "Working on Prompting for natural language understanding, detection of AI-generated contentsWorking on Prompting for natural language understanding, detection of AI-generated contents"}]
+
+========================================
+
+========================================
+Candidate ID: 56422
+Name Mask: *engkang Hu
+Current Title/Company: PhD Student @ The University of Hong Kong
+
+=== WORK EXPERIENCES ===
+[{"company": "Shanghai Artificial Intelligence Laboratory", "title": "Research Intern", "time": "", "description": ""}, {"company": "Microsoft Research Lab \u2013 Asia", "title": "Research Intern", "time": "", "description": ""}, {"company": "Tencent Hunyuan", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 56576
+Name Mask: *inkun Cao
+Current Title/Company: Research Scientist @ Meta Superintelligence Lab
+
+=== WORK EXPERIENCES ===
+[{"company": "Meta Superintelligence Lab", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Carnegie Mellon University", "title": "Robotics PhD Student", "time": "", "description": ""}, {"company": "Nvidia Research", "title": "Intern", "time": "", "description": ""}, {"company": "Adobe Research", "title": "Intern", "time": "", "description": ""}, {"company": "Meta Reality Labs", "title": "Intern", "time": "", "description": ""}, {"company": "Tencent", "title": "Intern", "time": "", "description": ""}, {"company": "Bytedance AI Lab", "title": "Intern", "time": "", "description": ""}, {"company": "UC Berkeley", "title": "Visiting Researcher", "time": "", "description": ""}, {"company": "Tsinghua University", "title": "Visiting Researcher", "time": "", "description": ""}, {"company": "Meta \u00b7 \u5168\u804c", "position": "Research Scientist", "start_date": "", "end_date": "", "duration": "2025\u5e745\u6708 - \u81f3\u4eca \u00b7 11 \u4e2a\u6708", "description": "Research Scientist at FAIR and then MSL on 3D vision, world models and robotics.Research Scientist at FAIR and then MSL on 3D vision, world models and robotics."}, {"company": "NVIDIA \u00b7 \u5b9e\u4e60", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2024\u5e745\u6708 - 2025\u5e745\u6708 \u00b7 1 \u5e74 1 \u4e2a\u6708", "description": "Santa Clara, California, United States"}, {"company": "Carnegie Mellon University", "position": "Graduate Research Assistant", "start_date": "", "end_date": "", "duration": "2020\u5e749\u6708 - 2025\u5e745\u6708 \u00b7 4 \u5e74 9 \u4e2a\u6708", "description": "Studied human motion during my PhD:* Human motion tracking and generation from visual data* Human motion animation by RL or generative models from MoCap data* Hand-Object Interaction and hand motionStudied human motion during my PhD: * Human motion tracking and generation from visual data * Human motion animation by RL or generative models from MoCap data * Hand-Object Interaction and hand motion \u2026\u5c55\u5f00"}, {"company": "Adobe \u00b7 \u5b9e\u4e60", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2023\u5e745\u6708 - 2024\u5e743\u6708 \u00b7 11 \u4e2a\u6708", "description": "San Jose, California, United States \u00b7 \u73b0\u573a\u529e\u516c"}, {"company": "Meta \u00b7 \u5b9e\u4e60", "position": "Research Scientist Intern", "start_date": "", "end_date": "", "duration": "2022\u5e746\u6708 - 2022\u5e7412\u6708 \u00b7 7 \u4e2a\u6708", "description": "Pittsburgh, Pennsylvania, United States"}]
+
+========================================
+
+========================================
+Candidate ID: 56625
+Name Mask: *ianyu Yang
+Current Title/Company: Researcher @ Meituan
+
+=== WORK EXPERIENCES ===
+[{"company": "Meituan", "title": "Researcher", "time": "", "description": ""}, {"company": "Alibaba DAMO Academy", "title": null, "time": "", "description": ""}, {"company": "IDEA", "title": null, "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": null, "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 56992
+Name Mask: *ongchao Yang
+Current Title/Company: PhD Student @ The Chinese University of Hong Kong
+
+=== WORK EXPERIENCES ===
+[{"company": "Microsoft Research Asia (MSRA)", "title": "Intern, Speech Group", "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": "Intern, Speech Group", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57316
+Name Mask: *inxi Xiang
+Current Title/Company: Postdoctoral Fellow in Medical AI @ Stanford University
+
+=== WORK EXPERIENCES ===
+[{"company": "Stanford University", "title": "Postdoctoral Fellow in Medical AI", "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": "Senior Researcher", "time": "", "description": ""}, {"company": "SenseTime", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57383
+Name Mask: *ua Wei
+Current Title/Company: Assistant Professor @ Arizona State University (ASU)
+
+=== WORK EXPERIENCES ===
+[{"company": "Arizona State University (ASU)", "title": "Assistant Professor", "time": "", "description": ""}, {"company": "New Jersey Institute of Technology", "title": "Assistant Professor", "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": "Staff Researcher", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57390
+Name Mask: *hunyang Li
+Current Title/Company: MPhil Student @ Hong Kong University of Science and Technology
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent AI Lab", "title": "Research Intern", "time": "", "description": ""}, {"company": "Zhipu AI", "title": "Intern", "time": "", "description": ""}, {"company": "THUKEG", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 57417
+Name Mask: *ulai Zhao
+Current Title/Company: PhD Student @ Princeton University
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent AI Lab", "title": "Research Intern", "time": "", "description": ""}, {"company": "Genentech", "title": "Research Intern", "time": "", "description": ""}, {"company": "ETH Z\u00fcrich", "title": "Visiting Student", "time": "", "description": ""}, {"company": "University of Washington", "title": "Research Assistant", "time": "", "description": ""}, {"company": "Tencent Americas \u00b7 \u5168\u804c", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2025\u5e745\u6708 - 2025\u5e748\u6708 \u00b7 4 \u4e2a\u6708", "description": "Identified systematic vulnerabilities of LLM judges in RLVR to superficial responses and developed a data augmentation strategy to enhance their robustnessIdentified systematic vulnerabilities of LLM judges in RLVR to superficial responses and developed a data augmentation strategy to enhance their robustness"}, {"company": "Genentech \u00b7 \u5168\u804c", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2024\u5e745\u6708 - 2024\u5e748\u6708 \u00b7 4 \u4e2a\u6708", "description": "Worked on fine-tuning diffusion models specifically tailored for DNA/RNA sequences and small molecules.Worked on fine-tuning diffusion models specifically tailored for DNA/RNA sequences and small molecules."}, {"company": "ETH Z\u00fcrich \u00b7 \u5b9e\u4e60", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2021\u5e746\u6708 - 2021\u5e749\u6708 \u00b7 4 \u4e2a\u6708", "description": "Studied first-order mathematical optimization in a novel scheme called performative predictionStudied first-order mathematical optimization in a novel scheme called performative prediction"}, {"company": "University of Washington \u00b7 \u517c\u804c", "position": "Research Assistant", "start_date": "", "end_date": "", "duration": "2020\u5e745\u6708 - 2021\u5e746\u6708 \u00b7 1 \u5e74 2 \u4e2a\u6708", "description": "(1) Studied theoretical reinforcement learning in a multi-agent environment (2) Studied statistical representation learning aiming at explaining the success of NLP pre-training.(1) Studied theoretical reinforcement learning in a multi-agent environment (2) Studied statistical representation learning aiming at explaining the success of NLP pre-training."}]
+
+========================================
+
+========================================
+Candidate ID: 57425
+Name Mask: *nyi Jiang
+Current Title/Company: PhD Student @ University of Illinois at Urbana-Champaign
+
+=== WORK EXPERIENCES ===
+[{"company": "Stanford University", "title": "Visiting Student Researcher", "time": "", "description": ""}, {"company": "Meta", "title": "Research Intern", "time": "", "description": ""}, {"company": "Argonne National Laboratory", "title": "Research Intern", "time": "", "description": ""}, {"company": "TensorOpera AI (FedML)", "title": "Research Intern", "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": "NLP Intern", "time": "", "description": ""}, {"company": "Stanford University", "position": "Visiting PHD Student", "start_date": "", "end_date": "", "duration": "2026\u5e74 - \u81f3\u4eca \u00b7 3 \u4e2a\u6708", "description": "STAIR Lab led by Prof. Sanmi Koyejo.- AI safety and alignmentSTAIR Lab led by Prof. Sanmi Koyejo. - AI safety and alignment"}, {"company": "Meta \u00b7 \u5168\u804c", "position": "Research Internship", "start_date": "", "end_date": "", "duration": "2025\u5e745\u6708 - 2025\u5e748\u6708 \u00b7 4 \u4e2a\u6708", "description": "Work on diffusion acceleration for the Meta Movie Gen model.- Improve distillation performance for the video uncropping task.- Explore different adversarial distillation techniques for further improvement.Work on diffusion acceleration for the Meta Movie Gen model. - Improve distillation performance for the video uncropping task. - Explore different adversarial distillation techniques for further improvement. \u2026\u5c55\u5f00"}, {"company": "Argonne National Laboratory \u00b7 \u5168\u804c", "position": "Research Assistant", "start_date": "", "end_date": "", "duration": "2023\u5e746\u6708 - 2023\u5e748\u6708 \u00b7 3 \u4e2a\u6708", "description": "Worked on APPFL service.Worked on APPFL service."}, {"company": "FedML \u00b7 \u517c\u804c", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2023\u5e742\u6708 - 2023\u5e745\u6708 \u00b7 4 \u4e2a\u6708", "description": "Federated Learning for HealthcareFederated Learning for Healthcare"}, {"company": "1 \u5e74 10 \u4e2a\u6708", "position": "University of Illinois Urbana-Champaign", "start_date": "", "end_date": "", "duration": "1 \u5e74 10 \u4e2a\u6708", "description": "Advised by Prof. Sanmi Koyejo. Worked on the federated domain adaptation problem for healthcare applications.Advised by Prof. Sanmi Koyejo. Worked on the federated domain adaptation problem for healthcare applications."}]
+
+========================================
+

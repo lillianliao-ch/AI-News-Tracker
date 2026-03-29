@@ -1,0 +1,20 @@
+Company: 小红书
+Title: 【hi lab】基础模型 Post-Train 研究员
+
+【岗位描述】
+在以下一个或多个前沿方向进行深度攻关：
+1、Reasoning & RL Scaling： 探索 RL Scaling Law，在数学、编程、视觉推理等可验证任务上提升模型的可泛化推理能力；研发 Adaptive Thinking 技术，使模型具备动态调整思考深度的能力。
+2、Agentic Intelligence： 构建多模态环境下的规划、工具调用、执行与反思闭环；研究 Multi-agent RL 以应对超长程任务；探索 Proactive AI，使模型具备主动交互与需求澄清能力。
+3、Self-Evolving & Intrinsic Motivation： 突破人类监督的扩展性瓶颈，研究自我评估与修正机制；探索通过 Intrinsic Reward（内在奖励） 替代外部反馈，实现 AI 的持续自我迭代。
+4、Lifelong Learning： 赋予模型从长期交互中持续学习的 Meta 能力，提升模型在长程对话中的用户理解力与任务解决成功率。
+
+【岗位要求】
+基础要求
+基础能力： 扎实的机器学习与深度学习基础，对大模型模型训练全流程有深入理解；
+解决问题： 具备逻辑严密的分析能力，能够从复杂现象中抽象出底层问题并给出系统性方案。
+专业能力：具备扎实的机器学习理论基础，能够深刻理解并解决 RL 训练中的各种问题问题，包括 Reward Hacking、Training Stability、Exploration Efficiency等
+动手能力：有优秀的算法实现能力和工程性能感知，具备优秀的数据敏锐度， 能够从中数据得到让模型效果突破的 insight
+
+加分项
+研究成果： 在 NeurIPS、ICLR、ICML、CVPR、ACL 等顶级会议发表过高水平研究成果，或主导过知名开源项目优先
+敏锐的直觉和探索精神：具备极强的好奇心，能在高度不确定的无人区中通过严谨的实验验证寻找确定性。不满足于优化已有 Benchmark，而是对“模型是否真的在理解、在进化”保持极度敏感。

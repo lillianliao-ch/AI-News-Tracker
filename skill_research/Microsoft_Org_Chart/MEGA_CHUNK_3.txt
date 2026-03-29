@@ -1,0 +1,461 @@
+# CANDIDATE BATCH 3
+
+========================================
+Candidate ID: 2152
+Name Mask: *ei Tao
+Current Title/Company: O Troupe of little vagrants of the world, leave your footprints in my words @ 腾讯
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent", "title": "O Troupe of little vagrants of the world", "time": "Current", "description": ""}, {"company": "\u817e\u8baf \u00b7 \u6b63\u5f0f", "position": "\u9ad8\u7ea7\u7814\u7a76\u5458", "start_date": "", "end_date": "", "duration": "2024\u5e748\u6708 - \u81f3\u4eca \u00b7 1 \u5e74 7 \u4e2a\u6708", "description": ""}, {"company": "\u4e0a\u6d77\u4eba\u5de5\u667a\u80fd\u5b9e\u9a8c\u5ba4 \u00b7 \u5b9e\u4e60", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2023\u5e748\u6708 - 2024\u5e746\u6708 \u00b7 11 \u4e2a\u6708", "description": "Research on large language model-based autonomous agents for software evolution, under the supervision of Prof. Yu Cheng. We analyze, design, and develop a multi-agent framework for GitHub Issue Resolution. The corresponding paper, MAGIS, is accepted at NeurIPS 2024.Research on large language model-based autonomous agents for software evolution, under the supervision of Prof. Yu Cheng. We analyze, design, and develop a multi-agent framework for GitHub Issue Resolution. The corresponding paper, MAGIS, is accepted at NeurIPS 2024."}, {"company": "\u5fae\u8f6f \u00b7 \u5b9e\u4e60", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2020\u5e7411\u6708 - 2021\u5e747\u6708 \u00b7 9 \u4e2a\u6708", "description": "As an intern in MSRA, I research on the area of Code Intelligence especially Commit Message Generation. The paper entitled \"On the Evaluation of Commit Message Generation Models: An Experimental Study\"(first author) was accepted to the Research track of the 37th International Conference on Software Maintenance and Evolution (ICSME) 2021(CORE A).As an intern in MSRA, I research on the area of Code Intelligence especially Commit Message Generation. The paper entitled \"On the Evaluation of Commit Message Generation Models: An Experimental Study\"(first author) was accepted to the Research track of the 37th International Conference on Software Maintenance and Evolution (ICSME) 2021(CORE A)."}]
+
+========================================
+
+========================================
+Candidate ID: 2158
+Name Mask: *icheng Xu
+Current Title/Company: Senior Researcher at MSRA @ Microsoft
+
+=== WORK EXPERIENCES ===
+[{"company": "Microsoft", "title": "Senior Researcher at MSRA", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 2224
+Name Mask: *云航 Yunhang Shen
+Current Title/Company: None @ None
+
+=== WORK EXPERIENCES ===
+[{"company": "Microsoft Research Asia (MSRA)", "title": "Research Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 2456
+Name Mask: *传康
+Current Title/Company: 智元机器人具身智能高级算法工程师 @ 智元机器人
+
+=== WORK EXPERIENCES ===
+[{"company": "\u667a\u5143\u673a\u5668\u4eba", "position": "\u5177\u8eab\u667a\u80fd\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08", "start_date": "2025.4", "end_date": "\u81f3\u4eca", "duration": "10\u4e2a\u6708", "description": ""}, {"company": "\u851a\u6765", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "start_date": "2022.3", "end_date": "2025.4", "duration": "3\u5e741\u4e2a\u6708", "description": "\u7aef\u5230\u7aef\u591a\u6a21\u6001\u611f\u77e5\u7b97\u6cd5\uff0cVLM\u5927\u6a21\u578b"}, {"company": "\u65f7\u89c6\u79d1\u6280Megvii \u2022 \u4e0a\u6d77\u7814\u7a76\u9662", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "start_date": "2020.4", "end_date": "2022.3", "duration": "1\u5e7411\u4e2a\u6708", "description": "\u65f7\u89c6\u4e0a\u7814\u9662\u3002\u4eba\u8138\u8bc6\u522b\u3002\u5de5\u4e1a\u7269\u6d41ocr\u6280\u672f\u3002"}, {"company": "\u6469\u6839\u58eb\u4e39\u5229", "position": "Summer Analyst", "start_date": "2019.7", "end_date": "2019.9", "duration": "2\u4e2a\u6708", "description": "AppDev"}, {"company": "\u5fae\u8f6f\u4e9a\u6d32\u7814\u7a76\u9662", "position": "\u79d1\u7814\u5b9e\u4e60\u751f", "start_date": "2018.5", "end_date": "2018.11", "duration": "6\u4e2a\u6708", "description": "Research intern at MSRA under supervision of Xiao Sun in VC group\n\nProject:\n1. Our integral pose regression method has won the 2nd place of ECCV 2018 3D Human Pose Estimation Challenge. Link: https://github.com/JimmySuen/integral-human-pose\n\nPaper:\n1. An Integral Pose Regression System for the ECCV2018 PoseTrack Challenge Link: https://arxiv.org/abs/1809.06079\n2. Explicit Pose Deformation Learning for Tracking Human Poses Link: https://arxiv.org/abs/1811.07123"}, {"company": "Rokid", "position": "\u7814\u53d1\u5b9e\u4e60\u751f", "start_date": "2016.7", "end_date": "2017.2", "duration": "7\u4e2a\u6708", "description": "\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u7814\u53d1\uff0c\u624b\u52bf\u8bc6\u522b\u7b97\u6cd5\u7814\u53d1\uff0c\u5173\u952e\u70b9\u68c0\u6d4b"}, {"company": "\u65f7\u89c6\u79d1\u6280Megvii", "title": "\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2020-04", "endDate": "2022-03", "time": "2020-04 ~ 2022-03", "duration": "", "description": "\u65f7\u89c6\u4e0a\u7814\u9662\u3002\u4eba\u8138\u8bc6\u522b\u3002\u5de5\u4e1a\u7269\u6d41ocr\u6280\u672f\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 2457
+Name Mask: *根
+Current Title/Company: SDE II @ 微软
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5fae\u8f6f", "position": "SDE II", "start_date": "2021.12", "end_date": "\u81f3\u4eca", "duration": "4\u5e742\u4e2a\u6708", "description": "algo of New Bing, Edge Copilot, Windows Copilot"}, {"company": "\u817e\u8baf-\u5fae\u4fe1\u4e8b\u4e1a\u7fa4 \u2022 \u641c\u7d22\u5e94\u7528", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "start_date": "2020.7", "end_date": "2021.11", "duration": "1\u5e744\u4e2a\u6708", "description": "\u6587\u6863\u7279\u5f81\u6316\u6398\uff0c\u641c\u7d22\u76f8\u5173\u6027\u4f18\u5316\uff0c\u667a\u80fd\u95ee\u7b54\u3002"}, {"company": "\u5fae\u8f6f\u4e9a\u6d32\u7814\u7a76\u9662 \u2022 NLC", "position": "\u7814\u7a76\u5b9e\u4e60\u751f", "start_date": "2018.9", "end_date": "2020.1", "duration": "1\u5e744\u4e2a\u6708", "description": "\u591a\u6a21\u6001\u5b66\u4e60\uff0c\u89c6\u9891\u3001\u56fe\u50cf\u5185\u5bb9\u7406\u89e3\u3002\u5305\u62ec\u56fe\u50cf\u95ee\u7b54\uff0c\u56fe\u50cf\u6587\u672c\u68c0\u7d22\uff0c\u89c6\u9891\u95ee\u7b54\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 2551
+Name Mask: *杰森
+Current Title/Company: Technical Staff @ 智源研究院
+
+=== WORK EXPERIENCES ===
+[{"company": "\u667a\u6e90\u7814\u7a76\u9662", "position": "Technical Staff", "start_date": "2023.7", "end_date": "\u81f3\u4eca", "duration": "2\u5e747\u4e2a\u6708", "description": ""}, {"company": "\u5fae\u8f6f\u4e9a\u6d32\u7814\u7a76\u9662 \u2022 MSRA \u89c6\u89c9\u8ba1\u7b97\u7ec4", "position": "Research Intern", "start_date": "2022.7", "end_date": "2023.2", "duration": "7\u4e2a\u6708", "description": ""}, {"company": "\u767e\u5ea6", "position": "\u81ea\u52a8\u9a7e\u9a76\u611f\u77e5\u7b97\u6cd5\u5de5\u7a0b\u5e08", "start_date": "2021.11", "end_date": "2022.7", "duration": "8\u4e2a\u6708", "description": ""}, {"company": "\u5546\u6c64\u79d1\u6280", "position": "\u8ba1\u7b97\u673a\u89c6\u89c9\u89c1\u4e60\u7814\u7a76\u5458", "start_date": "2021.4", "end_date": "2021.11", "duration": "7\u4e2a\u6708", "description": ""}, {"company": "\u5fae\u8f6f\u4e9a\u6d32\u7814\u7a76\u9662", "title": "Research Intern", "position": "Research Intern", "startDate": "2022-07", "endDate": "2023-02", "time": "2022-07 ~ 2023-02", "duration": "", "description": "3d vision"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 2560
+Name Mask: *菲
+Current Title/Company: Applied Scientist II @ 微软（中国）有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5fae\u8f6f\uff08\u4e2d\u56fd\uff09\u6709\u9650\u516c\u53f8", "position": "Applied Scientist II", "start_date": "2022.8", "end_date": "\u81f3\u4eca", "duration": "3\u5e746\u4e2a\u6708", "description": ""}, {"company": "\u5fae\u8f6f\uff08\u4e2d\u56fd\uff09\u6709\u9650\u516c\u53f8 \u2022 Bing/multimedia", "position": "software engineer", "start_date": "2020.6", "end_date": "2022.8", "duration": "2\u5e742\u4e2a\u6708", "description": "\u641c\u7d22/nlp/\u591a\u6a21\u6001/\u53ec\u56de/\u6392\u5e8f"}, {"company": "\u5fae\u8f6f\uff08\u4e2d\u56fd\uff09\u6709\u9650\u516c\u53f8", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b9e\u4e60\u751f", "start_date": "2019.5", "end_date": "2019.8", "duration": "3\u4e2a\u6708", "description": "bing /multimedia/image relevance&image understanding"}, {"company": "\u5fae\u8f6f\uff08\u4e2d\u56fd\uff09\u6709\u9650\u516c\u53f8", "title": "software engineer", "position": "software engineer", "startDate": "2020-06", "endDate": "2022-08", "time": "2020-06 ~ 2022-08", "duration": "", "description": "\u641c\u7d22/nlp/\u591a\u6a21\u6001/\u53ec\u56de/\u6392\u5e8f"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 3197
+Name Mask: *uoxin
+Current Title/Company: None @ MSRA
+
+=== WORK EXPERIENCES ===
+[{"company": "MSRA", "title": "Unknown", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 3466
+Name Mask: *eqi Lin
+Current Title/Company: Researcher @ MSRA @ Microsoft Research
+
+=== WORK EXPERIENCES ===
+[{"company": "Microsoft Research", "title": "Researcher @ MSRA", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 4122
+Name Mask: *hipeng Han
+Current Title/Company: NLP/LLM, @ Microsoft
+
+=== WORK EXPERIENCES ===
+[{"company": "Microsoft", "title": "NLP/LLM", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 4528
+Name Mask: *huming Shi
+Current Title/Company: Principal Researcher and Research Director at Tencent AI Lab @ 腾讯
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent AI Lab", "title": "Principal Researcher and Research Director at Tencent AI Lab", "time": "Current", "description": ""}, {"company": "Tencent AI Lab \u00b7 \u5168\u804c", "position": "Principal Researcher and Head of NLP Center", "start_date": "", "end_date": "", "duration": "2016\u5e7410\u6708 - \u81f3\u4eca \u00b7 9 \u5e74 5 \u4e2a\u6708", "description": "Natural language processing, chat botsNatural language processing, chat bots"}, {"company": "Alibaba Group", "position": "Senior Staff Engineer", "start_date": "", "end_date": "", "duration": "2016\u5e747\u6708 - 2016\u5e749\u6708 \u00b7 3 \u4e2a\u6708", "description": "Chat bots, natural language processingChat bots, natural language processing"}, {"company": "\u5168\u804c \u00b7 12 \u5e74", "position": "Microsoft Research Asia", "start_date": "", "end_date": "", "duration": "\u5168\u804c \u00b7 12 \u5e74", "description": "Text understanding; natural language processing; knowledge miningText understanding; natural language processing; knowledge mining"}]
+
+========================================
+
+========================================
+Candidate ID: 4831
+Name Mask: *unwei Bao
+Current Title/Company: 2011-2018 MSRA @ JD.com
+
+=== WORK EXPERIENCES ===
+[{"company": "JD.com", "title": "2011-2018 MSRA\r\n2019-current JDT", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 5226
+Name Mask: *至诚
+Current Title/Company: 工程师 @ Google
+
+=== WORK EXPERIENCES ===
+[{"title": "\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08Google2017.2-\u81f3\u4eca (8\u5e7411\u4e2a\u6708)Google DeepMind", "time_range": "2017.2-\u81f3\u4eca", "position": "\u5de5\u7a0b\u5e08"}, {"title": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u5fae\u8f6f\u4e2d\u56fd2014.7-2015.6 (11\u4e2a\u6708)\u8ba1\u7b97\u673a\u89c6\u89c9", "time_range": "2014.7-2015.6", "position": ""}, {"title": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u65f7\u89c6\u79d1\u62802014.3-2014.6 (3\u4e2a\u6708)\u8ba1\u7b97\u673a\u89c6\u89c9\u4ed6\u67093\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8", "time_range": "2014.3-2014.6", "position": ""}, {"company": "Google", "title": "\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2017-02-01", "endDate": "\u4eca", "time": "2017-02-01 ~ \u4eca", "duration": "", "description": "Google DeepMind\nresearch engineer in computer vision, 3D, LLM, NeRF, Gemini\n\u8c37\u6b4cdeepmind \u8ba1\u7b97\u673a\u89c6\u89c9 \u5927\u6a21\u578b \u591a\u6a21\u6001"}, {"company": "\u5fae\u8f6f\u4e2d\u56fd", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2014-07", "endDate": "2015-06", "time": "2014-07 ~ 2015-06", "duration": "", "description": "\u8ba1\u7b97\u673a\u89c6\u89c9"}, {"company": "\u65f7\u89c6\u79d1\u6280", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2014-03", "endDate": "2014-06", "time": "2014-03 ~ 2014-06", "duration": "", "description": "\u8ba1\u7b97\u673a\u89c6\u89c9"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+高级算法工程师Google2017.2-至今 (8年11个月)Google DeepMind
+research engineer in computer vision, 3D, LLM, NeRF, Gemini
+谷歌deepmind 计算机视觉 大模型 多模态他有4个好友在此公司
+
+---
+
+算法实习生微软中国2014.7-2015.6 (11个月)计算机视觉
+
+---
+
+算法实习生旷视科技2014.3-2014.6 (3个月)计算机视觉他有3个好友在此公司
+
+【教育经历】
+加利福尼亚大学圣迭戈分校2015年-2016年，计算机，硕士他有1个好友在此学校 | 清华大学2011年-2015年，计算机类，本科计算机软件专业他有4个好友在此学校
+
+========================================
+
+========================================
+Candidate ID: 5264
+Name Mask: *啖
+Current Title/Company: 工程师 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"title": "\u7f51\u7edc\u4f20\u8f93\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b57\u8282\u8df3\u52a82022.6-\u81f3\u4eca (3\u5e747\u4e2a\u6708)Python\u673a\u5668\u5b66\u4e60\u7b97\u6cd5C++Java\u4ed6\u670987\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8", "time_range": "2022.6-\u81f3\u4eca", "position": "\u5de5\u7a0b\u5e08"}, {"title": "\u97f3\u89c6\u9891\u4f20\u8f93\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5317\u4eac\u5feb\u624b\u79d1\u6280\u6709\u9650\u516c\u53f8 \u2022 \u97f3\u89c6\u98912020.6-2022.5 (1\u5e7411\u4e2a\u6708)\u97f3\u89c6\u9891\u6210\u672c\u4f18\u5316C++OKR\u7ba1\u7406\u89c6\u9891\u7f51\u7ad9/\u76f4\u64ad\u4ed6\u6709130\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8", "time_range": "2020.6-2022.5", "position": "\u5de5\u7a0b\u5e08"}, {"title": "Internship\u5fae\u8f6f\u4e9a\u6d32\u7814\u7a76\u9662 \u2022 System/ Network Research Group2019.6-2019.10 (4\u4e2a\u6708)WebRTC\u6d41\u63a7\u7b97\u6cd5\u7814\u7a76\u4ed6\u670927\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8", "time_range": "2019.6-2019.10", "position": ""}, {"title": "\u540e\u53f0\u5f00\u53d1\u5de5\u7a0b\u5e08\u5317\u4eac\u65f7\u89c6\u79d1\u6280\u6709\u9650\u516c\u53f8 \u2022 DevsOP2016.7-2017.4 (9\u4e2a\u6708)\u4eba\u8138\u8bc6\u522bAPI", "time_range": "2016.7-2017.4", "position": "\u5de5\u7a0b\u5e08"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u7f51\u7edc\u4f20\u8f93\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7f51\u7edc\u4f20\u8f93\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-06-01", "endDate": "\u4eca", "time": "2022-06-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u5317\u4eac\u5feb\u624b\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u97f3\u89c6\u9891\u4f20\u8f93\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u97f3\u89c6\u9891\u4f20\u8f93\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2020-06", "endDate": "2022-05", "time": "2020-06 ~ 2022-05", "duration": "", "description": "\u97f3\u89c6\u9891\u6210\u672c\u4f18\u5316"}, {"company": "\u5fae\u8f6f\u4e9a\u6d32\u7814\u7a76\u9662", "title": "Internship", "position": "Internship", "startDate": "2019-06", "endDate": "2019-10", "time": "2019-06 ~ 2019-10", "duration": "", "description": "WebRTC\u6d41\u63a7\u7b97\u6cd5\u7814\u7a76"}, {"company": "\u5317\u4eac\u65f7\u89c6\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u540e\u53f0\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "\u540e\u53f0\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2016-07", "endDate": "2017-04", "time": "2016-07 ~ 2017-04", "duration": "", "description": "\u4eba\u8138\u8bc6\u522bAPI"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+网络传输算法工程师字节跳动2022.6-至今 (3年7个月)Python机器学习算法C++Java他有87个好友在此公司
+
+---
+
+音视频传输算法工程师北京快手科技有限公司 • 音视频2020.6-2022.5 (1年11个月)音视频成本优化C++OKR管理视频网站/直播他有130个好友在此公司
+
+---
+
+Internship微软亚洲研究院 • System/ Network Research Group2019.6-2019.10 (4个月)WebRTC流控算法研究他有27个好友在此公司
+
+---
+
+后台开发工程师北京旷视科技有限公司 • DevsOP2016.7-2017.4 (9个月)人脸识别API
+
+【教育经历】
+北京邮电大学2017年-2020年，计算机科学与技术，硕士流媒体他有60个好友在此学校 | 清华大学2017年-2020年，计算机科学与技术，硕士他有25个好友在此学校 | 北京邮电大学2012年-2016年，网络工程，本科计算机系他有60个好友在此学校
+
+========================================
+
+========================================
+Candidate ID: 6608
+Name Mask: *ORA (ZHIRUO) W ANG
+Current Title/Company: PhD of Language Technologies @ Carnegie Mellon University
+
+=== WORK EXPERIENCES ===
+[{"company": "Stanford University \u00b7 \u5168\u804c", "position": "Visiting Researcher", "start_date": "", "end_date": "", "duration": "2025\u5e745\u6708 - 2025\u5e749\u6708 \u00b7 5 \u4e2a\u6708", "description": ""}, {"company": "Carnegie Mellon University \u00b7 \u517c\u804c", "position": "Teaching Assistant", "start_date": "", "end_date": "", "duration": "2022\u5e748\u6708 - 2022\u5e7412\u6708 \u00b7 5 \u4e2a\u6708", "description": "Teaching assistant for the course 11-711: Advanced Natural Language ProcessingTeaching assistant for the course 11-711: Advanced Natural Language Processing"}, {"company": "Amazon \u00b7 \u5b9e\u4e60", "position": "Applied Scientist", "start_date": "", "end_date": "", "duration": "2022\u5e745\u6708 - 2022\u5e748\u6708 \u00b7 4 \u4e2a\u6708", "description": "Sunnyvale, California, United States"}, {"company": "Carnegie Mellon University \u00b7 \u517c\u804c", "position": "Teaching Assistant", "start_date": "", "end_date": "", "duration": "2021\u5e748\u6708 - 2021\u5e7412\u6708 \u00b7 5 \u4e2a\u6708", "description": "Data Science Seminar (11-631)Coach students on how to write good summaries and create good presentationsData Science Seminar (11-631) Coach students on how to write good summaries and create good presentations"}, {"company": "\u5168\u804c \u00b7 1 \u5e74 6 \u4e2a\u6708", "position": "Microsoft", "start_date": "", "end_date": "", "duration": "\u5168\u804c \u00b7 1 \u5e74 6 \u4e2a\u6708", "description": "Propose a unified structure-aware pre-training architecture for generally structured tables\u2022 Devise a novel bi-dimensional coordinate tree to encode both the spatial and hierarchical information in tables\u2022 Adapt the attention strategy upon bi-tree distance, boost up&down stream accuracy by reducing visible scopes \u2022 Leverage three pre-training objectives at progressive levels to capture representations of tokens, cells, and tables \u2022 Build the first dedicated vocabulary in the table domain, embed commonly used table tokens in higher accuracy \u2022 Achieve state-of-the-art performance on all four datasets of a critical downstream task: cell type classificationBuild a open dataset, HiTab, over hierarchical tables, for Question Answering and Natural Language Generation\u2022 Address the hierarchical index and cell relationship challenges, annotate texts with entity/quantity alignments \u2022 Explore table-to-text under various conditions, on range and calculation, to produce specific and logical textsPropose a unified structure-aware pre-training architecture for generally structured tables \u2022 Devise a novel bi-dimensional coordinate tree to encode both the spatial and hierarchical information in tables \u2022 Adapt the attention strategy upon bi-tree distance, boost up&down stream accuracy by reducing visible scopes \u2022 Leverage three pre-training objectives at progressive levels to capture representations of tokens, cells, and tables \u2022 Build the first dedicated vocabulary in the table domain, embed commonly used table tokens in higher accuracy \u2022 Achieve state-of-the-art performance on all four datasets of a critical downstream task: cell type classification Build a open dataset, HiTab, over hierarchical tables, for Question Answering and Natural Language Generation \u2022 Address the hierarchical index and cell relationship challenges, annotate texts with entity/quantity alignments \u2022 Explore table-to-text under various conditions, on range and calculation, to produce specific and logical texts"}, {"company": "Stanford University", "title": "Visiting Student Researcher", "time": "May 2025 - Aug 2025", "description": "Study the impact of language model supported computer-use agents on the human workforce; Develop a workflow induction toolkit to inspect and analyze human and agent worker activities"}, {"company": "Microsoft, Github Next Team", "title": "Consultant", "time": "Aug 2023 - Dec 2023", "description": "Consult on code language model training and robust open-domain evaluation techniques"}, {"company": "Amazon Alexa AI, Conversational Modeling Team", "title": "Research Intern", "time": "May 2022 - Aug 2022", "description": "Proposed a model self-talk schema for knowledge-guided dialogue generation, further bootstrapping large-scale data for adaptive training, under a special (book) domain and low-resource setting"}, {"company": "Microsoft Research (Asia), Data Knowledge Intelligence Group", "title": "Research Intern \u2192 Assistant Researcher", "time": "Aug 2020 - Aug 2021", "description": "Designed and pre-trained a structure-aware table foundation model, TUTA, with tree-based masked attention and adaptive position encodings, and shaped it into Microsoft Word and Excel; Built HiTab benchmark, supporting table QA and data analysis for complex-structured tables"}]
+
+=== RAW RESUME EXTRACT ===
+ZORA (ZHIRUO) W ANG
+📧 zhiruow@cs.cmu.edu |🌎 zorazrw.github.io |google scholar |^ zorazrw
+EDUCA TION
+Carnegie Mellon University , Language T echnologies Institute Pittsburgh, P A
+PhD of Language T echnologies Aug 2023 - Present
+Advisor: Daniel F ried, Graham Neubig
+Carnegie Mellon University , Language T echnologies Institute Pittsburgh, P A
+Master of Language T echnologies (ML T), GP A: 4.02 / 4.3 Aug 2021 - Aug 2023
+Advisors: Graham Neubig, Eric Nyberg
+Beijing Normal University , School of Mathematical Sciences Beijing, China
+B.S. in Mathematics & Applied Mathematics, major GP A: 3.98 / 4.0 Sep 2016 - Jun 2020
+◦Exchange, Chinese University of Hong Kong, full scholarship Spring 2019
+◦Summer School, The College of William & Mary , full scholarship Summer 2017
+EXPERIENCE
+Stanford University Palo Alto, CA
+Visiting Student Researcher , Host: Diyi Y ang May 2025 - Aug 2025
+◦Study the impact of language model supported computer-use agents on the human workforce
+◦Develop a workflow induction toolkit to inspect and analyze human and agent worker activities
+Microsoft, Github Next T eam Remote
+Consultant , Host: Eddie Aftandilian Aug 2023 - Dec 2023
+◦Consult on code language model training and robust open-domain evaluation techniques
+Amazon Alexa AI, Conversational Modeling T eam Sunnyvale, CA
+Research Intern , Manager: Dilek Hakkani-T ur May 2022 - Aug 2022
+◦Proposed a model self-talk schema for knowledge-guided dialogue generation, further bootstrap-
+ping large-scale data for adaptive training, under a special (book) domain and low-resource setting
+Microsoft Research (Asia), Data Knowledge Intelligence Group Beijing, China
+Research Intern → Assistant Researcher , Manager: Dongmei Zhang Aug 2020 - Aug 2021
+◦Designed and pre-trained a structure-aware table foundation model, TUT A , with tree-based
+masked attention and adaptive position encodings, and shaped it into Microsoft W ord and Excel
+◦Built HiT ab benchmark, supporting table QA and data analysis for complex-structured tables
+SELECTED PUBLICA TIONS
+[1] How Do AI Agents Do Human W ork? Comparing AI and Human W orkflows Across Diverse Occupations
+Zora Zhiruo W ang , Yijiao Shao, Omar Shaikh, Daniel F ried, Graham Neubig, Diyi Y ang
+arXiv Preprint
+[2] Inducing Programmatic Skil ls for Agentic T asks
+Zora Zhiruo W ang , Apurva Gandhi, Graham Neubig, Daniel F ried
+the Conference on Language Modeling (CoLM) , 2025
+[3] Agent W orkflow Memory
+Zora Zhiruo W ang , Jiayuan Mao, Daniel F ried, Graham Neubig
+the International Conference on Machine Learning (ICML) , 2025
+[4] TheAgentCompany: Benchmarking LLM Agents on Consequential Real W orld T asks
+F rank F. Xu, ... , Zora Zhiruo W ang , ..., Shuyan Zhou, Graham Neubig
+Neural Information Processing Systems (NeurIPS) , 2025
+[5] Benchmarking F ailures in T ool-Augmented Language Models
+Eduardo T reviño∗, Hugo Contant∗, James Ngai, Graham Neubig, Zora Zhiruo W angm
+the North American Chapter of the Association for Computational Linguistics (NAACL) , 2025
+[6] CowPilot: A F ramework for Autonomous and Human-Agent Col laborative W eb Navigation
+F aria Huq, Zora Zhiruo W angm, F rank Xu, Tianyue Ou, Shuyan Zhou, Jeffrey P . Bigham, Graham Neubig
+the North American Chapter of the Association for Computational Linguistics (NAACL), Demo T rack , 2025
+[7] AutoPresent: Designing Structured Visuals from Scratch
+Jiaxin Ge∗,Zora Zhiruo W ang∗,m, ..., Alane Suhr, Daniel F ried, Graham Neubig, T revor Darrell
+the IEEE/CVF Conference on Computer Vision and Pattern Reco
+
+========================================
+
+========================================
+Candidate ID: 6623
+Name Mask: *提供
+Current Title/Company: 博士研究生 @ 中国科学院大学（中科院自动化所）
+
+=== WORK EXPERIENCES ===
+[]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u89c6\u89c9\u8bed\u4e49\u63cf\u8ff0", "role": "\u7814\u7a76\u8005", "time": "2020\u5e749\u6708 - 2021\u5e746\u6708", "description": "\u4e3a\u56fe\u7247\u6216\u89c6\u9891\u751f\u6210\u81ea\u7136\u8bed\u8a00\u63cf\u8ff0\uff0c\u662f\u8ba1\u7b97\u673a\u89c6\u89c9\u4e0e\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7684\u4ea4\u53c9\u9886\u57df\u3002\n\u2022 \"GPT: Full Transformer Network for Image Captioning\". Arxiv 2021\n\u63d0\u51fa\u5168\u7403\u9996\u4e2a\u57fa\u4e8e\u5168 Transformer \u7ed3\u6784\u7684\u56fe\u50cf\u8bed\u4e49\u63cf\u8ff0\u7f51\u7edc\uff0c\u5728 MSCOCO \u516c\u5f00\u6570\u636e\u96c6\u4e0a\u7684\u6027\u80fd\u8d85\u8fc7\u4f20\u7edf CNN+LSTM \u4e24\u9636\u6bb5\u8303\u5f0f\u3002\n\u2022 \"Video Captioning with Pretraining Techniques\". ACM MM 2021\n\u63d0\u51fa\u591a\u6a21\u6001\u5efa\u6a21\u89c6\u9891\u8bed\u4e49\uff0c\u9996\u6b21\u5f15\u5165\u9884\u8bad\u7ec3-\u5fae\u8c03\u6280\u672f\u7684\u89c6\u9891\u8bed\u4e49\u63cf\u8ff0\u65b9\u6cd5\uff0c\u5728 MSR-VTT \u548c VATEX \u4e24\u4e2a\u516c\u5f00\u6570\u636e\u96c6\u4e0a\u53d6\u5f97\u4e86\u5f53\u65f6\u6700\u4f73\u6027\u80fd\u3002\u8d62\u5f97 ACM21 \u89c6\u9891\u8bed\u4e49\u63cf\u8ff0\u7ade\u8d5b\u51a0\u519b\u3002"}, {"name": "\u8de8\u6a21\u6001\u9884\u8bad\u7ec3\u6a21\u578b", "role": "\u7814\u7a76\u8005", "time": "2021\u5e749\u6708 - 2024\u5e741\u6708", "description": "\u5229\u7528\u6d77\u91cf\u5f31\u5173\u8054\u6570\u636e\u8bad\u7ec3\u8de8\u6a21\u6001\u9884\u8bad\u7ec3\u6a21\u578b\uff0c\u5b9e\u73b0\u5bf9\u8de8\u6a21\u6001\u5185\u5bb9\u7406\u89e3\u4e0e\u751f\u6210\u4e0b\u6e38\u4efb\u52a1\u7684\u6cdb\u5316\u3002\n\u2022 \"VALOR: Vision-Audio-Language Omni-Perception Pretraining Model and Dataset\". TPAMI 2024\n\u52a8\u673a\uff1a\u9762\u5411\u4e8e\u89c6\u89c9-\u6587\u672c\u3001\u97f3\u9891-\u6587\u672c\u4e0e\u97f3\u89c6\u9891-\u6587\u672c\u7b49\u591a\u6a21\u6001\u3001\u591a\u7c7b\u578b\uff08\u8de8\u6a21\u6001\u68c0\u7d22\u3001\u63cf\u8ff0\u4e0e\u95ee\u7b54\uff09\u7b49\u4e0b\u6e38\u4efb\u52a1\u3002\n\u8d21\u732e\uff1a\u9996\u6b21\u63d0\u51fa\u767e\u4e07\u7ea7\u56fe\u6587\u97f3\u5f3a\u5173\u8054\u6570\u636e\uff0c\u9996\u6b21\u63d0\u51fa\u56fe\u6587\u97f3\u4e09\u6a21\u6001\u9884\u8bad\u7ec3\u6a21\u578b\u67b6\u6784 VALOR\uff0c\u63d0\u51fa\u591a\u6a21\u6001\u5206\u7ec4\u7b56\u7565\u5b9e\u73b0\u6a21\u6001\u5bf9\u9f50\u3001\u6761\u4ef6\u63a9\u7801\u9884\u6d4b\u7b49\u81ea\u76d1\u7763\u4efb\u52a1\u7684\u6a21\u6001\u6269\u5c55\uff0c\u589e\u5f3a\u6a21\u578b\u5904\u7406\u4efb\u610f\u4e24\u79cd\u6216\u5168\u90e8\u4e09\u79cd\u6a21\u6001\u6570\u636e\u7684\u80fd\u529b\u3002\u5728 15 \u4e2a\u8de8\u6a21\u6001\u8bc4\u6d4b\u6807\u51c6\u4e0a\u53d6\u5f97\u4e86\u5f53\u65f6\u7684 SOTA \u6027\u80fd\u3002\n\u2022 \"VAST: A Vision-Audio-Subtitle-Text Omni-Modality Foundation Model and Dataset\". NIPS 2023\n\u52a8\u673a\uff1a\u5bf9 VALOR \u7684\u6570\u636e\u548c\u6a21\u578b\u6a21\u6001\u4e24\u4e2a\u65b9\u9762\u8fdb\u884c\u6269\u5c55\uff0c\u7edf\u4e00\u89c6\u9891\u4e2d\u5168\u6a21\u6001\uff08\u89c6\u89c9\u3001\u97f3\u9891\u3001\u5b57\u5e55\u4e0e\u6587\u672c\uff09\u7684\u5efa\u6a21\u3002\n\u8d21\u732e\uff1a\u63d0\u51fa\u5355\u6a21\u6001\u63cf\u8ff0\u5668\u81ea\u52a8\u6807\u6ce8-\u5927\u8bed\u8a00\u6a21\u578b\u4fe1\u606f\u6574\u5408\u7684\u6570\u636e\u81ea\u52a8\u6807\u6ce8\u6d41\u7a0b\u3002\u63d0\u51fa\u9996\u4e2a\u5927\u89c4\u6a21\uff0827M\uff09\u9ad8\u8d28\u91cf\u5168\u6a21\u6001\u89c6\u9891\u6587\u672c\u6570\u636e\u96c6\uff0c\u6587\u672c\u540c\u65f6\u4e0e\u89c6\u89c9\u3001\u97f3\u9891\u3001\u5b57\u5e55\u4fe1\u606f\u76f8\u5173\u8054\u3002\u63d0\u51fa\u9996\u4e2a\u5168\u6a21\u6001\u57fa\u7840\u6a21\u578b VAST \u53ef\u4ee5\u540c\u65f6\u63a5\u53d7\u56db\u79cd\u6216\u4efb\u610f\u6a21\u6001\u7ec4\u5408\u4e3a\u8f93\u5165\u3002\u53d6\u5f97 20+\u4e2a\u4e0d\u540c\u6a21\u6001\u4e0e\u4efb\u52a1\uff08\u68c0\u7d22\u3001\u63cf\u8ff0\u3001\u95ee\u7b54\uff09\u7684\u8bc4\u6d4b\u6807\u51c6\u7684 SOTA \u6027\u80fd\uff08MSRVTT,MSCOCO,YouCook,Clotho,AudioCaps \u7b49\uff09\u3002\u4ee5\u7edd\u5bf9\u4f18\u52bf\uff0c\u8d85\u8fc7 Flamingo(deepmind), VideoCoCa(\u8c37\u6b4c), GIT(\u5fae\u8f6f), mPLUG(\u963f\u91cc)\uff0c\u6df7\u5143(\u817e\u8baf) \u548c InternVideo(\u4e0a\u6d77 AI Lab)\u7b49\u56fd\u5185\u5916\u77e5\u540d\u516c\u53f8\u548c\u7814\u7a76\u9662\u7684\u5927\u6a21\u578b\u3002\u540e\u88ab\u4e0a\u6d77 AI Lab follow \u63d0\u51fa InternVideoV2\u3002\n\u2022 \"COSA: Concatenated Sample Pretrained Vision-Language Foundation Model\". ICLR 2024\n\u52a8\u673a\uff1a\u5f53\u524d\u89c6\u9891-\u6587\u672c\u9884\u8bad\u7ec3\u6570\u636e\uff08Webvid\uff09\u5bf9\u9f50\u6570\u636e\u8d28\u91cf\u5dee\u3002\n\u8d21\u732e\uff1a\u63d0\u51fa\u4e32\u8054\u6837\u672c\u9884\u8bad\u7ec3\u65b9\u6cd5\uff0c\u5229\u7528\u73b0\u5b58\u56fe\u50cf-\u6587\u672c\u6570\u636e\u6765\u8bad\u7ec3\u89c6\u9891-\u6587\u672c\u9884\u8bad\u7ec3\u6a21\u578b\u3002\u901a\u8fc7\u6309\u987a\u5e8f\u62fc\u63a5\u968f\u673a\u5728\u7ebf\u6784\u5efa\u4f2a\u957f\u89c6\u9891-\u957f\u6587\u672c\u6570\u636e\u96c6\uff0c\u6b64\u65b9\u6cd5\u6784\u9020\u7684\u6570\u636e\u5177\u6709\u4f4e\u89c6\u89c9\u5197\u4f59\u6027\u548c\u5f3a\u4e8b\u4ef6\u7ea7\u65f6\u5e8f\u5bf9\u5e94\u6027\u3002\u5b9e\u9a8c\u7ed3\u679c\u8868\u660e\uff1a"}]
+
+=== RAW RESUME EXTRACT ===
+中国科学院大学（中科院自动化所）
+计算机应用技术专业（人工智能多模态方向）博士
+出生年月：1996.08 性别：男 地址：北京市关村东路 95 号
+教育背景
+本科 大连理工大学 自动化专业
+硕博 中国科学院大学（中科院自动化所） 模式识别国家重点实验室 导师：刘静
+• 研究方向：多模态预训练（图像/视频/音频 语义理解，文本生成，跨模态检索，问答），多模态大模型。
+• 以第一/共一作者发表五篇 CCF-A 会议/TRANS 期刊（NIPS, ICLR, ACMMM, TPAMI, TMM），获得 2 项国际竞赛冠军。
+• 谷歌学术引用 800+次，github 开源项目 600+ star。
+• 担任 TPAMI, TIP, NIPS, ECCV, ICLR, ICCV, ICML 等知名国际顶级会议和期刊的审稿人。
+研究经历
+视觉语义描述
+09/2020-06/2021
+任务：为图片或视频生成自然语言描述，是计算机视觉与自然语言处理的交叉领域。
+• "GPT: Full Transformer Network for Image Captioning". Arxiv 2021
+提出全球首个基于全 Transformer 结构的图像语义描述网络，在 MSCOCO 公开数据集上的性能超过传统 CNN+LSTM 两阶段范式。
+• "Video Captioning with Pretraining Techniques". ACM MM 2021
+提出多模态建模视频语义，首次引入预训练-微调技术的视频语义描述方法，在 MSR-VTT 和 VATEX 两个公开数据集上取得了当时最佳性能。赢得 ACM21 视频语义描述竞赛冠军。
+跨模态预训练模型
+09/2021-01/2024
+任务：利用海量弱关联数据训练跨模态预训练模型，实现对跨模态内容理解与生成下游任务的泛化。
+• "VALOR: Vision-Audio-Language Omni-Perception Pretraining Model and Dataset". TPAMI 2024
+动机：面向于视觉-文本、音频-文本与音视频-文本等多模态、多类型（跨模态检索、描述与问答）等下游任务。
+贡献：首次提出百万级图文音强关联数据，首次提出图文音三模态预训练模型架构 VALOR，提出多模态分组策略实现模态对齐、条件掩码预测等自监督任务的模态扩展，增强模型处理任意两种或全部三种模态数据的能力。在 15 个跨模态评测标准上取得了当时的 SOTA 性能。
+• "VAST: A Vision-Audio-Subtitle-Text Omni-Modality Foundation Model and Dataset". NIPS 2023
+动机：对 VALOR 的数据和模型模态两个方面进行扩展，统一视频中全模态（视觉、音频、字幕与文本）的建模。
+贡献：提出单模态描述器自动标注-大语言模型信息整合的数据自动标注流程。提出首个大规模（27M）高质量全模态视频文本数据集，文本同时与视觉、音频、字幕信息相关联。提出首个全模态基础模型 VAST 可以同时接受四种或任意模态组合为输入。取得 20+个不同模态与任务（检索、描述、问答）的评测标准的 SOTA 性能（MSRVTT,MSCOCO,YouCook,Clotho,AudioCaps 等）。以绝对优势，超过 Flamingo(deepmind), VideoCoCa(谷歌), GIT(微软), mPLUG(阿里)，混元(腾讯) 和 InternVideo(上海 AI Lab)等国内外知名公司和研究院的大模型。后被上海 AI Lab follow 提出 InternVideoV2。
+• "COSA: Concatenated Sample Pretrained Vision-Language Foundation Model". ICLR 2024
+动机：当前视频-文本预训练数据（Webvid）对齐数据质量差。
+贡献：提出串联样本预训练方法，利用现存图像-文本数据来训练视频-文本预训练模型。通过按顺序拼接随机在线构建伪长视频-长文本数据集，此方法构造的数据具有低视觉冗余性和强事件级时序对应性。实验结果表明：
+
+========================================
+
+========================================
+Candidate ID: 6648
+Name Mask: *ORA (ZHIRUO) W ANG
+Current Title/Company: PhD of Language Technologies @ Carnegie Mellon University
+
+=== WORK EXPERIENCES ===
+[{"company": "Stanford University", "title": "Visiting Student Researcher", "time": "May 2025 - Aug 2025", "description": "Study the impact of language model supported computer-use agents on the human workforce; Develop a workflow induction toolkit to inspect and analyze human and agent worker activities"}, {"company": "Microsoft, Github Next Team", "title": "Consultant", "time": "Aug 2023 - Dec 2023", "description": "Consult on code language model training and robust open-domain evaluation techniques"}, {"company": "Amazon Alexa AI, Conversational Modeling Team", "title": "Research Intern", "time": "May 2022 - Aug 2022", "description": "Proposed a model self-talk schema for knowledge-guided dialogue generation, further bootstrapping large-scale data for adaptive training, under a special (book) domain and low-resource setting"}, {"company": "Microsoft Research (Asia), Data Knowledge Intelligence Group", "title": "Research Intern \u2192 Assistant Researcher", "time": "Aug 2020 - Aug 2021", "description": "Designed and pre-trained a structure-aware table foundation model, TUTA, with tree-based masked attention and adaptive position encodings, and shaped it into Microsoft Word and Excel; Built HiTab benchmark, supporting table QA and data analysis for complex-structured tables"}]
+
+=== PROJECT EXPERIENCES ===
+[]
+
+=== RAW RESUME EXTRACT ===
+ZORA (ZHIRUO) W ANG
+📧 zhiruow@cs.cmu.edu |🌎 zorazrw.github.io |google scholar |^ zorazrw
+EDUCA TION
+Carnegie Mellon University , Language T echnologies Institute Pittsburgh, P A
+PhD of Language T echnologies Aug 2023 - Present
+Advisor: Daniel F ried, Graham Neubig
+Carnegie Mellon University , Language T echnologies Institute Pittsburgh, P A
+Master of Language T echnologies (ML T), GP A: 4.02 / 4.3 Aug 2021 - Aug 2023
+Advisors: Graham Neubig, Eric Nyberg
+Beijing Normal University , School of Mathematical Sciences Beijing, China
+B.S. in Mathematics & Applied Mathematics, major GP A: 3.98 / 4.0 Sep 2016 - Jun 2020
+◦Exchange, Chinese University of Hong Kong, full scholarship Spring 2019
+◦Summer School, The College of William & Mary , full scholarship Summer 2017
+EXPERIENCE
+Stanford University Palo Alto, CA
+Visiting Student Researcher , Host: Diyi Y ang May 2025 - Aug 2025
+◦Study the impact of language model supported computer-use agents on the human workforce
+◦Develop a workflow induction toolkit to inspect and analyze human and agent worker activities
+Microsoft, Github Next T eam Remote
+Consultant , Host: Eddie Aftandilian Aug 2023 - Dec 2023
+◦Consult on code language model training and robust open-domain evaluation techniques
+Amazon Alexa AI, Conversational Modeling T eam Sunnyvale, CA
+Research Intern , Manager: Dilek Hakkani-T ur May 2022 - Aug 2022
+◦Proposed a model self-talk schema for knowledge-guided dialogue generation, further bootstrap-
+ping large-scale data for adaptive training, under a special (book) domain and low-resource setting
+Microsoft Research (Asia), Data Knowledge Intelligence Group Beijing, China
+Research Intern → Assistant Researcher , Manager: Dongmei Zhang Aug 2020 - Aug 2021
+◦Designed and pre-trained a structure-aware table foundation model, TUT A , with tree-based
+masked attention and adaptive position encodings, and shaped it into Microsoft W ord and Excel
+◦Built HiT ab benchmark, supporting table QA and data analysis for complex-structured tables
+SELECTED PUBLICA TIONS
+[1] How Do AI Agents Do Human W ork? Comparing AI and Human W orkflows Across Diverse Occupations
+Zora Zhiruo W ang , Yijiao Shao, Omar Shaikh, Daniel F ried, Graham Neubig, Diyi Y ang
+arXiv Preprint
+[2] Inducing Programmatic Skil ls for Agentic T asks
+Zora Zhiruo W ang , Apurva Gandhi, Graham Neubig, Daniel F ried
+the Conference on Language Modeling (CoLM) , 2025
+[3] Agent W orkflow Memory
+Zora Zhiruo W ang , Jiayuan Mao, Daniel F ried, Graham Neubig
+the International Conference on Machine Learning (ICML) , 2025[4] TheAgentCompany: Benchmarking LLM Agents on Consequential Real W orld T asks
+F rank F. Xu, ... , Zora Zhiruo W ang , ..., Shuyan Zhou, Graham Neubig
+Neural Information Processing Systems (NeurIPS) , 2025
+[5] Benchmarking F ailures in T ool-Augmented Language Models
+Eduardo T reviño∗, Hugo Contant∗, James Ngai, Graham Neubig, Zora Zhiruo W angm
+the North American Chapter of the Association for Computational Linguistics (NAACL) , 2025
+[6] CowPilot: A F ramework for Autonomous and Human-Agent Col laborative W eb Navigation
+F aria Huq, Zora Zhiruo W angm, F rank Xu, Tianyue Ou, Shuyan Zhou, Jeffrey P . Bigham, Graham Neubig
+the North American Chapter of the Association for Computational Linguistics (NAACL), Demo T rack , 2025
+[7] AutoPresent: Designing Structured Visuals from Scratch
+Jiaxin Ge∗,Zora Zhiruo W ang∗,m, ..., Alane Suhr, Daniel F ried, Graham Neubig, T revor Darrell
+the IEEE/CVF Conference on Computer Vision and Pattern Recog
+
+========================================
+
+========================================
+Candidate ID: 6705
+Name Mask: *ANHONG ZENG
+Current Title/Company: Research Scientist & Engineer @ Ant Group
+
+=== WORK EXPERIENCES ===
+[{"company": "Ant Group", "title": "Researcher", "time": "Current", "description": ""}, {"company": "\u8682\u8681\u96c6\u56e2 \u00b7 \u6b63\u5f0f", "position": "\u7814\u7a76\u5458", "start_date": "", "end_date": "", "duration": "2025\u5e744\u6708 - \u81f3\u4eca \u00b7 1 \u5e74", "description": ""}, {"company": "Shanghai AI Laboratory \u00b7 \u6b63\u5f0f", "position": "Researcher", "start_date": "", "end_date": "", "duration": "2022\u5e747\u6708 - 2025\u5e743\u6708 \u00b7 2 \u5e74 9 \u4e2a\u6708", "description": ""}, {"company": "Microsoft \u00b7 \u5b9e\u4e60", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2018\u5e746\u6708 - 2021\u5e7412\u6708 \u00b7 3 \u5e74 7 \u4e2a\u6708", "description": "Microsoft Research Asia (MSRA), Beijing, china"}]
+
+========================================
+
+========================================
+Candidate ID: 7432
+Name Mask: *提供
+Current Title/Company: 飞书 AI 解决方案专家 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u98de\u4e66 AI \u89e3\u51b3\u65b9\u6848\u4e13\u5bb6", "time": "2025.6 ~ \u81f3\u4eca", "description": "\u8d1f\u8d23\u98de\u4e66 AI Agent \u5e73\u53f0\u300cail\u300d\u548c AI Coding \u5e73\u53f0\u300c\u5999\u642d\u300d\u7684\u6280\u672f\u5e03\u9053\u3001\u6280\u672f\u57f9\u8bad\u3001\u89e3\u51b3\u65b9\u6848\u8bc4\u4f30\u3001\u8bbe\u8ba1\u4e0e\u4f18\u5316\uff0c\u4ee5\u53ca\u6280\u672f\u652f\u6301\u3002\u4ece\u96f6\u5f00\u59cb\u5efa\u7acb\u98de\u4e66 Agent \u5e73\u53f0\u548c AI Coding \u5e73\u53f0\u7684\u6280\u672f\u652f\u6301\u4f53\u7cfb\u3001\u5f00\u53d1\u8005\u57f9\u517b\u4e0e\u8ba4\u8bc1\u4f53\u7cfb\uff0c\u5bf9\u5e94\u7528\u6d3b\u8dc3/\u589e\u957f\u548c\u5f00\u53d1\u8ba4\u8bc1\u4eba\u6570\u76f4\u63a5\u8d1f\u8d23\u3002\u9762\u5411\u5236\u9020\u4e1a\u3001\u6d88\u8d39\u4e1a\u3001\u6559\u80b2\u4e1a\u548c\u91d1\u878d\u4e1a KA \u5ba2\u6237\uff0c\u4e00\u65b9\u9762\u901a\u8fc7\u591a Agent \u667a\u80fd\u8f85\u52a9\u3001\u65b9\u6848\u8bbe\u8ba1\u4e0e Demo \u4ea4\u4ed8\uff0c\u5e2e\u52a9\u4f01\u4e1a\u843d\u5730\u5404\u79cd AI \u573a\u666f\u3002\u53e6\u4e00\u65b9\u9762\uff0c\u76f4\u63a5\u4e0e\u4f01\u4e1a CXO \u5bf9\u8bdd\uff0c\u63a8\u52a8\u6280\u672f\u5e03\u9053\uff0c\u4f20\u9012\u98de\u4e66 AI \u5546\u4e1a\u5316\u4ef7\u503c\uff0c\u8fdb\u800c\u5f71\u54cd\u6210\u5355\u4e0e\u589e\u957f\u3002"}, {"company": "\u5fae\u8f6f\uff08\u4e2d\u56fd\uff09\u6709\u9650\u516c\u53f8", "title": "\u9ad8\u7ea7\u6280\u672f\u652f\u6301\u5de5\u7a0b\u5e08\uff08\u517c\u4efb\u90e8\u95e8\u6280\u672f\u4e3b\u7ba1\uff09", "time": "2016.6 ~ 2025.6", "description": "\u9762\u5411\u5168\u7403 KA \u5ba2\u6237\uff0c\u8d1f\u8d23\u5fae\u8f6f Copilot\u3001Copilot Studio\u3001Azure AI Foundry \u7b49 AI \u4ea7\u54c1\u7ebf\u7684\u6280\u672f\u652f\u6301\u4e0e\u54a8\u8be2\u3002\u4f5c\u4e3a\u8d44\u6df1\u4e09\u7ebf\u9ad8\u7ea7\u5de5\u7a0b\u5e08\uff0c\u8d1f\u8d23 Office \u548c Windows \u7684\u4ee3\u7801\u8c03\u8bd5\u3001\u95ee\u9898\u89e3\u51b3\u4e0e\u4e8c\u6b21\u5f00\u53d1\u3002\u8d1f\u8d23\u90e8\u95e8\u6240\u6709\u5de5\u5177\u7684\u5f00\u53d1\u4e0e\u6d41\u7a0b\u7684\u5efa\u7acb\uff0c\u4f5c\u4e3a\u4e9a\u592a\u533a Hackathon \u548c AI \u9879\u76ee\u8d1f\u8d23\u4eba\u4e4b\u4e00\uff0c\u9886\u5bfc\u4e9a\u592a\u533a\u6280\u672f\u652f\u6301\u56e2\u961f\u7684 AI \u521b\u65b0\u4e0e\u5b66\u4e60\u9879\u76ee\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[]
+
+=== RAW RESUME EXTRACT ===
+2026/1/12 23:09
+
+所在地：上海
+工作年限：9.5 年
+
+IT ...
+
+教育经历
+
+浙江大学 — 信息与通信工程 — 学士 — 2012 ~ 2016
+
+工作经历
+
+字节跳动 — 飞书 AI 解决方案专家 — 2025.6 ~ 至今
+• 负责飞书 AI Agent 平台「ail」和 AI Coding 平台「妙搭」的技术布道，技术培训，解决方案评估、设计与优化，以及技术支持。从零开始建立飞书 Agent 平台和 AI Coding 平台的技术支持体系、开发者培养与认证体系，对应用活跃/增长和开发认证人数直接负责。
+• 面向制造业、消费业、教育业和金融业 KA 客户，一方面通过多 Agent 智能辅助、方案设计与 Demo 交付，帮助企业落地各种 AI 场景。另一方面，直接与企业 CXO 对话，推动技术布道，传递飞书 AI 商业化价值，进而影响成单与增长。
+
+微软（中国）有限公司 — 高级技术支持工程师（兼任部门技术主管） — 2016.6 ~ 2025.6
+• 面向全球 KA 客户，负责微软 Copilot、Copilot Studio、Azure AI Foundry等 AI 产品线的技术支持与咨询。
+• 作为资深三线高级工程师，负责 Office 和Windows 的代码调试、问题解决与二次开发。
+• 负责部门所有工具的开发与流程的建立，作为亚太区 Hackathon 和 AI 项目负责人之一，领导亚太区技术支持团队的 AI 创新与学习项目。
+
+技能
+
+• 语言水平 ：中文与英文流利
+• 软件技能 ：熟悉 AI 应用层的开发、设计与企业落地；熟悉 .Net 和 Azure 等微软技术栈
+
+https://my.feishu.cn/docs/GAM1dDf8yo6tTwx1WjlcTHgLnLO
+
+========================================
+
+========================================
+Candidate ID: 7436
+Name Mask: *提供
+Current Title/Company: 博士研究生 @ 中国科学院大学（中科院自动化所）
+
+=== WORK EXPERIENCES ===
+[]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u89c6\u89c9\u8bed\u4e49\u63cf\u8ff0", "role": "\u7814\u7a76\u8005", "time": "2020\u5e749\u6708 - 2021\u5e746\u6708", "description": "\u4e3a\u56fe\u7247\u6216\u89c6\u9891\u751f\u6210\u81ea\u7136\u8bed\u8a00\u63cf\u8ff0\uff0c\u662f\u8ba1\u7b97\u673a\u89c6\u89c9\u4e0e\u81ea\u7136\u8bed\u8a00\u5904\u7406\u7684\u4ea4\u53c9\u9886\u57df\u3002\u63d0\u51fa\u5168\u7403\u9996\u4e2a\u57fa\u4e8e\u5168Transformer\u7ed3\u6784\u7684\u56fe\u50cf\u8bed\u4e49\u63cf\u8ff0\u7f51\u7edc\uff0c\u5728MSCOCO\u516c\u5f00\u6570\u636e\u96c6\u4e0a\u7684\u6027\u80fd\u8d85\u8fc7\u4f20\u7edfCNN+LSTM\u4e24\u9636\u6bb5\u8303\u5f0f\u3002\u63d0\u51fa\u591a\u6a21\u6001\u5efa\u6a21\u89c6\u9891\u8bed\u4e49\uff0c\u9996\u6b21\u5f15\u5165\u9884\u8bad\u7ec3-\u5fae\u8c03\u6280\u672f\u7684\u89c6\u9891\u8bed\u4e49\u63cf\u8ff0\u65b9\u6cd5\uff0c\u5728MSR-VTT\u548cVATEX\u4e24\u4e2a\u516c\u5f00\u6570\u636e\u96c6\u4e0a\u53d6\u5f97\u4e86\u5f53\u65f6\u6700\u4f73\u6027\u80fd\u3002\u8d62\u5f97ACMM21\u89c6\u9891\u8bed\u4e49\u63cf\u8ff0\u7ade\u8d5b\u51a0\u519b\u3002"}, {"name": "\u8de8\u6a21\u6001\u9884\u8bad\u7ec3\u6a21\u578b", "role": "\u7814\u7a76\u8005", "time": "2021\u5e749\u6708 - 2024\u5e741\u6708", "description": "\u5229\u7528\u6d77\u91cf\u5f31\u5173\u8054\u6570\u636e\u8bad\u7ec3\u8de8\u6a21\u6001\u9884\u8bad\u7ec3\u6a21\u578b\uff0c\u5b9e\u73b0\u5bf9\u8de8\u6a21\u6001\u5185\u5bb9\u7406\u89e3\u4e0e\u751f\u6210\u4e0b\u6e38\u4efb\u52a1\u7684\u6cdb\u5316\u3002\u63d0\u51faVALOR: Vision-Audio-Language Omni-Perception Pretraining Model and Dataset\uff0c\u9762\u5411\u89c6\u89c9-\u6587\u672c\u3001\u97f3\u9891-\u6587\u672c\u4e0e\u97f3\u89c6\u9891-\u6587\u672c\u7b49\u591a\u6a21\u6001\u3001\u591a\u7c7b\u578b\uff08\u8de8\u6a21\u6001\u68c0\u7d22\u3001\u63cf\u8ff0\u4e0e\u95ee\u7b54\uff09\u7b49\u4e0b\u6e38\u4efb\u52a1\u3002\u9996\u6b21\u63d0\u51fa\u767e\u4e07\u7ea7\u56fe\u6587\u97f3\u5f3a\u5173\u8054\u6570\u636e\uff0c\u9996\u6b21\u63d0\u51fa\u56fe\u6587\u97f3\u4e09\u6a21\u6001\u9884\u8bad\u7ec3\u6a21\u578b\u67b6\u6784VALOR\uff0c\u63d0\u51fa\u591a\u6a21\u6001\u5206\u7ec4\u7b56\u7565\u5b9e\u73b0\u6a21\u6001\u5bf9\u9f50\u3001\u6761\u4ef6\u63a9\u7801\u9884\u6d4b\u7b49\u81ea\u76d1\u7763\u4efb\u52a1\u7684\u6a21\u6001\u6269\u5c55\uff0c\u589e\u5f3a\u6a21\u578b\u5904\u7406\u4efb\u610f\u4e24\u79cd\u6216\u5168\u90e8\u4e09\u79cd\u6a21\u6001\u6570\u636e\u7684\u80fd\u529b\u3002\u572815\u4e2a\u8de8\u6a21\u6001\u8bc4\u6d4b\u6807\u51c6\u4e0a\u53d6\u5f97\u4e86\u5f53\u65f6\u7684SOTA\u6027\u80fd\u3002\u63d0\u51faVAST: A Vision-Audio-Subtitle-Text Omni-Modality Foundation Model and Dataset\uff0c\u5bf9VALOR\u7684\u6570\u636e\u548c\u6a21\u578b\u6a21\u6001\u4e24\u4e2a\u65b9\u9762\u8fdb\u884c\u6269\u5c55\uff0c\u7edf\u4e00\u89c6\u9891\u4e2d\u5168\u6a21\u6001\uff08\u89c6\u89c9\u3001\u97f3\u9891\u3001\u5b57\u5e55\u4e0e\u6587\u672c\uff09\u7684\u5efa\u6a21\u3002\u63d0\u51fa\u5355\u6a21\u6001\u63cf\u8ff0\u5668\u81ea\u52a8\u6807\u6ce8-\u5927\u8bed\u8a00\u6a21\u578b\u4fe1\u606f\u6574\u5408\u7684\u6570\u636e\u81ea\u52a8\u6807\u6ce8\u6d41\u7a0b\u3002\u63d0\u51fa\u9996\u4e2a\u5927\u89c4\u6a21\uff0827M\uff09\u9ad8\u8d28\u91cf\u5168\u6a21\u6001\u89c6\u9891\u6587\u672c\u6570\u636e\u96c6\uff0c\u6587\u672c\u540c\u65f6\u4e0e\u89c6\u89c9\u3001\u97f3\u9891\u3001\u5b57\u5e55\u4fe1\u606f\u76f8\u5173\u8054\u3002\u63d0\u51fa\u9996\u4e2a\u5168\u6a21\u6001\u57fa\u7840\u6a21\u578bVAST\u53ef\u4ee5\u540c\u65f6\u63a5\u53d7\u56db\u79cd\u6216\u4efb\u610f\u6a21\u6001\u7ec4\u5408\u4e3a\u8f93\u5165\u3002\u53d6\u5f9720+\u4e2a\u4e0d\u540c\u6a21\u6001\u4e0e\u4efb\u52a1\uff08\u68c0\u7d22\u3001\u63cf\u8ff0\u3001\u95ee\u7b54\uff09\u7684\u8bc4\u6d4b\u6807\u51c6\u7684SOTA\u6027\u80fd\uff08MSRVTT,MSCOCO,YouCook,Clotho,AudioCaps\u7b49\uff09\u3002\u4ee5\u7edd\u5bf9\u4f18\u52bf\uff0c\u8d85\u8fc7Flamingo(deepmind), VideoCoCa(\u8c37\u6b4c), GRT(\u5fae\u8f6f), mPLUG(\u963f\u91cc)\uff0c\u6df7\u5143(\u817e\u8baf)\u548cInternVideo(\u4e0a\u6d77AI Lab)\u7b49\u56fd\u5185\u5916\u77e5\u540d\u516c\u53f8\u548c\u7814\u7a76\u9662\u7684\u5927\u6a21\u578b\u3002\u540e\u88ab\u4e0a\u6d77AI Lab follow\u63d0\u51faInternVideoV2\u3002\u63d0\u51faCOSA: Concatenated Sample Pretrained Vision-Language Foundation Model\uff0c\u5f53\u524d\u89c6\u9891-\u6587\u672c\u9884\u8bad\u7ec3\u6570\u636e\uff08Webvid\uff09\u5bf9\u9f50\u6570\u636e\u8d28\u91cf\u5dee\u3002\u63d0\u51fa\u4e32\u8054\u6837\u672c\u9884\u8bad\u7ec3\u65b9\u6cd5\uff0c\u5229\u7528\u73b0\u5b58\u56fe\u50cf-\u6587\u672c\u6570\u636e\u6765\u8bad\u7ec3\u89c6\u9891-\u6587\u672c\u9884\u8bad\u7ec3\u6a21\u578b\u3002\u901a\u8fc7\u6309\u987a\u5e8f\u62fc\u63a5\u968f\u673a\u5728\u7ebf\u6784\u9020\u6210\u957f\u89c6\u9891-\u957f\u6587\u672c\u6570\u636e\u96c6\uff0c\u6b64\u65b9\u6cd5\u6784\u9020\u7684\u6570\u636e\u5177\u6709\u4f4e\u89c6\u89c9\u5197\u4f59\u6027\u548c\u5f3a\u4e8b\u4ef6\u7ea7\u65f6\u5e8f\u5bf9\u5e94\u6027\u3002\u5b9e\u9a8c\u7ed3\u679c\u8868\u660e\u8be5\u65b9\u6cd5\u6709\u6548\u63d0\u5347\u6a21\u578b\u6027\u80fd\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+中国科学院大学（中科院自动化所）
+计算机应用技术专业（人工智能多模态方向）博士
+出生年月：1996.08 性别：男 地址：北京市中关村东路95号
+教育背景
+本科 大连理工大学 自动化专业
+硕博 中国科学院大学（中科院自动化所） 模式识别国家重点实验室 导师：刘静
+• 研究方向：多模态预训练（图像/视频/音频 语义理解，文本生成，跨模态检索，问答），多模态大模型。
+• 以第一/共一作者发表五篇 CCF-A 会议/TRANS 期刊（NIPS, ICLR, ACMMM, TPAMI, TMM），获得 2 项国际竞赛冠军。
+• 谷歌学术引用 800+次，github 开源项目 600+ star。
+• 担任 TPAMI, TIP, NIPS, ECCV, ICLR, ICCV, ICML 等知名国际顶级会议和期刊的审稿人。
+研究经历
+视觉语义描述 09/2020-06/2021
+任务：为图片或视频生成自然语言描述，是计算机视觉与自然语言处理的交叉领域。
+• "GPT: Full Transformer Network for Image Captioning". Arxiv 2021
+提出全球首个基于全 Transformer 结构的图像语义描述网络，在 MSCOCO 公开数据集上的性能超过传统 CNN+LSTM 两阶段范式。
+• "Video Captioning with Pretraining Techniques". ACM MM 2021
+提出多模态建模视频语义，首次引入预训练-微调技术的视频语义描述方法，在 MSR-VTT 和 VATEX 两个公开数据集上取得了当时最佳性能。赢得 ACMM21 视频语义描述竞赛冠军。
+跨模态预训练模型 09/2021-01/2024
+任务：利用海量弱关联数据训练跨模态预训练模型，实现对跨模态内容理解与生成下游任务的泛化。
+• "VALOR: Vision-Audio-Language Omni-Perception Pretraining Model and Dataset". TPAMI 2024
+动机：面向于视觉-文本、音频-文本与音视频-文本等多模态、多类型（跨模态检索、描述与问答）等下游任务。
+贡献：首次提出百万级图文音强关联数据，首次提出图文音三模态预训练模型架构 VALOR，提出多模态分组策略实现模态对齐、条件掩码预测等自监督任务的模态扩展，增强模型处理任意两种或全部三种模态数据的能力。在 15 个跨模态评测标准上取得了当时的 SOTA 性能。
+• "VAST: A Vision-Audio-Subtitle-Text Omni-Modality Foundation Model and Dataset". NIPS 2023
+动机：对 VALOR 的数据和模型模态两个方面进行扩展，统一视频中全模态（视觉、音频、字幕与文本）的建模。
+贡献：提出单模态描述器自动标注-大语言模型信息整合的数据自动标注流程。提出首个大规模（27M）高质量全模态视频文本数据集，文本同时与视觉、音频、字幕信息相关联。提出首个全模态基础模型 VAST 可以同时接受四种或任意模态组合为输入。取得 20+个不同模态与任务（检索、描述、问答）的评测标准的 SOTA 性能（MSRVTT,MSCOCO,YouCook,Clotho,AudioCaps 等）。以绝对优势，超过 Flamingo(deepmind), VideoCoCa(谷歌), GRT(微软), mPLUG(阿里)，混元(腾讯)和 InternVideo(上海 AI Lab)等国内外知名公司和研究院的大模型。后被上海 AI Lab follow 提出 InternVideoV2。
+• "COSA: Concatenated Sample Pretrained Vision-Language Foundation Model". ICLR 2024
+动机：当前视频-文本预训练数据（Webvid）对齐数据质量差。
+贡献：提出串联样本预训练方法，利用现存图像-文本数据来训练视频-文本预训练模型。通过按顺序拼接随机在线构造成长视频-长文本数据集，此方法构造的数据具有低视觉冗余性和强事件级时序对应性。实验结果表明该方法有效提升模型性能。
+
+========================================
+

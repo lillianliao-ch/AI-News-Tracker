@@ -1,0 +1,342 @@
+# CANDIDATE BATCH 2
+
+========================================
+Candidate ID: 512
+Name Mask: *icky
+Current Title/Company: 资深猎头顾问上海科锐福克斯人才顾问公司 ? 人资战略部201 @ 上海科锐福克斯人才顾问公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u6df1\u730e\u5934\u987e\u95ee\u4e0a\u6d77\u79d1\u9510\u798f\u514b\u65af\u4eba\u624d\u987e\u95ee\u516c\u53f8", "title": "\u8d44\u6df1\u730e\u5934\u987e\u95ee\u4e0a\u6d77\u79d1\u9510\u798f\u514b\u65af\u4eba\u624d\u987e\u95ee\u516c\u53f8 ? \u4eba\u8d44\u6218\u7565\u90e8201", "time": "2017.6-\u81f3\u4eca", "description": "\u8d44\u6df1\u730e\u5934\u987e\u95ee\u4e0a\u6d77\u79d1\u9510\u798f\u514b\u65af\u4eba\u624d\u987e\u95ee\u516c\u53f8 ? \u4eba\u8d44\u6218\u7565\u90e82017.6-\u81f3\u4eca (8\u5e746\u4e2a\u6708)\u4e13\u6ce8AI\u7b97\u6cd5\uff06\u5de5\u7a0b \u65b9\u5411\u4e2d\u9ad8\u7aef\u5c97\u4f4d\u62db\u8058\uff0c\u670d\u52a1\u4e2d\u9ad8\u7aef\u5ba2\u623750+"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+资深猎头顾问上海科锐福克斯人才顾问公司 ? 人资战略部2017.6-至今 (8年6个月)专注AI算法＆工程 方向中高端岗位招聘，服务中高端客户50+ 客户: 1、一线互联网大厂：字节、阿里、腾讯、蚂蚁、小红书、得物等； 2、大模型独角兽：零一万物、百川智能、minimax； 3、小而美AI公司：无限光年、硅基流动。 职位方向: 1、大模型算法、NLP、多模态、视觉生成； 2、推荐、搜过、广告算法、用增、数挖； 3、机器学习、深度学习、强化学习算法； 4、AI infra 、机器学习推理训练、云原生；CNNRNN/LSTM互联网行业猎头强化学习机器学习算法自然语言处理
+
+【教育经历】
+集美大学2013年-2017年，计算机科学与技术，本科
+
+========================================
+
+========================================
+Candidate ID: 549
+Name Mask: *宇轩
+Current Title/Company: 大模型产品经理北京零一万物科技有限公司2024.1-2025 @ 零一万物
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u96f6\u4e00\u4e07\u7269\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u5927\u6a21\u578b\u4ea7\u54c1\u7ecf\u7406\u5317\u4eac\u96f6\u4e00\u4e07\u7269\u79d1\u6280\u6709\u9650\u516c\u53f82024.1-2025", "time": "2024.1-2025.4", "description": "\u5927\u6a21\u578b\u4ea7\u54c1\u7ecf\u7406\u5317\u4eac\u96f6\u4e00\u4e07\u7269\u79d1\u6280\u6709\u9650\u516c\u53f82024.1-2025.4 (1\u5e743\u4e2a\u6708)* \u8d1f\u8d23Post train\u56e2\u961f\u65e5\u5e38Yi\u7cfb\u5217\u6a21\u578b\u8fed\u4ee3\u3001\u6a21\u578b\u8bad\u7ec3\u3001\u6a21\u578b\u5bf9\u9f50\u3001\u6a21\u578b\u8bc4\u6d4b\u7b49\u5de5\u4f5c\uff0c\u4f7f\u7528SFT\u3001DPO\u3001PPO\u7b49\u7b97"}, {"company": "MiniMax", "title": "\u5927\u6a21\u578b\u4ea7\u54c1\u7ecf\u7406MiniMax2023.10-2024.1 (", "time": "2023.10-2024.1", "description": "\u5927\u6a21\u578b\u4ea7\u54c1\u7ecf\u7406MiniMax2023.10-2024.1 (3\u4e2a\u6708)? \u53c2\u4e0e\u6d77\u87baAI\u7684\u8f6c\u578b\u8fed\u4ee3\uff0c\u63d0\u9ad8\u4e86\u4ea7\u54c1\u7684\u7528\u6237\u4f53\u9a8c\u548c\u6ee1\u610f\u5ea6\u3002"}, {"company": "EO\u52a9\u7406\u53e5\u5b50\u4e92\u52a8", "title": "CEO\u52a9\u7406\u53e5\u5b50\u4e92\u52a82023.7-2023.10 (3\u4e2a\u6708)?", "time": "2023.7-2023.10", "description": "CEO\u52a9\u7406\u53e5\u5b50\u4e92\u52a82023.7-2023.10 (3\u4e2a\u6708)? \u8d1f\u8d23 AI  \u673a\u5668\u4eba\u4ea4\u4ed8\u5de5\u4f5c\uff0c\u5411\u5404\u5927\u5934\u90e8\u884c\u4e1a\u63d0\u4f9b\u4e13\u5c5e\u884c\u4e1a AI  \u673a\u5668\u4eba\uff0c\u8fbe\u5230\u5934\u90e8\u4f01\u4e1a\u964d\u672c\u589e\u6548\u7684\u76ee\u7684"}, {"company": "rct AI", "title": "\u4ea7\u54c1\u7ecf\u7406rct AI", "time": "2022.5-2023.8", "description": "\u4ea7\u54c1\u7ecf\u7406rct AI2022.5-2023.8 (1\u5e743\u4e2a\u6708)? Web3 AI\u9879\u76eeDelysium\u7684\u4ea7\u54c1\u8fed\u4ee3\u3001LucyAI\u4ece0-1\u4ea7\u54c1\u8bbe\u8ba1\u3001\u793e\u533a\u8fd0\u8425\u7b49\u3002"}, {"company": "\u78b3\u4e2d\u5b9dCarbonbase", "title": "\u4ea7\u54c1\u7ecf\u7406\u78b3\u4e2d\u5b9dCarbonb", "time": "2021.5-2023.3", "description": "\u4ea7\u54c1\u7ecf\u7406\u78b3\u4e2d\u5b9dCarbonbase ? \u4e2d\u56fd\u533a\u4ea7\u54c1\u90e82021.5-2023.3 (1\u5e7410\u4e2a\u6708)? ToB \u7aef\u78b3\u4e2d\u548c SaaS \u7cfb\u7edf\u7684 UX\u3001\u4ea7\u54c1\u8bbe\u8ba1\u3001\u6d4b\u8bd5\u5de5\u4f5c\uff08\u5ba2\u6237\uff1a\u65bd\u8010\u5fb7\u7b49\uff09\u3002"}, {"company": "MindCoord", "title": "AI\u4ea7\u54c1\u7ecf\u7406MindCoord", "time": "2021.11-2022.4", "description": "AI\u4ea7\u54c1\u7ecf\u7406MindCoord ? \u4ea7\u54c1\u6218\u7565\u90e82021.11-2022.4 (5\u4e2a\u6708)? AIGC RPG \u6e38\u620f\u4ea7\u54c1 Flyby\uff0c\u8d1f\u8d23\u6e38\u620f\u4ea7\u54c1\u529f\u80fd\u8bbe\u8ba1\u3001\u51b7\u542f\u52a8\u3001\u4ea7\u54c1\u529f\u80fd\u8fed\u4ee3\u7b49\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+大模型产品经理北京零一万物科技有限公司2024.1-2025.4 (1年3个月)* 负责Post train团队日常Yi系列模型迭代、模型训练、模型对齐、模型评测等工作，使用SFT、DPO、PPO等算法对base模型进行训练，保证模型效果通用、且符合业务预期。主要成果：Yi-lighting等。 * 负责C端出海、国内等产品中模型效果（PopAi、万知等），保证各功能模型效果符合预期。 * 跨团队协调模型和数据需求，保证模型训练团队和产品团队不脱节，准确基于业务视角判断大模型的优劣势场景，并持续迭代产品和模型的效果。 * 基于2C&2B场景发挥模型能力，构建数据飞轮体系，构建数据回流、数据清洗、数据合成等pipeline，回流到通用模型训练持续强化模型。（多模态数据、文本数据等）。 * 基于C端产品模型数据和交互数据挖掘用户需求，快速构建产品策略、迭代模型效果和产品功能，上线AB实验，快速验证PMF。 * 根据不同的业务场景和训练场景，构建合理的评测方法和指标，实现模型自动化评测、离线人工评测等。 * 针对B端业务情况提供模型侧技术支持和解决方案，保证业务的效果和稳定性。AI算法产品B端产品C端产品 | 大模型产品经理MiniMax2023.10-2024.1 (3个月)? 参与海螺AI的转型迭代，提高了产品的用户体验和满意度。 ? 设计并实施了海螺AI多项产品功能、产品策略，从0到1构建RAG、语音对话等全流程。 ? 参与设计多项产品功能中的模型架构和pipeline，优化模型在产品中的效果、效率和性能。 ? 基于业务场景构建评测指标，进行模型评测，找到模型迭代方向。 ? 挖掘用户数据和业务模型数据，进行数据清洗，抽象出业务需求和痛点，针对性迭代。 ? 针对业务场景使用Lora进行模型训练，快速验证功能效果。APP产品C端产品功能产品网页产品 | CEO助理句子互动2023.7-2023.10 (3个月)? 负责 AI  机器人交付工作，向各大头部行业提供专属行业 AI  机器人，达到头部企业降本增效的目的 ? 通过交付 AI  机器人的工作中迭代 AI  知识库产品 ? 支持公司增长团队进行用户主动增长，市场增长团队转化率达到 50%B端产品用户增长用户增长策略解决方案 | 产品经理rct AI2022.5-2023.8 (1年3个月)? Web3 AI项目Delysium的产品迭代、LucyAI从0-1产品设计、社区运营等。 ? 游戏AI NPC对话系统（苏格拉底系统）的产品功能设计、产品迭代、大模型pipeline设计、模型训练、产品效果评测、持续优化AI对话能力。 ? 将苏格拉底系统API化，基于2B、2C场景发挥AI能力，实现商业化。 ? 支持公司内部、外部AI业务，为多个游戏 NPC 、明星 IP  等提供 AI  技术支持（流浪地球2导演组、Delysium 3A游戏、重启奥德赛等）APP产品B端产品C端产品交互设计产品规划产品设计产品迭代功能产品原型设计后台产品游戏产品用户研究需求分析项目管理 | 产品经理碳中宝Carbonbase ? 中国区产品部2021.5-2023.3 (1年10个月)? ToB 端碳中和 SaaS 系统的 UX、产品设计、测试工作（客户：施耐德等）。 ? ToC 端小程序“碳中宝 App”的产品设计、开发、运营工作，并将C端产品打包成B端服务（客户：瑞安集团、新天地、香港置地等）。 ? 撰写 ESG、碳中和等相关行业研究报告和行业标准整理（客户：光大集团等）。 ? 带领公司参加联合国开发计划署青年创客挑战赛一等奖等。B端产品C端产品交互设计产品规划产品设计产品迭代信息系统原型设计后台产品思维导图用户研究资讯产品需求分析项目管理 | AI产品经理MindCoord ? 产品战略部2021.11-2022.4 (5个月)? AIGC RPG 游戏产品 Flyby，负责游戏产品功能设计、冷启动、产品功能迭代等。 ? 针对游戏社区产品，进行产品竞品分析，产品设计，测试，上线，增长，服务器的估算。 ? 进行产品内部游戏策略：游戏玩法，世界观，数值系统，自传播设计等。 ? 深入用户数据及行为，对产品目标客户圈层进行用户价值，用户体验研究，规划产品运营策略、冷启动增长战略策划等。APP产品C端产品交互设计产品规划产品设计产品迭代原型设计思维导图游戏产品用户研究移动产品需求分析项目管理
+
+【教育经历】
+华北科技学院2020年-2024年，环境工程，本科学习内容：CAD、环境工程原理、无机化学，分析化学等 获得的成果: -国家级期刊论文一篇 -省级基金项目支持 -三创赛二等奖 -互联网+铜奖
+
+========================================
+
+========================================
+Candidate ID: 699
+Name Mask: *亚伟
+Current Title/Company: 语音算法工程师MiniMax2022.5-至今 (3年7个月 @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08MiniMax2022.5-\u81f3\u4eca (3\u5e747\u4e2a\u6708", "time": "2022.5-\u81f3\u4eca", "description": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08MiniMax2022.5-\u81f3\u4eca (3\u5e747\u4e2a\u6708)Python"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b57\u8282\u8df3\u52a8 ? \u591a\u5a92\u4f53", "time": "2020.7-2022.5", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b57\u8282\u8df3\u52a8 ? \u591a\u5a92\u4f53\u6280\u672f2020.7-2022.5 (1\u5e7410\u4e2a\u6708)\u8bed\u97f3\u8bc6\u522b\u7b97\u6cd5"}, {"company": "\u534e\u4e3a", "title": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e0a\u6d77\u534e\u4e3a\u6280\u672f\u6709\u9650\u516c\u53f82018.7-2020.7", "time": "2018.7-2020.7", "description": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e0a\u6d77\u534e\u4e3a\u6280\u672f\u6709\u9650\u516c\u53f82018.7-2020.7 (2\u5e74)Python"}, {"company": "MiniMax", "title": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-05-01", "endDate": "\u4eca", "time": "2022-05-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2020-07", "endDate": "2022-05", "time": "2020-07 ~ 2022-05", "duration": "", "description": "\u8bed\u97f3\u8bc6\u522b\u7b97\u6cd5"}, {"company": "\u4e0a\u6d77\u534e\u4e3a\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u8bed\u97f3\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2018-07", "endDate": "2020-07", "time": "2018-07 ~ 2020-07", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+语音算法工程师MiniMax2022.5-至今 (3年7个月)Python | 算法工程师字节跳动 ? 多媒体技术2020.7-2022.5 (1年10个月)语音识别算法 | 语音算法工程师上海华为技术有限公司2018.7-2020.7 (2年)Python
+
+【教育经历】
+上海交通大学 电子 | 天津大学 电子
+
+========================================
+
+========================================
+Candidate ID: 700
+Name Mask: *燕
+Current Title/Company: 大模型算法工程师MiniMax2024.2-至今 (1年10 @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "大模型算法工程师MiniMax2024.2-至今 (1年10", "time": "2024.2-至今", "description": "大模型算法工程师MiniMax2024.2-至今 (1年10个月)"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+大模型算法工程师MiniMax2024.2-至今 (1年10个月)
+
+【教育经历】
+
+
+========================================
+
+========================================
+Candidate ID: 701
+Name Mask: *DKiro
+Current Title/Company: AI算法工程师MiniMax @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "AI算法工程师MiniMax", "time": "2024.8-至今", "description": "AI算法工程师MiniMax2024.8-至今 (1年4个月)Hailuo Video Core Contributor视频算法"}, {"company": "小米", "title": "AI算法工程师（未来星）小米", "time": "2023.7-2024.7", "description": "AI算法工程师（未来星）小米2023.7-2024.7 (1年)ISP/AIGC人工智能机器学习深度学习"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+AI算法工程师MiniMax2024.8-至今 (1年4个月)Hailuo Video Core Contributor视频算法 | AI算法工程师（未来星）小米2023.7-2024.7 (1年)ISP/AIGC人工智能机器学习深度学习
+
+【教育经历】
+浙江大学 计算机 | 浙江大学 本科
+
+========================================
+
+========================================
+Candidate ID: 702
+Name Mask: *震
+Current Title/Company: 算法工程MiniMax2022.7-至今 (3年5个月)算法 @ 工程MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "工程MiniMax", "title": "算法工程MiniMax2022.7-至今 (3年5个月)算法", "time": "2022.7-至今", "description": "算法工程MiniMax2022.7-至今 (3年5个月)算法工程，大模型落地Python"}, {"company": "字节跳动", "title": "后端开发工程师字节跳动 ? tiktok ug2021.9-", "time": "2021.9-2022.7", "description": "后端开发工程师字节跳动 ? tiktok ug2021.9-2022.7 (10个月)tiktok ug"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程MiniMax2022.7-至今 (3年5个月)算法工程，大模型落地Python | 后端开发工程师字节跳动 ? tiktok ug2021.9-2022.7 (10个月)tiktok ug
+
+【教育经历】
+南京大学 软件工程
+
+========================================
+
+========================================
+Candidate ID: 703
+Name Mask: *巴
+Current Title/Company: NLP算法工程师MiniMax2022.6-2024.1 ( @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "NLP算法工程师MiniMax2022.6-2024.1 (", "time": "2022.6-2024.1", "description": "NLP算法工程师MiniMax2022.6-2024.1 (1年7个月)"}, {"company": "阿里巴巴", "title": "高级算法工程师阿里巴巴达摩院（北京", "time": "2021.1-2022.6", "description": "高级算法工程师阿里巴巴达摩院（北京）科技有限公司2021.1-2022.6 (1年5个月)"}, {"company": "esearch Associate萨尔大学", "title": "Research Associate萨尔大学2016.6-2", "time": "2016.6-2020.12", "description": "Research Associate萨尔大学2016.6-2020.12 (4年6个月)"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+NLP算法工程师MiniMax2022.6-2024.1 (1年7个月) | 高级算法工程师阿里巴巴达摩院（北京）科技有限公司2021.1-2022.6 (1年5个月) | Research Associate萨尔大学2016.6-2020.12 (4年6个月)
+
+【教育经历】
+中国科学院 计算机 | 武汉大学 自动化
+
+========================================
+
+========================================
+Candidate ID: 704
+Name Mask: *更(不看机会勿扰)
+Current Title/Company: 语音合成算法工程师MiniMax2024.5-至今 (1年7 @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5de5\u7a0b\u5e08MiniMax2024.5-\u81f3\u4eca (1\u5e747", "time": "2024.5-\u81f3\u4eca", "description": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5de5\u7a0b\u5e08MiniMax2024.5-\u81f3\u4eca (1\u5e747\u4e2a\u6708)\u97f3\u9891\u751f\u6210\uff0c\u8bed\u97f3\u5927\u6a21\u578bC++PythonPyTorch\u8bed\u97f3\u5408\u6210\u8bed\u97f3\u5904\u7406"}, {"company": "\u817e\u8baf", "title": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u7814\u7a76\u5458\u817e\u8baf ? AI\u4ea4\u4e92\u6280\u672f\u90e82021.4-20", "time": "2021.4-2024.5", "description": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u7814\u7a76\u5458\u817e\u8baf ? AI\u4ea4\u4e92\u6280\u672f\u90e82021.4-2024.5 (3\u5e741\u4e2a\u6708)\u8bed\u97f3\u5408\u6210\uff0c\u98ce\u683c\u8fc1\u79fb\uff0c\u4e2a\u6027\u5316\u5408\u6210\uff0c\u60c5\u611f\u5408\u6210\uff0c\u795e\u7ecf\u58f0\u7801\u5668\uff0c\u7aef\u5230\u7aef\u5408\u6210C++CNNDNNPythonRNN/LSTMSeq"}, {"company": "\u5b9e\u4e60\u751f\u641c\u72d7", "title": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f\u641c\u72d7 ? \u684c\u9762\u4e8b\u4e1a\u90e82019.8-2020", "time": "2019.8-2020.3", "description": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f\u641c\u72d7 ? \u684c\u9762\u4e8b\u4e1a\u90e82019.8-2020.3 (7\u4e2a\u6708)\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f"}, {"company": "\u4eac\u4e1c", "title": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f\u4eac\u4e1c ? AI\u7814\u7a76\u96622018.3-2018", "time": "2018.3-2018.9", "description": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f\u4eac\u4e1c ? AI\u7814\u7a76\u96622018.3-2018.9 (6\u4e2a\u6708)\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f"}, {"company": "MiniMax", "title": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-05-01", "endDate": "\u4eca", "time": "2024-05-01 ~ \u4eca", "duration": "", "description": "\u97f3\u9891\u751f\u6210\uff0c\u8bed\u97f3\u5927\u6a21\u578b"}, {"company": "\u817e\u8baf", "title": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2021-04", "endDate": "2024-05", "time": "2021-04 ~ 2024-05", "duration": "", "description": "\u8bed\u97f3\u5408\u6210\uff0c\u98ce\u683c\u8fc1\u79fb\uff0c\u4e2a\u6027\u5316\u5408\u6210\uff0c\u60c5\u611f\u5408\u6210\uff0c\u795e\u7ecf\u58f0\u7801\u5668\uff0c\u7aef\u5230\u7aef\u5408\u6210"}, {"company": "\u641c\u72d7", "title": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2019-08", "endDate": "2020-03", "time": "2019-08 ~ 2020-03", "duration": "", "description": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f"}, {"company": "\u4eac\u4e1c", "title": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2018-03", "endDate": "2018-09", "time": "2018-03 ~ 2018-09", "duration": "", "description": "\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+语音合成算法工程师MiniMax2024.5-至今 (1年7个月)音频生成，语音大模型C++PythonPyTorch语音合成语音处理 | 语音合成算法研究员腾讯 ? AI交互技术部2021.4-2024.5 (3年1个月)语音合成，风格迁移，个性化合成，情感合成，神经声码器，端到端合成C++CNNDNNPythonRNN/LSTMSeq2Seq机器学习算法语音合成语音处理语音算法 | 语音合成算法实习生搜狗 ? 桌面事业部2019.8-2020.3 (7个月)语音合成算法实习生 | 语音合成算法实习生京东 ? AI研究院2018.3-2018.9 (6个月)语音合成算法实习生
+
+【教育经历】
+西北工业大学 计算机 | 西北工业大学 软件工程
+
+========================================
+
+========================================
+Candidate ID: 705
+Name Mask: *莽
+Current Title/Company: 算法工程师MiniMax @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "算法工程师MiniMax", "time": "2024.5-至今", "description": "算法工程师MiniMax2024.5-至今 (1年7个月)基座模型算法自然语言处理"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师MiniMax2024.5-至今 (1年7个月)基座模型算法自然语言处理
+
+【教育经历】
+上海交通大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 706
+Name Mask: *live
+Current Title/Company: 算法工程师MiniMax @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "算法工程师MiniMax", "time": "2024.6-至今", "description": "算法工程师MiniMax2024.6-至今 (1年6个月)"}, {"company": "快手", "title": "算法实习生快手2023.5-2023.8 (3个月)", "time": "2023.5-2023.8", "description": "算法实习生快手2023.5-2023.8 (3个月)"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师MiniMax2024.6-至今 (1年6个月) | 算法实习生快手2023.5-2023.8 (3个月)
+
+【教育经历】
+纽约大学 | 纽约大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 707
+Name Mask: *勇
+Current Title/Company: 算法工程师MiniMax @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08MiniMax", "time": "2022.7-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08MiniMax2022.7-\u81f3\u4eca (3\u5e745\u4e2a\u6708)"}, {"company": "\u6700\u53f3", "title": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08\u6700\u53f32018.8-2021.5 (2\u5e749\u4e2a\u6708)", "time": "2018.8-2021.5", "description": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08\u6700\u53f32018.8-2021.5 (2\u5e749\u4e2a\u6708)"}, {"company": "\u7f8e\u56e2", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u7f8e\u56e2", "time": "2015.7-2018.8", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u7f8e\u56e22015.7-2018.8 (3\u5e741\u4e2a\u6708)"}, {"company": "\u534e\u4e3a\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u89e3\u51b3\u65b9\u6848\u7ecf\u7406", "position": "\u89e3\u51b3\u65b9\u6848\u7ecf\u7406", "startDate": "2022-07-01", "endDate": "\u4eca", "time": "2022-07-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u534e\u4e3a\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u5927\u6570\u636e\u9879\u76eeTD", "position": "\u5927\u6570\u636e\u9879\u76eeTD", "startDate": "2020-07-01", "endDate": "\u4eca", "time": "2020-07-01 ~ \u4eca", "duration": "", "description": "\u5927\u6570\u636e\u4ea7\u54c1SA\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师MiniMax2022.7-至今 (3年5个月) | 推荐算法工程师最右2018.8-2021.5 (2年9个月) | 算法工程师美团2015.7-2018.8 (3年1个月)
+
+【教育经历】
+武汉大学 信息
+
+========================================
+
+========================================
+Candidate ID: 708
+Name Mask: *天润
+Current Title/Company: 算法工程师MiniMax @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "算法工程师MiniMax", "time": "2024.6-至今", "description": "算法工程师MiniMax2024.6-至今 (1年6个月)自然语言处理"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师MiniMax2024.6-至今 (1年6个月)自然语言处理
+
+【教育经历】
+南京大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 709
+Name Mask: *奕航
+Current Title/Company: 算法实习生MiniMax2025.11-至今 (1个月)Py @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b9e\u4e60\u751fMiniMax", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751fMiniMax2025.11-\u81f3\u4eca (1\u4e2a\u6708)Py", "time": "2025.11-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5b9e\u4e60\u751fMiniMax2025.11-\u81f3\u4eca (1\u4e2a\u6708)Python\u81ea\u7136\u8bed\u8a00\u5904\u7406"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u5b57\u8282\u8df3\u52a82025.2-2025.7 (5\u4e2a\u6708)Ha", "time": "2025.2-2025.7", "description": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u5b57\u8282\u8df3\u52a82025.2-2025.7 (5\u4e2a\u6708)HadoopPythonPyTorchSeq2Seq\u63a8\u8350\u7b97\u6cd5\u641c\u7d22\u7b97\u6cd5\u6a21\u5f0f\u8bc6\u522b\u81ea\u7136\u8bed\u8a00\u5904\u7406"}, {"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u767e\u5ea62024.9-2025.2 (5\u4e2a\u6708)Hado", "time": "2024.9-2025.2", "description": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u767e\u5ea62024.9-2025.2 (5\u4e2a\u6708)HadoopPythonPyTorchSeq2Seq\u63a8\u8350\u7b97\u6cd5\u81ea\u7136\u8bed\u8a00\u5904\u7406"}, {"company": "\u7814\u7a76\u5b9e\u4e60\u751f\u4e2d\u79d1\u9662\u8ba1\u7b97\u6240", "title": "\u7b97\u6cd5\u7814\u7a76\u5b9e\u4e60\u751f\u4e2d\u79d1\u9662\u8ba1\u7b97\u62402023.3-2024.7 (1\u5e74", "time": "2023.3-2024.7", "description": "\u7b97\u6cd5\u7814\u7a76\u5b9e\u4e60\u751f\u4e2d\u79d1\u9662\u8ba1\u7b97\u62402023.3-2024.7 (1\u5e744\u4e2a\u6708)PythonPyTorch\u641c\u7d22\u7b97\u6cd5\u6570\u636e\u6316\u6398\u81ea\u7136\u8bed\u8a00\u5904\u7406"}, {"company": "MiniMax", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2025-11-01", "endDate": "\u4eca", "time": "2025-11-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2025-02", "endDate": "2025-07", "time": "2025-02 ~ 2025-07", "duration": "", "description": ""}, {"company": "\u767e\u5ea6", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2024-09", "endDate": "2025-02", "time": "2024-09 ~ 2025-02", "duration": "", "description": ""}, {"company": "\u4e2d\u79d1\u9662\u8ba1\u7b97\u6240", "title": "\u7b97\u6cd5\u7814\u7a76\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u7814\u7a76\u5b9e\u4e60\u751f", "startDate": "2023-03", "endDate": "2024-07", "time": "2023-03 ~ 2024-07", "duration": "", "description": ""}, {"company": "\u6b66\u6c49\u7406\u5de5\u5149\u79d1\u80a1\u4efd\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2022-06", "endDate": "2022-08", "time": "2022-06 ~ 2022-08", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法实习生MiniMax2025.11-至今 (1个月)Python自然语言处理 | 算法实习生字节跳动2025.2-2025.7 (5个月)HadoopPythonPyTorchSeq2Seq推荐算法搜索算法模式识别自然语言处理 | 算法实习生百度2024.9-2025.2 (5个月)HadoopPythonPyTorchSeq2Seq推荐算法自然语言处理 | 算法研究实习生中科院计算所2023.3-2024.7 (1年4个月)PythonPyTorch搜索算法数据挖掘自然语言处理 | 算法实习生武汉理工光科股份有限公司2022.6-2022.8 (2个月)C++SVM
+
+【教育经历】
+中国科学院大学 信息 | 北京邮电大学
+
+========================================
+
+========================================
+Candidate ID: 710
+Name Mask: *观
+Current Title/Company: NLP算法专家MiniMax2023.1-至今 (2年11个 @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "NLP算法专家MiniMax2023.1-至今 (2年11个", "time": "2023.1-至今", "description": "NLP算法专家MiniMax2023.1-至今 (2年11个月)自然语言处理"}, {"company": "淘天集团", "title": "NLP算法专家淘天集团2016.7-2022.3 (5年8个", "time": "2016.7-2022.3", "description": "NLP算法专家淘天集团2016.7-2022.3 (5年8个月)智能对话深度学习算法自然语言处理"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+NLP算法专家MiniMax2023.1-至今 (2年11个月)自然语言处理 | NLP算法专家淘天集团2016.7-2022.3 (5年8个月)智能对话深度学习算法自然语言处理
+
+【教育经历】
+北京航天航空大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 711
+Name Mask: *博
+Current Title/Company: 3d视觉算法专家MiniMax2022.5-2023.3 ( @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "3d视觉算法专家MiniMax2022.5-2023.3 (", "time": "2022.5-2023.3", "description": "3d视觉算法专家MiniMax2022.5-2023.3 (10个月)"}, {"company": "快手", "title": "视觉算法工程师北京快手科技有限公司 ? ytech2019.", "time": "2019.5-2022.5", "description": "视觉算法工程师北京快手科技有限公司 ? ytech2019.5-2022.5 (3年)"}, {"company": "旷视", "title": "算法研究员北京旷视科技有限公司2018.2-2019.5 (", "time": "2018.2-2019.5", "description": "算法研究员北京旷视科技有限公司2018.2-2019.5 (1年3个月)"}, {"company": "追光动画", "title": "视觉算法工程师追光动画2016.4-2018.2 (1年10", "time": "2016.4-2018.2", "description": "视觉算法工程师追光动画2016.4-2018.2 (1年10个月)"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+3d视觉算法专家MiniMax2022.5-2023.3 (10个月) | 视觉算法工程师北京快手科技有限公司 ? ytech2019.5-2022.5 (3年) | 算法研究员北京旷视科技有限公司2018.2-2019.5 (1年3个月) | 视觉算法工程师追光动画2016.4-2018.2 (1年10个月)
+
+【教育经历】
+北京邮电大学 通信 | 上海大学 通信
+
+========================================
+
+========================================
+Candidate ID: 713
+Name Mask: *enmiao
+Current Title/Company: 高级算法工程师MiniMax @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "高级算法工程师MiniMax", "time": "2023.6-至今", "description": "高级算法工程师MiniMax2023.6-至今 (2年6个月)逻辑回归DNNCNNGBDTBoostingRNN/LSTM"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+高级算法工程师MiniMax2023.6-至今 (2年6个月)逻辑回归DNNCNNGBDTBoostingRNN/LSTM
+
+【教育经历】
+浙江大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 714
+Name Mask: *雍茂
+Current Title/Company: 算法工程师MiniMax @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "算法工程师MiniMax", "time": "2024.4-至今", "description": "算法工程师MiniMax2024.4-至今 (1年8个月)语音算法"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师MiniMax2024.4-至今 (1年8个月)语音算法
+
+【教育经历】
+西北工业大学 计算机 | 西北工业大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 715
+Name Mask: *ing(不看机会)
+Current Title/Company: 语音算法工程师MiniMax2022.9-至今 (3年3个月 @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "语音算法工程师MiniMax2022.9-至今 (3年3个月", "time": "2022.9-至今", "description": "语音算法工程师MiniMax2022.9-至今 (3年3个月)"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+语音算法工程师MiniMax2022.9-至今 (3年3个月)
+
+【教育经历】
+卡内基梅隆大学 | 上海交通大学 软件工程
+
+========================================
+
+========================================
+Candidate ID: 716
+Name Mask: *lex Van
+Current Title/Company: 算法工程师MiniMax @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "算法工程师MiniMax", "time": "2023.11-至今", "description": "算法工程师MiniMax2023.11-至今 (2年1个月)"}, {"company": "字节跳动", "title": "算法工程师字节跳动", "time": "2020.9-2023.3", "description": "算法工程师字节跳动2020.9-2023.3 (2年6个月)"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师MiniMax2023.11-至今 (2年1个月) | 算法工程师字节跳动2020.9-2023.3 (2年6个月)
+
+【教育经历】
+清华大学 自动化
+
+========================================
+
+========================================
+Candidate ID: 717
+Name Mask: *宇昕
+Current Title/Company: 大模型算法实习生MiniMax2024.7-2025.5 ( @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b9e\u4e60\u751fMiniMax", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u5b9e\u4e60\u751fMiniMax2024.7-2025.5 (", "time": "2024.7-2025.5", "description": "\u5927\u6a21\u578b\u7b97\u6cd5\u5b9e\u4e60\u751fMiniMax2024.7-2025.5 (10\u4e2a\u6708)\u591a\u6a21\u6001\u5927\u6a21\u578bPyTorch\u6df1\u5ea6\u5b66\u4e60\u7b97\u6cd5"}, {"company": "\u6a21\u6001\u89c1\u4e60\u7814\u7a76\u5458\u4e0a\u6d77\u4eba\u5de5\u667a\u80fd\u5b9e\u9a8c\u5ba4", "title": "\u591a\u6a21\u6001\u89c1\u4e60\u7814\u7a76\u5458\u4e0a\u6d77\u4eba\u5de5\u667a\u80fd\u5b9e\u9a8c\u5ba42022.8-2024.7", "time": "2022.8-2024.7", "description": "\u591a\u6a21\u6001\u89c1\u4e60\u7814\u7a76\u5458\u4e0a\u6d77\u4eba\u5de5\u667a\u80fd\u5b9e\u9a8c\u5ba42022.8-2024.7 (1\u5e7411\u4e2a\u6708)\u8d1f\u8d23\u56e2\u961f\u591a\u6a21\u6001\u7406\u89e3\u4e0e\u57fa\u4e8ediffusion\u7684\u751f\u6210\u7b97\u6cd5\u7684\u7814\u7a76"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+大模型算法实习生MiniMax2024.7-2025.5 (10个月)多模态大模型PyTorch深度学习算法 | 多模态见习研究员上海人工智能实验室2022.8-2024.7 (1年11个月)负责团队多模态理解与基于diffusion的生成算法的研究
+
+【教育经历】
+西北工业大学 信息 | 西北工业大学 信息
+
+========================================
+

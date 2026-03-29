@@ -1,0 +1,43 @@
+Company: 小红书
+Title: 【hi lab】通用基座大模型算法工程师-Posttrain
+
+【岗位描述】
+我们相信，通向更高阶智能的路径不止于更大的 LLM。
+Post-Training 正在成为模型能力跃迁的关键阶段：从“学会语言”走向“理解世界、优化行为、持续进化”。该岗位将深度参与 多模态、强化学习、自进化 Agent 系统 等前沿方向，探索超越纯预训练范式的新能力边界，构建可持续学习、可记忆、可进化的智能系统。
+
+1. Post-Training 核心研究与系统构建
+设计并实现面向 推理能力、策略优化和长期表现 的后训练方法
+探索 Reasoning RL Scaling、RLAIF for Fuzzy Task、Self-Play、Scalable Oversight 等在大模型中的新用法
+将 Post-Training 视为 系统级优化问题，而非单次调参或 reward hacking
+2. 强化学习与持续进化机制
+设计基于试错和反馈的训练闭环（例如，Natural Language FeedBack），使模型具备自我修正和能力生长
+探索 RL 在 边缘能力、长尾任务、工具使用和复杂决策 中的作用
+研究长期学习（Lifelong Learning）、稳定性、遗忘控制等关键问题
+3. 多模态与“世界建模”
+参与多模态模型（尤其是视频、时序感知）的 Post-Training 研究
+探索从“语言建模”走向“世界建模”的训练目标与评估方式
+研究感知、行动与决策的联合优化，而非简单模态拼接
+4. Agent 与自进化系统
+构建“可训练的 Agent 系统”，而不仅是工具调用的外壳
+设计 Agent 的记忆、学习、反思与策略更新机制
+将 Agent 视为一个 持续演化的产品级智能体
+5. 新范式与新架构探索
+对现有 Attention、NTP 等范式保持批判性思考，例如探索全新的
+探索新架构、新目标函数、新训练范式在 Post-Training 中的可能性
+参与从模型 → 推理过程 → 自学习环境（System-level Scaling）的演进
+
+【岗位要求】
+基础要求
+扎实的机器学习 / 深度学习基础，对模型训练全流程有深入理解
+熟悉至少一个方向：
+强化学习（RL Scaling / RLAIF / Online RL 等）
+多模态学习（尤其是视频、时序、感知建模）
+Agent / 多智能体系统
+良好的工程能力，能将研究想法落地为稳定系统
+
+加分项
+有大模型 Post-Training 或 MOE RL Scaling 实战经验
+RL Algo & Infra co-design
+对 Token 效率、推理效率、多尺度学习 等问题有深入思考
+参与过 Agent 系统或复杂训练闭环的设计
+有“系统思维”，不满足于单点指标提升

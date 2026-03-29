@@ -1,0 +1,190 @@
+=== 字节跳动 职位描述数据集 (第 2 批) ===
+
+【职位编号】: BT017
+【职位名称】: 资深服务端开发/架构师-AI应用平台
+【所在部门】: Stone-Dev Platform
+【所在团队】: Stone-Dev Platform
+【AI猎头分析】: {"technical_direction": "RAG\u3001\u5927\u6a21\u578b\u5de5\u7a0b\u3001LLM\u6a21\u578b\u8c03\u4f18\u3001\u6a21\u578b\u8c03\u5ea6", "candidate_requirements": {"experience_years": null, "education": null, "key_skills": ["RAG", "\u5927\u6a21\u578b\u5de5\u7a0b", "LLM\u6a21\u578b\u8c03\u4f18", "\u6a21\u578b\u8c03\u5ea6", "\u670d\u52a1\u7aef\u67b6\u6784"], "background_preference": null, "additional_requirements": null}}
+【理想候选人画像】: {"experience_years": null, "education": null, "key_skills": ["RAG", "\u5927\u6a21\u578b\u5de5\u7a0b", "LLM\u6a21\u578b\u8c03\u4f18", "\u6a21\u578b\u8c03\u5ea6", "\u670d\u52a1\u7aef\u67b6\u6784"], "background_preference": null, "additional_requirements": null, "technical_direction": "RAG\u3001\u5927\u6a21\u578b\u5de5\u7a0b\u3001LLM\u6a21\u578b\u8c03\u4f18\u3001\u6a21\u578b\u8c03\u5ea6"}
+【原始JD文本】:
+资深服务端开发/架构师-扣子
+
+职位描述：
+1、负责扣子开发平台的服务端规划、技术设计、架构优化、功能迭代工作；
+2、负责平台RAG、Tool能力的应用层建设，提供架构、稳定性、在线服务、离线产线的工程支持。
+
+职位要求：
+1、3年以上后端开发经验，具备扎实的代码功底、系统设计能力、计算机网络知识；
+2、能够独立承担一个业务子方向，具备良好的业务意识、细节把控、团队协作、沟通能力，能够主动思考并探索产品方向创新；
+3、熟悉Golang/Python，或者能快速切换编程语言，熟悉常用的框架和技术组件；
+4、有较强的学习能力，有强烈的主动性、求知欲、好奇心和进取心，能及时关注和学习业界最新技术；
+5、对个人、团队有高标准，具备优秀的技术判断力。
+
+加分项：
+1、在LLM工程领域有落地经验；
+2、有Agent、RAG、Tool方向的研究或者工作经验；
+3、开发过AI应用。
+
+================================================================================
+
+【职位编号】: BT035
+【职位名称】: 音频编解码算法工程师-Data语音
+【所在部门】: Data语音
+【所在团队】: None
+【原始JD文本】:
+【岗位职责】
+1、开发可落地的音频编解码器，并与工程团队协作优化加速和延迟；
+2、参与编解码算法的设计和实现，跟踪业界前沿的编解码进展（VQ、Diffusion/FM Based Codec等）；
+3、研究和设计音频编解码的评价和测试体系。
+
+【岗位要求】
+1、硕士及以上学位，计算机科学、人工智能、语音处理、机器学习等专业优先；
+2、深刻理解Neural Audio Codec的机制，熟悉SoundStream、EnCodec等经典模型的优缺点；
+3、有丰富的神经网络实验经验，可以熟练的解决模型收敛、音质等问题的根因；
+4、具备出色的编程能力，熟练掌握Python及PyTorch等训练框架；
+5、在相关国际会议或期刊上发表论文者优先（ICASSP/InterSpeech/SLT/ICML/NeurlPS）。
+
+================================================================================
+
+【职位编号】: BT039
+【职位名称】: 高级UI设计师-豆包输入法
+【所在部门】: Data语音-豆包输入法
+【所在团队】: None
+【原始JD文本】:
+【岗位职责】
+1、负责豆包输入法产品视觉&交互设计，熟练掌握设计系统的搭建，并能够主导某个产品从概念到设计落地全流程；
+2、深入理解业务，和产品经理合作，制定视觉设计策略，完成产品UI设计落地；
+3、探索创新设计概念，能在成熟品类中打磨体验细节；
+4、和研发工程师合作，把控线上产品体验品质，保障像素级还原；
+5、具备用户视角，重视用户反馈，并主动洞察体验痛点和需求。
+
+【岗位要求】
+1、具备优秀的审美和设计能力，设计相关专业本科及以上学历；
+2、具备用户体验设计相关经验，有成熟项目经历及作品；
+3、具备一定的系统思维和成熟的设计执行能力；熟悉安卓&iOS界面设计规范，具备动效设计能力；
+4、充满好奇心，能够敏锐把握设计趋势，积极探索创新解决方案并推动实施；
+5、有移动端、PC端等产品视觉设计经验者优先。
+
+================================================================================
+
+【职位编号】: BT005
+【职位名称】: 高级全栈开发工程师-AI编程助手
+【所在部门】: AI 编程助手 (Trae)
+【所在团队】: AI 编程助手
+【AI猎头分析】: {"technical_direction": "AI相关业务开发、研发工具/平台开发", "candidate_profile": {"experience_years": null, "education": null, "key_skills": ["全栈开发", "AI业务开发", "研发工具", "平台开发"], "background_preference": null, "additional_requirements": "IC/方向owner"}}
+【理想候选人画像】: "IC/\u65b9\u5411owner\u3001AI\u76f8\u5173\u4e1a\u52a1\u5f00\u53d1\u3001\u7814\u53d1\u5de5\u5177/\u5e73\u53f0\u5f00\u53d1"
+【原始JD文本】:
+职位：高级全栈开发工程师-TRAE
+
+职位描述：
+1、参与建设AI编程助手开发产品，深入理解各类研发场景，完成不同业务场景AI编程能力的落地；
+2、负责跟进和探索AI领域最新的技术和趋势，结合研发效能场景，提供技术解决方案；
+3、负责AI编程助手技术架构的稳定性、性能进行优化和重构；
+4、负责相关技术的基础设施搭建，提高工程效率和工程质量。
+
+职位要求：
+1、本科及以上学历，3年以上研发工作经验，对计算机基础系统架构有清晰理解，计算、存储、网络等基础功底扎实；
+2、熟悉TypeScript/JavaScript/Rust/Go/Kotlin/Java/Swift/Objective-C/中至少一门语言；
+3、熟悉一门前后端开发框架或Android/iOS客户端开发经验；
+4、具备较强的责任感、团队合作精神、逻辑思维能力和表达能力，能独立分析问题，善于研究业务、分析产品。
+
+具备以下经验者优先：
+1、熟悉Electron框架优先；
+2、熟悉VSCode或JetBrains插件体系，有IDE插件开发经验优先；
+3、了解LLM应用架构，掌握LLM相关技术栈优先，如Langchain、Vector DBs等；
+4、具备AI Agent相关前端交互设计与集成的经验，了解如何在前端实现AI能力的无缝集成；
+5、有开源项目贡献经验或在前端技术社区中活跃者优先考虑。
+
+================================================================================
+
+【职位编号】: BT006
+【职位名称】: 高级研发工程师-LLM for Code 方向
+【所在部门】: AI 编程助手 (Trae)
+【所在团队】: AI 编程助手
+【AI猎头分析】: {"technical_direction": "LLM for Code", "candidate_profile": {"experience_years": null, "education": null, "key_skills": ["LLM", "Code Intelligence"], "background_preference": null, "additional_requirements": null}}
+【理想候选人画像】: {"experience_years": null, "education": null, "key_skills": ["LLM", "Code Intelligence"], "background_preference": null, "additional_requirements": null}
+【原始JD文本】:
+职位：高级研发工程师-TRAE
+
+职位描述：
+1、探索并打造基于LLM的下一代生产力工具，重点围绕软件研发场景（包括代码托管、代码分析、IDE等各工具平台），实现LLM对研发生产过程的赋能；具体方向如：
+  1）代码知识库及理解：结合代码数据，提供语义化代码检索能力、支持基于自然语言的Q&A及示例代码生成；
+  2）代码辅助生成及修复：结合CI/Static Analysis的结果、提供摘要性总结及修复建议；结合其他研发基础设施（如IDE/Code Interpreter）、实现 AI-Generated Code具备生产级交付能力；
+2、探索并打造企业级LLM应用研发基础设施，建设LLM应用开发的接入平台及基础框架能力。
+
+职位要求：
+1、本科及以上学历，计算机相关专业，三年及以上研发工作经验；
+2、具备扎实的软件开发基本功，熟练掌握C/C++/Golang/Java/Python中至少一种编程语言；
+3、具备优秀的学习能力、能够快速探索并实践全新的领域技能；
+4、具备出色的架构设计及研发交付能力，能够设计并落地高可用的平台产品；
+5、对软件研发全生命周期的工具链有足够的理解及洞见，对打磨生产力工具有极致追求；
+6、对LLM应用研发技术栈有一定了解，对建设生产级LLM-powered应用有实战经历。
+
+================================================================================
+
+【职位编号】: BT024
+【职位名称】: 高级研发工程师-代码基础设施方向
+【所在部门】: 开发者服务
+【所在团队】: 开发者服务
+【AI猎头分析】: {"technical_direction": "\u4ee3\u7801\u6258\u7ba1\u3001\u4ee3\u7801\u5206\u6790", "candidate_requirements": {"experience_years": null, "education": null, "key_skills": ["\u4ee3\u7801\u6258\u7ba1", "\u4ee3\u7801\u5206\u6790"], "background_preference": null, "additional_requirements": null}}
+【理想候选人画像】: {"experience_years": null, "education": null, "key_skills": ["\u4ee3\u7801\u6258\u7ba1", "\u4ee3\u7801\u5206\u6790"], "background_preference": null, "additional_requirements": null, "technical_direction": "\u4ee3\u7801\u6258\u7ba1\u3001\u4ee3\u7801\u5206\u6790"}
+【原始JD文本】:
+高级研发工程师-代码基础设施方向
+
+职位描述：
+1、致力于打造先进、标准化的研发基础设施，提升代码质量，保证研发工程师的效率和体验；
+2、参与研发流程制定，设计开发覆盖整个研发生命周期的平台和工具，支持大规模的研发活动；
+3、持续优化技术方案与实现，沉淀技术能力，提高团队开发效率和服务质量。
+
+职位要求：
+1、本科及以上学历，计算机相关专业，具备2年以上基础架构工作经验；
+2、掌握以下至少一门语言Golang/Java/C++/Python，熟悉Linux系统原理；
+3、计算、存储、网络等计算机体系基本功底扎实，有大规模系统开发和设计经验；
+4、有宽阔的技术视野，对开源和业界技术有一定的了解；
+5、优秀的分析问题和解决问题的能力，对解决具有挑战性问题充满激情；
+6、具备全栈开发工作经验者优先，有开源项目贡献者或开源项目领导者优先。
+
+================================================================================
+
+【职位编号】: BT016
+【职位名称】: 高级研发工程师/架构师-AI智能化方向
+【所在部门】: Stone-Dev Platform
+【所在团队】: Stone-Dev Platform
+【AI猎头分析】: {"technical_direction": "Workflow\u7814\u53d1\u6d41\u7a0b\u3001AI Infra", "candidate_requirements": {"experience_years": null, "education": null, "key_skills": ["Workflow", "AI Infra", "\u7814\u53d1\u6d41\u7a0b"], "background_preference": null, "additional_requirements": "\u5bf9\u5927\u6a21\u578b\u611f\u5174\u8da3\u5373\u53ef"}}
+【理想候选人画像】: {"experience_years": null, "education": null, "key_skills": ["Workflow", "AI Infra", "\u7814\u53d1\u6d41\u7a0b"], "background_preference": null, "additional_requirements": "\u5bf9\u5927\u6a21\u578b\u611f\u5174\u8da3\u5373\u53ef", "technical_direction": "Workflow\u7814\u53d1\u6d41\u7a0b\u3001AI Infra"}
+【原始JD文本】:
+【职位已下线】
+
+原职位：高级研发工程师/架构师-AI智能化方向
+部门：Stone-Dev Platform
+职级：3-1
+地点：北京
+
+该职位已从字节跳动官网下线，请联系HR确认最新状态。
+
+================================================================================
+
+【职位编号】: BT022
+【职位名称】: 高级研发工程师/架构师-DevOps AI方向
+【所在部门】: 开发者服务
+【所在团队】: 开发者服务
+【AI猎头分析】: {"technical_direction": "DevOps AI", "candidate_requirements": {"experience_years": null, "education": null, "key_skills": ["DevOps", "AI", "\u5e73\u53f0\u5f00\u53d1"], "background_preference": null, "additional_requirements": "DevOps AI\u65b9\u5411owner\uff0cIC\u4ea6\u53ef"}}
+【理想候选人画像】: {"experience_years": null, "education": null, "key_skills": ["DevOps", "AI", "\u5e73\u53f0\u5f00\u53d1"], "background_preference": null, "additional_requirements": "DevOps AI\u65b9\u5411owner\uff0cIC\u4ea6\u53ef", "technical_direction": "DevOps AI"}
+【原始JD文本】:
+高级研发工程师/架构师-DevOps AI方向
+
+职位描述：
+1、负责字节跳动 DevOps、代码仓库、发布平台、IDE 体系、质量体系等业务的 AI 赋能；
+2、深入业务，针对研发场景打造提效增质 AI 技术体系；
+3、负责 LLM 在研发全生命周期的落地应用，包括但不限于代码生成、单元测试生成、代码审查、故障定位等；
+4、负责 DevOps Agent 的研发，实现自动化、智能化的研发交付流程。
+
+职位要求：
+1、本科及以上学历，计算机相关专业；
+2、具备扎实的软件开发基本功，掌握 Go/Java/Python 等至少一门编程语言；
+3、对 LLM 应用研发技术栈（如 LangChain, Vector DB 等）有深入了解和实践经验；
+4、对 DevOps, CI/CD 等工具链有深刻理解者优先；
+5、具备出色的抽象设计能力和解决复杂问题的硬核能力。
+
+================================================================================
+

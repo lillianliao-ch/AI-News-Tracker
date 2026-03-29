@@ -1,0 +1,1072 @@
+# CANDIDATE BATCH 12
+
+========================================
+Candidate ID: 25183
+Name Mask: *海涛
+Current Title/Company: senior software engineer @ 微软
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5fae\u8f6f", "title": "senior software engineer", "position": "senior software engineer", "startDate": "2020-03-01", "endDate": "\u4eca", "time": "2020-03-01 ~ \u4eca", "duration": "", "description": "2024\u5e7411\u6708\uff5enow\uff0cgithub copilot appmod coding agent\u7814\u53d1\u3002prompt tunning\uff0clong context window management\uff0cmcp\uff0cmulti agent\uff0csub agent\uff0cskills\n- \u6838\u5fc3\u7814\u53d1\uff0c\u8d1f\u8d23\u4ea7\u54c1\u7aef\u5230\u7aef\u8bbe\u8ba1\u3001\u7814\u53d1\u548c\u8fed\u4ee3\u4f18\u5316\n- \u901a\u8fc7\u63d0\u793a\u8bcd\u4f18\u5316\u3001custom agent\u7b49\u63d0\u5347\u4e1a\u52a1\u6307\u680720%+\n- \u6838\u5fc3\u67b6\u6784\u4f18\u5316\uff0c\u652f\u6301Java\u3001dotnet\u3001Python\u7b49\u591a\u8bed\u8a00\u4ee3\u7801\u8fc1\u79fb\u4e0a\u4e91\n-\n\n\n2020\uff5e2024\uff0c\u9762\u5411 Java \u5e94\u7528\u7684\u670d\u52a1\u6258\u7ba1 PaaS Azure Spring Apps, \u8d1f\u8d23\u8bbe\u8ba1\u3001\u5f00\u53d1\u4ea7\u54c1\u6838\u5fc3\u6a21\u5757\n\u2022 \u652f\u6301 Spring Cloud \u7ec4\u4ef6\u6258\u7ba1\n\u2022 \u652f\u6301\u5e94\u7528\u84dd\u7eff\u90e8\u7f72\u3001\u81ea\u52a8\u6269\u5bb9\u3001\u65e0\u635f\u4e0b\u7ebf\u7b49\n\u2022 \u652f\u6301 Ingress \u914d\u7f6e\u3001\u8bc1\u4e66\u3001\u81ea\u5b9a\u4e49\u57df\u540d\u7b49\n\u2022 \u63d0\u4f9b\u53ef\u89c2\u6d4b\u6027\u65b9\u6848\uff0c\u652f\u6301 JVM/Container/Ingress metric \u91c7\u96c6, Azure APM/\n\u7b2c\u4e09\u65b9 APM \u96c6\u6210\u7b49\n\u2022 AKS \u57fa\u7840\u8bbe\u65bd\u7ef4\u62a4\uff0c\u652f\u6301 3000+ AKS \u96c6\u7fa4\u81ea\u52a8\u5316\u5347\u7ea7, CVE \u81ea\u52a8\u4fee\u590d\uff0cNode\nPool \u5347\u7ea7\u7b49\n\u2022 \u8d1f\u8d23\u642d"}, {"company": "\u5c0f\u7ea2\u4e66", "title": "\u7814\u53d1\u5de5\u7a0b\u5e08", "position": "\u7814\u53d1\u5de5\u7a0b\u5e08", "startDate": "2018-07", "endDate": "2020-03", "time": "2018-07 ~ 2020-03", "duration": "", "description": "\u5de5\u4f5c\u5185\u5bb9/\u65b9\u5411\uff1a\n\u7535\u5546\u540e\u53f0"}, {"company": "\u6469\u6839\u58eb\u4e39\u5229", "title": "\u7814\u53d1\u5de5\u7a0b\u5e08", "position": "\u7814\u53d1\u5de5\u7a0b\u5e08", "startDate": "2016-08", "endDate": "2018-07", "time": "2016-08 ~ 2018-07", "duration": "", "description": "\u5229\u7387\u884d\u751f\u54c1\u98ce\u63a7\u7cfb\u7edf\u5f00\u53d1"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 26407
+Name Mask: *乐凡
+Current Title/Company: 算法工程师 @ 小红书
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5c0f\u7ea2\u4e66", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-07-01", "endDate": "\u4eca", "time": "2024-07-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2", "title": "\u63a8\u8350\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u63a8\u8350\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2023-06", "endDate": "2024-02", "time": "2023-06 ~ 2024-02", "duration": "", "description": ""}, {"company": "\u5fae\u8f6f\u4e9a\u6d32\u7814\u7a76\u9662", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2023-02", "endDate": "2023-06", "time": "2023-02 ~ 2023-06", "duration": "", "description": ""}, {"company": "\u5fae\u8f6f\u4e9a\u6d32\u7814\u7a76\u9662\uff08MSRA\uff09", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2023-02-01", "endDate": "\u4eca", "time": "2023-02-01 ~ \u4eca", "duration": "", "description": "\u8d1f\u8d23AIOps\u76f8\u5173\u9879\u76ee\u7684\u95ee\u9898\u6316\u6398\u548c\u6027\u80fd\u63d0\u5347\uff1b\u5de5\u7a0b\u5e08\u57fa\u4e8e\u7528\u6237\u63d0\u4ea4\u7684\u62a5\u9519\u5de5\u5355\uff0c\u5bf9\u9519\u8bef\u4ea7\u751f\u539f\u56e0\u8fdb\u884c\u5206\u7c7b\u5e76\u63d0\u51fa\u89e3\u51b3\u65b9\u6848\u3002\u6211\u4eec\u5c1d\u8bd5\u5229\u7528 \u673a\u5668\u5b66\u4e60\u5bf9\u62a5\u9519\u8fdb\u884c\u5feb\u901f\u5206\u7c7b\uff0c\u5e2e\u52a9\u5de5\u7a0b\u5e08\u63d0\u5347\u5904\u7406\u6548\u7387\uff1b\u9488\u5bf9\u6570\u636e\u7684\u5206\u5e03\u6f02\u79fb\u95ee\u9898\uff0c\u91c7\u7528Online Learning\u65b9\u5f0f\u8fdb\u884c\u8bad\u7ec3\uff0c\u5e76\u4e14\u4ea4\u53c9\u5212\u5206 \u8bad\u7ec3\u96c6\u548c\u9a8c\u8bc1\u96c6\u3002\u57fa\u4e8e\u90e8\u95e8\u4e0e\u7c7b\u522b\u95f4\u7684\u6f5c\u5728\u5173\u7cfb\uff0cMask\u8bad\u7ec3\u96c6\u4e2d\u5f53\u524d\u90e8\u95e8\u4e0b\u672a\u51fa\u73b0\u7684\u7c7b\u522b\u3002\u7ed3\u5408\u672c\u5730\u6a21\u578b\u77e5\u8bc6\uff0c\u4f7f\u7528ChatGPT+\u4e0a\u4e0b\u6587\u5b66 \u4e60+\u601d\u7ef4\u94fe\u8fdb\u884c\u5206\u7c7b\uff1b\u9884\u6d4b\u6027\u80fd\u63d0\u5347\u663e\u8457\uff08Top-1 Acc 40.6->62.1\uff09\u3002"}, {"company": "\u5546\u6c64\u79d1\u6280", "title": "\u7814\u7a76\u5458", "position": "\u7814\u7a76\u5458", "startDate": "2021-05", "endDate": "2021-09", "time": "2021-05 ~ 2021-09", "duration": "", "description": ""}, {"company": "\u4e0a\u6d77\u5546\u6c64\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u89c1\u4e60\u7814\u7a76\u5458", "position": "\u89c1\u4e60\u7814\u7a76\u5458", "startDate": "2021-05", "endDate": "2021-09", "time": "2021-05 ~ 2021-09", "duration": "", "description": "\u8d1f\u8d23\u90e8\u95e8\u5185\u6587\u5b57\u68c0\u6d4b\u6a21\u578bDBNet\u7684\u8fed\u4ee3\u4f18\u5316\uff1b\u8bbe\u8ba1\u6570\u636e\u589e\u5f3a\u3001\u4fee\u6539\u635f\u5931\u51fd\u6570\u3001\u8c03\u6574\u6a21\u578b\u7ed3\u6784\u3001\u4f18\u5316\u8bc4\u4ef7\u6307\u6807\u3001\u5206\u6790Bad Case\u5e76\u9488\u5bf9\u63d0\u5347\u6027 \u80fd\uff1b\u5728\u542b\u6c34\u5370\u3001\u624b\u5199\u5b57\u4ee5\u53ca\u524d\u540e\u666f\u6613\u6df7\u6dc6\u7684\u56f0\u96be\u6837\u672c\u4e0a\u663e\u8457\u63d0\u5347\u4e86\u6a21\u578b\u6027\u80fd\uff08F1\u63d0\u53472.1\uff09\uff0c\u5b8c\u6210\u4e86\u4e24\u7248\u6a21\u578b\u8fed\u4ee3\uff1b \u53c2\u4e0e\u76ee\u6807\u68c0\u6d4b\u76f8\u5173\u9879\u76ee\uff08\u732b\u72d7\u9762\u90e8\u68c0\u6d4b\u3001\u667a\u6167\u505c\u8f66\uff09\uff1b\u8d1f\u8d23\u6570\u636e\u5904\u7406\u3001\u6a21\u578b\u8bad\u7ec3\u53ca\u53c2\u6570\u4f18\u5316\uff1b\u5b8c\u6210\u4e86\u4e09\u7248\u732b\u72d7\u68c0\u6d4b\u6a21\u578b\u7684\u8fed\u4ee3\u3001\u667a\u6167\u505c\u8f66 \u9879\u76ee\u7684\u5c55\u793aDemo\uff08\u5224\u65ad\u5378\u8d27\u6f0f\u6597\u548c\u5361\u8f66\u7684\u76f8\u5bf9\u4f4d\u7f6e\uff0c\u5e76\u5728\u505c\u8f66\u5371\u9669\u65f6\u8b66\u62a5\uff09\uff1b \u4e3b\u6301\u7ec4\u5185Paper Reading\uff0c\u5206\u4eab\u4e86STD\uff08Scene Text Detection\uff09\u76f8\u5173\u524d\u6cbf\u8bba\u6587\u3002"}, {"company": "\u4e0a\u6d77eBay\u7f51\u7edc\u4fe1\u606f\u670d\u52a1\u6709\u9650\u516c\u53f8", "title": "\u6570\u636e\u5206\u6790\u5b9e\u4e60\u751f", "position": "\u6570\u636e\u5206\u6790\u5b9e\u4e60\u751f", "startDate": "2020-01", "endDate": "2020-06", "time": "2020-01 ~ 2020-06", "duration": "", "description": "\u4eceeBay\u7684\u5546\u4e1a\u6d3b\u52a8\u4e2d\u5206\u6790\u6536\u76ca\uff0c\u8f85\u52a9\u5e02\u573a\u51b3\u7b56\uff1b\u4f7f\u7528SQL\u67e5\u8be2\u3001\u7ef4\u62a4\u6570\u636e\u5e93\uff1b\u4f7f\u7528Python\u5206\u6790\u3001\u53ef\u89c6\u5316\u6570\u636e\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u4e09\u7ef4\u70b9\u4e91\u8bed\u4e49\u5206\u5272\u65b9\u6cd5\u7814\u7a76", "time": "2020-12\u81f32021-05", "description": "\u70b9\u4e91\u8bed\u4e49\u5206\u5272\u4e2d\u9700\u8981\u5927\u91cf\u6807\u8bb0\u6570\u636e\u4e14\u5c40\u90e8\u7279\u5f81\u96be\u4ee5\u62bd\u53d6\u3002\u5f15\u5165Transformer\u8fdb\u884c\u7279\u5f81\u63d0\u53d6\u3001\u7a00\u758f\u6807\u7b7e\u4f20\u64ad\u673a\u5236\u8fdb\u884c\u5f31\u76d1\u7763\u5b66\u4e60\uff1b \u56e0\u4e3aSelf-Attention\u7684\u96c6\u5408\u7b97\u5b50\u7279\u6027\uff0c\u4f7f\u7528Transformer\u62bd\u53d6\u7279\u5f81\u5f88\u597d\u5730\u5951\u5408\u4e86\u70b9\u4e91\u6570\u636e\u7684\u8f6c\u7f6e\u4e0d\u53d8\u6027\u548c\u57fa\u6570\u4e0d\u53d8\u6027\uff1b \u7a00\u758f\u6807\u7b7e\u4f20\u64ad\u673a\u5236\u57fa\u4e8e\u6709\u6807\u8bb0\u6570\u636e\uff0c\u5c06\u4f2a\u6807\u8bb0\u4f20\u64ad\u81f3\u65e0\u6807\u8bb0\u6570\u636e\u4e0a\uff0c\u964d\u4f4e\u4e86\u6a21\u578b\u8bad\u7ec3\u6240\u9700\u6807\u8bb0\u6570\u636e\u91cf\uff0c\u540c\u65f6\u4fdd\u8bc1\u4e86\u6a21\u578b\u6027\u80fd\u3002"}, {"name": "\u57fa\u4e8e\u6837\u672c\u9009\u62e9\u548c\u5e73\u8861\u635f\u5931\u7684\u957f\u5c3e\u566a\u58f0\u5b66\u4e60", "time": "2022-03\u81f32023-01", "description": "\u73b0\u5b9e\u4e16\u754c\u4e2d\u8bad\u7ec3\u6570\u636e\u5f80\u5f80\u5305\u542b\u6807\u8bb0\u566a\u58f0\u4e14\u670d\u4ece\u957f\u5c3e\u5206\u5e03\uff0c\u672c\u6587\u9488\u5bf9\u6027\u63d0\u51faSSBL\u7b97\u6cd5\uff0c\u57287\u4e2a\u957f\u5c3e\u566a\u58f0\u6570\u636e\u96c6\u4e0a\u8868\u73b0\u5747\u4f18\u4e8eSOTA\uff08Top-1 Acc\u63d0\u53472\uff5e20\uff09\uff1b small-loss\u51c6\u5219\u5e38\u7528\u4e8e\u6807\u8bb0\u566a\u58f0\u5b66\u4e60\uff0c\u5c06\u8bad\u7ec3\u635f\u5931\u5c0f\u7684\u6837\u672c\u9009\u4e3a\u5e72\u51c0\u6837\u672c\u3002\u7531\u4e8e\u4e0d\u540c\u7c7b\u522b\u95f4\u6837\u672c\u7684\u635f\u5931\u4e0d\u53ef\u6bd4\uff0c\u672c\u6587\u63d0\u51fa\u9010\u7c7b\u7684\u6837\u672c\u9009 \u62e9\uff0c\u5c06\u8bad\u7ec3\u96c6\u5212\u5206\u4e3a\u5e72\u51c0\u7684\u6709\u6807\u8bb0\u96c6\u4e0e\u65e0\u6807\u8bb0\u96c6\u3002\u5212\u5206\u540e\uff0c\u4f7f\u7528\u534a\u76d1\u7763\u5b66\u4e60\u8bad\u7ec3\u6a21\u578b\uff1b \u73b0\u6709\u65b9\u6cd5\u4e00\u822c\u57fa\u4e8e\u7c7b\u522b\u9891\u7387\u5bf9\u6570\u636e\u957f\u5c3e\u5bfc\u81f4\u7684\u6a21\u578b\u504f\u597d\u8fdb\u884c\u77eb\u6b63\uff0c\u4f46\u6a21\u578b\u504f\u597d\u4e0e\u7c7b\u522b\u9891\u7387\u4e0d\u76f4\u63a5\u76f8\u5173\uff0c\u4e14\u6807\u8bb0\u566a\u58f0\u4e0b\u7c7b\u522b\u9891\u7387\u96be\u4ee5\u4f30\u8ba1\u3002 \u672c\u6587\u63d0\u51fa\u57fa\u4e8e\u6a21\u578b\u504f\u597d\u7684\u5e73\u8861\u635f\u5931\u51fd\u6570\uff0c\u53ef\u5728\u5e72\u51c0\u7684\u6709\u6807\u8bb0\u96c6\u4e0a\u4f30\u8ba1\u6a21\u578b\u504f\u597d\u77e9\u9635\uff0c\u5e76\u57fa\u4e8e\u4f30\u8ba1\u77e9\u9635\u4fee\u6539\u4ea4\u53c9\u71b5\u635f\u5931\uff0c\u63d0\u5347\u6a21\u578b\u5728"}]
+
+========================================
+
+========================================
+Candidate ID: 27023
+Name Mask: *宇萱
+Current Title/Company: 解决方案专家 @ 小红书
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5c0f\u7ea2\u4e66", "title": "\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6", "position": "\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6", "startDate": "2021-07-01", "endDate": "\u4eca", "time": "2021-07-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u963f\u91cc\u5df4\u5df4(\u4e2d\u56fd)\u7f51\u7edc\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u4ea7\u54c1\u4e13\u5bb6", "position": "\u4ea7\u54c1\u4e13\u5bb6", "startDate": "2016-05", "endDate": "2021-01", "time": "2016-05 ~ 2021-01", "duration": "", "description": ""}, {"company": "\u641c\u72d0", "title": "\u9ad8\u7ea7\u4ea7\u54c1\u7ecf\u7406", "position": "\u9ad8\u7ea7\u4ea7\u54c1\u7ecf\u7406", "startDate": "2013-09", "endDate": "2016-05", "time": "2013-09 ~ 2016-05", "duration": "", "description": ""}, {"company": "MSRA", "title": "\u7814\u53d1", "position": "\u7814\u53d1", "startDate": "2013-08", "endDate": "2014-06", "time": "2013-08 ~ 2014-06", "duration": "", "description": "\u521b\u65b0\u4e1a\u52a1"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 27142
+Name Mask: *炜
+Current Title/Company: 研究实习生 @ 微软
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5fae\u8f6f", "title": "\u7814\u7a76\u5b9e\u4e60\u751f", "position": "\u7814\u7a76\u5b9e\u4e60\u751f", "startDate": "2024-10-01", "endDate": "\u4eca", "time": "2024-10-01 ~ \u4eca", "duration": "", "description": "\u4ee3\u7801\u5927\u6a21\u578b\nRepository-level code generation"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5b9e\u4e60\u751f", "startDate": "2024-02", "endDate": "2024-06", "time": "2024-02 ~ 2024-06", "duration": "", "description": "\u591a\u6a21\u6001LM\uff0cRAG"}, {"company": "\u5c0f\u7ea2\u4e66", "title": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2023-10", "endDate": "2024-02", "time": "2023-10 ~ 2024-02", "duration": "", "description": "\u95ee\u7b54RAG"}, {"company": "\u5317\u4eac\u5faa\u73af\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2021-06", "endDate": "2021-10", "time": "2021-06 ~ 2021-10", "duration": "", "description": "\u5927\u6a21\u578b\u7684Zero-Shot\u5b9e\u9a8c\n\u5927\u6a21\u578bDomain-Adaptation\u7684\u8c03\u7814\u4e0e\u5b9e\u73b0"}, {"company": "\u5929\u7ffc\u4e91", "title": "\u552e\u524d\u652f\u6491", "position": "\u552e\u524d\u652f\u6491", "startDate": "2021-07", "endDate": "2025-11", "time": "2021-07 ~ 2025-11", "duration": "", "description": "\u4e3b\u8981\u8d1f\u8d23\u5317\u4eac\u533a\u57df\u5185\uff0c\u653f\u4f01\u5ba2\u6237\u516c\u79c1\u4e13\u6df7\u5404\u7c7b\u4e91\u4e1a\u52a1\u7684\u552e\u524d\u9636\u6bb5\u652f\u6491\u5de5\u4f5c\uff0c\u5148\u540e\u652f\u6491\u884c\u4e1a\u4e91\u3001\u653f\u52a1\u4e91\u3001IT\u4e0a\u4e91\u3001\u667a\u7b97\u4e91\u7b49\u65b9\u5411\uff0c\u73b0\u4f5c\u4e3a\u667a\u7b97\u7ec4\u8d1f\u8d23\u4eba\u7275\u5934\u667a\u7b97\u4e91\u652f\u6491\u3002\u91cd\u70b9\u9879\u76ee\u7a81\u7834\uff1a\u68b3\u7406\u6d1e\u5bdf\u592e\u56fd\u4f01\u3001\u667a\u7b97\u5ba2\u6237\u80cc\u666f\u53ca\u4e1a\u52a1\u573a\u666f\uff0c\u5339\u914d\u5408\u9002\u7684\u4ea7\u54c1\u65b9\u6848\u5e76\u534f\u8c03\u62c9\u901a\u8d44\u6e90\uff0c\u63a8\u52a8\u9879\u76ee\u843d\u5730\uff1b\u5b9e\u73b0\u884c\u4e1a\u4e91\u89c4\u5212\u9074\u9009\uff0c\u653f\u52a1\u4e91\u81ea\u7814XC\u66ff\u4ee3\uff0c\u667a\u7b97\u4e91\u5317\u4eac\u9996\u5355\u7a81\u7834\u7b49\u3002\u9879\u76ee\u5168\u9636\u6bb5\u63a8\u8fdb\uff1a\u552e\u524d\u9636\u6bb5\u534f\u8c03\u5bf9\u63a5\u5404\u4ea7\u7ebf\u8d44\u6e90\uff0c\u914d\u5408\u5546\u52a1\u540c\u4e8b\u8fdb\u884c\u552e\u524d\u4ea4\u6d41\u3001\u62db\u6295\u6807\u8bbe\u8ba1\u5e94\u7b54\u7b49\u8fd0\u4f5c\u5de5\u4f5c\uff1b\u552e\u4e2d\u552e\u540e\u9636\u6bb5\u652f\u6491\u91cd\u70b9\u9879\u76ee\u7acb\u9879\u4ea4\u4ed8\u548c\u7591\u96be\u95ee\u9898\u7684\u8d44\u6e90\u62c9\u901a\u3001\u4ea4\u4ed8\u8ddf\u8fdb\u3001\u56de\u6b3e\u3001\u5217\u6536\u7b49\u5de5\u4f5c\uff1b\u5efa\u7acb\u300a\u9879\u76ee\u7ba1\u7406\u6e05\u5355\u300b\uff0c\u8bb0\u5f55\u5e76\u8ddf\u8e2a\u9879\u76ee\u8fdb\u5c55\u3002\u57f9\u8bad\u8d4b\u80fd\u652f\u6491\u63d0\u6548\uff1a\u5bf9\u5185\u5bf9\u5916\u7d2f\u8ba1\u4e3b\u8bb2\u57f9\u8bad\u8d8550\u573a\uff0c\u5efa\u7acb\u4e86\u552e\u524d\u77e5\u8bc6\u5e93\u5e76\u4fdd\u6301\u66f4\u65b0\uff0c\u63d0\u5347\u4e86\u7ec4\u5185\u548c\u4e91\u5317\u5206\u552e\u524d\u652f\u6491\u5de5\u4f5c\u6548\u7387\u3002"}, {"company": "\u5929\u7ffc\u4e91\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u552e\u524d\u652f\u6491\u7ecf\u7406", "position": "\u552e\u524d\u652f\u6491\u7ecf\u7406", "startDate": "2021-07-01", "endDate": "\u4eca", "time": "2021-07-01 ~ \u4eca", "duration": "", "description": "1.\t\u9700\u6c42\u68b3\u7406\u5ba2\u6237\u8c03\u7814\u3002\n2.\t\u62db\u6295\u6807\u5de5\u4f5c\u652f\u6301\u3002\n3.\t\u57f9\u8bad\u8d4b\u80fd\u652f\u6491\u4f18\u5316\u3002"}, {"company": "\u4eac\u4e1c\u96c6\u56e2", "title": "\u89e3\u51b3\u65b9\u6848\u4e3b\u7ba1", "position": "\u89e3\u51b3\u65b9\u6848\u4e3b\u7ba1", "startDate": "2018-06", "endDate": "2021-07", "time": "2018-06 ~ 2021-07", "duration": "", "description": "1.\u9700\u6c42\u8c03\u7814\u4ef7\u503c\u4f20\u9012\uff1b\n2.\u884c\u4e1a\u89e3\u51b3\u65b9\u6848\u6c89\u6dc0\uff1a\u5148\u540e\u8d1f\u8d23\u533b\u7597\u4e91\u3001\u4ea7\u4e1a\u521b\u65b0\u4e91\u3001\u4f01\u4e1a\u4e0a\u4e91\u3001\u4eba\u5de5\u667a\u80fd\u516c\u5171\u670d\u52a1\u5e73\u53f0\u3001\u5de5\u4e1a\u4e92\u8054\u7f51\u3001\u6570\u5b57\u57ce\u5e02\u7b49\u89e3\u51b3\u65b9\u6848\uff1b\n3.\u5e73\u53f0\u4ea7\u54c1\u8fed\u4ee3\u843d\u5730\uff1b\n4.\u751f\u6001\u5408\u4f5c\u534f\u540c\u521b\u65b0\u3002"}, {"company": "\u4eac\u4e1c\u79d1\u6280\uff08\u524d\u4eac\u4e1c\u667a\u8054\u4e91/\u4eac\u4e1c\u4e91\uff09", "title": "\u89e3\u51b3\u65b9\u6848", "position": "\u89e3\u51b3\u65b9\u6848", "startDate": "2018-06", "endDate": "2021-07", "time": "2018-06 ~ 2021-07", "duration": "", "description": "\u4e3b\u8981\u8d1f\u8d232G2B\u591a\u4e2a\u4ea7\u54c1\u548c\u89e3\u51b3\u65b9\u6848\u7684\u552e\u524d\u3001\u65b9\u6848\u3001\u5e73\u53f0\u4ea7\u54c1\u8bbe\u8ba1\u843d\u5730\u3001\u4ea4\u4ed8\u8fd0\u8425\u7b49\u5168\u751f\u547d\u5468\u671f\u5de5\u4f5c\u3002\u9700\u6c42\u8c03\u7814\u4ef7\u503c\u4f20\u9012\uff1a\u6df1\u5165\u653f\u4f01\u5ba2\u6237\u73b0\u573a\u8fdb\u884c\u9700\u6c42\u8c03\u7814\uff0c\u63d0\u4f9b\u5bf9\u5e94\u7684\u89e3\u51b3\u65b9\u6848\uff0c\u5b8c\u6210\u5bf9\u5e94\u4ea7\u54c1\u3001\u8d44\u6e90\u534f\u8c03\u4e0e\u65b9\u6848\u8f93\u51fa\uff0c\u7f16\u5236\u6218\u7565\u534f\u8bae\u53caSOW\uff1b\u4e3a\u9500\u552e\u53ca\u4e00\u7ebf\u4eba\u5458\u8fdb\u884c\u65b9\u6848\u57f9\u8bad\u8d4b\u80fd\uff0c\u5bf9\u5ba2\u6237\u8fdb\u884c\u65b9\u6848\u4ef7\u503c\u4f20\u9012\uff0c\u652f\u6301\u6d3b\u52a8\u5ba3\u8bb2\u3002\u884c\u4e1a\u89e3\u51b3\u65b9\u6848\u6c89\u6dc0\uff1a\u5148\u540e\u8d1f\u8d23\u591a\u4e2a\u884c\u4e1a\u89e3\u51b3\u65b9\u6848\uff0c\u5e76\u8fdb\u884c\u65b9\u6848\u8fed\u4ee3\uff0c\u6c89\u6dc0\u5ba3\u8bb2PPT\u3001SOW\u3001\u4e00\u7eb8\u9610\u3001\u8c03\u7814\u6a21\u7248\u7b49GTM\u6750\u6599\uff0c\u652f\u6301\u62db\u6295\u6807\u5de5\u4f5c\u3002\u5e73\u53f0\u4ea7\u54c1\u8fed\u4ee3\u843d\u5730\uff1a\u6839\u636e\u5bf9\u5e94\u7684\u884c\u4e1a\u89e3\u51b3\u65b9\u6848\u89c4\u5212\u8bbe\u8ba1\u8fed\u4ee3\u5e73\u53f0\u578b\u4ea7\u54c1\uff0c\u8ddf\u8fdb\u9700\u6c42\u7ba1\u7406\u53ca\u4ea7\u54c1\u5f00\u53d1\u5de5\u4f5c\uff1b\u63a8\u52a8\u5e73\u53f0\u843d\u5730\u7684\u6280\u672f\u8fd0\u8425\u5de5\u4f5c\u3002\u751f\u6001\u5408\u4f5c\u534f\u540c\u521b\u65b0\uff1a\u62c9\u901a\u96c6\u56e2\u81ea\u7814\u4ea7\u54c1\u5546\u4e1a\u5316\u8f93\u51fa\uff0c\u5bf9\u63a5\u5934\u90e8\u751f\u6001\u8d44\u6e90\uff0c\u6253\u9020\u534f\u540c\u521b\u65b0\u7684\u7efc\u5408\u89e3\u51b3\u65b9\u6848\uff0c\u63d0\u5347\u65b9\u6848\u5b8c\u6574\u6027\u548c\u7ade\u4e89\u529b\uff1b\u7ed3\u5408\u96c6\u56e2\u53ca\u5408\u4f5c\u4f19\u4f34\u80fd\u529b\u5b9e\u73b0\u591a\u4e2a\u9879\u76ee\u7684\u8054\u5408\u987a\u5229\u4ea4\u4ed8\u3002"}, {"company": "\u5317\u4eac\u91d1\u5c71\u4e91\u7f51\u7edc\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u4ea7\u54c1\u5b9e\u4e60\u751f", "position": "\u4ea7\u54c1\u5b9e\u4e60\u751f", "startDate": "2017-03", "endDate": "2017-06", "time": "2017-03 ~ 2017-06", "duration": "", "description": "1.\u8d1f\u8d23\u7ade\u54c1\u5206\u6790\uff1a\u5b8c\u5584\u529f\u80fd\u57fa\u51c6\u7ebf\uff0c\u5b8c\u62106\u5bb6\u7ade\u54c1\u5171\u8ba1311\u4e2a\u529f\u80fd\u7684\u5bf9\u6807\uff0c\u4ea7\u51fa1\u4efd\u7ade\u54c1\u529f\u80fd\u603b\u7ed3\u62a5\u544a\u3002\n2.\u53c2\u4e0e\u7701\u7ea7EHR\u9879\u76ee\u7684\u843d\u5730\u5b9e\u65bd\uff0c\u89e3\u7b54QQ\u7fa4\u4e00\u7ebf\u7528\u6237\u8fd11000+\u64cd\u4f5c\u53ca\u53cd\u9988\u95ee\u9898\uff1b\u6536\u96c6\u6574\u7406\u5206\u6790\u53cd\u9988\u7684100+\u9700\u6c42\u548cbug\uff0c\u8ddf\u8fdb8\u4e2a\u529f\u80fd\u7684\u4e0a\u7ebf\u548c50+bug\u7684\u4fee\u590d\u3002\n3.\u8d1f\u8d23\u7f51\u9875\u7aef\u62a5\u8868\u5e73\u53f0\u7684\u6570\u636e\u6574\u7406\u6838\u5bf9\u5e76\u987a\u5229\u6309\u671f\u4e0a\u7ebf\uff1b\u53c2\u4e0e\u534f\u52a9\u53e6\u4e24\u6761\u4ea7\u54c1\u7ebf\u7684\u4ea7\u54c1\u7b56\u5212\u5de5\u4f5c\u3002"}, {"company": "\u91d1\u5c71\u4e91", "title": "\u4ea7\u54c1\u5b9e\u4e60\u751f", "position": "\u4ea7\u54c1\u5b9e\u4e60\u751f", "startDate": "2017-03", "endDate": "2017-06", "time": "2017-03 ~ 2017-06", "duration": "", "description": ""}, {"company": "\u897f\u5b89\u95ea\u94fe\u7f51\u7edc\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u8054\u5408\u521b\u59cb\u4eba", "position": "\u8054\u5408\u521b\u59cb\u4eba", "startDate": "2016-08", "endDate": "2018-06", "time": "2016-08 ~ 2018-06", "duration": "", "description": "1.\u6210\u7acb\u2018\u95ea\u94fe\u521b\u65b0\u7a7a\u95f4\u2019\uff0c\u63a2\u8ba8\u8fd0\u8425\u6a21\u5f0f\uff08\u4e13\u6ce8\u533a\u5757\u94fe\u65b9\u5411\u7684\u5b75\u5316\u5668\uff09\uff0c\u534f\u52a9\u5b8c\u6210\u516c\u4f17\u53f7\u8fd0\u8425\uff08\u51c0\u589e456\u5173\u6ce8\u91cf\uff09\u3001\u6d3b\u52a8\u8fd0\u8425\uff083\u573a\u6d3b\u52a8\uff0c500+\u53c2\u4e0e\u4eba\u6b21\uff09\u53ca\u4ea7\u54c1\u8fd0\u8425\uff08\u7eaa\u5df1\u7684\u4ea7\u54c1\u8fd0\u8425\u65b9\u6848\uff09\u7b49\u5de5\u4f5c\u3002\n2.\u8d1f\u8d23\u63a2\u8ba8\u7b56\u52124\u4e2a\u6709\u610f\u843d\u5730\u7684MVP\uff08\u94fe\u52a8\u8bc1\u660e\uff1a\u57fa\u4e8e\u533a\u5757\u94fe\u7684\u5b58\u5728\u6027\u8bc1\u660e\u89e3\u51b3\u65b9\u6848\uff1b\u7eaa\u5df1\uff1a\u7eaa\u5ff5\u81ea\u5df1\u7684\u73cd\u8d35\u65f6\u5149\uff1b\u94fe\u6295\uff1a\u533a\u5757\u94fe\u6295\u7968\u7cfb\u7edf\uff1bNode\u8bfe\u5802\uff1a\u533a\u5757\u94fe\u6253\u9020\u7684\u65b0\u578b\u5b66\u5206\u5236\u8bfe\u5802\uff09\uff0c\u5b8c\u6210\u9700\u6c42\u8c03\u7814\uff0c\u64b0\u5199\u9700\u6c42\u6587\u6863\uff0c\u7ec4\u7ec710+\u5934\u8111\u98ce\u66b4\u53ca\u9700\u6c42\u8ba8\u8bba\u4f1a\u8bae\uff1b\u5236\u5b9a\u5f00\u53d1\u8ba1\u5212\uff0c\u7ec4\u7ec7\u6280\u672f\u8bc4\u5ba1\u4f1a\u3001\u4ea7\u54c1\u8bf4\u660e\u4f1a\uff1b\u534f\u8c03\u6c9f\u901a\u5404\u65b9\u63a8\u8fdb\u4ea7\u54c1\u7814\u53d1\uff1b\u987a\u5229\u5b8c\u6210\u4e09\u6b3e\u4ea7\u54c1\u7684\u4e0a\u7ebf\uff0c\u5e76\u5206\u522b\u5728\u9996\u5c4a\u533a\u5757\u94fe\u5f00\u53d1\u5927\u8d5b\u3001\u201c\u4e92\u8054\u7f51+\u201d\u5927\u8d5b\u4e2d\u83b7\u5956\u3002"}, {"company": "\u897f\u5b89\u95ea\u94fe\u7f51\u7edc\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u8054\u5408\u53d1\u8d77\u4eba", "position": "\u8054\u5408\u53d1\u8d77\u4eba", "startDate": "2016-08", "endDate": "2018-06", "time": "2016-08 ~ 2018-06", "duration": "", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u4eba\u5de5\u667a\u80fd\u516c\u5171\u670d\u52a1\u5e73\u53f0\u9879\u76ee", "time": "2019-06\u81f32020-07", "description": "\u5728\u201c\u65b0\u57fa\u5efa\u201d\u7684\u80cc\u666f\u4e0b\uff0c\u4f5c\u4e3a\u4eba\u5de5\u667a\u80fd\u7684\u57fa\u7840\u8bbe\u65bd\uff0c\u56f4\u7ed5\u667a\u80fd\u7814\u53d1\u3001\u667a\u80fd\u751f\u4ea7\u3001\u667a\u80fd\u6d41\u901a\u3001\u667a\u80fd\u6d88\u8d39\u53ca\u8fd0\u8425\u670d\u52a1\u4e94\u4e2a\u73af\u8282\uff0c\u63a8\u52a8\u4f20\u7edf\u4ea7\u4e1a\u5347\u7ea7\uff0c\u667a\u80fd\u4ea7\u4e1a\u805a\u96c6\uff0c\u5b9e\u73b015+\u4e2a\u57ce\u5e02\u7684\u90e8\u7f72\u843d\u5730\u3002"}, {"name": "\u4f01\u4e1a\u4e0a\u4e91\u548c\u5de5\u4e1a\u4e92\u8054\u7f51\u9879\u76ee", "time": "2019-03\u81f32021-03", "description": "\u4eac\u4e1c\u4e91\u5728\u5168\u56fd40+\u57ce\u5e02\u843d\u5730\u65b0\u7ecf\u6d4e\u9879\u76ee\uff0c\u540c\u65f6\u5de5\u4fe1\u90e8\u4e5f\u5728\u5927\u529b\u63a8\u8fdb\u5168\u56fd\u4f01\u4e1a\u4e0a\u4e91\u5de5\u4f5c\uff0c\u4f5c\u4e3a\u6218\u7565\u5e03\u5c40\u53ca\u91cd\u8981\u4ea4\u4ed8\u9879\u4e4b\u4e00\uff0c\u9700\u7aef\u5230\u7aef\u5bf9\u4f01\u4e1a\u4e0a\u4e91\u65b9\u6848\u548c\u5de5\u4e1a\u4e92\u8054\u7f51\u9879\u76ee\u8fdb\u884c\u5168\u751f\u547d\u5468\u671f\u7ba1\u7406\u3002"}, {"name": "\u667a\u6167\u57ce\u5e02\u9879\u76ee", "time": "2020-02\u81f32021-07", "description": "\u53d1\u6325\u96c6\u56e2\u6280\u672f\u80fd\u529b\u548c\u4ea7\u4e1a\u4f18\u52bf\uff0c\u6253\u9020\u57ce\u5e02\u64cd\u4f5c\u7cfb\u7edf\u3001\u4e00\u6838\u4e24\u7ffc\u7684\u667a\u6167\u57ce\u5e02\u7efc\u5408\u573a\u666f\u65b9\u6848\u3002"}, {"name": "\u56fd\u8d44\u592e\u4f01\u884c\u4e1a\u4e91\u9879\u76ee", "time": "2022-02\u81f32022-10", "description": "\u4e3a\u52a0\u5f3a\u56fd\u8d44\u76d1\u7ba1\uff0c\u4fc3\u8fdb\u884c\u4e1a\u6574\u5408\uff0c\u4fdd\u969c\u6570\u636e\u5b89\u5168\uff0cGZW\u53d1\u5e03\u56fd\u8d44\u592e\u4f01\u4e91\u5efa\u8bbe\u8ba1\u5212\uff0c\u5176\u4e2dN\u6735\u884c\u4e1a\u4e91\u4ee5\u5934\u90e8\u592e\u56fd\u4f01\u7533\u62a5\u6784\u5efa\uff0c\u63a8\u8fdb\u884c\u4e1a\u5171\u6027\u5e94\u7528\u7cfb\u7edf\u4e0a\u4e91\u5171\u4eab\uff0c\u8d85\u534a\u6570\u4f01\u4e1a\u4e0e\u7535\u4fe1\u8054\u5408\u7533\u62a5\u3002"}, {"name": "\u667a\u7b97\u4e91\u9879\u76ee", "time": "2023-02\u81f32025-11", "description": "\u968f\u7740\u56fd\u9645\u5f62\u52bf\u5f71\u54cd\u548c\u667a\u7b97\u5e02\u573a\u9700\u6c42\u6fc0\u589e\uff0c\u6210\u7acb\u667a\u7b97\u4e13\u73ed\u7ec4\u5bf9\u63a5\u667a\u7b97\u4e13\u9879\u652f\u6491\u5de5\u4f5c\uff0c\u91cd\u70b9\u63a8\u5e7fGPU\u88f8\u91d1\u5c5e\u3001\u914d\u5957\u5b58\u50a8\u3001\u667a\u7b97\u4e00\u4f53\u673a\u3001\u606f\u58e4\u5e73\u53f0\u7b49\u4ea7\u54c1\u3002"}]
+
+========================================
+
+========================================
+Candidate ID: 27332
+Name Mask: *ophie 孟斐
+Current Title/Company: 研发招聘负责人 @ 作业帮
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4f5c\u4e1a\u5e2e", "title": "\u7814\u53d1\u62db\u8058\u8d1f\u8d23\u4eba", "position": "\u7814\u53d1\u62db\u8058\u8d1f\u8d23\u4eba", "startDate": "2024-01-01", "endDate": "\u4eca", "time": "2024-01-01 ~ \u4eca", "duration": "", "description": "\u8d1f\u8d23\u4f5c\u4e1a\u5e2e\u7814\u53d1\u56e2\u961f\u62db\u8058"}, {"company": "\u5c0f\u7ea2\u4e66\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u62db\u8058\u4e13\u5bb6", "position": "\u62db\u8058\u4e13\u5bb6", "startDate": "2023-04-01", "endDate": "\u4eca", "time": "2023-04-01 ~ \u4eca", "duration": "", "description": "1.\u9ad8\u7aef\u5c97\u4f4d\u62db\u8058\uff1a\u8d1f\u8d23\u96c6\u56e2P0\u6280\u672f\u5c97\u4f4d\u62db\u8058\uff0c\u5bf9\u6807\u5b57\u82823-2\u4ee5\u4e0a\u804c\u7ea7 2.\u6280\u672f\u6279\u91cf\u5c97\u4f4d\u62db\u8058\uff1a\u8d1f\u8d23\u5c0f\u7ea2\u4e66\u5546\u4e1a\u5316\u6280\u672f\u5c97\u4f4d\u62db\u8058\uff0c\u76ee\u6807\u516c\u53f8\uff1a\u5b57\u8282\u3001\u5feb\u624b\u3001\u767e\u5ea6\u3001\u963f\u91cc\u3001\u7f8e\u56e2\u7b49\u9ad8\u6f5c\u6280\u672f\u4eba\u624d 3.mapping\u9879\u76ee\uff1a\u5b57\u8282\u5546\u4e1a\u5316\u6280\u672f\u3001\u5feb\u624b\u5546\u4e1a\u5316\u6280\u672f\u7b49\u4eba\u624d\u76d8\u70b9\u53ca\u7ec4\u7ec7\u8c03\u7814"}, {"company": "\u5317\u4eac\u5600\u5600\u65e0\u9650\u79d1\u6280\u53d1\u5c55\u6709\u9650\u516c\u53f8", "title": "\u62db\u8058\u7ecf\u7406", "position": "\u62db\u8058\u7ecf\u7406", "startDate": "2020-12", "endDate": "2023-03", "time": "2020-12 ~ 2023-03", "duration": "", "description": "2021.8-\u81f3\u4eca COE-\u603b\u90e8\u9ad8\u62db \u804c\u7ea7D8 1.\u4eba\u624d\u50a8\u5907\uff1a\u4e3a\u6ef4\u6ef4\u7ba1\u7406\u5c42\u50a8\u5907\u67d0\u4e9b\u9886\u57df\u7684\u9ad8\u9636\u4eba\u624d\uff0c\u5bf9\u6807\u6ef4\u6ef4M6\uff08D12\uff09\u4ee5\u4e0a\uff1b 2.\u9ad8\u9636\u62db\u8058\uff1a\u534f\u52a9\u5404\u4e1a\u52a1\u7ebfRTL\u5b8c\u6210D10\u4ee5\u4e0a\u5c97\u4f4d\u4ea4\u4ed8\uff1b 3.\u884c\u4e1aMapping\u53ca\u7814\u7a76\u62a5\u544a\u3001\u5e02\u573a\u4fe1\u606f\u641c\u96c6\u3001\u5168\u96c6\u56e2\u62db\u8058\u8d4b\u80fd\u57f9\u8bad\u3001\u5236\u5b9a\u9ad8\u62dbHandbook\u7b49\u5176\u4ed6\u9879\u76ee\u3002 2020.12-2021.7 \u6a59\u5fc3\u4f18\u9009 \u804c\u7ea7D7 1.\u5feb\u901f\u9ad8\u6548\u642d\u5efa\u6a59\u5fc3\u7b97\u6cd5\u56e2\u961f\uff1b 2.\u7cbe\u7ec6\u5316\u62db\u8058\u8fd0\u8425\uff0c\u81ea\u7814\u6570\u636e\u9a71\u52a8\u5de5\u5177\uff0c\u89e3\u51b3\u62db\u8058\u5361\u70b9\uff1b 3.\u4e3a\u4e1a\u52a1\u90e8\u95e8\u8d4b\u80fd\uff0c\u63d0\u4f9b\u5e02\u573a\u4fe1\u606f\u4ee5\u53ca\u7adf\u5bf9\u516c\u53f8\u76f8\u5173\u56e2\u961f\u4eba\u624d\u5206\u5e03\u4fe1\u606f\u3002"}, {"company": "\u6ef4\u6ef4\u51fa\u884c", "title": "\u62db\u8058\u7ecf\u7406", "position": "\u62db\u8058\u7ecf\u7406", "startDate": "2020-11-01", "endDate": "\u4eca", "time": "2020-11-01 ~ \u4eca", "duration": "", "description": "\u6ef4\u6ef4\u603b\u90e8COE \u9ad8\u62db\uff0c\u62db\u8058\u7ecf\u7406\n\u4e3b\u8981\u5de5\u4f5c\u5185\u5bb9\u5305\u542b\u4f46\u4e0d\u9650\u4e8e\uff1a\u9ad8\u9636\u804c\u4f4d\u4ea4\u4ed8\uff0c\u5916\u90e8\u5e02\u573a\u4eba\u624d\u76d8\u70b9\uff0c\u884c\u4e1a\u8c03\u7814\uff0cMapping\uff0c\u62db\u8058\u8d4b\u80fd\u7b49"}, {"company": "ForwardX \u7075\u52a8\u79d1\u6280", "title": "\u62db\u8058\u7ecf\u7406", "position": "\u62db\u8058\u7ecf\u7406", "startDate": "2020-05", "endDate": "2020-11", "time": "2020-05 ~ 2020-11", "duration": "", "description": "1.\u8d1f\u8d23\u516c\u53f8200\u4eba+\u7814\u53d1\u56e2\u961f\u62db\u8058\uff1b 2.\u804c\u4f4d\u65b9\u5411\uff1a\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u3001\u5b9a\u4f4d\u5bfc\u822a\u7b97\u6cd5\u3001\u8def\u5f84\u4f18\u5316\u7b97\u6cd5\u3001Java\u3001C++\u7b49\uff1b 3.\u76ee\u6807\u516c\u53f8\u4ee5\u53ca\u56e2\u961fMapping\uff1a\u65f7\u89c6\u7814\u7a76\u9662\u3001\u963f\u91cc\u8fbe\u6469\u9662\u3001MSRA\u3001\u767e\u5ea6 AIG/ACG\u7b49\u3002"}, {"company": "BIGO", "title": "\u62db\u8058", "position": "\u62db\u8058", "startDate": "2020-02", "endDate": "2020-04", "time": "2020-02 ~ 2020-04", "duration": "", "description": "1.\u62db\u8058\u804c\u4f4d\uff1a\u8ba1\u7b97\u673a\u89c6\u89c9\u3001\u641c\u7d22\u63a8\u8350\u3001\u8ba1\u7b97\u5e73\u53f0\u3001\u6570\u636e\u5206\u6790\u3001\u97f3\u9891\u7b97\u6cd5\u7b49\u804c\u4f4d\uff1b 2.Mapping\uff1a\u5feb\u624b\u5546\u4e1a\u5316\u56e2\u961f\u3001\u963f\u91ccVmeet\u56e2\u961f\u7b49\u3002"}, {"company": "APC", "title": "Consultant", "position": "Consultant", "startDate": "2015-07", "endDate": "2020-02", "time": "2015-07 ~ 2020-02", "duration": "", "description": "APC\uff0c\u6210\u7acb\u4e8e2007\u5e743\u6708\uff0c\u81f4\u529b\u4e8e\u4e3a\u5ba2\u6237\u63d0\u4f9b\u4e13\u4e1a\u3001\u5feb\u901f\u3001\u51c6\u786e\u7684\u4eba\u529b\u8d44\u6e90\u54a8\u8be2\u670d\u52a1\u3002APC\u64c5\u957f\u9ad8\u79d1\u6280\u4e92\u8054\u7f51\u9886\u57df\u4ee5\u53ca\u4f20\u7edf\u884c\u4e1a\u4e0e\u4e92\u8054\u7f51\u7ed3\u5408\uff0c\u516c\u53f8\u7684\u4e1a\u52a1\u4ee5\u670d\u52a1\u5de8\u5934\uff0c\u805a\u7126\u9ad8\u7aef\u5c97\u4f4d\u30022017\u5e74\u83b7\u5f97\u963f\u91cc\u5df4\u5df4\u96c6\u56e2\u7cbe\u51c6\u730e\u624b\u5956\u3001\u963f\u91cc\u4e91\u6700\u4f73\u5408\u4f5c\u4f19\u4f34\u3001\u963f\u91cc\u5988\u5988\u9ad8\u8d28\u91cf\u670d\u52a1\u5956\uff1b\u65f7\u89c6\u79d1\u6280\u5353\u8d8a\u5408\u4f5c\u4f19\u4f34\uff1b2016\u5e74\u83b7\u5f97\u963f\u91cc\u4e91\u91d1\u724c\u4f9b\u5e94\u5546\uff1b2014\u5e74\u83b7\u5f97\u83dc\u9e1fA\u7c7b\u4f9b\u5e94\u5546\uff1b2012\u5e74\u83b7\u5f97\u963f\u91cc\u5df4\u5df4\u9ad8\u7aef\u804c\u4f4d\u5bfb\u8bbf\u7b2c\u4e00\uff1b2011\u5e74\u83b7\u5f97\u963f\u91cc\u5df4\u5df4\u652f\u4ed8\u5b9d\u730e\u9e70\u5956\uff1b\n\n\n\u64c5\u957f\u4e92\u8054\u7f51\u6280\u672f\u804c\u4f4d\u62db\u8058\n\n\u7b97\u6cd5\u7c7b\n\u00ac\t\u673a\u5668\u5b66\u4e60\u3001\u6df1\u5ea6\u5b66\u4e60\u3001\u63a8\u8350\u7b97\u6cd5\u3001\u641c\u7d22\u7b97\u6cd5\u3001\u77e5\u8bc6\u56fe\u8c31 \n\u00ac\t\u8ba1\u7b97\u673a\u89c6\u89c9\u3001\u4eba\u8138\u8bc6\u522b\u3001OCR \n\u00ac\t\u8bed\u97f3\u8bc6\u522b\n\u00ac\tNLP\n\n\u5de5\u7a0b\u7c7b\uff1a \n\u00ac\t\u57fa\u7840\u67b6\u6784\uff1a\u4e2d\u95f4\u4ef6/\u5b58\u50a8/\u8ba1\u7b97/\u6570\u636e\u5e93/\u7814\u53d1\u6548\u80fd/\u5bb9\u5668\n\u00ac\t\u5927\u6570\u636e\uff1a\u6570\u636e\u4ed3\u5e93/\u6570\u636e\u5904\u7406\u5e73\u53f0/\u6570\u636e\u5206\u6790/\u6570\u636e\u6316\u6398/\u6570\u636e\u53ef\u89c6\u5316\n\u00ac\t\u540e\u7aef\uff1aJava/C++/python/go \u7b49\n\u00ac\t\u5927\u524d\u7aef\uff1a\u524d\u7aef\u5f00\u53d1/\u79fb\u52a8\u7aef\u5f00\u53d1\n\u00ac\t\u6d4b\u8bd5\u3001\u8fd0\u7ef4\u3001\u7cfb\u7edf\u76f8\u5173\n\n\u91cd\u70b9\u5ba2\u6237\uff1a\n\u963f\u91cc\u5df4\u5df4\u3001\u963f\u91cc\u4e91\u3001\u8682\u8681\u91d1\u670d\u3001\u9489\u9489\u3001\u767e\u5ea6\u3001\u5feb\u624b\u3001\u65f7\u89c6\u79d1\u6280\u3001\u643a\u7a0b\u3001\u82cf\u5b81\u3001\u5b8c\u7f8e\u7b49"}, {"company": "\u4e1c\u5965\u6559\u80b2\u5728\u7ebf", "title": "\u62db\u8058", "position": "\u62db\u8058", "startDate": "2014-06", "endDate": "2015-07", "time": "2014-06 ~ 2015-07", "duration": "", "description": "\u4e1c\u5965\u6559\u80b2\u96c6\u56e2\u59cb\u5efa\u4e8e 1998 \u5e74\uff0c\u662f\u4e2d\u56fd\u4f1a\u8ba1\u6559\u80b2\u7684\u9886\u822a\u8005 \u62db\u8058\u6280\u672f\u7814\u53d1\u7c7b\u804c\u4f4d\u4e3a\u4e3b\uff1aJava\u5f00\u53d1\u3001\u8fd0\u7ef4\u3001\u6d4b\u8bd5\u3001\u79fb\u52a8\u7aef\u5f00\u53d1\u3001\u524d\u7aef\u5f00\u53d1"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u81ea\u52a8\u9a7e\u9a76\u4eba\u624d\u5730\u56fe", "time": "2021-08\u81f32021-10", "description": "1.\u76d8\u70b9\u67d0\u884c\u4e1a\u9ad8\u6f5c\u4eba\u624d\uff0c\u5bf9\u6807\u6ef4\u6ef4D10\u4ee5\u4e0a\uff0c\u9488\u5bf9\u6027\u63d0\u524d\u50a8\u5907\u4f18\u8d28\u4eba\u9009\uff1b 2.\u9879\u76ee\u5185\u5bb9\u5305\u542b\uff1a\u67d0\u884c\u4e1a\u56fd\u5185 Top \u516c\u53f8\u53ca\u5176\u4eba\u624d\u5206\u5e03\uff0c\u8fd1\u4e00\u5e74\u9ad8\u9636\u4eba\u624d\u6d41\u52a8\u6570\u636e\u6c47\u603b\u53ca\u8d8b\u52bf\u5206\u6790\u3002"}, {"name": "\u96c6\u56e2\u9ad8\u9636\u4eba\u624d\u50a8\u5907", "time": "2021-11-01\u81f3\u4eca", "description": "\u9879\u76ee\u80cc\u666f\uff1a\u516c\u53f8\u9762\u4e34\u524d\u6240\u672a\u6709\u7684\u6311\u6218\uff0c\u7ba1\u7406\u5c42\u9700\u8981\u66f4\u591a\u65b0\u9c9c\u6709\u4ef7\u503c\u7684\u4fe1\u606f\u5e2e\u52a9\u5176\u505a\u6218\u7565\u51b3\u7b56 \u9879\u76ee\u5185\u5bb9\uff1a\u4e3a\u7ba1\u7406\u5c42\u7ea6\u89c1\u7ade\u54c1\u516c\u53f8 CEO-1\u5c42\u4eba\u9009 \u9879\u76ee\u6311\u6218\uff1a\u8fc7\u7a0b\u4e2d\u5fc5\u987b\u4fdd\u8bc13\u4e2a0\u98ce\u9669"}, {"name": "\u4e92\u8054\u7f51\u5546\u4e1a\u5316\u6280\u672f\u4eba\u624d\u5730\u56fe", "time": "2023-04\u81f32023-05", "description": "\u9879\u76ee\u76ee\u6807\uff1a\u5168\u9762\u6253\u5f00\u7ade\u54c1\u4eba\u624d\u5e93\uff0c\u770b\u5230\u4f18\u79c0\u7684\u5e02\u573a\u4eba\u624d\uff0c\u901a\u8fc7\u5145\u5206\u7684\u4fe1\u606f\u8fdb\u884c\u5224\u65ad\uff0c\u77ed\u671f\u6253\u635e\u6ca7\u6d77\u9057\u73e0\uff0c\u957f\u671f\u6301\u7eed\u8ddf\u8fdb\u5e74\u8f7b\u9ad8 \u6f5c\u7684\u5019\u9009\u4eba \u9879\u76ee\u5185\u5bb9\uff1a5\u5bb6\u5f3a\u7ade\u5bf9\u76ee\u6807\u516c\u53f8\u5546\u4e1a\u5316\u6280\u672f\u4eba\u624d\u76d8\u70b9\u53ca\u7ec4\u7ec7\u76f8\u5173\u4fe1\u606f \u9879\u76ee\u6311\u6218\uff1a1\u4e2a\u6708\u5185\u5feb\u901f\u5f62\u6210\u5e02\u573a\u8ba4\u77e5\u53ca\u7ec6\u9897\u7c92\u5ea6\u76d8\u70b9"}]
+
+========================================
+
+========================================
+Candidate ID: 28325
+Name Mask: *iru
+Current Title/Company: 大模型解决方案架构师 @ MiniMax
+
+=== WORK EXPERIENCES ===
+[{"company": "MiniMax", "title": "\u5927\u6a21\u578b\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08", "position": "\u5927\u6a21\u578b\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08", "startDate": "2024-05", "endDate": "2025-02", "time": "2024-05 ~ 2025-02", "duration": "", "description": "\u4f5c\u4e3a\u5927\u6a21\u578b\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08\uff0c\u4e3b\u8981\u8d1f\u8d23\u6cdb\u4e92\u884c\u4e1aKA\u5ba2\u6237\u751f\u4ea7\u529b&\u5a31\u4e50\u573a\u666f\u7684\u6316\u6398\u3001\u6269\u5c55\uff0c\u6301\u7eed\u628a\u63e1AI\u53d1\u5c55\u8d8b\u52bf\uff0c\u7ed3\u5408\u4e1a\u52a1\u573a\u666f\u548c\u516c\u53f8\u6a21\u578b\u80fd\u529b\uff0c\u8f93\u51faAI\u89e3\u51b3\u65b9\u6848\u548c\u5b9e\u8df5\uff0c\u5e76\u8fdb\u884c\u5546\u4e1a\u5316\u843d\u5730\u3002\u89e3\u51b3\u65b9\u6848\u8bbe\u8ba1\uff1a\u5bf9\u89e3\u51b3\u65b9\u6848\u7684\u843d\u5730\u8fdb\u884c\u5168\u7a0b\u8ddf\u8e2a\uff0c\u786e\u4fdd\u5ba2\u6237\u6ee1\u610f\u5ea6\uff0c\u5e76\u5bf9\u4ea4\u4ed8\u8d28\u91cf\u8d1f\u8d23\uff1b\u5f00\u653e\u5e73\u53f0\u4ea7\u54c1\u8fed\u4ee3\uff1a\u5bf9AI\u5f00\u653e\u5e73\u53f0\u7684\u89c4\u5212\u3001\u67b6\u6784\u8bbe\u8ba1\u548c\u4ea7\u54c1\u8fed\u4ee3\u63d0\u4f9b\u5efa\u8bbe\u6027\u610f\u89c1\uff0c\u6ee1\u8db3\u5ba2\u6237\u9700\u6c42\uff1b\u751f\u4ea7\u529b &\u5a31\u4e50\u65b0\u573a\u666f\u63a2\u7d22\uff1a\u63a2\u7d22\u751f\u4ea7\u529b\u573a\u666f\u5982\u6253\u6807\u3001\u4fe1\u606f\u63d0\u53d6\u7684\u6700\u4f73\u5b9e\u8df5\uff0c\u5982\u7535\u5546\u884c\u4e1a\u5927\u6a21\u578b\u7ed3\u5408\u5c0f\u6a21\u578b\u7684\u610f\u56fe\u8bc6\u522b\u94fe\u8def\uff0c\u6e38\u620f\u8bc4\u8bba\u533a\u8206\u60c5\u5904\u7406\uff0c\u9489\u9489\u4e2a\u4eba\u7248\u5a31\u4e50\u4eba\u8bbe\u6253\u9020\uff0c\u591a\u6a21\u6001\u573a\u666f\uff08\u6587\u751f\u97f3\u4e50\uff0c\u6587\u751f\u89c6\u9891\uff0c\u56fe\u751f\u89c6\u9891\u7b49\uff09\uff1b\u5de5\u4f5c\u6210\u7ee9\uff1a\u83b7\u5f97MiniMax\u5f00\u653e\u5e73\u53f0\u4e24\u6b21\u9879\u76ee\u5956\uff08\u8206\u60c5\u6253\u6807\u548c\u5185\u5bb9\u5b89\u5168\uff09\uff0c\u534e\u4e1c\u6cdb\u4e92\u884c\u4e1a\u4e3b\u8981SA"}, {"company": "Microsoft", "title": "Consultant", "position": "Consultant", "startDate": "2019-07", "endDate": "2024-05", "time": "2019-07 ~ 2024-05", "duration": "", "description": ""}, {"company": "Microsoft", "title": "\u5fae\u8f6f\u4f01\u4e1a\u670d\u52a1\u54a8\u8be2\u987e\u95ee", "position": "\u5fae\u8f6f\u4f01\u4e1a\u670d\u52a1\u54a8\u8be2\u987e\u95ee", "startDate": "2019-07", "endDate": "2024-05", "time": "2019-07 ~ 2024-05", "duration": "", "description": "\u4f5c\u4e3a\u5fae\u8f6f\u5546\u4e1a\u5e94\u7528\u90e8\u95e8\u7684\u54a8\u8be2\u987e\u95ee\uff0c\u4e3b\u8981\u8d1f\u8d23SaaS\u4ea7\u54c1\u548c\u4f01\u4e1a\u7ea7AI\u7684\u6570\u5b57\u5316\u54a8\u8be2\u548c\u552e\u524d\u670d\u52a1\u3002\u9700\u6c42\u7ba1\u7406\uff1a\u4e3b\u5bfc\u9700\u6c42\u5206\u6790\u6a21\u5757\uff0c\u68b3\u7406\u590d\u6742\u573a\u666f\u4e1a\u52a1\u9700\u6c42\uff0c\u8bc4\u4f30\u5404\u9700\u6c42\u7684\u53ef\u884c\u6027\u5e76\u4ea7\u51fa\u9700\u6c42\u6587\u6863\uff1b\u6280\u672f\u54a8\u8be2\uff1a\u6839\u636e\u4e1a\u52a1\u9700\u6c42\uff0c\u5b9a\u5236\u7b26\u5408\u5ba2\u6237\u53d1\u5c55\u6218\u7565\u7684AI\u89e3\u51b3\u65b9\u6848\uff0c\u4ecb\u7ecd\u6700\u65b0\u7684AI\u6280\u672f\u8d8b\u52bf\uff0c\u7ba1\u7406\u9879\u76ee\u5e72\u7cfb\u4eba\uff0c\u5b8c\u6210\u4ea7\u54c1\u89e3\u51b3\u65b9\u6848\u7f16\u5199\uff1b\u89e3\u51b3\u65b9\u6848\u8bbe\u8ba1\uff1a\u6839\u636e\u5ba2\u6237\u9700\u6c42\uff0c\u8bbe\u8ba1\u5b9a\u5236\u7684\u4eba\u5de5\u667a\u80fd\u89e3\u51b3\u65b9\u6848\uff0c\u9009\u62e9\u5408\u9002\u7684\u7b97\u6cd5\u6a21\u578b\u3001\u4e91\u7ec4\u4ef6\u3001\u5de5\u5177\u548c\u67b6\u6784\uff0c\u6ee1\u8db3\u5ba2\u6237\u7684\u5b9e\u9645\u4e1a\u52a1\u9700\u6c42\uff1b\u57f9\u8bad\u8d4b\u80fd\uff1a\u7ec4\u7ec7\u5f00\u5c55\u5ba2\u6237\u57f9\u8bad\uff0c\u56f4\u7ed5\u4ea7\u54c1\u529f\u80fd\u8bf4\u660e\u3001\u6280\u672f\u8bbe\u8ba1\u3001\u4e1a\u52a1\u573a\u666f\uff0c\u7d2f\u8ba1\u7ec4\u7ec730+\u573a\u57f9\u8bad\u6d3b\u52a8\uff0c\u6210\u529f\u8d4b\u80fd\u56fd\u5185\u5916\u5ba2\u6237\u7684\u4e1a\u52a1\u7528\u6237\uff0cIT\u56e2\u961f\u7b49\uff1b\u6295\u6807\u652f\u6301\uff1a\u53c2\u4e0e\u591a\u4e2a\u6295\u6807\u9879\u76ee\uff0c\u534f\u52a9\u8fdb\u884c\u7b56\u7565\u5206\u6790\u3001\u6295\u6807\u89c4\u5212\uff0c\u53c2\u4e0e\u7f16\u5199\u9879\u76ee\u6295\u6807\u4e66\uff0cPOC\u642d\u5efa\uff1b\u5de5\u4f5c\u6210\u7ee9\uff1a\u6210\u529f\u4ea4\u4ed84\u4e2a\u56fd\u9645\u5927\u578bSaaS\u9879\u76ee\uff0c\u51fa\u6d77AI\u4e1a\u52a1\u4e3b\u8981\u987e\u95ee"}, {"company": "IsgoodAI", "title": "\u4e91\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08", "position": "\u4e91\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08", "startDate": "2018-12", "endDate": "2019-06", "time": "2018-12 ~ 2019-06", "duration": "", "description": "\u9700\u6c42\u7ba1\u7406\uff1a\u4e3b\u5bfc\u6c7d\u8f66\u89c6\u9891\u5206\u7c7b\u9879\u76ee\u7684\u4e1a\u52a1\u9700\u6c42\u68b3\u7406\uff0c\u9700\u6c42\u53ef\u884c\u6027\u8bc4\u4f30\u548cAI\u65b9\u6848\u8bbe\u8ba1\uff1b\u9879\u76ee\u5f00\u53d1\uff1a\u6839\u636e\u4e1a\u52a1\u53d1\u5c55\u9700\u8981\u8bbe\u8ba1AI\u89e3\u51b3\u65b9\u6848\uff0c\u57fa\u4e8eAzure Cloud\u7684Machine Learning Studio\u8bbe\u8ba1\u5206\u7c7b\u6a21\u578b\u7684Machine Learning Pipeline\uff0c\u5e76\u5168\u6d41\u7a0b\u8ddf\u8fdb\u843d\u5730\u6267\u884c\uff0c\u53ca\u65f6\u63d0\u4f9b\u6280\u672f\u6307\u5bfc\uff0c\u786e\u4fdd\u6709\u6548\u843d\u5730\uff0c\u6700\u7ec8\u5b9e\u73b0\u9ad8\u51c6\u786e\u7387\u7684\u5206\u7c7b\u6a21\u578b\uff0c\u90e8\u7f72\u4e3a\u670d\u52a1\u540e\u53d1\u9001\u7ed9\u4e0b\u6e38\u7cfb\u7edf\uff1b\u5ba2\u6237\u5173\u7cfb\u7ef4\u7cfb\uff1a\u5f00\u5c55Workshop\u89e3\u7b54\u5ba2\u6237\u5bf9\u4e8e\u9879\u76ee\u4e2d\u6d89\u53ca\u5f00\u53d1\u5185\u5bb9\u7684\u7591\u95ee\uff0c\u8fdb\u884c\u5ba2\u6237\u6f5c\u5728\u9700\u6c42\u8bc6\u522b\uff0c\u6316\u6398\u5ba2\u6237\u65b0\u4e1a\u52a1\u62d3\u5c55\u70b9\uff0c\u7ef4\u62a4\u826f\u597d\u7684\u5ba2\u6237\u5173\u7cfb"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u5a31\u4e50\u573a\u666f-\u9489\u9489\u60c5\u611f\u966a\u4f34Agent", "time": "2024-12\u81f32024-01", "description": "\u9489\u9489\u4e0eMiniMax\u5408\u4f5c\u5728\u9489\u9489AI\u52a9\u7406\u5e02\u573a\u4e0a\u6784\u5efaAI\u60c5\u611f\u966a\u4f34Agent\uff0c\u6ee1\u8db3\u6253\u5de5\u4eba\u4f11\u606f\u65f6\u7684\u60c5\u611f\u966a\u4f34\u548c\u7126\u8651\u7f13\u89e3\u9700\u6c42\uff0c\u63d0\u4f9b\u6b63\u9762\u60c5\u7eea\u4ef7\u503c"}, {"name": "\u751f\u4ea7\u529b\u573a\u666f-\u6c90\u77b3MOBA\u6e38\u620f\u8bc4\u8bba\u533a\u6cbb\u7406\u9879\u76ee\uff08P0\u7ea7\uff09", "time": "2024-08\u81f32024-12", "description": "\u6c90\u77b3\u4e1c\u5357\u4e9a\u5e02\u573a\u5370\u5c3c\u8bed/\u83f2\u5f8b\u5bbe\u8bed\u7b49\u5c0f\u8bed\u79cd\u6e38\u620f\u8bc4\u8bba\u533a\u4e2d\u5b58\u5728\u7684\u8fb1\u9a82\u4fe1\u606f\uff0c\u4e3a\u89e3\u51b3\u793e\u533a\u73af\u5883\u6076\u5316\u5bfc\u81f4\u7684\u7528\u6237\u6d41\u5931\u95ee\u9898\uff08\u6708\u5747\u6295\u8bc9\u91cf3000+\uff09\u4ee5\u53ca\u4f20\u7edfNLP\u5c0f\u6a21\u578b\u8fb1\u9a82\u8bc6\u522b\u53ec\u56de\u7387\u4f4e\u7684\u95ee\u9898\uff0c\u4e3b\u5bfc\u5927\u8bed\u8a00\u6a21\u578b\u66ff\u4ee3\u65b9\u6848\u5e76\u843d\u5730\u5b9e\u65bd\u3002"}]
+
+========================================
+
+========================================
+Candidate ID: 28395
+Name Mask: *晓叶
+Current Title/Company: 供应链高级产品经理（解决方案） @ 北京小米移动软件有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u5c0f\u7c73\u79fb\u52a8\u8f6f\u4ef6\u6709\u9650\u516c\u53f8", "title": "(SPM \u57fa\u4e8e SaaS \u5e73\u53f0\u7684 Microsoft Dynamics F&O 365 \u4ea7\u54c1)", "time": "2022-05 - \u81f3\u4eca", "description": "\u26ab \u9879\u76ee\u7ba1\u7406-\u5168\u7403\u8303\u56f4\u5185\u63a8\u5e7f\u4f9b\u5e94\u94fe\u5907\u4ef6\u7ba1\u7406\u4e1a\u52a1\u7684\u7ebf\u4e0a\u5316\u548c\u4f18\u5316\u8fed\u4ee3 \u57fa\u4e8e\u9879\u76ee\u7ba1\u7406\u7684\u6d41\u7a0b\u548c\u76d1\u63a7\u673a\u5236\uff0c\u4e00\u5e74\u5185\u5b8c\u6210 SPM \u7cfb\u7edf\u5728\u5168\u7403 76+\u7684\u56fd\u5bb6\u7684\u5168\u9762\u8fd0\u884c\uff0c\u6a2a\u5411\u9886\u5bfc\u5f00\u53d1\u3001\u6d4b\u8bd5\u7b49\u9879\u76ee\u7ec4\u6210\u5458\u5b8c\u6210\u91cd\u8981\u529f\u80fd\u7684\u9700\u6c42\u8fed\u4ee3\uff1b \u26ab \u8d44\u6e90\u5206\u914d\u548c\u534f\u8c03-\u7cfb\u7edf\u96c6\u6210\u5bf9\u63a5\u5b9e\u73b0\u8de8\u7cfb\u7edf\u529f\u80fd \u9488\u5bf9\u5c0f\u7c73\u590d\u6742\u7684\u4e1a\u52a1\u6a21\u5f0f\uff0c\u534f\u8c03\u8d44\u6e90\u548c\u9879\u76ee\u89c4\u5212\u7ba1\u7406\uff0c\u5b8c\u6210\u5404\u7cfb\u7edf\u96c6\u6210\u5bf9\u63a5\uff0c\u5305\u62ec SAP\u3001SCM\u3001SRM\u3001WMS\u3001TMS\u3001PSI\u3001GTS \u4ee5\u53ca\u8d22\u52a1\u8ba1\u7a0e\u5f15\u64ce\u548c\u8425\u6536\u7a3d\u6838\u7b49\uff1b"}, {"company": "\u4eac\u4e1c\u96c6\u56e2A", "title": "\u26ab \u6218\u7565\u843d\u5730-\u4ea7\u54c1/\u9879\u76ee\u7684\u7ba1\u7406\u548c\u4f18\u5316", "time": "2020-10 - 2022-04", "description": "\u57fa\u4e8e\u4e1a\u52a1\u8bc9\u6c42\uff0c\u65e8\u5728\u63d0\u9ad8\u4f9b\u5e94\u94fe\u81ea\u52a8\u5316\u548c\u534f\u540c\u6548\u7387\u4ee5\u53ca\u964d\u4f4e\u8fd0\u8425\u6210\u672c\uff0c\u8d1f\u8d23\u9879\u76ee EDI\u3001KA \u534f\u540c\u3001S&OP\u3001\u91c7\u8d2d\u81ea\u52a8\u5316\u3001\u4ed3\u7f51\u4f18\u5316\u4e0e\u552e\u540e\u6b62\u635f\u7b49\u7684\u9879\u76ee\u96c6\u7684\u76f8\u5173\u7ba1\u7406\u548c\u8d44\u6e90\u8c03\u914d\uff1b\u7ba1\u7406\u9879\u76ee\u6570\u91cf \u26ab \u4f9b\u5e94\u94fe\u7cbe\u7ec6\u5316\u8fd0\u8425-\u4e13\u4e1a\u529b \u53c2\u4e0e\u4f9b\u5e94\u94fe\u4e2d\u53f0\u80fd\u529b\u5efa\u8bbe\u4e0e\u7ec4\u7ec7\u5206\u79bb\uff0c\u642d\u5efa\u4ef7\u503c\u98ce\u9669\u77e9\u9635\u6a21\u578b\uff0c\u4ece\u91c7\u8d2d\u7b56\u7565\u3001\u4f9b\u5e94\u5546\u7ba1\u7406\u7b56\u7565\u4ee5\u53ca\u5e93\u5b58\u7b56\u7565\u65b9\u9762\u5339\u914d\u4e0d\u540c\u7684\u54c1\u7c7b\u7684\u7b56\u7565\u6a21\u578b\uff1b \u901a\u8fc7\u4f9b\u5e94\u94fe\u6307\u6807\u770b\u677f\u642d\u5efa\u4ee5\u53ca\u7cbe\u7ec6\u5316\u6570\u636e\u5206\u6790\uff0c\u4e13\u6ce8\u4f9b\u5e94\u94fe\u6a21\u5f0f\u521b\u65b0\uff1b 2021 \u5e74\u53c2\u4e0e\u5b8c\u6210\u4eac\u4e1c\u81ea\u8425\u4f9b\u5e94\u5546\u7ea2\u5b9d\u4e66 2.0 \u7684\u7f16\u8f91\u548c\u51fa\u7248\uff0c\u5bf9\u4f9b\u5e94\u94fe\u77e5\u8bc6\u548c\u80fd\u529b\u8fdb\u884c\u6c89\u6dc0\uff0c\u5728\u4eac\u4e1c APP \u6709\u552e\u5e76\u7f72\u540d\uff1b"}, {"company": "\u7075\u52a8\u79d1\u6280(\u5317\u4eac)\u6709\u9650\u516c\u53f8", "title": "\u5efa\u7acb\u4ece\u9500\u552e\u9884\u6d4b\u5230\u9700\u6c42\u8ba1\u5212\u8f6c\u5316\u7684\u65b0\u6a21\u578b,\u65b9\u6848\u53ef\u4ee5\u4e3a\u516c\u53f8\u8282\u7701\u4e00\u4e2a\u6708\u7684\u8d22\u52a1\u5e10\u671f;", "time": "2020-03 - 2020-10", "description": "\u7075\u52a8\u79d1\u6280\u662f\u5168\u7403\u552f\u4e00\u80fd\u591f\u5b9e\u73b0\u89c6\u89c9AMR\u81ea\u4e3b\u79fb\u52a8\u673a\u5668\u4eba\u5927\u89c4\u6a21\u90e8\u7f72\u7684\u4eba\u5de5\u667a\u80fd\u4f01\u4e1a,\u4e3a\u5236 \u9020\u4e1a\u548c\u7269\u6d41\u4e1a\u63d0\u4f9b\u4e86\u65e0\u4eba\u5316\u642c\u8fd0\u7684\u89e3\u51b3\u65b9\u6848\u3002 \u4f9b\u5e94\u94fe\u5185\u5916\u90e8\u8fdb\u884c\u95ee\u9898\u8bca\u65ad,\u5efa\u7acb\u5065\u5168\u4f9b\u5e94\u94fe\u6d41\u7a0b\u548c\u7ba1\u7406\u5236\u5ea6,\u5f00\u542fMRP\u7cfb\u7edf\u7684\u8fd0\u8f6c; \u7b2c\u4e8c\u4e2a\u6708\u5373\u63d0\u9ad8\u751f\u4ea7\u51c6\u65f6\u4ea4\u4ed8\u7387\u4ece50%\u523090%; \u8d1f\u8d23\u8ba1\u5212\u4f9b\u5e94\u7ba1\u7406\u5de5\u4f5c,\u68b3\u7406\u4e3b\u6570\u636e,\u7ba1\u7406\u91c7\u8d2d\u8d44\u6e90,\u5236\u5b9aCOSTDOWN\u8ba1\u5212;"}, {"company": "\u5317\u4eac\u6d77\u65f6\u97f5\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "5. \u62d3\u5c55\u9500\u552e\u6e20\u9053\uff0c\u5f00\u5c55\u4ee3\u7406\u548c\u7ebf\u4e0a\u7f51\u5e97\u7684\u9500\u552e\u548c\u5e03\u5c40\uff1b", "time": "2019-01 - 2020-03", "description": "\u81f4\u8ba4\u53ef\uff0c\u9884\u5f00\u62d3\u66f4\u5e7f\u9614\u7684\u5e02\u573a\u7a7a\u95f4\u3002\u516c\u53f8\u79c9\u6301\u79d1\u6280\u521b\u9020\u7f8e\u597d\u751f\u6d3b\u7684\u4f7f\u547d\uff0c\u8ffd\u6c42\u8282\u80fd\u73af\u4fdd\uff0c\u4e0d\u65ad\u53d1\u5c55\u58ee\u5927\uff0c \u5411\u5168\u7403\u77e5\u540d\u54c1\u724c\u7a33\u6b65\u524d\u8fdb\u3002 1. \u534f\u52a9 CEO \u5236\u5b9a\u516c\u53f8\u7684\u603b\u4f53\u8fd0\u8425\u65b9\u9488\u3001\u7b56\u7565\uff0c\u5236\u5b9a\u4f9b\u5e94\u94fe\u7684\u8fd0\u8425\u7b56\u7565\uff1b 2. \u4ee5\u7528\u6237\u4e3a\u4e2d\u5fc3\u3001\u4ee5\u6570\u636e\u4e3a\u5bfc\u5411\uff0c\u5236\u5b9a\u91c7\u8d2d\u6218\u7565\uff0c\u5305\u62ec\u8ba1\u5212\u3001\u7269\u6d41\u548c\u4ed3\u50a8\u7684\u7ba1\u7406\uff1b"}, {"company": "\u5317\u4eac\u667a\u5145\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u4f9b\u5e94\u94fe\u7ecf\u7406", "time": "2017-04 - 2019-01", "description": "\u26ab 0~1 \u642d\u5efa\u4f9b\u5e94\u94fe\u4f53\u7cfb&\u56e2\u961f \u8bbe\u8ba1\u642d\u5efa\u516c\u53f8\u7684\u4f9b\u5e94\u94fe\u4f53\u7cfb\uff0c\u9488\u5bf9\u8ba1\u5212\u3001\u91c7\u8d2d\u3001\u751f\u4ea7\u3001\u4ed3\u50a8\u548c\u7269\u6d41\u7b49\u8fdb\u884c\u6574\u4f53\u7684\u7edf\u7b79\u5206\u914d\uff0c\u4ece\u91c7\u8d2d\u56e2\u961f\u5efa\u7acb\u5230\u4f9b\u5e94\u94fe\u56e2\u961f\u4ee5\u53ca\u6574\u5957\u4f53\u7cfb\u6d41\u7a0b\u548c\u5236\u5ea6\u5b8c\u5584\uff0c\u5b8c\u6210 0~1 \u7684\u642d\u5efa\uff1b \u26ab \u91c7\u8d2d\u7b56\u7565/\u4f9b\u5e94\u5546\u7ba1\u7406 \u8fdb\u884c\u8ba1\u5212\u673a\u5236\u5efa\u7acb\u7f29\u77ed\u4ea4\u4ed8\u5468\u671f\u4ece 60 \u5929\u5230 45 \u5929\uff1b \u5b8c\u6210 MM/PP \u6a21\u5757\u7684\u68b3\u7406\uff0c\u4ece 0~1 \u5b8c\u6210\u7269\u6599\u4f53\u7cfb\u3001BOM \u4f53\u7cfb\u3001\u751f\u4ea7\u6a21\u5757\u4ee5\u53ca\u5176\u4ed6\u7ed3\u7b97\u4f53\u7cfb\u7684\u7ebf\u4e0a\u5316\u5de5\u4f5c\uff0c\u987a\u5229\u63a8\u52a8 MRP \u7cfb\u7edf\u4e0a\u7ebf\uff1b"}, {"company": "\u5317\u4eac ABB \u7535\u6c14\u4f20\u52a8\u7cfb\u7edf\u6709\u9650\u516c\u53f8", "title": "\u9ad8\u7ea7\u91c7\u8d2d\u5de5\u7a0b\u5e08", "time": "2013-03 - 2016-03", "description": "\u26ab \u65b0\u9879\u76ee\u652f\u6301\u65b0\u9879\u76ee\u521d\u671f\uff0c\u5efa\u7acb\u548c\u7ba1\u7406 BOM \u5305\u62ec exchange \u673a\u578b\u7684\u5efa\u7acb\uff0c\u6ce8\u91cd\u591a\u90e8\u95e8\u534f\u4f5c\uff1b\u5bfb\u6e90\u4f9b\u5e94\u5546\uff0c\u5e76\u8fdb\u884c\u672c\u5730\u5316\u4f18\u5316\uff0c\u63a7\u5236\u6210\u672c\uff1b2014&2015 \u5e74\u4f18\u5316\u6210\u672c 8%"}, {"company": "Sony mobile\u5317\u4eac\u7d22\u7231\u666e\u5929\u79fb\u52a8\u901a\u4fe1\u6709\u9650\u516c\u53f8", "title": "\u91c7\u8d2d\u5de5\u7a0b\u5e08", "time": "2008-06 - 2013-03", "description": "\u505a\u4e3a\u7d22\u5c3c\u7231\u7acb\u4fe1\u5168\u7403\u5728\u5185\u5730\u6700\u5927\u7684\u751f\u4ea7\u57fa\u5730\uff0c\u5f62\u6210\u4e86\u4ee5\u5de5\u4e1a\u5316\u3001\u751f\u4ea7\u548c\u76f4\u63a5\u5206\u9500\u4e3a\u6838\u5fc3\u7684\u4e1a\u52a1\u4f53\u7cfb\uff0c\u5df2\u7ecf\u5177\u5907\u4e00\u79d2\u949f\u751f\u4ea7 1.5 \u90e8\u624b\u673a\u7684\u751f\u4ea7\u80fd\u529b\uff0c\u66fe\u6570\u6b21\u5165\u9009\u4e2d\u56fd\u4f01\u4e1a 500 \u5f3a\u3001\u4e2d\u56fd\u5236\u9020\u4e1a \u4f01\u4e1a 500 \u5f3a\u5e76\u8dfb\u8eab\u4e2d\u56fd\u901a\u4fe1\u5668\u4ef6\u548c\u8bbe\u5907\u53ca\u96f6\u914d\u4ef6\u5236\u9020\u4e1a\u4f01\u4e1a\u524d\u5217\u3002 \u8f6e\u5c97\u751f\u4ea7\u90e8\u95e8\uff0c\u4ece\u8d28\u91cf\u3001\u5de5\u7a0b\u3001\u751f\u4ea7\u4ee5\u53ca 5S \u7b49\u5404\u4e2a\u65b9\u9762\u6df1\u5ea6\u5b66\u4e60\u751f\u4ea7\u4f53\u7cfb\uff1b\u4e0e\u56fd\u5185\u5916\u8d27\u8fd0\u6c9f\u901a\u534f\u8c03\uff0c\u5bf9\u8fdb\u51fa\u53e3\u8d38\u6613\u5f02\u5e38\u8fdb\u884c\u6c9f\u901a\u89e3\u51b3\uff0c\u987a\u5229\u5e94\u5bf9\u4e86\u6cf0\u56fd\u6d2a\u6c34/\u65e5\u672c\u5730\u9707\u7b49\u5927\u578b\u81ea\u7136\u98ce\u9669\uff1b \u4e0e\u9999\u6e2f\u96c6\u91c7\u4e2d\u5fc3\u8fdb\u884c\u91c7\u8d2d\u7b56\u7565\u7684\u6c9f\u901a\uff0c\u4e0e\u56fd\u5185\u5916\u4f9b\u5e94\u5546\u8fdb\u884c\u6709\u6548\u8c08\u5224\uff0c\u534f\u8c03\u751f\u4ea7\u8ba1\u5212\uff0c\u786e\u4fdd\u6309\u65f6 \u53c2\u4e0e\u65b0\u624b\u673a\u9879\u76ee NPI \u9636\u6bb5\u8bd5\u4ea7\u8fc7\u7a0b\uff0c\u4e0e\u4f9b\u5e94\u5546\u7684\u6c9f\u901a\u534f\u540c\uff0c\u4fdd\u8bc1\u9879\u76ee\u7684\u987a\u5229\u8fdb\u884c\uff1b"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2022-05 - 至今
+北京小米移动软件有限公司 
+3年7个月
+高科技所有 1 电商/新零售 北京
+供应链高级产品经理（解决方案）
+与业绩
+⚫ 产品设计-基于小米国际售后供应链业务提出的需求，制定解决方案和落地
+熟悉微软 F&O 产品架构，对供应链需求预测-计划/采购-补货/调拨-库房管理-财务模块-税务
+计算等全链条，以及内外系统的基础数据对接，提供端到端的系统解决方案，包括国际业务的需求调研、产品功能设计以及功能上线等；
+⚫ 项目管理-全球范围内推广供应链备件管理业务的线上化和优化迭代
+(SPM 基于 SaaS 平台的 Microsoft Dynamics F&O 365 产品)
+基于项目管理的流程和监控机制，一年内完成 SPM 系统在全球 76+的国家的全面运行，横向领导开发、测试等项目组成员完成重要功能的需求迭代；
+⚫ 资源分配和协调-系统集成对接实现跨系统功能
+针对小米复杂的业务模式，协调资源和项目规划管理，完成各系统集成对接，包括 SAP、SCM、SRM、WMS、TMS、PSI、GTS 以及财务计税引擎和营收稽核等；
+部门 | 2020-10 - 2022-04
+ 京东集团A 
+1年6个月
+高科技所有 北京
+供应链规划/PMO
+与业绩
+⚫ 战略落地-产品/项目的管理和优化
+基于业务诉求，旨在提高供应链自动化和协同效率以及降低运营成本，负责项目 EDI、KA 协同、S&OP、采购自动化、仓网优化与售后止损等的项目集的相关管理和资源调配；管理项目数量
+以及项目经理 8~11 个人，参与项目人数达到 40+人。其中仓网优化包括：差异化履约-B 专仓、C 仓 B 配、商仓合一、中央集货仓、品类 RDC 升级、包装止损等等项目；
+⚫ 供应链精细化运营-专业力
+参与供应链中台能力建设与组织分离，搭建价值风险矩阵模型，从采购策略、供应商管理策略以及库存策略方面匹配不同的品类的策略模型；
+通过供应链指标看板搭建以及精细化数据分析，专注供应链模式创新；
+2021 年参与完成京东自营供应商红宝书 2.0 的编辑和出版，对供应链知识和能力进行沉淀，在京东 APP 有售并署名；
+⚫ 组织协作
+基于供应链的数字化、自动化转型，与 Y 侧、物流共建智能化工具，拉齐共识，推动跨事业部/跨部门的战略共识会，项目战略复盘会 11 场+（2021 年）。
+部门 | 2020-03 - 2020-10
+灵动科技(北京)有限公司
+7个月
+资深计划供应经理
+灵动科技是全球唯一能够实现视觉AMR自主移动机器人大规模部署的人工智能企业,为制
+造业和物流业提供了无人化搬运的解决方案。
+工作职责与业绩
+供应链内外部进行问题诊断,建立健全供应链流程和管理制度,开启MRP系统的运转;
+建立销售、供应链、研发项目的跨部门对接机制;
+第二个月即提高生产准时交付率从50%到90%;
+建立从销售预测到需求计划转化的新模型,方案可以为公司节省一个月的财务帐期;
+⚫采购成本降低
+负责计划供应管理工作,梳理主数据,管理采购资源,制定COSTDOWN计划;
+建立并推进进销存管理体系和流程,制定进销存管理规则,当月财务关账及时率达到99%;
+部门 | 2019-01 - 2020-03
+北京海时韵科技有限公司
+1年2个月
+供应链总监
+公司简介:
+公司第一款自主研发产品---智能插座，以崭新靓丽的外观，多样便捷的使用功能，在小众群体获得一
+致认可，预开拓更广阔的市场空间。公司秉持科技创造美好生活的使命，追求节能环保，不断发展壮大，
+向全球知名品牌稳步前进。
+工作描述:
+1. 协助 CEO 制定公司的总体运营方针、策略，制定供应链的运营策略；
+2. 以用户为中心、以数据为导向，制定采购战略，包括计划、物流和仓储的管理；
+3. 管理供应链，降本增效，提高产品利润率；
+4. 协调公司内外部工作以及配合内外部研发新产品的研发工作，协调建立有效的团队协作机制；
+5. 拓展销售渠道，开展代理和线上网店的销售和布局；
+部门 | 2017-04 - 2019-01
+北京智充科技有限公司
+1年9个月
+供应链经理
+智充科技是国内领先的电动汽车充电设备及能源方案供应商，拥有 C2 交流和 C6 直流等系列红点设计大奖获奖产品，全面服务提供软硬件支持和云服务。
+工作职责与业绩
+⚫ 0~1 搭建供应链体系&团队
+设计搭建公司的供应链体系，针对计划、采购、生产、仓储和物流等进行整体的统筹分配，从采购团队建立到供应链团队以及整套体系流程和制度完善，完成 0~1 的搭建；
+⚫ 采购策略/供应商管理
+掌握产品结构和成本构成，制定采购策略，在 2018 年全年降低成本 5%，并通过调整生产供应计划链条，对供应商进行分层管理，提升供应链的灵活和敏捷性；
+⚫ 交付管理
+进行计划机制建立缩短交付周期从 60 天到 45 天；
+⚫ MRP 系统
+完成 MM/PP 模块的梳理，从 0~1 完成物料体系、BOM 体系、生产模块以及其他结算体系的线上化工作，顺利推动 MRP 系统上线；
+部门 | 2013-03 - 2016-03
+北京 ABB 电气传动系统有限公司
+3年
+高级采购工程师
+全球 500 强之一，在中国的交直流传动及可编程控制器产品的供应商，为全球客户提供成熟、可靠的解决方案，并提供全球性生产和生命周期服务的支持。
+工作职责与业绩
+⚫ 采购管理/服务部 PM 包采购集中化采购，与芬兰集采中心，制定采购策略，完成亚太地区服务中心的集中采购，与国内外客户、供应商以及当地的维修工程师，进行组织沟通，保证保质和维保需求的供应；协调国际化物流资源，解决应急性供应风险，对国内外物流货运和进出口业务的异常问题处理；
+⚫ 新项目支持新项目初期，建立和管理 BOM 包括 exchange 机型的建立，注重多部门协作；寻源供应商，并进行本地化优化，控制成本；2014&2015 年优化成本 8%
+部门 | 2008-06 - 2013-03
+Sony mobile北京索爱普天移动通信有限公司
+4年9个月
+采购工程师
+做为索尼爱立信全球在内地最大的生产基地，形成了以工业化、生产和直接分销为核心的业务体系，已经具备一秒钟生产 1.5 部手机的生产能力，曾数次入选中国企业 500 强、中国制造业
+企业 500 强并跻身中国通信器件和设备及零配件制造业企业前列。
+工作职责与业绩
+⚫ 生产&进出口
+轮岗生产部门，从质量、工程、生产以及 5S 等各个方面深度学习生产体系；与国内外货运沟通协调，对进出口贸易异常进行沟通解决，顺利应对了泰国洪水/日本地震等大型自然风险；
+⚫ 全球采购/集采
+与香港集采中心进行采购策略的沟通，与国内外供应商进行有效谈判，协调生产计划，确保按时
+按量交货；
+参与新手机项目 NPI 阶段试产过程，与供应商的沟通协同，保证项目的顺利进行；
+部门
+
+【教育经历】
+2004-09 - 2008-06
+首都师范大学
+计算机科学与技术专业-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人拥有16年供应链领域的产品与解决方案经验，具备端到端系统集成、跨国项目落地及跨部门协同能力，但其经历集中于传统供应链管理（如SAP、Dynamics F&O、MRP等），未体现任何AI、大模型、Agent、RAG或行业智能化项目的实际参与。简历中无POC主导经验、无AI技术栈应用、无金融/政务/能源等行业AI场景落地证据，亦无售前支持或效果评估指标设计相关内容。虽有‘解决方案’头衔，但属ERP/SCM范畴，与AI解决方案架构师岗位核心要求存在本质错配。
+
+
+========================================
+
+========================================
+Candidate ID: 28411
+Name Mask: *名
+Current Title/Company: 1 电商/新零售 杭州 @ 阿里巴巴集团A
+
+=== WORK EXPERIENCES ===
+[{"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2A", "title": "\u8d1f\u8d23\u4eba", "time": "2019-12 - \u81f3\u4eca", "description": ""}, {"company": "\u963f\u91cc\u96c6\u56e2", "title": "", "time": "2014-07 - 2019-12", "description": ""}, {"company": "Marvell", "title": "\u9ad8\u7ea7\u8f6f\u4ef6\u5de5\u7a0b\u5e08", "time": "2011-03 - 2014-07", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2019-12 - 至今
+ 阿里巴巴集团A 
+6年
+1 电商/新零售 杭州
+负责人
+服务技术负责人 战略级产品Agent***，构建面向全球的Agentic Infrastructure底座 从0到1主导设计并研发Agent***，作为Agent基础设施提供多种沙箱 Windows/Linux/Code/Browser/Mobile)。 基于阿里云基础设施，构建中心化管控+单元化数据面分离架构，实现资源、策略、持久化、网络、安全合规等核心能力，保证性能同时满足不同国家和地区合规要求。 定义并研发开放灵活的接入体系开源SDK/API/MCP)，成功落地于多个行业头部客户。 智能体产品体系，从单助手到Agentic OS的长期技术规划 主导**助手的整体架构与开发，通过多模态交互、RAG、任务执行等功能，实现了万级月活用户及99.9%的问答成功率。 构建Agentic Computer，实现DeepResearch、 PPT、知识库、PC Agent等，有效提升了产品智能化水平。 基于开源多Agent框架，自研Agent Runtime，构建Agent开发、部署、运维的流程规范，实现高可用的Agent服务。 作为技术架构师，主导端云协同、多端架构、安全等关键领域的设计与开发。所负责产品获得阿里云内部安全分前三。 设计并主导了跨平台应用框架，大幅提升了多端迭代效率与体验一致性。
+部门 | 2014-07 - 2019-12
+阿里集团
+5年5个月
+智能终端架构师
+天猫魔盒、智能电视操作系统的核心开发工作，产品累计激活量达千万级。 作为网络与安全子系统架构师，设计并实现了高效稳定的网络通信与安全防护体系。 基于WebRTC的实时音视频系统，实现高质量的音视频对话与屏幕共享功能。
+部门 | 2011-03 - 2014-07
+Marvell
+3年4个月
+高级软件工程师
+1,2 负责Android无线网络解决方案，主导内核开源 mwifiex 网络驱动的开发。 方案成功落地Google、Microsoft、Samsung等全球客户旗舰产品。 多次代表公司参加WiFi Alliance Plugfest，深度参与WiFi行业标准的制定与验证工作。
+部门
+
+【教育经历】
+2008-09 - 2011-03
+浙江大学985, 211, QS200
+信息电子工程-硕士以上 | 2004-09 - 2008-06
+浙江大学985, 211, QS200
+信息电子工程-本科
+
+【AI分析】
+匹配分: 85
+推荐: 高潜力
+理由: [Tags: solu_poc_design, solu_agent_understand, solu_llm_understand, solu_architecture, solu_presales_support, solu_rag_understand] 候选人具备从0到1构建大模型Agent基础设施的完整经验，主导设计Agentic Infrastructure底座并落地多个行业头部客户，符合‘真实行业AI项目落地经验’和‘主导POC全流程’要求；技术栈覆盖RAG、多模态交互、任务执行、Agent Runtime等核心能力，体现对Agent技术体系（LangChain/Tool Calling/Memory/RAG）的深度理解；作为技术负责人参与端到端方案设计、安全合规、跨平台部署，具备解决方案架构师所需的系统性思维。
+
+
+========================================
+
+========================================
+Candidate ID: 28490
+Name Mask: *铭
+Current Title/Company: 任职岗位：3C 行业 SA Leader @ 腾讯CSIG(云与智慧产业事业群)
+
+=== WORK EXPERIENCES ===
+[{"company": "\u817e\u8bafCSIG(\u4e91\u4e0e\u667a\u6167\u4ea7\u4e1a\u4e8b\u4e1a\u7fa4)", "title": "\u4efb\u804c\u5c97\u4f4d\uff1a3C \u884c\u4e1a SA Leader", "time": "2020-06 - \u81f3\u4eca", "description": "\uff0811 \u7ea7\u522b\uff0c\u5bf9\u6807\u963f\u91cc P8\uff09 \uf06c \u4e3b\u5bfc\u817e\u8baf\u4e91\u667a\u80fd\u5236\u9020\u8f6c\u578b\u5347\u7ea7\u9879\u76ee\uff0c\u5728\u5236\u9020\u4e1a\u4f01\u4e1a\u4e2d\u5e2e\u52a9\u5ba2\u6237\u5b8c\u6210\u6570\u5b57\u5316\u8f6c\u578b\u54a8\u8be2\uff0c\u54a8\u8be2\u8303\u56f4\u5305\u62ec\u4e86\u4ece\u5ba2\u6237\u4ece\u751f\u4ea7\u8ba2\u5355\u751f\u6210\u5230\u5165\u5e93\u6574\u4e2a\u6d41\u7a0b\uff0c\u8d1f\u8d23\u7f16\u5199\u6570\u5b57\u5316\u8f6c\u578b\u89e3\u51b3\u65b9\u6848\uff0c\u65b9\u6848\u6d89\u53ca\u6574\u4f53\u6570\u5b57\u5316\u67b6\u6784\u3001\u6570\u5b57\u80fd\u6e90\u3001\u751f\u4ea7\u6d41\u7a0b\u65e0\u7eb8\u5316\u3001\u8d28\u91cf\u63a7\u5236\u3001\u8bbe\u5907\u7684\u5de1\u68c0\u3001\u8bbe\u5907\u9884\u6d4b\u6027\u7ef4\u62a4\u7b49\uff1b \uf06c \u5728\u9762\u5411\u8f66\u4f01\u6570\u5b57\u5316\u8f6c\u578b\u9879\u76ee\u4e2d\u5e2e\u52a9\u6574\u8f66\u5382\u642d\u5efa\u4e86\u80fd\u8017\u7ba1\u7406\u5e73\u53f0\uff0c\u9879\u76ee\u6548\u679c\u4e3a\u6bcf\u751f\u4ea7\u4e00\u8f86\u8f66\u5e2e\u52a9\u4f01\u4e1a\u8282\u7ea6 25 \u5143\u7684\u5236\u9020\u6210\u672c\uff1b \uf06c \u5728\u82f9\u679c\u624b\u673a\u94fe\u4e2d\u4e3b\u63a8\u673a\u5668\u89c6\u89c9\u4ee3\u66ff\u4eba\u5de5\u7f3a\u9677\u68c0\u6d4b\uff0c\u56f4\u7ed5\u82f9\u679c\u624b\u673a\u94fe\u667a\u80fd\u7f3a\u9677\u68c0\u6d4b\u5df2\u7ecf\u5f97\u5230\u516c\u53f8\u9ad8\u5c42\u9ad8\u5ea6\u5173\u6ce8\u5e76\u6210\u4e3a\u516c\u53f8\u4e3b\u8981\u6218\u7565\u65b9\u5411\u4e4b\u4e00\u3002 \uf06c \u5bcc\u9a70\u9ad8\u79d1\uff1a\u524d\u671f\u548c\u5ba2\u6237\u6c9f\u901a\u6570\u5b57\u5316\u8f6c\u578b\u5347\u7ea7\uff0c\u5728\u6c9f\u901a\u8fc7\u7a0b\u4e2d\u53d1\u73b0\u4eba\u5de5\u8d28\u68c0\u4eba\u5458\u6bd4\u8f83\u591a\uff0c\u6574\u4f53\u6570\u5b57\u5316\u8f6c\u578b\u9879\u76ee\u5148\u7531\u4eba\u5de5\u667a\u80fd\u7455\u75b5\u68c0\u6d4b\u4ee3\u66ff\u4eba\u5de5\u68c0\u6d4b\u4e3a\u5207\u5165\u70b9\uff0c\u5728\u6574\u4e2a\u9879\u76ee\u671f\u95f4\u4e3b\u8981\u627f\u62c5\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08\u89d2\u8272\uff0c\u5de5\u4f5c\u5185\u5bb9\u5305\u62ec\u4e86\u4e1a\u52a1\u90e8\u95e8\u9700\u6c42\u8c03\u7814\uff0c\u7455\u75b5\u7c7b\u578b\u4e0e\u5224\u65ad\u6807\u51c6\u786e\u5b9a\uff0c\u9879\u76ee\u53ef\u884c\u6027\u5206\u6790\uff0c\u6280\u672f\u67b6\u6784\u6c47"}, {"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2A", "title": "", "time": "2017-06 - 2019-11", "description": "\u4efb\u804c\u5c97\u4f4d\uff1a\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08 \u4ed8\u56e2\u961f\u534f\u8c03\u548c\u7ba1\u7406\u8d44\u6e90\u3001\u628a\u63a7\u9879\u76ee\u8fdb\u5ea6\u3002 \uf0d8 \u5bf9\u4e91\u8ba1\u7b97(\u5206\u5e03\u5f0f\u6280\u672f\u3001\u5fae\u670d\u52a1)\u3001\u5927\u6570\u636e(\u6570\u636e\u4e2d\u53f0 dataworks)\u3001 AI(PI \u5e73\u53f0\u3001\u6df1\u5ea6\u5b66\u4e60\u6846\u67b6)\u3001IoT\u7b49\u6280\u672f\u6709\u6df1\u5165\u7684\u4e86\u89e3\u3002\u91cd\u70b9\u4ece\u4e8b\u4f01\u4e1a\u6570\u5b57\u5316\u8f6c\u578b\u3001\u4ea7\u4e1a\u4e92\u8054\u7f51\u5e73\u53f0\u7684\u9879\u76ee\u89c4\u5212\u3001\u67b6\u6784\u4e0e\u843d\u5730\uff0c\u4e1a\u52a1\u5c42\u9762\u5b9e\u73b0\u4ea7\u4e1a\u94fe\u8981\u7d20\u5728\u7ebf\u534f\u540c\u548c\u5168\u5c40\u4f18\u5316;\u6280\u672f\u5c42\u9762\u5f15\u5165\u4e92\u8054\u7f51\u5206\u5e03\u5f0f\u6280\u672f\u3001\u53cc\u4e2d\u53f0\u6846\u67b6\u4e0e\u5927\u6570\u636e\u4e0e AI \u6a21\u578b\uff0c\u89e3\u51b3\u7cfb\u7edf\u53ef\u6269\u5c55\u3001\u652f\u6301\u4e1a\u52a1\u5feb\u901f\u8fed\u4ee3\u3001\u590d\u6742\u573a\u666f\u667a\u80fd\u5316\u7b49\u8bc9\u6c42\u3002 \u5728\u4e0b\u8ff0\u9879\u76ee\u4e2d\u4e3b\u8981\u62c5\u4efb\u67b6\u6784\u5e08\u7684\u89d2\u8272\uff1a"}, {"company": "\u660e\u7565\u79d1\u6280\u96c6\u56e2", "title": "\u5728\u552e\u524d\u9636\u6bb5\u5e2e\u52a9\u9500\u552e\u6253\u5355\uff0c\u5728\u9879\u76ee\u524d\u4e2d\u671f\u5e2e\u52a9\u5f00\u53d1\u68b3\u7406\u6280\u672f\u67b6\u6784\u3002", "time": "2016-05 - 2017-05", "description": "\u6536\u96c6\u3001\u5206\u6790\u3001\u7814\u7a76\u76ee\u6807\u5ba2\u6237\u6240\u5728\u884c\u4e1a\u5e02\u573a\u8fd0\u4f5c\u7684\u6700\u65b0\u52a8\u6001\u548c\u4fe1\u606f\uff1b \u505a\u597d\u91cd\u5927\u9879\u76ee\u7684\u5ba2\u6237\u6c9f\u901a\uff0c\u64b0\u5199\u9879\u76ee\u6280\u672f\u65b9\u6848\u4e0e\u6807\u4e66\uff1b \u4e3a\u5ba2\u6237\u63d0\u4f9b\u5927\u6570\u636e\u76f8\u5173\u6280\u672f\u57f9\u8bad\u4e0e\u54a8\u8be2\u670d\u52a1\uff1b \u5728\u4e0b\u8ff0\u9879\u76ee\u4e2d\u4e3b\u8981\u62c5\u4efb\u552e\u524d\u67b6\u6784\u5e08\u7684\u89d2\u8272\uff1a \u94f6\u884c\u5361\u4e2d\u5fc3\uff08\u91d1\u878d\u65b9\u5411\uff09\uff1a\u5728\u552e\u524d\u9636\u6bb5\u68b3\u7406\u5ba2\u6237\u9700\u6c42\uff0c\u4ee5\u53ca\u521d\u6b65\u6784\u5efa\u5927\u6570\u636e\u6280\u672f\u6846\u67b6"}, {"company": "SAP", "title": "", "time": "2012-03 - 2015-06", "description": "\u5bf9\u5ba2\u6237\u73b0\u6709\u4e1a\u52a1\u60c5\u51b5\u8c03\u7814\u3001\u9700\u6c42\u5206\u6790\uff1b \u6839\u636e\u5ba2\u6237\u9700\u6c42\uff0c\u63d0\u51fa\u8bbe\u8ba1\u65b9\u6848\uff1b \u8fdb\u884c\u5b9e\u65bd\uff1a\u786e\u5b9a\u547d\u540d\u89c4\u5219\u5e76\u5236\u6210\u6587\u6863\u3001\u5efa\u6a21\u3001\u8bbe\u8ba1\u67e5\u8be2\u3001\u5c55\u73b0\u65b9\u6848\u3001\u7528\u6237\u6743\u9650\u6536\u96c6\uff1b \u4e0a\u7ebf\u51c6\u5907\uff1a\u6d4b\u8bd5\u73af\u5883\u3001\u4f20\u8f93\u5185\u5bb9\uff08\u6a21\u578b\u3001\u67e5\u8be2\u3001\u6743\u9650\u3001\u5c55\u73b0\u65b9\u5f0f\uff09\u3001\u52a0\u8f7d\u6570\u636e\u3002"}, {"company": "HP", "title": "", "time": "2009-11 - 2012-03", "description": "MES \u6c7d\u8f66\u5236\u9020\u5b9e\u65bd\u987e\u95ee \u5bf9\u5ba2\u6237\u73b0\u6709\u4e1a\u52a1\u60c5\u51b5\u8c03\u7814\u3001\u9700\u6c42\u5206\u6790\uff1b \u6839\u636e\u5ba2\u6237\u9700\u6c42\uff0c\u63d0\u51fa\u5b9e\u65bd\u65b9\u6848\uff1b \u4e0a\u7ebf\u51c6\u5907\uff1a\u6d4b\u8bd5\u73af\u5883\u3001\u52a0\u8f7d\u6570\u636e\u3002"}, {"company": "Federal Group", "title": "", "time": "2008-05 - 2009-05", "description": "\u901a\u8fc7\u5fae\u8f6f.net\uff0cSharePoint \u5b9e\u65bd\u5177\u4f53\u9879\u76ee"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2020-06 - 至今
+ 腾讯CSIG(云与智慧产业事业群) 
+5年6个月
+高科技所有 上海
+任职岗位：3C 行业 SA Leader
+（11 级别，对标阿里 P8）
+下属：2 人
+主要贡献：
+ 主导腾讯云智能制造转型升级项目，在制造业企业中帮助客户完成数字化转型咨询，咨询范围包括了从客户从生产订单生成到入库整个流程，负责编写数字化转型解决方案，方案涉及整体数字化架构、数字能源、生产流程无纸化、质量控制、设备的巡检、设备预测性维护等；
+ 在面向车企数字化转型项目中帮助整车厂搭建了能耗管理平台，项目效果为每生产一辆车帮助企业节约 25 元的制造成本；
+ 在苹果手机链中主推机器视觉代替人工缺陷检测，围绕苹果手机链智能缺陷检测已经得到公司高层高度关注并成为公司主要战略方向之一。
+重要参与项目：
+ 富驰高科：前期和客户沟通数字化转型升级，在沟通过程中发现人工质检人员比较多，整体数字化转型项目先由人工智能瑕疵检测代替人工检测为切入点，在整个项目期间主要承担解决方案架构师角色，工作内容包括了业务部门需求调研，瑕疵类型与判断标准确定，项目可行性分析，技术架构汇
+报。项目价值在于通过此次项目验证了在 3c 行业有大量的 cv 缺陷质检机会，并且形成了腾讯云在全国范围的推广与复制。
+ 汽车行业：在项目中承担了数字化转型架构师角色，工作内容包括了客户的业务沟通（在能源方面、厂区安全、工业互联网平台这三个方面做了深入交流），主导了现场调研与技术上的可行性分析，编写了节能减排方案、厂区视觉安全方案以及工业互联网平台介绍。
+ 新材料行业：对 客户侧数字化转型的引导，作为数字化转型的架构师主导了售前阶段的客户侧交流，咨询合同的编写，数字化转型咨询的具体实施（包括了整体技术架构的设计、数据流向图的编写、分阶段实施规划，具体功能包括设备预测性维护，设备的点巡检，Mes，Aps，绿色能源，无纸
+化办公，质量控制，厂区安全等方面），咨询文档的编写与客户侧汇报。为后续整体数字化转型的建设做下铺垫。
+部门 | 2017-06 - 2019-11
+ 阿里巴巴集团A 
+2年5个月
+1 电商/新零售 杭州
+工业大脑架构师
+（P7）
+任职岗位：解决方案架构师
+ 负责行业客户的云计算、大数据整体解决方案架构，深入调研和梳理业务方(客户)现状(业务和数据)和痛点需求，并结合关键场景的业务目标，有针对性地给出解决方案(涉及产品组合、技术架构、算法建模)。具有良好的商业和技术意识，能够与市场、研发等团队协同作战、优势互补，与 PMO、交
+付团队协调和管理资源、把控项目进度。
+ 对云计算(分布式技术、微服务)、大数据(数据中台 dataworks)、 AI(PI 平台、深度学习框架)、IoT等技术有深入的了解。重点从事企业数字化转型、产业互联网平台的项目规划、架构与落地，业务层面实现产业链要素在线协同和全局优化;技术层面引入互联网分布式技术、双中台框架与大数据与 AI
+模型，解决系统可扩展、支持业务快速迭代、复杂场景智能化等诉求。
+ 能够针对不同行业客户的不同领域、不同层次的业务需求，输出客户满意的解决方案(包括但不限于平台产品、技术服务、咨询服务等)，先后服务过多个互联网、工业等中大型企业客户。
+重要参与项目：
+在下述项目中主要担任架构师的角色：
+1. 正泰太阳能单多晶电池片（组件）的 EL 瑕疵检测：使用人工智能图像识别算法智能判断瑕疵，帮助节省人工。
+本项目还与 MES 对接得到太阳能组件信息以及瑕疵缺陷的标准（每个客户的瑕疵定义不同）用以帮助算法正确判断是否是缺陷。项目意义：阿里云第一个 AI 质检项目，项目金额接近千万。
+2. 燃煤优化：应用机器学习自动推荐人员给煤速度与阀门角度使锅炉产生更多的蒸汽带来更多的发电量。
+3. 数字化工厂项目：针对工厂的数字化、自动化、智能化做详细的调研与方案的撰写。
+重要技能：
+帮助销售顺利签约上千万金额的合同，并且在售前阶段积极与工厂领导做技术对接获取需求，以及后续做技术方案汇报、交流；
+在图像识别领域相关项目上，能够独立判断项目可行性与撰写技术方案；
+在大数据架构方面有一定的理解。
+部门 | 2016-05 - 2017-05
+明略科技集团 
+1年
+高科技所有 上海
+架构师-大数据
+工作主要内容：
+收集、分析、研究目标客户所在行业市场运作的最新动态和信息；
+做好重大项目的客户沟通，撰写项目技术方案与标书；
+为客户提供大数据相关技术培训与咨询服务；
+参与大数据项目实施。
+重要参与项目：
+在下述项目中主要担任售前架构师的角色：
+银行卡中心（金融方向）：在售前阶段梳理客户需求，以及初步构建大数据技术框架
+在卡中心反欺诈项目中，针对互联网欺诈现象如恶意的注册、登录、操作等风险行为，利用 Hadoop+
+Spark+ Redis 技术（离线数据与实时数据相结合），解决了互联网渠道海量并发行为数据的毫秒级实时响
+应分析难题，帮助金融机构 IT 平台向更开放的分布式处理架构演进，轻松应对互联网+时代的大数据处理场景。
+NLP 交互（自然语言处理）：本项目主要是实现人机交互，可以使客户通过自然语言的方式查询商品，在
+售前阶段梳理客户的需求与客户现有技术架构，之后帮助客户搭建大数据环境（部署分布式 CDH 环境，
+部署组件 HBASE、SOLR、Hdfs、YARN 等），使用 Phoenix 增加、修改、删除 Hbase 数据（商品信息），设计 Hbase 的 rowkey 以满足客户查找商品的需求，并且部署 SOLR 与 Hbase 的同步机制。
+重要技能：
+对大数据的主流技术比较熟悉，能自行搭建与部署 CDH、Hadoop 环境并且做开发；
+了解 Spark core、Spark Sql 和 Spark Streaming 的技术原理以及性能调优；
+在售前阶段帮助销售打单，在项目前中期帮助开发梳理技术架构。
+部门 | 2012-03 - 2015-06
+SAP 
+3年3个月
+高科技所有 北京
+SAP BI 顾问
+对客户现有业务情况调研、需求分析；
+根据客户需求，提出设计方案；
+进行实施：确定命名规则并制成文档、建模、设计查询、展现方案、用户权限收集；
+单元测试、集成测试；
+上线准备：测试环境、传输内容（模型、查询、权限、展现方式）、加载数据。
+部门 | 2009-11 - 2012-03
+HP 
+2年4个月
+咨询 上海
+MES 汽车制造实施顾问
+对客户现有业务情况调研、需求分析；
+根据客户需求，提出实施方案；
+单元测试、集成测试；
+上线准备：测试环境、加载数据。
+部门 | 2008-05 - 2009-05
+Federal Group
+1年
+咨询顾问
+在客户现场调研需求；
+通过微软.net，SharePoint 实施具体项目
+部门
+
+【教育经历】
+2004-09 - 2006-03
+Computer Science
+-本科
+
+【AI分析】
+匹配分: 45
+推荐: 中风险
+理由: 候选人具备扎实的行业解决方案架构经验，尤其在3C制造、汽车、新材料等工业领域有多个AI落地项目（如CV质检、能耗优化），并主导POC与售前全流程，符合‘真实客户项目落地’硬性要求。但其AI技术栈聚焦于传统CV与大数据，缺乏大模型、Agent、RAG等关键技术的直接应用证据；无金融/政务/能源等行业经验，与通用JD核心场景错配。
+
+
+========================================
+
+========================================
+Candidate ID: 28505
+Name Mask: *双宝
+Current Title/Company: IT与通讯 深圳 @ 华为集团A
+
+=== WORK EXPERIENCES ===
+[{"company": "\u534e\u4e3a\u96c6\u56e2A", "title": "", "time": "2019-05 - \u81f3\u4eca", "description": "\u534e\u4e3a\u4e91\u9ad8\u7ea7\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08"}, {"company": "\u4eac\u4e1c\u96c6\u56e2 JD Group", "title": "", "time": "2017-07 - 2019-05", "description": "\u4eac\u4e1c\u4e91\u8d44\u6df1\u552e\u524d\u54a8\u8be2\u987e\u95ee 1\u3001\u5bf9\u4e92\u8054\u7f51\u884c\u4e1a\u3001\u91d1\u878d\u884c\u4e1a\u3001\u5236\u9020\u4e1a\u3001\u7535\u5546\u884c\u4e1a\u6709\u5b9e\u9645\u9879\u76ee\u6d89\u53ca\u548c\u6df1\u523b\u7406\u89e3\u3002 2\u3001\u5728\u4eac\u4e1c\u9879\u76ee\u65b9\u9762\uff0c1\uff09\u56fd\u5185\u67d0\u5927\u6570\u636e\u516c\u53f8\u6574\u4f53\u4e0a\u4eac\u4e1c\u4e91\u552e\u524d\u54a8\u8be2\uff0c\u9700\u6c42\u5f15\u5bfc\u548c\u68b3\u7406\uff0c\u67b6\u6784\u8bbe\u8ba1\u4e0e\u4f18\u5316\uff0c\u4ee5\u53ca\u534f\u8c03\u4eac\u4e1c\u4e91\u552e\u540e\u56e2\u961f\u4e0e\u5ba2\u6237\u4e00\u8d77\u5b8c\u6210\u4ea4\u4ed8\u5de5\u4f5c\u30022\uff09\u56fd\u5185\u67d0\u5927\u578b\u94f6\u884c\u79ef\u5206\u5546\u57ce\u7cfb\u7edf\uff0c\u6807\u4e66\u7f16\u5199\u3001\u5e95\u5c42Iaas\u9ad8\u53ef\u7528\u6027\u548c\u9ad8\u53ef\u9760\u6027\u67b6\u6784\u8bbe\u8ba1\u3001\u5e94\u7528\u7684\u90e8\u7f72\u4f18\u5316\u5efa\u8bae\u3001\u6295\u6807\u652f\u6301\u30023\uff09\u5c71\u4e1c\u67d0\u73bb\u7483\u5236\u9020\u96c6\u56e2\u4e0a\u4e91\u9879\u76ee\uff0c\u4ece\u707e\u5907\u5207\u5165\u5230\u6839\u636e\u5ba2\u6237\u7684\u9884\u7b97\u548c\u9700\u6c42\u5b8c\u6210\u6df7\u5408\u4e91\u7684\u89e3\u51b3\u65b9\u6848\u4e0e\u67b6\u6784\u8bbe\u8ba1\u53ca\u843d\u5730poc\u6f14\u793a\u30024\uff09\u56fd\u5185\u67d0\u5927\u75c5\u7b79\u6b3e\u5e73\u53f0\u4e0a\u4eac\u4e1c\u4e91\uff0c\u4ece\u5ba2\u6237\u5bf9\u4e8e\u9ad8\u5e76\u53d1\u3001\u5927\u5bb9\u91cf\u7684\u8981\u6c42\uff0c\u4eac\u4e1c\u5229\u7528\u81ea\u8eab\u6c89\u6dc0\u7684\u6280\u672f\uff0c\u4f8b\u5982DRDS\u5206\u90e8\u7f72\u6570\u636e\u5e93\u7cfb\u7edf\u4ee5\u53ca\u5927\u5bb9\u91cf\u7684\u4e91\u5b58\u50a8\u6ee1\u8db3\u5ba2\u6237\u9700\u6c42\uff0c\u5b8c\u6210\u9ad8\u53ef\u7528\u6027\u548c\u9ad8\u53ef\u9760\u6027\u7684\u67b6\u6784\u89e3\u51b3\u65b9\u6848\u3002"}, {"company": "\u4e9a\u4fe1\u8054\u521b\u79d1\u6280(\u4e2d\u56fd)\u6709\u9650\u516c\u53f8", "title": "", "time": "2015-07 - 2017-07", "description": "1. \u4e9a\u4fe1\u4e91\u8ba1\u7b97\u5e73\u53f0\u89c4\u5212\u4e0e\u5efa\u8bbe \u8d1f\u8d23\u4e9a\u4fe1\u4e91\u5efa\u8bbe\u6574\u4f53\u65b9\u6848\u7684\u8bbe\u8ba1\u3001\u64b0\u5199\u4e0e\u5b9e\u9645\u6267\u884c\u3002Openstack\u4e91\u5e73\u53f0\u7684\u5b89\u88c5\uff0c\u914d\u7f6e\uff0c\u57fa\u4e8eOpenstack\u6280\u672f\u67b6\u6784\uff0c\u8f93\u51fa\u6ee1\u8db3\u4e9a\u4fe1\u4e91\u8ba1\u7b97\u5e73\u53f0\u9700\u6c42\u7684\u89e3\u51b3\u65b9\u6848\u3002\u4e9a\u4fe1\u4e91\u8ba1\u7b97\u5e73\u53f0\u8d44\u6e90\u6c60\u7684\u5408\u7406\u89c4\u5212\uff0c\u4e91\u5e73\u53f0\u67b6\u6784\u8bbe\u8ba1\u53ca\u4f18\u5316\uff0c\u6570\u636e\u4e2d\u5fc3\u670d\u52a1\u5668\u3001\u5b58\u50a8\u3001\u6570\u636e\u5e93\u3001\u7f51\u7edc\u3001\u5b89\u5168\u7b49\u8bbe\u5907\u9009\u578b\u3002\u4e9a\u4fe1\u96c6\u56e2\u5185\u90e8\u7684\u6280\u672f\u4ea4\u6d41\u4e0e\u5206\u4eab\uff0c\u66fe\u63a5\u53d7\u4e9a\u4fe1\u96c6\u56e2\u7ba1\u7406\u5b66\u9662\u9080\u8bf7\u505aOpenstack\u4e0e\u4e9a\u4fe1\u4e91\u8ba1\u7b97\u5e73\u53f0\u7684Keynote\uff0c\u5206\u6790Openstack\u7684\u7279\u70b9\u4e0e\u4e9a\u4fe1\u4e91\u5e73\u53f0\u7684\u67b6\u6784\u8bbe\u8ba1\u3002\u4e0e\u4e09\u65b9\u516c\u53f8\u7684\u6280\u672f\u6c9f\u901a\uff0c\u4e91\u8fd0\u7ef4\u4eba\u5458\u7684\u62db\u8058\u4e0e\u57f9\u8bad\u3002\u4e91\u7cfb\u7edf\u7684\u76d1\u63a7\u4e0e\u5e94\u6025\u5904\u7406\u3002 2. \u5728\u4e9a\u4fe1\u4e91\u8fd0\u884c\u8fc7\u7a0b\u4e2d\uff0c\u672c\u4eba\u8d1f\u8d23\u4e0ePAAS\u90e8\u95e8\u7684\u5bf9\u63a5\uff0c\u5373\u4e0eOpenshift\u5e73\u53f0\u7684\u5bf9\u63a5\u6d4b\u8bd5\u5de5\u4f5c\u3002\u5e76\u4e0e\u5927\u6570\u636e\u90e8\u95e8\uff0c\u89e3\u51b3Docker\u8dd1\u5728\u4e9a\u4fe1\u4e91\u4e0a\u7684\u5bf9\u63a5\u95ee\u9898\uff0c\u4ee5\u53caDocker\u7f51\u7edc\u6a21\u5f0f\u7684\u9009\u62e9\u3002\u4e86\u89e3Oracle\u53caMySQL\u6570\u636e\u5e93\uff0c\u4ee5\u53caAWS\u4e0a\u7684\u6570\u636e\u5e93\u7b49\u3002 3. \u66fe\u4e0e\u5176\u4ed6BU\u7684\u540c\u4e8b\u4e00\u8d77\u505aMNVE\uff08\u865a\u62df\u8fd0\u8425\u5546\uff09\u7684\u9879\u76ee\uff0c\u9879\u76ee\u7684\u4e91\u4e3b\u673a\u7528\u7684AWS\u4e0a\u7684\u4e91\u4e3b\u673a\uff0c\u6211\u4eec\u7528\u5230\u4e86AWS\u65b0\u51fa\u7684\u529f\u80fdDirect Connect\uff0c\u5373\u4eceAWS\u4e2d\u56fd\u5408\u4f5c\u4f19\u4f34\u5149\u73af\u65b0\u7f51\u62c9\u4e00\u6839\u8054\u901a\u4e13\u7ebf\u5230\u5ba2\u6237\u7684\u673a\u623f\u3002\u5b9e\u73b0\u5ba2\u6237\u6570\u636e\u548cAWS\u4e91\u7684\u4e92\u901a\u3002\u65e2\u4fdd\u8bc1\u4e86\u5ba2\u6237\u6570\u636e\u7684\u5b89\u5168\u6027\u53c8\u65b9\u4fbf\u4f7f\u7528\u4e86AWS\u3002\u6211\u8d1f\u8d23\u5ba2\u6237\u6570\u636e\u4e2d\u5fc3\u5230AWS Direct Connect\u7684\u7f51\u7edc\u8bbe\u8ba1\u4ee5\u53ca\u8def\u7531\u5668\u3001\u865a\u62df\u8def\u7531\u5668\u7684\u914d\u7f6e\u3002 6. \u4f7f\u7528\u8fc7Oracle Cloud\u3001Amazon AWS\u4e91\uff0c\u5e76\u5173\u6ce8AWS\u3001Microsoft Azure\u3001IBM SoftLayer\u3001\u963f\u91cc\u4e91\u3001\u534e\u4e3a\u4e91\u7b49\u6709\u5f71\u54cd\u529b\u7684\u516c\u6709\u4e91\u5382\u5546\u3002\u5e76\u5173\u6ce8AWS\u4e3e\u529e\u7684\u4f1a\u8bae\u548c\u6d3b\u52a8\u3002"}, {"company": "\u4e2d\u56fd\u7535\u4fe1\u96c6\u56e2\u7cfb\u7edf\u96c6\u6210\u6709\u9650\u8d23\u4efb\u516c\u53f8", "title": "\u9879\u76ee\u7ecf\u7406", "time": "2013-04 - 2015-07", "description": "1. \u56fd\u5bb6\u91d1\u7a0e\u4e09\u671f\u7f51\u7edc\u9879\u76ee (2013.04\u20142013.12) \u672c\u4eba\u5de5\u4f5c\uff1a\u4f5c\u4e3a\u91d1\u7a0e\u9879\u76ee\u7ec4\u6210\u5458\uff0c\u53c2\u52a0\u90e8\u5206\u7701\u8282\u70b9\u7684\u5efa\u8bbe\u3001\u5b9e\u65bd\uff0c\u8d1f\u8d23\u8fd0\u884c\u7ef4\u62a4\u6574\u4e2a\u91d1\u7a0e\u4e09\u671f\u9aa8\u5e72\u7f51\u3001\u5feb\u901fTrouble Shooting\uff0c\u6bcf\u5468\u63d0\u4ea4\u6545\u969c\u53ca\u5904\u7406\u62a5\u544a\u3002\u719f\u6089\u5e76\u4e86\u89e3\u672c\u9879\u76ee\u4f7f\u7528\u7684\u5b89\u5168\u8bbe\u5907\u3002\u8d1f\u8d23\u7f16\u5199\u91d1\u7a0e\u4e09\u671f\u7f51\u7edc\u9879\u76ee\u7684\u9a8c\u6536\u6587\u6863\uff0c\u5bf9\u672c\u9879\u76ee\u6709\u8f83\u6df1\u523b\u7684\u7406\u89e3\u3002 \u672c\u4eba\u5de5\u4f5c\uff1a\u534f\u52a9\u8bbe\u8ba1\uff0c\u8d1f\u8d23\u6574\u5f20\u7f51\u7edc\u7684\u8bbe\u8ba1\uff0cIP\u5730\u5740\u89c4\u5212\u3002\u8d1f\u8d23\u603b\u516c\u53f8\u3001\u5404\u7ba1\u7406\u5904\u3001\u73b0\u5730\u7ad9\u7684\u7f51\u7edc\u8c03\u8bd5\u3001\u5b9e\u65bd\u5de5\u4f5c\u3002\u5305\u62ec\u7f51\u7edc\u7684\u4e92\u8054\u4e92\u901a\u3001\u5728\u7f51\u7edc\u4e0a\u505a\u4e1a\u52a1\u3002\u914d\u5408\u5404\u4e1a\u52a1\u7cfb\u7edf\uff08\u4e2d\u7ebf\u5c40\u670920\u591a\u4e2a\u4e1a\u52a1\u7cfb\u7edf\uff09\u4eba\u5458\u8c03\u8bd5\u7cfb\u7edf\u3002\u534f\u8c03\u7f51\u7edc\u5b89\u5168\u8bbe\u5907\u5382\u5546\u6309\u5ba2\u6237\u548c\u5404\u4e1a\u52a1\u7cfb\u7edf\u7684\u9700\u6c42\u505a\u76f8\u5e94\u7684\u914d\u7f6e\u3002\u540e\u671f\uff0c\u5357\u6c34\u5317\u8c03\u7f51\u7edc\u7684\u8fd0\u7ef4\u7ba1\u7406\u5de5\u4f5c\uff0cTrouble Shooting\uff0c\u63d0\u4ea4\u62a5\u544a\u3002 3. \u4e2d\u56fd\u6052\u5929\u96c6\u56e2\u89c6\u9891\u4e13\u7f51\u9879\u76ee (2014.03\u20142014.05) \u9879\u76ee\u7b80\u4ecb\uff1a\u6052\u5929\u96c6\u56e2\u5728\u5168\u56fd\u670922\u5bb6\u5b50\u516c\u53f8\uff0c\u672c\u9879\u76ee\u5efa\u8bbe\u662f\u628a\u8fd922\u5bb6\u5206\u516c\u53f8\u901a\u8fc7\u5e7f\u57df\u7f51\u4e13\u7ebf\u8fde\u63a5\u8d77\u6765\uff0c\u5e76\u5728\u672c\u7f51\u4e0a\u8fd0\u884c\u9ad8\u6e05\u89c6\u9891\u4e1a\u52a1\uff0c\u5305\u62ec\u89c6\u9891\u4f1a\u8bae\u548c\u89c6\u9891\u76d1\u63a7\u7b49\u3002\u672c\u9879\u76ee\u91c7\u7528\u9759\u6001\u8def\u7531\u534f\u8bae\uff0c\u9ad8\u6548\u3001\u5feb\u6377\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2019-05 - 至今
+ 华为集团A 
+6年7个月
+IT与通讯 深圳
+华为云高级解决方案架构师
+部门 | 2017-07 - 2019-05
+京东集团 JD Group
+1年10个月
+京东云资深售前咨询顾问
+1、对互联网行业、金融行业、制造业、电商行业有实际项目涉及和深刻理解。
+2、在京东项目方面，1）国内某大数据公司整体上京东云售前咨询，需求引导和梳理，架构设计与优化，以及协调京东云售后团队与客户一起完成交付工作。2）国内某大型银行积分商城系统，标书编写、底层Iaas高可用性和高可靠性架构设计、应用的部署优化建议、投标支持。3）山东某玻璃制造集团上云项目，从灾备切入到根据客户的预算和需求完成混合云的解决方案与架构设计及落地poc演示。4）国内某大病筹款平台上京东云，从客户对于高并发、大容量的要求，京东利用自身沉淀的技术，例如DRDS分部署数据库系统以及大容量的云存储满足客户需求，完成高可用性和高可靠性的架构解决方案。
+3、大数据与AI的项目以及较深入理解。1）良品铺子智能预测项目，底层用的京东云JMR（Jingdong MapReduce），上层是京东X事业部研发的智能预测模块，以线性为基本算法模型以及联合客户自有IDC构建了大数据混合云平台。2）某大病筹款平台，客户需求GPU云主机P40作为深度学习的Iaas层，另外搭载TensorFlow、Caffe人工智能学习框架。
+4、对团队的培训，因为我已考取AWS Solutions Architect-Associate和Professional的认证，所以培训团队对于云计算解决方案架构方面的理解以及对于互联网行业的理解。总结重点项目案例，剖析高可用性等，培训团队，使其能够迅速帮助销售达成业务目标。
+部门 | 2015-07 - 2017-07
+亚信联创科技(中国)有限公司 
+2年
+高科技所有 上海
+云计算售前咨询顾问
+1. 亚信云计算平台规划与建设
+负责亚信云建设整体方案的设计、撰写与实际执行。Openstack云平台的安装，配置，基于Openstack技术架构，输出满足亚信云计算平台需求的解决方案。亚信云计算平台资源池的合理规划，云平台架构设计及优化，数据中心服务器、存储、数据库、网络、安全等设备选型。亚信集团内部的技术交流与分享，曾接受亚信集团管理学院邀请做Openstack与亚信云计算平台的Keynote，分析Openstack的特点与亚信云平台的架构设计。与三方公司的技术沟通，云运维人员的招聘与培训。云系统的监控与应急处理。
+Openstack环境故障处理，撰写运维文档，编写技术指导手册，运维SLA等，编写投标文档，标书制作，配合销售人员编写项目报价。
+
+2. 在亚信云运行过程中，本人负责与PAAS部门的对接，即与Openshift平台的对接测试工作。并与大数据部门，解决Docker跑在亚信云上的对接问题，以及Docker网络模式的选择。了解Oracle及MySQL数据库，以及AWS上的数据库等。
+
+3. 曾与其他BU的同事一起做MNVE（虚拟运营商）的项目，项目的云主机用的AWS上的云主机，我们用到了AWS新出的功能Direct Connect，即从AWS中国合作伙伴光环新网拉一根联通专线到客户的机房。实现客户数据和AWS云的互通。既保证了客户数据的安全性又方便使用了AWS。我负责客户数据中心到AWS Direct Connect的网络设计以及路由器、虚拟路由器的配置。
+
+4. 亚信云在前期建设，尤其是VPC设计、网络和安全设计的时候，我们着重参考了AWS的VPC设计以及实现原理。关于IP地址规划、多数据中心、多个AZ，我们也多了深入研究和试用。本人也曾申请AWS账户，并使用了其中的主要的产品和功能。
+
+5. 中信集团私有云方案设计，提供亚信云整体技术平台、业务和技术层面的架构咨询服务，理解中信集团在研发、运营工作中对网络、计算、存储等基础设施的需求，分析其快速发展过程中，在基础设施层面所遇到的挑战和未来的方向；基于亚信云的技术架构，输出满足客户需求的解决方案。
+
+6. 使用过Oracle Cloud、Amazon AWS云，并关注AWS、Microsoft Azure、IBM SoftLayer、阿里云、华为云等有影响力的公有云厂商。并关注AWS举办的会议和活动。
+部门 | 2013-04 - 2015-07
+中国电信集团系统集成有限责任公司
+2年3个月
+项目经理
+参加、负责以下项目：
+1. 国家金税三期网络项目 (2013.04—2013.12)
+项目简介：该项目是中国电信承担的国家重点工程，是一个覆盖总局、省局、地市、区县和税务分局（所）等各级国、地税税务机关的综合性通信平台。该网络采用双星拓扑结构，整个网络划分为骨干网和省网两层，其中连接两个全国级数据中心节点（北京、南海）和省级国地税节点的骨干网是金税三期工程网络的核心部分。骨干网和省网内部使用OSPF路由协议，骨干网与省网之间采用EBGP路由协议。安全方面，使用了天融信和网神的防火墙。
+本人工作：作为金税项目组成员，参加部分省节点的建设、实施，负责运行维护整个金税三期骨干网、快速Trouble Shooting，每周提交故障及处理报告。熟悉并了解本项目使用的安全设备。负责编写金税三期网络项目的验收文档，对本项目有较深刻的理解。
+2. 国家南水北调工程中线局北京总公司、京石段计算机网络项目 (2014.04—2015.05)
+项目简介：该项目是中国电信承担的国家重点工程，是一个覆盖南水北京中线局总公司、北京分公司、河北分公司、河北7个管理处、45个现地站点的三层、四级大型网络。该网络双星型拓扑结构，整个网络核心层节点均为双主备模式、边缘接入层节点为主备模式。整张网络使用OSPF + 静态的路由协议。安全设备有华三防火墙F1000，天融信的网络安全审计系统、绿盟的漏洞扫描系统、网神的IPS、网闸、网康的流量控制系统等。
+本人工作：协助设计，负责整张网络的设计，IP地址规划。负责总公司、各管理处、现地站的网络调试、实施工作。包括网络的互联互通、在网络上做业务。配合各业务系统（中线局有20多个业务系统）人员调试系统。协调网络安全设备厂商按客户和各业务系统的需求做相应的配置。后期，南水北调网络的运维管理工作，Trouble Shooting，提交报告。
+3. 中国恒天集团视频专网项目 (2014.03—2014.05)
+项目简介：恒天集团在全国有22家子公司，本项目建设是把这22家分公司通过广域网专线连接起来，并在本网上运行高清视频业务，包括视频会议和视频监控等。本项目采用静态路由协议，高效、快捷。
+本人工作：负责整个网络设计、实施方案编写、部分实施工作并协调北京电信专线机房工作人员、各省电信分公司人员做实施，解决总公司出现的各种疑难问题，提高网络服务质量。后期的运维管理，Trouble Shooting工作，提交报告。
+4. 国家组织机构代码中心广域网改造和视频监控项目 (2014.06—2014.08)
+项目简介：本项目是国家组织机构代码中心广域网从2M升级到4M，在各分支代码中心的机房安装摄像头，实现从总部对各代码中心机房的监控。本项目采用静态路由协议，高效、快捷。
+本人工作：该项目从立项、写技术方案、实施方案、到网络设计、网络实施、协调37个分支机构实施，到试运行，最后验收都是我做的。本项目锻炼了我扎实的网络技术和良好的沟通、协调能力。
+部门
+
+【教育经历】
+2010-01 - 2013-01
+华北电力大学211
+计算机科学 | 2005-01 - 2009-01
+燕山大学
+计算机科学
+
+【AI分析】
+匹配分: 35
+推荐: 中风险
+理由: 候选人具备丰富的云计算售前和架构经验，覆盖金融、制造、政务相关项目，但缺乏明确的大模型/Agent技术栈落地证据；AI项目描述停留在IaaS层（如GPU主机、TensorFlow部署），未体现RAG、Memory、Tool Calling等关键能力；无POC主导或效果评估指标设计记录。
+
+
+========================================
+
+========================================
+Candidate ID: 28506
+Name Mask: *志锴
+Current Title/Company: IT与通讯 上海 北京 深圳 @ 腾讯集团A
+
+=== WORK EXPERIENCES ===
+[{"company": "\u817e\u8baf\u96c6\u56e2A", "title": "SaaS \u67b6\u6784\u5e08\u56e2\u961f\u8d1f\u8d23\u4eba", "time": "2021-09 - \u81f3\u4eca", "description": "\u901a\u7528 SaaS \u9886\u57df\u7684\u67b6\u6784\u5e08\u56e2\u961f\uff0c\u6839\u636e \u901a\u7528 SaaS \u5ba2\u6237\u7684\u884c\u4e1a\u60c5\u51b5\u548c\u9700\u6c42\uff0c\u9488\u5bf9 \u901a\u7528 SaaS \u7684\u4e0d\u540c\u7ec6\u5206\u9886\u57df\u5efa\u7acb\u4e00\u5957\u5168\u65b0\u5ba2\u6237\u673a\u5236\u6765\u5b9e\u73b0\u4e1a\u52a1\u589e\u91cf\u3002\u4e3b\u8981\u8d1f\u8d23"}, {"company": "\u5fae\u8f6f(\u4e2d\u56fd)\u6709\u9650\u516c\u53f8\u6df1\u5733\u5206\u516c\u53f8", "title": "\u5927\u5ba2\u6237\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6", "time": "2015-12 - \u81f3\u4eca", "description": ""}, {"company": "\u4e9a\u9a6c\u900a\u901a\u6280\u672f\u670d\u52a1(\u5317\u4eac)\u6709\u9650\u516c\u53f8", "title": "\u4f01\u4e1a\u670d\u52a1\u56e2\u961f\u8d1f\u8d23\u4eba", "time": "2018-07 - 2021-07", "description": ""}, {"company": "\u5fae\u8f6f(\u4e2d\u56fd)\u6709\u9650\u516c\u53f8\u6df1\u5733\u5206\u516c\u53f8", "title": "\u65b9\u6848\u4e2d\u5f15\u8fdb\u65b0\u4ea7\u54c1\u4ee5\u53ca\u4e91\u7aef", "time": "2015-12 - 2018-07", "description": "\u4e3a\u5fae\u8f6f\u5927\u4e2d\u534e\u533a\u91cd\u8981\u5ba2\u6237\u7684\u5173\u952e\u7cfb\u7edf\u63d0\u4f9b \u89e3\u51b3\u65b9\u6848\u3001\u54a8\u8be2\u3001\u6280\u672f\u652f\u6301\u7b49\u670d\u52a1\u3002\u4e3b\u8981\u4e3a\u5ba2\u6237\u63d0\u4f9b\u53ef\u6301\u7eed\u3001\u6709\u4fdd\u969c\u7684 \u89e3\u51b3\u65b9\u6848\uff0c\u534f\u52a9\u7528\u6237\u5728\u964d\u4f4eIT\u8fd0\u7ef4\u6210\u672c\u7684\u540c\u65f6\uff0c\u66f4\u597d\u7684\u5229\u7528\u73b0\u6709\u7684\u8d44\u6e90\uff0c\u63d0\u9ad8\u5de5\u4f5c\u6548\u7387\uff1b\u540c\u65f6\u534f\u52a9\u5ba2\u6237\u5728IT"}, {"company": "\u5fae\u8f6f(\u4e2d\u56fd)\u6709\u9650\u516c\u53f8\u4e0a\u6d77\u5206\u516c\u53f8", "title": "\u6280\u672f\u652f\u6301\u5de5\u7a0b\u5e08", "time": "2011-07 - 2015-12", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2021-09 - 至今
+ 腾讯集团A 
+4年3个月
+IT与通讯 上海 北京 深圳
+SaaS 架构师团队负责人
+带领全国
+通用 SaaS 领域的架构师团队，根据
+通用 SaaS 客户的行业情况和需求，针对
+通用 SaaS 的不同细分领域建立一套全新客户机制来实现业务增量。主要负责
+通用 SaaS 领域的客户技术互动，与销售、产研团队合作分别在人力资源、营销、财税等不同 SaaS 客户中建立新的打法帮助客户提升业务质量；建立客户互动机制来提升跨地区的客户覆盖效率，实现腾讯云渗透率的提升。
+部门 | 2015-12 - 至今
+微软(中国)有限公司深圳分公司
+10年
+大客户解决方案专家
+为微软大中华区重要客户的关键系统提供解决方案、咨询、技术支持等服务。主要为客户提供可持续、有保障的解决方案,协助用户在降低IT运维成本的同时,更好的利用现有的资源,提高工作效率;同时协助客户在IT方案中引进新产品以及云端解决方案,使得技术在客户的企业运营中更好地发挥作用;作为项目负责人带领小型团队完成技术项目。主要涉及包括企业合作平台、移动平台等。
+部门 | 2018-07 - 2021-07
+亚马逊通技术服务(北京)有限公司
+3年
+企业服务团队负责人
+带领华南，香港，台湾的技术服务经理团队，进行客户服务交付，专注于企业级客户的服务交付，专注于数字原生以及相关智能制造产业，保证服务质量。独立进行团队绩效管理，团队运营规划，客户质量管理，关注客户业务在AWS安全，性能，可用性以及成本。将客户的规划，需求以及用例转化为实际项目以及客户案例。
+部门 | 2015-12 - 2018-07
+微软(中国)有限公司深圳分公司
+2年7个月
+解决方案专家
+为微软大中华区重要客户的关键系统提供
+解决方案、咨询、技术支持等服务。主要为客户提供可持续、有保障的
+解决方案，协助用户在降低IT运维成本的同时，更好的利用现有的资源，提高工作效率；同时协助客户在IT
+方案中引进新产品以及云端
+解决方案，使得技术在客户的企业运营中更好地发挥作用；作为项目负责人带领小型团队完成技术项目。主要涉及包括企业合作平台、移动平台等。
+部门 | 2011-07 - 2015-12
+微软(中国)有限公司上海分公司
+4年5个月
+技术支持工程师
+为亚太区企业客户（包括大中华区、东南亚、澳新等）提供远程的提升级别的技术支持，主要覆盖产品包括SharePoint，以及SharePoint平台下的相关产品，如SQL Server、Active Directory、BI等。同时代理团队技术主管职位，协助团队优化内部流程、新技术落地、完成新旧成员的技术准备以及更新等；同时对下一代SharePoint产品进行测试、进行TAP客户的支持、编写内部技术参考文档等。
+部门
+
+【教育经历】
+2013-09 - 至今
+复旦大学985, 211, QS200
+软件工程-硕士以上 | 2008-09 - 2012-07
+上海交通大学985, 211, QS200
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人拥有丰富的云厂商解决方案经验（微软、AWS、腾讯），具备售前支持、客户技术互动、POC类项目交付能力，并熟悉多行业SaaS场景（HR、财税、营销等）。但简历中未体现任何与大模型、Agent、RAG、Memory等AI核心技术相关的项目经验，亦无金融/政务/能源等垂直行业AI落地案例。其经验集中于传统企业IT架构、云迁移和SaaS产品推广，缺乏岗位要求的‘真实行业AI项目落地经验’和‘Agent技术理解力’等硬性条件。
+
+
+========================================
+
+========================================
+Candidate ID: 28577
+Name Mask: *明博
+Current Title/Company: 信息安全架构师 @ 众安在线财产保险股份有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4f17\u5b89\u5728\u7ebf\u8d22\u4ea7\u4fdd\u9669\u80a1\u4efd\u6709\u9650\u516c\u53f8", "title": "3.\u7814\u53d1\u843d\u5730\u4e86\u76d1\u63a7\u7cfb\u7edf\u3001\u5b89\u5168\u4e8b\u4ef6\u7ba1\u7406\u7cfb\u7edf\u3001\u6f0f\u6d1e\u626b\u63cf\u7cfb\u7edf\u53ca\u4e1a\u52a1\u53cd\u6b3a\u8bc8\u7cfb\u7edf\uff0c\u4e3a\u516c\u53f8\u63d0\u4f9b\u5b89\u5168\u8fd0\u8425\u652f\u6491\uff1b", "time": "2021-05 - \u81f3\u4eca", "description": "\u8d1f\u8d23\u516c\u53f8\u7684\u6574\u4f53\u4fe1\u606f\u5b89\u5168\u67b6\u6784\uff1b 3.\u53c2\u4e0e\u5236\u5b9a\u5b89\u5168\u89c4\u8303\u548c\u7ba1\u7406\u5236\u5ea6\u5efa\u8bbe\u3002 1.\u843d\u5730\u516c\u53f8 S-SDLC\u6d41\u7a0b\uff0c\u6709\u6548\u89c4\u8303\u548c\u63d0\u5347\u516c\u53f8\u4ee3\u7801\u5b89\u5168\u8d28\u91cf\uff1b"}, {"company": "\u4f17\u5b89\u4fe1\u606f\u6280\u672f\u670d\u52a1\u6709\u9650\u516c\u53f8", "title": "\u9500\u552e\u8bb8\u53ef\uff1b", "time": "2016-12 - \u81f3\u4eca", "description": "\u8d1f\u8d23\u4f17\u5b89\u79d1\u6280\u4fe1\u606f\u5b89\u5168\u4f53\u7cfb\u5efa\u8bbe\uff0c\u5b89\u5168\u8fd0\u8425\u652f\u6491\u5de5\u4f5c\uff1b 1.\u652f\u6491\u4f17\u5b89\u4fdd\u9669\u7684\u4fe1\u606f\u5b89\u5168\u9632\u62a4\u53ca\u5408\u89c4\u5de5\u4f5c\uff0c\u652f\u6491\u516c\u53f8\u4e0a\u5e02\u3001ISO27001\uff0c\u7b49\u4fdd\uff0cAPP\u9690\u79c1\u5408\u89c4\u7b49\u5de5\u4f5c\uff1b 2.\u8fde\u7eed\u591a\u5e74\u4fdd\u969c\u516c\u53f8\u4fe1\u606f\u5b89\u5168\uff0c\u672a\u51fa\u4e25\u91cd\u7f51\u7edc\u5b89\u5168\u4e8b\u6545\uff1b 4.\u53c2\u4e0e\u96c6\u56e2\u6570\u636e\u5b89\u5168\u6cbb\u7406\u4f53\u7cfb\u5efa\u8bbe\u53ca\u4e2a\u4eba\u9690\u79c1\u4fdd\u62a4\u5efa\u8bbe\uff0c\u901a\u8fc7\u6280\u672f+\u7ba1\u7406\u624b\u6bb5\u6709\u6548\u63d0\u5347\u516c\u53f8\u6570\u636e\u5b89\u5168\u6cbb\u7406\u6c34\u5e73\uff0c\u4e14\u8054\u5408\u4e2d\u56fd \u7f51\u7edc\u5b89\u5168\u5ba1\u67e5\u6280\u672f\u4e0e\u8ba4\u8bc1\u4e2d\u5fc3(CCRC)\u63a8\u51faDPO\u57f9\u8bad\u8bfe\u7a0b\uff1b"}, {"company": "\u643a\u7a0b\u8ba1\u7b97\u673a\u6280\u672f(\u4e0a\u6d77)\u6709\u9650\u516c\u53f8 Ctrip", "title": "2.\u5b89\u5168\u4ea7\u54c1\u8bbe\u8ba1\u3001\u8fd0\u8425\uff0c\u5305\u62ec\u8d26\u53f7\u98ce\u63a7\u7cfb\u7edf\u3001SSO\u7cfb\u7edf\u3001\u7edf\u4e00\u9a8c\u8bc1\u7801\u7b49\uff1b", "time": "2014-08 - 2015-12", "description": "\u516c\u53f8\u67b6\u6784\u59d4\u5458\u4f1a\u6210\u5458\uff0c\u91cd\u8981\u9879\u76ee\u7684\u5b89\u5168\u8bc4\u5ba1\uff1b 3.\u8d1f\u8d23\u516c\u53f8\u4fe1\u606f\u5b89\u5168\u76f8\u5173\u7cfb\u7edf\u7684\u8bbe\u8ba1\u3001\u8fd0\u8425\u4ee5\u53ca\u5f00\u53d1\uff0c\u4f8b\u5982APT\u68c0\u6d4b\u7cfb\u7edf\u3001\u5b89\u5168\u53ef\u89c6\u5316\u5e73\u53f0\u3001\u5b89\u5168\u76d1\u63a7\u5e73\u53f0\u3001\u914d\u7f6e\u5de1\u68c0\u7cfb 1.\u643a\u7a0b\u7b2c1\u5c4a\u9ed1\u5ba2\u9a6c\u62c9\u677e1\u7b49\u5956\uff1b 2.\u843d\u5730\u4e86\u8d26\u53f7\u98ce\u63a7\u3001SSO\u3001\u7edf\u4e00\u9a8c\u8bc1\u7801\u3001\u914d\u7f6e\u5de1\u68c0\u7b49\u7cfb\u7edf\uff0c\u63d0\u5347\u4e86\u516c\u53f8\u7684\u4e1a\u52a1\u98ce\u63a7\u80fd\u529b\u548c\u81ea\u52a8\u5316\u5b89\u5168\u54cd\u5e94\u80fd\u529b\uff1b"}, {"company": "\u4e2d\u56fd\u94f6\u8054", "title": "\u4fe1\u606f\u5b89\u5168\u5de5\u7a0b\u5e08", "time": "2012-08 - 2014-08", "description": "\u8d1f\u8d23\u91d1\u878d\u884c\u4e1a\u4fe1\u606f\u5b89\u5168\u65b9\u9762\u7684\u57fa\u7840\u6027\uff0c\u524d\u77bb\u6027\u7684\u6280\u672f\u7814\u7a76\u3002\u4e3b\u8981\u5185\u5bb9\u6709\uff1a\u56fd\u5bc6\u7b97\u6cd5\u7814\u7a76\u548c\u5b9e\u73b0\uff0c\u4e91\u5b89\u5168\uff0c\u65b0\u578b\u652f\u4ed8\u6280\u672f\u7684\u5b89\u5168 3.\u4e09\u9879\u7b2c\u4e00\u53d1\u660e\u4eba\u4e13\u5229\u3002"}, {"company": "\u5feb\u94b1\u652f\u4ed8\u6e05\u7b97\u4fe1\u606f\u6709\u9650\u516c\u53f8", "title": "\u4fe1\u606f\u5b89\u5168\u5de5\u7a0b\u5e08", "time": "2011-07 - 2012-08", "description": "\u8d1f\u8d23\u65e5\u5e38\u4fe1\u606f\u7cfb\u7edf\u7684\u5b89\u5168\u8fd0\u7ef4\uff0c\u5206\u6790\u548c\u5904\u7406\u6bcf\u65e5\u7684 IDS\u4e8b\u4ef6\u3002 2.\u8d1f\u8d23 SOC\u5e73\u53f0\u5f00\u53d1\uff0c\u5c06\u751f\u4ea7\u7cfb\u7edf\u7684\u5404\u7c7b\u8d44\u4ea7\u5b89\u5168\u544a\u8b66\u8fdb\u884c\u805a\u5408\uff0c\u5b9e\u73b0\u7edf\u4e00\u5206\u6790\u3001\u544a\u8b66\u3001\u5904\u7406\u3002 3.\u8d1f\u8d23\u516c\u53f8\u7684\u6e17\u900f\u6d4b\u8bd5\u5de5\u4f5c\uff0c\u5b9a\u671f\u5bf9\u516c\u53f8\u751f\u4ea7\u7cfb\u7edf\u8fdb\u884c\u6e17\u900f\u6d4b\u8bd5\uff0c\u5e76\u7ed9\u51fa\u4fee\u8865\u65b9\u6848\uff0c\u5bf9\u4e8e\u65b0\u4e0a\u7ebf\u7684\u7cfb\u7edf\u8fdb\u884c\u6e17\u900f\u6d4b\u8bd5\uff0c\u4fdd 4.\u5e94\u4ed8\u516c\u53f8\u7684\u5404\u7c7b\u4fe1\u606f\u5b89\u5168\u5408\u89c4\u5e74\u68c0\uff0c\u5305\u62ecPCI DSS\uff0cISO/IEC 27001\uff0c\u94f6\u8054\u5361\u8d26\u6237\u4fe1\u606f\u5b89\u5168\u5408\u89c4\u8ba4\u8bc1\u7b49\uff0c\u8d1f\u8d23\u5b9e\u65bd\u516c\u53f8\u7684 1.\u6e17\u900f\u6d4b\u8bd5\u53d1\u73b0\u4e86\u591a\u4e2a\u9ad8\u5371\u6f0f\u6d1e\u5e76\u8fdb\u884c\u4e86\u4fee\u8865\uff0c\u6709\u6548\u7684\u963b\u6b62\u4e86\u5feb\u94b1\u7684\u5ba2\u6237\u4fe1\u606f\u6cc4\u9732\u3002\u53ca\u65f6\u53d1\u73b0\u5e76\u963b\u6b62\u4e86\u4e00\u8d77\u5165\u4fb5\u4e8b\u4ef6\u3002"}, {"company": "\u56fd\u5bb6(\u4e0a\u6d77)\u4fe1\u606f\u5b89\u5168\u5de5\u7a0b\u6280\u672f\u7814\u7a76\u4e2d\u5fc3", "title": "2.\u8d1f\u8d23\u4fe1\u606f\u5b89\u5168\u4ea7\u54c1\u5f00\u53d1\u3002", "time": "2009-04 - 2011-07", "description": "\u8d1f\u8d23\u6e17\u900f\u6d4b\u8bd5\u5de5\u4f5c\uff0c\u4e3a\u653f\u5e9c\u673a\u6784\u548c\u5176\u5b83\u5ba2\u6237\u8fdb\u884c\u6e17\u900f\u6d4b\u8bd5\uff0c\u5bf9\u5176\u8fdb\u884c\u5b89\u5168\u6d4b\u8bc4\u3002 3.\u4e16\u535a\u4f1a\u671f\u95f4\u7684\u4fe1\u606f\u5b89\u5168\u8fd0\u7ef4\u548c\u5e94\u6025\u54cd\u5e94\u3002 1.\u72ec\u7acb\u5f00\u53d1\u5347\u7ea7\u4e86\u201c\u6587\u4ef6\u52a0\u5bc6\u5b9d\u201d\u8f6f\u4ef6\uff0c\u4e00\u6b3e\u57fa\u4e8eUSB key \u7684\u6587\u4ef6\u52a0\u5bc6\u8f6f\u4ef6\u3002 2.\u8363\u83b7\u4e16\u535a\u4fe1\u606f\u5316\u9752\u5e74\u5c97\u4f4d\u80fd\u624b(2010.7)\uff0c\u4e16\u535a\u4fe1\u606f\u5b89\u5168\u8fd0\u7ef4\u4fdd\u969c\u4e09\u7b49\u5956(2010.7)\uff0c\u4e16\u535a\u4fe1\u606f\u5b89\u5168\u8fd0\u7ef4\u4fdd\u969c\u4e8c\u7b49\u5956 2010.10)\uff0c\u56fd\u5bb6()\u4fe1\u606f\u5b89\u5168\u5de5\u7a0b\u6280\u672f\u7814\u7a76\u4e2d\u5fc32010\u5e74\u5ea6\u5148\u8fdb\u4e2a\u4eba\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2021-05 - 至今
+ 众安在线财产保险股份有限公司 
+4年7个月
+高科技所有 上海
+信息安全架构师
+团队转型为乙方安全团队，推出数据安全、、网络安全保险等多项创新安全产品和服务。 | 2015.12-2016.16 众安在线财产保险股份有限公司
+负责公司的整体信息安全架构；
+2.负责公司监控系统、安全事件管理系统、漏洞扫描平台、业务反欺诈系统研发工作；
+3.参与制定安全规范和管理制度建设。
+主要业绩：
+1.落地公司 S-SDLC流程，有效规范和提升公司代码安全质量；
+2.研发落地了故障管理平台、建立了安全事件管理流程，形成了完善的应急响应机制；
+3.研发落地了监控系统、安全事件管理系统、漏洞扫描系统及业务反欺诈系统，为公司提供安全运营支撑；
+部门 | 2016-12 - 至今
+ 众安信息技术服务有限公司 
+9年
+高科技所有 上海
+信息安全负责人
+负责众安科技信息安全体系建设，安全运营支撑工作；
+2.负责众安保险及子公司整体安全架构，安全产品研发，安全服务支持；
+3.负责安全产品规划，架构设计，安全产品及安全服务商业化输出；
+主要业绩：
+1.支撑众安保险的信息安全防护及合规工作，支撑公司上市、ISO27001，等保，APP隐私合规等工作；
+2.连续多年保障公司信息安全，未出严重网络安全事故；
+3.负责 SIEM，HIDS，DLP，WAF及反欺诈等系统的产品设计和研发，产品在集团广泛使用，多项产品获得公安部安全产品
+销售许可；
+4.参与集团数据安全治理体系建设及个人隐私保护建设，通过技术+管理手段有效提升公司数据安全治理水平，且联合中国
+网络安全审查技术与认证中心(CCRC)推出DPO培训课程；
+部门 | 2014-08 - 2015-12
+携程计算机技术(上海)有限公司 Ctrip 
+1年4个月
+高科技所有 上海
+信息安全产品经理
+公司架构委员会成员，重要项目的安全评审；
+2.安全产品设计、运营，包括账号风控系统、SSO系统、统一验证码等；
+3.负责公司信息安全相关系统的设计、运营以及开发，例如APT检测系统、安全可视化平台、安全监控平台、配置巡检系
+统等；
+主要业绩：
+1.携程第1届黑客马拉松1等奖；
+2.落地了账号风控、SSO、统一验证码、配置巡检等系统，提升了公司的业务风控能力和自动化安全响应能力；
+3.研发了APT检测系统，基于流量分析识别异常心跳网络、恶意文件传输等风险，并发现了多起高危入侵事件；
+部门 | 2012-08 - 2014-08
+ 中国银联 
+2年
+3 互联网金融/金融科技 上海
+信息安全工程师
+负责金融行业信息安全方面的基础性，前瞻性的技术研究。主要内容有：国密算法研究和实现，云安全，新型支付技术的安全
+等。
+主要业绩：
+1.ipt 支付技术研究荣获2013年北京国际金融展最受欢迎产品前5名。
+2.银联云安全项目分别荣获央行金融科技进步奖一等奖，上海市科技进步奖三等奖。
+3.三项第一发明人专利。
+部门 | 2011-07 - 2012-08
+快钱支付清算信息有限公司 
+1年1个月
+高科技所有 上海
+信息安全工程师
+负责日常信息系统的安全运维，分析和处理每日的 IDS事件。
+2.负责 SOC平台开发，将生产系统的各类资产安全告警进行聚合，实现统一分析、告警、处理。
+3.负责公司的渗透测试工作，定期对公司生产系统进行渗透测试，并给出修补方案，对于新上线的系统进行渗透测试，保
+障其安全性。
+4.应付公司的各类信息安全合规年检，包括PCI DSS，ISO/IEC 27001，银联卡账户信息安全合规认证等，负责实施公司的
+信息安全合规工作。
+主要业绩：
+1.渗透测试发现了多个高危漏洞并进行了修补，有效的阻止了快钱的客户信息泄露。及时发现并阻止了一起入侵事件。
+2.负责 SOC平台开发，整合了 IPS，NetSceen，NetScaler，Linux，Windows 等多种资产的日志，实现统一分析，告警和
+处理。
+3.研究微软的NAP IPSEC网络准入方案，并自行开发了NAP客户端.
+部门 | 2009-04 - 2011-07
+国家(上海)信息安全工程技术研究中心
+2年3个月
+信息安全工程师
+负责渗透测试工作，为政府机构和其它客户进行渗透测试，对其进行安全测评。
+2.负责信息安全产品开发。
+3.世博会期间的信息安全运维和应急响应。
+主要业绩：
+1.独立开发升级了“文件加密宝”软件，一款基于USB key 的文件加密软件。
+2.荣获世博信息化青年岗位能手(2010.7)，世博信息安全运维保障三等奖(2010.7)，世博信息安全运维保障二等奖
+2010.10)，国家()信息安全工程技术研究中心2010年度先进个人。
+部门
+
+【教育经历】
+2005-09 - 2009-06
+华东理工大学211
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备扎实的信息安全背景和金融行业经验，但缺乏AI大模型、Agent技术栈及POC项目落地的核心证据。其工作聚焦于传统安全体系（如SIEM、DLP、反欺诈系统），未体现RAG/Agent/Memory等关键技术实践，亦无售前方案设计或AI效果评估指标构建经历。
+
+
+========================================
+
+========================================
+Candidate ID: 28622
+Name Mask: *想
+Current Title/Company: IT与通讯 上海 北京 深圳 @ 腾讯集团A
+
+=== WORK EXPERIENCES ===
+[{"company": "\u817e\u8baf\u96c6\u56e2A", "title": "", "time": "2017-12 - \u81f3\u4eca", "description": "\u8d1f\u8d23\u817e\u8baf\u4e91\u5728\u6e38\u620f\u884c\u4e1a\u548c\u533b\u7597\u884c\u4e1a\u7684\u89e3\u51b3\u65b9\u6848 \u5de5\u4f5c\u804c\u8d23\uff1a1.\u4e91\u5e73\u53f0\u4e0e\u5ba2\u6237\u672c\u5730VPN\u8fde\u63a5,\u5305\u62ecIPsec site to site VPN, point to site VPN 2.\u4e91\u5e73\u53f0\u4e0e\u5ba2\u6237\u672c\u5730\u7684\u4e13\u7ebf\u8fde\u63a5,\u638c\u63e1BGP,MSTP\u6280\u672f\u3002 3.\u6df1\u5165\u4e86\u89e3Azure\u4e91\u5e73\u53f0\u56db\u5c42\u548c\u4e03\u5c42\u7684\u8d1f\u8f7d\u5747\u8861\u6280\u672f,\u5305\u62ecSoftware Load Balancer,Application Gateway, Traffic Manager\u3002 4.\u719f\u6089Azure\u4e91\u5e73\u53f0\u7684\u865a\u62df\u7f51\u7edc\u67b6\u6784\u548c\u5e95\u5c42\u8bbe\u8ba1\u3002"}, {"company": "\u4e07\u8fbe\u7f51\u7edc\u79d1\u6280\u96c6\u56e2", "title": "\u8d44\u6df1\u8fd0\u7ef4\u7ecf\u7406", "time": "2017-05 - 2017-12", "description": "1. \u57fa\u4e8eAnsible\u548cGit\u7684\u9488\u5bf9Juniper/Cisco\u7b49\u7f51\u7edc\u8bbe\u5907\u7684\u81ea\u52a8\u5316\u8fd0\u7ef4\u5e73\u53f0\u3002 2. \u57fa\u4e8e\u5f00\u6e90\u7cfb\u7edfNetbox\u7684IP\u5730\u5740\u7ba1\u7406\u5e73\u53f0\uff0c\u4e3b\u8981\u7528\u5230\u7684\u6280\u672f\u6709Python\uff0cDjango\uff0cSNMP\u7b49\u3002 3. \u7edf\u4e00\u76d1\u63a7\u5e73\u53f0\u4ee5\u53ca\u7edf\u4e00\u62a5\u8b66\u5e73\u53f0\u7684\u5efa\u8bbe\uff0c\u719f\u6089\u5f00\u6e90\u7684\u76d1\u63a7\u65b9\u6848\u5305\u62ecZabbix\uff0cCacti\uff0cGrafana\uff0cPrometheus\uff0cELK\uff0cLibreNMS\uff0cGraylog\u7b49\u3002 4. \u719f\u6089Juniper\u7f51\u7edc\u8bbe\u5907\u7684\u57fa\u672c\u914d\u7f6e\u3002"}, {"company": "\u5fae\u8f6f\uff08MICROSOFT\uff09", "title": "\u5de5\u7a0b\u5e08\uff0c\u5e73\u65f6\u8ddf\u4e16\u7eaa\u4e92\u8054\u7684", "time": "2016-01 - 2017-05", "description": "Azure\u5728\u4e2d\u56fd\u533a\u662f\u7531\u4e16\u7eaa\u4e92\u8054\u8fdb\u884c\u72ec\u7acb\u8fd0\u8425\u5e76\u76f4\u63a5\u5411\u5ba2\u6237\u63d0\u4f9b\u6280\u672f\u652f\u6301\uff0c \u5fae\u8f6f\u4f5c\u4e3a\u6280\u672f\u63d0\u4f9b\u65b9\u4e3a\u4e16\u7eaa\u4e92\u8054\u63d0\u4f9b\u540e\u7ebf\u6280\u672f\u652f\u63f4\u3002\u4f5c\u4e3a \u5fae\u8f6f\u540e\u7ebf\u6280\u672f\u652f\u63f4\u56e2\u961f\u7684\u8d44\u6df1\u6280\u672f\u652f\u6301 1. \u7cbe\u901a\u4e91\u5e73\u53f0\u4e0e\u5ba2\u6237\u672c\u5730VPN\u8fde\u63a5\u6280\u672f\uff0c\u5305\u62ecIPsec VPN, SSTP VPN, L2TP VPN 2. \u7cbe\u901a\u4e91\u5e73\u53f0\u4e0e\u5ba2\u6237\u672c\u5730\u7684\u4e13\u7ebf\u8fde\u63a5\u6280\u672f\uff0c\u638c\u63e1BGP\uff0cVLAN\u6280\u672f\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2017-12 - 至今
+ 腾讯集团A 
+8年
+IT与通讯 上海 北京 深圳
+资深解决方案架构师
+工作职责和业绩：
+负责腾讯云在游戏行业和医疗行业的解决方案
+部门
+2000 - 至今
+微软\(中国\)有限公司上海闵行分公司
+25年11个月
+技术支持工程师 | 2016-04 ~ 至今： 目前工作地点：上海 | 所属部门：技术支持
+工作职责：1.云平台与客户本地VPN连接,包括IPsec site to site VPN, point to site VPN
+2.云平台与客户本地的专线连接,掌握BGP,MSTP技术。
+3.深入了解Azure云平台四层和七层的负载均衡技术,包括Software Load Balancer,Application Gateway, Traffic Manager。
+4.熟悉Azure云平台的虚拟网络架构和底层设计。
+
+工作业绩： 作为中国区Azure的技术支持后线 多次帮助客户解遇到的疑难问题。
+技术支持工程师 20000元/月 | 2013-04 ~ 至今： 微软(中国)有限公司上海闵行分公司
+公司性质：外商独资·外企办事处 | 公司规模：50-99人 | 公司行业：计算机软件
+公司描述：“计 算机到底能干什么,计算机将来会有什么样的发展和用途?”因为这个问题,微软诞生了;因为这个问题,微软始终以其锐意进取改变着整个世界。现在,作为全球 最大软件公司和最有价值的企业,微软通过自己的产品和技术改善着人们的生活、工作和交流的方式,带给人们全新的计算体验,提高个人工作效率,提供平台和商 业解决方案,帮助企业提高其整体竞争力,开发新的数字化家用技术和娱乐方式,促进移动计算的发展。 自1992年进入中国设立北京代表处以来,微软在华的员工总数已增加至900多人,已形成以北京为总部、在上海、广州设有分公司的架构。微软在中国也已经跨越了三大发展阶段。 l 从 | 2013-04 ~ 2016-04： 目前工作地点：上海 | 所属部门：技术支持
+工作职责：微软技术支持,主要支持过的产品有Windows Cluster, Hyper-V, Windows 7/8/10, Windows Server 2008/2008R
+
+微软进入了在中国发展的第三阶段。这一阶段的微软中国将以与中国软件产业共同 进步与共同发展为目标,加大对中国软件产业的投资与合作,在自身发展的同时,促进中国IT产业发展自有知 识产权。这不仅确定了微软在中国长期发展的战略,表明了微软“把最先进的电子信息技术带给中国,与中国 计算机产业共同进步”的庄重承诺。 微软中国公司深知自己的成功离不开政府部门的支持、业界伙伴的信任和广大用户的厚爱。翘首未来,微软愿与中国信息产业携手,继续努力,共同迈向更加灿烂的二十一世纪,
+,
+部门 | 2017-05 - 2017-12
+万达网络科技集团 
+7个月
+高科技所有 1 电商/新零售 上海
+资深运维经理
+1. 基于Ansible和Git的针对Juniper/Cisco等网络设备的自动化运维平台。
+2. 基于开源系统Netbox的IP地址管理平台，主要用到的技术有Python，Django，SNMP等。
+3. 统一监控平台以及统一报警平台的建设，熟悉开源的监控方案包括Zabbix，Cacti，Grafana，Prometheus，ELK，LibreNMS，Graylog等。
+4. 熟悉Juniper网络设备的基本配置。
+部门 | 2016-01 - 2017-05
+微软（MICROSOFT） 
+1年4个月
+IT与通讯 上海
+资深技术支持工程师
+工作职责：
+Azure在中国区是由世纪互联进行独立运营并直接向客户提供技术支持，
+微软作为技术提供方为世纪互联提供后线技术支援。作为
+微软后线技术支援团队的资深技术支持
+工程师，平时跟世纪互联的
+工程师有密切的联系，主要处理世纪互联升级的疑难问题，为大客户提供技术咨询并且作为与美国产品组之间进行沟通的桥梁。
+相关技能：
+1. 精通云平台与客户本地VPN连接技术，包括IPsec VPN, SSTP VPN, L2TP VPN
+2. 精通云平台与客户本地的专线连接技术，掌握BGP，VLAN技术。
+3. 深入了解Azure云平台四层和七层的负载均衡技术，包括Software Load Balancer，Application Gateway, Traffic Manager。
+4. 精通网络技术，排查TCP/IP，HTTP层面的技术问题。
+5. 熟悉Azure云平台的虚拟网络架构和底层设计。
+6. 熟悉Azure提供的各类PaaS服务，包括Cloud Service, APP Service, Service Bus, MySQL on Azure 等。
+部门
+1995 - 1999
+究开发中心
+4年
+是微软在中国发展的第二阶段。在这一阶段,微软在中国相继成立了微软中国研 、微软全球技术支持中心和微软亚洲研究院这三大世界级的科研、产品开发与技术支持服务机构, 微软中国成为微软在美国总部以外功能最为完备的子公司。 l 从
+部门
+1992 - 1995
+是微软在中国发展的第一阶段
+3年
+在这一阶段,微软主要是发展了自己的市场和销 售渠道。 l 从
+部门
+
+【教育经历】
+2010-09 - 2013-04
+上海交通大学985, 211, QS200
+机械工程及自动化 | 2006-09 - 2010-06
+上海交通大学985, 211, QS200
+机械工程及自动化
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备扎实的云平台网络架构与技术支持背景，但缺乏AI大模型、Agent技术栈及行业解决方案落地的核心经验。其工作经历集中于传统IT基础设施（如Azure网络、VPN、负载均衡）和运维自动化，未体现金融/政务/能源等垂直行业的AI项目交付、POC主导、RAG/Agent集成或ROI分析能力。
+
+
+========================================
+
+========================================
+Candidate ID: 28640
+Name Mask: *新刚
+Current Title/Company: 技术总监 @ 建谊集团
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5efa\u8c0a\u96c6\u56e2", "title": "\u6280\u672f\u603b\u76d1", "time": "2021-05 - \u81f3\u4eca", "description": ""}, {"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2A", "title": "", "time": "2018-08 - 2019-11", "description": "\u8f6f\u4ef6\u67b6\u6784\u5e08(\u963f\u91cc\u804c\u7ea7 P7)"}, {"company": "\u5317\u4eac\u6587\u601d\u6d77\u8f89\u8f6f\u4ef6\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u8d44\u6df1\u7814\u53d1\u5de5\u7a0b\u5e08", "time": "2006-06 - 2011-06", "description": ""}, {"company": "\u5317\u4eac\u7406\u6b63\u8f6f\u4ef6\u7814\u7a76\u9662", "title": "\u9ad8\u7ea7\u7814\u53d1\u5de5\u7a0b\u5e08", "time": "2001-07 - 2006-06", "description": "\u81ea\u7814 GIS \u5e73\u53f0\u53ca\u57fa\u4e8e GIS \u7684\u5e94\u7528,\u7ade\u4e89\u5bf9\u624b\u8d85\u56fe\u7b49 GIS \u4f01\u4e1a\uff0c\u4f7f\u7528VC++\u6280\u672f\u3002\u505a\u8fc7 GIS \u5e73\u53f0\u7b97\u6cd5\u548c\u5de5\u7a0b\u9879\u76ee\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2021-05 - 至今
+建谊集团
+4年7个月
+技术总监
+汇报人：CEO 工作概要: 重点围绕建筑产品大数据、集成式供应链、智慧施工前台 和社群在线 等要素构建铯镨工业化 建筑产业互联网平台 www.ciip.com)，赋能建筑企业实现工程一体化和数字化转型。 个人职责: 负责集团所有的产业平台和网站系统的研发和技术规划工作，带领互联网技术和BIM专业研发团队、测试团队和运维团队等高 效协同工作。 主要技术： 平台基座：华为云公有云、阿里云公有云和集团机房(华为私有云 FusionCompute)搭建测试和生成运行环境。 技术中台：kafka(业务消息)、elasticsearch(全站搜索)、rds(业务数据库)、oss(各类文件和BIM模型存储)、dli(flink 大数据分析)、 dataflow 数据平台、InfluxDB(时序数据)、artemis-mqtt 平台(IOT 设备接入)、Kong/apisix 网关、LTS 和CES(日志监控)等平台 系统。 研发技术：采用前后端分离技术体系， WEB前端采用H5 和Vue2/3 框架，微信小程序和APP采用Uniapp 和Flutter 技术，后 端以Java技术(spring boot/cloud)为主的微服务架构，采用Maven构建，通过Jenkins 平台做CICD，以 docker 容器和k8s 编排 运行应用程序。微服务架构涉及 spring cloud gateway、nacos、openfeign、sleuth 等组件。 其他开源/商业平台：聊天APP(OpenIM平台)，视频会议(LiveKit 平台)，智慧工地(海康平台)，airiot(航天科技)，低代码 平台(vform)，工作流(flowable)和BIM协同(revit/revitserver 等)，
+部门 | 2018-08 - 2019-11
+ 阿里巴巴集团A 
+1年3个月
+1 电商/新零售 杭州
+软件架构师(阿里职级 P7)
+工作概要: 专注于 EMAS 产品的PAAS 基座开发建设，包括核心中间件、稳定性建设、CICD 流程和交付运维管理 等，以支撑EMAS产品业务落地。 个人职责: 1、负责EMAS基础设施：IOS/Android/Weex 打包机，Mysql 多版本管理(参考 flyway)和Nexus/Gitlab/Ceph 等。 2、搭建Jenkins 平台构建 CI 集成和负责版本/镜像管理，采用python/ssh/docker 等技术实现自动化工具。 3、使用python ansible 框架和K8S helm 包管理实现自动化CD交付/运维工具链，可定制化输出EMAS产品。 4、根据客户 IDC 机房网络区域(通常客户有DMZ区、生产内网区、办公网区和测试网区)设计EMAS产品网络部署方案，包括组网设计、网络部署图、网络打通清单、资源清单、服务分布等。 5、作为交付/运维的外包实施团队的Leader，除了人员管理以外，重点在交付、运维体系建设和流程标准化建设。 主要技术： EMAS产品以Kubernetes+docker+微服务(dubbo)技术架构。 EMAS日志系统采用 Flunted+ElasticSearch+Kibana 架构方案。 EMAS监控体系采用 Prometheus+Grafana 架构方案。 CICD 等工具链采用 python+ansible+gitlab+jenkins+docker 等技术实现。 PAAS平台基座组件：gitlab、nginx、ceph、oss、rocketmq、zk、redis、elasticsearch、kafka、hadoop(hbase)、mysql 等 重点业绩: 1. 顺利完成包括杭州银行、渤海银行、东方航空、海底捞、方正证券等20+家企业客户的交付工作，完成了EMAS产品实现营收的最重要环节。 2. 从人工在 worker 节点上执行命令部署产品，到用 ansible 实现自动化工具在部署机上一键式部署系统，提升70%的工程效率，节省了交付成本。 3. 基础设施的建设使得EMAS产品能够平稳运行，保障了产品可交付性以完成产品变现。 4. 运维体系建设包含日志监控、故障管理、自动化运维和运维大盘，保障系统稳定性的同时提升了运维效率。
+部门 | 2006-06 - 2011-06
+北京文思海辉软件技术有限公司
+5年
+资深研发工程师
+曾在微软中国研发中心-SQLServer 团队做研发 5 年(作为文思海辉的 onsite 外包), 技术含量最高的项目是跟微软正式员工一 起参与SQLServer Profiler 及Distributed Profiler 项目(Profiler 分布式版)的开发，使用了C++、C#、DCOM等语言技术。
+部门 | 2001-07 - 2006-06
+北京理正软件研究院
+4年11个月
+高级研发工程师
+自研 GIS 平台及基于 GIS 的应用,竞争对手超图等 GIS 企业，使用VC++技术。做过 GIS 平台算法和工程项目。
+部门
+
+【教育经历】
+1997-09 - 2001-07
+中国农业大学985, 211
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备扎实的云原生架构、交付体系和跨行业（建筑、金融、航空等）项目落地经验，但缺乏大模型、Agent、RAG 等 AI 技术栈的实际应用证据；未体现 POC 主导、AI 效果评估、售前支持等核心职责要求。
+
+
+========================================
+
+========================================
+Candidate ID: 28692
+Name Mask: *轶佳
+Current Title/Company: 处级研究员 @ 建信金融科技有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5efa\u4fe1\u91d1\u878d\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u6c47\u62a5\u7ed9\u4e91\u4e1a\u52a1\u603b\u76d1\uff0c\u8d1f\u8d23\u5efa\u884c\u4e91\u4e1a\u52a1\u5728\u897f\u533a\u5206\u884c\u548c\u540c\u4e1a\u7684\u89e3\u51b3\u65b9\u6848\u5b75\u5316\u3001\u63a8\u5e7f\u53ca\u9879\u76ee\u4ea4\u4ed8\u5de5\u4f5c\u3002", "time": "2023-04 - \u81f3\u4eca", "description": ""}, {"company": "\u5e73\u5b89\u91d1\u878d\u58f9\u8d26\u901a1", "title": "\u897f\u533a\u9ad8\u7ea7\u89e3\u51b3\u65b9\u6848\u603b\u76d1", "time": "2021-07 - 2023-03", "description": "\u5e26\u9886\u56e2\u961f\u4ece\u4e1a\u52a1\u64ae\u5408\u8fd0\u8425\u5411\u79d1\u6280\u4e91\u670d\u52a1\u4e1a\u52a1\u6a21\u5f0f\u8f6c\u578b\uff0c\u5c06\u533a\u57df\u6536\u5165\u89c4\u6a21\u63d0\u534730%\uff0c\u79d1\u6280\u7c7b\u5408\u540c\u7b7e\u7ea6\u989d\u63d0\u53473\u500d\uff0c\u7275\u5934 \u9879\u76ee\u6295\u6807\u8d62\u7387\u63d0\u5347\u5230100%\uff0c2022\u5e74\u5b8c\u6210\u6536\u51651.5\u4ebf\uff0c\u5b9e\u73b0\u9879\u76ee\u7b7e\u7ea6\u5408\u540c\u989d1.2\u4ebf\u3002\u88ab\u8bc4\u4e3a\u516c\u53f8\u7ea7\u5927\u725b\u4e4b\u661f\u3002"}, {"company": "\u534e\u4e3a\u96c6\u56e2A", "title": "\u4e2d\u56fd\u533a\u91d1\u878d\u4e91\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6(18A\u7ea7)", "time": "2019-08 - 2021-07", "description": ""}, {"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2A", "title": "\u897f\u5357\u533a\u91d1\u878d\u884c\u4e1a\u9500\u552e\u7ecf\u7406(P7+\u7ea7)", "time": "2017-07 - 2019-07", "description": ""}, {"company": "Oracle \u7532\u9aa8\u6587", "title": "\u5927\u5ba2\u6237\u7ecf\u7406", "time": "2014-08 - 2017-07", "description": ""}, {"company": "\u56db\u5ddd\u79fb\u52a8", "title": "\u9ad8\u7ea7\u6e20\u9053\u7ecf\u7406", "time": "2010-04 - 2012-09", "description": "\u53d7\u539f\u54a8\u8be2\u5ba2\u6237\u56db\u5ddd\u79fb\u52a8\u516c\u53f8\u9080\u8bf7\uff0c\u7ed3\u5408\u5bb6\u5ead\u751f\u80b2\u8ba1\u5212\uff0c\u8de8\u884c\u5165\u804c\u8d1f\u8d23\u96f6\u8d77\u6b65\u5efa\u8bbe\u96c6\u56e2\u6e20\u9053\u4f53\u7cfb\u3002\u4ece0\u52301\u5efa\u7acb\u79fb\u52a8\u516c\u53f8\u96c6\u56e2 \u4e1a\u52a1\u6e20\u9053\uff0c\u7b2c1\u5e74\u5373\u521b\u9020\u8425\u653614\u4ebf\uff0c\u7b2c2\u5e74\u5b9e\u73b0\u540c\u6bd4\u589e\u957f185%\u3002"}, {"company": "Teradata\u7f8e\u5546\u5929\u777f", "title": "\u9879\u76ee\u7ecf\u7406", "time": "2010-04 - 2014-07", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2023-04 - 至今
+建信金融科技有限公司
+2年8个月
+处级研究员
+汇报给云业务总监，负责建行云业务在西区分行和同业的解决方案孵化、推广及项目交付工作。
+围绕建行经验，打通智能云容灾和基础设施咨询服务，仅半年时间孵化落地针对中小银行的数据中心全栈解决方案， 从客户触达到解决方案销售、交付端到端为客户提供服务，建立建行云差异化核心竞争力。 求职原因：公司业务战略方向调整，岗位调整
+
+围绕建行经验，打通智能云容灾和基础设施咨询服务，仅半年时间孵化落地针对中小银行的数据中心全栈解决方案 从客户触达到解决方案销售、交付端到端为客户提供服务，建立建行云差异化核心竞争力。 求职原因：公司业务战略方向调整，岗位调整
+部门 | 2021-07 - 2023-03
+ 平安金融壹账通1 
+1年8个月
+高科技所有 上海
+西区高级解决方案总监
+汇报给西区总经理，带领团队负责壹账通西区(10省1市)全线科技产品解决方案(智能信贷、数字零售、智慧管理、 技)销售工作，创建了解决方案销售管理体系和重点项目投标管理体系。 | 2021-07~2023-03 金融壹账通智能科技有限公司(平安集团联席公司) 金融行业数字化转型专家及解决方案总监
+汇报给西区总经理，带领团队负责壹账通西区(10省1市)全线科技产品解决方案(智能信贷、数字零售、智慧管理、加马科自我评价： 职业背景：近20年解决方案设计销售工作经验，8年云计算、7年数据中台领域经验，先后任职微软、移动、甲骨文、阿里、华为、平安、 建行等世界500强企业；，
+带领团队从业务撮合运营向科技云服务业务模式转型，将区域收入规模提升30%，科技类合同签约额提升3倍，牵头 项目投标赢率提升到100%，2022年完成收入1.5亿，实现项目签约合同额1.2亿。被评为公司级大牛之星。
+部门 | 2019-08 - 2021-07
+ 华为集团A 
+1年11个月
+IT与通讯 深圳
+中国区金融云解决方案专家(18A级)
+汇报给中国区金融云总经理，作为金融行业数字化转型专家，参与华为金融云战略转型规划制定，负责中国区金融行业公司级亿级重 大项目运作销售落地。 战略规划：历时2月与公司总裁级领导及其他10余名行业专家共同完成公司战略转型规划制定，重点参与金融行业业务发展战略规 划和金融云销售策略落地发布。 解决方案：获得五级专家任职资格，作为全国金融分布式核心系统解决方案市场负责人，牵头与TopISV生态合作伙伴完成应用集成验证， 牵头公司级战略亿级项目售前招投标运作，赋能团队整体能力提升，确保战略目标落地。 商业模式：与华为钱包合作利用隐私计算+AI营销平台实现银行营销风控业务创新，利用政府行业产业云基地资源孵化产业金融新商业模式， 参与浦发银行生态云项目，设计金融云可持续商业模式，年增收入6000万。
+部门 | 2017-07 - 2019-07
+ 阿里巴巴集团A 
+2年
+1 电商/新零售 杭州
+西南区金融行业销售经理(P7+级)
+负责带领团队从0拓展西南地区金融行业云计算业务，致力于帮助本地金融行业科技架构分布式转型，建立基于阿里技术栈的 数字化转型基础设施； 拓展业绩：从客户战略合作出发，利用顾问式销售，帮助客户实现分布式架构转型，从0收入到全年销售额突破1亿，2年从0 突破新拓展合同额200万以上优质客户8个，合同额2000万以上战略客户3个。 团队建设：从0开始搭建西南区金融云团队，完整覆盖西南区银行、保险客户，团队成员至今仍是公司骨干。 生态建设：与80%以上本地1000亿+资产银行CXO、行长及董事长建立良好互动关系，达成十余家金融行业TopISV集成商与阿里签订合 作协议，打造阿里云蚂蚁金服西南区金融行业生态圈。
+部门 | 2014-08 - 2017-07
+Oracle 甲骨文 
+2年11个月
+IT与通讯 北京
+大客户经理
+负责西南地方性商业银行和农信社客户数据库产品线销售工作，3年销售额提升5倍，市场份额由原不到30%发展至70%，荣获 甲骨文全球“TOPSales奖”(全球地区前10%)。促成银行业第一笔百万级oracle公有云(运维日志智能数据分析)订单，成为oracle 业云销售标杆案例，获中国区“云计算销售奖”，至今无人打破。
+部门 | 2010-04 - 2012-09
+四川移动
+2年5个月
+高级渠道经理
+受原咨询客户四川移动公司邀请，结合家庭生育计划，跨行入职负责零起步建设集团渠道体系。从0到1建立移动公司集团 业务渠道，第1年即创造营收14亿，第2年实现同比增长185%。
+部门 | 2010-04 - 2014-07
+Teradata美商天睿 
+4年3个月
+IT与通讯 上海
+项目经理
+四川移动公司|
+部门
+
+【教育经历】
+2003-09 - 2006-07
+四川大学985, 211
+通信与信息系统-硕士以上 | 1999-09 - 2003-07
+四川大学985, 211
+电子信息工程-本科
+
+【AI分析】
+匹配分: 45
+推荐: 中风险
+理由: 候选人具备深厚的金融行业解决方案经验、POC/售前交付闭环能力及云原生技术背景，但缺乏明确的大模型、Agent、RAG等AI核心技术栈的项目证据，未体现AI效果评估指标设计或数据策略能力。
+
+
+========================================
+
+========================================
+Candidate ID: 28711
+Name Mask: *文涛
+Current Title/Company: 产品经理/解决方案架构师 @ 腾讯-TEG
+
+=== WORK EXPERIENCES ===
+[{"company": "\u817e\u8baf-TEG", "title": "\u4ea7\u54c1\u7ecf\u7406/\u89e3\u51b3\u65b9\u6848\u67b6\u6784\u5e08", "time": "2021-07 - 2024-10", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2021-07 - 2024-10
+腾讯-TEG
+3年3个月
+产品经理/解决方案架构师
+AI漏洞情报分析系统(1 人落地)】 目标：构建AI 驱动的漏洞情报自动化分析系统，替代人工处理多源异构漏洞数据，实现结构化提取与智能评级 工作产出：产品调研与AI功能拆解：横向调研微步、奇安信等威胁情报平台，从情报获取、漏洞评估、知识问答等AI相关功能拆解，结合原始诉求，输出数据整合、智能分析、自动化响应等6类产品扩展方向规划 智能体应用架构设计：负责MVP 版本设计，基于Agent 平台"元器"编排工作流，通过意图识别和实体提取分析用户意图，集成知识库RAG 检索与数据写入插件，实现「意图分析=>情报分析=>结构化录入」全流程自动化模型选型与数据集建设：针对GPT/混元等大模型，建立多维评估标准，筛选5 类漏洞case 作验证，综合生态体系与数据安全现状完成选型；基于漏洞评级与情报数据，完成数据爬取/清洗/分块工作，搭建10+漏洞类型知识库和验证集模型优化与数据运营：建立难负例案例库和指标看板，完成不同漏洞类型case 的效果评估，从准召率等指标分析，产出“提升模型总结能力“的方向；维护Prompt 规则库，基于格式约束、CoT 等策略调优Prompt 版本，解决模型幻觉问题成果：替代3 人全职团队，年节省人力成本预计超50 万元；情报处理时效从小时级压缩至分钟级，录入准确率达80+% AI数据分类分级】 目标：响应内外部数据安全事件及合规要求，建设数据分类分级平台，识别业务敏感数据并自动化打标，降低合规风险 工作产出：竞品分析和技术调研：调研阿里、华为数据安全中心架构，提炼分类分级核心框架和产品动线，分析开源分类分级引擎以及内部技术方案，从准确率、性能、效率等角度拆解，形成「规则库+小模型+大模型」的融合技术方案产品设计与跨团队协作：主导平台架构和MVP 设计，对齐业务预期以及数据接入等业务流程，配合法务团队产出200+ 广告行业特殊规则，联动数据团队打通元数据链路和增量监控方案，协调算法团队确定基于bert 的NerAI 模型方案数据集建设与大模型辅助：负责正则库+词典库的建设，完成 +业务数据清洗和训练数据的转化，通过同义词替换、回译等方式数据增强；基于大模型校验和少样本学习能力辅助人工标注，并利用知识蒸馏技术，批量生成数据集 模型与运营体系优化：设计数据看板，实时监控1w+数据表打标覆盖率、准确率等指标；建立bad case分析机制，打通业务方人工修正后回传至难负例库的流程，定期完成难负例到数据集的转化成果：为广告业务规避合规处罚风险，挽损超1500 万元；识别微信业务敏感数据泄漏行为50+起，减少损失500 万元； 节省法务人工打标成本150 人天，自动化覆盖100%业务存量及增量数据；敏感数据识别准确率、召回率达85%+ 数据安全平台】 目标：应对数据安全法规升级及企业内外部数据安全风险，建设一站式数据安全平台，覆盖数据全生命周期防护 工作产出：业务痛点洞察与竞品分析：深度访谈10+业务团队，结合底层数据量化风险(如敏感数据占比、加密缺失率)明确业务的安全需求，同时对标行业头部方案，确定「数据资产识别→风险评估→防护实施」的工作流资源整合与标杆案例打造：确定「分类分级+加密脱敏+DLP」的MVP 方案，整合老旧安全插件能力，完成4 类基础数据大盘和防外传等核心模块建设，打造高可用/高并发的金融场景标杆案例，并参与司内安全主题演讲，参与人数1000+ 安全运营体系构建：建立灰度用户反馈池以及性能指标监控，迭代40+功能优化，提高可用性至99.99%，资源占用率 优化50%；搭建安全和数据双看板，实时监控20+业务主机和服务数量，推进加密脱敏量、数据泄漏路径等指标收敛成果：拦截高危安全事件50+起，避免数据泄漏、法律合规风险，累计挽损超1 亿元，节省人工筛查和修复风险等人力成本500+人天；覆盖广告/金融/云架构3 大核心业务，业务安全渗透率提高了15%，核心业务主机覆盖率100% 数据库安全平台】 目标：针对外部数据库安全事件及内部误操作问题，基于数据库管理工具，实现从操作提效到安全管控的产品升级 工作产出：产品调研与体系设计：调研10+业务数据库运维SOP，结合日志分析业务现状，对标微软、阿里等头部竞品，打造「操作管控+访问控制+敏感数据管理」的解决方案，并参加领域生态日演讲，参与人数2000+，完成产品方案推广反馈闭环与数据化运营：搭建安全运营数据看板，融合高危操作拦截率、敏感数据识别量等核心指标，定位业务风险并推动策略优化；通过客服+接口人定向收集需求，迭代优化20+项功能体验成果：累计避免40+起线上事故，规避潜在数据泄露处罚风险，挽损超5000 万元；通过自动化工具提效80+人天，减少事故处置人力20+人天；新拓展10+部门接入，实例覆盖率环比提升5%，核心业务覆盖率达90% 技能和奖项 产品：Sketch,Figma,Xmind,•编程：Python,SQL,Node,HTML,CSS,JavaScript,•英语：CET-4 奖项：23 年H2 五星员工、分享之星，22 年H1、23年H2 开源协同优秀个人奖，22、23、24 年 SEVP 奖
+部门
+
+【教育经历】
+2017-09 - 2021-06
+广东工业大学
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 75
+推荐: 高潜力
+理由: [Tags: solu_poc_design, solu_agent_understand, solu_rag_understand, solu_llm_understand, solu_presales_support, solu_architecture, solu_project_delivery, solu_eval_metric, solu_data_strategy] 候选人在腾讯TEG主导多个AI驱动的数据安全与漏洞分析系统，具备真实客户（内部业务线）落地经验，覆盖金融、广告等场景；深度使用Agent架构（元器平台）、RAG、Prompt工程、数据增强与评估指标设计；有POC全流程经验（从调研、MVP设计到效果验证与成本收益量化）；具备售前能力（参与千人级演讲、方案推广）。虽无外部政务/能源项目，但内部金融业务渗透率达100%，符合‘真实行业AI项目落地’核心要求。
+
+
+========================================
+
+========================================
+Candidate ID: 28716
+Name Mask: *天慧
+Current Title/Company: 3 互联网金融/金融科技 上海 @ 通联支付
+
+=== WORK EXPERIENCES ===
+[{"company": "\u901a\u8054\u652f\u4ed8", "title": "\u7814\u53d1\u5de5\u7a0b\u5e08 | 2020-09~2021-12 \u5206\u6790\u94f6\u884c \u5de5\u5177Tableau", "time": "2020-07 - \u81f3\u4eca", "description": "\u4e1a\u52a1\u9700\u6c42\uff0c\u7f16\u5199HiveSQL\uff0c\u5e94\u7528BI \uff0c\u5f00\u53d1\u4e0a\u7ebf 10+\u4fe1\u7528\u5361\u6838\u5fc3\u4e1a\u52a1\u62a5\u8868\uff0c\u4e3a\u94f6\u884c\u4e1a\u52a1\u63d0\u4f9b \u57fa\u4e8eCDP\u5e73\u53f0\uff0c\u5728Hadoop\u4e0a\u642d\u5efa\u79bb\u7ebf Hive\u6570\u4ed3(3PB)\uff0c\u53c2\u8003\u963f\u91cc\u6570\u4ed3\u5206\u5c42\u67b6\u6784\uff0c\u8bbe\u8ba1\u7531ODS\u5230ADS\u7684\u5904\u7406 \u94fe\u8def\uff0c\u8be5\u6a21\u578b\u6700\u7ec8\u4e8e 21\u5e74\u5e95\u5728\u591a\u79df\u6237\u7684\u6a21\u5f0f\u4e0b\u6295\u4ea7\u4e0a\u7ebf 13\u5bb6\u94f6\u884c(23\u5e74\u5e9532\u5bb6)\u3002 \u5173\u952e\u7ec4\u4ef6\u5982Hdfs\uff0cYarn\u7b49\u8fdb\u884c\u6545\u969c\u6392\u67e5\u53ca\u8c03\u4f18\uff0c\u4fdd\u969c\u6570\u636e\u5e73\u53f0\u53ef\u7528\u6027\u53caSLA\uff0c\u671f\u95f4\u751f\u4ea7 0\u4e8b\u6545\uff0c\u5ba2\u6237 0\u6295\u8bc9\u3002"}, {"company": "\u9752\u5c9b\u94f6\u884c)", "title": "", "time": "2023-07 - 2024-03", "description": "\u57fa\u4e8e SpringBoot \u5f00\u53d1\u901a\u7528\u5b9e\u65f6REST Api\uff0c\u5f00\u53d1\u90e8\u7f72 Flink \u4efb\u52a1\uff0c\u4e3a\u94f6\u884c\u63d0\u4f9b\u4e86\u9ad8\u6548\u5b9e\u65f6\u8ba1\u7b97\u80fd \u529b\u3002\u9879\u76ee\u6210\u529f\u901a\u8fc7\u94f6\u884c\u4e1a\u52a1\u9a8c\u6536\uff0c( \u5b9e\u65f6\u98ce\u63a7\u573a\u666f\uff1a\u901a\u8fc7\u6d88\u606f\u4e2d\u95f4\u4ef6 Kafka+Flink \u7684\u5f62\u5f0f\u5b9e\u73b0\u5bf9\u4ea4\u6613\u6570\u636e\u7684\u7d2f\u8ba1\u53d8\u91cf\u8ba1\u7b97\uff0c\u5c06\u7ed3\u679c\u5199\u5165 Redis \u7f13\u5b58\uff0c\u4f5c"}, {"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2A", "title": "\u9879\u76ee\u8d1f\u8d23\u4eba", "time": "2023-01 - 2023-06", "description": "\u4f5c\u4e3a\uff0c\u9886\u5bfc\u56e2\u961f\u5b8c\u6210\u5bf9\u516c\u53f8\u5185\u90e8\u6570\u636e\u4f7f\u7528\u73b0\u72b6\u7684\u6df1\u5165\u8c03\u7814\u548c\u5206\u6790\uff0c\u53d1\u73b0\u5e76\u89e3\u51b3\u6570\u636e\u4f7f\u7528\u4e2d\u7684\u75db\u70b9\u548c\u6311 \u6218\uff0c\u4e3a\u516c\u53f8\u5185\u90e8\u6570\u636e\u6cbb\u7406\u5de5\u4f5c\u5960\u5b9a\u4e86\u575a\u5b9e\u57fa\u7840\u3002 \u7b2c\u4e09\u5b63\u5ea6\u5b9e\u73b0\u5bf9CDP\u6570\u636e\u7684\u5bf9\u63a5\u7ba1\u7406\uff0c\u6570\u636e\u8d28\u91cf\u6a21\u5757\u4e8e 23\u5e74\u5e95\u5b9e\u73b0\u4e86\u5bf9\u5173\u952e\u4e1a\u52a1\u6570\u636e(\u5982\u76d1\u7ba1\u62a5\u9001\u6570\u636e)\u7684\u8d28\u91cf \u68c0\u6838\u548c\u7ba1\u7406\uff0c\u63d0\u9ad8\u4e86\u6570\u636e\u53ef\u4fe1\u5ea6\u548c\u53ef\u7528\u6027\u3002 \u516c\u53f8\u4e8e2023\u5e74\u5e95\u83b7DCMM\u6570\u636e\u6cbb\u7406\u6210\u719f\u5ea6\u80fd\u529b 3\u7ea7(\u7a33\u5065\u7ea7)\u8ba4\u8bc1\u3002"}, {"company": "\u534e\u4e3a\u4e91", "title": "\u5927\u6570\u636e\u4ea7\u54c1\u552e\u524dPOC\u53ca\u552e\u540e\u6280\u672f\u652f\u6301", "time": "2022-01 - 2022-12", "description": "\u552e\u540e\u6280\u672f\u652f\u6301\u5de5\u4f5c\u3002(Kyligence-Enterprise\uff0c\u57fa\u4e8e Spark\u7684OLAP\u7ef4\u5ea6\u5efa\u6a21\u5206\u6790\u5de5\u5177) \u5206\u6790\u8bc4\u4f30\u5ba2\u6237\u6570\u636e\u4f7f\u7528\u573a\u666f\uff0c\u57fa\u4e8e\u591a\u6837\u5316\u7684\u5ba2\u6237\u73af\u5883(CDP//\u5fae\u8f6fAZURE)\uff0c\u90e8\u7f72\u57fa\u4e8e Spark\u7684OLAP\u7ef4 \u5ea6\u5efa\u6a21\u5206\u6790\u5e73\u53f0\uff0c\u64b0\u5199POC\u670d\u52a1\u62a5\u544a\u5e76\u63d0\u4f9b\u552e\u540e\u6280\u672f\u652f\u6301\u3002 Spark\u53c2\u6570\u8c03\u4f18\u53ca\u7ef4\u5ea6\u5efa\u6a21\u3002\u6839\u636e\u6570\u636e\u7279\u5f81\u5bf9Spark \u53c2\u6570\u8fdb\u884c\u8c03\u4f18\uff0c\u6839\u636eKimball \u7ef4\u5ea6\u5efa\u6a21\u65b9\u6cd5\uff0c\u8bbe\u8ba1\u661f\u578b\uff0c\u96ea\u82b1 \u6570\u636e\u6a21\u578b\uff0c\u6700\u5927\u7a0b\u5ea6\u51cf\u5c11\u5197\u4f59\u6570\u636e\u52a0\u8f7d\uff0c\u5b9e\u73b0\u7cfb\u7edf\u6027\u80fd\u7684\u6700\u4f73\u5316\uff0c\u786e\u4fdd\u6570\u636e\u5904\u7406\u548c\u67e5\u8be2\u8fc7\u7a0b\u7684\u9ad8\u6548\u8fd0\u884c\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2020-07 - 至今
+通联支付 
+5年5个月
+3 互联网金融/金融科技 上海
+研发工程师 | 2020-09~2021-12 分析银行 工具Tableau
+美团联名卡项目(青岛/上海/江苏等13家银行),
+业务需求，编写HiveSQL，应用BI ，开发上线 10+信用卡核心业务报表，为银行业务提供
+数据支持。
+基于CDP平台，在Hadoop上搭建离线 Hive数仓(3PB)，参考阿里数仓分层架构，设计由ODS到ADS的处理
+链路，该模型最终于 21年底在多租户的模式下投产上线 13家银行(23年底32家)。
+关键组件如Hdfs，Yarn等进行故障排查及调优，保障数据平台可用性及SLA，期间生产 0事故，客户 0投诉。
+部门 | 2023-07 - 2024-03
+青岛银行)
+8个月
+信用卡获客场景
+对外实时 API项目
+基于 SpringBoot 开发通用实时REST Api，开发部署 Flink 任务，为银行提供了高效实时计算能
+力。项目成功通过银行业务验收，(
+实时风控场景：通过消息中间件 Kafka+Flink 的形式实现对交易数据的累计变量计算，将结果写入 Redis 缓存，作
+为整个实时链路的一部分，为其他系统提供快速、实时的数据查询服务。(上海银行)
+部门 | 2023-01 - 2023-06
+ 阿里巴巴集团A 
+5个月
+1 电商/新零售 杭州
+项目负责人
+内部数据治理项目
+作为，领导团队完成对公司内部数据使用现状的深入调研和分析，发现并解决数据使用中的痛点和挑
+战，为公司内部数据治理工作奠定了坚实基础。
+参考业内成熟数据治理产品( DataWorks)和公司实际需求，设计数据治理平台。其中，元数据模块在
+第三季度实现对CDP数据的对接管理，数据质量模块于 23年底实现了对关键业务数据(如监管报送数据)的质量
+检核和管理，提高了数据可信度和可用性。
+公司于2023年底获DCMM数据治理成熟度能力 3级(稳健级)认证。
+部门 | 2022-01 - 2022-12
+ 华为云
+11个月
+大数据产品售前POC及售后技术支持
+Apache Kylin 创始团队于2016年创办。由于合作关系，我被推荐前往Kyligence 驻场工作1年，参与 Kyligence 公司产品售前POC及
+售后技术支持工作。(Kyligence-Enterprise，基于 Spark的OLAP维度建模分析工具)
+分析评估客户数据使用场景，基于多样化的客户环境(CDP//微软AZURE)，部署基于 Spark的OLAP维
+度建模分析平台，撰写POC服务报告并提供售后技术支持。
+Spark参数调优及维度建模。根据数据特征对Spark 参数进行调优，根据Kimball 维度建模方法，设计星型，雪花
+数据模型，最大程度减少冗余数据加载，实现系统性能的最佳化，确保数据处理和查询过程的高效运行。
+集成FineBI，Tableau ，Cognos，Excel 等BI工具的无缝对接，以提供便捷的数据交互和报告生成。
+服务客户：工商银行/中国银联/华为财经/比亚迪/远东宏信/好丽友等近 20家各行业大客户)
+部门
+
+【教育经历】
+2015-08 - 2019-06
+大连海事大学211
+信息管理与信息系统-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备金融行业数据平台建设及POC支持经验，但缺乏大模型、Agent、RAG等AI核心技术栈的落地项目，未体现AI解决方案设计或售前闭环能力。
+
+
+========================================
+
+========================================
+Candidate ID: 28758
+Name Mask: *伟绩
+Current Title/Company: 架构师 @ 地平线信息 地平线机器人
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5730\u5e73\u7ebf\u4fe1\u606f \u5730\u5e73\u7ebf\u673a\u5668\u4eba", "title": "", "time": "2018-07 - \u81f3\u4eca", "description": ""}, {"company": "\u767e\u5ea6\u96c6\u56e2A", "title": "", "time": "2013-08 - 2018-06", "description": "\u767e\u5ea6\u5730\u56fe\u540e\u7aef\u6574\u4f53\u5de5\u7a0b\u67b6\u6784"}, {"company": "\u641c\u72d7 \u641c\u72d0", "title": "", "time": "2009-09 - 2013-07", "description": ""}, {"company": "\u5fae\u8f6f Microsoft MS", "title": "", "time": "2008-11 - 2009-08", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2018-07 - 至今
+地平线信息 地平线机器人 
+7年5个月
+高科技所有 北京
+架构师
+...
+部门 | 2013-08 - 2018-06
+ 百度集团A 
+4年10个月
+高科技所有 北京
+架构师
+百度地图后端整体工程架构
+部门 | 2009-09 - 2013-07
+搜狗 搜狐
+3年10个月
+网页搜索开发部
+...
+部门 | 2008-11 - 2009-08
+微软 Microsoft MS
+9个月
+UPG
+...
+部门
+
+【教育经历】
+2002-01 - 2008-01
+南京大学985, 211, QS200
+软件学院-硕士以上
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备扎实的工程架构背景（百度地图、地平线），但缺乏明确的AI行业解决方案落地证据，未体现大模型/Agent项目经验、POC主导经历或垂直行业业务理解。
+
+
+========================================
+
+========================================
+Candidate ID: 28760
+Name Mask: *纲
+Current Title/Company: 海外电商架构师 @ 小米移动软件有限公司 • 信息部
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5c0f\u7c73\u79fb\u52a8\u8f6f\u4ef6\u6709\u9650\u516c\u53f8 \u2022 \u4fe1\u606f\u90e8", "title": "", "time": "2021-03 - \u81f3\u4eca", "description": "\u7535\u5546\u4e2d\u95f4\u4ef6\uff0c\u670d\u52a1\u6cbb\u7406\u67b6\u6784"}, {"company": "\u5317\u4eac\u5c0f\u7c73\u79fb\u52a8\u8f6f\u4ef6\u6709\u9650\u516c\u53f8 \u2022 \u4e91\u5e73\u53f0", "title": "", "time": "2019-04 - 2021-03", "description": "\u8d1f\u8d23\u4e91\u5e73\u53f0\u5bb9\u5668\u548ck8s\u5e73\u53f0\u843d\u5730"}, {"company": "\u5317\u4eac\u5c0f\u7c73\u79fb\u52a8\u8f6f\u4ef6\u6709\u9650\u516c\u53f8", "title": "\u5bb9\u5668\u548ck8s\u7cfb\u7edf\u8bbe\u8ba1\uff0c\u5b9e\u73b0\u548c\u4ea7\u54c1\u843d\u5730", "time": "2016-10 - 2019-04", "description": "\u4e3b\u8981\u8d1f\u8d23HDFS\u7684\u529f\u80fd\u5f00\u53d1\u548c\u6027\u80fd\u4f18\u5316"}, {"company": "\u5fae\u8f6f\u4e9a\u592a\u7814\u53d1\u96c6\u56e2", "title": "\u8f6f\u4ef6\u5de5\u7a0b\u5e08", "time": "2015-02 - 2016-10", "description": "\u4e3b\u8981\u4ece\u4e8bBing\u5e7f\u544a\u6570\u636e\u5e93\u548c\u6570\u636e\u4ed3\u5e93\u76f8\u5173\u7684\u5f00\u53d1\u548c\u67b6\u6784\u4f18\u5316 1. \u641c\u7d22\u5e7f\u544a\u7684\u6570\u636e\u6d41\uff0cETL\u5f00\u53d1\u4ee5\u53ca\u4ecenative SQL Server\u8fc1\u79fb\u5230Azure Cloud Service\u548cAzureSqlServer\u7684\u67b6\u6784\u4f18\u5316 2. \u5c55\u793a\u5e7f\u544a\u6570\u636e\u7684ETL\u5f00\u53d1\u548c\u7ef4\u62a4"}, {"company": "EMC \u6613\u5b89\u4fe1", "title": "", "time": "2009-10 - 2015-02", "description": "Associate Principal Engineer \u4e3b\u8981\u8d1f\u8d23\u4e2d\u7aefNAS\u5b58\u50a8\u7684\u529f\u80fd\u5f00\u53d1\u548c\u6027\u80fd\u4f18\u5316 1. 64\u4f4d\u6587\u4ef6\u7cfb\u7edf\u7684\u6027\u80fd\u4f18\u5316 2.\u6570\u636e\u5907\u4efd\u7cfb\u7edf\u7684\u529f\u80fd\u5f00\u53d1\u548c\u6027\u80fd\u4f18\u5316 3.\u5176\u4ed6\u6587\u4ef6\u7cfb\u7edf\u670d\u52a1\u76f8\u5173\u529f\u80fd\u7684\u5f00\u53d1"}, {"company": "Symantec", "title": "", "time": "2008-07 - 2009-10", "description": "Software Engineer Veritas\u96c6\u7fa4\u6587\u4ef6\u7cfb\u7edfIO \u591a\u8def\u5f84\u53caSCSI\u9a71\u52a8\u76f8\u5173\u6d4b\u8bd5\u548cbug fix\u3002"}, {"company": "Intel \u82f1\u7279\u5c14", "title": "", "time": "2007-02 - 2007-11", "description": "EFI NTFS\u6587\u4ef6\u7cfb\u7edf\u7684\u6d4b\u8bd5"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2021-03 - 至今
+小米移动软件有限公司 • 信息部
+4年9个月
+海外电商架构师
+电商中间件，服务治理架构
+部门 | 2019-04 - 2021-03
+北京小米移动软件有限公司 • 云平台
+1年11个月
+弹性调度平台主管
+负责云平台容器和k8s平台落地
+部门 | 2016-10 - 2019-04
+北京小米移动软件有限公司 
+2年6个月
+高科技所有 1 电商/新零售 北京
+高级软件工程师
+主要负责HDFS的功能开发和性能优化
+容器和k8s系统设计，实现和产品落地
+部门 | 2015-02 - 2016-10
+微软亚太研发集团
+1年8个月
+软件工程师
+主要从事Bing广告数据库和数据仓库相关的开发和架构优化
+1. 搜索广告的数据流，ETL开发以及从native SQL Server迁移到Azure Cloud Service和AzureSqlServer的架构优化
+2. 展示广告数据的ETL开发和维护
+部门 | 2009-10 - 2015-02
+EMC 易安信 
+5年4个月
+IT与通讯 上海
+Associate Principal Engineer
+主要负责中端NAS存储的功能开发和性能优化
+1. 64位文件系统的性能优化
+2.数据备份系统的功能开发和性能优化
+3.其他文件系统服务相关功能的开发
+部门 | 2008-07 - 2009-10
+Symantec
+1年3个月
+Software Engineer
+Veritas集群文件系统IO 多路径及SCSI驱动相关测试和bug fix。
+部门 | 2007-02 - 2007-11
+Intel 英特尔 
+9个月
+5 半导体/IC/芯片 上海
+Intern
+EFI NTFS文件系统的测试
+部门
+
+【教育经历】
+2005-01 - 2008-01
+四川大学985, 211
+计算机软件与理论-硕士以上 | 2001-01 - 2005-01
+四川大学985, 211
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备扎实的系统架构与云原生工程能力，但缺乏AI行业解决方案所需的硬性要素：无大模型/Agent项目经验、无垂直行业（金融/政务/能源等）AI落地案例、未主导POC、无售前或ROI分析经验。其18年履历集中于存储、广告数据平台、电商中间件及K8s调度，属传统后端/基础设施领域，与岗位核心要求错配。
+
+
+========================================
+
+========================================
+Candidate ID: 28835
+Name Mask: *先生
+Current Title/Company: IT与通讯 上海 北京 深圳 @ 腾讯集团A
+
+=== WORK EXPERIENCES ===
+[{"company": "\u817e\u8baf\u96c6\u56e2A", "title": "SaaS \u67b6\u6784\u5e08\u56e2\u961f\u8d1f\u8d23\u4eba", "time": "2021-09 - \u81f3\u4eca", "description": "\u901a\u7528 SaaS \u9886\u57df\u7684\u67b6\u6784\u5e08\u56e2\u961f\uff0c\u6839\u636e \u901a\u7528 SaaS \u5ba2\u6237\u7684\u884c\u4e1a\u60c5\u51b5\u548c\u9700\u6c42\uff0c\u9488\u5bf9 \u901a\u7528 SaaS \u7684\u4e0d\u540c\u7ec6\u5206\u9886\u57df\u5efa\u7acb\u4e00\u5957\u5168\u65b0\u5ba2\u6237\u673a\u5236\u6765\u5b9e\u73b0\u4e1a\u52a1\u589e\u91cf\u3002\u4e3b\u8981\u8d1f\u8d23"}, {"company": "\u4e9a\u9a6c\u900a\u901a\u6280\u672f\u670d\u52a1(\u5317\u4eac)\u6709\u9650\u516c\u53f8", "title": "\u4f01\u4e1a\u670d\u52a1\u56e2\u961f\u8d1f\u8d23\u4eba", "time": "2018-07 - 2021-07", "description": ""}, {"company": "\u5fae\u8f6f(\u4e2d\u56fd)\u6709\u9650\u516c\u53f8\u6df1\u5733\u5206\u516c\u53f8", "title": "\u65b9\u6848\u4e2d\u5f15\u8fdb\u65b0\u4ea7\u54c1\u4ee5\u53ca\u4e91\u7aef", "time": "2015-12 - 2018-07", "description": "\u4e3a\u5fae\u8f6f\u5927\u4e2d\u534e\u533a\u91cd\u8981\u5ba2\u6237\u7684\u5173\u952e\u7cfb\u7edf\u63d0\u4f9b \u89e3\u51b3\u65b9\u6848\u3001\u54a8\u8be2\u3001\u6280\u672f\u652f\u6301\u7b49\u670d\u52a1\u3002\u4e3b\u8981\u4e3a\u5ba2\u6237\u63d0\u4f9b\u53ef\u6301\u7eed\u3001\u6709\u4fdd\u969c\u7684 \u89e3\u51b3\u65b9\u6848\uff0c\u534f\u52a9\u7528\u6237\u5728\u964d\u4f4eIT\u8fd0\u7ef4\u6210\u672c\u7684\u540c\u65f6\uff0c\u66f4\u597d\u7684\u5229\u7528\u73b0\u6709\u7684\u8d44\u6e90\uff0c\u63d0\u9ad8\u5de5\u4f5c\u6548\u7387\uff1b\u540c\u65f6\u534f\u52a9\u5ba2\u6237\u5728IT"}, {"company": "\u5fae\u8f6f(\u4e2d\u56fd)\u6709\u9650\u516c\u53f8\u4e0a\u6d77\u5206\u516c\u53f8", "title": "\u6280\u672f\u652f\u6301\u5de5\u7a0b\u5e08", "time": "2011-07 - 2015-12", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2021-09 - 至今
+ 腾讯集团A 
+4年3个月
+IT与通讯 上海 北京 深圳
+SaaS 架构师团队负责人
+带领全国
+通用 SaaS 领域的架构师团队，根据
+通用 SaaS 客户的行业情况和需求，针对
+通用 SaaS 的不同细分领域建立一套全新客户机制来实现业务增量。主要负责
+通用 SaaS 领域的客户技术互动，与销售、产研团队合作分别在人力资源、营销、财税等不同 SaaS 客户中建立新的打法帮助客户提升业务质量；建立客户互动机制来提升跨地区的客户覆盖效率，实现腾讯云渗透率的提升。
+部门 | 2018-07 - 2021-07
+亚马逊通技术服务(北京)有限公司
+3年
+企业服务团队负责人
+带领华南，香港，台湾的技术服务经理团队，进行客户服务交付，专注于企业级客户的服务交付，专注于数字原生以及相关智能制造产业，保证服务质量。独立进行团队绩效管理，团队运营规划，客户质量管理，关注客户业务在AWS安全，性能，可用性以及成本。将客户的规划，需求以及用例转化为实际项目以及客户案例。
+部门 | 2015-12 - 2018-07
+微软(中国)有限公司深圳分公司
+2年7个月
+解决方案专家
+为微软大中华区重要客户的关键系统提供
+解决方案、咨询、技术支持等服务。主要为客户提供可持续、有保障的
+解决方案，协助用户在降低IT运维成本的同时，更好的利用现有的资源，提高工作效率；同时协助客户在IT
+方案中引进新产品以及云端
+解决方案，使得技术在客户的企业运营中更好地发挥作用；作为项目负责人带领小型团队完成技术项目。主要涉及包括企业合作平台、移动平台等。
+部门 | 2011-07 - 2015-12
+微软(中国)有限公司上海分公司
+4年5个月
+技术支持工程师
+为亚太区企业客户（包括大中华区、东南亚、澳新等）提供远程的提升级别的技术支持，主要覆盖产品包括SharePoint，以及SharePoint平台下的相关产品，如SQL Server、Active Directory、BI等。同时代理团队技术主管职位，协助团队优化内部流程、新技术落地、完成新旧成员的技术准备以及更新等；同时对下一代SharePoint产品进行测试、进行TAP客户的支持、编写内部技术参考文档等。
+部门
+
+【教育经历】
+2013-09 - 2018-06
+复旦大学985, 211, QS200
+软件工程-硕士以上 | 2008-09 - 2012-07
+上海交通大学985, 211, QS200
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备丰富的云服务与SaaS架构经验，但缺乏明确的大模型、Agent、RAG等AI技术栈落地项目证据；未体现金融/政务/能源等行业AI场景实践；无POC主导、ROI分析、评估指标设计等关键能力佐证。工作经历聚焦传统企业服务与IT架构优化，未涉及生成式AI或行业大模型应用。
+
+
+========================================
+

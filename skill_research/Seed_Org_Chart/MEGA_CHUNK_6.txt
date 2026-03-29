@@ -1,0 +1,91 @@
+# CANDIDATE BATCH 6
+
+========================================
+Candidate ID: 1879
+Name Mask: *ao Ge
+Current Title/Company: mlsys, llm training @ Peking University
+
+=== WORK EXPERIENCES ===
+[{"company": "Peking University", "title": "mlsys", "time": "Current", "description": ""}, {"company": "Qwen \u00b7 \u6b63\u5f0f", "position": "LLM & RL Infra Engineer", "start_date": "", "end_date": "", "duration": "2025\u5e747\u6708 - \u81f3\u4eca \u00b7 8 \u4e2a\u6708", "description": "Working on Qwen RL Infra as the lead of the in-house async RL framework, supporting Qwen3 pretraining and Qwen3 thinking models (including sizes of 30B, 235B, and 1.2TB), achieving a 2\u20134\u00d7 speedup and SOTA benchmark results.Working on Qwen RL Infra as the lead of the in-house async RL framework, supporting Qwen3 pretraining and Qwen3 thinking models (including sizes of 30B, 235B, and 1.2TB), achieving a 2\u20134\u00d7 speedup and SOTA benchmark results."}, {"company": "ByteDance \u00b7 \u5b9e\u4e60", "position": "Seed Foundation \u00b7 LLM Infra Engineer", "start_date": "", "end_date": "", "duration": "2023\u5e747\u6708 - 2025\u5e744\u6708 \u00b7 1 \u5e74 10 \u4e2a\u6708", "description": "Worked on LLM Infra, including Pretraining, Long Context Training, and RL Training, with optimization experience for large-scale MoE models on more than 10K+ GPUs. Authored ByteScale: Communication-Efficient Scaling of LLM Training with a 2048K Context Length on 16384 GPUs.Worked on LLM Infra, including Pretraining, Long Context Training, and RL Training, with optimization experience for large-scale MoE models on more than 10K+ GPUs. Authored ByteScale: Communication-Efficient Scaling of LLM Training with a 2048K Context Length on 16384 GPUs."}, {"company": "BodyPark", "position": "Startup", "start_date": "", "end_date": "", "duration": "2021\u5e749\u6708 - 2022\u5e749\u6708 \u00b7 1 \u5e74 1 \u4e2a\u6708", "description": ""}, {"company": "Microsoft \u00b7 \u5b9e\u4e60", "position": "Software Engineer", "start_date": "", "end_date": "", "duration": "2021\u5e747\u6708 - 2021\u5e7410\u6708 \u00b7 4 \u4e2a\u6708", "description": ""}, {"company": "Alibaba Group \u00b7 \u5b9e\u4e60", "position": "Software Engineer", "start_date": "", "end_date": "", "duration": "2021\u5e744\u6708 - 2021\u5e747\u6708 \u00b7 4 \u4e2a\u6708", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 2311
+Name Mask: *hen Zheng
+Current Title/Company: Senior Research Scientist @ Bytedance Seed @ BS@ZJU | MSCS@UIUC
+
+=== WORK EXPERIENCES ===
+[{"company": "BS@ZJU | MSCS@UIUC", "title": "Senior Research Scientist @ Bytedance Seed", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 2409
+Name Mask: *琪
+Current Title/Company: NLP算法工程师 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "position": "NLP\u7b97\u6cd5\u5de5\u7a0b\u5e08", "start_date": "2022.12", "end_date": "\u81f3\u4eca", "duration": "3\u5e742\u4e2a\u6708", "description": "Seed\u8c46\u5305rlhf\u76f8\u5173"}, {"company": "\u817e\u8baf\u79d1\u6280\uff08\u4e0a\u6d77\uff09\u6709\u9650\u516c\u53f8 \u2022 \u4f18\u56fe", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "start_date": "2020.7", "end_date": "2022.12", "duration": "2\u5e745\u4e2a\u6708", "description": "\u56fe\u50cf\u68c0\u7d22 \u591a\u6a21\u6001\u76ee\u6807\u68c0\u6d4b \u9274\u653f\u4eba\u8138\u8bc6\u522b"}, {"company": "\u5317\u4eac\u65f7\u89c6\u79d1\u6280\u6709\u9650\u516c\u53f8 \u2022 \u7814\u7a76\u9662", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "start_date": "2018.11", "end_date": "2019.8", "duration": "9\u4e2a\u6708", "description": "1.\u591a\u6a21\u6001\u68c0\u7d22\n3.reid \u5355\u76ee\u6807\u8ddf\u8e2a"}, {"company": "\u5317\u4eac\u5730\u5e73\u7ebf\u4fe1\u606f\u6280\u672f\u6709\u9650\u516c\u53f8", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "start_date": "2018.3", "end_date": "2018.8", "duration": "5\u4e2a\u6708", "description": "reid"}, {"company": "\u817e\u8baf\u79d1\u6280\uff08\u4e0a\u6d77\uff09\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2020-07", "endDate": "2022-12", "time": "2020-07 ~ 2022-12", "duration": "", "description": "\u56fe\u50cf\u68c0\u7d22 \u591a\u6a21\u6001\u76ee\u6807\u68c0\u6d4b \u9274\u653f\u4eba\u8138\u8bc6\u522b"}, {"company": "\u5317\u4eac\u65f7\u89c6\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2018-11", "endDate": "2019-08", "time": "2018-11 ~ 2019-08", "duration": "", "description": "1.\u591a\u6a21\u6001\u68c0\u7d22\n3.reid \u5355\u76ee\u6807\u8ddf\u8e2a"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 2544
+Name Mask: *淏辰
+Current Title/Company: seed实习生 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "position": "seed\u5b9e\u4e60\u751f", "start_date": "2024.10", "end_date": "\u81f3\u4eca", "duration": "1\u5e744\u4e2a\u6708", "description": "\u591a\u6a21\u6001\u5927\u6a21\u578b\u76f8\u5173\u7b97\u6cd5\u7814\u7a76"}, {"company": "\u65f7\u89c6\u79d1\u6280", "position": "\u7814\u7a76\u5b9e\u4e60\u751f", "start_date": "2022.6", "end_date": "2024.11", "duration": "2\u5e745\u4e2a\u6708", "description": ""}, {"company": "\u5546\u6c64\u79d1\u6280", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "start_date": "2021.6", "end_date": "2022.4", "duration": "10\u4e2a\u6708", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 2561
+Name Mask: *tevehuang2016
+Current Title/Company: 大模型算法工程师 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "start_date": "2021.9", "end_date": "\u81f3\u4eca", "duration": "4\u5e745\u4e2a\u6708", "description": "\u5b57\u8282 to seed"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 2591
+Name Mask: *anyue Xie
+Current Title/Company: AI Infra @ ByteDance Seed @ None
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance", "position": "Research Scientist", "start_date": "", "end_date": "", "duration": "2025\u5e748\u6708 - \u81f3\u4eca \u00b7 7 \u4e2a\u6708", "description": "Bellevue, Washington, United States"}, {"company": "ByteDance", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2024\u5e745\u6708 - 2024\u5e748\u6708 \u00b7 4 \u4e2a\u6708", "description": "San Jose, California, United States"}, {"company": "Futurewei Technologies, Inc.", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2023\u5e745\u6708 - 2024\u5e744\u6708 \u00b7 1 \u5e74", "description": "Santa Clara, California, United States"}]
+
+========================================
+
+========================================
+Candidate ID: 2598
+Name Mask: *hangyue Liao
+Current Title/Company: LLM Research @ 
+
+=== WORK EXPERIENCES ===
+[{"company": "字节跳动", "position": "Seed Foundation", "start_date": "", "end_date": "", "duration": "2025年4月 - 至今 · 11 个月", "description": ""}, {"company": "月之暗面 · 实习", "position": "Reasoning Framework Intern", "start_date": "", "end_date": "", "duration": "月之暗面 · 实习", "description": ""}, {"company": "MiniMax · 实习", "position": "Training Framework Intern", "start_date": "", "end_date": "", "duration": "2024年4月 - 2024年6月 · 3 个月", "description": ""}, {"company": "清华大学 · 实习", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2021年8月 - 2021年11月 · 4 个月", "description": "研究强化学习和分布式计算研究强化学习和分布式计算"}]
+
+========================================
+
+========================================
+Candidate ID: 3061
+Name Mask: *ingwei Meng
+Current Title/Company: Research Scientist @ ByteDance Seed @ The Chinese University of Hong Kong
+
+=== WORK EXPERIENCES ===
+[{"company": "The Chinese University of Hong Kong", "title": "Research Scientist @ ByteDance Seed", "time": "Current", "description": ""}, {"company": "ByteDance \u00b7 \u5168\u804c", "position": "Research Scientist", "start_date": "", "end_date": "", "duration": "2025\u5e748\u6708 - \u81f3\u4eca \u00b7 7 \u4e2a\u6708", "description": "Bytedance SeedBytedance Seed"}, {"company": "Microsoft", "position": "Research Intern", "start_date": "", "end_date": "", "duration": "2023\u5e7411\u6708 - 2025\u5e742\u6708 \u00b7 1 \u5e74 4 \u4e2a\u6708", "description": "Studying language modeling for speech synthesis; integrating speech with large language modelsStudying language modeling for speech synthesis; integrating speech with large language models"}]
+
+========================================
+

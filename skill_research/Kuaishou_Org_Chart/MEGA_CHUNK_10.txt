@@ -1,0 +1,806 @@
+# CANDIDATE BATCH 10
+
+========================================
+Candidate ID: 26189
+Name Mask: *飞
+Current Title/Company: 推荐算法工程师 @ 北京快手科技有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u5feb\u624b\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2021-06-01", "endDate": "\u4eca", "time": "2021-06-01 ~ \u4eca", "duration": "", "description": "\u56de\u68ee(\u5feb\u624b\u5b75\u5316K\u6b4cAPP)\u63a8\u8350\u7b97\u6cd5\u6838\u5fc3\u5f00\u53d1\u3002\n1. \u8d1f\u8d23\u56de\u68eeAPP\u5185\u97f3\u4e50\u63a8\u8350\u3001K\u6b4c\u4f5c\u54c1\u63a8\u8350\u3001\u6b4c\u623f\u63a8\u8350\u7b49\u573a\u666f\u7684\u63a8\u8350\u670d\u52a1\u53ca\u7b56\u7565\u6548\u679c\u4f18\u5316\u3002\n2. K\u6b4c\u4f5c\u54c1\u63a8\u8350\u573a\u666f\u4e2d\u4ece\u53ec\u56de\u3001\u7c97\u6392\u3001\u7cbe\u6392\u548c\u91cd\u6392\u5168\u94fe\u8def\u4f18\u5316\u63a8\u8350\u6548\u679c\uff0c\u591a\u6b21\u5927\u5e45\u63d0\u5347\u4e1a\u52a1\u6307\u6807\u3002\n3. \u4ece0\u52301\u642d\u5efa\u6b4c\u623f\u63a8\u8350\u670d\u52a1\uff0c\u6301\u7eed\u63d0\u5347\u6b4c\u623f\u63a8\u8350\u4e1a\u52a1\u6548\u679c\uff0c\u52a9\u529b\u4ea7\u54c1\u65e5\u6d3b\u589e\u957f\uff0c\u8425\u6536\u5927\u5e45\u63d0\u5347\u3002"}, {"company": "\u5317\u4eac\u5feb\u624b\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2018-09", "endDate": "2021-06", "time": "2018-09 ~ 2021-06", "duration": "", "description": "\u5feb\u624b\u6d77\u5916\u63a8\u8350\u7b56\u7565\u3002"}, {"company": "\u963f\u91cc\u5df4\u5df4.UC\u79fb\u52a8\u4e8b\u4e1a\u90e8", "title": "\u7b97\u6cd5\u4e13\u5bb6", "position": "\u7b97\u6cd5\u4e13\u5bb6", "startDate": "2016-07", "endDate": "2018-09", "time": "2016-07 ~ 2018-09", "duration": "", "description": "UC\u56fd\u5185\u4fe1\u606f\u6d41\u56fe\u6587\u4e0b\u53d1\u7b56\u7565\u4f18\u5316\u65b9\u5411\u8d1f\u8d23\u4eba\uff1a\u8d1f\u8d23\u7528\u6237\u4f53\u611f\u4f18\u5316\uff0c\u4e0b\u53d1\u6548\u7387\u63d0\u5347\u548c\u4e0b\u53d1\u8d28\u91cf\u4f53\u7cfb\u3002\nUC\u56fd\u5185\u4fe1\u606f\u6d41\u5185\u5bb9\u751f\u6001\u5efa\u8bbe\u4e0b\u53d1\u7aef\u8d1f\u8d23\u4eba\uff1a\u8d1f\u8d23UC\u5185\u5bb9\u751f\u6001\u4e0b\u53d1\u7aef\u7cfb\u7edf\u6539\u9020\u548c\u4e1a\u52a1\u5347\u7ea7\u3002"}, {"company": "\u963f\u91cc\u5df4\u5df4.\u963f\u91cc\u5988\u5988", "title": "\u6280\u672f\u4e13\u5bb6", "position": "\u6280\u672f\u4e13\u5bb6", "startDate": "2014-07", "endDate": "2016-07", "time": "2014-07 ~ 2016-07", "duration": "", "description": "1. \u76f4\u901a\u8f66\u5b9a\u5411\u5e7f\u544a\u4e1a\u52a1\u5de5\u7a0b\u63a5\u53e3\u4eba\uff1a\u8d1f\u8d23\u5e7f\u544a\u5f15\u64ce\u7cfb\u7edf\u4f18\u5316\uff0c\u5f00\u53d1\u6548\u7387\u4f18\u5316\uff0c\u5b9a\u5411\u5e7f\u544a\u79fb\u52a8\u5316\u5de5\u7a0b\u8d1f\u8d23\u4eba\u3002\n2. \u7cbe\u51c6\u5b9a\u5411\u4e1a\u52a1CPC\u5de5\u7a0b\u63a5\u53e3\u4eba\uff1a\u4f18\u5316\u79fb\u52a8\u5e7f\u544a\u6295\u653e\u5de5\u7a0b\u4f53\u7cfb\u548c\u6548\u679c\uff0c\u5f00\u521bbanner\u5e7f\u544a\u548ccpc\u6548\u679c\u5e7f\u544a\u6df7\u5408\u7ade\u4ef7\u7cfb\u7edf\u3002"}, {"company": "\u963f\u91cc\u5df4\u5df4.\u963f\u91cc\u5988\u5988", "title": "\u8d44\u6df1\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u8d44\u6df1\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2011-07", "endDate": "2014-07", "time": "2011-07 ~ 2014-07", "duration": "", "description": "1. \u6dd8\u5b9d\u5e7f\u544a\u4ea4\u6613\u5e73\u53f0(TANX)\u4e2d\u6700\u5927\u7684\u9700\u6c42\u65b9\u5e73\u53f0(DSP)\u6838\u5fc3\u5f00\u53d1\u548c\u7b97\u6cd5\uff1a\u8d1f\u8d23\u5b9a\u5411\u5e7f\u544a\u5b9e\u65f6\u7ade\u4ef7(RTP)\u7cfb\u7edf\u548c\u62a5\u4ef7\u9884\u4f30\u7b97\u6cd5\u3002\n2. \u76f4\u901a\u8f66\u5b9a\u5411\u6295\u653e\u5f15\u64ce\u6838\u5fc3\u5f00\u53d1\u4eba\u5458\uff1a\u8d1f\u8d23\u5b9a\u5411\u5e7f\u544a\u7cfb\u7edf\uff0c\u5efa\u7acb\u7528\u6237\u5b9a\u5411matching \u5e73\u53f0\uff0c\u8d1f\u8d23\u5b9a\u5411\u5e7f\u544a\u4e1a\u52a1\u7cfb\u7edf\u5bf9\u63a5\u548c\u5347\u7ea7\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 26402
+Name Mask: *景岩
+Current Title/Company: 广告大模型算法工程师 @ 快手
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b", "title": "\u5e7f\u544a\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5e7f\u544a\u5927\u6a21\u578b\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2025-07-01", "endDate": "\u4eca", "time": "2025-07-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u963f\u91cc\u5df4\u5df4\u96c6\u56e2\uff08\u963f\u91cc\u4e91\uff09", "title": "NLP\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "NLP\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-06", "endDate": "2024-12", "time": "2024-06 ~ 2024-12", "duration": "", "description": "\u4e13\u6ce8\u4e8e\u7814\u7a76LLM Agent\u7684\u63d0\u5347\uff0c\u5c24\u5176\u662f\u5728\u5de5\u5177\u4f7f\u7528\uff08tool use\uff09\u3001\u590d\u6742\u4efb\u52a1\u89c4\u5212\uff08planning\uff09\u3001\u4ee5\u53ca\u9690\u542b\u610f\u56fe\u8bc6\u522b\uff08intent recognition\uff09\u65b9\u9762\u7684\u80fd\u529b\u6539\u8fdb\u3002\u9488\u5bf9\u5b9e\u9645\u4e1a\u52a1\u4e2d\u7684\u5355\u5de5\u5177\u3001\u591a\u5de5\u5177\u53ca\u94fe\u5f0f\u5de5\u5177\u8c03\u7528\u573a\u666f\uff0c\u8bbe\u8ba1\u5e76\u6784\u5efa\u4e86\u6307\u4ee4\u6570\u636e\u96c6\uff0c\u5bf9Qwen7B\u6a21\u578b\u8fdb\u884c\u5fae\u8c03\u3002\u540c\u65f6\uff0c\u4e3a\u4e86\u9632\u6b62\u6a21\u578b\u5728\u5de5\u5177\u8c03\u7528\u4e0a\u7684\u8fc7\u62df\u5408\uff0c\u6784\u9020\u4e86\u53cd\u4f8b\u6570\u636e\u96c6\uff0c\u6700\u7ec8\u4f7f\u6a21\u578b\u5728\u5b9e\u9645\u4e1a\u52a1\u6570\u636e\u7684\u6d4b\u8bd5\u96c6\u4e0a\u7684\u5de5\u5177\u4f7f\u7528\u51c6\u786e\u7387\u63d0\u5347\u4e8610%\u3002\u9488\u5bf9\u4e1a\u52a1\u6570\u636e\u4e2d\u7684\u9690\u542b\u610f\u56fe\u8bc6\u522b\u9700\u6c42\uff0c\u8fdb\u884c\u4e86\u6df1\u5165\u8c03\u7814\u3002\u7ed3\u5408\u5e38\u8bc6\u77e5\u8bc6\u56fe\u8c31\u5bf9\u6a21\u578b\u8fdb\u884c\u5fae\u8c03\uff0c\u5e76\u7ed3\u5408CoT\u3001ReACT\u7b49\u63a8\u7406\u6846\u67b6\uff0c\u4f18\u5316\u6a21\u578b\u5728\u9690\u542b\u610f\u56fe\u573a\u666f\u4e0b\u7684\u5de5\u5177\u8c03\u7528\u6027\u80fd\u3002"}, {"company": "\u963f\u91cc\u4e91", "title": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "NLP\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2024-06", "endDate": "2024-10", "time": "2024-06 ~ 2024-10", "duration": "", "description": ""}, {"company": "\u8682\u8681\u96c6\u56e2", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-05", "endDate": "2024-06", "time": "2024-05 ~ 2024-06", "duration": "", "description": "\u5927\u6a21\u578b\u63a8\u7406\u52a0\u901f\u65b9\u5411\u8c03\u7814\uff1a\u6df1\u5165\u4e86\u89e3\u5e38\u7528\u7684\u6a21\u578b\u91cf\u5316\u6280\u672f\uff0c\u5982SmoothQuant\uff0c\u4ee5\u53caKV Cache\u538b\u7f29\u65b9\u6cd5\uff0c\u63d0\u5347\u5927\u6a21\u578b\u63a8\u7406\u6548\u7387\u3002\u90e8\u7f72Sentence Embedding\u6a21\u578b\uff1a\u8d1f\u8d23\u5c06BGE - M3\u6a21\u578b\u90e8\u7f72\u5230\u56fd\u4ea7GPU\uff08\u66e6\u4e91\uff09\u73af\u5883\u4e2d\uff0c\u9002\u914d\u63a8\u7406\u811a\u672c\uff0c\u901a\u8fc7HTTP\u5305\u88c5\u63a8\u7406\u670d\u52a1\uff0c\u5e76\u901a\u8fc7Docker\u73af\u5883\u5b8c\u6210\u4ea4\u4ed8\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "Legal - Eagle\u6cd5\u5f8b\u5927\u6a21\u578b", "time": "2024-01\u81f32024-02", "description": "\u9879\u76ee\u5730\u5740\uff1ahttps://github.com/ZixinxinWang/Legal - Eagle - InternLM"}]
+
+========================================
+
+========================================
+Candidate ID: 26617
+Name Mask: *娜
+Current Title/Company: 推荐算法负责人 @ 快手
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b", "title": "\u63a8\u8350\u7b97\u6cd5\u8d1f\u8d23\u4eba", "position": "\u63a8\u8350\u7b97\u6cd5\u8d1f\u8d23\u4eba", "startDate": "2020-09", "endDate": "2025-03", "time": "2020-09 ~ 2025-03", "duration": "", "description": "\u5e7f\u544a\u6a21\u578b\u8d1f\u8d23\u4eba\n\u53ec\u56de\u3001\u6392\u5e8f\u3001\u8d85\u5927\u89c4\u6a21\u6a21\u578b\u6548\u80fd\u3001\u7aef\u667a\u80fd"}, {"company": "\u963f\u91cc\u5988\u5988", "title": "\u7b97\u6cd5\u4e13\u5bb6", "position": "\u7b97\u6cd5\u4e13\u5bb6", "startDate": "2017-12", "endDate": "2020-07", "time": "2017-12 ~ 2020-07", "duration": "", "description": "\u9996\u731c\u3001\u8d2d\u540e\u7b49\u4fe1\u606f\u6d41\u5e7f\u544a\nDin\u3001Dien\u5e8f\u5217\u5efa\u6a21"}, {"company": "\u7f51\u6613\u6709\u9053", "title": "\u8d44\u6df1\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u8d44\u6df1\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2015-04", "endDate": "2017-07", "time": "2015-04 ~ 2017-07", "duration": "", "description": "\u7b2c\u4e00\u4ee3\u795e\u7ecf\u7f51\u7edc\u673a\u5668\u7ffb\u8bd1\u6a21\u578b"}, {"company": "\u963f\u91cc\u5988\u5988", "title": "\u5b9e\u4e60\u5e7f\u544a\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5b9e\u4e60\u5e7f\u544a\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2014-07", "endDate": "2015-01", "time": "2014-07 ~ 2015-01", "duration": "", "description": "dsp\u5e7f\u544a\u7b97\u6cd5\u8c03\u4f18\u548c\u67b6\u6784\u91cd\u6784"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 27002
+Name Mask: *坤
+Current Title/Company: 推荐算法工程师 @ 快手
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b", "title": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-07-01", "endDate": "\u4eca", "time": "2023-07-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u5c0f\u7ea2\u4e66", "title": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-03", "endDate": "2022-08", "time": "2022-03 ~ 2022-08", "duration": "", "description": "\u5b66\u4e60ing"}, {"company": "\u767e\u5ea6", "title": "C\uff0b\uff0b\u5f00\u53d1\u5de5\u7a0b\u5e08", "position": "C\uff0b\uff0b\u5f00\u53d1\u5de5\u7a0b\u5e08", "startDate": "2021-04", "endDate": "2021-10", "time": "2021-04 ~ 2021-10", "duration": "", "description": "\u5b66\u4e60ing"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 27292
+Name Mask: *翔宇
+Current Title/Company: 大模型 @ 快手
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b", "title": "\u5927\u6a21\u578b", "position": "\u5927\u6a21\u578b", "startDate": "2025-02-01", "endDate": "\u4eca", "time": "2025-02-01 ~ \u4eca", "duration": "", "description": "\u5927\u6a21\u578b\u5e94\u7528"}, {"company": "\u5c0f\u7ea2\u4e66", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-06", "endDate": "2025-02", "time": "2023-06 ~ 2025-02", "duration": "", "description": ""}, {"company": "\u5feb\u624b", "title": "\u5185\u5bb9\u7406\u89e3\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u5185\u5bb9\u7406\u89e3\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2019-07", "endDate": "2023-06", "time": "2019-07 ~ 2023-06", "duration": "", "description": "\u591a\u6a21\u6001\u5b66\u4e60\uff0c\u5927\u89c4\u6a21\u9884\u8bad\u7ec3\uff0c\u5185\u5bb9x\u884c\u4e3a\u8054\u5408\u5efa\u6a21"}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+
+========================================
+Candidate ID: 28472
+Name Mask: *绍臣
+Current Title/Company: 资深架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2021-11 - \u81f3\u4eca", "description": ""}, {"company": "VIPKID \u5927\u7c73\u672a\u6765", "title": "", "time": "2019-09 - 2021-10", "description": ""}, {"company": "\u767e\u5ea6\u96c6\u56e2A", "title": "\u8d44\u6df1\u7814\u53d1\u5de5\u7a0b\u5e08", "time": "2015-04 - 2019-09", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2021-11 - 至今
+快手（达佳） 
+4年1个月
+高科技所有 北京 深圳
+资深架构师
+部门 | 2019-09 - 2021-10
+VIPKID 大米未来 
+2年1个月
+高科技所有 1 电商/新零售 北京
+资深架构师
+部门 | 2015-04 - 2019-09
+ 百度集团A 
+4年5个月
+高科技所有 北京
+资深研发工程师
+流程信息管理部
+部门
+
+【教育经历】
+2011-09 - 2015-07
+山东师范大学
+通信工程-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人虽具备10年+技术架构经验，但简历未体现任何AI行业解决方案、大模型POC、Agent技术栈或垂直行业（金融/政务/能源等）落地项目。所有经历集中于互联网公司内部系统研发，缺乏岗位要求的‘真实客户项目落地经验’及‘售前/交付闭环’证据。
+
+
+========================================
+
+========================================
+Candidate ID: 28525
+Name Mask: *nfoxiong(熊刚)
+Current Title/Company: 架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2019-10 - \u81f3\u4eca", "description": ""}, {"company": "\u817e\u8baf(tencent)-SNG\uff08\u793e\u4ea4\u7f51\u7edc\u4e8b\u4e1a\u7fa4\uff09", "title": "", "time": "2010-07 - 2019-10", "description": "\u8d1f\u8d23\u7684\u4e1a\u52a1\uff1aQQ\u540e\u53f0\u548c\u4e91\u5f00\u53d1 \u64c5\u957f\u7684\u6280\u80fd\uff1a\u6d77\u91cf\u670d\u52a1\uff0c\u63a5\u5165\u8c03\u5ea6\uff0c\u9274\u6743\uff0cAI\u5de5\u7a0b\u5316"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2019-10 - 至今
+快手（达佳） 
+6年2个月
+高科技所有 北京 深圳
+架构师
+部门 | 2010-07 - 2019-10
+ 腾讯(tencent)-SNG（社交网络事业群） 
+9年3个月
+高科技所有 深圳
+架构师
+负责的业务：QQ后台和云开发
+
+擅长的技能：海量服务，接入调度，鉴权，AI工程化
+部门
+
+【教育经历】
+2007-09 - 2010-01
+武汉理工大学211
+计算机科学与技术-硕士以上 | 2003-09 - 2007-01
+武汉理工大学211
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备扎实的互联网高并发系统架构经验（QQ后台、快手），但缺乏明确的AI行业解决方案落地证据。简历未提及任何大模型、Agent、RAG、POC项目、垂直行业（金融/政务/能源等）业务流程或售前支持经历，不符合岗位硬性要求中的‘真实行业AI项目落地经验’和‘主导POC’等核心条件。
+
+
+========================================
+
+========================================
+Candidate ID: 28600
+Name Mask: *继山
+Current Title/Company: 架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2019-02 - 2019-08", "description": "\u7535\u5546\u4e1a\u52a1\uff1a\u4e3b\u8981\u5de5\u4f5c\u5305\u62ec\u8de8 App\u4e1a\u52a1\u7ec4\u4ef6\u5316\uff0c\u7a33\u5b9a\u6027\u6cbb\u7406\uff0c\u52a8\u6001\u5316\u7387\u63d0\u5347 \u540c\u57ce\u4e1a\u52a1\uff1a\u540c\u57ce\u9875\u7684\u67b6\u6784\u4f18\u5316\u3001\u7528\u6237\u4f53\u9a8c\u4f18\u5316\uff0c\u5f02\u5e38\u6570\u636e\u5206\u6790\u3001\u76d1\u63a7 \u62a5\u8b66 \u793e\u4ea4\u4e1a\u52a1\uff1a\u79c1\u4fe1\u804a\u5929\u9875\u65b9\u5411\u4e3b R\uff0c\u65e5\u5e38\u9700\u6c42\u8fed\u4ee3\uff0c\u9875\u9762\u57fa\u7840\u80fd\u529b\u6c89\u6dc0\u3001\u4ee3\u7801\u91cd\u6784\u7b49"}, {"company": "\u7f8e\u56e2\u7f51\uff08\u5317\u4eac\u4e09\u5feb\u5728\u7ebf\u79d1\u6280\u6709\u9650\u516c\u53f8\uff09", "title": "\u5de5\u7a0b\u5e08", "time": "2018-03 - 2019-08", "description": "\u4e3b R\u95ea\u8d2d\u5546\u5bb6\u7aef\u7684\u4e1a\u52a1\u8fed\u4ee3\uff0c \u8d1f\u8d23\u6838\u5fc3\u6a21\u5757\u7684\u8fed\u4ee3\u5f00\u53d1 \u3001\u9875\u9762\u7ed3\u6784\u7684\u4f18\u5316\u7b49"}, {"company": "\u5929\u6d25\u4e66\u751f\u4e91\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "", "time": "2014-09 - 2018-03", "description": "\u4ece 0\u642d\u5efa\u4e66\u751f\u4f01\u4e1a\u4e91\u76d8\u7684 iOS/PC\u7aef\uff0c\u5e76\u7ec4\u5efa\u5ba2\u6237\u7aef\u56e2\u961f"}, {"company": "\u5929\u6d25\u5929\u5730\u4f1f\u4e1a\u6570\u7801\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "", "time": "2010-07 - 2014-01", "description": "\u4e3b\u8981\u8d1f\u8d23\u5b89\u9632\u884c\u4e1a\u89c6\u9891\u76d1\u63a7 iOS/PC\u7aef\u8fed\u4ee3\u4ee5\u53ca\u5b9a\u5236\u5316\u9879\u76ee\u7684\u5f00\u53d1\u4e0e\u843d\u5730"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2019-02 - 2019-08
+快手（达佳） 
+6个月
+高科技所有 北京 深圳
+架构师
+l,
+电商业务：主要工作包括跨 App业务组件化，稳定性治理，动态化率提升
+同城业务：同城页的架构优化、用户体验优化，异常数据分析、监控 报警
+社交业务：私信聊天页方向主 R，日常需求迭代，页面基础能力沉淀、代码重构等
+部门 | 2018-03 - 2019-08
+ 美团网（北京三快在线科技有限公司） 
+1年5个月
+高科技所有 北京
+工程师
+l 资深iOS 闪购
+主 R闪购商家端的业务迭代， 负责核心模块的迭代开发 、页面结构的优化等
+部门 | 2014-09 - 2018-03
+天津书生云科技有限公司
+3年6个月
+客户端leader
+l,
+从 0搭建书生企业云盘的 iOS/PC端，并组建客户端团队
+部门 | 2010-07 - 2014-01
+天津天地伟业数码科技有限公司
+3年6个月
+虚线leader
+l,
+主要负责安防行业视频监控 iOS/PC端迭代以及定制化项目的开发与落地
+部门
+
+【教育经历】
+2006-07 - 2010-07
+西安电子科技大学211
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 15
+推荐: 低潜力
+理由: 候选人缺乏AI行业项目落地经验、大模型/Agent技术栈实践、POC主导经历及垂直行业业务流程理解，工作经历集中于传统客户端架构与业务开发，未体现岗位硬性要求中的任何一项核心能力。
+
+
+========================================
+
+========================================
+Candidate ID: 28808
+Name Mask: *振
+Current Title/Company: 架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2018-12 - \u81f3\u4eca", "description": ""}, {"company": "\u767e\u5ea6\u96c6\u56e2A", "title": "", "time": "2014-07 - 2018-12", "description": ""}, {"company": "\u641c\u72d0\u7545\u6e38\u6709\u9650\u516c\u53f8", "title": "", "time": "2009-06 - 2018-10", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2018-12 - 至今
+快手（达佳） 
+7年
+高科技所有 北京 深圳
+架构师
+电商，音乐
+部门 | 2014-07 - 2018-12
+ 百度集团A 
+4年5个月
+高科技所有 北京
+架构师
+部门 | 2009-06 - 2018-10
+搜狐畅游有限公司
+9年4个月
+程序中部主管
+部门
+
+【教育经历】
+2000-09 - 2004-07
+北方工业大学
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 25
+推荐: 低潜力
+理由: 候选人缺乏岗位核心要求的关键证据：无明确行业AI项目落地经验（金融/政务/能源等）、未体现主导大模型POC、未展示Agent/RAG技术栈应用、无售前或交付闭环经历。虽有20年架构师背景，但集中在互联网内容平台（快手、百度、搜狐），与目标岗位所需的垂直行业解决方案能力错配。
+
+
+========================================
+
+========================================
+Candidate ID: 28861
+Name Mask: *ky
+Current Title/Company: 资深架构师 负责人 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "\u8d44\u6df1\u67b6\u6784\u5e08 \u8d1f\u8d23\u4eba", "time": "2023-05 - \u81f3\u4eca", "description": ""}, {"company": "58\u96c6\u56e2", "title": "\u9ad8\u7ea7\u67b6\u6784\u5e08 \u8d1f\u8d23\u4eba", "time": "2014-07 - 2023-04", "description": "\u8d1f\u8d23\u7684\u4e1a\u52a1\uff1a\u98ce\u63a7\u5e73\u53f0\u3001\u5b89\u5168\u80fd\u529b\u3001\u7b97\u6cd5\u5de5\u7a0b \u64c5\u957f\u7684\u6280\u80fd\uff1a\u4e1a\u52a1\u62c6\u89e3\u3001\u67b6\u6784\u8bbe\u8ba1\u3001\u524d\u6cbf\u63a2\u7d22"}, {"company": "Experian(\u76ca\u535a\u777f)", "title": "\u9ad8\u7ea7\u7814\u53d1\u5de5\u7a0b\u5e08", "time": "2012-07 - 2014-07", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2023-05 - 至今
+快手（达佳） 
+2年7个月
+高科技所有 北京 深圳
+资深架构师 负责人
+部门 | 2014-07 - 2023-04
+58集团
+8年9个月
+高级架构师 负责人
+负责的业务：风控平台、安全能力、算法工程
+擅长的技能：业务拆解、架构设计、前沿探索
+部门 | 2012-07 - 2014-07
+Experian(益博睿) 
+2年
+高科技所有 上海
+高级研发工程师
+部门
+
+【教育经历】
+2008-09 - 2012-07
+北京工业大学211
+计算机科学与技术-本科
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备资深架构背景和风控领域经验，但缺乏明确的大模型/Agent项目落地证据、POC主导经历及垂直行业AI解决方案闭环经验。当前描述未体现与通用JD要求的关键交集。
+
+
+========================================
+
+========================================
+Candidate ID: 28875
+Name Mask: *兴兵
+Current Title/Company: SRE架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2019-09 - \u81f3\u4eca", "description": ""}, {"company": "\u767e\u5ea6\u96c6\u56e2A", "title": "\u8fd0\u7ef4\u90e8 \u8d44\u6df1\u8fd0\u7ef4\u5f00\u53d1\u5de5\u7a0b\u5e08", "time": "2014-07 - 2019-09", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2019-09 - 至今
+快手（达佳） 
+6年3个月
+高科技所有 北京 深圳
+SRE架构师
+部门 | 2014-07 - 2019-09
+ 百度集团A 
+5年2个月
+高科技所有 北京
+运维部 资深运维开发工程师
+部门
+
+【教育经历】
+2012-01 - 2012-01
+东北大学985, 211
+计算机系统结构-硕士以上
+
+【AI分析】
+匹配分: 20
+推荐: 低潜力
+理由: 候选人背景聚焦于SRE/运维工程领域，缺乏AI行业解决方案、大模型POC、Agent技术栈及垂直行业业务流程等核心要素的任何实证。未体现岗位硬性要求中的任一关键项（如真实AI项目落地、POC主导、RAG/Agent经验、售前支持等）。
+
+
+========================================
+
+========================================
+Candidate ID: 28920
+Name Mask: *帅+D6
+Current Title/Company: 技术专家/架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "\u7535\u5546\u7528\u6237\u589e\u957f\u4e0e\u8425\u9500\u65b9\u5411\u7814\u53d1\u8d1f\u8d23\u4eba", "time": "2020-03 - \u81f3\u4eca", "description": ""}, {"company": "\u6ef4\u6ef4 \u5c0f\u6854\u79d1\u6280 \u5600\u5600\u65e0\u9650", "title": "\u5c0f\u6854\u52a0\u6cb9\u5546\u6237\u4e2d\u5fc3\u548c\u6e05\u7ed3\u7b97\u4e2d\u5fc3\u8d1f\u8d23\u4eba", "time": "2017-12 - 2020-03", "description": ""}, {"company": "\u7f8e\u56e2\u7f51\uff08\u5317\u4eac\u4e09\u5feb\u5728\u7ebf\u79d1\u6280\u6709\u9650\u516c\u53f8\uff09", "title": "\u7f8e\u56e2\u5916\u5356crm\u6280\u672f\u8d1f\u8d23\u4eba", "time": "2013-01 - 2017-12", "description": ""}, {"company": "\u7f8e\u4e3d\u4f20\u8bf4\u80a1\u4efd\u6709\u9650\u516c\u53f8\uff08\u732b\u6251\u7f51\uff09", "title": "java\u5de5\u7a0b\u5e08", "time": "2011-07 - 2013-01", "description": ""}, {"company": "\u9752\u725b\u8f6f\u4ef6", "title": "java\u5de5\u7a0b\u5e08", "time": "2009-07 - 2011-07", "description": "\u5546\u65c5\u9884\u8ba2\u7cfb\u7edf\uff0c\u62a5\u8868\u7cfb\u7edf"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2020-03 - 至今
+快手（达佳） 
+5年9个月
+高科技所有 北京 深圳
+技术专家/架构师
+电商用户增长与营销方向研发负责人
+部门 | 2017-12 - 2020-03
+ 滴滴 小桔科技 嘀嘀无限 
+2年3个月
+高科技所有 北京
+技术经理
+小桔租车交易中心和架构组负责人
+小桔车服业务中台技术负责人
+小桔加油商户中心和清结算中心负责人
+部门 | 2013-01 - 2017-12
+ 美团网（北京三快在线科技有限公司） 
+4年11个月
+高科技所有 北京
+高级技术专家
+美团商家中心（mdc）技术负责人
+美团外卖crm技术负责人
+部门 | 2011-07 - 2013-01
+美丽传说股份有限公司（猫扑网） 
+1年6个月
+高科技所有 北京
+java工程师
+负责广告平台开发
+部门 | 2009-07 - 2011-07
+青牛软件
+2年
+java工程师
+商旅预订系统，报表系统
+部门
+
+【教育经历】
+2004-09 - 2009-07
+北京邮电大学211
+软件工程
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备16年互联网高并发系统架构经验，主导过电商、租车、外卖等业务中台建设，技术深度和工程落地能力扎实。但简历未体现任何AI项目（尤其是大模型/Agent方向）的直接参与，无金融/政务/能源等行业AI落地案例，亦无POC主导、RAG/Agent技术栈应用、售前支持或ROI分析等关键证据。其经验集中于传统业务系统架构，与岗位要求的‘真实行业AI项目落地经验’存在显著断层。
+
+
+========================================
+
+========================================
+Candidate ID: 29071
+Name Mask: *星
+Current Title/Company: iOS架构师 @ Shopee（深圳虾皮信息科技有限公司）
+
+=== WORK EXPERIENCES ===
+[{"company": "Shopee\uff08\u6df1\u5733\u867e\u76ae\u4fe1\u606f\u79d1\u6280\u6709\u9650\u516c\u53f8\uff09", "title": "", "time": "2022-06 - 2022-09", "description": "1\u3001RN\u57fa\u7840\u6846\u67b6\u67b6\u6784\u5e08:\u8d1f\u8d23Shopee\u7684RN\u57fa\u7840\u6846\u67b6\u7684\u5f00\u53d1\u548c\u7ef4\u62a4; JS\u901a\u7528\u6865\u529f\u80fd\u7684\u65b9\u6848\u8bbe\u8ba1\u4e0e\u5b9e\u73b0\uff1b JSWorker\u65b9\u6848\u8bbe\u8ba1\u4e0e\u5b9e\u73b0; \u52a8\u6001\u5316\u5305\u53d1\u5e03\u529f\u80fd\u7684\u63a8\u8fdb\u548c\u843d\u5730;"}, {"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2019-11 - 2022-06", "description": "1\u3001\u793e\u4ea4FT\u4e1a\u52a1\u67b6\u6784\u5e08:\u8d1f\u8d23\u5feb\u624b\u4e3b\u7ad9\u793e\u4ea4\u4e1a\u52a1\u7684\u4e1a\u52a1\u67b6\u6784\u7684\u8bbe\u8ba1\u4e0e\u5f00\u53d1\u5de5\u4f5c; \u793e\u4ea4\u590d\u6742\u957f\u5217\u8868\u7684\u6280\u672f\u65b9\u6848\u8bbe\u8ba1\u548c\u5173\u6ce8\u2eda\u7684\u91cd\u6784\u9879\u76ee\u7684\u63a8\u8fdb\u548c\u843d\u5730; \u793e\u4ea4\u5206\u4eabSDK\u7684\u6280\u672f\u65b9\u6848\u8bbe\u8ba1\uff0c\u4e3b\u6846\u67b6\u7684\u5f00\u53d1; \u5feb\u624b\u52a8\u6001\u5316\u901a\u7528\u57fa\u5efa\u65b9\u6848\u8bbe\u8ba1\u4e0e\u843d\u5730; \u5feb\u624b\u52a8\u6001\u5316\u5f00\u53d1\u5e73\u53f0\u7684\u65b9\u6848\u8bbe\u8ba1\u4e0e\u843d\u5730\u63a8\u8fdb;"}, {"company": "\u63a2\u63a2\u79d1\u6280", "title": "", "time": "2018-09 - 2019-11", "description": "iOS\u6280\u672fleader \u63a2\u63a2iOS\u7f51\u7edc\u5e93\u91cd\u6784; \u63a2\u63a2iOS\u7684\u7ec4\u4ef6\u5316\u5de5\u4f5c; \u5546\u4e1a\u5316\u9879\u76ee\u6280\u672f\u91cd\u6784\uff0cMVC-MVVM; 4. \u76f4\u64ad\u4e1a\u52a1\u67b6\u6784\u8bbe\u8ba1\u548c\u65b9\u6848\u843d\u5730\u63a8\u8fdb\u3002"}, {"company": "Mobike \u6469\u62dc\u5355\u8f66", "title": "iOS\u7814\u53d1\u7ecf\u7406", "time": "2017-09 - 2018-09", "description": "\u7ec4\u5185\u4eba\u5458\u57f9\u517b\u8ba1\u5212\uff0c\u56e2\u961f\u5efa\u8bbe\u548c\u4eba\u5458\u4f18\u5316\u65b9\u6848\u5236\u5b9a\uff0ciOS\u7ec4\u7684\u9636\u6bb5\u6027\u8fdb\u5c55\u6c47\u62a5\uff0c\u5916\u90e8\u5408\u4f5c\u6c9f\u901a\u4ea4\u6d41\u3002 \u6469\u62dc\u5355\u8f66UI\u6539\u7248\u9879\u76ee\uff1b \u9996\u2eda\u91cd\u6784\uff0c\u5355\u5730\u56fe\uff0c\u7535\u8f66\u5355\u8f66\u62c6\u5206\uff1b"}, {"company": "\u4e50\u89c6\u7f51", "title": "iOS\u6280\u672f\u7ecf\u7406", "time": "2015-11 - 2017-09", "description": "1\u3001\u4e50\u89c6\u89c6\u9891\u64ad\u653e(\u70b9\u64ad/\u76f4\u64ad)\u6a21\u5757\u91cd\u6784\u9879\u76ee:\u91cd\u6784\u6846\u67b6\u8bbe\u8ba1\uff0c\u91cd\u6784\u5f00\u53d1\u9879\u76ee\u6392\u671f\u5236\u5b9a\u4e0e\u4efb\u52a1\u5206\u914d\uff0c\u5f00\u53d1\u8fdb\u5ea6\u8ddf\u8fdb\uff0c\u4ee5\u53ca\u90e8\u5206\u6838\u5fc3\u6a21\u5757\u7684\u4ee3\u7801\u5f00\u53d1\uff1b 2\u3001\u4e50\u89c6\u89c6\u9891\u6a21\u5757\u5316\u9879\u76ee:\u53c2\u4e0e\u4e50\u89c6\u89c6\u9891\u6a21\u5757\u5316\u6846\u67b6\u8bbe\u8ba1\uff0c\u4e1a\u52a1\u903b\u8f91\u6a21\u5757\u89e3\u8026\u5408UI\u89e3\u8026\u5408\uff0c\u90e8\u5206\u6a21\u5757\u5f00\u53d1\u5b9e\u73b0\uff1b 4\u3001React native\u9879\u76ee:\u8d1f\u8d23iOS reactnative\u7684\u89c6\u9891card\u7ec4\u4ef6\u7684\u8bbe\u8ba1\u4e0e\u5f00\u53d1\uff0c\u8d1f\u8d23\u4e50\u89c6\u89c6\u9891iPad RN\u9996\u2eda\u7684\u6846\u67b6\u8bbe\u8ba1\u4e0e\u5b9e\u73b0\uff1b"}, {"company": "\u5343\u6a61\u96c6\u56e2\uff08\u4eba\u4eba\u7f51\uff09", "title": "iOS\u9ad8\u7ea7\u8f6f\u4ef6\u5f00\u53d1\u5de5\u7a0b\u5e08", "time": "2013-09 - 2014-12", "description": ""}, {"company": "\u5c71\u77f3\u7f51\u79d1\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u9ad8\u7ea7\u8f6f\u4ef6\u5f00\u53d1\u5de5\u7a0b\u5e08", "time": "2012-09 - 2013-09", "description": "\u9879\u76ee\u63cf\u8ff0\uff1aHillstone M/S\u7cfb\u5217\u9632\u706b\u5899, Data-plane Flow\u7279\u6027\u8bbe\u8ba1\u4e0e\u5f00\u53d1 1\u3001\u52a8\u6001LACP\u534f\u8bae\u5f00\u53d1(\u5185\u6838\u4ee3\u7801\u79fb\u690d \u6574\u6539); 2\u3001\u4e2d\u56fd\u8054\u901a\u77ed\u4fe1\u7f51\u5173\u534f\u8baeSGIP\u5e94\u7528\u5c42\u534f\u8bae\u5f00\u53d1\uff0cSSLVPN\u77ed\u4fe1\u8ba4\u8bc1\u7cfb\u7edf\u529f\u80fd\u5f00\u53d1(\u652f\u6301\u9ad8\u5e76\u53d1); 3\u3001PKI\u7b80\u5355\u8bc1\u4e66\u8ba4\u8bc1\u534f\u8baeSCEP\u5f00\u53d1; 4\u3001\u63a5\u53e3\u7ba1\u7406\uff0c\u5b89\u5168\u57df\u7b49\u6a21\u5757\u7684\u7ef4\u62a4\u3002"}, {"company": "\u7cfb\u5217\u5546\u7528\u8def\u7531\u5668", "title": "4\u3001\u9700\u6c42\u8bbe\u8ba1\u6587\u6863\uff0c\u4ea7\u54c1\u7ef4\u62a4\u624b\u518c\u7684\u64b0\u5199\u3002", "time": "2010-09 - 2011-11", "description": "2\u3001ME60 BAS\u4e1a\u52a1(IPOEV4/V6, PPPOEV4/V6, L2TP)\u4e1a\u52a1\u9700\u6c42\u5f00\u53d1\uff1b 3\u3001\u4e8c,\u4e09\u5c42\u57fa\u672c\u8f6c\u53d1\u529f\u80fd\u7279\u6027\u652f\u6301\u53ca\u53ef\u7ef4\u53ef\u9760\u6027\u9700\u6c42\u7684\u8bbe\u8ba1\u4e0e\u5b9e\u73b0;"}, {"company": "\u534e\u4e3a\u96c6\u56e2A", "title": "\u8f6f\u4ef6\u5f00\u53d1\u5de5\u7a0b\u5e08", "time": "2009-07 - 2012-09", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2022-06 - 2022-09
+Shopee（深圳虾皮信息科技有限公司） 
+3个月
+高科技所有 深圳
+iOS架构师
+1、RN基础框架架构师:负责Shopee的RN基础框架的开发和维护;
+主要技术向工作:
+JS通用桥功能的方案设计与实现；
+JSWorker方案设计与实现;
+动态化包发布功能的推进和落地;
+部门 | 2019-11 - 2022-06
+快手（达佳） 
+2年7个月
+高科技所有 北京 深圳
+iOS架构师
+1、社交FT业务架构师:负责快手主站社交业务的业务架构的设计与开发工作;
+2、快手动态化通用基建技术负责人:负责快手动态化项目基建的架构设计与落地，组内人员培养，中长期的技术规划和关键项目的组织协调和推进工作。
+主要技术向工作:
+社交复杂长列表的技术方案设计和关注⻚的重构项目的推进和落地;
+社交分享SDK的技术方案设计，主框架的开发;
+快手动态化通用基建方案设计与落地;
+快手动态化开发平台的方案设计与落地推进;
+主导动态化发布系统和数据基建项目的落地推进。
+部门 | 2018-09 - 2019-11
+探探科技 
+1年2个月
+高科技所有 北京
+iOS技术leader
+1、商业化项目的客户端负责人:负责商业化项目的业务需求的落地，组内人员培养，业务架构技术方案制定和落地，以及中长期技术规划；
+2、直播项目的客户端负责人:负责直播业务技术方案的制定和从0到1的建设，以及后续业务需求的落地，以及中长期技术规划。
+主要技术向工作:
+探探iOS网络库重构;
+探探iOS的组件化工作;
+商业化项目技术重构，MVC-MVVM; 4. 直播业务架构设计和方案落地推进。
+部门 | 2017-09 - 2018-09
+ Mobike 摩拜单车 
+1年
+高科技所有 1 电商/新零售 上海
+iOS研发经理
+摩拜单车iOS组技术负责人，主要负责iOS组中长期的技术规划和技术推进，重点项目的技术评审和方案选型
+组内人员培养计划，团队建设和人员优化方案制定，iOS组的阶段性进展汇报，外部合作沟通交流。
+主要的技术向工作:
+摩拜单车UI改版项目；
+摩拜iOS组件化；
+首⻚重构，单地图，电车单车拆分；
+骑行业务模块化；
+MVC-MVVM。
+部门 | 2015-11 - 2017-09
+乐视网 
+1年10个月
+高科技所有 北京
+iOS技术经理
+1、乐视视频播放(点播/直播)模块重构项目:重构框架设计，重构开发项目排期制定与任务分配，开发进度跟进，以及部分核心模块的代码开发；
+2、乐视视频模块化项目:参与乐视视频模块化框架设计，业务逻辑模块解耦合UI解耦合，部分模块开发实现；
+3、iPad业务线:iPad业务迭代项目负责人，业务需求技术评审，排期制定与任务分配，以及开发进度跟进。线上问题的分析定位与解决，线上核心数据指标质量保证；
+4、React native项目:负责iOS reactnative的视频card组件的设计与开发，负责乐视视频iPad RN首⻚的框架设计与实现；
+5、乐视视频播放器:播放模块的技术小组负责人，负责IOS播放模块的业务需求技术需求的方案评审与代码review工作。平滑码流切换播放内核，播放流程状态机等核心功能模块的开发与维护工作。
+部门 | 2013-09 - 2014-12
+千橡集团（人人网） 
+1年3个月
+高科技所有 北京
+iOS高级软件开发工程师
+部门 | 2012-09 - 2013-09
+山石网科技术有限公司
+1年
+高级软件开发工程师
+HILLSTONE)
+项目描述：Hillstone M/S系列防火墙, Data-plane Flow特性设计与开发
+项目职责:
+1、动态LACP协议开发(内核代码移植 整改);
+2、中国联通短信网关协议SGIP应用层协议开发，SSLVPN短信认证系统功能开发(支持高并发);
+3、PKI简单证书认证协议SCEP开发;
+4、接口管理，安全域等模块的维护。
+部门 | 2010-09 - 2011-11
+系列商用路由器
+1年2个月
+商用NP驱动开发
+项目描述：8090系列路由器产品(ME60,NE40E)，。完成工作:
+1、8090系列产品路由器(ME60,NE40E) 20G/40G接口板，商用NP HAL模块的市场需求开发;
+2、ME60 BAS业务(IPOEV4/V6, PPPOEV4/V6, L2TP)业务需求开发；
+3、二,三层基本转发功能特性支持及可维可靠性需求的设计与实现;
+4、需求设计文档，产品维护手册的撰写。
+部门 | 2009-07 - 2012-09
+ 华为集团A 
+3年2个月
+IT与通讯 深圳
+软件开发工程师
+部门
+
+【教育经历】
+2006-09 - 2009-04
+北京邮电大学211
+-硕士以上 | 2002-09 - 2006-06
+吉林大学985, 211
+信息工程-本科
+
+【AI分析】
+匹配分: 20
+推荐: 中风险
+理由: 候选人具备扎实的移动端架构经验，但缺乏AI行业解决方案相关的核心要素：无大模型/Agent项目经验、无POC主导经历、未涉及金融/政务/能源等垂直行业AI落地场景。其技术栈集中于iOS/RN/动态化基建，与岗位要求的RAG/Agent/Memory等AI工程能力无交集。
+
+
+========================================
+
+========================================
+Candidate ID: 29109
+Name Mask: *勇
+Current Title/Company: 前端架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2020-05 - \u81f3\u4eca", "description": "\u8d1f\u8d23\u5728\u7ebf\u6587\u6863 docs \u7f16\u8f91\u5668\u5e95\u5c42\u8fed\u4ee3\u548c\u77e5\u8bc6\u5e93\u9879\u76ee\u6539\u9020 2.\u5b8c\u6210\u534f\u540c\u7f16\u8f91\u6027\u80fd\u4f18\u5316\u3001\u63d2\u4ef6\u7f16\u5199\u3001\u79bb\u7ebf\u7f16\u8f91\u3001\u707e\u5907\u6a21\u5f0f\u7b49\u591a\u4e2a\u6838\u5fc3\u6a21\u5757\u5f00\u53d1\u53ca\u67b6\u6784\u4f18\u5316 3.\u72ec\u7acb\u5b8c\u6210\u57fa\u4e8e web \u7684 Markdown \u7f16\u8f91\u5668\u8bbe\u8ba1\u4e0e\u5f00\u53d1 4.\u65b0\u4eba\u5bfc\u5e08\u3001\u9879\u76ee\u7ba1\u7406\uff0c\u6280\u672f\u5206\u4eab"}, {"company": "\u597d\u672a\u6765\u6559\u80b2\u96c6\u56e2(\u539f\u5b66\u800c\u601d)", "title": "3.\u5171\u4eab\u591a\u4e2a\u6280\u672f\u7ec4\u4ef6\uff0c\u63d0\u9ad8\u5176\u4ed6\u7814\u53d1\u90e8\u95e8\u6548\u7387", "time": "2016-10 - 2020-05", "description": "\u8fd0\u8425\u6210\u672c\u3001\u63d0\u9ad8\u8001\u5e08\u6559\u5b66\u6548\u7387\u3001\u6269\u5927\u5b66\u751f\u5bb9\u91cf\u7b49 4.\u5c0f\u7ec4\u56e2\u961f\u7531\u521d\u671f\u7684 3-4 \u4eba\u5b9e\u4e60\u751f\u53d1\u5c55\u4e3a \u4eba\uff0c\u5e76\u4e14\u6bcf\u4e2a\u4eba\u90fd\u5f97\u5230\u5e94\u6709\u7684\u63d0\u5347\uff0c\u6709\u80fd\u529b\u72ec\u5f53\u4e00\u9762"}, {"company": "\u4e2d\u56fd\u90ae\u50a8\u94f6\u884c", "title": "", "time": "2014-03 - 2016-09", "description": "\u8f93\u51fa\u591a\u4e2a\u7528\u4e8e\u63d0\u9ad8\u5185\u90e8\u529e\u516c\u6548\u7387\u548c\u5458\u5de5\u7ba1\u7406\u7684\u8f6f\u4ef6\u7cfb\u7edf\uff0c\u5982\u8bbe\u5907\u7ba1\u7406\u7cfb\u7edf\u3001\u5185\u90e8\u90ae\u4ef6\u7cfb\u7edf\u3001\u5728\u7ebf\u5b66\u4e60 \u8003\u8bd5\u7cfb\u7edf\u3001\u670d\u52a1\u5668\u8fd0\u884c\u76d1\u63a7\u7cfb\u7edf\u7b49 2.\u72ec\u7acb\u5b8c\u6210\u6280\u672f\u65b9\u6848\u8bbe\u8ba1\u3001\u6280\u672f\u9009\u578b\u3001\u6570\u636e\u5b89\u5168\u65b9\u6848\u7b49"}, {"company": "\u5929\u6d25\u7f51\u535a\u4e92\u52a8\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u524d\u7aef\u5de5\u7a0b\u5e08", "time": "2013-02 - 2014-02", "description": "\u72ec\u7acb\u5b8c\u6210\u516c\u53f8\u4e1a\u52a1\u7cfb\u7edf\u6240\u6709\u524d\u7aef\u9875\u9762\u7f16\u5199\u548c\u6570\u636e\u4ea4\u4e92"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2020-05 - 至今
+快手（达佳） 
+5年7个月
+高科技所有 北京 深圳
+前端架构师
+负责在线文档 docs 编辑器底层迭代和知识库项目改造
+2.完成协同编辑性能优化、插件编写、离线编辑、灾备模式等多个核心模块开发及架构优化
+3.独立完成基于 web 的 Markdown 编辑器设计与开发
+4.新人导师、项目管理，技术分享
+部门 | 2016-10 - 2020-05
+好未来教育集团(原学而思)
+3年7个月
+前端工程师/技术
+作为技术 leader 和核心研发，输出多个用于高管会议、在线教学等场景的直播软件系统，大幅节省
+运营成本、提高老师教学效率、扩大学生容量等
+2.主导开发的教学黑板产品获得集团级别“最佳业务支持奖”，产出 2 项技术发明专利
+3.共享多个技术组件，提高其他研发部门效率
+4.小组团队由初期的 3-4 人实习生发展为 人，并且每个人都得到应有的提升，有能力独当一面
+5.事业部内技术分享
+部门 | 2014-03 - 2016-09
+中国邮储银行
+2年6个月
+技术
+合同签署公司：北京时代天鉴；驻场：邮储银行),leader
+输出多个用于提高内部办公效率和员工管理的软件系统，如设备管理系统、内部邮件系统、在线学习
+考试系统、服务器运行监控系统等
+2.独立完成技术方案设计、技术选型、数据安全方案等
+部门 | 2013-02 - 2014-02
+天津网博互动科技有限公司
+1年
+前端工程师
+独立完成公司业务系统所有前端页面编写和数据交互
+部门
+
+【教育经历】
+2009-09 - 2013-07
+河北工业大学211
+通信工程
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备12年+技术经验，但聚焦于前端工程与内部系统开发，缺乏AI行业解决方案所需的硬性条件：无大模型/Agent项目落地证据、无POC主导经验、未体现垂直行业业务流程理解（如金融风控、政务一网通办等）。虽有邮储银行驻场经历，但工作内容为通用办公系统开发，未涉及AI或数据智能场景。其技术栈集中于Web前端、协同编辑、性能优化，与RAG/Agent/Memory等AI技术栈无交集。
+
+
+========================================
+
+========================================
+Candidate ID: 29185
+Name Mask: *发强
+Current Title/Company: 分布式存储架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2020-06 - \u81f3\u4eca", "description": ""}, {"company": "\u8682\u8681\u91d1\u670d\u96c6\u56e2A", "title": "\u6280\u672f\u4e13\u5bb6", "time": "2018-08 - 2020-08", "description": "\u5206\u5e03\u5f0f\u5b58\u50a8\uff0c\u4e00\u81f4\u6027\u7b97\u6cd5\uff0c\u533a\u5757\u94fe\uff0c\u641c\u7d22"}, {"company": "\u767e\u5ea6\u96c6\u56e2A", "title": "\u540e\u53f0\u5f00\u53d1\u9ad8\u7ea7\u5de5\u7a0b\u5e08", "time": "2015-01 - 2019-04", "description": ""}, {"company": "\u817e\u8baf", "title": "\u7f51\u7edc\u6e38\u620f\u670d\u52a1\u5668\u5f00\u53d1\u5de5\u7a0b\u5e08", "time": "2013-01 - 2014-11", "description": ""}, {"company": "Intel \u82f1\u7279\u5c14", "title": "\u8f6f\u4ef6\u5de5\u7a0b\u5e08", "time": "2012-02 - 2013-01", "description": "solaris\u5185\u6838\u7ec4\u5b9e\u4e60"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2020-06 - 至今
+快手（达佳） 
+5年6个月
+高科技所有 北京 深圳
+分布式存储架构师
+分布式存储，后端架构
+部门 | 2018-08 - 2020-08
+ 蚂蚁金服集团A 
+2年
+高科技所有 上海
+技术专家
+工作内容/方向：
+分布式存储，一致性算法，区块链，搜索
+部门 | 2015-01 - 2019-04
+ 百度集团A 
+4年3个月
+高科技所有 北京
+后台开发高级工程师
+移动搜索架构开发
+部门 | 2013-01 - 2014-11
+ 腾讯 
+1年10个月
+高科技所有 深圳
+网络游戏服务器开发工程师
+网络游戏服务器开发工程师
+部门 | 2012-02 - 2013-01
+Intel 英特尔 
+11个月
+5 半导体/IC/芯片 上海
+软件工程师
+solaris内核组实习
+部门
+
+【教育经历】
+2010-09 - 2013-01
+中国科学技术大学985, 211, QS200
+软件工程-硕士以上
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备扎实的分布式系统和后端架构背景，但缺乏AI行业解决方案相关经验。简历中未体现任何大模型、Agent、RAG、POC项目、垂直行业业务流程理解或售前支持经历。其技术栈聚焦于存储、一致性算法与搜索底层架构，与岗位要求的‘真实行业AI项目落地经验’‘主导POC’‘Agent技术理解力’等核心项无直接交集。
+
+
+========================================
+
+========================================
+Candidate ID: 29189
+Name Mask: *存夏
+Current Title/Company: 前端架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2020-11 - \u81f3\u4eca", "description": "\u7535\u5546\u524d\u7aef\u67b6\u6784\u7ec4\u6210\u5458 \u8d1f\u8d23\u5927\u524d\u7aef\u4e00\u7801\u591a\u6295\u65b9\u5411"}, {"company": "\u7ade\u6280\u4e16\u754c", "title": "\u63a8\u52a8\u4e24\u6b21\u76f4\u64ad\u9879\u76ee\u91cd\u6784\uff0c\u8bbe\u8ba1\u91cd\u6784\u65b9\u6848\uff0c\u63d0\u5347\u5f00\u53d1\u6548\u7387\u548c\u4ea7\u54c1\u6027\u80fd\u3002\u7ec4\u5185\u6280\u672f\u5206\u4eab\u63d0\u9ad8\u56e2\u961f\u5185\u8de8\u5e73\u53f0\u6280\u672f\u6c34\u5e73", "time": "2019-01 - 2020-12", "description": "react native\u5f00\u53d1"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2020-11 - 至今
+快手（达佳） 
+5年1个月
+高科技所有 北京 深圳
+前端架构师
+电商前端架构组成员 负责大前端一码多投方向
+部门 | 2019-01 - 2020-12
+竞技世界
+1年11个月
+react native开发
+推动两次直播项目重构，设计重构方案，提升开发效率和产品性能。组内技术分享提高团队内跨平台技术水平
+部门
+
+【教育经历】
+2009-09 - 2013-06
+济南大学
+物理学-本科
+
+【AI分析】
+匹配分: 15
+推荐: 低潜力
+理由: 候选人背景为前端架构师，聚焦于电商大前端与跨平台开发（React Native），无任何AI项目、大模型、Agent、RAG、POC主导、行业解决方案或售前经验。未满足通用JD中任一硬性要求，尤其缺乏‘真实行业AI项目落地经验’这一红灯项。
+
+
+========================================
+
+========================================
+Candidate ID: 29248
+Name Mask: *凯
+Current Title/Company: 技术高管 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2019-12 - \u81f3\u4eca", "description": ""}, {"company": "\u767e\u5ea6\u96c6\u56e2A", "title": "", "time": "2009-01 - 2019-11", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2019-12 - 至今
+快手（达佳） 
+6年
+高科技所有 北京 深圳
+技术高管
+部门
+- 至今
+ 百度集团A 高科技所有 北京
+复合搜索部
+部门 | 2009-01 - 2019-11
+ 百度集团A 
+10年10个月
+高科技所有 北京
+主任架构师
+百度主任架构师T10，负责过大搜索架构，阿拉丁技术负责人，移动搜索核心业务。目前是多模搜索部架构师，技术方向涉及语音识别，图像识别，视频理解，深度学习，推荐系统，人工智能交互，大规模多模索引系统的设计等。
+部门
+
+【教育经历】
+2003-09 - 2007-06
+北京邮电大学211
+计算机科学与技术学院
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人具备深厚的技术背景和大厂架构经验，但缺乏岗位要求的关键要素：无明确行业AI项目落地证据（如金融/政务/能源等）、未体现POC主导经验、未展示Agent/RAG等技术栈应用、无售前或交付闭环经历。其经历集中于内部技术系统（搜索、推荐、多模态），而非面向客户的行业解决方案。
+
+
+========================================
+
+========================================
+Candidate ID: 29275
+Name Mask: *涛
+Current Title/Company: 推荐架构 @ 字节跳动集团
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8\u96c6\u56e2", "title": "", "time": "2023-09 - \u81f3\u4eca", "description": ""}, {"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2015-03 - 2023-09", "description": "\u4ed6\u670951\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8"}, {"company": "\u767e\u5ea6\u65f6\u4ee3\u7f51\u7edc\u6280\u672f(\u5317\u4eac)\u6709\u9650\u516c\u53f8", "title": "\u9ad8\u7ea7\u7814\u53d1\u5de5\u7a0b\u5e08", "time": "2011-06 - 2015-03", "description": "\u53cd\u4f5c\u5f0a\uff0c\u9875\u9762\u8d28\u91cf\uff0c\u4e2a\u6027\u5316\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2023-09 - 至今
+ 字节跳动集团 
+2年3个月
+高科技所有 北京
+推荐架构
+部门 | 2015-03 - 2023-09
+快手（达佳） 
+8年6个月
+高科技所有 北京 深圳
+推荐架构师
+他有51个好友在此公司
+部门 | 2011-06 - 2015-03
+ 百度时代网络技术(北京)有限公司 
+3年9个月
+高科技所有 上海 北京
+高级研发工程师
+反作弊，页面质量，个性化。
+网页搜索部
+部门
+
+【教育经历】
+2008-09 - 2011-01
+清华大学985, 211, QS200
+图像-硕士以上
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人林涛拥有14年+互联网大厂推荐系统架构经验，技术背景扎实，但其履历聚焦于C端推荐算法与工程架构（字节、快手、百度），未体现任何行业AI项目落地经验（如金融/政务/能源等）、POC主导经历、Agent/RAG技术应用、售前支持或垂直行业业务流程理解。虽可能具备大模型相关技术能力，但缺乏岗位硬性要求中的‘真实客户项目落地经验’及至少3项must-have技能证据。
+
+
+========================================
+
+========================================
+Candidate ID: 29316
+Name Mask: *喆
+Current Title/Company: 技术行业研究员 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2021-02 - \u81f3\u4eca", "description": ""}, {"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2016-01 - 2021-02", "description": ""}, {"company": "\u817e\u8baf(tencent)-SNG\uff08\u793e\u4ea4\u7f51\u7edc\u4e8b\u4e1a\u7fa4\uff09", "title": "\u9ad8\u7ea7\u5de5\u7a0b\u5e08", "time": "2012-04 - 2015-11", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2021-02 - 至今
+快手（达佳） 
+4年10个月
+高科技所有 北京 深圳
+技术行业研究员
+部门 | 2016-01 - 2021-02
+快手（达佳） 
+5年1个月
+高科技所有 北京 深圳
+流媒体大数据架构师
+部门 | 2012-04 - 2015-11
+ 腾讯(tencent)-SNG（社交网络事业群） 
+3年7个月
+高科技所有 深圳
+高级工程师
+部门
+
+【教育经历】
+2009-09 - 2012-01
+北京邮电大学211
+通信与信息系统-硕士以上
+
+【AI分析】
+匹配分: 25
+推荐: 中风险
+理由: 候选人缺乏明确的AI行业解决方案落地经验，未体现大模型/Agent相关项目、POC主导经历、垂直行业业务流程理解或售前支持经验。当前角色为技术行业研究员，工作内容未展示与岗位核心要求的直接关联。
+
+
+========================================
+
+========================================
+Candidate ID: 29335
+Name Mask: *凯
+Current Title/Company: 客户端架构师 @ 快手（达佳）
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5feb\u624b\uff08\u8fbe\u4f73\uff09", "title": "", "time": "2021-08 - \u81f3\u4eca", "description": ""}, {"company": "\u6ef4\u6ef4 \u5c0f\u6854\u79d1\u6280 \u5600\u5600\u65e0\u9650", "title": "\u987a\u98ce\u8f66\u6280\u672f\u90e8Android\u8d1f\u8d23\u4eba", "time": "2015-07 - 2021-04", "description": ""}, {"company": "\u82cf\u5dde \u8717\u725b", "title": "\u9ad8\u7ea7Android\u5f00\u53d1\u5de5\u7a0b\u5e08", "time": "2013-06 - 2015-07", "description": "Android\u5e94\u7528\u5f00\u53d1\uff0c\u66feAndroid\u7cfb\u7edf\u786c\u4ef6\u9002\u914d\uff0cGit\u670d\u52a1\u5668\u642d\u5efa\u7ba1\u7406\u3002"}, {"company": "\u5317\u4eac\u4e00\u8def\u521b\u79d1\u7f51\u7edc\u6280\u672f\u6709\u9650\u516c\u53f8", "title": "\u8f6f\u4ef6\u5de5\u7a0b\u5e08", "time": "2012-04 - 2013-06", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+2021-08 - 至今
+快手（达佳） 
+4年4个月
+高科技所有 北京 深圳
+客户端架构师
+部门 | 2015-07 - 2021-04
+ 滴滴 小桔科技 嘀嘀无限 
+5年9个月
+高科技所有 北京
+顺风车技术部Android负责人
+顺风车技术部Android负责人
+部门 | 2013-06 - 2015-07
+苏州 蜗牛 
+2年1个月
+9 游戏 苏州
+高级Android开发工程师
+Android应用开发，曾Android系统硬件适配，Git服务器搭建管理。
+部门 | 2012-04 - 2013-06
+北京一路创科网络技术有限公司
+1年2个月
+软件工程师
+本着对Android的喜欢，但北京来做深度OS，因为有硬件背景，做底层适配工作。
+部门
+
+【教育经历】
+2007-01 - 2011-01
+电子信息工程-本科
+
+【AI分析】
+匹配分: 15
+推荐: 低潜力
+理由: 候选人刘凯拥有13年客户端开发及架构经验，主要集中在Android系统、顺风车/短视频App等C端产品技术栈，无任何AI项目落地、大模型、Agent、RAG、POC主导、行业解决方案或售前支持相关经历。其技术背景与岗位要求的‘真实行业AI项目落地经验’‘大模型POC’‘Agent技术理解力’‘垂直行业业务流程’等核心硬性条件完全不匹配。
+
+
+========================================
+

@@ -1,0 +1,14 @@
+Company: 淘天集团
+Title: 业务技术-多模态算法工程师-Agent方向
+
+【岗位描述】
+1.主导基于大模型的AI Agent全生命周期研发，重点聚焦多模态Agent建设，包括但不限于GUI Agent/图文理解Agent/图文评估Agent，构建具备视觉感知和推理能力的多模态Agent应用；
+2.运用SFT、RL等Post-training训练方法，探索多模态与RL的结合，提升大模型/多模态大模型在自主规划（Planning）、多步推理、多模态RAG、工具调用、UI界面理解、复杂图文理解、局部细节感知等方面的能力；
+3.跟踪LLM、VLM与Agent领域的国际前沿技术动态，推动技术创新在业务场景中的落地应用，重点突破任务规划与复杂推理、研发测试自动化、computer use、大规模商品图文分析、图文细节理解与评估等方向的应用创新；
+4.持续优化多模态能力与已有Agent架构的集成，快速构建具备多模态能力的Agent应用，提升Agent系统性能与效率，提供AI Agent技术方案
+
+【岗位要求】
+1.计算机/人工智能/数学等相关专业硕士及以上学历（博士及顶会论文发表者优先）；
+2.对大模型前沿技术充满热情，具备攻克复杂技术难题的能力，能够快速实现Paper→Code→Solution的技术转化；
+3.精通Python及PyTorch/TensorFlow等框架，具备Qwen、Llama、Deepseek等模型的二次开发经验者优先，熟悉Qwen-VL、Gemini、GPT-4o等多模态大模型优先
+4.深入理解Transformer架构、SFT/RL训练范式及Prompt工程，了解LangChain、AutoGen等Agent开发框架，有完整智能体系统搭建经验者优先。

@@ -1,0 +1,152 @@
+=== 阿里集团 职位描述数据集 (第 1 批) ===
+
+【职位编号】: ALI0504
+【职位名称】: AI芯片互联架构师
+【所在部门】: 平头哥
+【所在团队】: AI硬件
+【原始JD文本】:
+基础信息
+所属部门: 阿里集团
+学历: 硕士
+工作年限: 6 年
+
+职位描述
+In this role, you will work with hardware and software engineering groups to define the next-generation inter-chip network architecture for high-performance AI chip and AI network.
+
+* Identifies the challenging problems, and evaluate various architectural solutions for the next-generation of network for AI chip and AI Super Pod.
+* Gets strong influences on future AI products by advanced architecture design as the excellent interface between software and hardware.
+* Architecture design of AI chip to chip interconnect subsystem, Scale-up Switch chip, C2C link, and etc.
+* Documents the high-level architecture specification.
+* Participation in defining the micro-architecture of key subsystem.
+* Strong technical leadership to achieve successful delivery of final silicon product.
+* Works closely with design, software, system, and verification team.
+
+职位要求
+* Minimum Bachelor degree in Computer Science or Electronics Engineering; M.S. or Ph.D. degree is pr
+
+================================================================================
+
+【职位编号】: ALI0505
+【职位名称】: AI芯片互联架构建模高级工程师/专家
+【所在部门】: 平头哥
+【所在团队】: AI硬件
+【原始JD文本】:
+基础信息
+
+所属部门: 阿里集团
+学历: 硕士
+工作年限: 5 年
+
+职位描述
+
+In this role, you will work with architect, hardware and software engineering groups to provide accurate performance modeling of the next-generation inter-chip network architecture for high-performance AI chip and AI network.
+
+* Identifies the challenging problems, and evaluate various architectural solutions for the next-generation of network for AI chip and AI Super Pod.
+* Gets strong influences on future AI products by advanced architecture and evaluates the new architecture with performance modeling using C, C++, SystemC or other high level description languages.
+* Provides solid and accurate modeling result and influence the direction of next generation of AI networking.
+* Focus in the domain of AI chip to chip interconnect subsystem, Scale-up Switch chip, C2C link, and etc.
+* Participation in defining the micro-architecture of key subsystem.
+* Works closely with design, software, system, and verification team for the final success of produ
+
+================================================================================
+
+【职位编号】: ALI0506
+【职位名称】: AI芯片互联验证高级工程师/专家
+【所在部门】: 
+【所在团队】: 
+【原始JD文本】:
+基础信息
+
+所属部门: 阿里集团
+学历: 硕士
+工作年限: 5年
+
+职位描述
+
+1、与架构、软件、设计等团队合作构建高端芯片设计验证平台；
+2、负责和参与data-center inter-chip connections的验证TB开发、环境开发、测试向量开发及调试，覆盖率收集及整体DV signoff的流程开发；
+3、负责和参与芯片验证文档的撰写，验证Testbench搭建及实现，Testplan等；
+4、负责和参与验证方法学制定，开发高性能验证架构。
+
+职位要求
+
+1、电子工程，通讯，计算机专业等优先；
+2、熟悉ASIC芯片设计和验证流程；
+3、熟悉SystemVerilog, Verilog等硬件设计语言；
+4、熟悉UVM验证方法学；
+5、熟悉Linux系统环境，熟悉Python, Shell, Makefile, Perl, Tcl等编程脚本语言；
+6、有芯片互联相关的项目经验；
+7、熟悉PCIe、CCIX、CXL、GENZ标准是加分项；
+8、具备RDMA/RoCE相关验证经验是加分项；
+9、具备Ethernet Switch相关验证经验是加分项；
+10、具备高速PHY接口验证经验是加分项；
+11、富有激情，有创新意识和能力，具有自我驱动和良好的团队合作能力；
+12、良好的沟通和表达能力。
+
+================================================================================
+
+【职位编号】: ALI0507
+【职位名称】: AI芯片验证高级工程师/专家
+【所在部门】: 
+【所在团队】: 
+【原始JD文本】:
+基础信息
+
+所属部门: 阿里集团
+学历: 硕士
+工作年限: 5 年
+
+职位描述
+
+o 负责和参与平头哥前沿AI芯片的研发
+o 负责和参与AI芯片验证策略制定，验证Testbench架构规划和实现，Testplan撰写和实现等
+o 负责和参与AI 芯片block level, sub-system level, IP level等多层级验证环境的开发、测试向量开发及调试，覆盖率收集等端到端的sign-off 全流程
+o 负责和参与Infrastructure的工具和流程的开发
+
+职位要求
+
+o 硕士及硕士以上，电子工程，通讯，计算机专业等优先
+o 熟悉ASIC芯片设计和验证流程
+o 精通UVM验证方法学，熟悉SystemVerilog, Verilog等设计验证语言
+o 熟悉自底向上的Testbench的集成，有独立从头开发block, subsystem或IP DV环境的经验有加分
+o 有AI芯片功能验证，功耗验证，性能验证相关经验者优先
+o 熟悉Synopsys VCS或Cadence Xcelium等流程和EDA工具的使用，有Cadence TBA或Palladium或PSS经验有加分
+o 熟悉Linux系统环境，熟悉Python, Shell, Makefile, Perl, Ruby, Tcl等编程脚本语言。精通Python语言的优先考虑
+o 有开发过设计/验证类Infrastructure的经验优先考虑并有加分，比如：
+   n 有开发代码自动化生成工具的经验，有DSL经验的优先考虑
+   n 有开发AI芯片功耗分析，性能分析工具经验
+o 富有激情，有创新意识和能力，具有自我驱动和良好的团队合作能力
+o 良好的沟通和表达能力
+
+================================================================================
+
+【职位编号】: ALI0503
+【职位名称】: 平头哥-AI芯片NoC/ALU/Cache设计高级工程师/专家-上海
+【所在部门】: 平头哥
+【所在团队】: AI硬件
+【原始JD文本】:
+基础信息
+
+所属部门: 阿里集团
+学历: 硕士
+工作年限: 3 年
+
+职位描述
+
+1. 致力打造世界一流的AI硬件计算平台，跟踪业界先进模型及系统硬件架构的发展，设计开发高性能低功耗的芯片硬件产品。
+2. 主导IP内模块的设计与落地，确保设计先进性。
+3. 根据架构和应用需求，设计微架构，编写设计文档，完成模块RTL设计。
+4. 与验证/物理协同，完成验证，综合约束，时序收敛，时序/面积优化等PPA优化。
+
+职位要求
+
+至少3年以上ASIC，并满足以下一个或多个方向
+
+1. 熟悉芯片设计流程，并有参与流片的经验。
+2. 熟悉RTL综合, Floorplan 到后端时序收敛的流程，16nm及以下优先考虑。
+3. 中等复杂微架构设计经验，PPA优化能力，有从0到1经验优先。
+4. 使用过设计验证自动工具以及脚本的经验。
+5. 有数据总线设计经验，控制总线设计经验，或者浮点ALU, tensor core设计经验，或者读写Cache设计经验。
+
+================================================================================
+

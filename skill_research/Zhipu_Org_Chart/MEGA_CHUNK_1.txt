@@ -1,0 +1,345 @@
+# CANDIDATE BATCH 1
+
+========================================
+Candidate ID: 42
+Name Mask: *ello
+Current Title/Company: AI算法工程师华为 @ 华为
+
+=== WORK EXPERIENCES ===
+[{"company": "华为", "title": "AI算法工程师华为", "time": "2023.8-至今", "description": "AI算法工程师华为2023.8-至今 (2年4个月)人工智能，计算机视觉，AI合成检测，图像风控，NeRF 三维重建，5G-A，无线网络优化人工智能场景重建深度学习算法视觉图像算法风控系统他有8个好友"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+AI算法工程师华为2023.8-至今 (2年4个月)人工智能，计算机视觉，AI合成检测，图像风控，NeRF 三维重建，5G-A，无线网络优化人工智能场景重建深度学习算法视觉图像算法风控系统
+
+【教育经历】
+清华大学 信息 | 清华大学 电子
+
+========================================
+
+========================================
+Candidate ID: 43
+Name Mask: *牛
+Current Title/Company: AI算法工程师华为技术有限公司杭州 @ 华为
+
+=== WORK EXPERIENCES ===
+[{"company": "华为", "title": "AI算法工程师华为技术有限公司杭州", "time": "2023.7-至今", "description": "AI算法工程师华为技术有限公司杭州研究所2023.7-至今 (2年5个月)盘古大模型后训练C++Python"}, {"company": "平安科技", "title": "NLP算法工程师平安科技 ? 知识图谱2021.9-2022", "time": "2021.9-2022.11", "description": "NLP算法工程师平安科技 ? 知识图谱2021.9-2022.11 (1年2个月)实习阶段，主要做NER的相关研究，同时做了分类，NER，关系抽取，表格识别等相关的公司项目BoostingCNNDNN"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+AI算法工程师华为技术有限公司杭州研究所2023.7-至今 (2年5个月)盘古大模型后训练C++Python | NLP算法工程师平安科技 ? 知识图谱2021.9-2022.11 (1年2个月)实习阶段，主要做NER的相关研究，同时做了分类，NER，关系抽取，表格识别等相关的公司项目BoostingCNNDNNOpenNLPPythonRNN/LSTMSeq2SeqstanfordNLP信息抽取句法分析实体识别广告算法序列标注情感分析数据分析文本分类机器学习算法机器阅读理解深度学习算法知识图谱舆情分析语义角色标注
+
+【教育经历】
+清华大学
+
+========================================
+
+========================================
+Candidate ID: 44
+Name Mask: *楠
+Current Title/Company: 图像/视频编码算法工程师华为杭州研究所 ? 媒体编解码技术实 @ 华为杭州研究所
+
+=== WORK EXPERIENCES ===
+[{"company": "华为", "title": "图像/视频编码算法工程师华为杭州研究所 ? 媒体编解码技术实", "time": "2018.7-至今", "description": "图像/视频编码算法工程师华为杭州研究所 ? 媒体编解码技术实验室2018.7-至今 (7年5个月)负责的业务：AI图像/视频编解码开发"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+图像/视频编码算法工程师华为杭州研究所 ? 媒体编解码技术实验室2018.7-至今 (7年5个月)负责的业务：AI图像/视频编解码开发 擅长的技能：AI图像/视频编码算法执行力抗压能力大数据/人工智能
+
+【教育经历】
+清华大学
+
+========================================
+
+========================================
+Candidate ID: 61
+Name Mask: *轩辕
+Current Title/Company: 算法工程师小米 @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5c0f\u7c73", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5c0f\u7c73", "time": "2022.7-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5c0f\u7c732022.7-\u81f3\u4eca (3\u5e745\u4e2a\u6708)\u8bed\u97f3\u5408\u6210\uff0c\u5927\u6a21\u578bttsPyTorchPythonC++TensorFlow\u8bed\u97f3\u7b97\u6cd5Seq2Seq"}, {"company": "\u5fae\u8f6f", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u5fae\u8f6f2021.5-2021.12 (7\u4e2a\u6708)\u8bed\u97f3\u8f6c", "time": "2021.5-2021.12", "description": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u5fae\u8f6f2021.5-2021.12 (7\u4e2a\u6708)\u8bed\u97f3\u8f6c\u6362\uff0c\u8bed\u97f3\u5408\u6210"}, {"company": "\u5b9e\u4e60\u751f\u864e\u7259", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u864e\u72592020.11-2021.4 (5\u4e2a\u6708)\u8bed\u97f3\u8f6c", "time": "2020.11-2021.4", "description": "\u7b97\u6cd5\u5b9e\u4e60\u751f\u864e\u72592020.11-2021.4 (5\u4e2a\u6708)\u8bed\u97f3\u8f6c\u6362\uff0c\u8bed\u97f3\u5408\u6210"}, {"company": "\u5c0f\u7c73", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-07-01", "endDate": "\u4eca", "time": "2022-07-01 ~ \u4eca", "duration": "", "description": "\u8bed\u97f3\u5408\u6210\uff0c\u5927\u6a21\u578btts"}, {"company": "\u5fae\u8f6f", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2021-05", "endDate": "2021-12", "time": "2021-05 ~ 2021-12", "duration": "", "description": "\u8bed\u97f3\u8f6c\u6362\uff0c\u8bed\u97f3\u5408\u6210"}, {"company": "\u864e\u7259", "title": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2020-11", "endDate": "2021-04", "time": "2020-11 ~ 2021-04", "duration": "", "description": "\u8bed\u97f3\u8f6c\u6362\uff0c\u8bed\u97f3\u5408\u6210"}, {"company": "\u817e\u8baf", "title": "AIlab\u7b97\u6cd5\u5b9e\u4e60\u751f", "position": "AIlab\u7b97\u6cd5\u5b9e\u4e60\u751f", "startDate": "2019-06", "endDate": "2020-08", "time": "2019-06 ~ 2020-08", "duration": "", "description": "\u8bed\u97f3\u8f6c\u6362\uff0c\u8bed\u97f3\u5408\u6210"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师小米2022.7-至今 (3年5个月)语音合成，大模型ttsPyTorchPythonC++TensorFlow语音算法Seq2Seq | 算法实习生微软2021.5-2021.12 (7个月)语音转换，语音合成 | 算法实习生虎牙2020.11-2021.4 (5个月)语音转换，语音合成 | AIlab算法实习生腾讯2019.6-2020.8 (1年2个月)语音转换，语音合成
+
+【教育经历】
+清华大学 计算机 | 西安交通大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 71
+Name Mask: *大帅
+Current Title/Company: 高级算法工程师小米 @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "小米", "title": "高级算法工程师小米", "time": "2022.12-至今", "description": "高级算法工程师小米2022.12-至今 (3年)Python模式识别数据建模C++"}, {"company": "华为", "title": "高级研发工程师华为技术有限公司", "time": "2019.8-2022.12", "description": "高级研发工程师华为技术有限公司2019.8-2022.12 (3年4个月)仪器仪表信号处理医疗器械智能家居产品机器学习算法"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+高级算法工程师小米2022.12-至今 (3年)Python模式识别数据建模C++ | 高级研发工程师华为技术有限公司2019.8-2022.12 (3年4个月)仪器仪表信号处理医疗器械智能家居产品机器学习算法
+
+【教育经历】
+清华大学
+
+========================================
+
+========================================
+Candidate ID: 74
+Name Mask: *彬彬
+Current Title/Company: 高级算法工程师小米 @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "小米", "title": "高级算法工程师小米", "time": "2021.9-2025.1", "description": "高级算法工程师小米2021.9-2025.1 (3年4个月)自然语音处理语音合成语音算法"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+高级算法工程师小米2021.9-2025.1 (3年4个月)自然语音处理语音合成语音算法
+
+【教育经历】
+上海交通大学 信息 | 清华大学 计算机 | 浙江大学
+
+========================================
+
+========================================
+Candidate ID: 93
+Name Mask: *诚博
+Current Title/Company: 算法工程师小米 @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "小米", "title": "算法工程师小米", "time": "2025.3-至今", "description": "算法工程师小米2025.3-至今 (9个月)"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师小米2025.3-至今 (9个月)
+
+【教育经历】
+清华大学 电子 | 清华大学 电子
+
+========================================
+
+========================================
+Candidate ID: 101
+Name Mask: *星星
+Current Title/Company: 高级算法工程师小米 @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "小米", "title": "高级算法工程师小米", "time": "2024.5-至今", "description": "高级算法工程师小米2024.5-至今 (1年7个月)TensorFlow模式识别PyTorchCNNC++RNN/LSTMPython"}, {"company": "百度", "title": "智能驾驶工程师百度2023.4-2024.5 (1年1个月)", "time": "2023.4-2024.5", "description": "智能驾驶工程师百度2023.4-2024.5 (1年1个月)C++PythonROS"}, {"company": "百度", "title": "算法工程师百度", "time": "2023.4-2024.5", "description": "算法工程师百度2023.4-2024.5 (1年1个月)自动驾驶/机器人/slam"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+高级算法工程师小米2024.5-至今 (1年7个月)TensorFlow模式识别PyTorchCNNC++RNN/LSTMPython | 智能驾驶工程师百度2023.4-2024.5 (1年1个月)C++PythonROS | 算法工程师百度2023.4-2024.5 (1年1个月)自动驾驶/机器人/slam C++C/C++CmakeCNNCUDALinuxOpenCVPythonRNN/LSTM嵌入式Linux机器学习算法
+
+【教育经历】
+清华大学 机械 | 亚琛工业大学 | 华中科技大学 自动化
+
+========================================
+
+========================================
+Candidate ID: 136
+Name Mask: *可欣
+Current Title/Company: 运动健康算法小米2021.7-至今 (4年5个月) @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5c0f\u7c73", "title": "\u8fd0\u52a8\u5065\u5eb7\u7b97\u6cd5\u5c0f\u7c732021.7-\u81f3\u4eca (4\u5e745\u4e2a\u6708)", "time": "2021.7-\u81f3\u4eca", "description": "\u8fd0\u52a8\u5065\u5eb7\u7b97\u6cd5\u5c0f\u7c732021.7-\u81f3\u4eca (4\u5e745\u4e2a\u6708)"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+运动健康算法小米2021.7-至今 (4年5个月)
+
+【教育经历】
+清华大学 通信
+
+========================================
+
+========================================
+Candidate ID: 148
+Name Mask: *汉武
+Current Title/Company: 算法总监 @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5c0f\u7c73", "title": "\u7b97\u6cd5\u603b\u76d1", "time": "2019.5-\u81f3\u4eca (6\u5e747\u4e2a\u6708)", "description": "\u8d1f\u8d23\u5927\u6a21\u578b\u5728\u6570\u636e\u9886\u57df\u7684\u5e94\u7528\u3001\u5177\u8eab\u667a\u80fd\u7b97\u6cd5\u548c\u6570\u636e\u7b49\u3002"}, {"company": "\u4f18\u4fe1\u96c6\u56e2", "title": "\u9996\u5e2d\u6570\u636e\u79d1\u5b66\u5bb6", "time": "2018.4-2019.5 (1\u5e741\u4e2a\u6708)", "description": "\u8d1f\u8d23\u5927\u6570\u636e\u548c\u4eba\u5de5\u667a\u80fd\u76f8\u5173\u5de5\u4f5c\u3002"}, {"company": "\u5b9c\u4fe1", "title": "\u7814\u53d1\u603b\u76d1", "time": "2016.4-2018.2 (1\u5e7410\u4e2a\u6708)", "description": "\u7ec4\u5efa\u5e76\u9886\u5bfc\u5927\u6570\u636e\u548c\u4eba\u5de5\u667a\u80fd\u56e2\u961f\uff0c\u5efa\u8bbe\u4f01\u4e1a\u7ea7\u5927\u6570\u636e\u5e73\u53f0\u3002"}, {"company": "\u7f8e\u56e2", "title": "\u7b97\u6cd5\u8d1f\u8d23\u4eba", "time": "2014.4-2016.4 (2\u5e74)", "description": "\u8d1f\u8d23\u7528\u6237\u753b\u50cf\u5efa\u6a21\u4ee5\u53ca\u4e92\u8054\u7f51\u91d1\u878d\u98ce\u9669\u6a21\u578b\u7684\u6784\u5efa\u3002"}, {"company": "\u65b0\u6d6a\u5fae\u535a", "title": "\u9ad8\u7ea7\u7b97\u6cd5\u5de5\u7a0b\u5e08", "time": "2011.2-2014.4 (3\u5e742\u4e2a\u6708)", "description": "\u8d1f\u8d23\u5fae\u535a\u5e7f\u544a\u8bc6\u522b\u6a21\u578b\u53ca\u53cd\u4f5c\u5f0a\u4e0e\u4f4e\u8d28\u63a7\u5236\u3002"}, {"company": "IBM", "title": "Java\u5f00\u53d1\u5de5\u7a0b\u5e08", "time": "2005.8-2007.8 (2\u5e74)", "description": "\u53c2\u4e0eECM\u9879\u76ee\uff0c\u4e3b\u8981\u8d1f\u8d23Portal\u5f00\u53d1\u7684\u4e09\u4e2a\u6a21\u5757\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法总监小米2019.5-至今 (6年7个月)算法总监，负责大模型在数据领域的应用、具身智能算法和数据等。BoostingC++DNNGBDTHadoopJavaLRMapReducePythonRNN/LSTMSeq2SeqSparkSVM密码算法强化学习数据分析数据开发数据挖掘文本挖掘机器学习算法深度学习算法自然语言处理逻辑回归 | 首席数据科学家优信集团2018.4-2019.5 (1年1个月)优信集团首席数据官CDO和科学家，负责大数据和人工智能相关工作BoostingC++CNNETLGBDTHadoopHbaseHDFSImpalaJavaMapReduceMongoDBMySQLOraclePHPPythonSparkSQLSVM人脸识别大数据分析大数据开发强化学习推荐算法搜索算法数据仓库数据分析数据库开发数据开发数据挖掘数据架构数据治理数据采集文本挖掘机器学习算法自然语言处理逻辑回归 | 研发总监宜信2016.4-2018.2 (1年10个月)2016年3月只身一人来到宜信，从零开始组建了80人左右的大数据和人工智能团队，团队成员来自北大、清华、中科院、浙江大学等名校，凭借团队的经验，我们用1年左右的时间搭建了企业级大数据平台，包括大数据集群、数据采集平台、任务调度平台、自助查询平台、报表平台、元数据管理平台等平台工具，覆盖了宜信集团的绝大部分数据，承接了业务部门的报表需求、数据需求和建模需求。 人工智能在宜信的应用场景非常多，承接了很多挖掘与分析需求，例如电销客户分级模型、反欺诈模型、首次出借和借贷预测模型、违约风险模型、智能投顾以及金融头条产品的搜索、推荐、NLP，以及法务速递、FOF投前调研、财富端评分卡与客户分群等项目。建设了人工智能平台，降低了业务方使用人工智能和机器学习的门槛，极大地发挥了人工智能在金融行业的应用价值。 大数据研发团队的工作极大地提高了公司的数字化、自动化和智能化水平，给公司带来了较大的收益，真正实现了科技让金融更美好的理念。C++CNNDNNGBDTHadoopJavaMapReducePythonSparkSVMVue人脸识别强化学习技术管理数据分析数据开发数据挖掘数据采集文本挖掘机器学习算法深度学习算法研发团队管理自然语言处理逻辑回归 | 算法负责人美团2014.4-2016.4 (2年)1）负责用户画像建模以及应用：用户画像伴随着互联网和电商的快速发展而产生，它抽象地描述了用户的信息全貌，是进行个性化推荐、精准营销、广告投放等大数据应用的基础。根据详细的用户画像数据构建预测模型，对于在三个月内不会发生购买的用户，通过营销活动吸引他们来美团完成首购，成为美团的新客。模型预测的准确率和召回率分别是75%和70%左右。应用模型后，新客运营的单位成本降低35%，每年为公司节省30%的新客运营成本。具体负责的工作包括：获取原始数据、数据验证、数据清洗、特征选择、训练模型、预测、模型的评估以及模型的优化和上线。 项目中尝试过的算法主要支持向量机、逻辑斯谛回归、AdaBoost和GBDT，项目的难点之一在于对数据进行清洗，选择适当的特征，去除异常点，获得正确的正负样本。 2）负责互联网金融风险模型的构建：主要的风险模型有倒闭模型、销量预测模型、基于PBOC的准入模型（申请模型）、违约风险模型、贷后模型（行为模型）、评分卡模型（申请模型）、反欺诈模型以及NLP模型等。金融风险模型与业务联系非常紧密，因此，精力主要集中在与业务组、产品组一起理清业务和产品的目标，配合业务和产品构建相应的模型。 由于开源算法的效果满足不了需求，自己实现了一些机器学习算法和优化算法，例如基于梯度下降、牛顿法、DFP、BFGS以及LBFGS优化算法的多元线性回归、逻辑斯谛回归、SVM算法等。CNNGBDTHadoopMapReducePythonRNN/LSTMSparkSVM技术管理数据挖掘机器学习算法深度学习算法研发团队管理自然语言处理 | 高级算法工程师新浪微博2011.2-2014.4 (3年2个月)1）负责微博广告识别模型：微博中有大量未经允许的营销广告，严重影响用户体验，导致用户流失；此外，广告识别还可以应用到排序、推荐、精准营销、广告投放、反作弊等业务中，因此广告识别是一项基础工作。利用微博原创内容、转发内容、用户昵称、社交属性等特征，利用短文本分类方法对400万的微博数据进行训练得到模型，在随机抽取的10万条微博数据上进行测试，准确率达到93%，召回率达到90%，取得不错的效果。 2）负责微博反作弊与低质控制：微博存在大量的热词、明星广告、关键词堆砌等作弊与低质微博，去掉或者屏蔽这些微博对于提升用户体验是必要的，而微博质量的好坏也决定用户搜索到的结果是否相关。反作弊与低质控制有两种方法，一是基于规则的方法，主要基于黑名单、热词明星词个数、昵称个数、@多人、@无关人、微博内容是否包含实体词、情感词等；二是基于规则和算法结合的方法，主要结合热词、明星词与广告模型、主题识别模型进行综合处理；我们的方法对于反作弊与质量控制起到非常显著的作用，控制了90%以上的作弊微博和低质微博。C++HadoopMapReducePythonSVM数据建模数据挖掘文本挖掘机器学习算法自然语言处理逻辑回归 | Java开发工程师IBM2005.8-2007.8 (2年)参与ECM项目，主要负责Portal开发的三个模块CSSEclipseHibernateHTMLJ2EE架构LinuxMavenMemcachedMongoDBMyEclipseMySQLOraclePythonSpringSpringCloudSpringMVCSQLSSHTomcatWindows后端开发
+
+【教育经历】
+
+
+========================================
+
+========================================
+Candidate ID: 155
+Name Mask: *俊杰
+Current Title/Company: 高级算法工程师小米 @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "小米", "title": "高级算法工程师小米", "time": "2019.9-至今", "description": "高级算法工程师小米2019.9-至今 (6年3个月)负责海外广告投放中新单冷启动，CTR，CVR及其他智能出价等策略广告算法推荐算法深度学习算法"}, {"company": "JD", "title": "高级算法工程师JD", "time": "2018.5-2019.8", "description": "高级算法工程师JD2018.5-2019.8 (1年3个月)主要负责基于知识图谱的JD与竞争对手商品匹配算法设计与开发"}, {"company": "中国船舶工业系统工程研究院", "title": "研发工程师中国船舶工业系统工程", "time": "2016.7-2018.5", "description": "研发工程师中国船舶工业系统工程研究院2016.7-2018.5 (1年10个月)主要负责行业大数据平台搭建和智能化应用算法设计与开发"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+高级算法工程师小米2019.9-至今 (6年3个月)负责海外广告投放中新单冷启动，CTR，CVR及其他智能出价等策略广告算法推荐算法深度学习算法 | 高级算法工程师JD2018.5-2019.8 (1年3个月)主要负责基于知识图谱的JD与竞争对手商品匹配算法设计与开发 | 研发工程师中国船舶工业系统工程研究院2016.7-2018.5 (1年10个月)主要负责行业大数据平台搭建和智能化应用算法设计与开发
+
+【教育经历】
+清华大学
+
+========================================
+
+========================================
+Candidate ID: 156
+Name Mask: *randon
+Current Title/Company: 高级算法专家小米 @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "小米", "title": "高级算法专家小米", "time": "2019.9-至今", "description": "高级算法专家小米2019.9-至今 (6年3个月)Android电子研发硬件研发"}, {"company": "vivo", "title": "高级系统工程师vivo2017.9-2019.9 (2年)电", "time": "2017.9-2019.9", "description": "高级系统工程师vivo2017.9-2019.9 (2年)电源系统Android弱电系统嵌入式系统"}, {"company": "联发科技", "title": "高级系统应用工程师联发科技2014.9-2017.9 (3年", "time": "2014.9-2017.9", "description": "高级系统应用工程师联发科技2014.9-2017.9 (3年)AndroidLinux嵌入式系统弱电系统电源系统"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+高级算法专家小米2019.9-至今 (6年3个月)Android电子研发硬件研发 | 高级系统工程师vivo2017.9-2019.9 (2年)电源系统Android弱电系统嵌入式系统 | 高级系统应用工程师联发科技2014.9-2017.9 (3年)AndroidLinux嵌入式系统弱电系统电源系统 | 工艺整合工程师台积电（中国）有限公司2012.9-2014.9 (2年)英语
+
+【教育经历】
+台湾新竹清华大学
+
+========================================
+
+========================================
+Candidate ID: 161
+Name Mask: *先生
+Current Title/Company: 大模型算法专家智谱华章2024.11-至今 (1年1个月)（ @ 智谱华章
+
+=== WORK EXPERIENCES ===
+[{"company": "\u667a\u8c31\u534e\u7ae0", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u4e13\u5bb6\u667a\u8c31\u534e\u7ae02024.11-\u81f3\u4eca (1\u5e741\u4e2a\u6708)\uff08", "time": "2024.11-\u81f3\u4eca", "description": "\u5927\u6a21\u578b\u7b97\u6cd5\u4e13\u5bb6\u667a\u8c31\u534e\u7ae02024.11-\u81f3\u4eca (1\u5e741\u4e2a\u6708)\uff08\u5927\u6a21\u578b\u72ec\u89d2\u517d\uff09"}, {"company": "\u5bcc\u6570\u79d1\u6280", "title": "\u7b97\u6cd5\u8d1f\u8d23\u4eba\u5bcc\u6570\u79d1\u6280", "time": "2020.9-2024.11", "description": "\u7b97\u6cd5\u8d1f\u8d23\u4eba\u5bcc\u6570\u79d1\u62802020.9-2024.11 (4\u5e742\u4e2a\u6708)\uff08\u4e2d\u56fd\u5934\u90e8\u9690\u79c1\u8ba1\u7b97\u56e2\u961f\uff0cD\u8f6e\u878d\u8d44\uff09"}, {"company": "\u8d1d\u8d1d\u96c6\u56e2", "title": "\u7b97\u6cd5\u4e13\u5bb6\u8d1d\u8d1d\u96c6\u56e2", "time": "2020.3-2020.9", "description": "\u7b97\u6cd5\u4e13\u5bb6\u8d1d\u8d1d\u96c6\u56e22020.3-2020.9 (6\u4e2a\u6708)\uff08\u7535\u5546\u72ec\u89d2\u517d\uff0cD\u8f6e\u878d\u8d44\uff09"}, {"company": "\u6316\u8d22", "title": "\u7b97\u6cd5\u4e13\u5bb6\u6316\u8d22", "time": "2015.6-2020.3", "description": "\u7b97\u6cd5\u4e13\u5bb6\u6316\u8d222015.6-2020.3 (4\u5e749\u4e2a\u6708)\uff08\u91d1\u878d\u79d1\u6280\u72ec\u89d2\u517d\uff0cD\u8f6e\u878d\u8d44\uff09"}, {"company": "\u817e\u8baf", "title": "\u7b97\u6cd5\u7814\u53d1Coop\u817e\u8baf ? SNG\u6570\u636e\u5e73\u53f02015.2-201", "time": "2015.2-2015.6", "description": "\u7b97\u6cd5\u7814\u53d1Coop\u817e\u8baf ? SNG\u6570\u636e\u5e73\u53f02015.2-2015.6 (4\u4e2a\u6708)\u7b97\u6cd5\u7814\u7a76\u5458\uff1a\u57fa\u4e8e\u793e\u4ea4\u7f51\u7edc\u7684\u63a8\u8350\u7b97\u6cd5\u7814\u7a76\u3002\u63a8\u8350\u7b97\u6cd5\u673a\u5668\u5b66\u4e60\u7b97\u6cd5"}, {"company": "\u667a\u8c31\u534e\u7ae0", "title": "\u5927\u6a21\u578b\u7b97\u6cd5\u4e13\u5bb6", "position": "\u5927\u6a21\u578b\u7b97\u6cd5\u4e13\u5bb6", "startDate": "2024-11", "endDate": "2026-01", "time": "2024-11 ~ 2026-01", "duration": "", "description": "BU\u667a\u80fd\u4f53\uff08Agent\uff09\u7b97\u6cd5\u4e1a\u52a1\u8d1f\u8d23\u4eba"}, {"company": "\u5bcc\u6570\u79d1\u6280", "title": "\u7b97\u6cd5\u8d1f\u8d23\u4eba", "position": "\u7b97\u6cd5\u8d1f\u8d23\u4eba", "startDate": "2020-09", "endDate": "2024-11", "time": "2020-09 ~ 2024-11", "duration": "", "description": "\u4e2d\u56fd\u5934\u90e8\u9690\u79c1\u8ba1\u7b97\u56e2\u961f\uff0c\u7814\u53d1\u8054\u90a6\u5b66\u4e60\u7b49\u7b97\u6cd5\u5f15\u64ce"}, {"company": "\u8d1d\u8d1d\u96c6\u56e2", "title": "\u7b97\u6cd5\u4e13\u5bb6", "position": "\u7b97\u6cd5\u4e13\u5bb6", "startDate": "2020-03", "endDate": "2020-09", "time": "2020-03 ~ 2020-09", "duration": "", "description": "\u7535\u5546\u72ec\u89d2\u517d\uff0c\u8d1f\u8d23\u7528\u6237\u589e\u957f\u7b97\u6cd5\u4e1a\u52a1"}, {"company": "\u6316\u8d22", "title": "\u7b97\u6cd5\u4e13\u5bb6", "position": "\u7b97\u6cd5\u4e13\u5bb6", "startDate": "2015-06", "endDate": "2020-03", "time": "2015-06 ~ 2020-03", "duration": "", "description": "\u91d1\u878d\u79d1\u6280\u72ec\u89d2\u517d\uff0c\u8d1f\u8d23NLP\u7b97\u6cd5\u4e1a\u52a1"}, {"company": "\u817e\u8baf", "title": "\u7b97\u6cd5\u7814\u53d1Coop", "position": "\u7b97\u6cd5\u7814\u53d1Coop", "startDate": "2015-02", "endDate": "2015-06", "time": "2015-02 ~ 2015-06", "duration": "", "description": "\u7b97\u6cd5\u7814\u7a76\u5458"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+大模型算法专家智谱华章2024.11-至今 (1年1个月)（大模型独角兽） BU智能体（Agent）算法业务负责人深度学习算法自然语言处理 | 算法负责人富数科技2020.9-2024.11 (4年2个月)（中国头部隐私计算团队，D轮融资） 领导团队研发顶尖可信分布式算法引擎。密码算法深度学习算法 | 算法专家贝贝集团2020.3-2020.9 (6个月)（电商独角兽，D轮融资） 电商四小龙，负责用户增长算法业务。深度学习算法自然语言处理 | 算法专家挖财2015.6-2020.3 (4年9个月)（金融科技独角兽，D轮融资） 中国最大个人记账理财平台，负责NLP算法业务。推荐算法自然语言处理 | 算法研发Coop腾讯 ? SNG数据平台2015.2-2015.6 (4个月)算法研究员：基于社交网络的推荐算法研究。推荐算法机器学习算法
+
+【教育经历】
+电子科技大学 硕士
+
+========================================
+
+========================================
+Candidate ID: 163
+Name Mask: *笛
+Current Title/Company: AI高级产品经理智谱华章2023.6-至今 (2年6个月)智 @ 智谱华章
+
+=== WORK EXPERIENCES ===
+[{"company": "\u667a\u8c31\u534e\u7ae0", "title": "AI\u9ad8\u7ea7\u4ea7\u54c1\u7ecf\u7406\u667a\u8c31\u534e\u7ae02023.6-\u81f3\u4eca (2\u5e746\u4e2a\u6708)\u667a", "time": "2023.6-\u81f3\u4eca", "description": "AI\u9ad8\u7ea7\u4ea7\u54c1\u7ecf\u7406\u667a\u8c31\u534e\u7ae02023.6-\u81f3\u4eca (2\u5e746\u4e2a\u6708)\u667a\u8c31to B\u5546\u4e1a\u5316\u9ad8\u7ea7\u4ea7\u54c1\u7ecf\u7406\uff0cPrompt\u56e2\u961f\u8d1f\u8d23\u4eba\uff0c\u8d1f\u8d23KA\u5ba2\u6237\u5927\u6a21\u578b\u5e94\u7528\u65b9\u6848\u53ca\u843d\u5730AgentB\u7aef\u4ea7\u54c1\u591a\u6a21\u6001\u5927\u6a21\u578b\u5e94\u7528"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+AI高级产品经理智谱华章2023.6-至今 (2年6个月)智谱to B商业化高级产品经理，Prompt团队负责人，负责KA客户大模型应用方案及落地AgentB端产品多模态大模型应用
+
+【教育经历】
+
+
+========================================
+
+========================================
+Candidate ID: 164
+Name Mask: *岩
+Current Title/Company: 算法专家北京智谱华章科技有限 @ 智谱华章
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u4e13\u5bb6\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650", "time": "2023.3-\u81f3\u4eca", "description": "\u7b97\u6cd5\u4e13\u5bb6\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f82023.3-\u81f3\u4eca (2\u5e749\u4e2a\u6708)\u591a\u6a21\u6001\u56fe\u50cf\u7406\u89e3\u5927\u6a21\u578b\uff0c\u540e\u8bad\u7ec3\u8d1f\u8d23\u4eba\u540e\u8bad\u7ec3\u591a\u6a21\u6001\u5927\u6a21\u578b\u5f3a\u5316\u5b66\u4e60\u7b97\u6cd5"}, {"company": "\u4e66\u884c\u79d1\u6280\uff08\u5317\u4eac\uff09\u6709\u9650\u516c\u53f8", "title": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e66\u884c\u79d1\u6280\uff08\u5317\u4eac\uff09\u6709\u9650\u516c\u53f82022.5-2023", "time": "2022.5-2023.3", "description": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08\u4e66\u884c\u79d1\u6280\uff08\u5317\u4eac\uff09\u6709\u9650\u516c\u53f82022.5-2023.3 (10\u4e2a\u6708)\u5c0f\u7ea2\u4e66APP\u7684\u5916\u6d41\u53ec\u56de\u6a21\u578b\u4f18\u5316\u641c\u7d22\u7b97\u6cd5\u6df1\u5ea6\u5b66\u4e60\u7b97\u6cd5"}, {"company": "\u7f8e\u56e2", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5317\u4eac\u4e09\u5feb\u5728\u7ebf\u79d1\u6280\u6709\u9650", "time": "2020.8-2022.4", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5317\u4eac\u4e09\u5feb\u5728\u7ebf\u79d1\u6280\u6709\u9650\u516c\u53f8\uff08\u7f8e\u56e2\u7f51\uff092020.8-2022.4 (1\u5e748\u4e2a\u6708)\u7f8e\u56e2APP\u9996\u9875\u731c\u4f60\u559c\u6b22\u7684\u7cbe\u6392\u6a21\u578b\u548c\u7b56\u7565\u4f18\u5316\u641c\u7d22\u7b97\u6cd5\u673a\u5668\u5b66\u4e60\u7b97\u6cd5\u6df1\u5ea6\u5b66\u4e60\u7b97\u6cd5"}, {"company": "\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u4e13\u5bb6", "position": "\u7b97\u6cd5\u4e13\u5bb6", "startDate": "2023-03-01", "endDate": "\u4eca", "time": "2023-03-01 ~ \u4eca", "duration": "", "description": "\u591a\u6a21\u6001\u56fe\u50cf\u4e0e\u89c6\u9891\u7406\u89e3\u5927\u6a21\u578b\uff0c\u540e\u8bad\u7ec3\u8d1f\u8d23\u4eba"}, {"company": "\u4e66\u884c\u79d1\u6280\uff08\u5317\u4eac\uff09\u6709\u9650\u516c\u53f8", "title": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u63a8\u8350\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-05", "endDate": "2023-03", "time": "2022-05 ~ 2023-03", "duration": "", "description": "\u5c0f\u7ea2\u4e66APP\u7684\u5916\u6d41\u53ec\u56de\u6a21\u578b\u4f18\u5316"}, {"company": "\u5317\u4eac\u4e09\u5feb\u5728\u7ebf\u79d1\u6280\u6709\u9650\u516c\u53f8\uff08\u7f8e\u56e2\u7f51\uff09", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2020-08", "endDate": "2022-04", "time": "2020-08 ~ 2022-04", "duration": "", "description": "\u7f8e\u56e2APP\u9996\u9875\u731c\u4f60\u559c\u6b22\u7684\u7cbe\u6392\u6a21\u578b\u548c\u7b56\u7565\u4f18\u5316"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法专家北京智谱华章科技有限公司2023.3-至今 (2年9个月)多模态图像理解大模型，后训练负责人后训练多模态大模型强化学习算法 | 推荐算法工程师书行科技（北京）有限公司2022.5-2023.3 (10个月)小红书APP的外流召回模型优化搜索算法深度学习算法 | 算法工程师北京三快在线科技有限公司（美团网）2020.8-2022.4 (1年8个月)美团APP首页猜你喜欢的精排模型和策略优化搜索算法机器学习算法深度学习算法
+
+【教育经历】
+清华大学 计算机 | 北京航空航天大学 软件工程
+
+========================================
+
+========================================
+Candidate ID: 165
+Name Mask: *一文Iven
+Current Title/Company: 高级商务总监北京智谱华章科技有限公司2023.3-2025. @ 智谱华章
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u9ad8\u7ea7\u5546\u52a1\u603b\u76d1\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f82023.3-2025.", "time": "2023.3-2025.7", "description": "\u9ad8\u7ea7\u5546\u52a1\u603b\u76d1\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f82023.3-2025.7 (2\u5e744\u4e2a\u6708)AI\u5927\u6a21\u578b\u5546\u4e1a\u5316\u4e13\u5bb6\uff0c\u8d1f\u8d23KA\u5934\u90e8\u5927\u5ba2\u6237\u9500\u552e\u4e0e\u5ba2\u6237\u6210\u529f\uff0c\u4e13\u6ce8AI\u5927\u6a21\u578b\u5728\u6c7d\u8f66\u3001PC\u3001\u5934\u90e8\u6218\u7565\u7ea7\u5ba2\u6237\u7684\u5546\u4e1a\u5316\u843d\u5730\u30022023\u5e74"}, {"company": "\u5317\u4eac\u5143\u56e0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u5546\u52a1\u8fd0\u8425\u603b\u76d1\u5317\u4eac\u5143\u56e0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82022.8-2023.", "time": "2022.8-2023.3", "description": "\u5546\u52a1\u8fd0\u8425\u603b\u76d1\u5317\u4eac\u5143\u56e0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82022.8-2023.3 (7\u4e2a\u6708)\u8d1f\u8d23\u516c\u53f8\u7684\u4e1a\u52a1\u8fd0\u8425\uff0c\u8f85\u52a9\u6218\u7565\u89c4\u5212\u3002\u5e26\u9886\u56e2\u961f\u63a8\u8fdb\u8f6f\u4ef6\u5f00\u53d1\u3001\u5e02\u573a\u62d3\u5c55\u3001\u5ba2\u6237\u670d\u52a1\u7b49\u5de5\u4f5c\uff0c\u5b9e\u73b0\u516c\u53f8\u4e1a\u7ee9\u589e\u957f\u548c\u5546\u4e1a\u5316\u63a8\u8fdb\u3002\u4ea7\u54c1\u8fd0\u8425\u6570\u636e\u5206"}, {"company": "\u5927\u641c\u8f66", "title": "\u8d44\u6df1\u4ea7\u54c1\u8fd0\u8425\u4e13\u5bb6\u5927\u641c\u8f66 ? \u96c6\u56e2\u6570\u636e\u4e2d\u5fc32020.11-20", "time": "2020.11-2022.7", "description": "\u8d44\u6df1\u4ea7\u54c1\u8fd0\u8425\u4e13\u5bb6\u5927\u641c\u8f66 ? \u96c6\u56e2\u6570\u636e\u4e2d\u5fc32020.11-2022.7 (1\u5e748\u4e2a\u6708)B\u7aef\u4ea7\u54c1\u8fd0\u8425RFM\u6a21\u578b\u6570\u636e\u5206\u6790\u6570\u636e\u8fd0\u8425\u751f\u547d\u5468\u671f\u7ba1\u7406\u7528\u6237\u7559\u5b58\u7528\u6237\u884c\u4e3a\u5206\u6790"}, {"company": "\u5999\u8ba1\u65c5\u884c", "title": "\u5168\u56fd\u5546\u52a1\u603b\u76d1\u5999\u8ba1\u65c5\u884c2017.11-2020.10 (2\u5e741", "time": "2017.11-2020.10", "description": "\u5168\u56fd\u5546\u52a1\u603b\u76d1\u5999\u8ba1\u65c5\u884c2017.11-2020.10 (2\u5e7411\u4e2a\u6708)\u5168\u56fd\u5546\u52a1\u603b\u76d1\u5546\u52a1\u7b56\u5212\u56e2\u961f\u7ba1\u7406\u5ba2\u6237\u7ba1\u7406\u9500\u552e\u7ba1\u7406"}, {"company": "\u5999\u8ba1\u65c5\u884c", "title": "\u9ad8\u7ea7\u9500\u552e\u7ecf\u7406\u5999\u8ba1\u65c5\u884c2017.5-2017.11 (6\u4e2a\u6708)", "time": "2017.5-2017.11", "description": "\u9ad8\u7ea7\u9500\u552e\u7ecf\u7406\u5999\u8ba1\u65c5\u884c2017.5-2017.11 (6\u4e2a\u6708)Senior Sales Manager"}, {"company": "", "title": "\u9ad8\u7ea7\u5ba2\u6237\u7ecf\u7406KUONI TRAVEL\uff08CHINA\uff09LIMIT", "time": "2012.6-2017.5", "description": "\u9ad8\u7ea7\u5ba2\u6237\u7ecf\u7406KUONI TRAVEL\uff08CHINA\uff09LIMITED\uff08\u9999\u6e2f\uff092012.6-2017.5 (4\u5e7411\u4e2a\u6708)\u4f1a\u9500\u7f51\u9500\u9762\u9500"}, {"company": "\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u9ad8\u7ea7\u5546\u52a1\u603b\u76d1", "position": "\u9ad8\u7ea7\u5546\u52a1\u603b\u76d1", "startDate": "2023-03", "endDate": "2025-07", "time": "2023-03 ~ 2025-07", "duration": "", "description": "AI\u5927\u6a21\u578b\u5546\u4e1a\u5316\u4e13\u5bb6\uff0c\u8d1f\u8d23KA\u5934\u90e8\u5927\u5ba2\u6237\u9500\u552e\u4e0e\u5ba2\u6237\u6210\u529f\uff0c\u4e13\u6ce8AI\u5927\u6a21\u578b\u5728\u6c7d\u8f66\u3001PC\u3001\u5934\u90e8\u6218\u7565\u7ea7\u5ba2\u6237\u7684\u5546\u4e1a\u5316\u843d\u5730\u30022023\u5e74\u5b9e\u73b0\u5927\u6a21\u578b\u4ea7\u54c1\u4ece0\u52301\u7a81\u7834\uff0c\u5b8c\u6210\u4ebf\u7ea7\u8425\u6536\u5e76\u83b7\u96c6\u56e2\u9500\u51a0\uff1b2024\u5e74\u6210\u529f\u6253\u9020AI+\u6c7d\u8f66/PC\u884c\u4e1a\u6807\u6746\u6848\u4f8b\uff0c\u4e3b\u5bfc\u591a\u5bb6\u5934\u90e8\u4e92\u8054\u7f51\u5927\u5382\uff0c\u5934\u90e8\u8f66\u4f01\u548cPC\u5382\u5546\u5927\u6a21\u578b\u843d\u5730\u5347\u7ea7\uff0c\u63d0\u4f9b\u573a\u666f\u5316\u89e3\u51b3\u65b9\u6848\u3002"}, {"company": "\u5317\u4eac\u5143\u56e0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u5546\u52a1\u8fd0\u8425\u603b\u76d1", "position": "\u5546\u52a1\u8fd0\u8425\u603b\u76d1", "startDate": "2022-08", "endDate": "2023-03", "time": "2022-08 ~ 2023-03", "duration": "", "description": "\u8d1f\u8d23\u516c\u53f8\u7684\u4e1a\u52a1\u8fd0\u8425\uff0c\u8f85\u52a9\u6218\u7565\u89c4\u5212\u3002\u5e26\u9886\u56e2\u961f\u63a8\u8fdb\u8f6f\u4ef6\u5f00\u53d1\u3001\u5e02\u573a\u62d3\u5c55\u3001\u5ba2\u6237\u670d\u52a1\u7b49\u5de5\u4f5c\uff0c\u5b9e\u73b0\u516c\u53f8\u4e1a\u7ee9\u589e\u957f\u548c\u5546\u4e1a\u5316\u63a8\u8fdb\u3002"}, {"company": "\u5927\u641c\u8f66", "title": "\u8d44\u6df1\u4ea7\u54c1\u8fd0\u8425\u4e13\u5bb6", "position": "\u8d44\u6df1\u4ea7\u54c1\u8fd0\u8425\u4e13\u5bb6", "startDate": "2020-11", "endDate": "2022-07", "time": "2020-11 ~ 2022-07", "duration": "", "description": ""}, {"company": "\u5999\u8ba1\u65c5\u884c", "title": "\u5168\u56fd\u5546\u52a1\u603b\u76d1", "position": "\u5168\u56fd\u5546\u52a1\u603b\u76d1", "startDate": "2017-11", "endDate": "2020-10", "time": "2017-11 ~ 2020-10", "duration": "", "description": "\u5168\u56fd\u5546\u52a1\u603b\u76d1"}, {"company": "\u5999\u8ba1\u65c5\u884c", "title": "\u9ad8\u7ea7\u9500\u552e\u7ecf\u7406", "position": "\u9ad8\u7ea7\u9500\u552e\u7ecf\u7406", "startDate": "2017-05", "endDate": "2017-11", "time": "2017-05 ~ 2017-11", "duration": "", "description": "Senior Sales Manager"}, {"company": "KUONI TRAVEL\uff08CHINA\uff09LIMITED\uff08\u9999\u6e2f\uff09", "title": "\u9ad8\u7ea7\u5ba2\u6237\u7ecf\u7406", "position": "\u9ad8\u7ea7\u5ba2\u6237\u7ecf\u7406", "startDate": "2012-06", "endDate": "2017-05", "time": "2012-06 ~ 2017-05", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+高级商务总监北京智谱华章科技有限公司2023.3-2025.7 (2年4个月)AI大模型商业化专家，负责KA头部大客户销售与客户成功，专注AI大模型在汽车、PC、头部战略级客户的商业化落地。2023年实现大模型产品从0到1突破，完成亿级营收并获集团销冠；2024年成功打造AI+汽车/PC行业标杆案例，主导多家头部互联网大厂，头部车企和PC厂商大模型落地升级，提供场景化解决方案。团队管理客户管理销售管理 | 商务运营总监北京元因智能科技有限公司2022.8-2023.3 (7个月)负责公司的业务运营，辅助战略规划。带领团队推进软件开发、市场拓展、客户服务等工作，实现公司业绩增长和商业化推进。产品运营数据分析数据运营运营战略规划 | 资深产品运营专家大搜车 ? 集团数据中心2020.11-2022.7 (1年8个月)B端产品运营RFM模型数据分析数据运营生命周期管理用户留存用户行为分析 | 全国商务总监妙计旅行2017.11-2020.10 (2年11个月)全国商务总监商务策划团队管理客户管理销售管理 | 高级销售经理妙计旅行2017.5-2017.11 (6个月)Senior Sales Manager  | 高级客户经理KUONI TRAVEL（CHINA）LIMITED（香港）2012.6-2017.5 (4年11个月)会销网销面销
+
+【教育经历】
+北京化工大学 经济
+
+========================================
+
+========================================
+Candidate ID: 168
+Name Mask: *帅
+Current Title/Company: AI产品专家北京智谱华章科技有限 @ 智谱华章
+
+=== WORK EXPERIENCES ===
+[{"company": "北京智谱华章科技有限公司", "title": "AI产品专家北京智谱华章科技有限", "time": "2024.8-至今", "description": "AI产品专家北京智谱华章科技有限公司2024.8-至今 (1年4个月)产品负责人"}, {"company": "京东", "title": "产品专家京东科技有限公司 ?", "time": "2020.1-2024.8", "description": "产品专家京东科技有限公司 ? 中台2020.1-2024.8 (4年7个月)1.AI增长营销平台(LLM，AIGC，AI Agents)"}, {"company": "360", "title": "高级产品经理", "time": "2019.7-2020.1", "description": "高级产品经理3602019.7-2020.1 (6个月)360移动开放平台、企业内部后台搭建、开发者商业化方向"}, {"company": "猎豹移动", "title": "高级产品经理猎豹移动", "time": "2019.1-2019.7", "description": "高级产品经理猎豹移动2019.1-2019.7 (6个月)供应链saas产品设计、ai智能硬件产品设计"}, {"company": "万能小哥", "title": "高级产品经理万能小哥", "time": "2017.2-2019.1", "description": "高级产品经理万能小哥2017.2-2019.1 (1年11个月)在职期间负责2.0版本全产品线产品工作并成功上线，上线2个月内用户注册增量50万；to B SaaS系统成功接入2241个商家 ；负责并"}, {"company": "河北邦纳教育科技有限公司", "title": "产品经理河北邦纳教育科技有限", "time": "2016.4-2017.2", "description": "产品经理河北邦纳教育科技有限公司2016.4-2017.2 (10个月)在职期间独立负责产品工作，通过对教育局、学校老师、家长及学生的用户调研及需求分析，将各用户需求整理链接，通过管理后台、教育局后台"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+AI产品专家北京智谱华章科技有限公司2024.8-至今 (1年4个月)产品负责人 MaaS 平台 智能体开发平台B端产品机器学习类AI | 产品专家京东科技有限公司 ? 中台2020.1-2024.8 (4年7个月)1.AI增长营销平台(LLM，AIGC，AI Agents) 2.营销自动化策略平台，一站式数字化用户运营平台 3.移动中台，mPaaS，移动研发效能平台B端产品内容产品策略产品金融产品 | 高级产品经理3602019.7-2020.1 (6个月)360移动开放平台、企业内部后台搭建、开发者商业化方向 | 高级产品经理猎豹移动2019.1-2019.7 (6个月)供应链saas产品设计、ai智能硬件产品设计 | 高级产品经理万能小哥2017.2-2019.1 (1年11个月)在职期间负责2.0版本全产品线产品工作并成功上线，上线2个月内用户注册增量50万；to B SaaS系统成功接入2241个商家 ；负责并完成数据监测分析系统，搭建平台数据仓库 工作内容： 在职期间独立负责万能小哥1.0系统维护及2.0系统升级工作，通过对用户及维修师傅用户调研分析以及用户画像、对B端商家及经销商需求收集分析、公司业务部门、产品部门数据需求收集，独立完成用户产品线、系统后台、数据中心以及to B SaaS系统设计工作，并确保系统平稳升级、数据体系以及SaaS系统成功上线，具体工作如下： 1.项目数据中心、数据监测系统、数据罗盘设计实现 2.用户端H5，App产品设计 3.师傅端App管理设计 4.系统管理后台、经销商管理后台2.0版本产品设计 5.to B SaaS系统1.0版本产品设计 | 产品经理河北邦纳教育科技有限公司2016.4-2017.2 (10个月)在职期间独立负责产品工作，通过对教育局、学校老师、家长及学生的用户调研及需求分析，将各用户需求整理链接，通过管理后台、教育局后台、学校后台、老师端、家长端五个端口，搭建“家校共育”综合教育平台，具体工作如下： 1.收集分析用户需求，制定功能优先级，制定版本迭代计划 2. 定期进行竞品分析、输出分析报告 3.定期对App各项数据进行分析，优化产品功能、交互细节 4.编写、更新产品PRD 5.推进UI设计、RD开发工作，跟进项目进度 6. 管理QA测试相关测试工作及验收测试用例TC 7.与运营及市场人员协作收集整理用户反馈并优化产品 | 产品助理/产品专员河北壹加贰房地产经纪有限公司2014.6-2016.4 (1年10个月)工作内容： 1.项目初期进行项目立项市场调研、出具调研报告 2.研究竞品市场并输出竞品分析报告 3.负责产品支付流程的设计并出具相应PRD文档 4.定期对App用户使用数据进行分析，优化产品功能
+
+【教育经历】
+石家庄学院 软件工程
+
+========================================
+
+========================================
+Candidate ID: 170
+Name Mask: *ry
+Current Title/Company: 技术VP智谱华章2025.9-至今 (3个月)Infra负责 @ 智谱华章
+
+=== WORK EXPERIENCES ===
+[{"company": "术VP智谱华章", "title": "技术VP智谱华章2025.9-至今 (3个月)Infra负责", "time": "2025.9-至今", "description": "技术VP智谱华章2025.9-至今 (3个月)Infra负责人"}, {"company": "快手", "title": "技术负责人快手", "time": "2021.3-2025.3", "description": "技术负责人快手2021.3-2025.3 (4年)AI 平台多媒体引擎架构负责人。负责大模型训练推理团队（可灵，快意等）团队精神C/C++沟通协调能力"}, {"company": "旷视", "title": "商业物联事业部总监北京旷视科技有限公司2019.3-2021", "time": "2019.3-2021.3", "description": "商业物联事业部总监北京旷视科技有限公司2019.3-2021.3 (2年)商业物联事业部技术总监，负责通行，教育等产品线开发工作。"}, {"company": "旷视", "title": "技术委员会成员北京旷视科技有限公司2018.8-2021.3", "time": "2018.8-2021.3", "description": "技术委员会成员北京旷视科技有限公司2018.8-2021.3 (2年7个月)参与公司工程师文化的建立。参与高职级工程师的培训计划制定和晋升评审。"}, {"company": "旷视", "title": "云服务首席系统架构师旷视科技2015.12-2019.3 (", "time": "2015.12-2019.3", "description": "云服务首席系统架构师旷视科技2015.12-2019.3 (3年3个月)神经网络工程化，云服务基础设施以及 devops。"}, {"company": "搜狗", "title": "资深高级开发工程师搜狗2011.7-2015.11 (4年4", "time": "2011.7-2015.11", "description": "资深高级开发工程师搜狗2011.7-2015.11 (4年4个月)曾经负责搜狗网页搜索的检索，索引制作和缓存"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+技术VP智谱华章2025.9-至今 (3个月)Infra负责人 | 技术负责人快手2021.3-2025.3 (4年)AI 平台多媒体引擎架构负责人。负责大模型训练推理团队（可灵，快意等）团队精神C/C++沟通协调能力 | 商业物联事业部总监北京旷视科技有限公司2019.3-2021.3 (2年)商业物联事业部技术总监，负责通行，教育等产品线开发工作。 | 技术委员会成员北京旷视科技有限公司2018.8-2021.3 (2年7个月)参与公司工程师文化的建立。参与高职级工程师的培训计划制定和晋升评审。 | 云服务首席系统架构师旷视科技2015.12-2019.3 (3年3个月)神经网络工程化，云服务基础设施以及 devops。 | 资深高级开发工程师搜狗2011.7-2015.11 (4年4个月)曾经负责搜狗网页搜索的检索，索引制作和缓存
+
+【教育经历】
+清华大学 计算机 | 清华大学 计算机
+
+========================================
+
+========================================
+Candidate ID: 171
+Name Mask: *鑫
+Current Title/Company: 大模型产品解决方案专家智谱华章2024.11-至今 (1年1 @ 智谱华章
+
+=== WORK EXPERIENCES ===
+[{"company": "\u667a\u8c31\u534e\u7ae0", "title": "\u5927\u6a21\u578b\u4ea7\u54c1\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6\u667a\u8c31\u534e\u7ae02024.11-\u81f3\u4eca (1\u5e741", "time": "2024.11-\u81f3\u4eca", "description": "\u5927\u6a21\u578b\u4ea7\u54c1\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6\u667a\u8c31\u534e\u7ae02024.11-\u81f3\u4eca (1\u5e741\u4e2a\u6708)MaaS\u5e73\u53f0\u89e3\u51b3\u65b9\u6848\u548cPE\u843d\u5730\u8d1f\u8d23\u4ebaB\u7aef\u4ea7\u54c1\u4ea7\u54c1\u8bbe\u8ba1\u56e2\u961f\u7ba1\u7406\u7528\u6237\u7814\u7a76"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u9ad8\u7ea7ai\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6\u5b57\u8282\u8df3\u52a82022.11-2024.11 ", "time": "2022.11-2024.11", "description": "\u9ad8\u7ea7ai\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6\u5b57\u8282\u8df3\u52a82022.11-2024.11 (2\u5e74)\u6570\u636e\u3001\u5e94\u7528\u3001\u5e73\u53f0\u3001\u6a21\u578b\u8c03\u4f18\u5168\u77e9\u9635\u65b9\u6848\u552e\u524d\u4ea7\u54c1\u6f14\u793a\u552e\u524d\u54a8\u8be2\u552e\u524d\u9700\u6c42\u5206\u6790"}, {"company": "\u963f\u91cc\u5df4\u5df4", "title": "\u5ba2\u6237\u6210\u529f\u4e13\u5bb6\u963f\u91cc\u4e91\u8ba1\u7b97\u516c\u53f82021.5-2022.11 (1", "time": "2021.5-2022.11", "description": "\u5ba2\u6237\u6210\u529f\u4e13\u5bb6\u963f\u91cc\u4e91\u8ba1\u7b97\u516c\u53f82021.5-2022.11 (1\u5e746\u4e2a\u6708)\u4ebf\u7ea7\u9879\u76ee\u7ba1\u7406\u548c\u4ea4\u4ed8\u843d\u5730"}, {"company": "\u57c3\u68ee\u54f2\uff08\u4e2d\u56fd\uff09\u6709\u9650\u516c\u53f8\u5317\u4eac\u5206\u516c\u53f8", "title": "\u54a8\u8be2\u7ecf\u7406\u57c3\u68ee\u54f2\uff08\u4e2d\u56fd\uff09\u6709\u9650\u516c\u53f8\u5317\u4eac\u5206\u516c\u53f82017.4-202", "time": "2017.4-2021.8", "description": "\u54a8\u8be2\u7ecf\u7406\u57c3\u68ee\u54f2\uff08\u4e2d\u56fd\uff09\u6709\u9650\u516c\u53f8\u5317\u4eac\u5206\u516c\u53f82017.4-2021.8 (4\u5e744\u4e2a\u6708)\u5e26\u56e2\u961f\u5b9e\u65bd\u6570\u4e2a\u4e16\u754c500\u5f3a\u6570\u5b57\u5316\u8f6c\u578b\u54a8\u8be2\u548c\u4ea4\u4ed8\u9879\u76ee\u654f\u6377\u7ba1\u7406\u73b0\u573a\u7ba1\u7406\u89e3\u51b3\u65b9\u6848\u9879\u76ee\u5b9e\u65bd\u9879\u76ee\u7ba1\u7406"}, {"company": "\u667a\u8c31\u534e\u7ae0", "title": "\u5927\u6a21\u578b\u4ea7\u54c1\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6", "position": "\u5927\u6a21\u578b\u4ea7\u54c1\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6", "startDate": "2024-11-01", "endDate": "\u4eca", "time": "2024-11-01 ~ \u4eca", "duration": "", "description": "MaaS\u5e73\u53f0\u89e3\u51b3\u65b9\u6848\u548cPE\u843d\u5730\u8d1f\u8d23\u4eba"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u9ad8\u7ea7ai\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6", "position": "\u9ad8\u7ea7ai\u89e3\u51b3\u65b9\u6848\u4e13\u5bb6", "startDate": "2022-11", "endDate": "2024-11", "time": "2022-11 ~ 2024-11", "duration": "", "description": "\u6570\u636e\u3001\u5e94\u7528\u3001\u5e73\u53f0\u3001\u6a21\u578b\u8c03\u4f18\u5168\u77e9\u9635\u65b9\u6848"}, {"company": "\u963f\u91cc\u4e91\u8ba1\u7b97\u516c\u53f8", "title": "\u5ba2\u6237\u6210\u529f\u4e13\u5bb6", "position": "\u5ba2\u6237\u6210\u529f\u4e13\u5bb6", "startDate": "2021-05", "endDate": "2022-11", "time": "2021-05 ~ 2022-11", "duration": "", "description": "\u4ebf\u7ea7\u9879\u76ee\u7ba1\u7406\u548c\u4ea4\u4ed8\u843d\u5730"}, {"company": "\u57c3\u68ee\u54f2\uff08\u4e2d\u56fd\uff09\u6709\u9650\u516c\u53f8\u5317\u4eac\u5206\u516c\u53f8", "title": "\u54a8\u8be2\u7ecf\u7406", "position": "\u54a8\u8be2\u7ecf\u7406", "startDate": "2017-04", "endDate": "2021-08", "time": "2017-04 ~ 2021-08", "duration": "", "description": "\u5e26\u56e2\u961f\u5b9e\u65bd\u6570\u4e2a\u4e16\u754c500\u5f3a\u6570\u5b57\u5316\u8f6c\u578b\u54a8\u8be2\u548c\u4ea4\u4ed8\u9879\u76ee"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+大模型产品解决方案专家智谱华章2024.11-至今 (1年1个月)MaaS平台解决方案和PE落地负责人B端产品产品设计团队管理用户研究 | 高级ai解决方案专家字节跳动2022.11-2024.11 (2年)数据、应用、平台、模型调优全矩阵方案售前产品演示售前咨询售前需求分析 | 客户成功专家阿里云计算公司2021.5-2022.11 (1年6个月)亿级项目管理和交付落地 | 咨询经理埃森哲（中国）有限公司北京分公司2017.4-2021.8 (4年4个月)带团队实施数个世界500强数字化转型咨询和交付项目敏捷管理现场管理解决方案项目实施项目管理
+
+【教育经历】
+帝国理工学院 生物 | 杜伦大学 机械 | 北京理工大学
+
+========================================
+
+========================================
+Candidate ID: 172
+Name Mask: *维汉
+Current Title/Company: 高级算法研究员北京智谱华章科技有限公司2023.3-至今 ( @ 智谱华章
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u9ad8\u7ea7\u7b97\u6cd5\u7814\u7a76\u5458\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f82023.3-\u81f3\u4eca (", "time": "2023.3-\u81f3\u4eca", "description": "\u9ad8\u7ea7\u7b97\u6cd5\u7814\u7a76\u5458\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f82023.3-\u81f3\u4eca (2\u5e749\u4e2a\u6708)CogVLM/GLM\u591a\u6a21\u6001\u9884\u8bad\u7ec3\u8d1f\u8d23\u4eba\u81ea\u7136\u8bed\u8a00\u5904\u7406\u89c6\u89c9\u56fe\u50cf\u7b97\u6cd5"}, {"company": "\u5317\u4eac\u667a\u8c31\u534e\u7ae0\u79d1\u6280\u6709\u9650\u516c\u53f8", "position": "\u9ad8\u7ea7\u7b97\u6cd5\u7814\u7a76\u5458", "start_date": "2023-03-01", "end_date": "\u4eca", "duration": "", "description": "GLM\u591a\u6a21\u6001\u9884\u8bad\u7ec3\u8d1f\u8d23\u4eba"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+高级算法研究员北京智谱华章科技有限公司2023.3-至今 (2年9个月)CogVLM/GLM多模态预训练负责人自然语言处理视觉图像算法
+
+【教育经历】
+清华大学 计算机
+
+========================================
+

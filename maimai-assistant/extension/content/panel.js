@@ -136,6 +136,53 @@ class AssistantPanel {
                         </button>
                     </div>
 
+                    <div style="margin-top: 16px; border-top: 1px dashed #dadce0; padding-top: 16px;">
+                        <div style="font-size: 13px; font-weight: 600; color: #191919; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+                            🤖 AI 消息处理中心
+                        </div>
+                        
+                        <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center;">
+                            <span style="font-size: 13px; color: #666;">处理近</span>
+                            <input type="number" id="imBatchDays" value="3" min="1" max="30" style="width: 50px; padding: 6px; border: 1px solid #dadce0; border-radius: 6px; font-size: 13px; outline: none; text-align: center;">
+                            <span style="font-size: 13px; color: #666;">天的消息</span>
+                        </div>
+
+                        <button id="batchProcessImBtn" style="width: 100%; padding: 10px; background: #0f172a; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+                            ▶️ 自动助理：开始过筛消息
+                        </button>
+                    </div>
+
+                    <!-- AI Execution Log Feed -->
+                    <div id="aiExecutionLogWrapper" style="display: none; margin-top: 16px; background: white; border-radius: 8px; border: 1px solid #dadce0; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.02);">
+                        <div style="background: #f8f9fa; padding: 10px 14px; font-size: 13px; font-weight: 600; color: #191919; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dadce0;">
+                            <span style="display: flex; align-items: center; gap: 6px;">
+                                <div style="width: 8px; height: 8px; border-radius: 50%; background: #0a66c2; animation: pulse 2s infinite; box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.4);"></div>
+                                AI 实时运行动态
+                            </span>
+                            <span id="clearAiLogBtn" style="cursor: pointer; color: #666; font-size: 12px; font-weight: 500;">清空</span>
+                        </div>
+                        <div id="aiExecutionLog" style="height: 180px; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; scroll-behavior: smooth;">
+                           <div style="color: #999; text-align: center; padding: 20px 0; font-style: italic; font-size: 12px; font-weight: 400;">等待启动...</div>
+                        </div>
+                        <style>
+                        @keyframes pulse {
+                            0% { box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.4); }
+                            70% { box-shadow: 0 0 0 6px rgba(10, 102, 194, 0); }
+                            100% { box-shadow: 0 0 0 0 rgba(10, 102, 194, 0); }
+                        }
+                        .ai-feed-item {
+                            background: #f8f9fa;
+                            border-radius: 6px;
+                            padding: 10px 12px;
+                            border-left: 3px solid #0a66c2;
+                            transition: all 0.3s ease;
+                        }
+                        .ai-feed-item.error { border-left-color: #d11124; background: #fff5f5; }
+                        .ai-feed-item.warning { border-left-color: #f59e0b; background: #fffbe6; }
+                        .ai-feed-item.success { border-left-color: #10b981; background: #ecfdf5; }
+                        </style>
+                    </div>
+
                     <!-- Progress Section -->
                     <div id="progressSection" style="display: none; margin-top: 16px; padding: 16px; background: #f0f7ff; border-radius: 8px; border: 1px solid #c2d7f0;">
                         <div style="height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; margin-bottom: 8px;">
@@ -327,6 +374,43 @@ class AssistantPanel {
     `;
     }
 
+    appendAiLog(message, type = 'info') {
+        if (!this.panel) return;
+        const wrapper = this.panel.querySelector('#aiExecutionLogWrapper');
+        const logContainer = this.panel.querySelector('#aiExecutionLog');
+        if (wrapper) wrapper.style.display = 'block';
+        if (logContainer) {
+            // Remove the "等待启动..." placeholder
+            const placeholder = logContainer.querySelector('div[style*="italic"]');
+            if (placeholder) placeholder.remove();
+
+            const timeStr = new Date().toLocaleTimeString('zh-CN', { hour12: false });
+            const line = document.createElement('div');
+            line.className = `ai-feed-item ${type}`;
+            
+            let icon = '🔹';
+            if (type === 'success') icon = '✅';
+            else if (type === 'error') icon = '❌';
+            else if (type === 'warning') icon = '⚠️';
+            else if (type === 'system') icon = '🤖';
+            else if (type === 'action') icon = '💼';
+
+            line.innerHTML = `
+                <div style="display: flex; gap: 8px; align-items: flex-start;">
+                    <span style="font-size: 14px; margin-top: 1px;">${icon}</span>
+                    <div style="flex: 1;">
+                        <div style="color: #191919; line-height: 1.5; font-weight: 500;">${message}</div>
+                        <div style="color: #8c8c8c; font-size: 11px; margin-top: 4px; font-family: 'SFMono-Regular', Consolas, monospace;">${timeStr}</div>
+                    </div>
+                </div>
+            `;
+            logContainer.appendChild(line);
+            
+            // Auto scroll
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+    }
+
     bindEvents() {
         if (!this.panel) return;
 
@@ -435,6 +519,30 @@ class AssistantPanel {
         // 停止
         this.panel.querySelector('#stopBtn')?.addEventListener('click', () => {
             this.assistant?.stopBatchOperation();
+            // TODO: stop ImProcessor if it's running
+            if (this.assistant?.imProcessor?.isRunning) {
+                this.assistant.imProcessor.stop();
+            }
+        });
+
+        // IM 批量处理
+        this.panel.querySelector('#batchProcessImBtn')?.addEventListener('click', () => {
+            const daysInput = this.panel.querySelector('#imBatchDays');
+            const days = parseInt(daysInput.value) || 3;
+            // Validate URL
+            if (!window.location.href.includes('/im')) {
+                MaimaiUtils.showNotification('此功能仅在「招聘消息」或沟通页面使用', 'warning');
+                return;
+            }
+            this.showProgress();
+            this.appendAiLog(`启动批处理模块，目标范围: 近 ${days} 天`, 'system');
+            this.assistant?.batchProcessImMessages(days);
+        });
+
+        // 清空日志
+        this.panel.querySelector('#clearAiLogBtn')?.addEventListener('click', () => {
+            const logContainer = this.panel.querySelector('#aiExecutionLog');
+            if (logContainer) logContainer.innerHTML = '';
         });
 
         // 导出

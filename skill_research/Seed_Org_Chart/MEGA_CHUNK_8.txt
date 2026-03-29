@@ -1,0 +1,216 @@
+# CANDIDATE BATCH 8
+
+========================================
+Candidate ID: 6615
+Name Mask: *东
+Current Title/Company: seed大模型算法高级专家 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "seed\u5927\u6a21\u578b\u7b97\u6cd5\u9ad8\u7ea7\u4e13\u5bb6", "time": "2021.08 - \u81f3\u4eca", "description": "\u540e\u8bad\u7ec3 \u5f3a\u5316\u5b66\u4e60 agent&code"}]
+
+=== RAW RESUME EXTRACT ===
+沈东
+7年工作经验
+工作经历
+字节跳动
+seed大模型算法高级专家
+2021.08 - 至今
+工作内容
+后训练 强化学习 agent&code
+教育经历
+香港科技大学
+计算机
+硕士
+2017.07 - 2018.11
+
+
+========================================
+
+========================================
+Candidate ID: 6637
+Name Mask: *iwei Chai
+Current Title/Company: Technical Intern @ Zhipu AI GLM Team
+
+=== WORK EXPERIENCES ===
+[{"company": "Zhipu AI GLM Team", "title": "Technical Intern", "time": "2025.02 \u2013 Present", "description": "Project: GLM-4 (\u2606 6.9k), GLM-4.5 (\u2606 3.1k)\nRole: Token efficiency of STEM pre-training data for GLM-4, GLM-4.5 and next-generation model\n\u2022 High-quality STEM Data Pipeline: Shipped an end-to-end STEM data pipeline that performs filtering, parsing and ranking from the data lake, enabling trillion-token-scale high-quality STEM data assets for GLM-4/4.5 and forthcoming models.\n\u2022 Synthetic Data Generation: Designed multiple synthetic data generation strategies\u2014including refinement, para-phrasing, and web-based knowledge construction\u2014to alleviate the data wall and deliver consistent pre-training improvements on GLM-4.5.\n\u2022 Evaluation Framework: Developed a comprehensive evaluation protocol to quantify reasoning knowledge gain of base model during pre-training, designing metrics that more accurately reflect STEM data quality."}, {"company": "Bytedance Seed-Code", "title": "Intern", "time": "2023.11 \u2013 2025.01", "description": "Advisor: Dr. Guoyin Wang & Prof. Hongxia Yang & Dr. Kai Shen\n\u2022 RL for Agentic Workflow Orchestration [2]: Leveraged RLVR to train self-orchestrated LLM Code Agents for building multi-agent systems, exploring the scaling laws of multi-agent frameworks.\n\u2022 Multi-Agent Collaboration System Design [3]: Developed Expert-Token-Routing (ETR), a multi-agent reasoning system using a meta-expert architecture for collaborative reasoning.\n\u2022 Agentic Data Analysis Benchmark [5]: Implemented InfiAgent-DABench (\u2606 134), a comprehensive evaluation framework for benchmarking AI agents on complex data analysis tasks."}, {"company": "Ant Group Alipay", "title": "Research Intern", "time": "2022.03 \u2013 2023.03", "description": "Advisor: Dr. Weiqiang Wang\n\u2022 Pioneered a graph neural network-based adaptive money-laundering detection system [9], deployed in Alipay\u2019s near-line AML pipeline, achieving a 3% F1 improvement over production baselines."}, {"company": "AINet Lab at Zhejiang University", "title": "Student Researcher", "time": "2021.09 \u2013 Present", "description": "Advisor: Prof. Yang Yang\n\u2022 LLM for Graph [6] [7] [8], Graph Anomaly Detection [10]."}]
+
+=== PROJECT EXPERIENCES ===
+[]
+
+=== RAW RESUME EXTRACT ===
+ZIWEI CHAI
+EDUCATION
+Zhejiang University, Hangzhou, China
+2021.09 – 2026.06 (expected)
+Ph.D in Computer Science, Technology
+PhD Advisor: Prof. Yang Yang
+Zhejiang University, Hangzhou, China
+09/2017 – 06/2021
+B.Eng. in Software Engineering, GPA: 3.95/4, Rank: 1/80
+EXPERIENCE
+Zhipu AI GLM Team
+2025.02 – Present
+Technical Intern
+Advisor: Dr. Xin Lv & Dr. Shulin Cao
+Project: GLM-4 (☆ 6.9k), GLM-4.5 (☆ 3.1k)
+Role: Token efficiency of STEM pre-training data for GLM-4, GLM-4.5 and next-generation model
+• High-quality STEM Data Pipeline: Shipped an end-to-end STEM data pipeline that performs filtering, parsing and ranking from the data lake, enabling trillion-token-scale high-quality STEM data assets for GLM-4/4.5 and forthcoming models.
+• Synthetic Data Generation: Designed multiple synthetic data generation strategies—including refinement, para-phrasing, and web-based knowledge construction—to alleviate the data wall and deliver consistent pre-training improvements on GLM-4.5.
+• Evaluation Framework: Developed a comprehensive evaluation protocol to quantify reasoning knowledge gain of base model during pre-training, designing metrics that more accurately reflect STEM data quality.
+Bytedance Seed-Code
+2023.11 – 2025.01
+Intern
+Advisor: Dr. Guoyin Wang & Prof. Hongxia Yang & Dr. Kai Shen
+• RL for Agentic Workflow Orchestration [2]: Leveraged RLVR to train self-orchestrated LLM Code Agents for building multi-agent systems, exploring the scaling laws of multi-agent frameworks.
+• Multi-Agent Collaboration System Design [3]: Developed Expert-Token-Routing (ETR), a multi-agent reasoning system using a meta-expert architecture for collaborative reasoning.
+• Agentic Data Analysis Benchmark [5]: Implemented InfiAgent-DABench (☆ 134), a comprehensive evaluation framework for benchmarking AI agents on complex data analysis tasks.
+Ant Group Alipay
+2022.03 – 2023.03
+Research Intern
+Advisor: Dr. Weiqiang Wang
+• Pioneered a graph neural network-based adaptive money-laundering detection system [9], deployed in Alipay’s near-line AML pipeline, achieving a 3% F1 improvement over production baselines.
+AINet Lab at Zhejiang University
+2021.09 – Present
+Student Researcher
+Advisor: Prof. Yang Yang
+• LLM for Graph [6] [7] [8], Graph Anomaly Detection [10].
+PUBLICATIONS
+[1] GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models
+Technical Report
+Ziwei Chai as a contributor to token efficiency of mathematical data pretraining
+[2] AutoSwarm: Training LLM to Self-orchestrate via Reinforcement Learning
+Under Review
+Ziwei Chai, Tianjie Zhang, Xuwu Wang, Jing Su, Daoguang Zan, Jie chen, Hanchen Su, Kai Shen, Yang Yang
+[3] An Expert is Worth One Token: Synergizing Multiple Expert LLMs as Generalist via Expert Token Routing
+ACL 2024
+Ziwei Chai, Guoyin Wang, Jing Su, Tianjie Zhang, Xuanwen Huang, Xuwu Wang, Jingjing Xu, Jianbo Yuan, Hongxia Yang, Fei Wu and Yang Yang
+[4] Cypher-RI: Reinforcement Learning for Integrating Schema Selection into Cypher Generation
+Hanchen Su, Xuyuan Li, Yan Zhou, Zhuoyi Lu, Ziwei Chai, Haozheng Wang, Chen Zhang, Yang Yang
+
+========================================
+
+========================================
+Candidate ID: 6642
+Name Mask: *提供
+Current Title/Company: 多模态大模型实习生 @ 北京字节跳动科技有限公司
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u5b57\u8282\u8df3\u52a8\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u591a\u6a21\u6001\u5927\u6a21\u578b\u5b9e\u4e60\u751f", "time": "2023\u5e7402\u6708 - \u81f3\u4eca", "description": "\u53c2\u4e0e\u56e2\u961f\u4e2d\u6709\u5173\u591a\u6a21\u6001\u5927\u6a21\u578b\u7684\u7814\u7a76\u30021. Infimm\u9879\u76ee\uff0c\u53c2\u4e0e\u4e86Infimm-v1\u6a21\u578b\u7684\u9884\u8bad\u7ec3\u4ee5\u53ca\u6307\u4ee4\u5fae\u8c03\uff0c\u76f8\u5173\u6a21\u578b\u73b0\u5df2\u5f00\u6e90\u81f3Hugging Face\u30022. Infimm-HD\u9ad8\u5206\u8fa8\u7387\u591a\u6a21\u6001\u5927\u6a21\u578b\uff08200\u4ebf\u53c2\u6570\uff09\u8bad\u7ec3\u53ca\u5f00\u6e90\uff0c\u76f8\u5173\u6a21\u578bHugging Face\u4e0b\u8f7d\u91cf\u7a81\u78341500\u30023. Video-CSR\u89c6\u9891\u6458\u8981\u8bc4\u6d4b\u96c6\u6784\u5efa\uff0c\u5305\u62ec\u539f\u59cb\u89c6\u9891\u722c\u53d6\uff0c\u8fc7\u6ee4\u30024. Video-Teller (70\u4ebf\u53c2\u6570)\u89c6\u9891\u7406\u89e3\u5927\u6a21\u578b\u8bbe\u8ba1\u8bad\u7ec3\u30025. \u591a\u6a21\u6001\u79d1\u5b66\u5782\u7c7b\u5927\u6a21\u578b\u6784\u5efa\uff0c\u53c2\u4e0e\u4e86\u9884\u8bad\u7ec3\u6570\u636e\u964d\u91cd\uff0c\u8fc7\u6ee4\uff0c\u4ee5\u53ca\u521d\u7248\u6a21\u578b\u4ee3\u7801\u6784\u5efa\u7684\u5de5\u4f5c\u3002"}, {"company": "LOVO AI", "title": "\u9ad8\u8868\u73b0\u529b\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u5b9e\u4e60\u751f", "time": "2022\u5e7409\u6708 - 2023\u5e7401\u6708", "description": "\u63a2\u7d22\u5177\u6709\u9ad8\u8868\u73b0\u529b\u7684\u8bed\u97f3\u5408\u6210\u7b97\u6cd5\u3002\u901a\u8fc7\u89e3\u8026\u8bf4\u8bdd\u4eba\u8868\u5f81\uff0c\u5b9e\u73b0\u9ad8\u6548\u7684\u8bf4\u8bdd\u4eba\u8bed\u97f3\u98ce\u683c\u8fc1\u79fb\uff0c\u540c\u65f6\u53c2\u4e0e\u8bc4\u4f30\u7a0b\u5e8f\u7684\u642d\u5efa\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[]
+
+=== RAW RESUME EXTRACT ===
+24岁 | 男
+应届生 | 北京
+
+教育经历
+西安交通大学 985 211 双一流
+2018年09月 - 2022年06月
+人工智能实验班 本科 人工智能学院
+西安
+成绩：90.37, 排名：6/55
+
+中科院自动化所模式识别实验室 双一流
+2022年08月 - 2025年06月
+模式识别与智能系统 硕士 人工智能学院
+北京
+
+实习经历
+北京字节跳动科技有限公司
+2023年02月 - 至今
+多模态大模型实习生 Data-AML-US (现Seed-Foundation-Code)
+北京
+参与团队中有关多模态大模型的研究。
+1. Infimm项目，参与了Infimm-v1模型的预训练以及指令微调，相关模型现已开源至Hugging Face。
+2. Infimm-HD高分辨率多模态大模型（200亿参数）训练及开源，相关模型Hugging Face下载量突破1500。
+3. Video-CSR视频摘要评测集构建。包括原始视频爬取，过滤。
+4. Video-Teller (70亿参数)视频理解大模型设计训练。
+5. 多模态科学垂类大模型构建，参与了预训练数据降重，过滤，以及初版模型代码构建的工作。
+
+LOVO AI
+2022年09月 - 2023年01月
+高表现力语音合成算法实习生 TTS
+探索具有高表现力的语音合成算法。通过解耦说话人表征，实现高效的说话人语音风格迁移，同时参与评估程序的搭建。
+
+论文发表
+1. DeVAn: Dense Video Annotation for Video-Language Models (ACL2024)
+2. InfiMM: Advancing Multimodal Understanding with an Open-Sourced Visual Language Model (ACL2024)
+3. Visual Anchors Are Strong Information Aggregators For Multimodal Large Language Model (NeurIPS2024已接受)
+4. Video-Teller: Enhancing Cross-Modal Generation with Fusion and Decoupling
+5. InfIMM-HD: A Leap Forward in High-Resolution Multimodal Understanding (AAAI2024在投)
+6. From Interaction to Integration: Advancing Explainability and Efficiency in Multimodal Large Language Models (ICLR 2025 在投)
+
+专业技能
+编程: Python, C++
+熟悉并能熟练使用Pytorch深度学习框架
+熟悉Spark，能够进行大规模数据处理
+英语CET-6
+
+========================================
+
+========================================
+Candidate ID: 6644
+Name Mask: *东
+Current Title/Company: seed 大模型算法高级专家 @ 字节跳动
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5b57\u8282\u8df3\u52a8", "title": "seed \u5927\u6a21\u578b\u7b97\u6cd5\u9ad8\u7ea7\u4e13\u5bb6", "time": "2021.08 - \u81f3\u4eca", "description": "\u540e\u8bad\u7ec3  \u5f3a\u5316\u5b66\u4e60  agent&code"}]
+
+=== PROJECT EXPERIENCES ===
+[]
+
+=== RAW RESUME EXTRACT ===
+沈东
+7 年工作经验
+工作经历
+字节跳动 seed 大模型算法高级专家 2021.08 - 至今
+工作内容
+后训练  强化学习  agent&code  
+教育经历
+香港科技大学 计算机 硕士 2017.07 - 2018.11
+
+========================================
+
+========================================
+Candidate ID: 6685
+Name Mask: *hawn/Yuxuan Tong
+Current Title/Company: AI Researcher @ ByteDance Seed @ ByteDance Seed
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance Seed", "title": "AI Researcher @ ByteDance Seed", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 6712
+Name Mask: *i Jiang
+Current Title/Company: Large Language Model & Generative Models @ Bytedance Seed
+
+=== WORK EXPERIENCES ===
+[{"company": "Bytedance Seed", "title": "Large Language Model & Generative Models", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 6717
+Name Mask: *ang Wei
+Current Title/Company: 微信公众号「算法码上来」 / ByteDance Seed @ ByteDance @AntNLP
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance @AntNLP", "title": "\u5fae\u4fe1\u516c\u4f17\u53f7\u300c\u7b97\u6cd5\u7801\u4e0a\u6765\u300d / ByteDance Seed", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 6746
+Name Mask: *unter Zhang
+Current Title/Company: Staff Research Scientist at
+ByteDance Seed
+, where I @ ByteDance Seed
+
+=== WORK EXPERIENCES ===
+[{"company": "ByteDance Seed", "title": "\ud83d\ude39PhD@NTUsg \u2764\ufe0f Focus on MLSys and LLM Agent", "time": "Current", "description": ""}]
+
+========================================
+

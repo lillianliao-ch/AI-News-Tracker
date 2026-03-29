@@ -1,0 +1,317 @@
+# CANDIDATE BATCH 42
+
+========================================
+Candidate ID: 43549
+Name Mask: *顺平
+Current Title/Company: 产品线负责人 /高级产品经理 @ 京东集团 -IoT事业部
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4eac\u4e1c\u96c6\u56e2 -IoT\u4e8b\u4e1a\u90e8", "title": "\u4ea7\u54c1\u7ebf\u8d1f\u8d23\u4eba /\u9ad8\u7ea7\u4ea7\u54c1\u7ecf\u7406", "time": "2015/02 -\u81f3\u4eca", "description": "\u8d1f\u8d23\u53ee\u549a\u667a\u80fd\u97f3\u7bb1mini\u4ea7\u54c1\u7ebf\uff0c\u5305\u62ec\u5e02\u573a\u8c03\u7814\u3001\u7ade\u54c1\u5206\u6790\u3001\u9700\u6c42\u6536\u96c6\u3001\u4ea7\u54c1\u5b9a\u4e49\u3001\u6280\u672f\u65b9\u6848\u9009\u62e9\u3001\u7acb\u9879\u8bc4\u5ba1\u3001OEM/ODM\u5382\u5546\u9009\u62e9\u3001\u9879\u76ee\u5f00\u53d1\u3001\u6210\u672c\u63a7\u5236\u3001\u8d28\u91cf\u7ba1\u63a7\u3001\u4f9b\u5e94\u94fe\u7ba1\u63a7\u3001\u751f\u4ea7\u4ea4\u4ed8\u3001\u552e\u540e\u53cd\u9988\u7b49\u5de5\u4f5c\u3002"}, {"company": "\u6bd4\u4e9a\u8fea\u7cbe\u5bc6\u5236\u9020\u6709\u9650\u516c\u53f8\u5317\u4eac\u5206\u516c\u53f8", "title": "\u90e8\u95e8\u7ecf\u7406\uff08\u79d1\u957f\uff09", "time": "2009/12 -2015/01", "description": "\u4ece\u4e8b\u624b\u673aODM\u7814\u53d1\u6d4b\u8bd5\u7ba1\u7406\u5de5\u4f5c\uff0c\u5305\u62ec\u57fa\u5e26\u3001\u5c04\u9891\u3001\u97f3\u9891\u3001\u7ed3\u6784\u53ef\u9760\u6027\u3001\u73af\u5883\u53ef\u9760\u6027\u3001\u5929\u7ebf\u3001EMC\u3001LCD/Camera\u5149\u5b66\u7b49\u3002"}, {"company": "\u6bd4\u4e9a\u8fea\u7cbe\u5bc6\u5236\u9020\u6709\u9650\u516c\u53f8\u4e0a\u6d77\u5206\u516c\u53f8", "title": "\u7814\u53d1\u5de5\u7a0b\u5e08", "time": "2008/05 -2009/12", "description": "\u8fdb\u884c\u624b\u673a\u548c\u7b14\u8bb0\u672c\u7535\u6c60\u4fdd\u62a4\u677f\u7684\u786c\u4ef6\u8bbe\u8ba1\u548cPACK\u7684\u76f8\u5173\u6d4b\u8bd5\u3002"}, {"company": "\u4e0a\u6d77\u4eea\u534e\u4eea\u5668\u6709\u9650\u516c\u53f8", "title": "\u7814\u53d1\u5de5\u7a0b\u5e08", "time": "2006/08 -2008/04", "description": "\u4e3b\u8981\u4ece\u4e8b\u4e07\u7528\u8868\u548c\u94b3\u8868\u7684\u5f00\u53d1\u4e0e\u8bbe\u8ba1\u3002"}]
+
+=== PROJECT EXPERIENCES ===
+[{"name": "\u4eac\u4e1c\u53ee\u549a\u667a\u80fd\u97f3\u7bb1\u53ee\u549amini2", "role": "\u4ea7\u54c1\u8d1f\u8d23\u4eba", "time": "2017/12 -2018/05", "description": "\u5168\u9762\u8d1f\u8d23\u8be5\u4ea7\u54c1\u4ece\u524d\u671f\u8c03\u7814\uff0c\u5e73\u53f0\u9009\u62e9\u9a8c\u8bc1\u8bc4\u4f30\uff0c\u9879\u76ee\u7acb\u9879\uff0c\u4f9b\u5e94\u94fe\u9009\u62e9\uff0c\u7814\u53d1\u8bbe\u8ba1\uff0c\u54c1\u8d28\u7ba1\u63a7\uff0c\u6210\u672c\u63a7\u5236\uff0c\u4e0a\u5e02\u4ea4\u4ed8\uff0c\u552e\u540e\u7ef4\u62a4\u5168\u7cfb\u5217\u5de5\u4f5c\u3002"}, {"name": "\u4eac\u4e1c\u53ee\u549a\u667a\u80fd\u97f3\u7bb1\u53ee\u549aTOP", "role": "\u4ea7\u54c1\u8d1f\u8d23\u4eba", "time": "2017/03 -2017/06", "description": "\u5168\u9762\u8d1f\u8d23\u8be5\u4ea7\u54c1\u4ece\u524d\u671f\u8c03\u7814\uff0c\u5e73\u53f0\u9009\u62e9\u9a8c\u8bc1\u8bc4\u4f30\uff0c\u9879\u76ee\u7acb\u9879\uff0c\u4f9b\u5e94\u94fe\u9009\u62e9\uff0c\u7814\u53d1\u8bbe\u8ba1\uff0c\u54c1\u8d28\u7ba1\u63a7\uff0c\u6210\u672c\u63a7\u5236\uff0c\u4e0a\u5e02\u4ea4\u4ed8\uff0c\u552e\u540e\u7ef4\u62a4\u5168\u7cfb\u5217\u5de5\u4f5c\u3002"}, {"name": "Newifi\u667a\u80fd\u8def\u7531\u5668", "role": "\u786c\u4ef6\u7814\u53d1\u9879\u76ee\u7ecf\u7406", "time": "2015/02 -2015/05", "description": "\u8d1f\u8d23\u4ea7\u54c1\u5f00\u53d1\u9636\u6bb5\u7684\u786c\u4ef6\u5f00\u53d1\u53ca\u9a8c\u8bc1\u5404\u9879\u5de5\u4f5c\u3002"}]
+
+=== RAW RESUME EXTRACT ===
+杨顺平   
+ 
+男 37岁(1982年2月)  12年以上工作经验    本科    电子信息工程  
+现居住地：北京市 -通州区 | 籍贯：山东济南  
+ 手机： 18701214900  
+E-mail：rock_yang_198202@sina.com   
+求职意向  
+期望工作地区：   北京  
+期望月薪：   面议   
+目前状况：   我目前在职，正考虑换个新环境  
+期望工作性质：   全职  
+期望从事职业：   产品项目总监、产品负责人、高级产品经理   
+期望从事行业：   互联网、人工智能、智能硬件   
+自我评价   
+1) 拥有智能硬件单品 (叮咚mini2智能音箱 )产销破百万的产品负责人的经验。有四年多互联网公司
+智能硬件产品管理工作经验，从事过智能手机、智能电源、智能路由器等产品的研发及落地，目前从
+事人工智能方向的语音控制类智能硬件行业，覆盖人、车 、家三大场景的智能硬件产品。熟悉智能硬
+件产品尤其是智能音箱 行业概况、需求场景、产品定义，到平台搭建、硬件设计、语音方案、设计验
+证，到最终的供应链管理、成本控制、生产管理、量产交付及售后管理一系列流程及要点，可以引导
+团队快速高效的推进项目进度。熟悉智能硬件产品研发要点及关键节点；洞悉行业工厂资源及关键物
+料产业链及成本状态 ，确保产品以高性价比快速上市。  
+2) 六年多 ODM手机产品质量测试管理工作经验，担任过诸多主流手机厂商的 ODM产品质量测试经
+理，良好的团队管理能力、测试管理能力、质量控制能力及标准制定能力。精通产品研发质量管理、
+测试标准制定、产品认证、实验室管理及生产质量管理等   
+3) 有近三年的硬件研发设计经验，在产品硬件设计方面有一定的技术功底   
+工作经历   
+2015/02 -至今   京东集团 -IoT事业部  
+产品线负责人 /高级产品经理   
+互联网 /智能硬件   
+工作描述：   2015年2月加入京东集团，并在京东智能部门任职， 2015年10月调入京东与科
+大讯飞的合资公司北京灵隆科技有限公司担任产品负责人， 2018年12月调回京
+东集团IoT事业部。在职期间作为叮咚智能音箱 mini产品线负责人，打造出了京
+东首款产销百万级的叮咚 mini2智能音箱，主要工作职责如下：  1、负责产品从
+调研到量产整个过程的管理工作，包括市场调研、竞品分析、需求收集、产品定
+义、技术方案选择、立项评审、 OEM/ODM 厂商选择、项目开发、成本控制、质量
+管控、供应链管控、生产交付、售后反馈等工作  2、负责建立完整的研发及生产
+质量管理体系、产品认证体系、工厂评估体系  3、负责整体把控产品开发进度，
+协调内部各部门资源及工作安排  4、负责对代工厂的管理，协调工厂研发及生产
+资源配合内部资源通力合作，按时完成各项工作  5、负责产品的开发成熟度及上
+市评审 ,组织各部门参加开发阶段的产品立项评审、计划评审、开发评审、上市评
+审等关键节点的评审工作  6、负责量产后与销售、市场、供应链、售后等部门的
+协调工作  7、负责对外合作项目的管理工作    
+ 
+2009/12 -2015/01  比亚迪精密制造有限公司北京分公司   
+部门经理（科长）  
+通信 /手机   
+工作描述：   2009年底，内调到北京比亚迪第五事业部测试管理部，从事手机 ODM研发测试
+管理相关的工作。 主要负责公司 ODM手机产品的测试管理工作， 包括基带、 射频、
+音频、结构可靠性、环境可靠性、天线、 EMC、LCD/Camera 光学等，还负责与三
+方实验室的沟通及测试安排，参与客户认证需求的准备工作，如 CMCC、CTA、CE、
+FCC、GCF等。  
+2008/05 -2009/12  比亚迪精密制造有限公司上海分公司   
+研发工程师  
+电子 /器件  
+工作描述：   工作期间主要进行手机和笔记本电池保护板的硬件设计和 PACK的相关测试。  主
+要负责或参与项目评估、项目导入、元件筛选、方案设计、 PCB Layout 、PCB打样
+跟踪、 PCB测试、 BOM制定 、SMT跟踪、线路板测试、不良品分析、送客户样品
+跟踪、相关测试标准制定、元件降额计算、 FMEA分析及产品在设计、试产、量产
+各阶段相关文件制定等。   
+2006/08 -2008/04  上海仪华仪器有限公司   
+研发工程师   
+仪器仪表及工业自动化   
+工作描述：   在职期间主要从事万用表和钳表的开发与设计。负责整个项目的开发设计，测试，
+调试及产品相关文档的制作，产品开发期间注重对模拟电路的分析。   
+重要项目经历   
+2017/12 -2018/05京东叮咚智能音箱叮咚 mini2   
+项目描述：   该项目是在 1代叮咚 TOP的基础上进行的快速迭代产品，目的是为提升产品性能，
+降低成本，扩大销量。同样属于业界入门级 mini型智能音箱。产品上市半年内实现
+产销破百万、好评 99%+的成绩  
+该产品是基于 MT8516平台，采用 Linux操作系统的智能音箱产品，该产品配备了
+6个麦克风，及 12颗丰富的 LED灯光交互系统。支持蓝牙双向输入和输出功能。  
+该项目从 2017年12月份立项，到 2018年4月份量产， 5月份上市销售。 2018年
+京东 618期间，勇夺音箱销量第一的宝座，并且累计销量近 30万+，截止 2018年
+9月份京东叮咚 mini2产、销量均突破百万，好评率稳定维持在 99%以上。作为短
+期内产销破百万的智能硬件产品，产品从上市之初就以高性价比及高品质赢得广大
+用户的认可，成为 2018年度卖的最火的智能音箱之一。  
+个人职责：   作为产品负责人，全面负责该产品从前期调研，平台选择验证评估，项目立项，供
+应链选择，研发设计，品质管控，成本控制，上市交付，售后维护全系列工作，实
+施产品及项目负责制直接汇报给直属领导 CTO及CEO  
+2017/03 -2017/06京东叮咚智能音箱叮咚 TOP  
+项目描述：   京东叮咚 TOP是国内第一款推出的低价 mini型智能音箱，该项目于 2017年3月份
+立项，并于 2017年6月份上市，仅仅耗时 3个月，该产品也是国内第一款成本控
+制在 300元以下的支持远程唤醒的智能音箱产品。 该产品采用全志 R16平台 +Android
+操作系统，支持业界最多的 8麦远程唤醒，也是业界第一款定义支持蓝牙输出和音
+频输出的智能音箱产品，引领了 mini型智能音箱发展的方向。该产品一经上市便以
+其高性价比引爆智能音箱行业，成为 2017年公司双 11主打产品，产品好评率一直
+维持在 98%以上   
+个人职责：   作为产品负责人，全面负责该产品从前期调研，平台选择验证评估，项目立项，供
+应链选择，研发设计，品质管控，成本控制，上市交付，售后维护全系列工作，实
+施产品及项目负责制直接汇报给直属领导 CTO及CEO   
+ 
+ 2015/02 -2015/ 05 Newifi智能路由器   
+项目描述：   路由器产品是京东智能联合谛听科技联合推出的业界第一款高端智能双频路由器。
+以其高智能性和稳定性赢得了广大用户的认可。   
+个人职责：   担任项目的硬件研发项目经理，负责产品开发阶段的硬件开发及验证各项工作 。  
+2013/04 -2014/0 7 Nokia XL 4G  、Nokia XL、Nokia X等三款 Android智能机  
+项目描述：   此项目是基于 QC8916或QC8225平台 ,Android操作系统的智能机。   
+个人职责：   担任产品测试经理，负责手机硬件测试及认证测试的管理工作，制定符合客户要求
+的测试标准，合理调配测试资源，审核测试报告并发客户，协助研发人员分析产品
+不良原因，与客户沟通解决测试中遇到的问题。   
+2012/06 -2012/ 12 摩托罗拉 MT788   
+项目描述：   此项目是基于 intel+联芯 ,Android 操作系统的智能机。   
+个人职责：   担任产品测试经理， 负责手机硬件测试的管理工作， 制定符合客户要求的测试标准，
+合理调配测试资源，审核测试报告并发客户，协助研发人员分析产品不良原因，与
+客户沟通解决测试中遇到的问题。   
+2011/05 -2011/12 TCL E906   
+项目描述：   此
+
+========================================
+
+========================================
+Candidate ID: 43694
+Name Mask: *i Tian
+Current Title/Company: Chief AI Scientist @ Huawei Consumer Business Group (CBG)
+
+=== WORK EXPERIENCES ===
+[{"company": "Huawei Consumer Business Group (CBG)", "title": "Chief AI Scientist", "time": "", "description": ""}, {"company": "Huawei Cloud", "title": "Chief Scientist in Artificial Intelligence", "time": "", "description": ""}, {"company": "Huawei Noah\u2019s Ark Laboratory", "title": "Chief Scientist in Computer Vision", "time": "", "description": ""}, {"company": "University of Texas at San Antonio (UTSA)", "title": "Full Professor, Department of Computer Science", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 43788
+Name Mask: *upei Yang
+Current Title/Company: Ph.D. Student @ Shanghai Jiao Tong University
+
+=== WORK EXPERIENCES ===
+[{"company": "Alibaba", "title": "Research Intern - AI/LLM Infra", "time": "", "description": ""}, {"company": "Huawei", "title": "Collaborator (GraphRAG project development)", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 43976
+Name Mask: *uiyu Zhang
+Current Title/Company: PhD Student @ The Chinese University of Hong Kong, Shenzhen
+
+=== WORK EXPERIENCES ===
+[{"company": "Tsinghua AIR", "title": "Intern", "time": "", "description": ""}, {"company": "Huawei", "title": "Intern", "time": "", "description": ""}, {"company": "TeleAI", "title": "Intern", "time": "", "description": ""}, {"company": "Tongyi-Wan", "title": "Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 43989
+Name Mask: *eng Dai
+Current Title/Company: Principal AI Scientist @ Kyoso
+
+=== WORK EXPERIENCES ===
+[{"company": "Kyoso", "title": "Principal AI Scientist", "time": "", "description": ""}, {"company": "Huawei Canada Research Center", "title": "Principal Scientist", "time": "", "description": ""}, {"company": "IEEE Computer Society, Toronto Chapter", "title": "Chair", "time": "", "description": ""}, {"company": "Ryerson University", "title": "Adjunct Professor", "time": "", "description": ""}, {"company": "University of Western Ontario", "title": "Researcher", "time": "", "description": ""}, {"company": "Toronto Rehabilitation Institute", "title": "Postdoctoral Fellow", "time": "", "description": ""}, {"company": "Nanyang Technological University", "title": "Research Associate", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 44047
+Name Mask: *eng Cao
+Current Title/Company: Ph.D. student @ McGill University
+
+=== WORK EXPERIENCES ===
+[{"company": "Google Research", "title": "Intern", "time": "", "description": ""}, {"company": "Microsoft Research", "title": "Intern", "time": "", "description": ""}, {"company": "Borealis AI", "title": "Intern", "time": "", "description": ""}, {"company": "Huawei Noah\u2019s Ark Lab", "title": "Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 44178
+Name Mask: *inyan Lu
+Current Title/Company: Professor @ Shanghai University of Finance and Economics
+
+=== WORK EXPERIENCES ===
+[{"company": "Shanghai University of Finance and Economics", "title": "Professor and Founding Director of Institute for Theoretical Computer Science", "time": "", "description": ""}, {"company": "Huawei TCS Lab", "title": "Founding Director", "time": "", "description": ""}, {"company": "Microsoft Research", "title": "Researcher", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 44600
+Name Mask: *henjia Bai
+Current Title/Company: Research Scientist @ China Telecom
+
+=== WORK EXPERIENCES ===
+[{"company": "China Telecom", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Shanghai AI Laboratory", "title": "Researcher", "time": "", "description": ""}, {"company": "Huawei Noah\u2019s Ark Lab", "title": "Intern", "time": "", "description": ""}, {"company": "Tencent Robotics X", "title": "Intern", "time": "", "description": ""}, {"company": "Alibaba", "title": "Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 44603
+Name Mask: *uelong Li
+Current Title/Company: Chief Technology Officer (CTO) @ China Telecom
+
+=== WORK EXPERIENCES ===
+[{"company": "China Telecom", "title": "Chief Technology Officer (CTO)", "time": "", "description": ""}, {"company": "China Telecom", "title": "Director of the Institute of Artificial Intelligence (TeleAI)", "time": "", "description": ""}, {"company": "Northwestern Polytechnical University", "title": "Full Professor", "time": "", "description": ""}, {"company": "Chinese Academy of Sciences", "title": "Full Professor", "time": "", "description": ""}, {"company": "University of London", "title": "Lecturer/Senior Lecturer/Reader", "time": "", "description": ""}, {"company": "University of Ulster", "title": "Lecturer", "time": "", "description": ""}, {"company": "The Chinese University of Hong Kong", "title": "Position held", "time": "", "description": ""}, {"company": "The Hong Kong University", "title": "Position held", "time": "", "description": ""}, {"company": "Microsoft Research", "title": "Position held", "time": "", "description": ""}, {"company": "Huawei Technologies Co., Ltd.", "title": "Position held", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 45044
+Name Mask: *anru Qu
+Current Title/Company: Ph.D. Student @ University of Illinois, Urbana-Champaign
+
+=== WORK EXPERIENCES ===
+[{"company": "GenSI Lab, Tsinghua AIR", "title": "Research Intern/Project Contributor", "time": "", "description": ""}, {"company": "APEX Lab, Shanghai Jiao Tong University", "title": "Master's/Bachelor's Researcher", "time": "", "description": ""}, {"company": "Noah's Ark Lab, Huawei", "title": "Research Collaborator", "time": "", "description": ""}, {"company": "Sixiangjiyuan Co. Ltd", "title": "Chief Technology Officer", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 45345
+Name Mask: *enqi Shao
+Current Title/Company: Research Scientist @ Shanghai AI Laboratory
+
+=== WORK EXPERIENCES ===
+[{"company": "Shanghai AI Laboratory", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Tencent ARC", "title": "Intern", "time": "", "description": ""}, {"company": "Huawei Noah AI Foundation Group", "title": "Intern", "time": "", "description": ""}, {"company": "SenseTime Research", "title": "Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 45406
+Name Mask: *aiyang Wang
+Current Title/Company: Researcher (TopMinds) @ Huawei Technologies Ltd
+
+=== WORK EXPERIENCES ===
+[{"company": "Huawei Technologies Ltd", "title": "Researcher (TopMinds)", "time": "", "description": ""}, {"company": "MPI-INF D2", "title": "Visiting Student", "time": "", "description": ""}, {"company": "SenseTime", "title": "Internship", "time": "", "description": ""}, {"company": "ScAi-UCLA", "title": "Visiting Student", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 45479
+Name Mask: *aodong Yang
+Current Title/Company: Assistant Professor (Boya Young Scholar) @ Peking University
+
+=== WORK EXPERIENCES ===
+[{"company": "Peking University", "title": "Assistant Professor (Boya Young Scholar)", "time": "", "description": ""}, {"company": "King's College London", "title": "Assistant Professor", "time": "", "description": ""}, {"company": "Huawei Research U.K.", "title": "Principal Researcher", "time": "", "description": ""}, {"company": "AIG", "title": "Senior Manager", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 45649
+Name Mask: *ei Jiang
+Current Title/Company: Research Scientist @ Haiper.ai
+
+=== WORK EXPERIENCES ===
+[{"company": "Haiper.ai", "title": "Research Scientist", "time": "", "description": ""}, {"company": "Apple AI/ML", "title": "Research Intern", "time": "", "description": ""}, {"company": "Huawei", "title": "Assistant Engineer Intern", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 46053
+Name Mask: *oyang Xue
+Current Title/Company: Ph.D. Candidate @ The Chinese University of Hong Kong
+
+=== WORK EXPERIENCES ===
+[{"company": "ETH Zurich", "title": "Visiting Researcher, Rycolab, ETH AI Centre", "time": "", "description": ""}, {"company": "University College London", "title": "Visiting Researcher, Web Intelligence Group, UCL AI Centre", "time": "", "description": ""}, {"company": "Huawei Noah's Ark Lab", "title": "Research Intern, Speech and Semantic Group", "time": "", "description": ""}, {"company": "The Chinese University of Hong Kong", "title": "Ph.D. Student, MoE Key Lab of High Confidence Software Technologies", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 46310
+Name Mask: *nze Xie
+Current Title/Company: Staff Research Scientist @ NVIDIA Research
+
+=== WORK EXPERIENCES ===
+[{"company": "NVIDIA Research", "title": "Staff Research Scientist", "time": "", "description": ""}, {"company": "MIT HAN Lab", "title": "Visiting Researcher", "time": "", "description": ""}, {"company": "Huawei Noah's Ark Lab", "title": "Principal Researcher and Research Lead (Generative AI)", "time": "", "description": ""}, {"company": "NVIDIA", "title": "Research Scientist @ NVIDIA Research", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 46779
+Name Mask: *an Wu
+Current Title/Company: Researcher @ Huawei Noah’s Ark Lab
+
+=== WORK EXPERIENCES ===
+[{"company": "Huawei Noah\u2019s Ark Lab", "title": "Researcher", "time": "", "description": ""}, {"company": "SenseTime Research Institute", "title": "Research Intern", "time": "", "description": ""}, {"company": "Tencent AI Lab", "title": "Research Intern", "time": "", "description": ""}, {"company": "City University of Hong Kong, Department of Computer Science", "title": "Research Assistant", "time": "", "description": ""}, {"company": "Xi\u2019an Jiaotong University, Lab of Social Intelligence and Complex Data Processing", "title": "Research Assistant", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 47057
+Name Mask: *eixuan Wang
+Current Title/Company: PhD Student @ University of Edinburgh
+
+=== WORK EXPERIENCES ===
+[{"company": "Huawei Technologies Co., Ltd.", "title": "AI Researcher", "time": "", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 48451
+Name Mask: *ntoine Yang
+Current Title/Company: Senior Research Scientist @ Google DeepMind
+
+=== WORK EXPERIENCES ===
+[{"company": "Google DeepMind", "title": "Senior Research Scientist", "time": "", "description": ""}, {"company": "Google Research", "title": "Research Intern (Perception team)", "time": "", "description": ""}, {"company": "Huawei Noah's Ark Lab", "title": "Research Intern (AI Theory team)", "time": "", "description": ""}, {"company": "google-deepmind", "title": "Research Scientist", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 51842
+Name Mask: *atthew
+Current Title/Company: AI研究员 @ 华为
+
+=== WORK EXPERIENCES ===
+[{"company": "\u534e\u4e3a", "title": "AI\u7814\u7a76\u5458", "position": "AI\u7814\u7a76\u5458", "startDate": "2024-07-01", "endDate": "\u4eca", "time": "2024-07-01 ~ \u4eca", "duration": "", "description": ""}]
+
+=== PROJECT EXPERIENCES ===
+null
+
+========================================
+

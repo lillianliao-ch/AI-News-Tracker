@@ -1,0 +1,23 @@
+Company: 小红书
+Title: AI Infra工程师/专家
+
+【岗位描述】:
+【部门介绍】引擎架构部是目前小红书AI Infra核心部门，囊括搜广推、CV、NLP、语音、多模态等主要业务场景。团队主导SOTA AI Infra架构设计与核心模块开发，支撑AI业务在AI前沿场景上规模落地。
+【岗位职责】
+参与开发下一代超大模型（百亿-万亿级）模型的GPU/NPU/PPU/CPU千卡互联分布式训练和推理框架。
+参与开发分布式并行/流水线/通信优化/ZeRO/FSDP工作，消除大规模分布式训练通讯/计算/内存瓶颈，极致优化模型训练和推理的性能。
+参与开发Triton，TileLang计算图编译优化或者使用CUDA/cutlass编写高性能算子，将硬件性能压榨到极致，最大化发挥出GPU/NPU/PPU/CPU等异构硬件协同算力。
+参与开发/调试用于异构计算全链路的AI编译器，探索基于IR编译优化的片内多部件并行流水线等前沿技术，构建业界影响力。
+支撑业界领先的多模态模型在国内最大的生活兴趣社区上落地。
+
+【岗位要求】:
+【岗位要求】
+1. 有扎实的工程算法基础，精通数据结构和常用算法，熟练掌握各种编译、调试、性能分析工具。
+2. 精通C/C++/CUDA/Topscc/AscendC，具备扎实的系统底层能力（内存、并发、网络）。
+3. 有大规模分布式系统开发和优化经验；有大模型分布式训练经验者优先。
+4. 精通MLIR/TVM/Triton/Torch Inductor/TileLang/Verbs/NCCL/NVSHMEM等分布式异构计算框架和相关工具链。
+5. 精通Megatron/DeepSpeed/veRL/OpenRLHF/LLaMA-Factory等业界开源训练框架。
+6. 熟悉常见深度学习模型结构。
+
+【加分项】
+• 在Megatron、DeepSpeed、veRL、TVM、LLVM等社区有持续代码贡献。或有高质量技术博客、GitHub Repo、顶会论文（OSDI、SOSP、MLSys、KDD、RecSys 等）。

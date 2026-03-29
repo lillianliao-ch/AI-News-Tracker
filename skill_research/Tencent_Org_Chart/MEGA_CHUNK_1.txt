@@ -1,0 +1,268 @@
+# CANDIDATE BATCH 1
+
+========================================
+Candidate ID: 151
+Name Mask: *雨涵
+Current Title/Company: 算法研究员小米 ? 广告算法2020.7-至今 (5年5个月 @ 小米
+
+=== WORK EXPERIENCES ===
+[{"company": "小米", "title": "算法研究员小米 ? 广告算法2020.7-至今 (5年5个月", "time": "2020.7-至今", "description": "算法研究员小米 ? 广告算法2020.7-至今 (5年5个月)广告算法&推荐算法"}, {"company": "联想(北京)有限公司", "title": "实习算法研究员联想(北京)有限公司2019.3-2019.6", "time": "2019.3-2019.6", "description": "实习算法研究员联想(北京)有限公司2019.3-2019.6 (3个月)联想研究院 AI LAB"}, {"company": "腾讯", "title": "实习算法研究员腾讯科技（北京）有限公司2018.6-2018", "time": "2018.6-2018.9", "description": "实习算法研究员腾讯科技（北京）有限公司2018.6-2018.9 (3个月)微信事业部（WXG)"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法研究员小米 ? 广告算法2020.7-至今 (5年5个月)广告算法&推荐算法 | 实习算法研究员联想(北京)有限公司2019.3-2019.6 (3个月)联想研究院 AI LAB 研究方向: 1.AutoML，神经网络自动生成，神经网络结构搜索(NAS) 2.可解释性AI | 实习算法研究员腾讯科技（北京）有限公司2018.6-2018.9 (3个月)微信事业部（WXG) 研究方向： 推荐算法，意图识别，语义计算
+
+【教育经历】
+中国石油大学 数学 | 中国石油大学 自动化
+
+========================================
+
+========================================
+Candidate ID: 231
+Name Mask: *政
+Current Title/Company: 多模态算法负责人阶跃星辰2023.4-至今 (2年8个月)A @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u591a\u6a21\u6001\u7b97\u6cd5\u8d1f\u8d23\u4eba\u9636\u8dc3\u661f\u8fb02023.4-\u81f3\u4eca (2\u5e748\u4e2a\u6708)A", "time": "2023.4-\u81f3\u4eca", "description": "\u591a\u6a21\u6001\u7b97\u6cd5\u8d1f\u8d23\u4eba\u9636\u8dc3\u661f\u8fb02023.4-\u81f3\u4eca (2\u5e748\u4e2a\u6708)AI\u7b97\u6cd5\u5f00\u53d1"}, {"company": "\u65f7\u89c6", "title": "\u7b97\u6cd5\u7814\u53d1team leader\u65f7\u89c6\u79d1\u62802022.7-2023", "time": "2022.7-2023.4", "description": "\u7b97\u6cd5\u7814\u53d1team leader\u65f7\u89c6\u79d1\u62802022.7-2023.4 (9\u4e2a\u6708)\u6fc0\u52b1\u7ba1\u7406\u76ee\u6807\u7ba1\u7406\u7ee9\u6548\u7ba1\u7406"}, {"company": "\u65f7\u89c6", "title": "\u7b97\u6cd5\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u6280 ? BaseDetection2020.", "time": "2020.5-2022.7", "description": "\u7b97\u6cd5\u7814\u7a76\u5458\u65f7\u89c6\u79d1\u6280 ? BaseDetection2020.5-2022.7 (2\u5e742\u4e2a\u6708)\u8d1f\u8d232D, 3D\u68c0\u6d4b\u7b97\u6cd5\u5f00\u53d1"}, {"company": "\u817e\u8baf", "title": "\u5b9e\u4e60\u7814\u7a76\u5458\u817e\u8baf ? AI Lab2018.8-2020.1 ", "time": "2018.8-2020.1", "description": "\u5b9e\u4e60\u7814\u7a76\u5458\u817e\u8baf ? AI Lab2018.8-2020.1 (1\u5e745\u4e2a\u6708)\u884c\u4eba\u68c0\u6d4b, \u76ee\u6807\u68c0\u6d4b\u7b97\u6cd5\u7814\u53d1"}, {"company": "\u9636\u8dc3\u661f\u8fb0", "title": "\u591a\u6a21\u6001\u7b97\u6cd5\u8d1f\u8d23\u4eba", "position": "\u591a\u6a21\u6001\u7b97\u6cd5\u8d1f\u8d23\u4eba", "startDate": "2023-04-01", "endDate": "\u4eca", "time": "2023-04-01 ~ \u4eca", "duration": "", "description": ""}, {"company": "\u65f7\u89c6\u79d1\u6280", "title": "\u7b97\u6cd5\u7814\u53d1team leader", "position": "\u7b97\u6cd5\u7814\u53d1team leader", "startDate": "2022-07", "endDate": "2023-04", "time": "2022-07 ~ 2023-04", "duration": "", "description": ""}, {"company": "\u65f7\u89c6\u79d1\u6280", "title": "\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2020-05", "endDate": "2022-07", "time": "2020-05 ~ 2022-07", "duration": "", "description": "\u8d1f\u8d232D, 3D\u68c0\u6d4b\u7b97\u6cd5\u5f00\u53d1"}, {"company": "\u817e\u8baf", "title": "\u5b9e\u4e60\u7814\u7a76\u5458", "position": "\u5b9e\u4e60\u7814\u7a76\u5458", "startDate": "2018-08", "endDate": "2020-01", "time": "2018-08 ~ 2020-01", "duration": "", "description": "\u884c\u4eba\u68c0\u6d4b, \u76ee\u6807\u68c0\u6d4b\u7b97\u6cd5\u7814\u53d1"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+多模态算法负责人阶跃星辰2023.4-至今 (2年8个月)AI算法开发 | 算法研发team leader旷视科技2022.7-2023.4 (9个月)激励管理目标管理绩效管理 | 算法研究员旷视科技 ? BaseDetection2020.5-2022.7 (2年2个月)负责2D, 3D检测算法开发 | 实习研究员腾讯 ? AI Lab2018.8-2020.1 (1年5个月)行人检测, 目标检测算法研发
+
+【教育经历】
+早稻田大学
+
+========================================
+
+========================================
+Candidate ID: 285
+Name Mask: *van
+Current Title/Company: 算法工程师北京阶跃星辰智能科技 @ 阶跃星辰
+
+=== WORK EXPERIENCES ===
+[{"company": "\u5317\u4eac\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5317\u4eac\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280", "time": "2024.11-\u81f3\u4eca", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5317\u4eac\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f82024.11-\u81f3\u4eca (1\u5e741\u4e2a\u6708)"}, {"company": "\u817e\u8baf", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u817e\u8baf", "time": "2023.11-2024.11", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u817e\u8baf2023.11-2024.11 (1\u5e74)"}, {"company": "\u5fae\u8f6f", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5fae\u8f6f", "time": "2022.12-2023.11", "description": "\u7b97\u6cd5\u5de5\u7a0b\u5e08\u5fae\u8f6f2022.12-2023.11 (11\u4e2a\u6708)"}, {"company": "\u5317\u4eac\u9636\u8dc3\u661f\u8fb0\u667a\u80fd\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2024-11-01", "endDate": "\u4eca", "time": "2024-11-01 ~ \u4eca", "duration": "", "description": "step3.5-flash\uff0cdeepresearch\uff0cagentRL"}, {"company": "\u817e\u8baf", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2023-11", "endDate": "2024-11", "time": "2023-11 ~ 2024-11", "duration": "", "description": "AI lab"}, {"company": "\u5fae\u8f6f", "title": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "position": "\u7b97\u6cd5\u5de5\u7a0b\u5e08", "startDate": "2022-12", "endDate": "2023-11", "time": "2022-12 ~ 2023-11", "duration": "", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法工程师北京阶跃星辰智能科技有限公司2024.11-至今 (1年1个月) | 算法工程师腾讯2023.11-2024.11 (1年) | 算法工程师微软2022.12-2023.11 (11个月)
+
+【教育经历】
+北京大学 软件工程
+
+========================================
+
+========================================
+Candidate ID: 325
+Name Mask: *建雄
+Current Title/Company: 算法研究员北京旷视科技有限公司2019.2-2021.12  @ 旷视科技
+
+=== WORK EXPERIENCES ===
+[{"company": "\u65f7\u89c6", "title": "\u7b97\u6cd5\u7814\u7a76\u5458\u5317\u4eac\u65f7\u89c6\u79d1\u6280\u6709\u9650\u516c\u53f82019.2-2021.12 ", "time": "2019.2-2021.12", "description": "\u7b97\u6cd5\u7814\u7a76\u5458\u5317\u4eac\u65f7\u89c6\u79d1\u6280\u6709\u9650\u516c\u53f82019.2-2021.12 (2\u5e7410\u4e2a\u6708)\u5927\u6570\u636e/\u4eba\u5de5\u667a\u80fd"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09\u5317\u4eac\u5b57\u8282\u8df3\u52a8\u79d1\u6280\u6709\u9650\u516c\u53f8 ? A", "time": "2018.6-2018.10", "description": "\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09\u5317\u4eac\u5b57\u8282\u8df3\u52a8\u79d1\u6280\u6709\u9650\u516c\u53f8 ? AI Lab2018.6-2018.10 (4\u4e2a\u6708)\u4eba\u8138\u68c0\u6d4b"}, {"company": "\u817e\u8baf", "title": "\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09\u817e\u8baf\u79d1\u6280\uff08\u5317\u4eac\uff09\u6709\u9650\u516c\u53f8 ? \u817e", "time": "2018.5-2018.6", "description": "\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09\u817e\u8baf\u79d1\u6280\uff08\u5317\u4eac\uff09\u6709\u9650\u516c\u53f8 ? \u817e\u8baf\u4e912018.5-2018.6 (1\u4e2a\u6708)\u4f7f\u7528TensorRT\u5bf9\u4eba\u8138\u8d28\u91cf\u8bc4\u4ef7\u6a21\u578b\u8fdb\u884c\u52a0\u901f\uff0c\u5e76\u5b9e\u73b0\u4e00\u4e2a\u4eba\u8138\u6293\u62cd\u673ademo"}, {"company": "\u767e\u5ea6", "title": "\u5f00\u53d1\u6d4b\u8bd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09\u767e\u5ea6\u65f6\u4ee3\u7f51\u7edc\u6280\u672f(\u5317\u4eac)\u6709\u9650\u516c\u53f8201", "time": "2015.8-2016.3", "description": "\u5f00\u53d1\u6d4b\u8bd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09\u767e\u5ea6\u65f6\u4ee3\u7f51\u7edc\u6280\u672f(\u5317\u4eac)\u6709\u9650\u516c\u53f82015.8-2016.3 (7\u4e2a\u6708)python\u81ea\u52a8\u5316\u6d4b\u8bd5+\u524d\u7aef\u5f00\u53d1"}, {"company": "\u5317\u4eac\u65f7\u89c6\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u7b97\u6cd5\u7814\u7a76\u5458", "position": "\u7b97\u6cd5\u7814\u7a76\u5458", "startDate": "2019-02", "endDate": "2021-12", "time": "2019-02 ~ 2021-12", "duration": "", "description": ""}, {"company": "\u5317\u4eac\u5b57\u8282\u8df3\u52a8\u79d1\u6280\u6709\u9650\u516c\u53f8", "title": "\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09", "position": "\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09", "startDate": "2018-06", "endDate": "2018-10", "time": "2018-06 ~ 2018-10", "duration": "", "description": "\u4eba\u8138\u68c0\u6d4b"}, {"company": "\u817e\u8baf\u79d1\u6280\uff08\u5317\u4eac\uff09\u6709\u9650\u516c\u53f8", "title": "\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09", "position": "\u8ba1\u7b97\u673a\u89c6\u89c9\u7b97\u6cd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09", "startDate": "2018-05", "endDate": "2018-06", "time": "2018-05 ~ 2018-06", "duration": "", "description": "\u4f7f\u7528TensorRT\u5bf9\u4eba\u8138\u8d28\u91cf\u8bc4\u4ef7\u6a21\u578b\u8fdb\u884c\u52a0\u901f\uff0c\u5e76\u5b9e\u73b0\u4e00\u4e2a\u4eba\u8138\u6293\u62cd\u673ademo"}, {"company": "\u767e\u5ea6\u65f6\u4ee3\u7f51\u7edc\u6280\u672f(\u5317\u4eac)\u6709\u9650\u516c\u53f8", "title": "\u5f00\u53d1\u6d4b\u8bd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09", "position": "\u5f00\u53d1\u6d4b\u8bd5\u5de5\u7a0b\u5e08\uff08\u5b9e\u4e60\uff09", "startDate": "2015-08", "endDate": "2016-03", "time": "2015-08 ~ 2016-03", "duration": "", "description": "python\u81ea\u52a8\u5316\u6d4b\u8bd5+\u524d\u7aef\u5f00\u53d1"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+算法研究员北京旷视科技有限公司2019.2-2021.12 (2年10个月)大数据/人工智能 | 计算机视觉算法工程师（实习）北京字节跳动科技有限公司 ? AI Lab2018.6-2018.10 (4个月)人脸检测 | 计算机视觉算法工程师（实习）腾讯科技（北京）有限公司 ? 腾讯云2018.5-2018.6 (1个月)使用TensorRT对人脸质量评价模型进行加速，并实现一个人脸抓拍机demo | 开发测试工程师（实习）百度时代网络技术(北京)有限公司2015.8-2016.3 (7个月)python自动化测试+前端开发
+
+【教育经历】
+北京航空航天大学2016年-2019年，计算机科学与技术，硕士 | 北京师范大学2012年-2016年，信息管理与信息系统，本科
+
+========================================
+
+========================================
+Candidate ID: 982
+Name Mask: *谙
+Current Title/Company: 技术 @ 产品经理百度
+
+=== WORK EXPERIENCES ===
+[{"company": "\u4ea7\u54c1\u7ecf\u7406\u767e\u5ea6", "title": "\u6280\u672f", "time": "2024.2-\u81f3\u4eca", "description": "\u6280\u672f\u4ea7\u54c1\u7ecf\u7406\u767e\u5ea62024.2-\u81f3\u4eca (1\u5e7411\u4e2a\u6708)\u767e\u8238\u5e73\u53f0PM\uff0c\u8d1f\u8d23AIAK\u6a21\u578b\u6027\u80fd\u4f18\u5316\u5957\u4ef6\u548c\u8d44\u6e90\u6c60\u8c03\u5ea6\u7ec4\u4ef6\uff1b"}, {"company": "\u5b57\u8282\u8df3\u52a8", "title": "\u4ea7\u54c1", "time": "2022.8-2023.12", "description": "\u4ea7\u54c1\u7ecf\u7406\u5b57\u8282\u8df3\u52a82022.8-2023.12 (1\u5e744\u4e2a\u6708)AI Lab\u673a\u5668\u4eba\u7ec4PM\uff0c\u6296\u97f3\u8d85\u5e02\u5206\u62e3\u4ed3\u548c\u9001\u51fa\u62e3\u4e00\u4f53\u5316\u4ed3\u843d\u5730AI\u673a\u5668\u4eba\u4ed6\u67095\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8"}, {"company": "\u817e\u8baf", "title": "\u4ea7\u54c1", "time": "2021.7-2021.11", "description": "AI\u4ea7\u54c1\u5b9e\u4e60\u751f\u817e\u8baf2021.7-2021.11 (4\u4e2a\u6708)\u817e\u8baf\u4e91\u4f18\u56fe\u5b9e\u9a8c\u5ba4PM\uff0c\u5de5\u4e1a\u8d28\u68c0\u573a\u666f\u843d\u5730\uff1b"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+技术产品经理百度2024.2-至今 (1年11个月)百舸平台PM，负责AIAK模型性能优化套件和资源池调度组件；
+公有云PDSA，负责具身智能赛道IaaS客户上量和产品解决方案。AI算法产品云计算他有1个好友在此公司
+
+---
+
+产品经理字节跳动2022.8-2023.12 (1年4个月)AI Lab机器人组PM，抖音超市分拣仓和送出拣一体化仓落地AI机器人他有5个好友在此公司
+
+---
+
+AI产品实习生腾讯2021.7-2021.11 (4个月)腾讯云优图实验室PM，工业质检场景落地；
+微信支付刷掌PM，创新产品落地。他有2个好友在此公司
+
+【教育经历】
+清华大学2021年-2024年，计算机类，硕士他有2个好友在此学校 | 北京航空航天大学2017年-2021年，模式识别与智能系统，本科他有1个好友在此学校
+
+========================================
+
+========================================
+Candidate ID: 1095
+Name Mask: *henghao Xing
+Current Title/Company: Research Intern @ Qwen
+
+=== WORK EXPERIENCES ===
+[{"company": "Qwen \u00b7 \u5b9e\u4e60", "title": "Research Intern", "time": "2025\u5e747\u6708 - \u81f3\u4eca \u00b7 7 \u4e2a\u6708", "description": "Research Intern @ Qwen \u00b7 \u5b9e\u4e60 (2025\u5e747\u6708 - \u81f3\u4eca \u00b7 7 \u4e2a\u6708)"}, {"company": "2 \u5e74 1 \u4e2a\u6708", "title": "Department of Computer Science and Engineering The Chinese University of Hong Kong", "time": "2 \u5e74 1 \u4e2a\u6708", "description": "Department of Computer Science and Engineering The Chinese University of Hong Kong @ 2 \u5e74 1 \u4e2a\u6708 (2 \u5e74 1 \u4e2a\u6708)"}, {"company": "Tencent \u00b7 \u5b9e\u4e60", "title": "Algorithm Engineer, Tencent AI Lab", "time": "2021\u5e74 - 2021\u5e74 \u00b7 \u4e0d\u5230 1 \u5e74", "description": "Algorithm Engineer, Tencent AI Lab @ Tencent \u00b7 \u5b9e\u4e60 (2021\u5e74 - 2021\u5e74 \u00b7 \u4e0d\u5230 1 \u5e74)"}, {"company": "Lingnan Big Data Research Institute", "title": "Big Data Analyst", "time": "2020\u5e74 - 2020\u5e74 \u00b7 \u4e0d\u5230 1 \u5e74", "description": "Big Data Analyst @ Lingnan Big Data Research Institute (2020\u5e74 - 2020\u5e74 \u00b7 \u4e0d\u5230 1 \u5e74)"}, {"company": "China Minmetals Corporation \u00b7 \u5b9e\u4e60", "title": "Software Engineer", "time": "2018\u5e74 - 2018\u5e74 \u00b7 \u4e0d\u5230 1 \u5e74", "description": "Software Engineer @ China Minmetals Corporation \u00b7 \u5b9e\u4e60 (2018\u5e74 - 2018\u5e74 \u00b7 \u4e0d\u5230 1 \u5e74)"}]
+
+=== RAW RESUME EXTRACT ===
+【职位】Research Intern at Qwen | Ph.D. student in Computer Science at CUHK
+【位置】香港特别行政区 新界
+
+【工作经历】
+Research Intern @ Qwen · 实习 (2025年7月 - 至今 · 7 个月); Department of Computer Science and Engineering The Chinese University of Hong Kong @ 2 年 1 个月 (2 年 1 个月); Algorithm Engineer, Tencent AI Lab @ Tencent · 实习 (2021年 - 2021年 · 不到 1 年); Big Data Analyst @ Lingnan Big Data Research Institute (2020年 - 2020年 · 不到 1 年); Software Engineer @ China Minmetals Corporation · 实习 (2018年 - 2018年 · 不到 1 年)
+
+【教育经历】
+Doctor of Philosophy，Computer Science and Engineering  @ 香港中文大学 (2023年 - 2027年); Master of Science，Big Data Technology  @ 香港科技大学 (2020年 - 2021年)
+
+【备注】
+harryhsing.github.io (个人)
+邮箱
+harryhsing@outlook.com
+
+========================================
+
+========================================
+Candidate ID: 1115
+Name Mask: *eijia Lu
+Current Title/Company: UAES @ None
+
+=== WORK EXPERIENCES ===
+[{"company": "6 \u5e74 6 \u4e2a\u6708", "title": "UAES", "time": "6 \u5e74 6 \u4e2a\u6708", "description": "UAES @ 6 \u5e74 6 \u4e2a\u6708 (6 \u5e74 6 \u4e2a\u6708)"}, {"company": "Tencent", "title": "Senior Researcher", "time": "2018\u5e749\u6708 - 2019\u5e747\u6708 \u00b7 11 \u4e2a\u6708", "description": "Senior Researcher @ Tencent (2018\u5e749\u6708 - 2019\u5e747\u6708 \u00b7 11 \u4e2a\u6708)"}, {"company": "GE Digital", "title": "Staff Data Scientist", "time": "2017\u5e745\u6708 - 2018\u5e749\u6708 \u00b7 1 \u5e74 5 \u4e2a\u6708", "description": "Staff Data Scientist @ GE Digital (2017\u5e745\u6708 - 2018\u5e749\u6708 \u00b7 1 \u5e74 5 \u4e2a\u6708)"}, {"company": "GE Research", "title": "Lead Engineer", "time": "2012\u5e745\u6708 - 2017\u5e744\u6708 \u00b7 5 \u5e74", "description": "Lead Engineer @ GE Research (2012\u5e745\u6708 - 2017\u5e744\u6708 \u00b7 5 \u5e74)"}, {"company": "Philips Research", "title": "Scientist", "time": "2010\u5e749\u6708 - 2012\u5e745\u6708 \u00b7 1 \u5e74 9 \u4e2a\u6708", "description": "Scientist @ Philips Research (2010\u5e749\u6708 - 2012\u5e745\u6708 \u00b7 1 \u5e74 9 \u4e2a\u6708)"}, {"company": "6 \u5e74 7 \u4e2a\u6708", "position": "UAES", "start_date": "", "end_date": "", "duration": "6 \u5e74 7 \u4e2a\u6708", "description": "@XE BUManaging an AI Engineering team whilst still serve as Chief Scientist in AI Lab; AI+product like PK, Zone, VCP, BMS...(2021-25) and published 15 papers, 50+ patents; Pearl Engineer of Pudong; Delivered corp-wise bot and LLM agent (2024-25) monthly serving 15% staff, over 40 departments.@XE BU Managing an AI Engineering team whilst still serve as Chief Scientist in AI Lab; AI+product like PK, Zone, VCP, BMS...(2021-25) and published 15 papers, 50+ patents; Pearl Engineer of Pudong; Delivered corp-wise bot and LLM agent (2024-25) monthly serving 15% staff, over 40 departments."}, {"company": "Tencent", "position": "Senior Researcher", "start_date": "", "end_date": "", "duration": "2018\u5e749\u6708 - 2019\u5e747\u6708 \u00b7 11 \u4e2a\u6708", "description": "Conduct research in AI Lab, mainly for medial problems on pathological domain.1st authored one SCIE journal paper, proposed a new loss function for semantic deep segmentation. With this new loss, single stream network can achieve accurate boundary representation, especially for those packed glands. In clinic perspective, an accurate glands segmentation is first step for automatic cancer grading. Lead research on automatic cancer grading by deep learning and heuristic image characteristics.Lead collaborative research with pathologists to predict genetic hypermutation status, called microsatellite instability(msi). Built up multiple instance learning network, graph convolutional network and 2-stage prediction pipeline based on TCGA database for investigation msi problem. And prepared academic publication together with pathologists. Joint 1st authored one ISBI 2020 conference paper. Coauthor one SCI journal paper.Conduct research in AI Lab, mainly for medial problems on pathological domain. 1st authored one SCIE journal paper, proposed a new loss function for semantic deep segmentation. With this new loss, single stream network can achieve accurate boundary representation, especially for those packed glands. In clinic perspective, an accurate glands segmentation is first step for automatic cancer grading. Lead research on automatic cancer grading by deep learning and heuristic image characteristics. Lead collaborative research with pathologists to predict genetic hypermutation status, called microsatellite instability(msi). Built up multiple instance learning network, graph convolutional network and 2-stage prediction pipeline based on TCGA database for investigation msi problem. And prepared academic publication together with pathologists. Joint 1st authored one ISBI 2020 conference paper. Coauthor one SCI journal paper."}, {"company": "GE Digital", "position": "Staff Data Scientist", "start_date": "", "end_date": "", "duration": "2017\u5e745\u6708 - 2018\u5e749\u6708 \u00b7 1 \u5e74 5 \u4e2a\u6708", "description": "1st authored one IEEE conference publication and one US patent to annotate arrhythmia on ECG signal by novel AI network;Lead research to build deep network to predict failure part based on log from healthcare image modalities; Delivered model to remote service division in Beijing;Lead design and develop IT platform for radiomics studies;Support clinical engagement with building prototype and exploring unmet requirement.1st authored one IEEE conference publication and one US patent to annotate arrhythmia on ECG signal by novel AI network; Lead research to build deep network to predict failure part based on log from healthcare image modalities; Delivered model to remote service division in Beijing; Lead design and develop IT platform for radiomics studies; Support clinical engagement with building prototype and exploring unmet requirement."}, {"company": "GE Research", "position": "Lead Engineer", "start_date": "", "end_date": "", "duration": "2012\u5e745\u6708 - 2017\u5e744\u6708 \u00b7 5 \u5e74", "description": "1st authored one SCI journal publication for twinkling artifact in medical ultrasonic BFlow image; In this study, I built a FEM model to simulate interaction between acoustic field and solid particles by COMSOL; invented an algorithm to detect motion of solid particles from IQ signals; and finally proved the efficiency both on synthetic signals and phantom studies.1st authored one IEEE conference publication for coded excitation in downhole drilling velocimetry; using signal processing to boost resolution whilst maintain the acoustic penetration. In this study, I built a simulation model by Abersim (a fast matlab program like FIELD II, by solve KZK equations instead), this model can simulate attention of acoustic signals, which served as a fundamental experiment setup in this study.1st authored one filed US patent for gas detection in drilling fluid; using machine learning model along with signal features to detect changes in downhole hydrocarbon and gas species.major contributed in delivering software for migration control logic (ladder and ST); web application for composition web HMI and was awarded CTO prize : 'physical and digital integration';1st authored one SCI journal publication for twinkling artifact in medical ultrasonic BFlow image; In this study, I built a FEM model to simulate interaction between acoustic field and solid particles by COMSOL; invented an algorithm to detect motion of solid particles from IQ signals; and finally proved the efficiency both on synthetic signals and phantom studies. 1st authored one IEEE conference publication for coded excitation in downhole drilling velocimetry; using signal processing to boost resolution whilst maintain the acoustic penetration. In this study, I built a simulation model by Abersim (a fast matlab program like FIELD II, by solve KZK equations instead), this model can simulate attention of acoustic signals, which served as a fundamental experiment setup in this study. 1st authored one filed US patent for gas detection in drilling fluid; using machine learning model along with signal features to detect changes in downhole hydrocarbon and gas species. major contributed in delivering software for migration control logic (ladder and ST); web application for composition web HMI and was awarded CTO prize : 'physical and digital integration';"}, {"company": "Philips Research", "position": "Scientist", "start_date": "", "end_date": "", "duration": "2010\u5e749\u6708 - 2012\u5e745\u6708 \u00b7 1 \u5e74 9 \u4e2a\u6708", "description": "Conducted research for measurement ankle-brachical index by Doppler ultrasonic velocimetry; and authored two filed patents for this product.Developed waveform annotation algorithm to remove motion artifacts during stress ECG test. Conducted research for measurement ankle-brachical index by Doppler ultrasonic velocimetry; and authored two filed patents for this product. Developed waveform annotation algorithm to remove motion artifacts during stress ECG test."}]
+
+=== RAW RESUME EXTRACT ===
+【职位】Chief AI Scientist & Senior Manager | PhDs of E.E. & C.S. | 20 years in healthcare & automotive
+【位置】中国 上海市
+
+【工作经历】
+UAES @ 6 年 6 个月 (6 年 6 个月); Senior Researcher @ Tencent (2018年9月 - 2019年7月 · 11 个月); Staff Data Scientist @ GE Digital (2017年5月 - 2018年9月 · 1 年 5 个月); Lead Engineer @ GE Research (2012年5月 - 2017年4月 · 5 年); Scientist @ Philips Research (2010年9月 - 2012年5月 · 1 年 9 个月)
+
+【教育经历】
+Doctorate Degree，Biomedical Engineering  @ 复旦大学 (2004年 - 2009年); Doctorate Degree，Computer Science  @ The University of Aizu (2008年 - 2011年)
+
+【备注】
+researchgate.net/profile/Weijia_Lu (其他)
+alfredlu.github.io (个人)
+邮箱
+alfredwjlu@gmail.com
+
+========================================
+
+========================================
+Candidate ID: 1121
+Name Mask: *ei Bi
+Current Title/Company: Principal Researcher @ Tencent AI Lab
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent AI Lab \u00b7 \u5168\u804c", "title": "Principal Researcher", "time": "2017\u5e746\u6708 - \u81f3\u4eca \u00b7 8 \u5e74 8 \u4e2a\u6708", "description": "Principal Researcher @ Tencent AI Lab \u00b7 \u5168\u804c (2017\u5e746\u6708 - \u81f3\u4eca \u00b7 8 \u5e74 8 \u4e2a\u6708)"}, {"company": "1 \u5e74 10 \u4e2a\u6708", "title": "Baidu, Inc.", "time": "1 \u5e74 10 \u4e2a\u6708", "description": "Baidu, Inc. @ 1 \u5e74 10 \u4e2a\u6708 (1 \u5e74 10 \u4e2a\u6708)"}, {"company": "Tencent AI Lab \u00b7 \u5168\u804c", "position": "Principal Researcher", "start_date": "", "end_date": "", "duration": "2017\u5e746\u6708 - \u81f3\u4eca \u00b7 8 \u5e74 10 \u4e2a\u6708", "description": ""}, {"company": "1 \u5e74 10 \u4e2a\u6708", "position": "Baidu, Inc.", "start_date": "", "end_date": "", "duration": "1 \u5e74 10 \u4e2a\u6708", "description": ""}]
+
+=== RAW RESUME EXTRACT ===
+【职位】Principal Researcher at Tencent AI Lab
+【位置】中国
+
+【工作经历】
+Principal Researcher @ Tencent AI Lab · 全职 (2017年6月 - 至今 · 8 年 8 个月); Baidu, Inc. @ 1 年 10 个月 (1 年 10 个月)
+
+【教育经历】
+Doctor of Philosophy (PhD)  @ 香港科技大学 (2010年 - 2015年)
+
+【备注】
+45188392@qq.com
+
+========================================
+
+========================================
+Candidate ID: 1172
+Name Mask: *易木
+Current Title/Company: RA清华大学2021.10-2022.4 (6个月)Rese @ 腾讯游戏 • 光子工作室群
+
+=== WORK EXPERIENCES ===
+[{"company": "\u817e\u8baf\u6e38\u620f \u2022 \u5149\u5b50\u5de5\u4f5c\u5ba4\u7fa4", "title": "RA\u6e05\u534e\u5927\u5b662021.10-2022.4 (6\u4e2a\u6708)Rese", "time": "", "description": "RA\u6e05\u534e\u5927\u5b662021.10-2022.4 (6\u4e2a\u6708)Research on multimodal learning under the supervision of Jingjing Liu.\n\n---\n\nResearch Intern\u963f\u91cc\u5df4\u5df4\u96c6\u56e22021.5-2021.9 (4\u4e2a\u6708)Python\u4eba\u5de5\u667a\u80fd\uff08AI\uff09\u56e2\u961f\u7cbe\u795e\u6267\u884c\u529b\u641c\u7d22\u7b97\u6cd5/\u63a8\u8350\u7b97\u6cd5\u673a\u5668\u5b66\u4e60\u7b97\u6cd5\u6df1\u5ea6\u5b66\u4e60\u6df1\u5ea6\u5b66\u4e60\u7b97\u6cd5\u4ed6\u670912\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8\n\n---\n\nIntern\u6df1\u5733\u884d\u76db\u8d44\u4ea7\u7ba1\u7406\u6709\u9650\u516c\u53f82021.1-2021.3 (2\u4e2a\u6708)\u673a\u5668\u5b66\u4e60\u7b97\u6cd5\u91cf\u5316\u4ea4\u6613\n\n---\n\nIntern\u7f51\u6613\u6e38\u620f \u2022 AI Lab2020.8-2020.10 (2\u4e2a\u6708)\u673a\u5668\u5b66\u4e60\u7b97\u6cd5\n\n---\n\n\u5b9e\u4e60\u751f\u817e\u8baf\u6e38\u620f \u2022 \u5149\u5b50\u5de5\u4f5c\u5ba4\u7fa42020.6-2020.7 (1\u4e2a\u6708)Game Theory\u4ed6\u670923\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8\n\n---\n\nIntern\u5317\u4eac\u65f7\u89c6\u79d1\u6280\u6709\u9650\u516c\u53f8 \u2022 \u5357\u4eac\u7814\u7a76\u54582018.1-2019.11 (1\u5e7410\u4e2a\u6708)\u53c2\u52a0\u57fa\u7840\u7814\u7a76\u4ed6\u67098\u4e2a\u597d\u53cb\u5728\u6b64\u516c\u53f8"}]
+
+=== RAW RESUME EXTRACT ===
+【工作经历】
+RA清华大学2021.10-2022.4 (6个月)Research on multimodal learning under the supervision of Jingjing Liu.
+
+---
+
+Research Intern阿里巴巴集团2021.5-2021.9 (4个月)Python人工智能（AI）团队精神执行力搜索算法/推荐算法机器学习算法深度学习深度学习算法他有12个好友在此公司
+
+---
+
+Intern深圳衍盛资产管理有限公司2021.1-2021.3 (2个月)机器学习算法量化交易
+
+---
+
+Intern网易游戏 • AI Lab2020.8-2020.10 (2个月)机器学习算法
+
+---
+
+实习生腾讯游戏 • 光子工作室群2020.6-2020.7 (1个月)Game Theory他有23个好友在此公司
+
+---
+
+Intern北京旷视科技有限公司 • 南京研究员2018.1-2019.11 (1年10个月)参加基础研究他有8个好友在此公司
+
+【教育经历】
+滑铁卢大学2022年-2026年，计算机科学，博士 | 南京大学2018年-2021年，计算机科学与技术，硕士他有18个好友在此学校 | 西北工业大学2014年-2018年，软件工程，本科学生会他有11个好友在此学校
+
+========================================
+
+========================================
+Candidate ID: 1373
+Name Mask: *宇泰 (Atma)
+Current Title/Company: 哈尔滨工业大学 博士研究生 @ 哈尔滨工业大学
+
+=== WORK EXPERIENCES ===
+[{"company": "Harbin Institute of Technology", "title": "PhD in Computer Science", "time": "2017-Present", "description": ""}, {"company": "Microsoft Research Asia", "title": "Research Intern", "time": "", "description": "Drug discovery with NLP"}, {"company": "Tencent AI Lab", "title": "Research Intern", "time": "", "description": "Low-resource chatbots"}, {"company": "Northwestern University", "title": "Visiting Researcher", "time": "", "description": "Meta Learning for few-shot"}]
+
+========================================
+
+========================================
+Candidate ID: 1384
+Name Mask: *世宇 (Shiyu Huang)
+Current Title/Company: 小鹏汽车 研究员 (视觉语言模型) @ 小鹏汽车
+
+=== WORK EXPERIENCES ===
+[{"company": "XPENG", "title": "Researcher", "time": "Current", "description": "Vision-language models, 10 years AI experience"}, {"company": "Zhipu AI", "title": "Principal Researcher", "time": "Previous", "description": ""}, {"company": "4Paradigm Inc.", "title": "Principal Researcher", "time": "Previous", "description": ""}, {"company": "Huawei Noah Ark Lab", "title": "Research Intern", "time": "Previous", "description": ""}, {"company": "Tencent AI Lab", "title": "Research Intern", "time": "Previous", "description": ""}, {"company": "Carnegie Mellon University", "title": "Research Intern", "time": "Previous", "description": ""}, {"company": "SenseTime", "title": "Research Intern", "time": "Previous", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 1487
+Name Mask: *ianyu Pang
+Current Title/Company: Machine Learning @ Tencent Hunyuan
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent Hunyuan", "title": "Machine Learning", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 1578
+Name Mask: *aiqiang Song
+Current Title/Company: None @ 腾讯
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent AI Lab", "title": "Senior Research Scientist @ Tencent AI Lab", "time": "Current", "description": ""}]
+
+========================================
+
+========================================
+Candidate ID: 1620
+Name Mask: *unshu Tang
+Current Title/Company: 高级研究员 @ Tencent, Hunyuan
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent, Hunyuan", "title": "Unknown", "time": "Current", "description": ""}, {"company": "2 \u5e74 6 \u4e2a\u6708", "position": "\u817e\u8baf", "start_date": "", "end_date": "", "duration": "2 \u5e74 6 \u4e2a\u6708", "description": ""}, {"company": "\u4e0a\u6d77\u4eba\u5de5\u667a\u80fd\u5b9e\u9a8c\u5ba4 \u00b7 \u5b9e\u4e60", "position": "Research Internship", "start_date": "", "end_date": "", "duration": "2023\u5e744\u6708 - 2023\u5e7410\u6708 \u00b7 7 \u4e2a\u6708", "description": ""}, {"company": "\u5fae\u8f6f \u00b7 \u5b9e\u4e60", "position": "Research Intern @ Microsoft Research Asia", "start_date": "", "end_date": "", "duration": "2021\u5e7412\u6708 - 2023\u5e743\u6708 \u00b7 1 \u5e74 4 \u4e2a\u6708", "description": "Research intern at Visual Computing Group of Microsoft Research Asia.Research intern at Visual Computing Group of Microsoft Research Asia."}]
+
+========================================
+
+========================================
+Candidate ID: 1633
+Name Mask: *i Luo
+Current Title/Company: Senior Research Scientist, Tencent AI Lab @ Shenzhen @ 腾讯
+
+=== WORK EXPERIENCES ===
+[{"company": "Tencent AI Lab", "title": "Senior Research Scientist", "time": "Current", "description": ""}]
+
+========================================
+
