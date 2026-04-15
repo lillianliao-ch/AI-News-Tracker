@@ -164,7 +164,7 @@ class MaimaiAssistant {
             try {
                 const result = await chrome.storage.local.get(['apiBaseUrl']);
                 const apiBase = result.apiBaseUrl || 'http://localhost:8502';
-                await fetch(`${apiBase}/api/comm-log`, {
+                await MaimaiUtils.apiFetch(`${apiBase}/api/comm-log`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -432,7 +432,7 @@ class MaimaiAssistant {
         const result = await chrome.storage.local.get(['apiBaseUrl']);
         const apiBase = result.apiBaseUrl || 'http://localhost:8502';
         const apiUrl = `${apiBase}/api/generate-message`;
-        const response = await fetch(apiUrl, {
+        const response = await MaimaiUtils.apiFetch(apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

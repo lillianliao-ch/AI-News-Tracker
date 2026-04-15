@@ -36,6 +36,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 .then(result => sendResponse(result));
             return true;
 
+        case 'PROXY_FETCH':
+            _handleProxyFetch(message.url, message.options)
+                .then(result => sendResponse(result));
+            return true;
+
         default:
             sendResponse({ success: false, error: '未知消息类型' });
     }
@@ -247,6 +252,43 @@ async function _clearData() {
         return { success: true };
     } catch (error) {
         console.error('❌ 清除失败:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+async function _handleProxyFetch(url, options) {
+    try {
+        console.log(`🌐 Background Proxy Fetch: ${options.method || 'GET'} ${url}`);
+        // 可以根据需要设置 timeout 控制，默认浏览器 fetch 不会轻易超时
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s 强制超时
+
+        const fetchOptions = {
+            ...options,
+            signal: controller.signal
+        };
+
+        const resp = await fetch(url, fetchOptions);
+        clearTimeout(timeoutId);
+
+        let data = null;
+        let text = await resp.text();
+
+        try {
+            if (text) data = JSON.parse(text);
+        } catch (e) {
+            // 解析 JSON 失败，可能后端返回非标准的纯文本报错
+        }
+
+        return {
+            success: true,
+            ok: resp.ok,
+            status: resp.status,
+            data: data,
+            text: text
+        };
+    } catch (error) {
+        console.error(`❌ Background Proxy Fetch 失败 (${url}):`, error);
         return { success: false, error: error.message };
     }
 }

@@ -627,7 +627,7 @@ class DetailPanelExtractor {
         try {
             const result = await chrome.storage.local.get(['apiBaseUrl']);
             const apiBase = result.apiBaseUrl || 'http://localhost:8502';
-            const response = await fetch(`${apiBase}/api/candidate/check`, {
+            const response = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/check`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -654,7 +654,7 @@ class DetailPanelExtractor {
         try {
             const result = await chrome.storage.local.get(['apiBaseUrl']);
             const apiBase = result.apiBaseUrl || 'http://localhost:8502';
-            const response = await fetch(`${apiBase}/api/candidate/import`, {
+            const response = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/import`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(candidateData)
@@ -706,7 +706,7 @@ class DetailPanelExtractor {
                 console.log('⚠️ 用户选择了强制新建模式（忽略重复检查）');
             }
 
-            const response = await fetch(`${apiBase}/api/candidate/maimai-sync`, {
+            const response = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/maimai-sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(candidateData)

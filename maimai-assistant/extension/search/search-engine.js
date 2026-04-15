@@ -504,7 +504,7 @@ class SearchEngine {
                     skills: [],
                 };
 
-                const resp = await fetch(apiUrl, {
+                const resp = await MaimaiUtils.apiFetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body),

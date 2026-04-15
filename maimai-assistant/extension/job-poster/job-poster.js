@@ -236,7 +236,7 @@ class MaimaiJobPoster {
         container.innerHTML = '<div class="mjp-loading"><div class="mjp-spinner"></div></div>';
 
         try {
-            const response = await fetch(`${this.config.apiBaseUrl}/api/jobs?limit=200`);
+            const response = await MaimaiUtils.apiFetch(`${this.config.apiBaseUrl}/api/jobs?limit=200`);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
             const data = await response.json();
@@ -328,7 +328,7 @@ class MaimaiJobPoster {
 
     async searchJobsFromAPI(query) {
         try {
-            const response = await fetch(`${this.config.apiBaseUrl}/api/jobs?search=${encodeURIComponent(query)}&limit=50`);
+            const response = await MaimaiUtils.apiFetch(`${this.config.apiBaseUrl}/api/jobs?search=${encodeURIComponent(query)}&limit=50`);
             if (!response.ok) return;
             const data = await response.json();
             if (data.jobs && data.jobs.length > 0) {
@@ -381,7 +381,7 @@ class MaimaiJobPoster {
         }
 
         try {
-            const response = await fetch(`${this.config.apiBaseUrl}/api/jobs/${this.selectedJob.id}`);
+            const response = await MaimaiUtils.apiFetch(`${this.config.apiBaseUrl}/api/jobs/${this.selectedJob.id}`);
             const data = await response.json();
 
             if (data.success && data.job) {
@@ -405,7 +405,7 @@ class MaimaiJobPoster {
 
         try {
             // 获取职位详情
-            const response = await fetch(`${this.config.apiBaseUrl}/api/jobs/${this.selectedJob.id}`);
+            const response = await MaimaiUtils.apiFetch(`${this.config.apiBaseUrl}/api/jobs/${this.selectedJob.id}`);
             const data = await response.json();
 
             if (!data.success || !data.job) {
@@ -535,7 +535,7 @@ class MaimaiJobPoster {
 
         try {
             // 调用后端 API 标记发布渠道（当前固定为 MM=脉脉）
-            const response = await fetch(
+            const response = await MaimaiUtils.apiFetch(
                 `${this.config.apiBaseUrl}/api/jobs/${this.selectedJob.id}/publish?channel=MM`,
                 { method: 'POST' }
             );

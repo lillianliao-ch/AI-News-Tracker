@@ -1,5 +1,9 @@
 # Maimai Assistant: 轻量级 CRM (V4 Hybrid Architecture) 设计规范
 
+> Status: design-intent doc
+> Use this document for: the intended CRM interaction model, panel layout, and premium workflow direction.
+> Do not treat every section here as proof that the full runtime behavior is already implemented exactly as described; verify against `extension/*` code.
+
 ## 1. 架构目标 (Architecture Goal)
 基于用户反馈，Maimai Assistant 插件从原有的全局覆盖模型（破坏了宿主页面的布局）升级为 **Hybrid 双轨架构**：
 1.  **外部框架稳定**：保留原生的右侧边缘悬浮面板 (`position: fixed; right: 0; width: 360px`)，**坚决不遮挡脉脉主网页内容**。

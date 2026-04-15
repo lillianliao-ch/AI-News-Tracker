@@ -17,7 +17,7 @@ class ImProcessor {
     async dispatchAgentLog(actionType, message, candidateName = null) {
         try {
             const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
-            await fetch(`${apiBase}/api/agent-logs`, {
+            await MaimaiUtils.apiFetch(`${apiBase}/api/agent-logs`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -363,7 +363,7 @@ class ImProcessor {
         let decision = { action: 'SKIP', reason: '请求失败', crm_stage_update: 'UNTOUCHED' };
         try {
             const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
-            const response = await fetch(`${apiBase}/api/agent/decide-action`, {
+            const response = await MaimaiUtils.apiFetch(`${apiBase}/api/agent/decide-action`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
@@ -487,11 +487,10 @@ class ImProcessor {
             const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
             console.log(`[ImProcessor] 正在请求后端 /api/evaluate-resume ...`);
             MaimaiUtils.showNotification(`🤖 正在发送 ${candidateName} 的简历给 AI 评估...`, 'info');
-            const response = await fetch(`${apiBase}/api/evaluate-resume`, {
+            const response = await MaimaiUtils.apiFetch(`${apiBase}/api/evaluate-resume`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ candidate: resumePayload }),
-                signal: AbortSignal.timeout(15000)
+                body: JSON.stringify({ candidate: resumePayload })
             });
             
             if (response.ok) {
@@ -623,7 +622,7 @@ class ImProcessor {
     async markAsReplied(name) {
         try {
             const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
-            await fetch(`${apiBase}/api/comm-log`, {
+            await MaimaiUtils.apiFetch(`${apiBase}/api/comm-log`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

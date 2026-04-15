@@ -117,6 +117,55 @@ class MaimaiUtils {
         return date.toISOString();
     }
 
+    // 在 background 的帮助下发起 HTTP 请求，解决 Maimai 的 HTTPS 混合内容策略拦截问题
+    static async apiFetch(url, options = {}) {
+        // 如果是 https，或者是 FormData (无法序列化给 background)，则降级使用原生 fetch
+        if (url.startsWith('https://') || (options.body && options.body instanceof FormData)) {
+            return fetch(url, options);
+        }
+
+        // 剔除 AbortSignal，因为它无法跨进程序列化
+        const safeOptions = {
+            method: options.method || 'GET',
+            headers: options.headers || {},
+        };
+        if (options.body) safeOptions.body = options.body;
+
+        return new Promise((resolve) => {
+            // 向 background 发送代理请求
+            chrome.runtime.sendMessage({
+                type: 'PROXY_FETCH',
+                url: url,
+                options: safeOptions
+            }, (response) => {
+                if (chrome.runtime.lastError) {
+                    console.error('Proxy fetch 消息通讯失败:', chrome.runtime.lastError);
+                    resolve(fetch(url, options));
+                    return;
+                }
+
+                if (!response || !response.success) {
+                    console.error('Proxy fetch 请求失败:', response?.error);
+                    resolve({
+                        ok: false,
+                        status: response?.status || 500,
+                        json: async () => response?.data || {},
+                        text: async () => response?.error || 'Proxy Fetch Failed'
+                    });
+                    return;
+                }
+
+                // 伪装 Response 对象，与标准 fetch 返回值 API 对齐
+                resolve({
+                    ok: response.ok,
+                    status: response.status,
+                    json: async () => response.data,
+                    text: async () => response.text
+                });
+            });
+        });
+    }
+
     // 发送消息到 background
     static async sendMessage(message) {
         try {

@@ -554,7 +554,7 @@ class TalentPanelExtractor {
                 console.log('⚠️ 用户选择了强制新建模式（忽略重复检查）');
             }
             
-            const response = await fetch(`${apiBase}/api/candidate/maimai-sync`, {
+            const response = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/maimai-sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(candidateData)
@@ -721,7 +721,7 @@ class TalentPanelExtractor {
         if (downloadUrl && candidateId) {
             console.log(`📥 ${candidateName}: 获取附件文件并上传到后端...`);
             try {
-                const fileResp = await fetch(downloadUrl);
+                const fileResp = await MaimaiUtils.apiFetch(downloadUrl);
                 if (!fileResp.ok) throw new Error(`下载失败: HTTP ${fileResp.status}`);
                 const blob = await fileResp.blob();
 
@@ -729,7 +729,7 @@ class TalentPanelExtractor {
                 formData.append('file', blob, fileName);
                 const result = await chrome.storage.local.get(['apiBaseUrl']);
                 const apiBase = result.apiBaseUrl || 'http://localhost:8502';
-                const uploadResp = await fetch(`${apiBase}/api/candidate/${candidateId}/resume-attachment`, {
+                const uploadResp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${candidateId}/resume-attachment`, {
                     method: 'POST',
                     body: formData
                 });

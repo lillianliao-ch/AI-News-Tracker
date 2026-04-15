@@ -754,7 +754,7 @@ class AssistantPanel {
             const result = await chrome.storage.local.get(['apiBaseUrl']);
             const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/generate-message`;
-            const response = await fetch(apiUrl, {
+            const response = await MaimaiUtils.apiFetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -970,7 +970,7 @@ class AssistantPanel {
             }
 
             // 使用复用的 maimai-sync 接口
-            const response = await fetch(`${apiBase}/api/candidate/maimai-sync`, {
+            const response = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/maimai-sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -1037,7 +1037,7 @@ class AssistantPanel {
             }
 
             // 3. 调用同步接口，强制标记已回复
-            const response = await fetch(`${apiBase}/api/candidate/maimai-sync`, {
+            const response = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/maimai-sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -1093,7 +1093,7 @@ class AssistantPanel {
                 } catch (e) { console.warn('读取 API 地址失败', e); }
             }
 
-            const response = await fetch(`${apiBase}/api/candidate/maimai-sync`, {
+            const response = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/maimai-sync`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -1148,7 +1148,7 @@ class AssistantPanel {
             if (res.apiBaseUrl) apiBase = res.apiBaseUrl;
           }
 
-          const resp = await fetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}`, {
+          const resp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ talent_labels: activeLabels })
@@ -1191,7 +1191,7 @@ class AssistantPanel {
             const result = await chrome.storage.local.get(['apiBaseUrl']);
             const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/comm-log`;
-            await fetch(apiUrl, {
+            await MaimaiUtils.apiFetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -1216,7 +1216,7 @@ class AssistantPanel {
             const storageResult = await chrome.storage.local.get(['apiBaseUrl']);
             const apiBase = storageResult.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/jobs/active?limit=30`;
-            const response = await fetch(apiUrl);
+            const response = await MaimaiUtils.apiFetch(apiUrl);
             if (!response.ok) throw new Error(`API错误: ${response.status}`);
 
             const result = await response.json();
@@ -1279,7 +1279,7 @@ class AssistantPanel {
 
         try {
             const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
-            const resp = await fetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}/ai-portrait`, {
+            const resp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}/ai-portrait`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
             });
@@ -1323,7 +1323,7 @@ class AssistantPanel {
         
         try {
             const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
-            const resp = await fetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}`, {
+            const resp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -1360,7 +1360,7 @@ class AssistantPanel {
         
         try {
             const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
-            const resp = await fetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}/schedule`, {
+            const resp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}/schedule`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -1389,7 +1389,7 @@ class AssistantPanel {
 
         try {
             const apiBase = (await chrome.storage.local.get(['apiBaseUrl'])).apiBaseUrl || 'http://localhost:8502';
-            const resp = await fetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}/quick-comm-log`, {
+            const resp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${this._lastSyncedCandidateId}/quick-comm-log`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -1422,7 +1422,7 @@ class AssistantPanel {
             const result = await chrome.storage.local.get(['apiBaseUrl']);
             const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/comm-log`;
-            await fetch(apiUrl, {
+            await MaimaiUtils.apiFetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -1653,7 +1653,7 @@ class AssistantPanel {
             const apiBase = result.apiBaseUrl || 'http://localhost:8502';
             const apiUrl = `${apiBase}/api/candidate/check`;
             
-            const response = await fetch(apiUrl, {
+            const response = await MaimaiUtils.apiFetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -1678,7 +1678,7 @@ class AssistantPanel {
 
                 // 获取后端完整档案数据以填充 CRM 面板
                 try {
-                    const detailResp = await fetch(`${apiBase}/api/candidate/${checkResult.candidateId}`);
+                    const detailResp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${checkResult.candidateId}`);
                     if (detailResp.ok) {
                         const dbData = await detailResp.json();
                         
@@ -2230,7 +2230,7 @@ class AssistantPanel {
         // Helper to refresh the sub-panels cleanly without blinking the master state
         const refreshDynamicPanels = async () => {
             try {
-                const updatedResp = await fetch(`${apiBase}/api/candidate/${candidateId}`);
+                const updatedResp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${candidateId}`);
                 if (updatedResp.ok) {
                     const freshData = await updatedResp.json();
                     const expContainer = this.panel.querySelector('#crmExperienceContainer');
@@ -2245,7 +2245,7 @@ class AssistantPanel {
         };
 
         const quickEdit = async (data) => {
-            const resp = await fetch(`${apiBase}/api/candidate/${candidateId}`, {
+            const resp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${candidateId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
@@ -2314,7 +2314,7 @@ class AssistantPanel {
                 addCommLogBtn.textContent = '⏳';
             }
             try {
-                const resp = await fetch(`${apiBase}/api/candidate/${candidateId}/quick-comm-log`, {
+                const resp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${candidateId}/quick-comm-log`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ channel, content }),
@@ -2362,7 +2362,7 @@ class AssistantPanel {
                 
                 btn.disabled = true;
                 try {
-                    const resp = await fetch(`${apiBase}/api/candidate/${candidateId}/comm-log/${index}`, {
+                    const resp = await MaimaiUtils.apiFetch(`${apiBase}/api/candidate/${candidateId}/comm-log/${index}`, {
                         method: 'DELETE',
                     });
                     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
