@@ -55,6 +55,56 @@ class AssistantPanel {
         return 'recruit';
     }
 
+    _getContactState(dbData = this.activeDbData || {}) {
+        return {
+            email: dbData.email || '',
+            phone: dbData.phone || '',
+            wechatId: dbData.wechat_id || dbData.wechat || '',
+            githubUrl: dbData.github_url || '',
+            websiteUrl: dbData.personal_website || dbData.website_url || ''
+        };
+    }
+
+    _refreshContactSection(dbData = this.activeDbData || {}) {
+        const contactGrid = this.panel?.querySelector('#crmContactGrid');
+        const editBtn = this.panel?.querySelector('#crmEditContactBtn');
+        const { email, phone, wechatId, githubUrl, websiteUrl } = this._getContactState(dbData);
+
+        if (editBtn) {
+            const hasContact = Boolean(email || phone || wechatId || githubUrl || websiteUrl);
+            editBtn.textContent = hasContact ? '✏️ 编辑联系' : '✏️ 新增联系';
+        }
+
+        if (!contactGrid) return;
+
+        const contactItems = [
+            email ? `<div class="crm-contact-chip"><span class="chip-icon">📧</span>${this._esc(email)}</div>` : '',
+            phone ? `<div class="crm-contact-chip"><span class="chip-icon">📱</span>${this._esc(phone)}</div>` : '',
+            wechatId ? `<div class="crm-contact-chip"><span class="chip-icon">💬</span>${this._esc(wechatId)}</div>` : '',
+            githubUrl ? `<a class="crm-contact-chip" href="${this._esc(githubUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;"><span class="chip-icon">🐙</span>GitHub</a>` : '',
+            websiteUrl ? `<a class="crm-contact-chip" href="${this._esc(websiteUrl)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;"><span class="chip-icon">🌐</span>Website</a>` : ''
+        ].filter(Boolean);
+
+        contactGrid.innerHTML = contactItems.length > 0
+            ? contactItems.join('')
+            : '<div class="crm-contact-chip empty"><span class="chip-icon">📭</span>暂无联系方式</div>';
+    }
+
+    _populateContactForm(dbData = this.activeDbData || {}) {
+        const { email, phone, wechatId, githubUrl, websiteUrl } = this._getContactState(dbData);
+        const emailInput = this.panel?.querySelector('#crmEditEmail');
+        const phoneInput = this.panel?.querySelector('#crmEditPhone');
+        const wechatInput = this.panel?.querySelector('#crmEditWechat');
+        const githubInput = this.panel?.querySelector('#crmEditGithub');
+        const websiteInput = this.panel?.querySelector('#crmEditWebsite');
+
+        if (emailInput) emailInput.value = email;
+        if (phoneInput) phoneInput.value = phone;
+        if (wechatInput) wechatInput.value = wechatId;
+        if (githubInput) githubInput.value = githubUrl;
+        if (websiteInput) websiteInput.value = websiteUrl;
+    }
+
     async init() {
         try {
             console.log('🎨 初始化 Maimai Assistant 悬浮面板...');
@@ -276,6 +326,9 @@ class AssistantPanel {
                         <div style="display:flex;gap:4px;margin-bottom:8px;">
                             <input id="crmEditWechat" placeholder="WeChat" style="flex:1;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;">
                             <input id="crmEditGithub" placeholder="GitHub" style="flex:1;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;">
+                        </div>
+                        <div style="display:flex;gap:4px;margin-bottom:8px;">
+                            <input id="crmEditWebsite" placeholder="Website" style="flex:1;border:1px solid #dadce0;border-radius:4px;padding:4px 6px;font-size:11px;">
                         </div>
                         <div style="text-align:right;">
                             <button id="crmSaveContactBtn" class="crm-btn crm-btn-primary" style="padding:4px 10px;font-size:11px;">保存进DB</button>
@@ -1303,19 +1356,24 @@ class AssistantPanel {
 
     async handleSaveContact() {
         if (!this._lastSyncedCandidateId) return MaimaiUtils.showNotification('请先导入人才', 'warning');
-        
-        const email = this.panel.querySelector('#crmEditEmail')?.value?.trim();
-        const phone = this.panel.querySelector('#crmEditPhone')?.value?.trim();
-        const wechat = this.panel.querySelector('#crmEditWechat')?.value?.trim();
-        const githubUrl = this.panel.querySelector('#crmEditGithub')?.value?.trim();
-        
+
+        const current = this._getContactState();
+        const next = {
+            email: this.panel.querySelector('#crmEditEmail')?.value?.trim() || '',
+            phone: this.panel.querySelector('#crmEditPhone')?.value?.trim() || '',
+            wechatId: this.panel.querySelector('#crmEditWechat')?.value?.trim() || '',
+            githubUrl: this.panel.querySelector('#crmEditGithub')?.value?.trim() || '',
+            websiteUrl: this.panel.querySelector('#crmEditWebsite')?.value?.trim() || ''
+        };
+
         const payload = {};
-        if (email) payload.email = email;
-        if (phone) payload.phone = phone;
-        if (wechat) payload.wechat = wechat;
-        if (githubUrl) payload.github_url = githubUrl;
-        
-        if (Object.keys(payload).length === 0) return MaimaiUtils.showNotification('没有可保存的数据', 'warning');
+        if (next.email !== current.email) payload.email = next.email;
+        if (next.phone !== current.phone) payload.phone = next.phone;
+        if (next.wechatId !== current.wechatId) payload.wechat_id = next.wechatId;
+        if (next.githubUrl !== current.githubUrl) payload.github_url = next.githubUrl;
+        if (next.websiteUrl !== current.websiteUrl) payload.personal_website = next.websiteUrl;
+
+        if (Object.keys(payload).length === 0) return MaimaiUtils.showNotification('联系方式没有变化', 'info');
         
         const btn = this.panel.querySelector('#crmSaveContactBtn');
         const original = btn.innerHTML;
@@ -1329,10 +1387,21 @@ class AssistantPanel {
                 body: JSON.stringify(payload)
             });
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-            
+
+            this.activeDbData = {
+                ...(this.activeDbData || {}),
+                email: next.email || null,
+                phone: next.phone || null,
+                wechat_id: next.wechatId || null,
+                github_url: next.githubUrl || null,
+                personal_website: next.websiteUrl || null
+            };
+
+            this._refreshContactSection(this.activeDbData);
+            this._populateContactForm(this.activeDbData);
             MaimaiUtils.showNotification('✅ 联系方式更新成功！', 'success');
             this.panel.querySelector('#crmContactEditArea').style.display = 'none';
-            setTimeout(() => this.syncCurrentProfile(), 800);
+            setTimeout(() => this.syncCurrentProfile(), 300);
         } catch (e) {
             MaimaiUtils.showNotification(`更新失败: ${e.message}`, 'error');
         } finally {
@@ -1485,7 +1554,11 @@ class AssistantPanel {
         // Tab 2: 联系方式新增编辑交互
         this.panel.querySelector('#crmEditContactBtn')?.addEventListener('click', () => {
             const editArea = this.panel.querySelector('#crmContactEditArea');
-            if (editArea) editArea.style.display = editArea.style.display === 'none' ? 'block' : 'none';
+            if (editArea) {
+                const willOpen = editArea.style.display === 'none';
+                if (willOpen) this._populateContactForm();
+                editArea.style.display = willOpen ? 'block' : 'none';
+            }
         });
         this.panel.querySelector('#crmSaveContactBtn')?.addEventListener('click', () => this.handleSaveContact());
 
@@ -1779,12 +1852,8 @@ class AssistantPanel {
                         }
                         
                         // 3. Contact Info
-                        const emailEl = this.panel.querySelector('#crmEmail');
-                        const phoneEl = this.panel.querySelector('#crmPhone');
-                        const wechatEl = this.panel.querySelector('#crmWechat');
-                        if (emailEl) emailEl.textContent = dbData.email || '-';
-                        if (phoneEl) phoneEl.textContent = dbData.phone || '-';
-                        if (wechatEl) wechatEl.textContent = dbData.wechat || dbData.personal_website || '-';
+                        this._refreshContactSection(dbData);
+                        this._populateContactForm(dbData);
                         
                         // 4. Notes
                         const notesArea = this.panel.querySelector('#crmNotesArea');
